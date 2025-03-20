@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkls_fusion_docs=self.webpackChunkls_fusion_docs||[]).push([[99851],{14625:s=>{s.exports=JSON.parse('{"metadata":{"permalink":"/ru/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":3,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
