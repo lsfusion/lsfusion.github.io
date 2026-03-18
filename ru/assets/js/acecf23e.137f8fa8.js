@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkls_fusion_docs=self.webpackChunkls_fusion_docs||[]).push([["93220"],{1912(s){s.exports=JSON.parse('{"blogBasePath":"/ru/blog","blogTitle":"Blog","authorsListPath":"/ru/blog/authors"}')}}]);
