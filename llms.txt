@@ -1,0 +1,1393 @@
+# lsfusion documentation
+
+> Overview
+
+- [Learn](/index.md)
+
+## search
+
+- [Search the documentation](/search.md)
+
+## =_statement
+
+- [= statement](/=_statement.md): The = statement creates a new property.
+
+## =gt_statement
+
+- [=> statement](/=gt_statement.md): The => statement creates a consequence.
+
+## ABSTRACT_action_operator
+
+- [ABSTRACT operator](/ABSTRACT_action_operator.md): The ABSTRACT operator creates an abstract action.
+
+## ABSTRACT_operator
+
+- [ABSTRACT operator](/ABSTRACT_operator.md): The ABSTRACT operator creates an abstract property.
+
+## Access_from_an_external_system
+
+- [Access from an external system](/Access_from_an_external_system.md): Action API
+
+## Access_from_an_internal_system
+
+- [Access from an internal system](/Access_from_an_internal_system.md): Java interaction
+
+## Access_to_an_external_system_EXTERNAL
+
+- [Access to an external system (EXTERNAL)](/Access_to_an_external_system_EXTERNAL.md): The platform allows an lsFusion-based system to access external systems using various types of interactions / protocols, as the external counterpart to the internal call. The interface of such an access is the execution of code in the language / paradigm of the external system with specified parameters and, if necessary, the return of certain values as results written into the specified properties (without parameters). It is assumed that all parameter and result objects are objects of built-in classes.
+
+## Access_to_an_internal_system_INTERNAL_FORMULA
+
+- [Access to an internal system (INTERNAL, FORMULA)](/Access_to_an_internal_system_INTERNAL_FORMULA.md): By internal system we mean the deployment components of the lsFusion system itself — the application-server JVM, the user's web client, and the platform's own database. To reach these components from lsFusion code the platform provides two separate operators: INTERNAL — execution of Java / JavaScript / SQL code as an action, and FORMULA — wrapping an SQL expression as a property.
+
+## Action_extension
+
+- [Action extension](/Action_extension.md): The actions extension technique allows an abstract action to be declared in one module and implementations to be added to it in other modules. This is deferred construction of the corresponding branch operator or sequence operator: the base module defines the form of the future operator and the requirements for its implementations, while other modules gradually add individual implementations.
+
+## Action_operators_paradigm
+
+- [Оperators](/Action_operators_paradigm.md): Operators for creating actions can be divided into several categories:
+
+## Action_operators
+
+- [Action operators](/Action_operators.md): Action operator is a syntax construct that describes an operator creating an action.
+
+## Action_options
+
+- [Action options](/Action_options.md): When declaring an action in the ACTION statement a certain set of action options may be specified at the end of the declaration.
+
+## ACTION_plus_statement
+
+- [ACTION+ statement](/ACTION_plus_statement.md): The ACTION+ statement adds an implementation to an abstract action.
+
+## ACTION_statement
+
+- [ACTION statement](/ACTION_statement.md): The ACTION statement creates an action.
+
+## Actions
+
+- [Actions](/Actions.md): An action is an element of the system that takes a set of objects (parameters) and uses them in one way or another to change the system state (that of the system in which the action is executed, as well as the state of any other external system).
+
+## ACTIVATE_operator
+
+- [ACTIVATE operator](/ACTIVATE_operator.md): The ACTIVATE operator creates an action that activates one of the form elements: a specified form, tab, property (or action) on a form, or a set of objects within a form object group.
+
+## Activation_ACTIVATE
+
+- [Activation (ACTIVATE)](/Activation_ACTIVATE.md): The activation operator creates an action that makes one of the form elements active: a property (or action), a tab, a form, or a set of objects in a form's object group.
+
+## ACTIVE_operator
+
+- [ACTIVE operator](/ACTIVE_operator.md): The ACTIVE operator creates a property or an action that returns information about an active form element: a tab, a property (or action), a form, or the current object of an object group.
+
+## Activity_ACTIVE
+
+- [Activity (ACTIVE)](/Activity_ACTIVE.md): The activity operator creates a property or an action that returns information about an active form element. The element can be one of:
+
+## AFTER_statement
+
+- [AFTER statement](/AFTER_statement.md): The AFTER statement calls an action after calling another action.
+
+## AGGR_operator
+
+- [AGGR operator](/AGGR_operator.md): The AGGR operator creates an aggregation.
+
+## Aggregations
+
+- [Aggregations](/Aggregations.md): Aggregation is the creation of a unique (aggregate) object for each distinct combination of parameter values at which some aggregated property is non-NULL. Each such object is assumed to have properties that map this object to each aggregated property parameter, and, conversely, a property that maps the aggregated property parameters to this object.
+
+## AND_OR_NOT_XOR_operators
+
+- [AND, OR, NOT, XOR operators](/AND_OR_NOT_XOR_operators.md): AND, OR, NOT, XOR operators that create properties that implement logical operations.
+
+## Apply_changes_APPLY
+
+- [Apply changes (APPLY)](/Apply_changes_APPLY.md): The apply changes operator saves all changes made to the database, and also triggers the handling of all synchronous global events.
+
+## APPLY_operator
+
+- [APPLY operator](/APPLY_operator.md): The APPLY operator creates an action that applies changes to the database.
+
+## Arithmetic_operators_plus_minus_etc
+
+- [Arithmetic operators (+, -, *, ...)](/Arithmetic_operators_plus_minus_etc.md): Arithmetic operators create properties whose value is the result of an arithmetic operation. The arguments of these operators must be properties whose values are instances of number classes . The platform currently supports the following arithmetic operators:
+
+## Arithmetic_operators
+
+- [Arithmetic operators](/Arithmetic_operators.md): +, -, *, /, (+), (-) operators create properties responsible for arithmetic operations.
+
+## ASK_operator
+
+- [ASK operator](/ASK_operator.md): The ASK operator creates an action that asks the user a question or requests confirmation in a dialog form.
+
+## Automatic_installation
+
+- [Install automatically](/Automatic_installation.md): For development
+
+## BEFORE_statement
+
+- [BEFORE statement](/BEFORE_statement.md): The BEFORE statement calls an action before calling another action.
+
+## Braces_operator
+
+- [{...} operator](/Braces_operator.md): The {...} operator creates actions that executes a sequence of other actions.
+
+## Brackets_operator
+
+- [[] operator](/Brackets_operator.md): The ] operator creates a [property that returns an object from a structure.
+
+## Branching_CASE_IF_MULTI
+
+- [Branching (CASE, IF, MULTI)](/Branching_CASE_IF_MULTI.md): The branching operator creates an action that determines for a set of conditions which condition is met, and calls the corresponding action.
+
+## BREAK_operator
+
+- [BREAK operator](/BREAK_operator.md): The BREAK operator creates an action that implements a loop interruption.
+
+## Brief
+
+- [lsFusion Brief](/Brief.md): Brief on lsFusion elements for AI agents
+
+## Built-in_classes
+
+- [Built-in classes](/Built-in_classes.md): Built-in classes are classes whose instances are objects belonging to primitive data types such as integers, strings, etc.
+
+## Calculated_events
+
+- [Calculated events](/Calculated_events.md): Calculated events are events that change the value of a property when the value of some other property (condition) changes to a non-NULL value. Moreover, unlike simple events, this change is not made at the moment the condition is changed but is calculated each time the changed property is accessed. If the property has already been changed in the same session, this change is considered higher priority than the change in the calculated event.
+
+## Call_EXEC
+
+- [Call (EXEC)](/Call_EXEC.md): The EXEC operator creates an action that executes another action, passing it specified argument values.
+
+## Cancel_changes_CANCEL
+
+- [Cancel changes (CANCEL)](/Cancel_changes_CANCEL.md): The cancel changes operator completely clears the current change session.
+
+## CANCEL_operator
+
+- [CANCEL operator](/CANCEL_operator.md): The CANCEL operator creates an action that cancels changes in the current session.
+
+## Capture_SCREENSHOT
+
+- [Capture (SCREENSHOT)](/Capture_SCREENSHOT.md): The capture operator creates an action that captures the currently rendered visual state of the user interface as a PNG image or as HTML markup. The captured content is written into a property when a target property is specified, or sent to the client and opened by the operating system otherwise.
+
+## CASE_action_operator
+
+- [CASE operator](/CASE_action_operator.md): The CASE operator creates an action that implements branching.
+
+## CASE_operator
+
+- [CASE operator](/CASE_operator.md): The CASE operator  creates a property that selects a result by condition.
+
+## CHANGE_operator
+
+- [CHANGE operator](/CHANGE_operator.md): The CHANGE operator creates an action that changes properties.
+
+## Change_operators_SET_CHANGED_etc
+
+- [Change operators (SET, CHANGED, ...)](/Change_operators_SET_CHANGED_etc.md): Change operators determine whether some types of changes have occurred for a given expression in the current session. All these operators are derived from the previous value operator (PREV), however, it is recommended to use them to improve readability and performance.
+
+## Change_operators
+
+- [Change operators](/Change_operators.md): Change operators - a set of operators that determine various types of property value changes.
+
+## Change_sessions
+
+- [Change sessions](/Change_sessions.md): Actions can change the state of the system in which they are executed. It is not always desirable to write these changes directly to the database, both from the perspective of integrity and from the perspective of the ergonomics of the system. The platform therefore allows to accumulate these changes locally in change sessions.
+
+## CHANGECLASS_operator
+
+- [CHANGECLASS operator](/CHANGECLASS_operator.md): The CHANGECLASS operator creates an action that changes objects classes.
+
+## Chat
+
+- [Chat](/Chat.md): (Under development)
+
+## Class_change_CHANGECLASS_DELETE
+
+- [Class change (CHANGECLASS, DELETE)](/Class_change_CHANGECLASS_DELETE.md): The class change operator creates an action that assigns the given class to all objects where value of a particular property (condition) is not equal to NULL. The condition can be omitted, in which case it is considered to be equal to TRUE.
+
+## Class_extension
+
+- [Class extension](/Class_extension.md): The class extension technique allows the developer to inherit one class from another after its creation. Also, using this mechanism you can add extra static objects to a class.
+
+## Class_operators
+
+- [Class operators](/Class_operators.md): Class operators include the following operators:
+
+## CLASS_statement
+
+- [CLASS statement](/CLASS_statement.md): CLASS statement - creating a new custom class.
+
+## Classes
+
+- [Classes](/Classes.md): The base element in lsFusion is the object. Each object is an instance of some class, which determines the qualities of all its instances. Classes in turn can be divided into built-in classes, which are responsible for primitive data types, and user classes.
+
+## Classification_IS_AS
+
+- [Classification (IS/AS)](/Classification_IS_AS.md): Classification operators create properties that determine whether an object belongs to the class specified. If the property argument does not belong to the class specified in the operator, the property returns NULL. Otherwise, the operator IS returns TRUE, and the operator AS returns the object passed as an argument.
+
+## Coding_conventions
+
+- [Coding conventions](/Coding_conventions.md): Common
+
+## COLLAPSE_operator
+
+- [COLLAPSE operator](/COLLAPSE_operator.md): The COLLAPSE operator is the creation of an action, that implements the collapse of elements in the object tree.
+
+## commat_statement
+
+- [@ statement](/commat_statement.md): The @ statement uses metacode.
+
+## Comments
+
+- [Comments](/Comments.md): Comments in a programming language allow you to add textual explanations and notes directly into the code without affecting its execution. In the lsFusion language, there are two types of comments: line comments and block comments.
+
+## Comparison_operators_=_etc
+
+- [Comparison operators (=, >, <, ...)](/Comparison_operators_=_etc.md): Comparison operators create properties which return the result of the comparison operation. The values of the created properties belong to the built-in class BOOLEAN.
+
+## Comparison_operators
+
+- [Comparison operators](/Comparison_operators.md): ==, =, !=, `, =` operators create properties that implement comparison operations.
+
+## Composition_JOIN
+
+- [Composition (JOIN)](/Composition_JOIN.md): The composition operator allows you to use values of other properties as arguments for one (main) property.
+
+## CONCAT_operator
+
+- [CONCAT operator](/CONCAT_operator.md): The CONCAT operator creates a property that implements a string concatenation.
+
+## Constant
+
+- [Constant](/Constant.md): The constant operator is used to create properties without parameters which always return the same value. This value can be static objects of custom and built-in classes as well as the special NULL value.
+
+## CONSTRAINT_statement
+
+- [CONSTRAINT statement](/CONSTRAINT_statement.md): The CONSTRAINT statement creates a constraint.
+
+## Constraints
+
+- [Constraints](/Constraints.md): Constraints in the platform determine which values the data properties can have and which cannot. In general, a constraint is defined as a property which value should always be NULL.
+
+## CONTINUE_operator
+
+- [CONTINUE operator](/CONTINUE_operator.md): The CONTINUE operator creates an action that implements move to the next iteration of the cycle.
+
+## Custom_formula_FORMULA
+
+- [Custom formula (FORMULA)](/Custom_formula_FORMULA.md): The custom formula operator allows you to create a property that calculates a defined formula in SQL. You can specify different implementations of the formula for different SQL servers.
+
+## Custom_Spring_bean_EventServer
+
+- [Custom Spring bean (EventServer)](/Custom_Spring_bean_EventServer.md): When you need to reach the lsFusion system from your own Java code — to run a background job, host an integration server, process a stream of events, expose an RMI service — that is done with a Spring bean extending the EventServer hierarchy.
+
+## Data_export_EXPORT
+
+- [Data export (EXPORT)](/Data_export_EXPORT.md): The data export operator creates an action that reads values of the specified properties for all object collections where the value of the specified property (condition) is not NULL, and then saves these values to a file in a specified format.
+
+## Data_import_IMPORT
+
+- [Data import (IMPORT)](/Data_import_IMPORT.md): The data import operator creates an action which reads a file from the value of some property, then, depending on its format, defines the columns (fields) of data in this file, after which it writes the value of each column (field) to the corresponding property (parameter) - import assignment. The mapping of columns to properties can go in either column or name order.
+
+## DATA_operator
+
+- [DATA operator](/DATA_operator.md): The DATA operator creates a data property.
+
+## Data_properties_DATA
+
+- [Data properties (DATA)](/Data_properties_DATA.md): Data property is a property which value is stored in the database and may change through the execution of the corresponding action. Each parameter and the value of a data property must belong to a certain specified class. If a parameter does not belong to the specified class or is NULL, then the property value will return NULL.
+
+## DELETE_operator
+
+- [DELETE operator](/DELETE_operator.md): The DELETE operator creates an action that deletes objects.
+
+## DESIGN_statement
+
+- [DESIGN statement](/DESIGN_statement.md): The DESIGN statement changes form design.
+
+## Development_auto
+
+- [For development](/Development_auto.md): On this page you can download installers that install everything needed for development in a single click. In addition to lsFusion, these installers also install OpenJDK, PostgreSQL, Tomcat, Jaspersoft Studio and IntelliJ IDEA with the built-in lsFusion plugin. If any of these programs are already on your computer, you can exclude them during the installation process.
+
+## Development_manual
+
+- [For development](/Development_manual.md): To install the application server, IDE, and client, Java version 8 or later must first be installed on the computer.
+
+## Development
+
+- [Development](/Development.md): The development model includes the following concepts:
+
+## DIALOG_operator
+
+- [DIALOG operator](/DIALOG_operator.md): The DIALOG operator creates an action that opens a form in an interactive view in dialog mode.
+
+## Distribution_UNGROUP
+
+- [Distribution (UNGROUP)](/Distribution_UNGROUP.md): The distribution operator creates a property, the grouping value of which using sum function will be equal to the value of the specified property (distributable). Accordingly, as for a group operator, for a distribution operator multiple properties (groups) must be set by which the grouping will take place.
+
+## Docker
+
+- [Docker installation](/Docker.md): To work with Docker containers, you need to install Docker and Docker Compose.
+
+## Domain_logic
+
+- [Domain logic](/Domain_logic.md): Properties are the basic concept for business logic and are responsible for storing and calculating data.
+
+## Element_identification
+
+- [Element identification](/Element_identification.md): On the lsFusion platform, some elements of the system are named, meaning that they can be used by accessing them by name.
+
+## EMAIL_operator
+
+- [EMAIL operator](/EMAIL_operator.md): The EMAIL operator creates an action that sends email.
+
+## Empty_statement
+
+- [Empty statement](/Empty_statement.md): Empty statement is a special statement that consists of a single semicolon.
+
+## Eval_EVAL
+
+- [Eval (EVAL)](/Eval_EVAL.md): The eval operator creates an action that executes defined program code in the lsFusion language. Program code is defined as a property whose value should belong to the string class. This is implemented using an action which takes a line of code as an argument.
+
+## EVAL_operator
+
+- [EVAL operator](/EVAL_operator.md): The EVAL operator: creating an action that executes code in the lsFusion language.
+
+## Event_block
+
+- [Event block](/Event_block.md): The event block of the  FORM statement - a set of constructions controlling events in an interactive form view.
+
+## Event_description_block
+
+- [Event description block](/Event_description_block.md): Event description block describes an event in different statements.
+
+## Events
+
+- [Events](/Events.md): Events are a mechanism that allows to execute certain actions at certain points in time (these actions shall be called event handlers).
+
+## Examples
+
+- [Examples](/Examples.md): Examples are intended to demonstrate the capabilities of the lsFusion platform.
+
+## Exception_handling_TRY
+
+- [Exception handling (TRY)](/Exception_handling_TRY.md): The exception handling operator enables you to execute an action and do the following if an error (exception) occurs:
+
+## EXCLUSIVE_operator
+
+- [EXCLUSIVE operator](/EXCLUSIVE_operator.md): The EXCLUSIVE operator creates a property that implements a selection of one of the values (polymorphic form).
+
+## EXEC_operator
+
+- [EXEC operator](/EXEC_operator.md): The EXEC operator creates an action that executes another action.
+
+## Execution_auto
+
+- [For production](/Execution_auto.md): Installation
+
+## Execution_manual
+
+- [For production](/Execution_manual.md): To install the application server, web server and client, Java version 8 or later must first be installed on the computer.
+
+## Execution_order
+
+- [Execution order](/Execution_order.md): The platform supports the following operators for managing the order in which actions are executed:
+
+## Execution
+
+- [Execution](/Execution.md): If the system is small and there is not much data in it, it usually works quite efficiently without any additional optimizations. But if the logic becomes more complex, and the amount of data increases significantly, it often makes sense to tell the platform how best to store and process all this data.
+
+## Exit_RETURN
+
+- [Exit (RETURN)](/Exit_RETURN.md): The exit operator creates an action that exits from the inmost action call. Control is passed to the first action following that call operator.
+
+## EXPAND_operator
+
+- [EXPAND operator](/EXPAND_operator.md): The EXPAND operator is the creation of an action, that implements the expansion of elements in the object tree.
+
+## EXPORT_operator
+
+- [EXPORT operator](/EXPORT_operator.md): The EXPORT operator: creates an action that exports specified properties to a file, or, in common case, that opens a form in a structured view.
+
+## Expression
+
+- [Expression](/Expression.md): An expression is a combination of property operators and parameters. When an expression is evaluated sequentially in priority order, all the operators are executed.
+
+## EXTEND_CLASS_statement
+
+- [EXTEND CLASS statement](/EXTEND_CLASS_statement.md): The EXTEND CLASS statement extends an existing class.
+
+## EXTEND_FORM_statement
+
+- [EXTEND FORM statement](/EXTEND_FORM_statement.md): The EXTEND FORM statement extends an existing form.
+
+## Extensions
+
+- [Extensions](/Extensions.md): Extension is a technique that allows a developer to extend the functionality of one module in another.
+
+## EXTERNAL_operator
+
+- [EXTERNAL operator](/EXTERNAL_operator.md): The EXTERNAL operator creates an action that implements accessing to an external system.
+
+## Extremum_MAX_MIN
+
+- [Extremum (MAX, MIN)](/Extremum_MAX_MIN.md): The extremum operator creates a property which calculates the maximum or minimum between several specified properties. If the value of any of these properties is NULL, this property is ignored. If the values of all properties are NULL, the result value is also NULL.
+
+## File_operators
+
+- [File operators](/File_operators.md): The platform supports the following file operators:
+
+## Filter_FILTER
+
+- [Filter (FILTER)](/Filter_FILTER.md): The filter operator creates a property that returns TRUE if the object collection matches the current filter of the specified object group, and NULL if it does not.
+
+## Filters_and_sortings_block
+
+- [Filter and sorting blocks](/Filters_and_sortings_block.md): The filter and order blocks of the FORM statement – adding filters and orderings to the form structure, as well as filter groups and user filters to the interactive form view.
+
+## Focus_operators
+
+- [Focus operators](/Focus_operators.md): This category includes operators responsible for managing component activity:
+
+## FOR_operator
+
+- [FOR operator](/FOR_operator.md): The FOR operator creates an action that implements loop.
+
+## Form_design
+
+- [Form design](/Form_design.md): The form design defines how a form is displayed in the interactive view.
+
+## Form_events
+
+- [Form events](/Form_events.md): While the application is running, there is a number of events for each form that occur as a result of certain user actions:
+
+## Form_extension
+
+- [Form extension](/Form_extension.md): The form extension technique allows the developer to extend the structure and design of a form created in another module.
+
+## Form_operators
+
+- [Form operators](/Form_operators.md): Form operators can be divided into several categories:
+
+## FORM_statement
+
+- [FORM statement](/FORM_statement.md): The FORM statement creates a form.
+
+## Form_structure
+
+- [Form structure](/Form_structure.md): The form structure is a complex of objects, properties, actions and relations between them.
+
+## Form_views
+
+- [Form views](/Form_views.md): A form view can be classified as follows:
+
+## Forms
+
+- [Forms](/Forms.md): Forms let you combine different types of information for one or more objects in a single interface. Logically, aform can be divided into two parts:
+
+## FORMULA_operator
+
+- [FORMULA operator](/FORMULA_operator.md): The FORMULA operator creates a property that implements a custom formula.
+
+## GROUP_operator
+
+- [GROUP operator](/GROUP_operator.md): The GROUP operator creates a property implementing grouping.
+
+## GROUP_statement
+
+- [GROUP statement](/GROUP_statement.md): The GROUP statement creates a new property group.
+
+## Grouping_GROUP
+
+- [Grouping (GROUP)](/Grouping_GROUP.md): The group operator creates a property that divides all object collections in the system into groups, and calculates an aggregating function for each group following specified order. Accordingly, the set for which this aggregating function is calculated is determined as all the object collections belonging to this group. If the grouping set is empty and the operator does not reference any upper parameters, all matching object collections belong to one common group. Any upper parameters that the operator does reference implicitly extend the grouping set, so that each combination of their values forms a separate group.
+
+## Groups_of_properties_and_actions
+
+- [Groups of properties and actions](/Groups_of_properties_and_actions.md): The behavior of properties and actions in the context of working with groups is absolutely identical, therefore, in the rest of this section, we will use only the term property (the behavior for actions is completely similar).
+
+## How-to_Access_to_internal_systems
+
+- [How-to: Access to internal systems](/How-to_Access_to_internal_systems.md): How to read these sections
+
+## How-to_Action_extension
+
+- [How-to: Action extension](/How-to_Action_extension.md): We can use the following scheme to implement polymorphism:
+
+## How-to_Actions
+
+- [How-to: Actions](/How-to_Actions.md): How to read these sections
+
+## How-to_ACTIVATE
+
+- [How-to: ACTIVATE](/How-to_ACTIVATE.md): Example 1
+
+## How-to_Adding_New_Fonts
+
+- [How-to: Adding New Fonts](/How-to_Adding_New_Fonts.md): The lsFusion platform guarantees support for the following fonts in JasperReports: DejaVu Sans, DejaVu SansMono, DejaVu Serif, Liberation Mono, Liberation Sans, Liberation Serif, Noto Sans, Noto Serif. The default font is DejaVu Sans.
+
+## How-to_Binding_properties
+
+- [How-to: Binding properties](/How-to_Binding_properties.md): Example 1
+
+## How-to_CASE_IF_OVERRIDE
+
+- [How-to: CASE/IF/OVERRIDE](/How-to_CASE_IF_OVERRIDE.md): Example 1
+
+## How-to_CHANGE
+
+- [How-to: CHANGE](/How-to_CHANGE.md): Example 1
+
+## How-to_Class_extension
+
+- [How-to: Class extension](/How-to_Class_extension.md): The typical scheme for extracting relations between classes to a separate module is as follows:
+
+## How-to_Computations
+
+- [How-to: Computations](/How-to_Computations.md): How to read these sections
+
+## How-to_Constraints
+
+- [How-to: Constraints](/How-to_Constraints.md): Example 1
+
+## How-to_CRUD
+
+- [How-to: CRUD](/How-to_CRUD.md): Example 1
+
+## How-to_Custom_components_objects
+
+- [How-to: Custom Components (objects)](/How-to_Custom_components_objects.md): By default, each object on a form with GRID view is displayed on the form as a flat table with columns.
+
+## How-to_Custom_components_properties
+
+- [How-to: Custom components (properties)](/How-to_Custom_components_properties.md): For each property type, by default, a predefined visual component is used to display and edit the data.
+
+## How-to_Data_entry
+
+- [How-to: Data entry](/How-to_Data_entry.md): Example 1
+
+## How-to_Data_export
+
+- [How-to: Data export](/How-to_Data_export.md): Example 1
+
+## How-to_Data_import
+
+- [How-to: Data import](/How-to_Data_import.md): Example 1
+
+## How-to_Declarative_logic
+
+- [How-to: Declarative logic](/How-to_Declarative_logic.md): How to read these sections
+
+## How-to_DELETE
+
+- [How-to: DELETE](/How-to_DELETE.md): Example 1
+
+## How-to_Design
+
+- [How-to: Design](/How-to_Design.md): Example 1
+
+## How-to_Documents_with_lines
+
+- [How-to: Documents with lines](/How-to_Documents_with_lines.md): Example 1
+
+## How-to_Events
+
+- [How-to: Events](/How-to_Events.md): Example 1
+
+## How-to_EXEC
+
+- [How-to: EXEC](/How-to_EXEC.md): Example 1
+
+## How-to_Explicit_typing
+
+- [How-to: Explicit typing](/How-to_Explicit_typing.md): In certain situations, you may want to use the same name for different system properties or actions.
+
+## How-to_Extensions
+
+- [How-to: Extensions](/How-to_Extensions.md): Extensions are very important for providing the modularity and extensibility of applications.
+
+## How-to_Filtering_and_ordering
+
+- [How-to: Filtering and ordering](/How-to_Filtering_and_ordering.md): Example 1
+
+## How-to_FOR
+
+- [How-to: FOR](/How-to_FOR.md): Example 1
+
+## How-to_Form_extension
+
+- [How-to: Form extension](/How-to_Form_extension.md): Let's assume there is a module that describes the Sku form that is used to edit SKU values:
+
+## How-to_FORMULA
+
+- [How-to: FORMULA](/How-to_FORMULA.md): Example 1
+
+## How-to_Frontend
+
+- [How-to: Frontend](/How-to_Frontend.md): The easiest way to organize the interaction of a React application with an application based on lsFusion is communication via the HTTP protocol through the JSON API. To export a list of objects meeting a specified condition, it is most convenient to use the interface located at the eval/action Url. You can pass lsFusion program code to it in BODY, and it will then be executed. If you need to return data from your request, use the EXPORT operator. By default it returns data in JSON format, which is then easily processed using JavaScript.
+
+## How-to_GROUP_CONCAT
+
+- [How-to: GROUP CONCAT](/How-to_GROUP_CONCAT.md): Example 1
+
+## How-to_GROUP_LAST
+
+- [How-to: GROUP LAST](/How-to_GROUP_LAST.md): Example 1
+
+## How-to_GROUP_MAX_MIN_AGGR
+
+- [How-to: GROUP MAX/MIN/AGGR](/How-to_GROUP_MAX_MIN_AGGR.md): Example 1
+
+## How-to_GROUP_SUM
+
+- [How-to: GROUP SUM](/How-to_GROUP_SUM.md): Example 1
+
+## How-to_GUI
+
+- [How-to: GUI](/How-to_GUI.md): How to read these sections
+
+## How-to_IF_CASE
+
+- [How-to: IF/CASE](/How-to_IF_CASE.md): Example 1
+
+## How-to_Imperative_logic
+
+- [How-to: Imperative logic](/How-to_Imperative_logic.md): How to read these sections
+
+## How-to_Inheritance_and_aggregation
+
+- [How-to: Inheritance and aggregation](/How-to_Inheritance_and_aggregation.md): In order to demonstrate the principles of object inheritance and aggregation, let's implement the logic of creating batches based on receipts and production documents. Let's make it so that each new document with a Posted property will automatically generate exactly one new product batch.
+
+## How-to_Integration
+
+- [How-to: Integration](/How-to_Integration.md): How to read these sections
+
+## How-to_Interaction_via_HTTP_protocol
+
+- [How-to: Interaction via HTTP protocol](/How-to_Interaction_via_HTTP_protocol.md): Example 1
+
+## How-to_Interactive_forms
+
+- [How-to: Interactive forms](/How-to_Interactive_forms.md): How to read these sections
+
+## How-to_INTERNAL
+
+- [How-to: INTERNAL](/How-to_INTERNAL.md): Example 1
+
+## How-to_Internationalization
+
+- [How-to: Internationalization](/How-to_Internationalization.md): The system supports  internationalization by passing to the client values localized according to the language chosen by the user. All values in braces are localized. Let's assume that we need to implement a simple form with a list of books and their prices that we can create/delete.
+
+## How-to_Matrix
+
+- [How-to: Matrix](/How-to_Matrix.md): Example 1
+
+## How-to_Metaprogramming
+
+- [How-to: Metaprogramming](/How-to_Metaprogramming.md): You may often need to write "similar" code for certain cases. The META statement exists for this purpose, and makes it possible to create a code template or metacode. It can contain parameters that will be replaced by certain values when this metacode is used. Such an approach is called metaprogramming.
+
+## How-to_Namespaces
+
+- [How-to: Namespaces](/How-to_Namespaces.md): Occasionally, you will find yourself in situations where you will need to use the same name for different system elements. For this purpose, you can assign them to different namespaces that are defined for a module using the NAMESPACE statement. By default, the namespace matches the name of the module.
+
+## How-to_Navigator
+
+- [How-to: Navigator](/How-to_Navigator.md): Example 1
+
+## How-to_NEW
+
+- [How-to: NEW](/How-to_NEW.md): Example 1
+
+## How-to_NEWSESSION
+
+- [How-to: NEWSESSION](/How-to_NEWSESSION.md): Example 1
+
+## How-to_Numbering
+
+- [How-to: Numbering](/How-to_Numbering.md): Let's suppose we have a set of books. For each of these books, we define a number as an integer.
+
+## How-to_Overriding_values
+
+- [How-to: Overriding values](/How-to_Overriding_values.md): Often there are tasks when it is necessary to give the user opportunity to enter the value of some attribute for some general object and then override it for some specific object.
+
+## How-to_PARTITION
+
+- [How-to: PARTITION](/How-to_PARTITION.md): Example 1
+
+## How-to_Physical_model
+
+- [How-to: Physical model](/How-to_Physical_model.md): By default, each class in the database creates a separate table that stores all those properties whose only parameter is an object of this class. The key in this table is a field that stores a unique object ID. For properties with several parameters, a table will be created with the IDs of parameter objects as keys.
+
+## How-to_Property_extension
+
+- [How-to: Property extension](/How-to_Property_extension.md): The classic approach for implementing polymorphism can look as follows:
+
+## How-to_Registers
+
+- [How-to: Registers](/How-to_Registers.md): Accumulation ledger
+
+## How-to_Reports
+
+- [How-to: Reports](/How-to_Reports.md): Example 1
+
+## How-to_Searching_for_elements
+
+- [How-to: Searching for elements](/How-to_Searching_for_elements.md): How to read these sections
+
+## How-to_Table_status
+
+- [How-to: Table status](/How-to_Table_status.md): Example 1
+
+## How-to_Trees
+
+- [How-to: Trees](/How-to_Trees.md): Example 1
+
+## How-to_Use_Cases
+
+- [How-to: Use Cases](/How-to_Use_Cases.md): How to read these sections
+
+## How-to_Using_objects_as_templates
+
+- [How-to: Using objects as templates](/How-to_Using_objects_as_templates.md): Example 1
+
+## How-to_WHILE
+
+- [How-to: WHILE](/How-to_WHILE.md): Example 1
+
+## How-to_Working_with_documents
+
+- [How-to: Working with documents](/How-to_Working_with_documents.md): Posting documents
+
+## How-to_Working_with_external_formats
+
+- [How-to: Working with external formats](/How-to_Working_with_external_formats.md): How to read these sections
+
+## How-to
+
+- [How-to](/How-to.md): How to read these sections
+
+## Icons
+
+- [Icon assignment mechanism](/Icons.md): In the lsFusion platform, developers can manually assign icons to UI elements corresponding to properties, actions, forms, containers, and navigator elements. You can specify either an image file path or icon font CSS classes.
+
+## IDE
+
+- [IDE](/IDE.md): Creating a new lsFusion project
+
+## IDs
+
+- [IDs](/IDs.md): Identifiers or IDs in the lsFusion language are used for naming or referring to system elements, parameters of properties and actions, static objects, properties and actions on a form, and other entities.
+
+## IF_..._THEN_action_operator
+
+- [IF ... THEN operator](/IF_..._THEN_action_operator.md): The IF ... THEN operator creates an action that implements branching with one condition (single form).
+
+## IF_..._THEN_operator
+
+- [IF ... THEN operator](/IF_..._THEN_operator.md): The IF ... THEN operator creates a property that implements selection with one condition (single form).
+
+## IF_operator
+
+- [IF operator](/IF_operator.md): The IF operator - creating a property implementing selection of a value by condition (single form).
+
+## IMPORT_operator
+
+- [IMPORT operator](/IMPORT_operator.md): The IMPORT operator creates an action that imports data from a specified file into specified properties (parameters) or, in general, into a specified form.
+
+## In_a_print_view_PRINT
+
+- [In a print view (PRINT)](/In_a_print_view_PRINT.md): This operator creates an action that opens a form in the print view.
+
+## In_a_structured_view_EXPORT_IMPORT
+
+- [In a structured view (EXPORT, IMPORT)](/In_a_structured_view_EXPORT_IMPORT.md): This operator creates an action that opens a form in the structured view.
+
+## In_an_interactive_view_SHOW_DIALOG
+
+- [In an interactive view (SHOW, DIALOG)](/In_an_interactive_view_SHOW_DIALOG.md): This operator creates an action that opens a form in the interactive view.
+
+## INDEX_statement
+
+- [INDEX statement](/INDEX_statement.md): The INDEX statement creates a new index.
+
+## Indexes
+
+- [Indexes](/Indexes.md): An index stores the values of one or more table fields in the database in an ordered form. Accordingly, the index is updated whenever these values change. Due to the index, if, for example, you filter by an indexed property, you can find the objects you need very quickly, rather than viewing all the objects that exist in the system.
+
+## INPUT_operator
+
+- [INPUT operator](/INPUT_operator.md): The INPUT operator creates an action that inputs a primitive.
+
+## Install
+
+- [Install](/Install.md): Install automatically
+
+## Integration
+
+- [Integration](/Integration.md): Integration includes everything related to interaction of the lsFusion system with other systems. In terms of the direction of this interaction, integration can be divided into:
+
+## Interactive_view
+
+- [Interactive view](/Interactive_view.md): A form opened in interactive mode is a graphical component with a certain design in which the user can trigger various events and thereby navigate through system objects, view and change property values, execute actions, and so on. Developers can also use an additional set of operators with this view, making it possible to manage the open form.
+
+## Internal_call_INTERNAL
+
+- [Internal call (INTERNAL)](/Internal_call_INTERNAL.md): The platform allows an lsFusion-based system to invoke code running inside its own deployment components — the application-server JVM, the user's web client, or the database the platform uses — using various types of internal calls, as the internal counterpart to access to an external system. The interface of such an access is the execution of code in the environment of the target component with specified parameters and, if necessary, the return of certain values as *results* written into the specified properties (without parameters). For call types where parameters and results cross a serialization boundary (CLIENT, DB), values must belong to built-in classes; the Java target runs on the same JVM as the platform, so inside executeInternal objects of user-defined classes are passed as DataObject / ObjectValue directly, without serialization.
+
+## INTERNAL_operator
+
+- [INTERNAL operator](/INTERNAL_operator.md): The INTERNAL operator creates an action or an action statement that executes an internal call.
+
+## Internationalization
+
+- [Internationalization](/Internationalization.md): Internationalization consists of software development techniques that allow adapting the software to the linguistic and cultural particularities of different countries and regions.
+
+## Interpreter
+
+- [Interpreter](/Interpreter.md): (Under development)
+
+## Interruption_BREAK
+
+- [Interruption (BREAK)](/Interruption_BREAK.md): The interrupt operator creates an action that exits the most nested loop (normal or recursive) within which this action is located. Control is transferred to the first action following the loop. If the created action is not inside a loop, its behavior becomes similar to the action created by the exit operator.
+
+## IS_AS_operators
+
+- [IS, AS operators](/IS_AS_operators.md): IS, AS operators create an action that implements classification.
+
+## ISCLASS_operator
+
+- [ISCLASS operator](/ISCLASS_operator.md): The ISCLASS operator creates a property that implements a signature matching operator.
+
+## Java_integration_API
+
+- [Java API for integrations](/Java_integration_API.md): A catalog of Java classes and methods used to access the lsFusion system from Java code — both from inside an InternalAction subclass (see internal call (INTERNAL)) and from inside a Spring bean (see custom Spring bean (EventServer)).
+
+## JOIN_operator
+
+- [JOIN operator](/JOIN_operator.md): The JOIN operator creates a property that implements a composition.
+
+## Journals_and_logs
+
+- [Journals and logs](/Journals_and_logs.md): Logs
+
+## JSON_operator
+
+- [JSON operator](/JSON_operator.md): The JSON operator is property that creates JSON from specified properties or, in common case, from form.
+
+## Language
+
+- [Language](/Language.md): lsFusion is a programming language that describes lsFusion modules.
+
+## Launch_events
+
+- [Launch events](/Launch_events.md): There are several predefined actions in the platform that are called when various components of the platform are launched:
+
+## Launch_parameters
+
+- [Launch parameters](/Launch_parameters.md): Application server (Server)
+
+## Learning_materials
+
+- [Learning materials](/Learning_materials.md): In addition to the documentation, the following materials can be used to explore the features of the lsFusion platform.
+
+## LIKE_operator
+
+- [LIKE operator](/LIKE_operator.md): The LIKE operator creates a property that implements string comparison with a pattern. For full-text search, use the separate MATCH operator.
+
+## Literals
+
+- [Literals](/Literals.md): |Name|Example|Class|Description|Constraints|
+
+## Logical_model
+
+- [Logical model](/Logical_model.md): The logical model is traditionally divided into two parts:
+
+## Logical_operators_AND_OR_NOT_XOR
+
+- [Logical operators (AND, OR, NOT, XOR)](/Logical_operators_AND_OR_NOT_XOR.md): Logical operators create properties that consider their arguments as logical values of class BOOLEAN and whose return value is also a value of class BOOLEAN. If the value of an argument of an logical operator is not NULL, then the argument is treated as the value TRUE of class BOOLEAN, otherwise as NULL.
+
+## Loop_FOR
+
+- [Loop (FOR)](/Loop_FOR.md): The loop operator creates an action that iterates all object collections for which the defined condition is met, and executes a defined action for each such object collection (let's call it the main one). You can also define an alternative action that will be executed only if no object collections have been found that meet the condition. The condition itself is defined as a certain property. Let's say that the condition is satisfied if the value of this property is not NULL.
+
+## lt-_WHEN_statement
+
+- [<- WHEN statement](/lt-_WHEN_statement.md): The <- WHEN statement creates a calculated event.
+
+## Management
+
+- [Management](/Management.md): System parameters
+
+## Manual_installation
+
+- [Install manually](/Manual_installation.md): For development
+
+## MATCH_operator
+
+- [MATCH operator](/MATCH_operator.md): The MATCH operator creates a property that implements full-text search. For pattern matching, use the separate LIKE operator.
+
+## Materializations
+
+- [Materializations](/Materializations.md): Almost any aggregated property in the platform can be materialized. In this case, the property will be stored in the database permanently and automatically updated when the data on which this property depends is changed. At the same time, when reading the values of the materialized property, these values will be read directly from the database, as if the property was data (and not calculated every time). Accordingly, all data properties are materialized by definition.
+
+## Materials_management
+
+- [Materials management](/Materials_management.md): Description of the "Materials management" task
+
+## MAX_operator
+
+- [MAX operator](/MAX_operator.md): The MAX operator creates a property that implements finding maximum value.
+
+## MCP_server
+
+- [MCP server setup](/MCP_server.md): The lsFusion platform can act as an MCP server (Model Context Protocol) for external AI clients (for example, claude.ai). The MCP server runs on top of the standard HTTP API of the platform, so no separate service has to be deployed — it is enough to configure two parameters on the application server: enableAPI and HTTPS.
+
+## MESSAGE_operator
+
+- [MESSAGE operator](/MESSAGE_operator.md): The MESSAGE operator creates an action that shows the user a message.
+
+## META_statement
+
+- [META statement](/META_statement.md): The META statement creates a new metacode.
+
+## Metaprogramming
+
+- [Metaprogramming](/Metaprogramming.md): Metaprogramming is a type of programming associated with writing software code that results in the generation of more software code. Metaprogramming is used for code reusability and to speed up development.
+
+## Migration
+
+- [Migration](/Migration.md): An lsFusion-based information system uses a relational database management system for permanent data storage. It should be remembered that after certain changes to the system logic, the platform is unable to determine how the data should be migrated. In these cases, the developer must explicitly define the migration method by creating the special migration file migration.script, which should be in the CLASSPATH of the application server.
+
+## MIN_operator
+
+- [MIN operator](/MIN_operator.md): The MIN operator creates a property that implements finding the minimum value.
+
+## Modularity
+
+- [Modularity](/Modularity.md): Modularity is a key mechanism for providing extensibility, reusability, and effective interaction among the development team.
+
+## Module_header
+
+- [Module header](/Module_header.md): Each module begins with a header.
+
+## Modules
+
+- [Modules](/Modules.md): A module is a functionally complete part of a project. A module consists of declarations of properties, actions, events, constraints, and other system elements.
+
+## MULTI_action_operator
+
+- [MULTI operator](/MULTI_action_operator.md): The MULTI operator creates an action that implements branching (polymorphic form).
+
+## MULTI_operator
+
+- [MULTI operator](/MULTI_operator.md): The MULTI operator creates a property that implements selection of one of the values (polymorphic form).
+
+## Naming
+
+- [Naming](/Naming.md): Each system element may have a *name* which can be used to access the element.
+
+## Navigator_design
+
+- [Navigator design](/Navigator_design.md): Navigator design determines how the navigator is displayed to the user on the screen of his device (we will call the screen space on which the navigator is displayed the desktop).
+
+## NAVIGATOR_statement
+
+- [NAVIGATOR statement](/NAVIGATOR_statement.md): The NAVIGATOR statement - managing and configuring the navigator.
+
+## Navigator
+
+- [Navigator](/Navigator.md): Navigator is a hierarchical structure (tree) consisting of navigator elements. There are three types of navigator elements:
+
+## NESTEDSESSION_operator
+
+- [NESTEDSESSION operator](/NESTEDSESSION_operator.md): The NESTEDSESSION operator creates an action that executes the other action in a nested session.
+
+## New_connection_NEWCONNECTION
+
+- [New external connections (NEWCONNECTION)](/New_connection_NEWCONNECTION.md): External connections opened while calling an external system can be reused across several successive calls to the same endpoint. This saves the cost of establishing the connection and also lets calls share state that the connection itself holds — SQL temporary tables and session variables, an open TCP socket and its read buffer, the current position inside a DBF file, and so on.
+
+## New_object_NEW
+
+- [New object (NEW)](/New_object_NEW.md): The new object operator creates an action that creates objects of a specified custom class for object collections where the value of some property (condition) is not NULL. The condition can be omitted, in which case it is considered to be equal to TRUE.
+
+## NEW_operator
+
+- [NEW operator](/NEW_operator.md): The NEW operator creates an action that creates objects of the specified class.
+
+## New_session_NEWSESSION_NESTEDSESSION
+
+- [New session (NEWSESSION, NESTEDSESSION)](/New_session_NEWSESSION_NESTEDSESSION.md): The new session operator allows you to execute an action in a session different from the current one.
+
+## New_threads_NEWTHREAD_NEWEXECUTOR
+
+- [New threads (NEWTHREAD, NEWEXECUTOR)](/New_threads_NEWTHREAD_NEWEXECUTOR.md): The new thread operator allows you to execute an action in a thread other than the current one.
+
+## NEWCONNECTION_operator
+
+- [NEWCONNECTION operator](/NEWCONNECTION_operator.md): The NEWCONNECTION operator creates an action that executes another action while preserving external connections (SQL, TCP, DBF) across EXTERNAL calls.
+
+## NEWEXECUTOR_operator
+
+- [NEWEXECUTOR operator](/NEWEXECUTOR_operator.md): The NEWEXECUTOR operator creates an action that runs other actions in a new execution service — a server-side thread pool or a client-side dispatcher.
+
+## NEWSESSION_operator
+
+- [NEWSESSION operator](/NEWSESSION_operator.md): The NEWSESSION operator creates an action that executes the other action in a new session.
+
+## NEWTHREAD_operator
+
+- [NEWTHREAD operator](/NEWTHREAD_operator.md): The NEWTHREAD operator creates an action that executes another action in a new thread.
+
+## Next_iteration_CONTINUE
+
+- [Next iteration (CONTINUE)](/Next_iteration_CONTINUE.md): The next iteration operator creates an action that skips the execution of the remaining code in the current iteration and moves to the next iteration of the loop (normal or recursive). If the created action is not inside a loop, its behavior becomes similar to the action created by the exit operator.
+
+## Object_blocks
+
+- [Object blocks](/Object_blocks.md): Object blocks of the FORM statement - adding object groups to the form structure, and object trees to the interactive form view.
+
+## Object_group_operator
+
+- [Object group operator](/Object_group_operator.md): Object group operators are used for creating properties working with the current state of the object group on the form.
+
+## Object_group_operators
+
+- [Object group operators](/Object_group_operators.md): Object group operators include the following operators:
+
+## Object_tree_visibility_EXPAND_COLLAPSE
+
+- [Object tree visibility (EXPAND, COLLAPSE)](/Object_tree_visibility_EXPAND_COLLAPSE.md): Object tree *expansion* and *collapse* operators provide control over the visibility of elements within a tree displayed on a form. As input to these operators, the object group to which the operation is applied is passed. It is also specified over which tree elements (each corresponding to a specific object collection in the mentioned group) the operation needs to be performed:
+
+## ON_statement
+
+- [ON statement](/ON_statement.md): The ON statement adds an event handler.
+
+## Online_demo
+
+- [Online demo](/Online_demo.md): All demos support the following browsers: Chrome (recommended), Safari, Firefox, Opera, and Internet Explorer.
+
+## Open_form
+
+- [Open form](/Open_form.md): The open form operator creates an action that opens the specified form.
+
+## Operations_with_primitives
+
+- [Operations with primitives](/Operations_with_primitives.md): Оperations with primitives include operators for working with properties which values belong to the built-in classes. The platform supports the following operators:
+
+## Operator_priority
+
+- [Operator priority](/Operator_priority.md): When evaluating an expression, operators are evaluated in a specific order depending on operator priority. The higher the operator’s priority, the earlier it will be executed. The table below lists the priorities of all operators in descending order.
+
+## Order_ORDER
+
+- [Order (ORDER)](/Order_ORDER.md): The order operator creates a property that returns the sequence number of an object collection in the specified group of objects, in accordance with the current order of this group.
+
+## OVERRIDE_operator
+
+- [OVERRIDE operator](/OVERRIDE_operator.md): The OVERRIDE operator creates a property that implements the selection of one of the values (polymorphic form).
+
+## Paradigm
+
+- [Paradigm](/Paradigm.md): The paradigm can be divided into two parts:
+
+## PARTITION_operator
+
+- [PARTITION operator](/PARTITION_operator.md): The PARTITION operator creates a property that implements partition/order or simple distribution.
+
+## Partitioning_sorting_PARTITION_..._ORDER
+
+- [Partitioning / sorting (PARTITION ... ORDER)](/Partitioning_sorting_PARTITION_..._ORDER.md): The partition/order operator creates a property that partitions all objects collections in the system into groups, and using the specified order calculates an aggregate function for each objects collection. Accordingly, the set on which this aggregating function is calculated is determined as following: all object collections of the group of this object collection, and the order of which is less than or equal to the order of this object collection.
+
+## Physical_model
+
+- [Physical model](/Physical_model.md): The physical model consists of three parts:
+
+## Pivot_block
+
+- [Pivot table settings block](/Pivot_block.md): Pivot table settings block of the FORM statement manages the initial settings of the *pivot table* view type in the interactive view of the form.
+
+## plus_equals_statement
+
+- [+= statement](/plus_equals_statement.md): The += statement adds an implementation to an abstract property.
+
+## PREV_operator
+
+- [PREV operator](/PREV_operator.md): The PREV operator creates a property using a previous value operator.
+
+## Previous_value_PREV
+
+- [Previous value (PREV)](/Previous_value_PREV.md): The previous value operator creates a property that returns the value of the given expression at the beginning of the change session (that is, the current value in the database, ignoring any changes that have been made in the session). Together with the change operators — which are derived from it — this operator is what makes session-local change tracking possible: it gives access to the "before" state that the current session is being compared against.
+
+## Primitive_input_INPUT
+
+- [Primitive input (INPUT)](/Primitive_input_INPUT.md): The  primitive input operator creates an action that requests the client to input a value of a builtin class. The user can cancel the input, for example by pressing the Esc key on the keyboard.
+
+## PRINT_operator
+
+- [PRINT operator](/PRINT_operator.md): The PRINT operator creates an action that opens a form in print view.
+
+## Print_view
+
+- [Print view](/Print_view.md): Print view of the form consists of a set of templates (reports). When data is substituted in these templates, a document is formed in graphic (with pixel positioning) or pseudographic (with cell positioning) format. This document is displayed to the user using a special graphic component, inside which the user can navigate through pages, zoom in/out within pages and print the contents of the component or export it to various formats (for example, PDF or Excel). If necessary, it is possible to skip the display of the component to the user and send the document for printing or save it into a selected file in the specified format.
+
+## Process_monitor
+
+- [Process monitor](/Process_monitor.md): (Under development)
+
+## Profiler
+
+- [Profiler](/Profiler.md): (Under development)
+
+## Projects
+
+- [Projects](/Projects.md): Project is a collection of modules and additional information (pictures, report design files, etc.) that fully describe the functionality of the information system being created.
+
+## Properties_and_actions_block
+
+- [Properties and actions block](/Properties_and_actions_block.md): The property and action block of the FORM statement adds properties and actions to the form structure.
+
+## Properties
+
+- [Properties](/Properties.md): A property is an element of the system that takes a set of objects (parameters) and returns exactly one object (the return value).
+
+## Property_change_CHANGE
+
+- [Property change (CHANGE)](/Property_change_CHANGE.md): The property change operator allows you to change the values of one property (write) to the value of another property (read) for all object collections for which the value of a third property (condition) is not NULL. The condition can be omitted (in which case it is considered to be equal to TRUE).
+
+## Property_extension
+
+- [Property extension](/Property_extension.md): The properties extension technique allows an abstract property to be declared in one module and its implementations to be defined in other modules. This is deferred construction of a property computed as the corresponding selection operator: the base module defines the form of the future operator and the requirements for its implementations, while other modules gradually add individual implementations.
+
+## Property_operators_paradigm
+
+- [Operators](/Property_operators_paradigm.md): The platform currently supports the following property creation operators:
+
+## Property_operators
+
+- [Property operators](/Property_operators.md): Property operator is a syntax construct that describes an operator creating a property.
+
+## Property_options
+
+- [Property options](/Property_options.md): When a property is declared in the = statement a set of property options can be specified at the end of the declaration
+
+## Property_signature_ISCLASS
+
+- [Signature matching (ISCLASS)](/Property_signature_ISCLASS.md): The signature matching operator creates a property that determines, from a class perspective, whether the property specified in the operator can have a non-NULL value for the given arguments. In fact, this operator infers the possible classes of a given property from its semantics, and then, using logical operators and the classification operator, creates the required property.
+
+## Read_file_READ
+
+- [Read file (READ)](/Read_file_READ.md): The read file operator creates an action that reads a file from a defined source and writes this file to the specified property without parameters.
+
+## READ_operator
+
+- [READ operator](/READ_operator.md): The READ operator creates an action that reads a file to a property from an external resource.
+
+## RECURSION_operator
+
+- [RECURSION operator](/RECURSION_operator.md): The RECURSION operator creates a property that implements recursion.
+
+## Recursion_RECURSION
+
+- [Recursion (RECURSION)](/Recursion_RECURSION.md): The recursion operator is an operator that creates a property which sequentially performs two operations:
+
+## Recursive_loop_WHILE
+
+- [Recursive loop (WHILE)](/Recursive_loop_WHILE.md): The recursive loop operator is similar to a regular loop operator, with the only difference being that iteration is performed recursively until at a certain point the set of objects collections satisfying the condition becomes empty. As a result, there is no sense in defining alternative actions with this operator.
+
+## Report_design
+
+- [Report design](/Report_design.md): For each report you need to specify a special file (template) which will be used to build the result document. The name of the template for a specific report is `. An empty object group is considered to have no name, so if the first object group is empty, the name of the template is simply equal to the name of the form (without the _` postfix).
+
+## REQUEST_operator
+
+- [REQUEST operator](/REQUEST_operator.md): The REQUEST operator creates an action that requests a value.
+
+## RETURN_operator
+
+- [RETURN operator](/RETURN_operator.md): The RETURN operator creates an action that implements exit from an action created by the EXEC operator.
+
+## ROUND_operator
+
+- [ROUND operator](/ROUND_operator.md): ROUND operator creates a property that implements the rounding operation.
+
+## Rounding_operator_ROUND
+
+- [Rounding operator (ROUND)](/Rounding_operator_ROUND.md): The rounding operator creates a property whose value is the result of rounding a number to the specified number of digits. The arguments of this operator must be properties that determine the number and the rounding precision. Negative precision values indicate the number of least significant digits to be rounded in the integer part of the number, allowing you to round the number to tens, hundreds, etc.
+
+## Rules
+
+- [lsFusion Rules](/Rules.md): SYSTEM PROMPT — lsFusion TASK RULES
+
+## Scheduler
+
+- [Scheduler](/Scheduler.md): The scheduler is designed to automatically execute certain tasks with specified frequency.
+
+## Score_table
+
+- [Score table](/Score_table.md): "Score table" task description
+
+## SCREENSHOT_operator
+
+- [SCREENSHOT operator](/SCREENSHOT_operator.md): The SCREENSHOT operator creates an action that captures the currently rendered user interface and writes the result into a property, or sends it to the client when no target property is specified.
+
+## Search_
+
+- [Search](/Search_.md): Each element in the system contains certain information that allows it to be uniquely identified among other elements of the system. However, providing all the information about the element in each place it is used is rather cumbersome; so the platform has a special search algorithm, which allows you to find the desired element with only part of the information about it (for example, only a short name and the module which uses the item you are searching for).
+
+## Security_policy
+
+- [Security policy](/Security_policy.md): Customizing user roles
+
+## Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE
+
+- [Selection (CASE, IF, MULTI, OVERRIDE, EXCLUSIVE)](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md): The selection operator creates a property that determines for a set of conditions which condition is met, and returns the value of the result corresponding to that condition. If none of the conditions is met, then the value of the created property will be NULL.
+
+## Send_mail_EMAIL
+
+- [Send mail (EMAIL)](/Send_mail_EMAIL.md): The send mail operator creates an action that sends an email to the specified email addresses. As with any email, you can define the sender, recipient, body text,  attachment files with specified names and other parameters.
+
+## Sequence
+
+- [Sequence ({...})](/Sequence.md): To create an action that performs a sequence of other actions, the {...} operator is used - a block enclosed by curly brackets. The body of this block must contain a sequence of action operators and local property declarations.
+
+## Session_management
+
+- [Session management](/Session_management.md): The system has the following operators for working with sessions:
+
+## Set_operations
+
+- [Set operations](/Set_operations.md): One of the key features of the platform is the ability to execute certain operations for all object collections for which the values of one or more properties are not NULL. In the property logic such an operation is the calculation of various aggregate functions.
+
+## Show_message_MESSAGE_ASK
+
+- [Show message (MESSAGE, ASK)](/Show_message_MESSAGE_ASK.md): The show message operators create actions that show a text message to the user. The message is defined as a property whose value will be used as the message content. This message can be displayed either using a dialog box or in the System.log system window.
+
+## SHOW_operator
+
+- [SHOW operator](/SHOW_operator.md): The SHOW operator creates an action that opens a form in interactive view.
+
+## Simple_constraints
+
+- [Simple constraints](/Simple_constraints.md): The platform currently supports four types of simple constraints: consequence, exception, equality, and definiteness. For all simple constraints, an automatic resolution mechanism is supported. When this is enabled, instead of throwing an error the platform itself restores system integrity.
+
+## Simple_event
+
+- [Simple event](/Simple_event.md): Simple event - an event that occurs when the value of the specified property (which shall be called an event condition) changes to non-NULL. This event is a kind of extension of a basic event (adding an additional condition), which means that all the same parameters must be set as for an basic event, in particular:
+
+## State_change
+
+- [State change](/State_change.md): System state change operators include the following.
+
+## Statements
+
+- [Statements](/Statements.md): The code of any module in lsFusion consists of a sequence of statements.
+
+## Static_objects
+
+- [Static objects](/Static_objects.md): Static (or built-in) objects are objects that are defined by the developer and are automatically created on system startup (if they are not present in the system at launch time). Also, such objects are prohibited from being deleted.
+
+## Static_view
+
+- [Static view](/Static_view.md): In static view, all form data is read at the time the form is opened, after which the obtained data is converted:
+
+## String_operators_plus_CONCAT_SUBSTRING
+
+- [String operators (+, CONCAT)](/String_operators_plus_CONCAT_SUBSTRING.md): String operators are operators which parameters and result are the properties which values are instances of the string classes. The platform currently supports the following string operators:
+
+## STRUCT_operator
+
+- [STRUCT operator](/STRUCT_operator.md): The STRUCT operator creates a property that creates a structure.
+
+## Structure_operators_STRUCT
+
+- [Structure operators (STRUCT, [])](/Structure_operators_STRUCT.md): The term structure is used in the platform to refer to the classes which objects consist of a collection of other objects in a fixed order. The platform supports two operators for working with structures:
+
+## Structured_view
+
+- [Structured view](/Structured_view.md): All structured views (formats) can be divided into two types:
+
+## System_parameters
+
+- [System parameters](/System_parameters.md): Launch parameters
+
+## TABLE_statement
+
+- [TABLE statement](/TABLE_statement.md): The TABLE statement creates an new table.
+
+## Tables
+
+- [Tables](/Tables.md): For storing and calculating values of the properties the lsFusion platform uses a relational database. All data properties, as well as all calculated properties marked as materialized, are stored in the fields of the tables in the database. For each table, there is a set of key fields with the names key0, key1, ..., keyN, where the object IDs are stored. All other fields store property values in such a way that in the corresponding field of each row there is a property value for the objects with IDs from the key fields. Objects of built-in classes can also be used as table keys.
+
+## Tokens
+
+- [Tokens](/Tokens.md): A token in a programming language is the smallest significant sequence of characters. In the lsFusion language tokens are keywords, simple IDs, literals and special character sequences.
+
+## TRY_operator
+
+- [TRY operator](/TRY_operator.md): The TRY operator creates an action that executes another action with exception handling.
+
+## Type_conversion_operator
+
+- [Type conversion operator](/Type_conversion_operator.md): The type conversion operator creates a property that performs type conversion.
+
+## Type_conversion
+
+- [Type conversion](/Type_conversion.md): The type conversion operator creates a property that converts an object of one built-in class to an object of another built-in class. If type conversion is not possible, the property value will be NULL.
+
+## UNGROUP_operator
+
+- [UNGROUP operator](/UNGROUP_operator.md): At the moment, the UNGROUP operator is not implemented.
+
+## User_classes
+
+- [User classes](/User_classes.md): Classes that a developer can create and the instances of which a user can create are called custom classes.
+
+## User_interface
+
+- [User interface](/User_interface.md): (Under development)
+
+## User_IS_interaction
+
+- [User/IS interaction](/User_IS_interaction.md): This category includes operators for interacting with the user and with other information systems:
+
+## Value_input
+
+- [Value input](/Value_input.md): This category includes operators responsible for inputting a value:
+
+## Value_request_REQUEST
+
+- [Value request (REQUEST)](/Value_request_REQUEST.md): The value request operator creates an action in which requesting value(s) is separated from directly processing the value(s). Accordingly, this operator allows not to perform a value request if its result is known in advance in the context of the call (the value of the System.requestPushed property is equal to TRUE). This, in turn, automatically gives you the following capabilities in various use cases:
+
+## View_logic
+
+- [View logic](/View_logic.md): The key element of the view logic is the form. Forms are used in the platform to organize the input and output of information into the system (from the system).
+
+## View_VIEW
+
+- [View (VIEW)](/View_VIEW.md): The view operator creates a property that returns TRUE if the object collection is visible to the user in the specified object group, and NULL otherwise.
+
+## WHEN_statement
+
+- [WHEN statement](/WHEN_statement.md): The WHEN statement adds a simple event handler.
+
+## WHILE_operator
+
+- [WHILE operator](/WHILE_operator.md): The WHILE operator creates an action that implements a recursive loop.
+
+## WINDOW_statement
+
+- [WINDOW statement](/WINDOW_statement.md): The WINDOW statement - creating a new window.
+
+## Working_parameters
+
+- [Working parameters](/Working_parameters.md): The platform working parameters can be set in one of the following ways (in the order of their priorities, lower priority at the bottom):
+
+## Write_file_WRITE
+
+- [Write file (WRITE)](/Write_file_WRITE.md): The write file operator creates an action that reads a file (or a JSON value, which is serialized to a .json file) from the value of some property and saves it to the defined destination.
+
+## WRITE_operator
+
+- [WRITE operator](/WRITE_operator.md): The WRITE operator creates an action that writes a file from a property to an external resource.
