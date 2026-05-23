@@ -96,6 +96,10 @@
 
 - [Aggregations](/Aggregations.md): Aggregation is the creation of a unique (aggregate) object for each distinct combination of parameter values at which some aggregated property is non-NULL. Each such object is assumed to have properties that map this object to each aggregated property parameter, and, conversely, a property that maps the aggregated property parameters to this object.
 
+## AI
+
+- [AI](/AI.md): This section contains the guidance that helps AI assistants — and the developers prompting them — read and write lsFusion code correctly. The same materials are served to AI tools through the lsFusion MCP server and published here so they can also be read directly.
+
 ## AND_OR_NOT_XOR_operators
 
 - [AND, OR, NOT, XOR operators](/AND_OR_NOT_XOR_operators.md): AND, OR, NOT, XOR operators that create properties that implement logical operations.

@@ -20,6 +20,10 @@ This section describes the basic actions in the **lsFusion** platform developmen
 
 This section contains additional resources that demonstrate the features of the **lsFusion** platform and help you learn how to use them.
 
+### [AI](/AI/.md)[​](#ai "Direct link to ai")
+
+This section contains the guidance that helps AI assistants read and write **lsFusion** code — a brief on the language elements and the mandatory coding rules.
+
 ### [Online demo](/Online_demo/.md)[​](#online-demo "Direct link to online-demo")
 
 This section contains links to examples of applications running on the **lsFusion** platform.
