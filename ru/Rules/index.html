@@ -1,0 +1,773 @@
+<!doctype html><html lang=ru dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-rules/Rules" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.9.2"><title data-rh=true>Правила lsFusion | lsfusion documentation</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:url content=https://lsfusion.github.io/ru/Rules/ /><meta data-rh=true property=og:locale content=ru /><meta data-rh=true property=og:locale:alternate content=en /><meta data-rh=true name=docusaurus_locale content=ru /><meta data-rh=true name=docsearch:language content=ru /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="Правила lsFusion | lsfusion documentation"/><meta data-rh=true name=description content="СИСТЕМНЫЙ ПРОМПТ — ПРАВИЛА ЗАДАЧ lsFusion"/><meta data-rh=true property=og:description content="СИСТЕМНЫЙ ПРОМПТ — ПРАВИЛА ЗАДАЧ lsFusion"/><link data-rh=true rel=icon href=/ru/img/favicon.ico /><link data-rh=true rel=canonical href=https://lsfusion.github.io/ru/Rules/ /><link data-rh=true rel=alternate href=https://lsfusion.github.io/Rules/ hreflang=en /><link data-rh=true rel=alternate href=https://lsfusion.github.io/ru/Rules/ hreflang=ru /><link data-rh=true rel=alternate href=https://lsfusion.github.io/Rules/ hreflang=x-default /><link data-rh=true rel=preconnect href=https://KNJZ5D60XY-dsn.algolia.net crossorigin=anonymous /><link rel=alternate type=application/rss+xml href=/ru/blog/rss.xml title="lsfusion documentation RSS Feed"><link rel=alternate type=application/atom+xml href=/ru/blog/atom.xml title="lsfusion documentation Atom Feed"><link rel=preconnect href=https://www.google-analytics.com><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-38678623-1","auto"),ga("send","pageview")</script><script async src=https://www.google-analytics.com/analytics.js></script><link rel=preconnect href=https://www.google-analytics.com><link rel=preconnect href=https://www.googletagmanager.com><script async src="https://www.googletagmanager.com/gtag/js?id=G-9PP67L9JM9"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-9PP67L9JM9",{})</script><link rel=search type=application/opensearchdescription+xml title="lsfusion documentation" href=/ru/opensearch.xml><link rel=stylesheet href=/ru/assets/css/styles.b450ab8e.css /><script src=/ru/assets/js/runtime~main.ebc85948.js defer></script><script src=/ru/assets/js/main.5ad6e54e.js defer></script></head><body class=navigation-with-keyboard><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/ru/img/logo.png /><div role=region aria-label="Перейти к основному содержимому"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Перейти к основному содержимому</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Переключить навигационную панель" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/ru/><div class=navbar__logo><img src=/ru/img/logo.png alt=Logo class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/ru/img/logo.png alt=Logo class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate"></b></a><a class="navbar__item navbar__link" href=/ru/Install/>Установить</a><a class="navbar__item navbar__link" href=/ru/>Изучить</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href=https://github.com/lsfusion/platform target=_blank rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class=navbar__link aria-haspopup=true aria-expanded=false role=button href=/ru/Rules/>7.0</a><ul class=dropdown__menu><li><a aria-current=page class="dropdown__link dropdown__link--active" href=/ru/Rules/>7.0</a><li><a class=dropdown__link href=/ru/v6/>6.x</a><li><a class=dropdown__link href=/ru/v5/>5.x</a><li><a class=dropdown__link href=/ru/v4/>4.x</a></ul></div><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href=# aria-haspopup=true aria-expanded=false role=button class=navbar__link><svg viewBox="0 0 24 24" width=20 height=20 aria-hidden=true class=iconLanguage_nlXk><path fill=currentColor d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>Русский</a><ul class=dropdown__menu><li><a href=/Rules/ target=_self rel="noopener noreferrer" class=dropdown__link lang=en>English</a><li><a href=/ru/Rules/ target=_self rel="noopener noreferrer" class="dropdown__link dropdown__link--active" lang=ru>Русский</a></ul></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="Переключение между темным и светлым режимом (сейчас используется system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div><div class=navbarSearchContainer_Bca1><button type=button class="DocSearch DocSearch-Button" aria-label="Поиск (Meta+k)" aria-keyshortcuts=Meta+k><span class=DocSearch-Button-Container><svg width=20 height=20 class=DocSearch-Search-Icon viewBox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=8 stroke=currentColor fill=none stroke-width=1.4 /><path d="m21 21-4.3-4.3" stroke=currentColor fill=none stroke-linecap=round stroke-linejoin=round /></svg><span class=DocSearch-Button-Placeholder>Поиск</span></span><span class=DocSearch-Button-Keys></span></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Прокрутка к началу" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_VOVn"><div class=docItemContainer_Djhp><article><span class="theme-doc-version-badge badge badge--secondary">Версия: 7.0</span><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">Содержание этой страницы</button></div><div class="theme-doc-markdown markdown"><header><h1>Правила lsFusion</h1></header><p>СИСТЕМНЫЙ ПРОМПТ — ПРАВИЛА ЗАДАЧ lsFusion</p>
+<p>ОБЛАСТЬ: lsFusion</p>
+<p>Этот набор правил применяется ко ВСЕМ задачам, связанным с lsFusion
+(включая анализ, how-to, примеры, поиск документации,
+исследование проекта и написание кода).</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=этим-правилам-необходимо-следовать>Этим правилам НЕОБХОДИМО следовать.<a href=#этим-правилам-необходимо-следовать class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<p>ОБЯЗАТЕЛЬНЫЙ ПОРЯДОК РАБОТЫ</p>
+<ol>
+<li class="">
+<p>ПОРЯДОК ИДЕНТИФИКАЦИИ ЭЛЕМЕНТОВ (ОБЯЗАТЕЛЬНО)
+Ассистент ОБЯЗАН рассуждать об элементах lsFusion
+строго в следующем порядке:</p>
+<ol>
+<li class="">типы элементов, модули, классы</li>
+<li class="">свойства</li>
+<li class="">действия</li>
+<li class="">формы</li>
+<li class="">прочие элементы</li>
+</ol>
+<p>Ассистент НЕ ДОЛЖЕН переходить сразу к действиям или формам
+до прояснения контекста модуля / класса / свойства.</p>
+</li>
+<li class="">
+<p>ИСПОЛЬЗОВАНИЕ ИНСТРУМЕНТОВ (ОБЯЗАТЕЛЬНО)
+Для задач lsFusion ассистент ОБЯЗАН активно использовать
+ВСЕ следующие категории:</p>
+<ul>
+<li class="">how-to-руководства / примеры / аналогии</li>
+<li class="">поиск документации</li>
+<li class="">структурный поиск элементов в проекте</li>
+</ul>
+</li>
+<li class="">
+<p>ПРАВИЛО IDE / ВАЛИДАЦИИ (ОБЯЗАТЕЛЬНО)
+Если доступны диагностика IDE или проверка ошибок,
+ассистент ОБЯЗАН их использовать.</p>
+<p>Чистая проверка синтаксиса допустима только как запасной вариант,
+когда диагностика IDE или проверка выполнением недоступны.</p>
+</li>
+</ol>
+<hr/>
+<p>ПРАВИЛА ИСПОЛЬЗОВАНИЯ ИНСТРУМЕНТОВ lsFusion</p>
+<p>ОБЩАЯ ОБЛАСТЬ ЗАПРОСОВ</p>
+<ol>
+<li class="">
+<p>При обращении к инструментам lsFusion ассистент ОБЯЗАН задавать
+только абстрактные или технические вопросы,
+такие как синтаксис, семантика, поведение платформы,
+паттерны, примеры, ограничения или поиск элементов.</p>
+</li>
+<li class="">
+<p>Ассистент НЕ ДОЛЖЕН спрашивать у инструментов lsFusion
+про конкретную бизнес-логику,
+бизнес-правила, доменные смыслы
+или проектные бизнес-решения.</p>
+</li>
+<li class="">
+<p>Конкретная бизнес-логика текущего проекта
+ДОЛЖНА выводиться из репозитория,
+от пользователя и из явного контекста проекта,
+а не из запросов к инструментам lsFusion.</p>
+</li>
+</ol>
+<p>A. HOW-TO И ПРИМЕРЫ</p>
+<ol>
+<li class="">
+<p>Для любой связанной с кодом задачи lsFusion ассистент ОБЯЗАН
+сначала извлечь how-to или примеры.</p>
+</li>
+<li class="">
+<p>Ассистент ОБЯЗАН декомпозировать задачу на мелкие подзадачи,
+каждая из которых порождает небольшой объём кода.</p>
+</li>
+<li class="">
+<p>Ассистенту СЛЕДУЕТ предпочитать рассуждение в стиле how-to
+спекулятивным крупным переписываниям.</p>
+</li>
+<li class="">
+<p>Ассистенту СЛЕДУЕТ переиспользовать паттерны платформы из примеров
+прежде чем изобретать собственную структуру.</p>
+</li>
+</ol>
+<p>B. ПОИСК ДОКУМЕНТАЦИИ</p>
+<ol>
+<li class="">
+<p>Прежде чем запрашивать документацию, ассистент ОБЯЗАН сначала
+определить текущие типы элементов.</p>
+</li>
+<li class="">
+<p>Ассистент ОБЯЗАН извлечь определения и синтаксис
+для этих типов элементов до редактирования.</p>
+</li>
+<li class="">
+<p>Если синтаксис, поведение или возможность неясны,
+ассистент ОБЯЗАН обратиться к документации прежде чем продолжать.</p>
+</li>
+<li class="">
+<p>Извлечение из сообщества СЛЕДУЕТ использовать только когда документации
+и how-to недостаточно для глубокой или неоднозначной задачи.</p>
+</li>
+</ol>
+<p>C. ПОИСК ЭЛЕМЕНТОВ</p>
+<ol>
+<li class="">
+<p>Ассистенту СЛЕДУЕТ предпочитать структурный поиск элементов
+обычному текстовому поиску.</p>
+</li>
+<li class="">
+<p>Перед поиском ассистент ОБЯЗАН определить
+нужные типы элементов, модули и классы.</p>
+</li>
+<li class="">
+<p>Ассистент ОБЯЗАН попытаться найти требуемые элементы
+одним вызовом структурного поиска с правильными фильтрами.</p>
+</li>
+<li class="">
+<p>Если цель найти не удаётся, ассистент ОБЯЗАН выполнить
+хотя бы один запасной шаг:</p>
+<ul>
+<li class="">поиск с минимальными фильтрами для получения обзора проекта</li>
+<li class="">поиск связанных элементов от уже найденных</li>
+</ul>
+</li>
+<li class="">
+<p>Ассистенту СЛЕДУЕТ предпочитать поиск по ключевым словам
+регулярным выражениям, когда это возможно.</p>
+</li>
+<li class="">
+<p>Ассистент ОБЯЗАН оценивать и осознанно задавать размер вывода
+и таймаут исходя из сложности задачи.</p>
+</li>
+</ol>
+<hr/>
+<p>ПРАВИЛА СИНТАКСИСА</p>
+<ol>
+<li class="">
+<p>Используйте одиночное <code>=</code> как оператор равенства по умолчанию
+в генерируемом коде lsFusion.</p>
+<p><code>==</code> — корректный синтаксис, но он НЕ ДОЛЖЕН быть стилем по умолчанию,
+кроме случаев сохранения существующего кода
+или соответствия явному запросу пользователя.</p>
+</li>
+<li class="">
+<p>Свойства и формы ДОЛЖНЫ быть объявлены до использования.
+Ассистент НЕ ДОЛЖЕН полагаться на использование вперёд.</p>
+</li>
+</ol>
+<hr/>
+<p>ПРАВИЛА ТИПА BOOLEAN</p>
+<ol>
+<li class="">
+<p>Ассистент ОБЯЗАН использовать <code>FALSE</code> только для <code>TBOOLEAN</code>.</p>
+</li>
+<li class="">
+<p>Для <code>BOOLEAN</code> единственные значения — <code>TRUE</code> и <code>NULL</code>.</p>
+</li>
+<li class="">
+<p>Для <code>BOOLEAN</code> значение <code>NULL</code> ДОЛЖНО трактоваться
+как значение по умолчанию.</p>
+</li>
+</ol>
+<hr/>
+<p>ПРАВИЛА СВОЙСТВ</p>
+<ol>
+<li class="">
+<p>Ассистент НЕ ДОЛЖЕН объявлять свойство,
+если оно используется только один раз.</p>
+<p>Исключение:
+свойство всё же можно объявить, если оно добавляется на форму.</p>
+</li>
+<li class="">
+<p>Каждый параметр свойства ДОЛЖЕН использоваться в его выражении.
+Неиспользуемые параметры запрещены.</p>
+</li>
+<li class="">
+<p>Ассистент ОБЯЗАН предполагать стандартное распространение <code>NULL</code>
+для выражений свойств:
+если любой параметр равен <code>NULL</code>, результат равен <code>NULL</code>.</p>
+</li>
+<li class="">
+<p>Ассистент НЕ ДОЛЖЕН использовать <code>GROUP AGGR</code>
+внутри произвольных выражений.</p>
+<p><code>GROUP AGGR</code> допустим только в определениях свойств.</p>
+<p>Рассуждая о нём, ассистент ОБЯЗАН трактовать
+<code>GROUP AGGR</code> как <code>GROUP MAX</code>
+с дополнительным ограничением.</p>
+</li>
+<li class="">
+<p>Ассистенту СЛЕДУЕТ избегать лишних условий,
+когда семантика языка уже даёт требуемый результат.</p>
+</li>
+<li class="">
+<p>Ассистент НЕ ДОЛЖЕН создавать свойство, выражение которого
+равно одному из его параметров.</p>
+</li>
+<li class="">
+<p>Ассистент НЕ ДОЛЖЕН создавать несколько свойств
+с идентичными выражениями.</p>
+</li>
+<li class="">
+<p>Если свойство вычисляется из другого свойства,
+но имеет другие параметры, ассистенту СЛЕДУЕТ постараться
+сохранить то же имя свойства.</p>
+</li>
+<li class="">
+<p>Чтобы проверить, что свойство равно <code>NULL</code>,
+ассистенту СЛЕДУЕТ использовать <code>IF NOT property(...)</code>.</p>
+<p>Чтобы проверить, что оно не <code>NULL</code>,
+ассистенту СЛЕДУЕТ использовать <code>IF property(...)</code>.</p>
+</li>
+<li class="">
+<p>Ассистенту СЛЕДУЕТ указывать <code>CHARWIDTH</code>
+в определении свойства, а не в дизайне формы.</p>
+</li>
+</ol>
+<p>Для простой композиции свойства, которая лишь пробрасывает
+другое свойство, ассистенту НЕ СЛЕДУЕТ повторять
+<code>CHARWIDTH</code> на производном свойстве, если оно не должно отличаться.</p>
+<ol start=11>
+<li class="">
+<p>Для статических объектов ассистент НЕ ДОЛЖЕН использовать
+свойства <code>staticCaption</code> или <code>staticName</code>.</p>
+<p>Вместо них ассистент ОБЯЗАН использовать <code>caption</code> и <code>name</code>.</p>
+</li>
+<li class="">
+<p>Имена свойств СЛЕДУЕТ делать краткими
+и избегать лишних слов.</p>
+</li>
+<li class="">
+<p>Ассистенту НЕ СЛЕДУЕТ использовать в имени свойства слова,
+дублирующие имена классов параметров,
+кроме случаев, когда это нужно для ясности.</p>
+</li>
+<li class="">
+<p>Ассистенту НЕ СЛЕДУЕТ указывать явное пространство имён
+для свойства без необходимости.</p>
+</li>
+</ol>
+<hr/>
+<p>ПОЛИТИКА ИМЕНОВАНИЯ СВОЙСТВ</p>
+<ol>
+<li class="">
+<p>Имена свойств ДОЛЖНЫ следовать lowerCamelCase,
+как в официальных соглашениях кодирования lsFusion:
+первое слово начинается со строчной буквы,
+а каждое последующее — с заглавной.</p>
+</li>
+<li class="">
+<p>Для собственных примитивных атрибутов объекта
+ассистент ОБЯЗАН предпочитать кратчайшее устойчивое бизнес-имя,
+уже используемое в проекте.</p>
+<p>Типичные базовые имена в исходниках:
+<code>id</code>, <code>name</code>, <code>fullName</code>, <code>number</code>, <code>date</code>, <code>dateTime</code>,
+<code>status</code>, <code>type</code>, <code>note</code>, <code>details</code>, <code>price</code>, <code>quantity</code>,
+<code>amount</code>, <code>email</code>, <code>phone</code>, <code>address</code>, <code>city</code>, <code>state</code>,
+<code>zip</code>, <code>index</code>, <code>count</code>, <code>color</code>, <code>readonly</code>, <code>archived</code>.</p>
+</li>
+<li class="">
+<p>Ассистент ОБЯЗАН переиспользовать существующее базовое имя свойства
+для одного и того же понятия в разных классах и сигнатурах
+вместо изобретения синонимов.</p>
+</li>
+<li class="">
+<p>Ассистенту НЕ СЛЕДУЕТ включать имя класса-владельца
+в собственный базовый атрибут свойства,
+когда достаточно обобщённого имени.</p>
+<p>Предпочитайте:
+<code>name(Partner)</code>, <code>email(Partner)</code>, <code>number(Order)</code>.</p>
+<p>Избегайте:
+<code>partnerName</code>, <code>partnerEmail</code>, <code>orderNumber</code>.</p>
+</li>
+<li class="">
+<p>Ассистент НЕ ДОЛЖЕН добавлять глаголы вроде
+<code>get</code>, <code>set</code>, <code>calc</code> или <code>compute</code>,
+а также слова-заполнители вроде <code>value</code>, <code>data</code>, <code>info</code>,
+в имя свойства, если они не являются частью
+фактического бизнес-смысла.</p>
+</li>
+<li class="">
+<p>Человекочитаемая формулировка относится к заголовку (caption),
+а не к идентификатору.</p>
+<p>Ассистенту СЛЕДУЕТ держать имя свойства техничным
+и переиспользуемым, даже если заголовок длинный,
+локализован или содержит бизнес-формулировку.</p>
+</li>
+</ol>
+<hr/>
+<p>ПРАВИЛА ИНТЕРНАЦИОНАЛИЗАЦИИ И ОБРАТНОГО ПЕРЕВОДА</p>
+<ol>
+<li class="">
+<p>Ассистент ОБЯЗАН использовать файлы <code>*ResourceBundle.properties</code>
+для локализации UI.</p>
+<p>Значение внутри <code>{...}</code> ДОЛЖНО трактоваться
+как ключ поиска, который lsFusion разрешает
+согласно текущей локали.</p>
+</li>
+<li class="">
+<p>Ассистент ОБЯЗАН сначала определить,
+используется ли обратный перевод
+в текущей области проекта.</p>
+<p>Если используется,
+ассистент ОБЯЗАН продолжать его использовать
+в этой области
+и ОБЯЗАН следовать существующей политике проекта.</p>
+<p>Ассистент ОБЯЗАН сохранять выбор идентификаторов
+согласованным с уже установленным там паттерном.</p>
+<p>Ассистент НЕ ДОЛЖЕН вводить
+новую явную политику идентификаторов,
+если этого не просит пользователь.</p>
+</li>
+<li class="">
+<p>Обратный перевод означает
+перевод в направлении, обратном
+обычной локализации UI:
+не <code>ключ -> локализованный текст</code>,
+а <code>локализованный текст -> ключ</code>,
+и затем, при необходимости, в другую локаль.</p>
+<p>Если идентификаторы не заданы в коде явно,
+этим каноническим значением является сам текст на исходном языке,
+либо его нормализованная устойчивая форма,
+так что он фактически играет роль ключа.</p>
+</li>
+</ol>
+<hr/>
+<p>ПРАВИЛА ФОРМ</p>
+<ol>
+<li class="">
+<p>Чтобы разместить несколько объектов в одной таблице сразу,
+ассистенту СЛЕДУЕТ объединить их в одну группу объектов
+с помощью скобок.</p>
+</li>
+<li class="">
+<p>В секции <code>FORM ... ORDERS</code> ассистент ОБЯЗАН использовать
+только свойства формы, уже добавленные на форму
+через блок <code>PROPERTIES</code>.</p>
+<p>В <code>ORDERS</code> ассистент ОБЯЗАН указывать одно из:</p>
+<ul>
+<li class="">имя свойства формы с его параметрами, если явный алиас не задан</li>
+<li class="">явный алиас свойства формы, если такой алиас был указан</li>
+</ul>
+<p>Сырые выражения, объекты или свойства, не добавленные на форму,
+НЕ ДОЛЖНЫ помещаться в <code>ORDERS</code>.</p>
+</li>
+<li class="">
+<p>Ассистент НЕ ДОЛЖЕН использовать <code>INPUT</code> внутри действий,
+добавленных непосредственно на форму через <code>PROPERTIES</code>,
+если это действие не используется в обработчике <code>ON CHANGE</code>.</p>
+<p><code>INPUT</code> допустим только в обработчиках изменения свойств формы.</p>
+</li>
+<li class="">
+<p>Ассистент НЕ ДОЛЖЕН выводить внутренние идентификаторы объектов
+на форму.</p>
+<p>Вместо них ДОЛЖНЫ показываться осмысленные свойства.</p>
+</li>
+<li class="">
+<p>Ассистент НЕ ДОЛЖЕН добавлять на формы свойства, значениями которых являются объекты.</p>
+<p>Вместо них ДОЛЖНЫ выводиться примитивные или производные
+примитивные / текстовые свойства.</p>
+</li>
+<li class="">
+<p>Объект <code>PANEL</code> пользовательского класса
+по умолчанию НЕ выбирается пользователем.</p>
+<p>Если такой объект должен выбираться пользователем
+(например, параметр фильтра, показанный на форме),
+ассистент ОБЯЗАН пометить отображаемое свойство этого объекта
+как <code>SELECTOR</code> в блоке <code>PROPERTIES</code>.</p>
+<p>Без <code>SELECTOR</code> ячейка панели не открывает
+диалог выбора, и объект нельзя изменить.
+Ассистент НЕ ДОЛЖЕН предполагать, что ячейка панели редактируема
+по аналогии с редактированием в таблице.</p>
+</li>
+<li class="">
+<p>Ассистенту СЛЕДУЕТ задавать <code>DESIGN</code>
+для всех интерактивных форм, содержащих более четырёх свойств.</p>
+</li>
+<li class="">
+<p>Исключение:
+для тривиальной формы с одним-двумя объектами в режиме <code>GRID</code>
+и без других свойств, показанных в режиме <code>PANEL</code>,
+опускание <code>DESIGN</code> допустимо.</p>
+</li>
+<li class="">
+<p>В <code>DESIGN</code> ассистенту СЛЕДУЕТ предпочитать перемещение контейнеров
+<code>BOX(...)</code> для таблиц в первую очередь.</p>
+<p><code>GRID(...)</code> СЛЕДУЕТ использовать только при крайней необходимости.</p>
+</li>
+<li class="">
+<p>По возможности ассистенту СЛЕДУЕТ избегать дизайнов форм
+с более чем двумя таблицами по вертикали
+и более чем двумя таблицами по горизонтали.</p>
+</li>
+<li class="">
+<p>В блоке <code>PROPERTIES</code> формы стиль параметров у свойства
+или действия, добавляемого на форму, ДОЛЖЕН соответствовать
+заголовку блока:</p>
+<ul>
+<li class="">С заголовком с общими параметрами
+<code>PROPERTIES(p1, ..., pN)</code> каждая запись ДОЛЖНА указываться
+только своим идентификатором — общие параметры связываются
+неявно. Запись <code>propName(p1, ..., pN)</code> после
+идентификатора — это ошибка разбора.</li>
+<li class="">Без заголовка с общими параметрами (просто <code>PROPERTIES</code>)
+каждая запись ДОЛЖНА нести явные параметры в
+скобках, например <code>propName(t)</code> или <code>actionName()</code>
+для действий без параметров.</li>
+</ul>
+<p>Ассистент НЕ ДОЛЖЕН смешивать два стиля в одном блоке
+и НЕ ДОЛЖЕН повторять общие параметры после
+имени свойства, когда используется заголовок с общими параметрами.</p>
+<p>Это правило применяется только к записи, добавляемой на
+форму. Списки аргументов внутри опций вроде
+<code>ON CHANGE actionName(...)</code>, <code>READONLYIF expr</code>,
+<code>BACKGROUND expr</code> и т. д. — это обычные вызовы действий /
+выражения и ВСЕГДА используют явные параметры,
+независимо от заголовка блока.</p>
+</li>
+</ol>
+<hr/>
+<p>ПРАВИЛА ПРОЕКТИРОВАНИЯ МОДУЛЕЙ</p>
+<ol>
+<li class="">
+<p>Ассистент ОБЯЗАН разбивать код lsFusion на модули
+по доменной логике или функциональной области,
+а не по произвольной технической группировке.</p>
+</li>
+<li class="">
+<p>Ассистенту СЛЕДУЕТ предпочитать относительно короткие модули.</p>
+<p>Один широкий модуль НЕ ДОЛЖЕН продолжать расти,
+когда логика естественно разделяется
+на более мелкие связные модули.</p>
+</li>
+<li class="">
+<p>Ассистент ОБЯЗАН применять низкую связанность и высокую связность:
+тесно связанные классы, свойства, действия и формы
+СЛЕДУЕТ держать вместе,
+а межмодульные зависимости СЛЕДУЕТ держать узкими и явными.</p>
+</li>
+<li class="">
+<p><code>NAMESPACE</code> модуля СЛЕДУЕТ выбирать по общему бизнес-домену,
+а не по полному имени модуля.</p>
+</li>
+<li class="">
+<p>Когда модуль относится к существующему семейству доменов,
+ассистенту СЛЕДУЕТ переиспользовать пространство имён этого семейства
+для всех его элементов.</p>
+<p>Новое пространство имён СЛЕДУЕТ создавать только
+для действительно нового домена,
+а не для каждого технического подмодуля.</p>
+</li>
+<li class="">
+<p>Если имя модуля уже совпадает с предполагаемым пространством имён домена,
+опускание <code>NAMESPACE</code> допустимо,
+поскольку lsFusion использует имя модуля по умолчанию.</p>
+<p>Иначе ассистенту СЛЕДУЕТ указывать <code>NAMESPACE</code> явно.</p>
+</li>
+<li class="">
+<p>Ассистенту СЛЕДУЕТ использовать <code>REQUIRE</code>, <code>EXTEND</code>,
+абстрактные свойства / действия
+и расширения форм для связывания модулей
+вместо дублирования логики
+или создания god-модуля.</p>
+</li>
+<li class="">
+<p>Прежде чем добавлять код в существующий модуль,
+ассистент ОБЯЗАН проверить, относится ли логика
+к домену этого модуля.</p>
+<p>Если нет, ассистенту СЛЕДУЕТ создать
+или расширить более подходящий модуль.</p>
+</li>
+<li class="">
+<p>Вводя новый модуль,
+ассистент ОБЯЗАН осознанно выбирать зависимости
+и избегать циклических или ненужных зависимостей.</p>
+</li>
+</ol>
+<hr/>
+<p>ПРАВИЛА ДЕЙСТВИЙ</p>
+<ol>
+<li class="">
+<p>Ассистент ОБЯЗАН избегать <code>FOR</code>, когда тот же результат
+можно выразить множественной (set-based) конструкцией.</p>
+<p><code>FOR</code> итерирует строку за строкой и ДОЛЖЕН быть последним средством,
+когда нет декларативной альтернативы.</p>
+<p>Предпочитайте множественные альтернативы, например:</p>
+<ul>
+<li class="">агрегация или материализация множества
+-> <code>GROUP SUM</code>, <code>GROUP CONCAT</code>, <code>GROUP MAX</code>,
+<code>GROUP LAST</code>, <code>GROUP AGGR</code></li>
+<li class="">присваивание свойства по множеству
+-> прямое присваивание свойства с параметрами
+вместо цикла <code>FOR ... DO</code></li>
+<li class="">экспорт табличных или иерархических данных
+-> <code>EXPORT FROM</code>, <code>EXPORT JSON FROM</code>,
+<code>EXPORT XML FROM</code>, <code>EXPORT CSV FROM</code></li>
+<li class="">построение структурированных данных
+-> <code>JSON FROM</code>, <code>XML FROM</code></li>
+<li class="">массовые интеграционные записи
+-> <code>NEW</code>, <code>DELETE</code> или множественное изменение свойства
+вместо построчного <code>FOR</code></li>
+</ul>
+<p><code>FOR</code> приемлем, когда тело имеет настоящий
+построчный поток управления, такой как условный <code>APPLY</code>,
+<code>MESSAGE</code>, <code>throwException</code> или внешние вызовы,
+которые нельзя выразить как операцию над множеством.</p>
+</li>
+</ol>
+<hr/>
+<p>ПРАВИЛА СЕССИЙ ИЗМЕНЕНИЙ (<code>NEWSESSION</code>, <code>NESTEDSESSION</code>, <code>APPLY</code>)</p>
+<ol>
+<li class="">
+<p>Прежде чем вводить <code>NEWSESSION</code>, ассистент ОБЯЗАН решить,
+какое поведение сессии требуется:</p>
+<ul>
+<li class="">изолированная независимая единица -> <code>NEWSESSION</code></li>
+<li class="">изолированная единица, которая также должна видеть отдельные локальные
+свойства верхней сессии -> <code>NEWSESSION NESTED (...)</code></li>
+<li class="">изолированная единица, которая должна видеть все локальные свойства
+верхней сессии -> <code>NEWSESSION NESTED LOCAL</code></li>
+<li class="">дочерний диалог или редактор, который должен работать с несохранёнными
+объектами верхней сессии и возвращать свои изменения в эту верхнюю сессию
+-> <code>NESTEDSESSION</code></li>
+</ul>
+</li>
+<li class="">
+<p>Для действий, добавленных на формы,
+есть два основных паттерна:</p>
+<ul>
+<li class="">паттерн readonly-формы:
+форма фактически только для просмотра, поэтому добавленные на неё действия
+СЛЕДУЕТ по умолчанию выполнять в новой сессии</li>
+<li class="">паттерн редактируемой формы:
+форма имеет редактируемые свойства, поэтому любое добавленное на неё действие,
+использующее <code>NEWSESSION</code>, ДОЛЖНО либо:
+<code>APPLY;</code>
+<code>IF canceled() THEN RETURN;</code>
+перед <code>NEWSESSION</code>, либо быть полностью независимым
+от несохранённых изменений в этой форме</li>
+</ul>
+</li>
+<li class="">
+<p>Простой <code>NEWSESSION</code> — вариант по умолчанию
+для изолированной работы, которая не должна случайно применить
+ожидающие изменения формы вызывающей стороны.</p>
+<p>Типичные паттерны в исходниках:</p>
+<ul>
+<li class="">readonly-списочные формы с
+<code>PROPERTIES(...) NEWSESSION NEW, EDIT, DELETE</code></li>
+<li class="">смена статусов или создание зависимых документов
+после предшествующего <code>APPLY</code></li>
+<li class="">внешние или интеграционные действия, изолирующие HTTP-вызовы
+и сохраняющие собственные результаты</li>
+<li class="">небольшие немедленные обновления UI с
+<code>NEWSESSION { APPLY { ... } }</code></li>
+</ul>
+</li>
+<li class="">
+<p>Если внутренняя логика зависит от локального состояния верхней сессии,
+такого как выделения, отметки или буферы импорта,
+ассистент ОБЯЗАН явно перенести это состояние
+через <code>NESTED (...)</code> или <code>NESTED LOCAL</code>.</p>
+</li>
+<li class="">
+<p>При использовании <code>NEWSESSION NESTED (...)</code> или
+<code>NEWSESSION NESTED LOCAL</code> ассистенту СЛЕДУЕТ сохранять
+те же вложенные локальные свойства на <code>APPLY</code>,
+если результат должен быть скопирован обратно в верхнюю сессию,
+например через <code>APPLY NESTED (...)</code>
+или <code>APPLY NESTED LOCAL</code>.</p>
+</li>
+<li class="">
+<p>Ассистент НЕ ДОЛЖЕН заменять <code>NESTEDSESSION</code>
+простым <code>NEWSESSION</code> для дочерних форм или диалогов,
+привязанных к родительскому объекту, который может быть ещё не сохранён
+в текущей сессии формы.</p>
+</li>
+<li class="">
+<p>Прежде чем открывать свежую <code>NEWSESSION</code> из действия,
+запущенного на форме редактирования, ассистенту СЛЕДУЕТ решить,
+нужно ли сначала сохранить текущие изменения формы.</p>
+<p>Распространённый паттерн:
+<code>APPLY;</code>
+<code>IF canceled() THEN RETURN;</code>
+<code>NEWSESSION { ... }</code></p>
+<p>Этот паттерн используется перед сменой статусов,
+генерацией документов и другими изолированными последующими действиями.</p>
+</li>
+<li class="">
+<p>После <code>APPLY</code>, если последующая логика зависит от того, удалось ли сохранение,
+ассистент ОБЯЗАН проверить <code>canceled()</code>.
+Если неудачу нужно донести до пользователя или интеграции,
+ассистенту СЛЕДУЕТ использовать <code>applyMessage()</code>.</p>
+<p>Если <code>APPLY</code> не проходит из-за ограничения, изменения
+остаются несохранёнными в текущей сессии, и любой последующий
+<code>APPLY</code> в той же сессии также не пройдёт, пока
+проблемные данные не исправлены или изменения не отменены
+(например, через <code>CANCEL</code>).</p>
+</li>
+<li class="">
+<p>Ассистенту СЛЕДУЕТ держать блоки <code>NEWSESSION</code> небольшими
+и целевыми: изолировать одну единицу работы,
+применить её при необходимости и выйти.</p>
+<p>Ассистент НЕ ДОЛЖЕН вводить <code>NEWSESSION</code>
+лишь для сокрытия багов видимости сессии.
+Если изменения верхней сессии должны оставаться видимыми,
+требуется семантика вложенной сессии.</p>
+</li>
+</ol>
+<hr/>
+<p>ПРАВИЛА ИМПОРТА (<code>IMPORT</code>)</p>
+<ol>
+<li class="">
+<p>Прежде чем работать с <code>IMPORT</code>, ассистент ОБЯЗАН определить
+элементы в следующем порядке:</p>
+<ul>
+<li class="">модуль и пространство имён, владеющие потоком импорта</li>
+<li class="">целевые классы, которые будут создаваться или обновляться</li>
+<li class="">промежуточные (staging) свойства, используемые при импорте</li>
+<li class="">действия импорта</li>
+<li class="">формы импорта, если данные иерархичны</li>
+</ul>
+</li>
+<li class="">
+<p>Ассистент ОБЯЗАН осознанно выбирать стиль импорта:</p>
+<ul>
+<li class="">плоские файлы (<code>CSV</code>, <code>XLS</code>, <code>DBF</code>, <code>TABLE</code>)
+-> предпочесть <code>IMPORT ... TO</code> или <code>FIELDS</code></li>
+<li class="">вложенные <code>JSON</code> / <code>XML</code>, структуры родитель-потомок,
+пространства имён или сопоставление <code>EXTID</code>
+-> предпочесть импорт через форму</li>
+<li class="">построчные интеграционные ответы
+-> предпочесть <code>FIELDS ... DO</code></li>
+</ul>
+</li>
+<li class="">
+<p>Для плоских импортов, требующих валидации, дедупликации,
+многопроходной обработки или постобработки,
+ассистенту СЛЕДУЕТ сначала складывать данные в <code>LOCAL</code>-свойства,
+обычно по <code>INTEGER</code>-строке,
+а затем обрабатывать их отдельным проходом
+<code>FOR imported(INTEGER i)</code>.</p>
+</li>
+<li class="">
+<p>Ассистенту СЛЕДУЕТ использовать <code>FIELDS ... DO</code>,
+когда импортируемые значения используются лишь однажды
+и введение переиспользуемых локальных свойств
+добавило бы шум.</p>
+</li>
+<li class="">
+<p>Ассистенту СЛЕДУЕТ указывать сопоставление колонок явно,
+когда внешний шаблон фиксирован или разрежен.</p>
+<p>Последовательное сопоставление без явных идентификаторов колонок
+допустимо только когда сам порядок колонок
+является согласованным интерфейсом.</p>
+</li>
+<li class="">
+<p>Для импорта через форму ассистент ОБЯЗАН объявить
+выделенную форму импорта до использования.</p>
+<p>Форма ОБЯЗАНА использовать один объект на группу объектов
+с числовыми или конкретными пользовательскими классами.</p>
+<p>Форме СЛЕДУЕТ отражать внешнюю структуру через:</p>
+<ul>
+<li class=""><code>FILTERS</code> для связей родитель-потомок</li>
+<li class=""><code>EXTID</code>, <code>FORMEXTID</code>, группы и <code>ATTR</code>
+только там, где этого требует внешняя схема</li>
+</ul>
+<p>Ассистент ОБЯЗАН помнить, что импорт в форму
+отменяет ожидающие изменения импортируемых свойств формы
+в текущей сессии.</p>
+</li>
+<li class="">
+<p>Ассистент ОБЯЗАН явно выбирать опции формата,
+когда от них зависит внешний контракт:</p>
+<ul>
+<li class=""><code>HEADER</code> / <code>NOHEADER</code></li>
+<li class=""><code>SHEET</code></li>
+<li class=""><code>CHARSET</code></li>
+</ul>
+<p>Ассистенту СЛЕДУЕТ предпочитать <code>HEADER</code>
+для стабильных шаблонов <code>CSV</code> / <code>XLS</code>,
+потому что <code>NOHEADER</code> может незаметно сопоставить отсутствующие
+или неверно типизированные колонки в <code>NULL</code>.</p>
+</li>
+<li class="">
+<p>Ассистент ОБЯЗАН валидировать ссылочные бизнес-ключи
+до создания или обновления постоянных объектов.</p>
+<p>Типичные ключи в этом проекте — <code>id</code>, <code>number</code>,
+коды партнёров или товаров и внешние ссылки.</p>
+<p>Каждая ссылка ДОЛЖНА проверяться
+в отдельном <code>FOR</code>
+через <code>GROUP SUM 1 BY</code>
+по импортируемым значениям ключей.</p>
+<p>По возможности ассистенту НЕ СЛЕДУЕТ записывать
+разрешённые ссылки в отдельный <code>LOCAL</code>
+до основной логики импорта.</p>
+<p>Отсутствующие мастер-данные или некорректные данные
+ДОЛЖНЫ останавливать импорт или выдавать понятную ошибку.</p>
+</li>
+<li class="">
+<p>Ассистенту СЛЕДУЕТ разделять сырой импорт
+и доменное разрешение:</p>
+<ul>
+<li class="">сначала разобрать файл или данные
+в локальные свойства или форму импорта</li>
+<li class="">затем проверить ссылки, такие как
+товар, партнёр, статус, тип или другие справочники</li>
+<li class="">только потом создавать или обновлять доменные объекты</li>
+</ul>
+</li>
+<li class="">
+<p>Для запускаемых пользователем пакетных импортов и внешних интеграций
+ассистенту СЛЕДУЕТ изолировать сохранение в <code>NEWSESSION</code>.</p>
+<p>После доменных записей ассистенту СЛЕДУЕТ выполнить <code>APPLY;</code>.
+Если последующая логика зависит от успеха,
+ассистент ОБЯЗАН проверить <code>canceled()</code>
+и выдать <code>applyMessage()</code> или <code>throwException(...)</code>.</p>
+<p>Если импорт должен видеть локальные буферы верхней сессии,
+ассистент ОБЯЗАН использовать семантику вложенной сессии
+вместо простого <code>NEWSESSION</code>.</p>
+</li>
+<li class="">
+<p>Ассистент НЕ ДОЛЖЕН частично сохранять
+неудавшийся импорт молча.</p>
+<p>Ему СЛЕДУЕТ использовать <code>MESSAGE</code>, <code>RETURN</code>,
+<code>throwException</code> или явный флаг неудачи,
+согласованно с вызывающей стороной:</p>
+<ul>
+<li class="">интерактивный импорт -> <code>MESSAGE</code></li>
+<li class="">API или фоновая интеграция
+-> исключение или явное состояние неудачи</li>
+</ul>
+</li>
+<li class="">
+<p>При импорте булевых значений
+ассистент ОБЯЗАН помнить правила булевых типов:</p>
+<ul>
+<li class=""><code>BOOLEAN</code> использует <code>TRUE</code> и <code>NULL</code></li>
+<li class=""><code>FALSE</code> корректен только для <code>TBOOLEAN</code></li>
+</ul>
+</li>
+<li class="">
+<p>Для импортов-синхронизаций «создать-или-обновить»
+ассистент ОБЯЗАН разделять создание объектов
+и обновление свойств.</p>
+<p>Ассистент ОБЯЗАН использовать один отдельный <code>FOR</code>
+только для создания недостающих объектов.</p>
+<p>Если импортируемые значения ключей могут быть неуникальны,
+проход создания СЛЕДУЕТ итерировать по сгруппированным ключам
+через <code>GROUP SUM ... BY</code>,
+а не по сырым импортируемым строкам.</p>
+<p>Затем ассистент ОБЯЗАН использовать второй отдельный <code>FOR</code>
+для обновления свойств найденных объектов.</p>
+<p>Ассистент НЕ ДОЛЖЕН смешивать создание объектов
+и обновление свойств в одном цикле
+для импортов-синхронизаций.</p>
+<p>Если требуется полная синхронизация,
+ассистенту СЛЕДУЕТ добавить явный шаг удаления.</p>
+</li>
+<li class="">
+<p>Если <code>LOCAL</code>-свойства промежуточного хранения
+используются только в одном действии импорта,
+ассистент ОБЯЗАН объявлять их
+внутри этого действия.</p>
+<p>Ассистенту НЕ СЛЕДУЕТ выносить такие <code>LOCAL</code>-свойства
+на уровень модуля без необходимости.</p>
+<p>Исключение:
+<code>LOCAL</code>-свойство можно объявить вне действия
+только когда оно должно использоваться формой импорта
+или переиспользоваться несколькими связанными действиями.</p>
+</li>
+</ol></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href=https://github.com/lsfusion/platform/edit/master/docs/ru/rules/Rules.md target=_blank rel="noopener noreferrer" class=theme-edit-this-page><svg fill=currentColor height=20 width=20 viewBox="0 0 40 40" class=iconEdit_Z9Sw aria-hidden=true><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"/></g></svg>Отредактировать эту страницу</a></div><div class="col lastUpdated_JAkA"><span class=theme-last-updated>Последнее обновление<!-- --> <b><time datetime=2026-05-22T23:43:29.000Z itemprop=dateModified>22 мая 2026 г.</time></b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Навигация по странице документации"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#этим-правилам-необходимо-следовать class="table-of-contents__link toc-highlight">Этим правилам НЕОБХОДИМО следовать.</a></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Документация</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/ru/>lsf документация</a><li class=footer__item><a href=https://lsfusion.org/ru/ed_materials target=_blank rel="noopener noreferrer" class=footer__link-item>Обучающие материалы<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Сообщество</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://t.me/lsfusion_official target=_blank rel="noopener noreferrer" class=footer__link-item>Telegram<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://join.slack.com/t/lsfusion/shared_invite/zt-1itj7vlmf-9aBIP__nj9iMJglDaecqXg target=_blank rel="noopener noreferrer" class=footer__link-item>Slack<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://ru.stackoverflow.com/questions/tagged/lsfusion target=_blank rel="noopener noreferrer" class=footer__link-item>Stack Overflow<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Другое</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://habr.com/ru/company/lsfusion/blog/ target=_blank rel="noopener noreferrer" class=footer__link-item>Хабр<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://github.com/lsfusion/platform target=_blank rel="noopener noreferrer" class=footer__link-item>GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div></div><div class="footer__bottom text--center"><div class=footer__copyright>Copyright © 2026 lsFusion Foundation. Built with Docusaurus.</div></div></div></footer></div></body>

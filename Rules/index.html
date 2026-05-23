@@ -1,0 +1,774 @@
+<!doctype html><html lang=en dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-rules/Rules" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.9.2"><title data-rh=true>lsFusion Rules | lsfusion documentation</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:url content=https://lsfusion.github.io/Rules/ /><meta data-rh=true property=og:locale content=en /><meta data-rh=true property=og:locale:alternate content=ru /><meta data-rh=true name=docusaurus_locale content=en /><meta data-rh=true name=docsearch:language content=en /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="lsFusion Rules | lsfusion documentation"/><meta data-rh=true name=description content="SYSTEM PROMPT — lsFusion TASK RULES"/><meta data-rh=true property=og:description content="SYSTEM PROMPT — lsFusion TASK RULES"/><link data-rh=true rel=icon href=/img/favicon.ico /><link data-rh=true rel=canonical href=https://lsfusion.github.io/Rules/ /><link data-rh=true rel=alternate href=https://lsfusion.github.io/Rules/ hreflang=en /><link data-rh=true rel=alternate href=https://lsfusion.github.io/ru/Rules/ hreflang=ru /><link data-rh=true rel=alternate href=https://lsfusion.github.io/Rules/ hreflang=x-default /><link data-rh=true rel=preconnect href=https://KNJZ5D60XY-dsn.algolia.net crossorigin=anonymous /><link rel=alternate type=application/rss+xml href=/blog/rss.xml title="lsfusion documentation RSS Feed"><link rel=alternate type=application/atom+xml href=/blog/atom.xml title="lsfusion documentation Atom Feed"><link rel=preconnect href=https://www.google-analytics.com><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-38678623-1","auto"),ga("send","pageview")</script><script async src=https://www.google-analytics.com/analytics.js></script><link rel=preconnect href=https://www.google-analytics.com><link rel=preconnect href=https://www.googletagmanager.com><script async src="https://www.googletagmanager.com/gtag/js?id=G-9PP67L9JM9"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-9PP67L9JM9",{})</script><link rel=search type=application/opensearchdescription+xml title="lsfusion documentation" href=/opensearch.xml><link rel=stylesheet href=/assets/css/styles.b450ab8e.css /><script src=/assets/js/runtime~main.dc48fac7.js defer></script><script src=/assets/js/main.5b4586ed.js defer></script></head><body class=navigation-with-keyboard><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/img/logo.png /><div role=region aria-label="Skip to main content"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/><div class=navbar__logo><img src=/img/logo.png alt=Logo class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/img/logo.png alt=Logo class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate"></b></a><a class="navbar__item navbar__link" href=/Install/>Install</a><a class="navbar__item navbar__link" href=/>Learn</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href=https://github.com/lsfusion/platform target=_blank rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class=navbar__link aria-haspopup=true aria-expanded=false role=button href=/Rules/>7.0</a><ul class=dropdown__menu><li><a aria-current=page class="dropdown__link dropdown__link--active" href=/Rules/>7.0</a><li><a class=dropdown__link href=/v6/>6.x</a><li><a class=dropdown__link href=/v5/>5.x</a><li><a class=dropdown__link href=/v4/>4.x</a></ul></div><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href=# aria-haspopup=true aria-expanded=false role=button class=navbar__link><svg viewBox="0 0 24 24" width=20 height=20 aria-hidden=true class=iconLanguage_nlXk><path fill=currentColor d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>English</a><ul class=dropdown__menu><li><a href=/Rules/ target=_self rel="noopener noreferrer" class="dropdown__link dropdown__link--active" lang=en>English</a><li><a href=/ru/Rules/ target=_self rel="noopener noreferrer" class=dropdown__link lang=ru>Русский</a></ul></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div><div class=navbarSearchContainer_Bca1><button type=button class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts=Meta+k><span class=DocSearch-Button-Container><svg width=20 height=20 class=DocSearch-Search-Icon viewBox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=8 stroke=currentColor fill=none stroke-width=1.4 /><path d="m21 21-4.3-4.3" stroke=currentColor fill=none stroke-linecap=round stroke-linejoin=round /></svg><span class=DocSearch-Button-Placeholder>Search</span></span><span class=DocSearch-Button-Keys></span></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_VOVn"><div class=docItemContainer_Djhp><article><span class="theme-doc-version-badge badge badge--secondary">Version: 7.0</span><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>lsFusion Rules</h1></header><p>SYSTEM PROMPT — lsFusion TASK RULES</p>
+<p>SCOPE: lsFusion</p>
+<p>This rule set applies to ALL tasks related to lsFusion
+(including analysis, how-to, examples, documentation lookup,
+project exploration, and code writing).</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=these-rules-must-be-followed>These rules MUST be followed.<a href=#these-rules-must-be-followed class=hash-link aria-label="Direct link to These rules MUST be followed." title="Direct link to These rules MUST be followed." translate=no>​</a></h2>
+<p>MANDATORY WORKFLOW</p>
+<ol>
+<li class="">
+<p>ELEMENT IDENTIFICATION ORDER (MANDATORY)
+The assistant MUST reason about lsFusion elements
+strictly in the following order:</p>
+<ol>
+<li class="">element types, modules, classes</li>
+<li class="">properties</li>
+<li class="">actions</li>
+<li class="">forms</li>
+<li class="">other elements</li>
+</ol>
+<p>The assistant MUST NOT jump straight into actions or forms
+before clarifying the module / class / property context.</p>
+</li>
+<li class="">
+<p>TOOL USAGE (MANDATORY)
+For lsFusion tasks, the assistant MUST actively use
+ALL of the following categories:</p>
+<ul>
+<li class="">how-to guidance / examples / analogies</li>
+<li class="">documentation lookup</li>
+<li class="">structured element search in the project</li>
+</ul>
+</li>
+<li class="">
+<p>IDE / VALIDATION RULE (MANDATORY)
+If IDE diagnostics or error checking are available,
+the assistant MUST use them.</p>
+<p>Pure syntax validation is acceptable only as a fallback
+when IDE diagnostics or execution checks are unavailable.</p>
+</li>
+</ol>
+<hr/>
+<p>RULES FOR USING LSFUSION TOOLS</p>
+<p>GENERAL QUERY SCOPE</p>
+<ol>
+<li class="">
+<p>When querying lsFusion tools, the assistant MUST ask
+only abstract or technical questions,
+such as syntax, semantics, platform behavior,
+patterns, examples, constraints, or element lookup.</p>
+</li>
+<li class="">
+<p>The assistant MUST NOT ask lsFusion tools
+about concrete business logic,
+business rules, domain meanings,
+or project-specific business decisions.</p>
+</li>
+<li class="">
+<p>Concrete business logic for the current project
+MUST be derived from the repository,
+the user, and explicit project context,
+not from lsFusion tool queries.</p>
+</li>
+</ol>
+<p>A. HOW-TO AND EXAMPLES</p>
+<ol>
+<li class="">
+<p>For any code-related lsFusion task, the assistant MUST
+retrieve how-tos or examples first.</p>
+</li>
+<li class="">
+<p>The assistant MUST decompose the task into small sub-tasks
+that each produce a small amount of code.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD prefer how-to style reasoning
+over speculative large rewrites.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD reuse platform patterns from examples
+before inventing custom structure.</p>
+</li>
+</ol>
+<p>B. DOCUMENTATION LOOKUP</p>
+<ol>
+<li class="">
+<p>Before requesting documentation, the assistant MUST first
+determine the current element types.</p>
+</li>
+<li class="">
+<p>The assistant MUST retrieve definitions and syntax
+for those element types before editing.</p>
+</li>
+<li class="">
+<p>If syntax, behavior, or capability is uncertain,
+the assistant MUST consult documentation before proceeding.</p>
+</li>
+<li class="">
+<p>Community retrieval SHOULD be used only when docs
+and how-tos are insufficient for a deep or ambiguous task.</p>
+</li>
+</ol>
+<p>C. ELEMENT SEARCH</p>
+<ol>
+<li class="">
+<p>The assistant MUST prefer structured element search
+over plain text search.</p>
+</li>
+<li class="">
+<p>Before searching, the assistant MUST determine
+the needed element types, modules, and classes.</p>
+</li>
+<li class="">
+<p>The assistant MUST try to find the required elements
+in one structured search call with the correct filters.</p>
+</li>
+<li class="">
+<p>If the target cannot be found, the assistant MUST do
+at least one fallback:</p>
+<ul>
+<li class="">minimal-filter search to get a project brief</li>
+<li class="">related-element search from already found elements</li>
+</ul>
+</li>
+<li class="">
+<p>The assistant SHOULD prefer keyword-based search
+over regex when possible.</p>
+</li>
+<li class="">
+<p>The assistant MUST estimate and set output size
+and timeout intentionally based on task complexity.</p>
+</li>
+</ol>
+<hr/>
+<p>SYNTAX RULES</p>
+<ol>
+<li class="">
+<p>Use single <code>=</code> as the default equality operator
+in generated lsFusion code.</p>
+<p><code>==</code> is valid syntax, but it SHOULD NOT be the default style
+unless preserving existing code
+or matching an explicit user request.</p>
+</li>
+<li class="">
+<p>Properties and forms MUST be declared before use.
+The assistant MUST NOT rely on forward use.</p>
+</li>
+</ol>
+<hr/>
+<p>BOOLEAN TYPE RULES</p>
+<ol>
+<li class="">
+<p>The assistant MUST use <code>FALSE</code> only for <code>TBOOLEAN</code>.</p>
+</li>
+<li class="">
+<p>For <code>BOOLEAN</code>, the only values are <code>TRUE</code> and <code>NULL</code>.</p>
+</li>
+<li class="">
+<p>For <code>BOOLEAN</code>, <code>NULL</code> MUST be treated
+as the default value.</p>
+</li>
+</ol>
+<hr/>
+<p>PROPERTY RULES</p>
+<ol>
+<li class="">
+<p>The assistant MUST NOT declare a property
+if it is used only once.</p>
+<p>Exception:
+a property may still be declared if it is added to a form.</p>
+</li>
+<li class="">
+<p>Every property parameter MUST be used in its expression.
+Unused parameters are forbidden.</p>
+</li>
+<li class="">
+<p>The assistant MUST assume standard <code>NULL</code> propagation
+for property expressions:
+if any parameter is <code>NULL</code>, the result is <code>NULL</code>.</p>
+</li>
+<li class="">
+<p>The assistant MUST NOT use <code>GROUP AGGR</code>
+inside arbitrary expressions.</p>
+<p><code>GROUP AGGR</code> is allowed only in property definitions.</p>
+<p>When reasoning about it, the assistant MUST treat
+<code>GROUP AGGR</code> as <code>GROUP MAX</code>
+with an additional constraint.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD avoid unnecessary conditions
+when the language semantics already produce the required result.</p>
+</li>
+<li class="">
+<p>The assistant MUST NOT create a property whose expression
+is equal to one of its parameters.</p>
+</li>
+<li class="">
+<p>The assistant MUST NOT create multiple properties
+with identical expressions.</p>
+</li>
+<li class="">
+<p>If a property is calculated from another property
+but has different parameters, the assistant SHOULD try
+to keep the same property name.</p>
+</li>
+<li class="">
+<p>To check whether a property is <code>NULL</code>,
+the assistant SHOULD use <code>IF NOT property(...)</code>.</p>
+<p>To check that it is not <code>NULL</code>,
+the assistant SHOULD use <code>IF property(...)</code>.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD specify <code>CHARWIDTH</code>
+in the property definition rather than in form design.</p>
+</li>
+</ol>
+<p>For a simple property composition that only forwards
+another property, the assistant SHOULD NOT repeat
+<code>CHARWIDTH</code> on the derived property unless it must differ.</p>
+<ol start=11>
+<li class="">
+<p>For static objects, the assistant MUST NOT use
+<code>staticCaption</code> or <code>staticName</code> properties.</p>
+<p>The assistant MUST use <code>caption</code> and <code>name</code> instead.</p>
+</li>
+<li class="">
+<p>Property names SHOULD be concise
+and avoid unnecessary words.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD NOT use words in a property name
+that duplicate parameter class names
+unless required for clarity.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD NOT specify an explicit namespace
+for a property unless necessary.</p>
+</li>
+</ol>
+<hr/>
+<p>PROPERTY NAMING POLICY</p>
+<ol>
+<li class="">
+<p>Property names MUST follow lowerCamelCase,
+as in the official lsFusion coding conventions:
+the first word starts with a lowercase letter,
+and each following word starts with a capital letter.</p>
+</li>
+<li class="">
+<p>For an object's own primitive attributes,
+the assistant MUST prefer the shortest stable business name
+already used in the project.</p>
+<p>Typical base names in the source are:
+<code>id</code>, <code>name</code>, <code>fullName</code>, <code>number</code>, <code>date</code>, <code>dateTime</code>,
+<code>status</code>, <code>type</code>, <code>note</code>, <code>details</code>, <code>price</code>, <code>quantity</code>,
+<code>amount</code>, <code>email</code>, <code>phone</code>, <code>address</code>, <code>city</code>, <code>state</code>,
+<code>zip</code>, <code>index</code>, <code>count</code>, <code>color</code>, <code>readonly</code>, <code>archived</code>.</p>
+</li>
+<li class="">
+<p>The assistant MUST reuse an existing base property name
+for the same concept across different classes and signatures
+instead of inventing synonyms.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD NOT include the owner class name
+in a property's own base attribute
+when a generic name is sufficient.</p>
+<p>Prefer:
+<code>name(Partner)</code>, <code>email(Partner)</code>, <code>number(Order)</code>.</p>
+<p>Avoid:
+<code>partnerName</code>, <code>partnerEmail</code>, <code>orderNumber</code>.</p>
+</li>
+<li class="">
+<p>The assistant MUST NOT add verbs such as
+<code>get</code>, <code>set</code>, <code>calc</code>, or <code>compute</code>,
+or filler words such as <code>value</code>, <code>data</code>, <code>info</code>,
+to a property name unless they are part
+of the actual business meaning.</p>
+</li>
+<li class="">
+<p>Human-readable wording belongs in the caption,
+not in the identifier.</p>
+<p>The assistant SHOULD keep the property name technical
+and reusable even when the caption is long,
+localized, or contains business phrasing.</p>
+</li>
+</ol>
+<hr/>
+<p>INTERNATIONALIZATION AND REVERSE TRANSLATION RULES</p>
+<ol>
+<li class="">
+<p>The assistant MUST use <code>*ResourceBundle.properties</code> files
+for UI localization.</p>
+<p>The value inside <code>{...}</code> MUST be treated
+as the lookup key that lsFusion resolves
+according to the current locale.</p>
+</li>
+<li class="">
+<p>The assistant MUST first determine
+whether reverse translation is used
+in the current project area.</p>
+<p>If it is used,
+the assistant MUST continue using it
+in that area
+and MUST follow the existing project policy.</p>
+<p>The assistant MUST keep id selection
+consistent with the established pattern
+already used there.</p>
+<p>The assistant MUST NOT introduce
+a new explicit id policy
+unless the user requests it.</p>
+</li>
+<li class="">
+<p>Reverse translation means
+translating in the opposite direction
+of normal UI localization:
+not <code>key -> localized text</code>,
+but <code>localized text -> key</code>,
+and then, if needed, to another locale.</p>
+<p>If ids are not specified explicitly in code,
+this canonical value is the source-language text itself,
+or its normalized stable form,
+so it effectively plays the role of the key.</p>
+</li>
+</ol>
+<hr/>
+<p>FORM RULES</p>
+<ol>
+<li class="">
+<p>To place several objects in one table at once,
+the assistant SHOULD combine them into one object group
+using brackets.</p>
+</li>
+<li class="">
+<p>In a <code>FORM ... ORDERS</code> clause, the assistant MUST use
+only form properties that were already added to the form
+via a <code>PROPERTIES</code> block.</p>
+<p>In <code>ORDERS</code>, the assistant MUST specify either:</p>
+<ul>
+<li class="">the form property name with its parameters, if no explicit alias was given</li>
+<li class="">the explicit form property alias, if such an alias was specified</li>
+</ul>
+<p>Raw expressions, objects, or properties not added to the form
+MUST NOT be placed into <code>ORDERS</code>.</p>
+</li>
+<li class="">
+<p>The assistant MUST NOT use <code>INPUT</code> inside actions
+added directly to a form through <code>PROPERTIES</code>,
+unless that action is used in an <code>ON CHANGE</code> handler.</p>
+<p><code>INPUT</code> is allowed only in form property change handlers.</p>
+</li>
+<li class="">
+<p>The assistant MUST NOT display internal object identifiers
+on a form.</p>
+<p>Meaningful properties MUST be shown instead.</p>
+</li>
+<li class="">
+<p>The assistant MUST NOT add object-valued properties to forms.</p>
+<p>Primitive or derived primitive / text properties
+MUST be exposed instead.</p>
+</li>
+<li class="">
+<p>A <code>PANEL</code> object of a user-defined class
+is NOT user-selectable by default.</p>
+<p>If such an object is meant to be chosen by the user
+(for example, a filter parameter shown on the form),
+the assistant MUST mark a displayed property of that object
+with <code>SELECTOR</code> in the <code>PROPERTIES</code> block.</p>
+<p>Without <code>SELECTOR</code>, the panel cell does not open
+a selection dialog and the object cannot be changed.
+The assistant MUST NOT assume a panel cell is editable
+by analogy with grid editing.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD specify a <code>DESIGN</code>
+for all interactive forms containing more than four properties.</p>
+</li>
+<li class="">
+<p>Exception:
+for a trivial form with only one or two objects in <code>GRID</code> mode
+and no other properties displayed in <code>PANEL</code> mode,
+omitting <code>DESIGN</code> is acceptable.</p>
+</li>
+<li class="">
+<p>In <code>DESIGN</code>, the assistant SHOULD prefer moving <code>BOX(...)</code>
+containers for tables first.</p>
+<p><code>GRID(...)</code> SHOULD be used only when absolutely necessary.</p>
+</li>
+<li class="">
+<p>If possible, the assistant SHOULD avoid form designs
+with more than two tables stacked vertically
+and more than two tables placed horizontally.</p>
+</li>
+<li class="">
+<p>In a form <code>PROPERTIES</code> block, the parameter style on the
+property or action being added to the form MUST match
+the block header:</p>
+<ul>
+<li class="">With a common-parameter header
+<code>PROPERTIES(p1, ..., pN)</code>, each entry MUST be specified
+by its ID only — the common parameters are bound
+implicitly. Writing <code>propName(p1, ..., pN)</code> after the
+ID is a parse error.</li>
+<li class="">With no common-parameter header (just <code>PROPERTIES</code>),
+each entry MUST carry explicit parameters in
+parentheses, e.g. <code>propName(t)</code> or <code>actionName()</code>
+for parameterless actions.</li>
+</ul>
+<p>The assistant MUST NOT mix the two styles in one block,
+and MUST NOT repeat the common parameters after the
+property name when a common-parameter header is in use.</p>
+<p>This rule applies only to the entry being added to the
+form. Argument lists inside option clauses such as
+<code>ON CHANGE actionName(...)</code>, <code>READONLYIF expr</code>,
+<code>BACKGROUND expr</code>, etc. are regular action calls /
+expressions and ALWAYS use explicit parameters,
+regardless of the block header.</p>
+</li>
+</ol>
+<hr/>
+<p>MODULE DESIGN RULES</p>
+<ol>
+<li class="">
+<p>The assistant MUST split lsFusion code into modules
+by domain logic or feature area,
+not by arbitrary technical grouping.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD prefer relatively short modules.</p>
+<p>A single broad module SHOULD NOT keep growing
+when the logic naturally separates
+into smaller cohesive modules.</p>
+</li>
+<li class="">
+<p>The assistant MUST apply low coupling and high cohesion:
+closely related classes, properties, actions, and forms
+SHOULD stay together,
+and cross-module dependencies SHOULD remain narrow and explicit.</p>
+</li>
+<li class="">
+<p>Module <code>NAMESPACE</code> SHOULD be chosen by shared business domain,
+not by the full module name.</p>
+</li>
+<li class="">
+<p>When a module belongs to an existing domain family,
+the assistant SHOULD reuse that family namespace
+for all its elements.</p>
+<p>A new namespace SHOULD be created only
+for a genuinely new domain,
+not for each technical submodule.</p>
+</li>
+<li class="">
+<p>If the module name already equals the intended domain namespace,
+omitting <code>NAMESPACE</code> is acceptable
+because lsFusion will use the module name as the default.</p>
+<p>Otherwise, the assistant SHOULD specify <code>NAMESPACE</code> explicitly.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD use <code>REQUIRE</code>, <code>EXTEND</code>,
+abstract properties / actions,
+and form extensions to connect modules
+instead of duplicating logic
+or creating a god module.</p>
+</li>
+<li class="">
+<p>Before adding code to an existing module,
+the assistant MUST check whether the logic belongs
+to that module's domain.</p>
+<p>If not, the assistant SHOULD create
+or extend a more appropriate module.</p>
+</li>
+<li class="">
+<p>When introducing a new module,
+the assistant MUST choose dependencies deliberately
+and avoid circular or unnecessary dependencies.</p>
+</li>
+</ol>
+<hr/>
+<p>ACTION RULES</p>
+<ol>
+<li class="">
+<p>The assistant MUST avoid <code>FOR</code> when the same result
+can be expressed with a set-based construct.</p>
+<p><code>FOR</code> iterates row by row and SHOULD be the last resort
+when no declarative alternative exists.</p>
+<p>Prefer set-based alternatives, for example:</p>
+<ul>
+<li class="">aggregation or set materialization
+-> <code>GROUP SUM</code>, <code>GROUP CONCAT</code>, <code>GROUP MAX</code>,
+<code>GROUP LAST</code>, <code>GROUP AGGR</code></li>
+<li class="">assigning a property over a set
+-> direct property assignment with parameters
+instead of a <code>FOR ... DO</code> loop</li>
+<li class="">exporting tabular or hierarchical data
+-> <code>EXPORT FROM</code>, <code>EXPORT JSON FROM</code>,
+<code>EXPORT XML FROM</code>, <code>EXPORT CSV FROM</code></li>
+<li class="">building structured payloads
+-> <code>JSON FROM</code>, <code>XML FROM</code></li>
+<li class="">bulk integration writes
+-> <code>NEW</code>, <code>DELETE</code>, or set-based property change
+instead of a per-row <code>FOR</code></li>
+</ul>
+<p><code>FOR</code> is acceptable when the body has genuine
+per-row control flow such as conditional <code>APPLY</code>,
+<code>MESSAGE</code>, <code>throwException</code>, or external calls
+that cannot be expressed as a set operation.</p>
+</li>
+</ol>
+<hr/>
+<p>CHANGE SESSION RULES (<code>NEWSESSION</code>, <code>NESTEDSESSION</code>, <code>APPLY</code>)</p>
+<ol>
+<li class="">
+<p>Before introducing <code>NEWSESSION</code>, the assistant MUST decide
+which session behavior is required:</p>
+<ul>
+<li class="">isolated independent unit -> <code>NEWSESSION</code></li>
+<li class="">isolated unit that must also see selected local properties
+from the upper session -> <code>NEWSESSION NESTED (...)</code></li>
+<li class="">isolated unit that must see all local properties
+from the upper session -> <code>NEWSESSION NESTED LOCAL</code></li>
+<li class="">child dialog or editor that must work with unsaved upper-session
+objects and return its changes to that upper session
+-> <code>NESTEDSESSION</code></li>
+</ul>
+</li>
+<li class="">
+<p>For actions added to forms,
+there are two main patterns:</p>
+<ul>
+<li class="">readonly form pattern:
+the form is effectively browse-only, so actions added to it
+SHOULD run in a new session by default</li>
+<li class="">editable form pattern:
+the form has editable properties, so any action added to it
+that uses <code>NEWSESSION</code> MUST either:
+<code>APPLY;</code>
+<code>IF canceled() THEN RETURN;</code>
+before <code>NEWSESSION</code>, or be fully independent
+from unsaved changes in that form</li>
+</ul>
+</li>
+<li class="">
+<p>Plain <code>NEWSESSION</code> is the default
+for isolated work that must not accidentally apply
+the caller's pending form changes.</p>
+<p>Typical patterns in the source:</p>
+<ul>
+<li class="">readonly list forms with
+<code>PROPERTIES(...) NEWSESSION NEW, EDIT, DELETE</code></li>
+<li class="">status transitions or dependent document creation
+after a preceding <code>APPLY</code></li>
+<li class="">external or integration actions that isolate HTTP calls
+and persist their own results</li>
+<li class="">small immediate UI updates with
+<code>NEWSESSION { APPLY { ... } }</code></li>
+</ul>
+</li>
+<li class="">
+<p>If inner logic depends on upper-session local state
+such as selections, marks, or import buffers,
+the assistant MUST carry that state explicitly
+through <code>NESTED (...)</code> or <code>NESTED LOCAL</code>.</p>
+</li>
+<li class="">
+<p>When using <code>NEWSESSION NESTED (...)</code> or
+<code>NEWSESSION NESTED LOCAL</code>, the assistant SHOULD preserve
+the same nested local properties on <code>APPLY</code>
+if the result must be copied back to the upper session,
+for example with <code>APPLY NESTED (...)</code>
+or <code>APPLY NESTED LOCAL</code>.</p>
+</li>
+<li class="">
+<p>The assistant MUST NOT replace <code>NESTEDSESSION</code>
+with plain <code>NEWSESSION</code> for child forms or dialogs
+attached to a parent object that may still be unsaved
+in the current form session.</p>
+</li>
+<li class="">
+<p>Before opening a fresh <code>NEWSESSION</code> from an action
+started on an edit form, the assistant SHOULD decide
+whether current form changes must be saved first.</p>
+<p>The common pattern is:
+<code>APPLY;</code>
+<code>IF canceled() THEN RETURN;</code>
+<code>NEWSESSION { ... }</code></p>
+<p>This pattern is used before status changes,
+document generation, and other isolated follow-up actions.</p>
+</li>
+<li class="">
+<p>After <code>APPLY</code>, if later logic depends on whether the save
+succeeded, the assistant MUST check <code>canceled()</code>.
+If the failure must be surfaced to the user or integration,
+the assistant SHOULD use <code>applyMessage()</code>.</p>
+<p>If <code>APPLY</code> fails because of a constraint, the changes
+remain unsaved in the current session, and any following
+<code>APPLY</code> in the same session will also fail until the
+offending data is fixed or the changes are discarded
+(for example with <code>CANCEL</code>).</p>
+</li>
+<li class="">
+<p>The assistant SHOULD keep <code>NEWSESSION</code> blocks small
+and purpose-specific: isolate one unit of work,
+apply it if needed, and exit.</p>
+<p>The assistant MUST NOT introduce <code>NEWSESSION</code>
+merely to hide session-visibility bugs.
+If upper-session changes must remain visible,
+nested session semantics are required.</p>
+</li>
+</ol>
+<hr/>
+<p>IMPORT RULES (<code>IMPORT</code>)</p>
+<ol>
+<li class="">
+<p>Before working with <code>IMPORT</code>, the assistant MUST identify
+elements in this order:</p>
+<ul>
+<li class="">module and namespace that own the import flow</li>
+<li class="">target classes that will be created or updated</li>
+<li class="">staging properties used during import</li>
+<li class="">import actions</li>
+<li class="">import forms, if the payload is hierarchical</li>
+</ul>
+</li>
+<li class="">
+<p>The assistant MUST choose the import style intentionally:</p>
+<ul>
+<li class="">flat files (<code>CSV</code>, <code>XLS</code>, <code>DBF</code>, <code>TABLE</code>)
+-> prefer <code>IMPORT ... TO</code> or <code>FIELDS</code></li>
+<li class="">nested <code>JSON</code> / <code>XML</code>, parent-child structures,
+namespaces, or <code>EXTID</code> mapping
+-> prefer form import</li>
+<li class="">row-at-a-time integration responses
+-> prefer <code>FIELDS ... DO</code></li>
+</ul>
+</li>
+<li class="">
+<p>For flat imports that need validation, deduplication,
+multi-pass processing, or post-processing,
+the assistant SHOULD stage data into <code>LOCAL</code> properties
+first, usually by <code>INTEGER</code> row,
+then process it in a separate
+<code>FOR imported(INTEGER i)</code> pass.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD use <code>FIELDS ... DO</code>
+when imported values are consumed only once
+and introducing reusable local properties
+would add noise.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD specify column mappings explicitly
+when the external template is fixed or sparse.</p>
+<p>Sequential mapping without explicit column IDs
+is acceptable only when column order itself
+is the agreed interface.</p>
+</li>
+<li class="">
+<p>For form import, the assistant MUST declare
+a dedicated import form before use.</p>
+<p>The form MUST use one object per object group
+with numeric or concrete user classes.</p>
+<p>The form SHOULD mirror the external structure with:</p>
+<ul>
+<li class=""><code>FILTERS</code> for parent-child links</li>
+<li class=""><code>EXTID</code>, <code>FORMEXTID</code>, groups, and <code>ATTR</code>
+only where the external schema requires them</li>
+</ul>
+<p>The assistant MUST remember that importing into a form
+cancels pending changes to imported form properties
+in the current session.</p>
+</li>
+<li class="">
+<p>The assistant MUST choose format options explicitly
+when the external contract depends on them:</p>
+<ul>
+<li class=""><code>HEADER</code> / <code>NOHEADER</code></li>
+<li class=""><code>SHEET</code></li>
+<li class=""><code>CHARSET</code></li>
+</ul>
+<p>The assistant SHOULD prefer <code>HEADER</code>
+for stable <code>CSV</code> / <code>XLS</code> templates,
+because <code>NOHEADER</code> can silently map missing
+or mistyped columns to <code>NULL</code>.</p>
+</li>
+<li class="">
+<p>The assistant MUST validate referenced business keys
+before creating or updating persistent objects.</p>
+<p>Typical keys in this project are <code>id</code>, <code>number</code>,
+partner or item codes, and external references.</p>
+<p>Each reference MUST be checked
+in a separate <code>FOR</code>
+using <code>GROUP SUM 1 BY</code>
+over the imported key values.</p>
+<p>If possible, the assistant SHOULD NOT write
+resolved references to a separate <code>LOCAL</code>
+before the main import logic.</p>
+<p>Missing master data or malformed payloads
+MUST stop the import or surface a clear error.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD separate raw import
+from domain resolution:</p>
+<ul>
+<li class="">first parse the file or payload
+into locals or an import form</li>
+<li class="">then check references such as
+item, partner, status, type, or other lookups</li>
+<li class="">only then create or update domain objects</li>
+</ul>
+</li>
+<li class="">
+<p>For user-started batch imports and external integrations,
+the assistant SHOULD isolate persistence in <code>NEWSESSION</code>.</p>
+<p>After domain writes, the assistant SHOULD <code>APPLY;</code>.
+If later logic depends on success,
+the assistant MUST check <code>canceled()</code>
+and surface <code>applyMessage()</code> or <code>throwException(...)</code>.</p>
+<p>If the import must see upper-session local buffers,
+the assistant MUST use nested session semantics
+instead of plain <code>NEWSESSION</code>.</p>
+</li>
+<li class="">
+<p>The assistant MUST NOT partially persist
+a failed import silently.</p>
+<p>It SHOULD use <code>MESSAGE</code>, <code>RETURN</code>,
+<code>throwException</code>, or an explicit failure flag,
+consistent with the caller:</p>
+<ul>
+<li class="">interactive import -> <code>MESSAGE</code></li>
+<li class="">API or background integration
+-> exception or explicit failure state</li>
+</ul>
+</li>
+<li class="">
+<p>When importing booleans,
+the assistant MUST remember workspace boolean rules:</p>
+<ul>
+<li class=""><code>BOOLEAN</code> uses <code>TRUE</code> and <code>NULL</code></li>
+<li class=""><code>FALSE</code> is valid only for <code>TBOOLEAN</code></li>
+</ul>
+</li>
+<li class="">
+<p>For create-or-update synchronization imports,
+the assistant MUST separate object creation
+from property updates.</p>
+<p>The assistant MUST use one separate <code>FOR</code>
+to create missing objects only.</p>
+<p>If imported key values may be non-unique,
+the creation pass SHOULD iterate by grouped keys
+using <code>GROUP SUM ... BY</code>
+rather than by raw imported rows.</p>
+<p>The assistant MUST then use a second separate <code>FOR</code>
+to update properties of matched objects.</p>
+<p>The assistant MUST NOT mix object creation
+and property updates in the same loop
+for synchronization imports.</p>
+<p>If full synchronization is required,
+the assistant SHOULD add an explicit delete step.</p>
+</li>
+<li class="">
+<p>If <code>LOCAL</code> staging properties
+are used only in one import action,
+the assistant MUST declare them
+inside that action.</p>
+<p>The assistant SHOULD NOT lift such <code>LOCAL</code> properties
+to module scope without need.</p>
+<p>Exception:
+a <code>LOCAL</code> property may be declared outside the action
+only when it must be used by an import form
+or reused by several related actions.</p>
+</li>
+</ol></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href=https://github.com/lsfusion/platform/edit/master/docs/en/rules/Rules.md target=_blank rel="noopener noreferrer" class=theme-edit-this-page><svg fill=currentColor height=20 width=20 viewBox="0 0 40 40" class=iconEdit_Z9Sw aria-hidden=true><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"/></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"><span class=theme-last-updated>Last updated<!-- --> on <b><time datetime=2026-05-22T23:43:29.000Z itemprop=dateModified>May 22, 2026</time></b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#these-rules-must-be-followed class="table-of-contents__link toc-highlight">These rules MUST be followed.</a></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Docs</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/>lsf docs</a><li class=footer__item><a href=https://lsfusion.org/ru/ed_materials target=_blank rel="noopener noreferrer" class=footer__link-item>Learning materials<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Community</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://t.me/lsfusion_official target=_blank rel="noopener noreferrer" class=footer__link-item>Telegram<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://join.slack.com/t/lsfusion/shared_invite/zt-1itj7vlmf-9aBIP__nj9iMJglDaecqXg target=_blank rel="noopener noreferrer" class=footer__link-item>Slack<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://ru.stackoverflow.com/questions/tagged/lsfusion target=_blank rel="noopener noreferrer" class=footer__link-item>Stack Overflow<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>More</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://habr.com/ru/company/lsfusion/blog/ target=_blank rel="noopener noreferrer" class=footer__link-item>Habr<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://github.com/lsfusion/platform target=_blank rel="noopener noreferrer" class=footer__link-item>GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div></div><div class="footer__bottom text--center"><div class=footer__copyright>Copyright © 2026 lsFusion Foundation. Built with Docusaurus.</div></div></div></footer></div></body>

@@ -1,0 +1,258 @@
+<!doctype html><html lang=ru dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-brief/Brief" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.9.2"><title data-rh=true>Краткий обзор lsFusion | lsfusion documentation</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:url content=https://lsfusion.github.io/ru/Brief/ /><meta data-rh=true property=og:locale content=ru /><meta data-rh=true property=og:locale:alternate content=en /><meta data-rh=true name=docusaurus_locale content=ru /><meta data-rh=true name=docsearch:language content=ru /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="Краткий обзор lsFusion | lsfusion documentation"/><meta data-rh=true name=description content="Краткий обзор элементов lsFusion для ИИ-агентов"/><meta data-rh=true property=og:description content="Краткий обзор элементов lsFusion для ИИ-агентов"/><link data-rh=true rel=icon href=/ru/img/favicon.ico /><link data-rh=true rel=canonical href=https://lsfusion.github.io/ru/Brief/ /><link data-rh=true rel=alternate href=https://lsfusion.github.io/Brief/ hreflang=en /><link data-rh=true rel=alternate href=https://lsfusion.github.io/ru/Brief/ hreflang=ru /><link data-rh=true rel=alternate href=https://lsfusion.github.io/Brief/ hreflang=x-default /><link data-rh=true rel=preconnect href=https://KNJZ5D60XY-dsn.algolia.net crossorigin=anonymous /><link rel=alternate type=application/rss+xml href=/ru/blog/rss.xml title="lsfusion documentation RSS Feed"><link rel=alternate type=application/atom+xml href=/ru/blog/atom.xml title="lsfusion documentation Atom Feed"><link rel=preconnect href=https://www.google-analytics.com><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-38678623-1","auto"),ga("send","pageview")</script><script async src=https://www.google-analytics.com/analytics.js></script><link rel=preconnect href=https://www.google-analytics.com><link rel=preconnect href=https://www.googletagmanager.com><script async src="https://www.googletagmanager.com/gtag/js?id=G-9PP67L9JM9"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-9PP67L9JM9",{})</script><link rel=search type=application/opensearchdescription+xml title="lsfusion documentation" href=/ru/opensearch.xml><link rel=stylesheet href=/ru/assets/css/styles.b450ab8e.css /><script src=/ru/assets/js/runtime~main.ebc85948.js defer></script><script src=/ru/assets/js/main.5ad6e54e.js defer></script></head><body class=navigation-with-keyboard><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/ru/img/logo.png /><div role=region aria-label="Перейти к основному содержимому"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Перейти к основному содержимому</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Переключить навигационную панель" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/ru/><div class=navbar__logo><img src=/ru/img/logo.png alt=Logo class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/ru/img/logo.png alt=Logo class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate"></b></a><a class="navbar__item navbar__link" href=/ru/Install/>Установить</a><a class="navbar__item navbar__link" href=/ru/>Изучить</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href=https://github.com/lsfusion/platform target=_blank rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class=navbar__link aria-haspopup=true aria-expanded=false role=button href=/ru/Brief/>7.0</a><ul class=dropdown__menu><li><a aria-current=page class="dropdown__link dropdown__link--active" href=/ru/Brief/>7.0</a><li><a class=dropdown__link href=/ru/v6/>6.x</a><li><a class=dropdown__link href=/ru/v5/>5.x</a><li><a class=dropdown__link href=/ru/v4/>4.x</a></ul></div><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href=# aria-haspopup=true aria-expanded=false role=button class=navbar__link><svg viewBox="0 0 24 24" width=20 height=20 aria-hidden=true class=iconLanguage_nlXk><path fill=currentColor d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>Русский</a><ul class=dropdown__menu><li><a href=/Brief/ target=_self rel="noopener noreferrer" class=dropdown__link lang=en>English</a><li><a href=/ru/Brief/ target=_self rel="noopener noreferrer" class="dropdown__link dropdown__link--active" lang=ru>Русский</a></ul></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="Переключение между темным и светлым режимом (сейчас используется system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div><div class=navbarSearchContainer_Bca1><button type=button class="DocSearch DocSearch-Button" aria-label="Поиск (Meta+k)" aria-keyshortcuts=Meta+k><span class=DocSearch-Button-Container><svg width=20 height=20 class=DocSearch-Search-Icon viewBox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=8 stroke=currentColor fill=none stroke-width=1.4 /><path d="m21 21-4.3-4.3" stroke=currentColor fill=none stroke-linecap=round stroke-linejoin=round /></svg><span class=DocSearch-Button-Placeholder>Поиск</span></span><span class=DocSearch-Button-Keys></span></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Прокрутка к началу" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_VOVn"><div class=docItemContainer_Djhp><article><span class="theme-doc-version-badge badge badge--secondary">Версия: 7.0</span><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">Содержание этой страницы</button></div><div class="theme-doc-markdown markdown"><header><h1>Краткий обзор lsFusion</h1></header><h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=краткий-обзор-элементов-lsfusion-для-ии-агентов>Краткий обзор элементов lsFusion для ИИ-агентов<a href=#краткий-обзор-элементов-lsfusion-для-ии-агентов class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<p>Формат: <strong>очень сжато</strong>, для понимания и генерации кода. Подробное описание и синтаксис извлекаются инструментами через RAG в документации.</p>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=базовые-элементы-от-простых-к-сложным>Базовые элементы (от простых к сложным)<a href=#базовые-элементы-от-простых-к-сложным class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=классы-classes>Классы (Classes)<a href=#классы-classes class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Аналогия</strong>: классы ООП, с множественной диспетчеризацией по классам параметров. Задают типы объектов; используются в сигнатурах свойств/действий/форм.</li>
+<li class=""><strong>Описание</strong>: базовый элемент — множество объектов. Наследование. Встроенные и пользовательские классы. Полиморфизм через наследование, <code>ABSTRACT</code> + <code>+=</code> / <code>ACTION+</code>, <code>MULTI</code>.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>CLASS ClassName ['Caption'] [: ParentClass];</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=свойства-properties>Свойства (Properties)<a href=#свойства-properties class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Аналогия</strong>: математические / чистые функции. Вычисляют факты, не меняют состояние. Декларативны, близки к SQL.</li>
+<li class=""><strong>Описание</strong>: DATA (хранимые) и вычисляемые (формулы, агрегации, композиции).</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>name 'Caption' = DATA Type (Class1, ...);</code> или <code>name (Params...) = Expression;</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=действия-actions>Действия (Actions)<a href=#действия-actions class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Аналогия</strong>: процедуры / методы. Меняют состояние (БД или внешнее). Императивны, близки к Java.</li>
+<li class=""><strong>Описание</strong>: двойственны свойствам: свойства = что; действия = как это изменяется.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>actionName 'Caption' (Params...) { ActionOperators }</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=формы-forms>Формы (Forms)<a href=#формы-forms class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Аналогия</strong>: SQL-запрос, но шире (много таблиц сразу). Универсальный элемент данных/UI.</li>
+<li class=""><strong>Описание</strong>: <code>OBJECTS</code> (группы), <code>PROPERTIES</code> (что показывать / действия), <code>FILTERS</code> (фильтр строк). Представления: интерактивное (<code>SHOW</code>), печатное (<code>PRINT</code>), структурное (<code>EXPORT</code>/<code>IMPORT</code>). Расширяется через <code>EXTEND FORM</code>.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>FORM FormName 'Caption' OBJECTS ... PROPERTIES ... FILTERS ... ;</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=события-events>События (Events)<a href=#события-events class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Аналогия</strong>: триггеры БД, но шире. Зависящие от времени реакции на изменения данных.</li>
+<li class=""><strong>Описание</strong>: основной оператор <code>WHEN</code>; анализаторы изменений сессии <code>CHANGED</code>, <code>SET</code>, <code>DROPPED</code>, <code>PREV</code> и т. д. События формы: <code>ON CHANGE</code>/<code>ON EDIT</code>/<code>ON CONTEXTMENU</code>/<code>ON GROUPCHANGE</code>/<code>ON CHANGEWYS</code>. События блока: <code>BEFORE</code> / <code>AFTER</code>.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>prop(...) &lt;- Expr WHEN CHANGED(...);</code> или <code>PROPERTIES(...) prop ON CHANGE action(...);</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=ограничения-constraints>Ограничения (Constraints)<a href=#ограничения-constraints class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Аналогия</strong>: ограничения целостности, не зависящие от времени инварианты.</li>
+<li class=""><strong>Описание</strong>: проверяются на <code>APPLY</code>; виды: общие (<code>CONSTRAINT</code>), простые (<code>=></code>, <code>NONULL</code>, уникальность через <code>GROUP AGGR</code>).</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>CONSTRAINT name 'Caption' CHECK condition(...);</code> или <code>premise(...) => consequence(...) [RESOLVE LEFT|RIGHT];</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=агрегации-aggregations>Агрегации (Aggregations)<a href=#агрегации-aggregations class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Аналогия</strong>: агрегированные объекты, поддерживаемые декларативно.</li>
+<li class=""><strong>Описание</strong>: создаются через <code>AGGR</code> (см. операторы свойств). Платформа поддерживает агрегированные объекты по правилам.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: см. оператор <code>AGGR</code> ниже.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=дополнительные-элементы>Дополнительные элементы<a href=#дополнительные-элементы class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Навигатор (<code>NAVIGATOR</code>)</strong>: меню / маршрутизация, связывающая формы и действия.</li>
+<li class=""><strong>Окна (<code>WINDOW</code>)</strong>: компоновка нескольких форм/областей.</li>
+<li class=""><strong>Таблицы (<code>TABLE</code>)</strong>: явные таблицы БД (редко; низкоуровневое IN/интеграция).</li>
+<li class=""><strong>Индексы (<code>INDEX</code>)</strong>: явные индексы БД (в основном генерируются автоматически).</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=модули-modules>Модули (Modules)<a href=#модули-modules class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Аналогия</strong>: пакет / сборка (<code>.lsf</code>-файл).</li>
+<li class=""><strong>Описание</strong>: единица переиспользования; содержит классы/свойства/действия/формы/события/ограничения; зависимости через <code>REQUIRE</code>.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>MODULE ModuleName;</code> <code>REQUIRE ModuleA, ModuleB;</code></li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=операторы-свойств>Операторы свойств<a href=#операторы-свойств class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=базовые-выражения>Базовые выражения<a href=#базовые-выражения class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: арифметика, логика, строки, сравнения, проверки типа (<code>IS</code>/<code>AS</code>), условные (<code>IF ... ELSE</code>, постфиксное <code>f(a) IF g(a)</code>).</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: стандартные операторы выражений.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=композиция-composition>Композиция (Composition)<a href=#композиция-composition class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Аналогия</strong>: вызов функции внутри функции / композиция функций в математике. Использование одного свойства в выражении другого.</li>
+<li class=""><strong>Описание</strong>: свойство-от-свойства. Обычно неявно (простая подстановка свойства в выражение).</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: использование свойств в выражениях других свойств.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=группировка-group>Группировка (<code>GROUP</code>)<a href=#группировка-group class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: агрегаты значений (sum/count/max/min/last/concat). Не агрегаты объектов.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>GROUP SUM source(...) IF Condition;</code> или <code>GROUP SUM source(...) BY groupExprs...;</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=партиционирование--окно-partition>Партиционирование / окно (<code>PARTITION</code>)<a href=#партиционирование--окно-partition class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: оконная логика: ранги, предыдущее значение, накопительные.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>PARTITION AggOp expression IF Condition ORDER orderExprs...;</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=агрегирование-объектов-group-aggr>Агрегирование объектов (<code>GROUP AGGR</code>)<a href=#агрегирование-объектов-group-aggr class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: поддерживает агрегированные объекты через <code>BY</code>.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>GROUP AGGR Class x WHERE BaseCondition BY groupExprs...;</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=оператор-aggr>Оператор <code>AGGR</code><a href=#оператор-aggr class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: создаёт/поддерживает агрегированные объекты автоматически.</li>
+<li class=""><strong>BNF</strong>: <code>aggrPropertyDefinition ::= AGGR baseEventPE customClassUsage WHERE propertyExpression (NEW baseEventNotPE)? (DELETE baseEventNotPE)?</code></li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>AGGR Class x WHERE condition(...) [NEW newEvent] [DELETE deleteEvent] [MATERIALIZED] [INDEXED];</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=override>OVERRIDE<a href=#override class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: слияние нескольких источников с приоритетом.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>OVERRIDE expr1, expr2, expr3;</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=recursion>RECURSION<a href=#recursion class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: рекурсивные свойства (деревья/графы/замыкания).</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>RECURSION baseExpr THEN stepExpr;</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=abstract>ABSTRACT<a href=#abstract class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: объявление абстрактного свойства; реализации через <code>+=</code> в других модулях.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>ABSTRACT [MODIFIERS] Type (ParamClasses...);</code> и <code>prop[Context](Params...) += implExpr;</code></li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=операторы-действий>Операторы действий<a href=#операторы-действий class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=базовые-операторы>Базовые операторы<a href=#базовые-операторы class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Мутации</strong>: присваивание (<code>&lt;-</code>), NEW, DELETE.</li>
+<li class=""><strong>Вызов действия</strong>: <strong>Аналогия</strong> — вызов функции / процедуры / метода. Просто имя действия с параметрами. Не мутация, выполняет другое действие.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>property(...) &lt;- Expression [WHERE ...];</code>, <code>NEW alias = Class { ... }</code>, <code>DELETE ... WHERE ...;</code>, <code>actionName(params...);</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=последовательность-sequence>Последовательность (Sequence)<a href=#последовательность-sequence class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: упорядоченный блок действий.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>actionName(Params...) { op1; op2; }</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=цикл-for>Цикл FOR<a href=#цикл-for class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: перебор всех кортежей, где свойство-условие не NULL; может создавать объекты.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>FOR Expression [ORDER ...] [TOP n] [OFFSET m] [NEW alias = Class] DO { ... } [ELSE { ... }]</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=цикл-while>Цикл WHILE<a href=#цикл-while class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: повторять, пока условие где-либо истинно (не NULL).</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>WHILE condition DO { ... }</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=ветвление-branching>Ветвление (Branching)<a href=#ветвление-branching class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: <code>IF</code>, <code>CASE</code>, <code>MULTI</code> (полиморфное ветвление).</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>IF ... THEN { ... } ELSE { ... }</code>, <code>CASE WHEN ...</code>, <code>MULTI impl1[p](p), impl2[p](p);</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=управление-потоком>Управление потоком<a href=#управление-потоком class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: <code>BREAK</code>, <code>CONTINUE</code>, <code>RETURN</code>, <code>TRY...CATCH</code>, <code>NEWTHREAD</code>, <code>NEWEXECUTOR</code>.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: стандартные ключевые слова управления потоком.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=действия-формы>Действия формы<a href=#действия-формы class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: <code>SHOW</code>, <code>DIALOG</code>, <code>ACTIVATE</code> (активация формы / вкладки / свойства и поиск объекта), <code>EXPAND</code>, <code>COLLAPSE</code>.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>SHOW FormName [OBJECTS ...];</code>, <code>DIALOG FormName OBJECTS ... INPUT [FILTERS ...] DO { ... }</code>, <code>ACTIVATE FORM/TAB/PROPERTY name;</code>, <code>ACTIVATE [FIRST|LAST|NULL] group = obj;</code></li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=сессии-изменений-change-sessions>Сессии изменений (Change sessions)<a href=#сессии-изменений-change-sessions class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<ul>
+<li class=""><strong>Описание</strong>: изолированный набор изменений. До <code>APPLY</code> данные локальны для сессии. На <code>APPLY</code>: успех → фиксация; неудача → <code>canceled() = TRUE</code>, в <code>applyMessage()</code> ошибка, данные остаются в сессии.</li>
+<li class=""><strong>Операции сессии</strong>: <code>NEWSESSION action</code> (независимая), <code>NESTEDSESSION</code> (зависимая вложенная). Использовать для единиц работы (диалог, импорт, обработка файла).</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=представления-формы>Представления формы<a href=#представления-формы class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=интерактивное-представление>Интерактивное представление<a href=#интерактивное-представление class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Аналогия</strong>: обычные страницы приложения, но единый поток выполнения (нет разделения языка сервер/клиент).</li>
+<li class=""><strong>Описание</strong>: <code>SHOW</code> открывает интерактивную форму; <code>DIALOG</code> модальный с <code>INPUT</code> / <code>FILTERS</code>; <code>DESIGN</code> задаёт компоновку UI. <code>INPUT</code> — запрос значения у пользователя. Реактивные обновления; WYSIWYG.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>SHOW formName [OBJECTS ...] [DOCKED];</code>, <code>DIALOG formName OBJECTS ... INPUT [FILTERS ...] DO { ... }</code>, <code>DESIGN formName { ... }</code>, <code>INPUT var = Type DO { ... }</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=печатное-представление>Печатное представление<a href=#печатное-представление class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Аналогия</strong>: отчёты (jrxml + JasperReports).</li>
+<li class=""><strong>Описание</strong>: jrxml задаёт макет печати; отчёт инициируется из lsFusion.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>PRINT formName [OBJECTS ...] TO FILE fileVar;</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=структурное-представление>Структурное представление<a href=#структурное-представление class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Аналогия</strong>: структурированные форматы данных (JSON, XML, XLSX, DBF).</li>
+<li class=""><strong>Описание</strong>: действие <code>EXPORT</code> выводит в файл/поток; свойство <code>JSON</code> строит JSON; <code>IMPORT</code> загружает обратно.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>EXPORT FROM expr1, expr2 TO fileVar;</code>, <code>prop(...) = JSON expr;</code>, <code>IMPORT JSON|CSV|XLS|XML FROM fileVar TO props...;</code></li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=интеграция>Интеграция<a href=#интеграция class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<ul>
+<li class=""><strong>Идея</strong>: одна и та же парадигма свойств/действий для внешних и внутренних систем.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=из-текущей-системы-во-внешнюю-императивно-действия>Из текущей системы во внешнюю (императивно, действия)<a href=#из-текущей-системы-во-внешнюю-императивно-действия class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: <code>EXTERNAL</code> — HTTP/внешний код/SQL как действия.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>EXTERNAL Name 'id' [OPTIONS] (Params...);</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=из-текущей-системы-во-внешнюю-декларативно-свойства>Из текущей системы во внешнюю (декларативно, свойства)<a href=#из-текущей-системы-во-внешнюю-декларативно-свойства class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: <code>CUSTOM</code> UI-компоненты с JSON-интерфейсом; <code>JSON</code> строит структуры для UI/API.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>OBJECTS alias = Class CUSTOM 'componentName' ...</code>, <code>prop(...) = JSON expr;</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=из-внешних-систем-в-текущую>Из внешних систем в текущую<a href=#из-внешних-систем-в-текущую class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: Action API — вызов действий lsFusion по HTTP. Протокол HTTP (порты <code>7651</code>). Режимы действий: <code>EXEC</code> (по имени), <code>EVAL</code> (код с действием <code>run</code>), <code>EVAL ACTION</code> (код действия). Form API — работа с формами по HTTP для фронтендов. Действия помечаются <code>@@api</code> для доступа через API.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: опция действия <code>@@api</code>, URL <code>/exec?action=...</code>, <code>/eval?script=...</code>, <code>/eval/action?script=...</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=из-текущей-системы-во-внутреннюю-императивно>Из текущей системы во внутреннюю (императивно)<a href=#из-текущей-системы-во-внутреннюю-императивно class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: <code>INTERNAL</code> — вызов Java-кода; на стороне Java использовать <code>findProperty</code>, <code>read</code>, <code>change</code>.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>INTERNAL Name 'id' [OPTIONS] (Params...);</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=из-текущей-системы-во-внутреннюю-декларативно>Из текущей системы во внутреннюю (декларативно)<a href=#из-текущей-системы-во-внутреннюю-декларативно class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Описание</strong>: <code>FORMULA</code> — свойства, вычисляемые на SQL.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>prop(...) = FORMULA 'sql expression with $1, $2, ...';</code></li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=физическая-модель-структура-бд>Физическая модель (структура БД)<a href=#физическая-модель-структура-бд class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<ul>
+<li class=""><strong>Аналогия</strong>: ручное/динамическое управление схемой БД (таблицы, индексы, материализация).</li>
+<li class=""><strong>Описание</strong>: фокус на производительности / открытой схеме.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>TABLE tableName ['dbName'] (ClassOrParams...);</code>, <code>prop = DATA Type (Class) MATERIALIZED ['dbFieldName'] INDEXED ['indexName'];</code></li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=расширения-extensions>Расширения (Extensions)<a href=#расширения-extensions class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<ul>
+<li class=""><strong>Описание</strong>: модульность/полиморфизм на уровне модуля: <code>EXTEND CLASS</code>, <code>EXTEND FORM</code>, <code>ABSTRACT</code> + <code>+=</code>, <code>ACTION+</code>.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>EXTEND CLASS ClassName : ParentClass;</code>, <code>EXTEND FORM FormName ... ;</code>, <code>prop(...) += implExpr;</code>, <code>ACTION actionName(...) + { ... }</code></li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=метапрограммирование-metaprogramming>Метапрограммирование (Metaprogramming)<a href=#метапрограммирование-metaprogramming class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<ul>
+<li class=""><strong>Аналогия</strong>: генераторы кода/шаблоны в языке.</li>
+<li class=""><strong>Описание</strong>: оператор <code>@</code> генерирует код из описаний; IDE может автогенерировать.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>@metaName { ... }</code></li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=идентификация-и-эргономика>Идентификация и эргономика<a href=#идентификация-и-эргономика class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<ul>
+<li class=""><strong>Пространства имён</strong>: управляют видимыми именами. <strong>Синтаксис (поиск)</strong>: <code>NAMESPACE MyNamespace;</code></li>
+<li class=""><strong>Явная типизация</strong>: параметры/локальные свойства типизированы. <strong>Синтаксис (поиск)</strong>: <code>LOCAL var = Type ();</code></li>
+<li class=""><strong>Интерполяция строк</strong>: построение строк из идентификаторов/значений (также для i18n). <strong>Синтаксис (поиск)</strong>: <code>'{namespace.element}'</code></li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=интернационализация>Интернационализация<a href=#интернационализация class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<ul>
+<li class=""><strong>Описание</strong>: заголовки через resource bundles (<code>*ResourceBundle.properties</code>). Использовать идентификаторы вида <code>{use.case.i18n.book}</code>; UI переключает язык автоматически.</li>
+<li class=""><strong>Синтаксис (поиск)</strong>: <code>CLASS Book '{use.case.i18n.book}';</code></li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=миграция>Миграция<a href=#миграция class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<ul>
+<li class=""><strong>Описание</strong>: файлы миграции описывают эволюцию схемы/данных; IDE автогенерирует строки при переименованиях; безопасная эволюция БД.</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=мини-карта-для-ии>Мини-карта для ИИ<a href=#мини-карта-для-ии class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<ol>
+<li class=""><code>CLASS</code> → тип объекта (таблица).</li>
+<li class=""><code>= DATA</code> или <code>=</code> выражение → свойство.</li>
+<li class=""><code>{ ... }</code> без <code>=</code> → действие (императивно).</li>
+<li class=""><code>FORM</code> → определение UI/запроса/отчёта.</li>
+<li class=""><code>SHOW / DIALOG / PRINT</code> → открыть/печатать форму.</li>
+<li class=""><code>EXPORT / IMPORT</code> → внешние форматы для свойств/форм.</li>
+<li class=""><code>GROUP / PARTITION</code> → агрегаты значений.</li>
+<li class=""><code>GROUP AGGR / AGGR</code> → агрегированные объекты.</li>
+<li class=""><code>NEWSESSION / APPLY / canceled()</code> → управление транзакцией/сессией.</li>
+<li class=""><code>EXTEND / ABSTRACT / += / +{</code> → точки расширения и полиморфизма.</li>
+<li class=""><code>WHEN</code> → событие изменения данных; <code>ON</code> → событие формы.</li>
+</ol></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href=https://github.com/lsfusion/platform/edit/master/docs/ru/brief/Brief.md target=_blank rel="noopener noreferrer" class=theme-edit-this-page><svg fill=currentColor height=20 width=20 viewBox="0 0 40 40" class=iconEdit_Z9Sw aria-hidden=true><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"/></g></svg>Отредактировать эту страницу</a></div><div class="col lastUpdated_JAkA"><span class=theme-last-updated>Последнее обновление<!-- --> <b><time datetime=2026-05-22T23:43:29.000Z itemprop=dateModified>22 мая 2026 г.</time></b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Навигация по странице документации"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#краткий-обзор-элементов-lsfusion-для-ии-агентов class="table-of-contents__link toc-highlight">Краткий обзор элементов lsFusion для ИИ-агентов</a><li><a href=#базовые-элементы-от-простых-к-сложным class="table-of-contents__link toc-highlight">Базовые элементы (от простых к сложным)</a><ul><li><a href=#классы-classes class="table-of-contents__link toc-highlight">Классы (Classes)</a><li><a href=#свойства-properties class="table-of-contents__link toc-highlight">Свойства (Properties)</a><li><a href=#действия-actions class="table-of-contents__link toc-highlight">Действия (Actions)</a><li><a href=#формы-forms class="table-of-contents__link toc-highlight">Формы (Forms)</a><li><a href=#события-events class="table-of-contents__link toc-highlight">События (Events)</a><li><a href=#ограничения-constraints class="table-of-contents__link toc-highlight">Ограничения (Constraints)</a><li><a href=#агрегации-aggregations class="table-of-contents__link toc-highlight">Агрегации (Aggregations)</a><li><a href=#дополнительные-элементы class="table-of-contents__link toc-highlight">Дополнительные элементы</a><li><a href=#модули-modules class="table-of-contents__link toc-highlight">Модули (Modules)</a></ul><li><a href=#операторы-свойств class="table-of-contents__link toc-highlight">Операторы свойств</a><ul><li><a href=#базовые-выражения class="table-of-contents__link toc-highlight">Базовые выражения</a><li><a href=#композиция-composition class="table-of-contents__link toc-highlight">Композиция (Composition)</a><li><a href=#группировка-group class="table-of-contents__link toc-highlight">Группировка (<code>GROUP</code>)</a><li><a href=#партиционирование--окно-partition class="table-of-contents__link toc-highlight">Партиционирование / окно (<code>PARTITION</code>)</a><li><a href=#агрегирование-объектов-group-aggr class="table-of-contents__link toc-highlight">Агрегирование объектов (<code>GROUP AGGR</code>)</a><li><a href=#оператор-aggr class="table-of-contents__link toc-highlight">Оператор <code>AGGR</code></a><li><a href=#override class="table-of-contents__link toc-highlight">OVERRIDE</a><li><a href=#recursion class="table-of-contents__link toc-highlight">RECURSION</a><li><a href=#abstract class="table-of-contents__link toc-highlight">ABSTRACT</a></ul><li><a href=#операторы-действий class="table-of-contents__link toc-highlight">Операторы действий</a><ul><li><a href=#базовые-операторы class="table-of-contents__link toc-highlight">Базовые операторы</a><li><a href=#последовательность-sequence class="table-of-contents__link toc-highlight">Последовательность (Sequence)</a><li><a href=#цикл-for class="table-of-contents__link toc-highlight">Цикл FOR</a><li><a href=#цикл-while class="table-of-contents__link toc-highlight">Цикл WHILE</a><li><a href=#ветвление-branching class="table-of-contents__link toc-highlight">Ветвление (Branching)</a><li><a href=#управление-потоком class="table-of-contents__link toc-highlight">Управление потоком</a><li><a href=#действия-формы class="table-of-contents__link toc-highlight">Действия формы</a></ul><li><a href=#сессии-изменений-change-sessions class="table-of-contents__link toc-highlight">Сессии изменений (Change sessions)</a><li><a href=#представления-формы class="table-of-contents__link toc-highlight">Представления формы</a><ul><li><a href=#интерактивное-представление class="table-of-contents__link toc-highlight">Интерактивное представление</a><li><a href=#печатное-представление class="table-of-contents__link toc-highlight">Печатное представление</a><li><a href=#структурное-представление class="table-of-contents__link toc-highlight">Структурное представление</a></ul><li><a href=#интеграция class="table-of-contents__link toc-highlight">Интеграция</a><ul><li><a href=#из-текущей-системы-во-внешнюю-императивно-действия class="table-of-contents__link toc-highlight">Из текущей системы во внешнюю (императивно, действия)</a><li><a href=#из-текущей-системы-во-внешнюю-декларативно-свойства class="table-of-contents__link toc-highlight">Из текущей системы во внешнюю (декларативно, свойства)</a><li><a href=#из-внешних-систем-в-текущую class="table-of-contents__link toc-highlight">Из внешних систем в текущую</a><li><a href=#из-текущей-системы-во-внутреннюю-императивно class="table-of-contents__link toc-highlight">Из текущей системы во внутреннюю (императивно)</a><li><a href=#из-текущей-системы-во-внутреннюю-декларативно class="table-of-contents__link toc-highlight">Из текущей системы во внутреннюю (декларативно)</a></ul><li><a href=#физическая-модель-структура-бд class="table-of-contents__link toc-highlight">Физическая модель (структура БД)</a><li><a href=#расширения-extensions class="table-of-contents__link toc-highlight">Расширения (Extensions)</a><li><a href=#метапрограммирование-metaprogramming class="table-of-contents__link toc-highlight">Метапрограммирование (Metaprogramming)</a><li><a href=#идентификация-и-эргономика class="table-of-contents__link toc-highlight">Идентификация и эргономика</a><li><a href=#интернационализация class="table-of-contents__link toc-highlight">Интернационализация</a><li><a href=#миграция class="table-of-contents__link toc-highlight">Миграция</a><li><a href=#мини-карта-для-ии class="table-of-contents__link toc-highlight">Мини-карта для ИИ</a></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Документация</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/ru/>lsf документация</a><li class=footer__item><a href=https://lsfusion.org/ru/ed_materials target=_blank rel="noopener noreferrer" class=footer__link-item>Обучающие материалы<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Сообщество</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://t.me/lsfusion_official target=_blank rel="noopener noreferrer" class=footer__link-item>Telegram<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://join.slack.com/t/lsfusion/shared_invite/zt-1itj7vlmf-9aBIP__nj9iMJglDaecqXg target=_blank rel="noopener noreferrer" class=footer__link-item>Slack<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://ru.stackoverflow.com/questions/tagged/lsfusion target=_blank rel="noopener noreferrer" class=footer__link-item>Stack Overflow<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Другое</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://habr.com/ru/company/lsfusion/blog/ target=_blank rel="noopener noreferrer" class=footer__link-item>Хабр<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://github.com/lsfusion/platform target=_blank rel="noopener noreferrer" class=footer__link-item>GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div></div><div class="footer__bottom text--center"><div class=footer__copyright>Copyright © 2026 lsFusion Foundation. Built with Docusaurus.</div></div></div></footer></div></body>
