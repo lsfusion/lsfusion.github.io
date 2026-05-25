@@ -2,7 +2,7 @@
 
 The eval operator creates an action that executes defined program code in the **lsFusion** language. Program code is defined as a property whose value should belong to the string class. This is implemented using an [action](/Actions/.md) which takes a line of code as an argument.
 
-The code that is passed to an action must be a sequence of [statements](/Statements/.md). It is assumed that one of these statements will create an action named `run` (it is this action that will be executed).
+The code that is passed to an action must be a sequence of statements. It is assumed that one of these statements will create an action named `run` (it is this action that will be executed).
 
 ### Action execution[​](#action-execution "Direct link to Action execution")
 

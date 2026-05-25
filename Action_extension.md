@@ -53,7 +53,7 @@ If an abstract action has at least one implementation with this marker, those im
 
 ### Polymorphic form[​](#poly "Direct link to Polymorphic form")
 
-As in the [branch operator](/Branching_CASE_IF_MULTI/.md#poly), an abstract action also has a *polymorphic form*: the condition can be omitted and replaced with [matching the signature](/Property_signature_ISCLASS/.md) of the corresponding action.
+As in the [branch operator](/Branching_CASE_IF_MULTI/.md#poly), an abstract action also has a *polymorphic form*: the condition can be omitted and replaced with matching the signature of the corresponding action.
 
 ### Mutual exclusion of conditions[​](#exclusive "Direct link to Mutual exclusion of conditions")
 

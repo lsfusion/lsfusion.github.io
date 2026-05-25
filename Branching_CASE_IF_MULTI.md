@@ -6,7 +6,7 @@ All conditions are defined as [properties](/Properties/.md) and/or parameters. A
 
 ### Polymorphic form[​](#poly "Direct link to Polymorphic form")
 
-This operator also allows to define a condition not explicitly but by using as a condition the [signature](/Property_signature_ISCLASS/.md) of the action corresponding to that condition. We will call this the *polymorphic* form of the operator.
+This operator also allows to define a condition not explicitly but by using as a condition the signature of the action corresponding to that condition. We will call this the *polymorphic* form of the operator.
 
 ### Mutual exclusion of conditions[​](#exclusive "Direct link to Mutual exclusion of conditions")
 

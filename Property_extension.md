@@ -44,7 +44,7 @@ An implementation must not narrow the signature of the abstract property. In par
 
 ### Polymorphic form[​](#poly "Direct link to Polymorphic form")
 
-As in a [selection operator](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md#poly), an abstract property also has a *polymorphic form*: one property defines both the selection condition and the corresponding result. In this form, the condition can be either matching the [signature](/Property_signature_ISCLASS/.md) of that property or the property itself.
+As in a [selection operator](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md#poly), an abstract property also has a *polymorphic form*: one property defines both the selection condition and the corresponding result. In this form, the condition can be either matching the signature of that property or the property itself.
 
 ### Mutual exclusion of conditions[​](#exclusive "Direct link to Mutual exclusion of conditions")
 

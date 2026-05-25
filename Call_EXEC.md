@@ -4,7 +4,7 @@ The `EXEC` operator creates an [action](/Actions/.md) that executes another acti
 
 If the executed action has a [result](/Actions/.md), that result can be written into a property. If the result depends on additional parameters, the target property must have the same parameter classes.
 
-Actions that return a result can also be used [inside expressions](/Expression/.md) in an action body — in that case the result is substituted into the expression at the position of the call.
+Actions that return a result can also be used when setting other properties in an action body — in that case the result is substituted at the position of the call.
 
 ### Language[​](#language "Direct link to Language")
 

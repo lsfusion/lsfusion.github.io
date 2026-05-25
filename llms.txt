@@ -190,7 +190,7 @@
 
 ## Change_operators_SET_CHANGED_etc
 
-- [Change operators (SET, CHANGED, ...)](/Change_operators_SET_CHANGED_etc.md): Change operators determine whether some types of changes have occurred for a given expression in the current session. All these operators are derived from the previous value operator (PREV), however, it is recommended to use them to improve readability and performance.
+- [Change operators (SET, CHANGED, ...)](/Change_operators_SET_CHANGED_etc.md): Change operators determine whether some types of changes have occurred for a given property in the current session. All these operators are derived from the previous value operator (PREV), however, it is recommended to use them to improve readability and performance.
 
 ## Change_operators
 
@@ -1122,7 +1122,7 @@
 
 ## Previous_value_PREV
 
-- [Previous value (PREV)](/Previous_value_PREV.md): The previous value operator creates a property that returns the value of the given expression at the beginning of the change session (that is, the current value in the database, ignoring any changes that have been made in the session). Together with the change operators — which are derived from it — this operator is what makes session-local change tracking possible: it gives access to the "before" state that the current session is being compared against.
+- [Previous value (PREV)](/Previous_value_PREV.md): The previous value operator creates a property that returns the value of the given property at the beginning of the change session (that is, the current value in the database, ignoring any changes that have been made in the session). Together with the change operators — which are derived from it — this operator is what makes session-local change tracking possible: it gives access to the "before" state that the current session is being compared against.
 
 ## Primitive_input_INPUT
 
