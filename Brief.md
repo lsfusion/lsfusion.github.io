@@ -201,8 +201,8 @@ Format: **very concise**, for understanding and code generation. Detailed descri
 
 ### From external systems to current[​](#from-external-systems-to-current "Direct link to From external systems to current")
 
-* **Description**: Action API — call lsFusion actions via HTTP. Protocol HTTP (ports `7651`). Action modes: `EXEC` (by name), `EVAL` (code with action `run`), `EVAL ACTION` (action code). Form API — work with forms via HTTP for frontends. Actions marked `@@api` for API access.
-* **Syntax (search)**: action option `@@api`, URLs `/exec?action=...`, `/eval?script=...`, `/eval/action?script=...`
+* **Description**: Action API — call lsFusion actions via HTTP. Protocol HTTP (ports `7651`). Action modes: `EXEC` (by name), `EVAL` (code with action `run`), `EVAL ACTION` (action code). Form API — work with forms via HTTP for frontends. File API — browse the server classpath via HTTP (`list`/`read`/`search`), web server only. Actions marked `@@api` for API access.
+* **Syntax (search)**: action option `@@api`, URLs `/exec?action=...`, `/eval?script=...`, `/eval/action?script=...`, `/files/list`, `/files/read`, `/files/search`
 
 ### From current system to internal (imperative)[​](#from-current-system-to-internal-imperative "Direct link to From current system to internal (imperative)")
 
