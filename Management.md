@@ -20,6 +20,10 @@ Contains a description of the settings for accessing system elements depending o
 
 Describes the mechanisms that enable you to run actions on a schedule.
 
+### [Backups](/Backup_restore/.md)[​](#backups "Direct link to backups")
+
+Describes how to create full and partial database backups, retain them, and restore data — fully or selectively — from a backup.
+
 ### [Journals and logs](/Journals_and_logs/.md)[​](#journals-and-logs "Direct link to journals-and-logs")
 
 Contains a description of journals and logs with detailed information on events that occurred in the system.

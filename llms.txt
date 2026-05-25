@@ -124,9 +124,17 @@
 
 - [ASK operator](/ASK_operator.md): The ASK operator creates an action that asks the user a question or requests confirmation in a dialog form.
 
+## ASYNCUPDATE_operator
+
+- [ASYNCUPDATE operator](/ASYNCUPDATE_operator.md): The ASYNCUPDATE operator creates an action that implements asynchronous update.
+
 ## Automatic_installation
 
 - [Install automatically](/Automatic_installation.md): For development
+
+## Backup_restore
+
+- [Backups](/Backup_restore.md): The platform creates database backups by calling the standard PostgreSQL utility pgdump, and restores selected tables of a backup by calling pgrestore into a temporary database. Backup management is performed in the Administration > System > Scheduler > Backup menu (Fig. 1.). Selective restore is performed in the Administration > System > Scheduler > Data recovery menu.
 
 ## BEFORE_statement
 
@@ -210,7 +218,7 @@
 
 ## Class_change_CHANGECLASS_DELETE
 
-- [Class change (CHANGECLASS, DELETE)](/Class_change_CHANGECLASS_DELETE.md): The class change operator creates an action that assigns the given class to all objects where value of a particular property (condition) is not equal to NULL. The condition can be omitted, in which case it is considered to be equal to TRUE.
+- [Class change (CHANGECLASS, DELETE)](/Class_change_CHANGECLASS_DELETE.md): The class change operator creates an action that assigns a target class to all objects matching a condition. The condition is an expression of the same arguments as the object expression; it may be omitted, in which case it is considered to always hold. The target class must be a concrete custom class.
 
 ## Class_extension
 
@@ -1014,7 +1022,7 @@
 
 ## New_object_NEW
 
-- [New object (NEW)](/New_object_NEW.md): The new object operator creates an action that creates objects of a specified custom class for object collections where the value of some property (condition) is not NULL. The condition can be omitted, in which case it is considered to be equal to TRUE.
+- [New object (NEW)](/New_object_NEW.md): The new object operator creates an action that creates objects of a specified custom class and optionally writes each created object to a data property. The target class must be a concrete custom class — an object cannot be added to the system without a known concrete class.
 
 ## NEW_operator
 
@@ -1158,7 +1166,7 @@
 
 ## Property_change_CHANGE
 
-- [Property change (CHANGE)](/Property_change_CHANGE.md): The property change operator allows you to change the values of one property (write) to the value of another property (read) for all object collections for which the value of a third property (condition) is not NULL. The condition can be omitted (in which case it is considered to be equal to TRUE).
+- [Property change (CHANGE)](/Property_change_CHANGE.md): The property change operator creates an action that writes the value of an expression (source) into a property (destination) for every set of arguments where a third expression (condition) is not NULL. The condition may be omitted; in that case it is considered to always hold.
 
 ## Property_extension
 
@@ -1282,7 +1290,7 @@
 
 ## State_change
 
-- [State change](/State_change.md): System state change operators include the following.
+- [State change](/State_change.md): The state-change operators create actions that modify the state of the system in which the action runs. The platform provides the following kinds.
 
 ## Statements
 

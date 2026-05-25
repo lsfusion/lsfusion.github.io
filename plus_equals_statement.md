@@ -12,9 +12,11 @@ abstractProperty(param1, ..., paramN) +=
 
 ### Description[​](#description "Direct link to Description")
 
-The `+=` statement does not create a new property, but adds another implementation to an already declared [abstract property](/Property_extension/.md).
+The `+=` statement does not create a new property. It adds another implementation to an already declared abstract property.
 
-For an abstract property of type `CASE`, the `WHEN conditionExpr THEN implementationExpr` form is used. For abstract properties of types `MULTI` and `VALUE`, the implementation is written without the `WHEN ... THEN` block.
+For an abstract property of type `CASE`, the `WHEN conditionExpr THEN` block is required. For abstract properties of types `MULTI` and `VALUE`, the `WHEN ... THEN` block is not used and the implementation expression appears directly after `+=`.
+
+The position of the added implementation in the abstract property's [implementation list](/Property_extension/.md#poly) is determined by the abstract property's `OVERRIDE FIRST` / `OVERRIDE LAST` setting; see the [`ABSTRACT` operator](/ABSTRACT_operator/.md) for the available modes.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
@@ -24,15 +26,15 @@ For an abstract property of type `CASE`, the `WHEN conditionExpr THEN implementa
 
 * `param1, ..., paramN`
 
-  List of [typed parameters](/IDs/.md#paramid) of the implementation being added. It defines its signature. The list may be empty. The number of parameters and their classes must be compatible with the signature of the abstract property. These parameters can be used in `implementationExpr` and, for the `CASE` form, in `conditionExpr`.
-
-* `implementationExpr`
-
-  [Expression](/Expression/.md) for the property implementation. Its result class must be compatible with the result class of the abstract property.
+  List of [typed parameters](/IDs/.md#paramid) of the implementation being added; defines its signature. The list may be empty. The number of parameters and their classes must be compatible with the signature of the abstract property. These parameters can be used in `implementationExpr` and, for the `CASE` form, in `conditionExpr`.
 
 * `conditionExpr`
 
   [Expression](/Expression/.md) for the selection condition of this implementation. Used only for an abstract property of type `CASE`.
+
+* `implementationExpr`
+
+  Expression for the implementation. Its result class must be compatible with the result class of the abstract property.
 
 ### Examples[​](#examples "Direct link to Examples")
 
@@ -51,7 +53,7 @@ name(BClass b) = 'B' + innerName(b);
 name(CClass c) = 'C' + innerName(c);
 
 name[AClass](BClass b) += name(b);
-name(CClass c) += name(c); 
+name(CClass c) += name(c);
 name(DClass d) += 'DClass' + innerName(d) IF d IS DClass;
 ```
 
