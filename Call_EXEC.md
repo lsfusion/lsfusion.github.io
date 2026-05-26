@@ -1,14 +1,14 @@
 # Call (EXEC)
 
-The `EXEC` operator creates an [action](/Actions/.md) that executes another action, passing it specified argument values.
+The *action call* operator creates an [action](/Actions/.md) that executes another action, passing it specified argument values for its parameters.
 
-If the executed action has a [result](/Actions/.md), that result can be written into a property. If the result depends on additional parameters, the target property must have the same parameter classes.
+If the called action has a [result](/Actions/.md), that result can be written into a property at the call site. When the result is itself a property of additional parameters, this property must have those same parameter classes.
 
-Actions that return a result can also be used when setting other properties in an action body — in that case the result is substituted at the position of the call.
+Actions that return a result can also be used as a value — the result is substituted at the position of the call.
 
 ### Language[​](#language "Direct link to Language")
 
-[Syntax of the `EXEC` operator](/EXEC_operator/.md).
+The syntax of the action call operator is described by the [`EXEC` operator](/EXEC_operator/.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

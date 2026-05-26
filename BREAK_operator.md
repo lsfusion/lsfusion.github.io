@@ -10,7 +10,7 @@ BREAK
 
 ### Description[​](#description "Direct link to Description")
 
-The `BREAK` operator creates an action that exits the most nested loop within which it is located.
+The `BREAK` operator creates an action that exits the innermost enclosing loop.
 
 ### Examples[​](#examples "Direct link to Examples")
 

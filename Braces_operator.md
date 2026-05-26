@@ -1,6 +1,6 @@
 # {...} operator
 
-The `{...}` operator creates [actions](/Actions/.md) that executes a [sequence of other actions](/Sequence/.md).
+The `{...}` operator creates an [action](/Actions/.md) that implements a [sequence of other actions](/Sequence/.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -16,7 +16,7 @@ Operators can be of two types:
 
 ```
 actionOperator
-LOCAL [NESTED [MANAGESESSION | NOMANAGESESSION]] name1, ..., nameN = returnClass (paramClass1, ..., paramClassN)
+LOCAL [NESTED [manageType]] name1, ..., nameN = returnClass (paramClass1, ..., paramClassN)
 ```
 
 ### Description[​](#description "Direct link to Description")
@@ -33,12 +33,12 @@ A sequence of [action operators](/Action_operators/.md) and `LOCAL` operators en
 
   A keyword that marks the local property as [nested](/Session_management/.md#nested). Without additional modifiers, the property is treated as nested both when crossed by [`NEWSESSION`](/NEWSESSION_operator/.md) and during [`APPLY`](/APPLY_operator/.md) / [`CANCEL`](/CANCEL_operator/.md). Same semantics as in the [`DATA` operator](/DATA_operator/.md).
 
-* `MANAGESESSION` | `NOMANAGESESSION`
+* `manageType`
 
-  Keywords that can only be used after `NESTED`.
+  Determines when the nested property's values are preserved:
 
-  * `MANAGESESSION` means the property is treated as nested only for `APPLY` / `CANCEL`.
-  * `NOMANAGESESSION` means the property is treated as nested only when crossed by `NEWSESSION`.
+  * `MANAGESESSION` - the property is treated as nested only for [`APPLY`](/APPLY_operator/.md) / [`CANCEL`](/CANCEL_operator/.md).
+  * `NOMANAGESESSION` - the property is treated as nested only when crossed by [`NEWSESSION`](/NEWSESSION_operator/.md).
 
 * `name1, ..., nameN`
 
@@ -48,9 +48,9 @@ A sequence of [action operators](/Action_operators/.md) and `LOCAL` operators en
 
   The [class ID](/IDs/.md#classid) of the returned value of the local property.
 
-* `argumentClass1, ..., argumentClassN`
+* `paramClass1, ..., paramClassN`
 
-  A list of argument class ID's of the local property.
+  A list of parameter class ID's of the local property.
 
 ### Examples[​](#examples "Direct link to Examples")
 

@@ -1,6 +1,6 @@
 # Оператор {...}
 
-Оператор `{...}` - создание [действия](/ru/Actions/.md), выполняющего [последовательность других действий](/ru/Sequence/.md).
+Оператор `{...}` создает [действие](/ru/Actions/.md), реализующее [последовательность других действий](/ru/Sequence/.md).
 
 ### Синтаксис[​](#синтаксис "Прямая ссылка на этот заголовок")
 
@@ -16,7 +16,7 @@
 
 ```
 actionOperator
-LOCAL [NESTED [MANAGESESSION | NOMANAGESESSION]] name1, ..., nameN = returnClass (paramClass1, ..., paramClassN)
+LOCAL [NESTED [manageType]] name1, ..., nameN = returnClass (paramClass1, ..., paramClassN)
 ```
 
 ### Описание[​](#описание "Прямая ссылка на этот заголовок")
@@ -33,12 +33,12 @@ LOCAL [NESTED [MANAGESESSION | NOMANAGESESSION]] name1, ..., nameN = returnClass
 
   Ключевое слово, помечающее локальное свойство как [вложенное](/ru/Session_management/.md#nested). Без дополнительных модификаторов свойство трактуется как вложенное и при пересечении [`NEWSESSION`](/ru/NEWSESSION_operator/.md), и при выполнении [`APPLY`](/ru/APPLY_operator/.md) / [`CANCEL`](/ru/CANCEL_operator/.md). Семантика та же, что и в [операторе `DATA`](/ru/DATA_operator/.md).
 
-* `MANAGESESSION` | `NOMANAGESESSION`
+* `manageType`
 
-  Ключевые слова, которые могут указываться только после `NESTED`.
+  Определяет, когда сохраняются значения вложенного свойства:
 
-  * `MANAGESESSION` означает, что свойство трактуется как вложенное только для `APPLY` / `CANCEL`.
-  * `NOMANAGESESSION` означает, что свойство трактуется как вложенное только при пересечении `NEWSESSION`.
+  * `MANAGESESSION` - свойство трактуется как вложенное только для [`APPLY`](/ru/APPLY_operator/.md) / [`CANCEL`](/ru/CANCEL_operator/.md).
+  * `NOMANAGESESSION` - свойство трактуется как вложенное только при пересечении [`NEWSESSION`](/ru/NEWSESSION_operator/.md).
 
 * `name1, ..., nameN`
 
@@ -48,9 +48,9 @@ LOCAL [NESTED [MANAGESESSION | NOMANAGESESSION]] name1, ..., nameN = returnClass
 
   [Идентификатор класса](/ru/IDs/.md#classid) возвращаемого значения локального свойства.
 
-* `argumentClass1, ..., argumentClassN`
+* `paramClass1, ..., paramClassN`
 
-  Список идентификаторов классов аргументов локального свойства.
+  Список идентификаторов классов параметров локального свойства.
 
 ### Примеры[​](#примеры "Прямая ссылка на этот заголовок")
 

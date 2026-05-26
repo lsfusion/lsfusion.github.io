@@ -142,7 +142,7 @@
 
 ## Braces_operator
 
-- [{...} operator](/Braces_operator.md): The {...} operator creates actions that executes a sequence of other actions.
+- [{...} operator](/Braces_operator.md): The {...} operator creates an action that implements a sequence of other actions.
 
 ## Brackets_operator
 
@@ -170,7 +170,7 @@
 
 ## Call_EXEC
 
-- [Call (EXEC)](/Call_EXEC.md): The EXEC operator creates an action that executes another action, passing it specified argument values.
+- [Call (EXEC)](/Call_EXEC.md): The action call operator creates an action that executes another action, passing it specified argument values for its parameters.
 
 ## Cancel_changes_CANCEL
 
@@ -286,7 +286,7 @@
 
 ## CONTINUE_operator
 
-- [CONTINUE operator](/CONTINUE_operator.md): The CONTINUE operator creates an action that implements move to the next iteration of the cycle.
+- [CONTINUE operator](/CONTINUE_operator.md): The CONTINUE operator creates an action that implements a move to the next iteration of the loop.
 
 ## Custom_formula_FORMULA
 
@@ -386,7 +386,7 @@
 
 ## Exception_handling_TRY
 
-- [Exception handling (TRY)](/Exception_handling_TRY.md): The exception handling operator enables you to execute an action and do the following if an error (exception) occurs:
+- [Exception handling (TRY)](/Exception_handling_TRY.md): The exception handling operator creates an action that runs another action with exception handling.
 
 ## EXCLUSIVE_operator
 
@@ -414,7 +414,7 @@
 
 ## Exit_RETURN
 
-- [Exit (RETURN)](/Exit_RETURN.md): The exit operator creates an action that exits from the inmost action call. Control is passed to the first action following that call operator.
+- [Exit (RETURN)](/Exit_RETURN.md): The exit operator creates an action that exits from the innermost enclosing action call. Control is passed to the first action following that call operator.
 
 ## EXPAND_operator
 
@@ -862,7 +862,7 @@
 
 ## Interruption_BREAK
 
-- [Interruption (BREAK)](/Interruption_BREAK.md): The interrupt operator creates an action that exits the most nested loop (normal or recursive) within which this action is located. Control is transferred to the first action following the loop. If the created action is not inside a loop, its behavior becomes similar to the action created by the exit operator.
+- [Interruption (BREAK)](/Interruption_BREAK.md): The interrupt operator creates an action that exits the innermost enclosing loop (normal or recursive) within which this action is located. Control is transferred to the first action following the loop. If the created action is not inside a loop, it exits the innermost enclosing action call, as the exit operator does.
 
 ## IS_AS_operators
 
@@ -1054,7 +1054,7 @@
 
 ## Next_iteration_CONTINUE
 
-- [Next iteration (CONTINUE)](/Next_iteration_CONTINUE.md): The next iteration operator creates an action that skips the execution of the remaining code in the current iteration and moves to the next iteration of the loop (normal or recursive). If the created action is not inside a loop, its behavior becomes similar to the action created by the exit operator.
+- [Next iteration (CONTINUE)](/Next_iteration_CONTINUE.md): The next iteration operator creates an action that skips the execution of the remaining code in the current iteration and moves to the next iteration of the innermost enclosing loop (normal or recursive). If the created action is not inside a loop, it exits the innermost enclosing action call, as the exit operator does.
 
 ## Object_blocks
 
@@ -1206,7 +1206,7 @@
 
 ## Recursive_loop_WHILE
 
-- [Recursive loop (WHILE)](/Recursive_loop_WHILE.md): The recursive loop operator is similar to a regular loop operator, with the only difference being that iteration is performed recursively until at a certain point the set of objects collections satisfying the condition becomes empty. As a result, there is no sense in defining alternative actions with this operator.
+- [Recursive loop (WHILE)](/Recursive_loop_WHILE.md): The recursive loop operator is similar to a regular loop operator, with the only difference being that iteration is performed recursively until at a certain point the set of objects collections satisfying the condition becomes empty. This operator does not allow an alternative action.
 
 ## Report_design
 
@@ -1218,7 +1218,7 @@
 
 ## RETURN_operator
 
-- [RETURN operator](/RETURN_operator.md): The RETURN operator creates an action that implements exit from an action created by the EXEC operator.
+- [RETURN operator](/RETURN_operator.md): The RETURN operator creates an action that implements exit from an action call.
 
 ## ROUND_operator
 
@@ -1262,7 +1262,7 @@
 
 ## Sequence
 
-- [Sequence ({...})](/Sequence.md): To create an action that performs a sequence of other actions, the {...} operator is used - a block enclosed by curly brackets. The body of this block must contain a sequence of action operators and local property declarations.
+- [Sequence ({...})](/Sequence.md): The sequence operator creates an action that runs a sequence of other actions one after another, in the written order. Execution stops as soon as one of the contained actions raises an interruption, next iteration or exit signal — the remaining actions are skipped and the signal is passed on to the surrounding action.
 
 ## Session_management
 
