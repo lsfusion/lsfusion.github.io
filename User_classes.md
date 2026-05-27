@@ -20,7 +20,7 @@ The platform allows changing the class of an existing object. Since objects can 
 
 ### Common ancestor[​](#commonparentclass "Direct link to Common ancestor")
 
-As a common ancestor for several custom classes, the platform selects a class from which all these classes are inherited, and the total number of "steps" of inheritance to these classes is minimal (that is, the closest class is selected).
+As a common ancestor for several custom classes, the platform selects a class from which all these classes are inherited, and the total number of "steps" of inheritance to these classes is minimal (that is, the closest class is selected). Such a class always exists, since in the worst case it is the `System.Object` class.
 
 ### Language[​](#language "Direct link to Language")
 

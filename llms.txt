@@ -238,7 +238,7 @@
 
 ## Classification_IS_AS
 
-- [Classification (IS/AS)](/Classification_IS_AS.md): Classification operators create properties that determine whether an object belongs to the class specified. If the property argument does not belong to the class specified in the operator, the property returns NULL. Otherwise, the operator IS returns TRUE, and the operator AS returns the object passed as an argument.
+- [Classification (IS/AS)](/Classification_IS_AS.md): Classification operators create properties that determine whether an object belongs to the class specified, which can be a user class or a built-in class. The value of the created property depends on whether the object belongs to that class:
 
 ## Coding_conventions
 
@@ -866,7 +866,7 @@
 
 ## IS_AS_operators
 
-- [IS, AS operators](/IS_AS_operators.md): IS, AS operators create an action that implements classification.
+- [IS, AS operators](/IS_AS_operators.md): IS, AS operators create a property that implements classification.
 
 ## ISCLASS_operator
 

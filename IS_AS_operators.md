@@ -1,6 +1,6 @@
 # IS, AS operators
 
-`IS`, `AS` operators create an [action](/Properties/.md) that implements [classification](/Classification_IS_AS/.md).
+`IS`, `AS` operators create a [property](/Properties/.md) that implements [classification](/Classification_IS_AS/.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -11,7 +11,7 @@ expression AS className
 
 ### Description[​](#description "Direct link to Description")
 
-The `IS` operator creates an action which returns `TRUE` if the value of the [expression](/Expression/.md) belongs to the specified class.
+The `IS` operator creates a property which returns `TRUE` if the value of the [expression](/Expression/.md) belongs to the specified class.
 
 The `AS` operator creates a property which returns the expression value if this value belongs to the specified class.
 
