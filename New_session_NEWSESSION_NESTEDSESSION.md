@@ -1,6 +1,6 @@
 # New session (NEWSESSION, NESTEDSESSION)
 
-The new [session](/Change_sessions/.md) operator allows you to execute an action in a session different from the current one.
+The new [session](/Change_sessions/.md) operator executes an action in a session different from the current one.
 
 As with other session management operators, you can explicitly specify [nested local properties](/Session_management/.md#nested) when creating a new session — this lets you list which local properties of the current session are migrated into the new one. When creating a [nested session](#nested) this is not needed — it copies the entire current session into the nested one anyway.
 
@@ -17,7 +17,7 @@ By default a new session uses the same SQL connection as the current one. When n
 
 On a separate SQL connection, the new session inherits neither local properties nor class changes from the current one.
 
-This option takes effect when the operator runs outside an already-running apply transaction of the current session: inside an `APPLY` transaction the platform falls back to recursive apply and does not open a separate SQL connection.
+This option takes effect when the operator runs outside an already-running apply transaction of the current session: inside such a transaction the platform falls back to recursive apply and does not open a separate SQL connection.
 
 ### Language[​](#language "Direct link to Language")
 

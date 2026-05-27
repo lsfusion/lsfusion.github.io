@@ -1030,7 +1030,7 @@
 
 ## New_session_NEWSESSION_NESTEDSESSION
 
-- [New session (NEWSESSION, NESTEDSESSION)](/New_session_NEWSESSION_NESTEDSESSION.md): The new session operator allows you to execute an action in a session different from the current one.
+- [New session (NEWSESSION, NESTEDSESSION)](/New_session_NEWSESSION_NESTEDSESSION.md): The new session operator executes an action in a session different from the current one.
 
 ## New_threads_NEWTHREAD_NEWEXECUTOR
 
@@ -1266,7 +1266,7 @@
 
 ## Session_management
 
-- [Session management](/Session_management.md): The system has the following operators for working with sessions:
+- [Session management](/Session_management.md): Session management covers the operators that work with a change session — applying or cancelling its accumulated changes, running an action in a different session, or accessing those changes:
 
 ## Set_operations
 
