@@ -1,6 +1,6 @@
 # Structure operators (STRUCT, \[])
 
-The term *structure* is used in the platform to refer to the [classes](/Classes/.md) which objects consist of a collection of other objects in a fixed order. The platform supports two operators for working with structures:
+The term *structure* is used in the platform to refer to the [classes](/Classes/.md) whose objects consist of a collection of other objects in a fixed order. The platform supports two operators for working with structures:
 
 | Operator | Name     | Description                                                                                                                                                                      | Example            | Result           |
 | -------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------- |
@@ -9,9 +9,16 @@ The term *structure* is used in the platform to refer to the [classes](/Classes/
 
 Structures support comparison operations which are executed sequentially for each object included in the structure.
 
-info
+A structure exists only when all of its objects exist: if any of them is `NULL`, the whole structure is `NULL`, and the access operator returns `NULL` for a `NULL` structure.
 
-To better understand how this works, it’s sufficient to say that physically a structure is just a concatenation of the objects included in this structure converted to bit strings
+### Determining the result class[​](#determining-the-result-class "Direct link to Determining the result class")
+
+The result class is determined as:
+
+| Operator | Result                                                      |
+| -------- | ----------------------------------------------------------- |
+| `STRUCT` | A structure of the operand classes, in the same order       |
+| `[ ]`    | The class of the structure object at the specified position |
 
 ### Language[​](#language "Direct link to Language")
 
