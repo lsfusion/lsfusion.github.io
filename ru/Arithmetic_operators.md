@@ -1,18 +1,22 @@
 # Арифметические операторы
 
-Операторы `+`, `-`, `*`, `/`, `(+)`, `(-)` - создание [свойств](/ru/Properties/.md), реализующих [арифметические операции](/ru/Arithmetic_operators_plus_minus_etc/.md).
+Операторы `+`, `-`, `*`, `/`, `(+)`, `(-)` создают [свойства](/ru/Properties/.md), реализующие [арифметические операции](/ru/Arithmetic_operators_plus_minus_etc/.md).
 
 ### Синтаксис[​](#синтаксис "Прямая ссылка на этот заголовок")
 
 ```
-expression1 + expression2  
-expression1 - expression2  
-expression1 / expression2  
-expression1 * expression2  
--expression1
-expression1 (+) expression2  
-expression1 (-) expression2  
+expression1 + expression2
+expression1 - expression2
+expression1 * expression2
+expression1 / expression2
+expression1 (+) expression2
+expression1 (-) expression2
+- expression1
 ```
+
+### Описание[​](#описание "Прямая ссылка на этот заголовок")
+
+Каждый бинарный оператор принимает два операнда и выполняется слева направо; унарный минус принимает один операнд. Порядок вычисления относительно других операторов определяется [приоритетом операторов](/ru/Operator_priority/.md).
 
 ### Параметры[​](#параметры "Прямая ссылка на этот заголовок")
 

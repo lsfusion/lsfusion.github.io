@@ -1,6 +1,6 @@
 # Comparison operators
 
-`==`, `=`, `!=`, `<`, `>`, `<=`, `>=` operators create [properties](/Properties/.md) that implement [comparison operations](/Comparison_operators_=_etc/.md).
+The `==`, `=`, `!=`, `<`, `>`, `<=`, `>=` operators create [properties](/Properties/.md) that implement [comparison operations](/Comparison_operators_=_etc/.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -13,6 +13,10 @@ expression1 > expression2
 expression1 <= expression2
 expression1 >= expression2
 ```
+
+### Description[​](#description "Direct link to Description")
+
+The `=` and `==` forms are equivalent. Each operator takes two operands and cannot be chained — `expression1 < expression2 < expression3` is not valid. The evaluation order relative to other operators follows [operator priority](/Operator_priority/.md).
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 

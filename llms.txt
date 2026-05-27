@@ -102,7 +102,7 @@
 
 ## AND_OR_NOT_XOR_operators
 
-- [AND, OR, NOT, XOR operators](/AND_OR_NOT_XOR_operators.md): AND, OR, NOT, XOR operators that create properties that implement logical operations.
+- [AND, OR, NOT, XOR operators](/AND_OR_NOT_XOR_operators.md): The AND, OR, NOT, XOR operators create properties that implement logical operations.
 
 ## Apply_changes_APPLY
 
@@ -114,11 +114,11 @@
 
 ## Arithmetic_operators_plus_minus_etc
 
-- [Arithmetic operators (+, -, *, ...)](/Arithmetic_operators_plus_minus_etc.md): Arithmetic operators create properties whose value is the result of an arithmetic operation. The arguments of these operators must be properties whose values are instances of number classes . The platform currently supports the following arithmetic operators:
+- [Arithmetic operators (+, -, *, ...)](/Arithmetic_operators_plus_minus_etc.md): Arithmetic operators create properties whose value is the result of an arithmetic operation. They primarily operate on values of number classes. In addition, the sum and difference also operate on date/time values (described below), and the sum also concatenates strings (see String operators). The platform currently supports the following arithmetic operators:
 
 ## Arithmetic_operators
 
-- [Arithmetic operators](/Arithmetic_operators.md): +, -, *, /, (+), (-) operators create properties responsible for arithmetic operations.
+- [Arithmetic operators](/Arithmetic_operators.md): The +, -, *, /, (+), (-) operators create properties that implement arithmetic operations.
 
 ## ASK_operator
 
@@ -262,7 +262,7 @@
 
 ## Comparison_operators
 
-- [Comparison operators](/Comparison_operators.md): ==, =, !=, `, =` operators create properties that implement comparison operations.
+- [Comparison operators](/Comparison_operators.md): The ==, =, !=, `, =` operators create properties that implement comparison operations.
 
 ## Composition_JOIN
 
@@ -274,7 +274,7 @@
 
 ## Constant
 
-- [Constant](/Constant.md): The constant operator is used to create properties without parameters which always return the same value. This value can be static objects of custom and built-in classes as well as the special NULL value.
+- [Constant](/Constant.md): The constant operator is used to create properties without parameters which always return the same value. This value can be static objects of custom and built-in classes as well as the special NULL value. The value class is fixed by the value itself:
 
 ## CONSTRAINT_statement
 
@@ -918,7 +918,7 @@
 
 ## Logical_operators_AND_OR_NOT_XOR
 
-- [Logical operators (AND, OR, NOT, XOR)](/Logical_operators_AND_OR_NOT_XOR.md): Logical operators create properties that consider their arguments as logical values of class BOOLEAN and whose return value is also a value of class BOOLEAN. If the value of an argument of an logical operator is not NULL, then the argument is treated as the value TRUE of class BOOLEAN, otherwise as NULL.
+- [Logical operators (AND, OR, NOT, XOR)](/Logical_operators_AND_OR_NOT_XOR.md): Logical operators create properties that consider their operands as logical values of class BOOLEAN and whose return value is also a value of class BOOLEAN. If the value of an operand of a logical operator is not NULL, then the operand is treated as the value TRUE of class BOOLEAN, otherwise as NULL. The result is always either TRUE or NULL, never FALSE.
 
 ## Loop_FOR
 
