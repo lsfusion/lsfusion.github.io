@@ -1018,7 +1018,7 @@
 
 ## New_connection_NEWCONNECTION
 
-- [New external connections (NEWCONNECTION)](/New_connection_NEWCONNECTION.md): External connections opened while calling an external system can be reused across several successive calls to the same endpoint. This saves the cost of establishing the connection and also lets calls share state that the connection itself holds — SQL temporary tables and session variables, an open TCP socket and its read buffer, the current position inside a DBF file, and so on.
+- [New external connections (NEWCONNECTION)](/New_connection_NEWCONNECTION.md): The new external connection operator scopes a block inside which every call to the same external endpoint reuses an external connection opened earlier in the block, instead of opening a new one each time. This saves the cost of establishing the connection and also lets calls share state that the connection itself holds — SQL temporary tables and session variables, an open TCP socket and its read buffer, the current position inside a DBF file, and so on.
 
 ## New_object_NEW
 
@@ -1034,7 +1034,7 @@
 
 ## New_threads_NEWTHREAD_NEWEXECUTOR
 
-- [New threads (NEWTHREAD, NEWEXECUTOR)](/New_threads_NEWTHREAD_NEWEXECUTOR.md): The new thread operator allows you to execute an action in a thread other than the current one.
+- [New threads (NEWTHREAD, NEWEXECUTOR)](/New_threads_NEWTHREAD_NEWEXECUTOR.md): The new thread operator executes an action in a thread other than the current one.
 
 ## NEWCONNECTION_operator
 
