@@ -1,41 +1,62 @@
 # Оператор JSON
 
-Оператор `JSON` - свойство, создающее из [заданных свойств](/ru/Data_export_EXPORT/.md) или, в общем случае, [из формы](/ru/In_a_structured_view_EXPORT_IMPORT/.md) JSON
+Операторы `JSON` и `JSONTEXT` создают [свойство](/ru/Properties/.md), формирующее JSON из списка [заданных свойств](/ru/Data_export_EXPORT/.md) или, в общем случае, из [формы](/ru/In_a_structured_view_EXPORT_IMPORT/.md).
 
-## Синтаксис[​](#синтаксис "Прямая ссылка на этот заголовок")
+### Синтаксис[​](#синтаксис "Прямая ссылка на этот заголовок")
+
+Оператор имеет две формы, обе начинаются с выбора `jsonKeyword`. Форма, формирующая JSON из списка свойств:
 
 ```
-JSON FROM [columnId1 =] propertyExpr1, ..., [columnIdN = ] propertyExprN 
-  [WHERE whereExpr] [ORDER orderExpr1 [DESC], ..., orderExprL [DESC]]
+jsonKeyword FROM [columnId1 =] propertyExpr1, ..., [columnIdN =] propertyExprN
+  [WHERE whereExpr]
+  [ORDER orderExpr1 [DESC], ..., orderExprL [DESC]]
   [TOP topExpr] [OFFSET offsetExpr]
-JSON ( formName [OBJECTS objName1 = expr1, ..., objNameK = exprK] 
-  [TOP (topExpr | (topGroupId1 = topPropertyExpr1, ..., topGroupIdT = topPropertyExprT))]
-  [OFFSET (offsetExpr | (offsetGroupId1 = offsetPropertyExpr1, ..., offsetGroupIdF = offsetPropertyExprF))] )
 ```
 
-## Описание[​](#описание "Прямая ссылка на этот заголовок")
+Форма, формирующая JSON из формы:
 
-Оператор `JSON` - свойство, создающее из заданных свойств или заданной формы JSON.
+```
+jsonKeyword ( formName [OBJECTS objName1 = expr1, ..., objNameK = exprK]
+  [FILTERS filterExpr1, ..., filterExprP]
+  [TOP topSelect] [OFFSET offsetSelect] )
+```
 
-При экспорте формы в блоке `OBJECTS` можно объектам формы добавлять дополнительные фильтры на равенство этих объектов [переданным значениям](/ru/Open_form/.md#params). Также эти объекты [не будут участвовать](/ru/Structured_view/.md#objects) в построении иерархии групп объектов.
+Где `jsonKeyword` определяется как:
 
-## Параметры[​](#параметры "Прямая ссылка на этот заголовок")
+```
+JSON
+JSONTEXT
+```
 
-* `formName`
+А `topSelect` и `offsetSelect` определяются либо как одно выражение, либо как отображение по группам объектов:
 
-  Имя формы, из которой необходимо экспортировать данные. [Составной идентификатор](/ru/IDs/.md#cid).
+```
+topExpr
+topGroupId1 = topPropertyExpr1, ..., topGroupIdT = topPropertyExprT
+```
 
-* `objName1 ... objNameK`
+```
+offsetExpr
+offsetGroupId1 = offsetPropertyExpr1, ..., offsetGroupIdF = offsetPropertyExprF
+```
 
-  Имена объектов формы, для которых задаются фильтруемые (фиксированные) значения. [Простые идентификаторы](/ru/IDs/.md#id).
+### Описание[​](#описание "Прямая ссылка на этот заголовок")
 
-* `expr1 ... exprK`
+Операторы `JSON` и `JSONTEXT` создают свойство, формирующее JSON либо из списка свойств (форма с `FROM`), либо из формы. Результат формируется [в структурированном виде](/ru/In_a_structured_view_EXPORT_IMPORT/.md): формирование JSON из списка свойств является частным случаем формирования JSON из формы, поэтому смысл имён колонок, иерархия групп объектов и структура результата определяются поведением [экспорта формы](/ru/Structured_view/.md). В отличие от [оператора `EXPORT`](/ru/EXPORT_operator/.md), который является действием, записывающим результат в файл, этот оператор является выражением: он возвращает сформированный JSON как значение свойства.
 
-  [Выражения](/ru/Expression/.md), значения которых определяют фильтруемые (фиксированные) значения для объектов формы.
+Разница между двумя ключевыми словами заключается в классе возвращаемого значения. `JSON` возвращает значение класса `JSON` (файл, содержащий JSON-документ), а `JSONTEXT` возвращает значение класса `JSONTEXT` (JSON-документ в виде текста).
+
+При формировании JSON из формы блок `OBJECTS` фиксирует объекты формы заданными значениями: каждый такой объект ограничивается равенством [переданному значению](/ru/Open_form/.md#params) и [не участвует](/ru/Structured_view/.md#objects) в построении иерархии групп объектов. Блок `FILTERS` добавляет к форме дополнительные условия фильтрации перед формированием.
+
+### Параметры[​](#параметры "Прямая ссылка на этот заголовок")
+
+* `jsonKeyword`
+
+  Выбор ключевого слова, определяющий класс результата. `JSON` формирует значение класса `JSON` (файл), `JSONTEXT` формирует значение класса `JSONTEXT` (текст).
 
 * `propertyExpr1, ..., propertyExprN`
 
-  Список [выражений](/ru/Expression/.md), из значений которых экспортируются данные.
+  Непустой список [выражений](/ru/Expression/.md), из значений которых формируется JSON. Каждое выражение соответствует колонке результата.
 
 * `columnId1, ..., columnIdN`
 
@@ -43,43 +64,73 @@ JSON ( formName [OBJECTS objName1 = expr1, ..., objNameK = exprK]
 
 * `whereExpr`
 
-  Выражение, значение которого является условием создаваемого экспорта. Если не задано, считается равным [дизьюнкции](/ru/Logical_operators_AND_OR_NOT_XOR/.md) всех экспортируемых свойств (то есть хотя бы одно из свойств должно быть не `NULL`).
+  [Выражение](/ru/Expression/.md), значение которого является условием формирования. Если не задано, считается равным [дизъюнкции](/ru/Logical_operators_AND_OR_NOT_XOR/.md) всех перечисленных свойств (то есть хотя бы одно из свойств должно быть не `NULL`).
 
 * `orderExpr1, ..., orderExprL`
 
-  Список [выражений](/ru/Expression/.md), по которым производится сортировка экспортируемых данных. Могут использоваться только свойства, присутствующие в списке `propertyExpr1, ..., propertyExprN`.
+  Список [выражений](/ru/Expression/.md), по которым производится сортировка формируемых данных. Могут использоваться только свойства, присутствующие в списке `propertyExpr1, ..., propertyExprN`.
 
 * `DESC`
 
-  Ключевое слово. Указывает на обратный порядок сортировки. По умолчанию используется сортировка по возрастанию.
+  Ключевое слово. Указывает на обратный порядок сортировки для предшествующего выражения. По умолчанию используется сортировка по возрастанию.
 
-* `TOP topExpr`
+* `formName`
 
-* `TOP (topExpr | (topGroupId1 = topPropertyExpr1, ..., topGroupIdT = topPropertyExprT))`
+  Имя формы, из которой формируется JSON. [Составной идентификатор](/ru/IDs/.md#cid).
 
-  Экспорт только первых `n` записей, где `n` - значение выражения `topExpr` или `topPropertyExprT` для группы объектов `topGroupIdT`.
+* `objName1 ... objNameK`
 
-* `OFFSET offsetExpr`
+  Имена объектов формы, для которых задаются фиксированные значения. [Простые идентификаторы](/ru/IDs/.md#id).
 
-* `OFFSET (offsetExpr | (offsetGroupId1 = offsetPropertyExpr1, ..., offsetGroupIdF = offsetPropertyExprF))`
+* `expr1 ... exprK`
 
-  Экспорт только записей со смещением `m`, где `m` - значение выражения `offsetExpr` или `offsetPropertyExprF` для группы объектов `offsetGroupIdF`.
+  [Выражения](/ru/Expression/.md), значения которых определяют фиксированные значения для объектов формы.
 
-## Примеры[​](#примеры "Прямая ссылка на этот заголовок")
+* `filterExpr1, ..., filterExprP`
+
+  Список [выражений](/ru/Expression/.md), используемых как дополнительные фильтры, добавляемые к форме перед формированием.
+
+* `topExpr`
+
+  [Выражение](/ru/Expression/.md), значение которого ограничивает формирование его первыми записями.
+
+* `topGroupId1 ... topGroupIdT`
+
+  [Простые идентификаторы](/ru/IDs/.md#id) групп объектов формы, для которых ограничение задаётся по группам объектов, а не для всего формирования.
+
+* `topPropertyExpr1 ... topPropertyExprT`
+
+  Выражения, значения которых ограничивают записи соответствующих групп объектов.
+
+* `offsetExpr`
+
+  Выражение, значение которого пропускает столько первых записей формирования.
+
+* `offsetGroupId1 ... offsetGroupIdF`
+
+  Простые идентификаторы групп объектов формы, для которых смещение задаётся по группам объектов, а не для всего формирования.
+
+* `offsetPropertyExpr1 ... offsetPropertyExprF`
+
+  Выражения, значения которых задают смещение соответствующих групп объектов.
+
+### Примеры[​](#примеры "Прямая ссылка на этот заголовок")
 
 ```
-FORM testF 
+// формирует JSON из списка свойств
+MESSAGE JSON FROM code = '1', message = 'OK';
+```
+
+```
+FORM testF
       OBJECTS j = INTEGER
-      PROPERTIES ab='34'
+      PROPERTIES ab = '34'
       OBJECTS i = INTEGER
       PROPERTIES name = 'Name ' + (i AS INTEGER)
 ;
 
 run() {
-	MESSAGE JSON (testF OBJECTS j=4 FILTERS mod(i,2) = 0);
+    // формирует JSON из формы, фиксируя объект j и добавляя фильтр на объект i
+    MESSAGE JSON (testF OBJECTS j = 4 FILTERS mod(i, 2) = 0);
 }
-```
-
-```
-MESSAGE JSON FROM code = '1', message = 'OK';
 ```

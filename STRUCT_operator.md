@@ -5,18 +5,18 @@ The `STRUCT` operator creates a [property](/Properties/.md) that creates a [stru
 ### Syntax[​](#syntax "Direct link to Syntax")
 
 ```
-STRUCT(expr1, ..., exprN)   
+STRUCT(expr1, ..., exprN)
 ```
 
 ### Description[​](#description "Direct link to Description")
 
-The `STRUCT` operator creates a property whose value will be a structure created from the objects passed.
+The `STRUCT` operator creates a property whose value is the [structure](/Structure_operators_STRUCT/.md) made up of the operand values, in the order they are listed.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `expr1, ..., exprN`
 
-  List of [expressions](/Expression/.md) whose values will be elements of the structure. The list cannot be empty.
+  List of [expressions](/Expression/.md) whose values become the elements of the structure. The list cannot be empty.
 
 ### Examples[​](#examples "Direct link to Examples")
 

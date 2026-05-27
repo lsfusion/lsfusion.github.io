@@ -886,7 +886,7 @@
 
 ## JSON_operator
 
-- [JSON operator](/JSON_operator.md): The JSON operator is property that creates JSON from specified properties or, in common case, from form.
+- [JSON operator](/JSON_operator.md): The JSON and JSONTEXT operators create a property that builds JSON from a list of specified properties or, in the general case, from a form.
 
 ## Language
 
@@ -950,7 +950,7 @@
 
 ## MAX_operator
 
-- [MAX operator](/MAX_operator.md): The MAX operator creates a property that implements finding maximum value.
+- [MAX operator](/MAX_operator.md): The MAX operator creates a property that implements finding the maximum value.
 
 ## MCP_server
 

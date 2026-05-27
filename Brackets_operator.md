@@ -5,14 +5,14 @@ The `[]` operator creates a [property](/Properties/.md) that returns an object f
 ### Syntax[​](#syntax "Direct link to Syntax")
 
 ```
-expr [ number ]
+expr[n]
 ```
 
 Where `[` and `]` are ordinary square brackets.
 
 ### Description[​](#description "Direct link to Description")
 
-The `[]` operator creates a property that takes a structure as input and returns one of the objects of this structure. Objects are accessed using the sequence number of the object.
+The `[]` operator creates a property that takes a structure as input and returns the [structure](/Structure_operators_STRUCT/.md) object at the position given by `n`.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
@@ -20,9 +20,9 @@ The `[]` operator creates a property that takes a structure as input and returns
 
   An [expression](/Expression/.md) whose value must be a structure.
 
-* `number`
+* `n`
 
-  The sequence number of an object. [Integer literal](/Literals/.md#intliteral). Must be within the range of `[1..N]`, where `N` is the number of objects in the structure.
+  The position of the object within the structure. A positive [integer literal](/Literals/.md#intliteral): it must be written as a constant, not computed from an expression. Numbering is 1-based, and the value must be within the range `[1..N]`, where `N` is the number of objects in the structure.
 
 ### Examples[​](#examples "Direct link to Examples")
 
