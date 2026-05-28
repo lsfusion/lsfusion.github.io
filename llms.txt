@@ -266,7 +266,7 @@
 
 ## Composition_JOIN
 
-- [Composition (JOIN)](/Composition_JOIN.md): The composition operator allows you to use values of other properties as arguments for one (main) property.
+- [Composition (JOIN)](/Composition_JOIN.md): The composition operator creates a property whose value is another property — the main property — applied to the values returned by other properties supplied as its arguments.
 
 ## CONCAT_operator
 
