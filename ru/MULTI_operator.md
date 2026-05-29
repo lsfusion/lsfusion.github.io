@@ -1,6 +1,6 @@
 # Оператор MULTI
 
-Оператор `MULTI` - создание [свойства](/ru/Properties/.md), реализующего [выбор](/ru/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md#single) одного из значений (полиморфная форма).
+Оператор `MULTI` - создание [свойства](/ru/Properties/.md), реализующего [выбор](/ru/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md#poly) одного из значений (полиморфная форма).
 
 ### Синтаксис[​](#синтаксис "Прямая ссылка на этот заголовок")
 

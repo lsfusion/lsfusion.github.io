@@ -1,6 +1,6 @@
 # MULTI operator
 
-The `MULTI` operator creates a [property](/Properties/.md) that implements [selection](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md#single) of one of the values (polymorphic form).
+The `MULTI` operator creates a [property](/Properties/.md) that implements [selection](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md#poly) of one of the values (polymorphic form).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -10,7 +10,7 @@ MULTI expr1, ..., exprN [exclusionType]
 
 ### Description[​](#description "Direct link to Description")
 
-The `MULTI` operator creates a property which value will be the value of one of the properties specified in the operator. The property selection condition is that the parameters match this property [signature](/ISCLASS_operator/.md).
+The `MULTI` operator creates a property whose value will be the value of one of the properties specified in the operator. The property selection condition is that the parameters match this property [signature](/ISCLASS_operator/.md).
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
@@ -25,7 +25,7 @@ The `MULTI` operator creates a property which value will be the value of one of 
   * `EXCLUSIVE`
   * `OVERRIDE`
 
-  The `EXCLUSIVE` type indicates that the conditions for the property selection cannot be met simultaneously. The `OVERRIDE` type allows several conditions to be met simultaneously, in which case the first property in the list which selection condition is met will be selected.
+  The `EXCLUSIVE` type indicates that the conditions for the property selection cannot be met simultaneously. The `OVERRIDE` type allows several conditions to be met simultaneously, in which case the first property in the list whose selection condition is met will be selected.
 
   The `EXCLUSIVE` type is used by default.
 

@@ -190,7 +190,7 @@
 
 ## CASE_operator
 
-- [CASE operator](/CASE_operator.md): The CASE operator  creates a property that selects a result by condition.
+- [CASE operator](/CASE_operator.md): The CASE operator creates a property that selects a result by condition.
 
 ## CHANGE_operator
 
@@ -1254,7 +1254,7 @@
 
 ## Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE
 
-- [Selection (CASE, IF, MULTI, OVERRIDE, EXCLUSIVE)](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md): The selection operator creates a property that determines for a set of conditions which condition is met, and returns the value of the result corresponding to that condition. If none of the conditions is met, then the value of the created property will be NULL.
+- [Selection (CASE, IF, MULTI, OVERRIDE, EXCLUSIVE)](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md): The selection operator creates a property that determines for a set of conditions which condition is met, and returns the value of the result corresponding to that condition. If several conditions are met at once, the result corresponds to the first of them in the listed order. If none of the conditions is met, then the value of the created property will be NULL.
 
 ## Send_mail_EMAIL
 

@@ -1,6 +1,6 @@
 # EXCLUSIVE operator
 
-The `EXCLUSIVE` operator creates a [property](/Properties/.md) that implements a [selection](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md#exclusive) of one of the values (polymorphic form).
+The `EXCLUSIVE` operator creates a [property](/Properties/.md) that implements a [selection](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md#poly) of one of the values (polymorphic form).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
