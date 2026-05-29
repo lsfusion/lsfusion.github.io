@@ -302,7 +302,7 @@ FORM RULES
 11. In a form `PROPERTIES` block, the parameter style on the property or action being added to the form MUST match the block header:
 
     * With a common-parameter header `PROPERTIES(p1, ..., pN)`, each entry MUST be specified by its ID only — the common parameters are bound implicitly. Writing `propName(p1, ..., pN)` after the ID is a parse error.
-    * With no common-parameter header (just `PROPERTIES`), each entry MUST carry explicit parameters in parentheses, e.g. `propName(t)` or `actionName()` for parameterless actions.
+    * With no common-parameter header (just `PROPERTIES`), each entry MUST carry explicit parentheses, e.g. `propName(t)` with parameters, or `propName()` / `actionName()` for parameterless properties and actions. Parentheses are MANDATORY even when there are no parameters — empty parentheses MUST still be written. Writing the bare name without parentheses is a parse error.
 
     The assistant MUST NOT mix the two styles in one block, and MUST NOT repeat the common parameters after the property name when a common-parameter header is in use.
 
@@ -371,23 +371,32 @@ CHANGE SESSION RULES (`NEWSESSION`, `NESTEDSESSION`, `APPLY`)
 
 4. If inner logic depends on upper-session local state such as selections, marks, or import buffers, the assistant MUST carry that state explicitly through `NESTED (...)` or `NESTED LOCAL`.
 
-5. When using `NEWSESSION NESTED (...)` or `NEWSESSION NESTED LOCAL`, the assistant SHOULD preserve the same nested local properties on `APPLY` if the result must be copied back to the upper session, for example with `APPLY NESTED (...)` or `APPLY NESTED LOCAL`.
+5. `APPLY` resets every `LOCAL` property in the current session by default. After `APPLY` returns, a plain `LOCAL` is empty again, even on success.
 
-6. The assistant MUST NOT replace `NESTEDSESSION` with plain `NEWSESSION` for child forms or dialogs attached to a parent object that may still be unsaved in the current form session.
+   A `LOCAL` value survives `APPLY` when EITHER:
 
-7. Before opening a fresh `NEWSESSION` from an action started on an edit form, the assistant SHOULD decide whether current form changes must be saved first.
+   * the `LOCAL` is declared as `NESTED` at declaration time (`LOCAL NESTED name = Type;` or `name = DATA LOCAL NESTED Type (...);`), OR
+   * the `APPLY` explicitly preserves it via `APPLY NESTED (name1, ..., nameN)` or `APPLY NESTED LOCAL` for all locals.
+
+   The assistant MUST NOT rely on a plain `LOCAL` value computed before `APPLY` to still be readable after it. If a staged value must outlive `APPLY` — for example, an import buffer read during post-apply follow-up — the assistant MUST either declare it with `NESTED`, or list it in `APPLY NESTED (...)` (or use `APPLY NESTED LOCAL`) at the call site.
+
+6. When using `NEWSESSION NESTED (...)` or `NEWSESSION NESTED LOCAL`, the assistant SHOULD preserve the same nested local properties on `APPLY` if the result must be copied back to the upper session, for example with `APPLY NESTED (...)` or `APPLY NESTED LOCAL`.
+
+7. The assistant MUST NOT replace `NESTEDSESSION` with plain `NEWSESSION` for child forms or dialogs attached to a parent object that may still be unsaved in the current form session.
+
+8. Before opening a fresh `NEWSESSION` from an action started on an edit form, the assistant SHOULD decide whether current form changes must be saved first.
 
    The common pattern is: `APPLY;` `IF canceled() THEN RETURN;` `NEWSESSION { ... }`
 
    This pattern is used before status changes, document generation, and other isolated follow-up actions.
 
-8. After `APPLY`, if later logic depends on whether the save succeeded, the assistant MUST check `canceled()`. If the failure must be surfaced to the user or integration, the assistant SHOULD use `applyMessage()`.
+9. After `APPLY`, if later logic depends on whether the save succeeded, the assistant MUST check `canceled()`. If the failure must be surfaced to the user or integration, the assistant SHOULD use `applyMessage()`.
 
    If `APPLY` fails because of a constraint, the changes remain unsaved in the current session, and any following `APPLY` in the same session will also fail until the offending data is fixed or the changes are discarded (for example with `CANCEL`).
 
-9. The assistant SHOULD keep `NEWSESSION` blocks small and purpose-specific: isolate one unit of work, apply it if needed, and exit.
+10. The assistant SHOULD keep `NEWSESSION` blocks small and purpose-specific: isolate one unit of work, apply it if needed, and exit.
 
-   The assistant MUST NOT introduce `NEWSESSION` merely to hide session-visibility bugs. If upper-session changes must remain visible, nested session semantics are required.
+    The assistant MUST NOT introduce `NEWSESSION` merely to hide session-visibility bugs. If upper-session changes must remain visible, nested session semantics are required.
 
 ***
 
