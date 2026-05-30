@@ -454,7 +454,7 @@
 
 ## Filter_FILTER
 
-- [Filter (FILTER)](/Filter_FILTER.md): The filter operator creates a property that returns TRUE if the object collection matches the current filter of the specified object group, and NULL if it does not.
+- [Filter (FILTER)](/Filter_FILTER.md): The filter operator creates a property, defined on the objects of an object group, that returns TRUE when their object collection is included in the group's current filter, and NULL otherwise.
 
 ## Filters_and_sortings_block
 
@@ -1094,7 +1094,7 @@
 
 ## Order_ORDER
 
-- [Order (ORDER)](/Order_ORDER.md): The order operator creates a property that returns the sequence number of an object collection in the specified group of objects, in accordance with the current order of this group.
+- [Order (ORDER)](/Order_ORDER.md): The order operator creates a property, defined on the objects of an object group, that returns a value reflecting the relative order of their object collection within the group's current order. This value has no standalone meaning: only comparing it with the same property for the group's other object collections is meaningful, and that comparison reproduces the group's current order.
 
 ## OVERRIDE_operator
 
