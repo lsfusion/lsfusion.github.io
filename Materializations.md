@@ -4,9 +4,11 @@ Almost any aggregated [property](/Properties/.md) in the platform can be *materi
 
 A property can be materialized if and only if for it there is a finite number of object collections for which the value of this property is not `NULL` (that is, the iteration operation for all of its non-`NULL` values is [correct](/Set_operations/.md#correct))
 
+The stored values of a materialized property can be *recalculated* — recomputed from scratch from the property's definition. This is useful when those values may have diverged from the definition, for example after the property's definition changes or after a direct data fix.
+
 ### Language[​](#language "Direct link to Language")
 
-To materialize a property, use the [`MATERIALIZED` option](/Property_options/.md#persistent) in the property options.
+To materialize a property, use the [`MATERIALIZED` option](/Property_options/.md#persistent) in the property options. To recalculate the stored values of a materialized property, use the [`RECALCULATE` operator](/RECALCULATE_operator/.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

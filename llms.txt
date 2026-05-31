@@ -1200,6 +1200,10 @@
 
 - [READ operator](/READ_operator.md): The READ operator creates an action that reads a file to a property from an external resource.
 
+## RECALCULATE_operator
+
+- [RECALCULATE operator](/RECALCULATE_operator.md): The RECALCULATE operator creates an action that recalculates the stored values of a materialized property.
+
 ## RECURSION_operator
 
 - [RECURSION operator](/RECURSION_operator.md): The RECURSION operator creates a property that implements recursion.

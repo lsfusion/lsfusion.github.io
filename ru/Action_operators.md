@@ -41,6 +41,7 @@
 * [Оператор `NEWTHREAD`](/ru/NEWTHREAD_operator/.md)
 * [Оператор `PRINT`](/ru/PRINT_operator/.md)
 * [Оператор `READ`](/ru/READ_operator/.md)
+* [Оператор `RECALCULATE`](/ru/RECALCULATE_operator/.md)
 * [Оператор `REQUEST`](/ru/REQUEST_operator/.md)
 * [Оператор `RETURN`](/ru/RETURN_operator/.md)
 * [Оператор `SCREENSHOT`](/ru/SCREENSHOT_operator/.md)
