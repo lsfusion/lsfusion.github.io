@@ -692,6 +692,10 @@
 
 - [How-to: Internationalization](/How-to_Internationalization.md): The system supports  internationalization by passing to the client values localized according to the language chosen by the user. All values in braces are localized. Let's assume that we need to implement a simple form with a list of books and their prices that we can create/delete.
 
+## How-to_JSON_parsing
+
+- [How-to: JSON parsing](/How-to_JSON_parsing.md): The examples below use the wrapper properties around PostgreSQL's jsonb* functions shipped by the platform in the Utils module: field, fieldText, array, arrayText, map, mapText, arrayElement. Their signatures and description are collected in Utils → JSON access properties; this how-to relies on them and does not restate their interface.
+
 ## How-to_Matrix
 
 - [How-to: Matrix](/How-to_Matrix.md): Example 1
@@ -1320,9 +1324,25 @@
 
 - [Structured view](/Structured_view.md): All structured views (formats) can be divided into two types:
 
+## System_modules
+
+- [System modules](/System_modules.md): A system module is a module shipped with the platform. An application project pulls these modules in via REQUIRE and uses their declarations (classes, properties, actions, forms) as a ready-made standard library; the platform never expects them to be redefined.
+
 ## System_parameters
 
 - [System parameters](/System_parameters.md): Launch parameters
+
+## System_System
+
+- [System](/System_System.md): System is the root system module of the platform. It is pulled in automatically — every other module depends on it without an explicit REQUIRE. The module declares the root classes, the standard groups of properties and actions, the change-session control surface, the incoming HTTP-request context, the form-lifecycle actions, the application-identity properties, and the local buffers that the export, import, and value-request operators write to.
+
+## System_Time
+
+- [Time](/System_Time.md): Time is a system module that collects properties, actions, and classes for working with time: reading the current date and time, converting between time classes, extracting date parts, date and time arithmetic, intervals, and calendar classes (months, days of the week). It is pulled in via REQUIRE Time (System is pulled in automatically).
+
+## System_Utils
+
+- [Utils](/System_Utils.md): Utils is a system module that collects frequently needed helper properties and actions: file-system access, data conversion and encoding, string operations, arithmetic, JSON access, full-text search, server diagnostics, and so on. It is pulled in via REQUIRE Utils (System and Time are pulled in automatically).
 
 ## TABLE_statement
 
