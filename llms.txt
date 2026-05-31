@@ -346,7 +346,7 @@
 
 ## Domain_logic
 
-- [Domain logic](/Domain_logic.md): Properties are the basic concept for business logic and are responsible for storing and calculating data.
+- [Domain logic](/Domain_logic.md): Properties are the basic concept for domain logic and are responsible for storing and calculating data.
 
 ## Element_identification
 
