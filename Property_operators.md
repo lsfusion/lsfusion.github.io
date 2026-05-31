@@ -11,7 +11,6 @@ Context dependent property operators can be part of [expressions](/Expression/.m
 * [Arithmetic operators](/Arithmetic_operators/.md)
 * [`[]` operator](/Brackets_operator/.md)
 * [`ACTIVE` operator](/ACTIVE_operator/.md)
-* [`AGGR` operator](/AGGR_operator/.md)
 * [`CASE` operator](/CASE_operator/.md)
 * [`CONCAT` operator](/CONCAT_operator/.md)
 * [`EXCLUSIVE` operator](/EXCLUSIVE_operator/.md)
@@ -44,6 +43,7 @@ Context dependent property operators can be part of [expressions](/Expression/.m
 Context independent property operators differ from the context dependent ones in that they do not just use the upper parameters but define the parameters themselves. As a result, they cannot be part of expressions and can only be used in the [`=` statement](/=_statement/.md) and the [`JOIN` operator](/JOIN_operator/.md):
 
 * [`DATA` operator](/DATA_operator/.md)
+* [`AGGR` operator](/AGGR_operator/.md) (only in the `=` statement)
 * [`GROUP` operator](/GROUP_operator/.md) (with `BY` block)
 * [`FORMULA` operator](/FORMULA_operator/.md)
 * [`ABSTRACT` operator](/ABSTRACT_operator/.md)
