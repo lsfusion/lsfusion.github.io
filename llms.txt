@@ -1114,7 +1114,7 @@
 
 ## Partitioning_sorting_PARTITION_..._ORDER
 
-- [Partitioning / sorting (PARTITION ... ORDER)](/Partitioning_sorting_PARTITION_..._ORDER.md): The partition/order operator creates a property that partitions all objects collections in the system into groups, and using the specified order calculates an aggregate function for each objects collection. Accordingly, the set on which this aggregating function is calculated is determined as following: all object collections of the group of this object collection, and the order of which is less than or equal to the order of this object collection.
+- [Partitioning / sorting (PARTITION ... ORDER)](/Partitioning_sorting_PARTITION_..._ORDER.md): The partition/order operator creates a property that partitions all objects collections in the system into groups, and using the specified order calculates an aggregate function for each objects collection. Accordingly, the set on which this aggregate function is calculated is determined as following: all object collections of the group of this object collection, and the order of which is less than or equal to the order of this object collection.
 
 ## Physical_model
 
@@ -1210,7 +1210,7 @@
 
 ## Recursion_RECURSION
 
-- [Recursion (RECURSION)](/Recursion_RECURSION.md): The recursion operator is an operator that creates a property which sequentially performs two operations:
+- [Recursion (RECURSION)](/Recursion_RECURSION.md): The recursion operator creates a property that sequentially performs two operations:
 
 ## Recursive_loop_WHILE
 
