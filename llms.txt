@@ -692,6 +692,10 @@
 
 - [How-to: Internationalization](/How-to_Internationalization.md): The system supports  internationalization by passing to the client values localized according to the language chosen by the user. All values in braces are localized. Let's assume that we need to implement a simple form with a list of books and their prices that we can create/delete.
 
+## How-to_JSON_export
+
+- [How-to: JSON export](/How-to_JSON_export.md): Example 1
+
 ## How-to_JSON_parsing
 
 - [How-to: JSON parsing](/How-to_JSON_parsing.md): The examples below use the wrapper properties around PostgreSQL's jsonb* functions shipped by the platform in the Utils module: field, fieldText, array, arrayText, map, mapText, arrayElement. Their signatures and description are collected in Utils → JSON access properties; this how-to relies on them and does not restate their interface.
