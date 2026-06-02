@@ -24,7 +24,7 @@ MANDATORY WORKFLOW
 
    * how-to guidance / examples / analogies
    * documentation lookup
-   * structured element search in the project
+   * structured element search in the project (mandatory only when such tools are available)
 
 3. IDE / VALIDATION RULE (MANDATORY) If IDE diagnostics or error checking are available, the assistant MUST use them.
 
@@ -166,6 +166,12 @@ For a simple property composition that only forwards another property, the assis
 13. The assistant SHOULD NOT use words in a property name that duplicate parameter class names unless required for clarity.
 
 14. The assistant SHOULD NOT specify an explicit namespace for a property unless necessary.
+
+15. When creating a DATA property — or a simple composition over a DATA property (for example, pulling the name of a related object) — for a single object's own attribute, the assistant MUST deliberately decide whether to place it in the system `id` or `base` group via `IN`.
+
+    Attributes that form the object's business identity and appear in its representation SHOULD go in the `id` group; other primary attributes go in the `base` group (`id` is nested under `base`).
+
+    A property SHOULD NOT be placed in `id` or `base` when it is not the object's own primary attribute.
 
 ***
 
