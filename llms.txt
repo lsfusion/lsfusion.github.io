@@ -1270,7 +1270,7 @@
 
 ## Send_mail_EMAIL
 
-- [Send mail (EMAIL)](/Send_mail_EMAIL.md): The send mail operator creates an action that sends an email to the specified email addresses. As with any email, you can define the sender, recipient, body text,  attachment files with specified names and other parameters.
+- [Send mail (EMAIL)](/Send_mail_EMAIL.md): The send mail operator creates an action that sends an email message. The message has a sender address, a list of recipient addresses each with a visibility flag, a subject, a body, and a list of attachments; in addition, the action itself is configured with a completion mode — synchronous or asynchronous.
 
 ## Sequence
 
