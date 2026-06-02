@@ -362,11 +362,11 @@
 
 ## Eval_EVAL
 
-- [Eval (EVAL)](/Eval_EVAL.md): The eval operator creates an action that executes defined program code in the lsFusion language. Program code is defined as a property whose value should belong to the string class. This is implemented using an action which takes a line of code as an argument.
+- [Eval (EVAL)](/Eval_EVAL.md): The eval operator creates an action that, at runtime, compiles a string of lsFusion source code and executes it inside the running server, with full visibility of the rest of the project.
 
 ## EVAL_operator
 
-- [EVAL operator](/EVAL_operator.md): The EVAL operator: creating an action that executes code in the lsFusion language.
+- [EVAL operator](/EVAL_operator.md): The EVAL operator creates an action that executes code in the lsFusion language.
 
 ## Event_block
 
