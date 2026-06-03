@@ -44,6 +44,7 @@ FOOTER propertyExpression
 COLUMNS [groupid] (groupName1, ..., groupNameM)
 viewType
 NEWSESSION | NESTEDSESSION
+APPLY
 DRAW groupObjectName 
 insertPosition
 ORDER [USER | FIXED] [DESC]
@@ -216,6 +217,10 @@ PROPERTIES(o) d=date, Order.number;
 * `NEWSESSION` | `NESTEDSESSION`
 
   Модификаторы, указывающие, что операции работы с объектами (`NEW`, `EDIT`, `DELETE`, `NEWEDIT`) должны выполняться в новой (вложенной) сессии.
+
+* `APPLY`
+
+  Модификатор, указывающий, что изменение добавляемого свойства (или выполнение добавляемого действия) сразу применяется (фиксируется) в базе данных, а не остаётся в текущей сессии формы до явного применения. Может комбинироваться с `NEWSESSION` / `NESTEDSESSION` (область сессии определяет, в какой сессии выполняется изменение, после чего `APPLY` его фиксирует) либо использоваться отдельно.
 
 * `insertPosition`
 
