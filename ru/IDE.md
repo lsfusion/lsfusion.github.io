@@ -24,8 +24,6 @@
 
 Аналогичным образом, при необходимости, можно создавать вложенные папки (пункт `Package`), группируя тем самым логически связанные модули в директории.
 
-Более подробную информацию о процессе разработки можно найти в этой [статье](https://habr.com/ru/company/lsfusion/blog/465573/).
-
 ### Запуск сервера[​](#run "Прямая ссылка на этот заголовок")
 
 По умолчанию, при создании нового проекта создается конфигурация запуска сервера. Соответственно запустить ее, можно выбрав пункт меню `Run -> Run 'Run lsFusion server'`, или нажав на значок ![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAVCAYAAABLy77vAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACzSURBVDhPY7Sxd/zPQAXABKUpBiPNIE5HPgYmXtLswKqaRYaVgdtXgIFNn4uBgZkRKoof4LYWaAC7HifYQBZpNqggbkDQ/SAvcjrxEvQu0QFByLtEGwQGeLxLmkF4AGkG/f3P8PPSd4avmz8w/Hn6CyoIAUQb9OfJb7ABvy5+AxuIDgga9O/zP4bv+z4zfN//CczGBXAbhMcb2ABWgwh5AxvAahAhb2ADRAc2ITDYDGJgAACJ0j/l7e/1MQAAAABJRU5ErkJgggYzeynsXmc9QM0TfQdEVFImyymaq9IHw2AAUzxLpDCHHLBqtycE+qwYFrqn0OEL14eR2y9e+RQ0oWI6Oorx6DCY4lXlUqXKiBy4XjYBdAYiSPUk0GVFy9M/B3Vh7v5jkSEkYhPQmXR5mSnNus+BBEe71opUfBb94d5yQa2BFCa4g8G2AczHE7D0YK16T075/2k9/Wgk+ASZRpR4pMZctgAAAABJRU5ErkJggg==) рядом с надписью `Run lsFusion server` в правом верхнем углу. При удачном старте самой последней строкой в логе должна быть `Server has successfully started`.

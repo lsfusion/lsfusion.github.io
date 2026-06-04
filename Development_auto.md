@@ -23,7 +23,7 @@ After the installation completes successfully, the corresponding shortcuts for l
 
 ### Launching IDE[​](#launching-ide "Direct link to Launching IDE")
 
-When using silent installation, a shortcut is created that launches IDEA.
+When using automatic installation, a shortcut is created that launches IDEA.
 
 ![](/assets/images/Development_auto_IDEA-28efba7b9c61ffdb89df81ee93f6a7fc.png)
 
