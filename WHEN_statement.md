@@ -32,7 +32,7 @@ but it also has [a number of advantages](/Simple_event/.md).
 
 * `eventExpr`
 
-  An [expression](/Expression/.md) whose value is used as a condition for the created simple event. If the obtained property does not contain the [`PREV`](/Previous_value_PREV/.md) operator, the platform automatically wraps it into the [`CHANGE`](/Property_change_CHANGE/.md) operator.
+  An [expression](/Expression/.md) whose value is used as a condition for the created simple event. If the obtained property does not contain the [`PREV`](/Previous_value_PREV/.md) operator, the platform automatically wraps it into the [`SET`](/Change_operators_SET_CHANGED_etc/.md) operator.
 
 * `eventAction`
 

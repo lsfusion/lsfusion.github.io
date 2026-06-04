@@ -8,7 +8,7 @@
 BEFORE action(param1, ..., paramN) DO aspectAction;
 ```
 
-Описание
+### Описание[​](#описание "Прямая ссылка на этот заголовок")
 
 Инструкция `BEFORE` задает действие (будем называть его *аспектом*), которое будет вызываться перед вызовом указанного действия.
 
@@ -30,6 +30,7 @@ BEFORE action(param1, ..., paramN) DO aspectAction;
 
 ```
 changeName(Sku s, STRING[100] name)  { name(s) <- name; }
+
 // Сообщение будет показано перед каждым вызовом changeName
 BEFORE changeName(Sku s, STRING[100] name) DO MESSAGE 'Changing user name'; 
 ```

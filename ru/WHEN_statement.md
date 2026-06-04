@@ -32,7 +32,7 @@ ON eventClause FOR eventExpr [ORDER [DESC] orderExpr1, ..., orderExprN] DO event
 
 * `eventExpr`
 
-  [Выражение](/ru/Expression/.md), значение которого используется в качестве условия создаваемого простого события. Если полученное свойство не содержит внутри [оператора `PREV`](/ru/Previous_value_PREV/.md), то платформа автоматически оборачивает его в [оператор `CHANGE`](/ru/Property_change_CHANGE/.md).
+  [Выражение](/ru/Expression/.md), значение которого используется в качестве условия создаваемого простого события. Если полученное свойство не содержит внутри [оператора `PREV`](/ru/Previous_value_PREV/.md), то платформа автоматически оборачивает его в [оператор `SET`](/ru/Change_operators_SET_CHANGED_etc/.md).
 
 * `eventAction`
 
