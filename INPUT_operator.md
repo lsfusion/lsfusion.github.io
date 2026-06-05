@@ -1,11 +1,11 @@
 # INPUT operator
 
-The `INPUT` operator creates an [action](/Actions/.md) that [inputs a primitive](/Primitive_input_INPUT/.md).
+The `INPUT` operator creates an [action](/Actions/.md) that [inputs a primitive](/Primitive_input_INPUT/.md) value or selects an object of a custom class.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
 ```
-INPUT inputOptions 
+INPUT inputOptions [LIST listExpr]
 [CHANGE [= changeExpr]]
 [DO actionOperator [ELSE elseActionOperator]]
 ```
@@ -13,7 +13,7 @@ INPUT inputOptions
 `inputOptions` - input options. Specified by one of the following syntaxes:
 
 ```
-[alias =] builtInClassName
+[alias =] className
 [alias] = expr
 ```
 
@@ -21,11 +21,17 @@ INPUT inputOptions
 
 The `INPUT` operator creates an action which allows to request the value of one of the [built-in classes](/Built-in_classes/.md) from the user.
 
+If `className` is a custom class, the operator requests an object of that class. Without an explicit `LIST`, interactive input opens the class selection form, while a programmatically supplied value is interpreted as the object's id. An explicit `LIST` offers the values of `listExpr` for selection (for example `LIST name(o)`); the value class of `listExpr` determines the inline editor.
+
 ### Parameters[​](#parameters "Direct link to Parameters")
 
-* `builtInClassName`
+* `className`
 
-  The name of one of the [built-in classes](/Built-in_classes/.md).
+  The name of a [built-in class](/Built-in_classes/.md) or a custom class. For a custom class, the input requests an object of that class.
+
+* `listExpr`
+
+  An [expression](/Expression/.md) whose values are offered for selection. Used for a custom-class input to list candidate objects (the value class of `listExpr` determines the inline editor).
 
 * `expr`
 

@@ -838,7 +838,7 @@
 
 ## INPUT_operator
 
-- [INPUT operator](/INPUT_operator.md): The INPUT operator creates an action that inputs a primitive.
+- [INPUT operator](/INPUT_operator.md): The INPUT operator creates an action that inputs a primitive value or selects an object of a custom class.
 
 ## Install
 
