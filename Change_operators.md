@@ -27,7 +27,7 @@ Change operators create [properties](/Properties/.md) which determine whether a 
 
 * `propExpr`
 
-  The [expression](/Expression/.md) whose change is checked.
+  The [expression](/Expression/.md) whose change is checked. It must denote a property; a bare parameter cannot be used as the operand.
 
 ### Examples[​](#examples "Direct link to Examples")
 
