@@ -5,7 +5,7 @@ The `=>` statement creates a [consequence](/Simple_constraints/.md).
 ### Syntax[​](#syntax "Direct link to Syntax")
 
 ```
-leftPropertyId(param1, ..., paramN) => eventClause rightExpr [RESOLVE resolveType];
+leftPropertyId(param1, ..., paramN) => [eventClause] rightExpr [RESOLVE [LEFT] [RIGHT]];
 ```
 
 ### Description[​](#description "Direct link to Description")
@@ -18,18 +18,18 @@ When creating a consequence a [constraint](/Constraints/.md) will be created, wh
 CONSTRAINT eventClause leftPropertyId(param1, ..., paramN) AND NOT rightExpr MESSAGE 'Consequence violated';
 ```
 
-but it allows you to automatically resolve situations where this constraint is violated. So using type `RESOLVE LEFT` is similar to creating [a simple event](/Simple_event/.md):
+but it allows you to automatically resolve situations where this constraint is violated. So using the `LEFT` option of `RESOLVE` is similar to creating [a simple event](/Simple_event/.md):
 
 ```
 WHEN eventClause SET(leftPropertyId(param1, ..., paramN)) DO 
     SETACTION(rightExpr);
 ```
 
-`RESOLVE RIGHT`, similarly:
+the `RIGHT` option, similarly:
 
 ```
-WHEN eventClause DROPPED(leftPropertyId(param1, ..., paramN)) DO
-    DROPACTION(rightExpr);
+WHEN eventClause DROPPED(rightExpr) DO
+    DROPACTION(leftPropertyId(param1, ..., paramN));
 ```
 
 ### Parameters[​](#parameters "Direct link to Parameters")
@@ -46,17 +46,17 @@ WHEN eventClause DROPPED(leftPropertyId(param1, ..., paramN)) DO
 
   [Expression](/Expression/.md) whose value determines the consequence.
 
-* `resolveType`
+* `LEFT`
 
-  [Auto resolution](/Simple_event/.md) type in case of violation of the consequence. Specified by one of the following options:
+  Turns on [auto resolution](/Simple_event/.md) of the consequence: if the premise (the left part of the statement) is changed to non-`NULL`, then the consequence changes to non-`NULL`.
 
-  * `LEFT`: if the premise (the left part of the statement) is changed to non-`NULL`, then the consequence changes to non `NULL`.
-  * `RIGHT`: if the consequence (the right part of the statement) changes to `NULL`, then the premise changes to `NULL`.
-  * `LEFT RIGHT`: similar to `LEFT` and `RIGHT` together.
+* `RIGHT`
+
+  Turns on auto resolution of the consequence: if the consequence (the right part of the statement) changes to `NULL`, then the premise changes to `NULL`.
 
 * `eventClause`
 
-  [Event description block](/Event_description_block/.md). Describes an [event](/Events/.md) upon the occurrence of which the created consequence will be checked and automatic resolution operations will be performed.
+  [Event description block](/Event_description_block/.md). Describes an [event](/Events/.md) upon the occurrence of which the created consequence will be checked and automatic resolution operations will be performed. If omitted, the global `APPLY` event is used.
 
 ### Examples[​](#examples "Direct link to Examples")
 
