@@ -902,7 +902,7 @@
 
 ## Launch_events
 
-- [Launch events](/Launch_events.md): There are several predefined actions in the platform that are called when various components of the platform are launched:
+- [Launch events](/Launch_events.md): A launch event occurs when one of the platform's components starts. For each launch event the platform provides a predefined action that runs as the event's handler; a developer plugs initialization logic into this handler.
 
 ## Launch_parameters
 

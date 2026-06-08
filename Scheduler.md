@@ -2,7 +2,7 @@
 
 The scheduler is designed to automatically execute certain tasks with specified frequency.
 
-The scheduler is configured in the `Administration > Scheduler > Tasks menu`. You can start the scheduler on this form by clicking `Start scheduler` button and stop it by clicking `Stop scheduler` (Fig. 7.11.). If the Server is specified in the system settings, then the scheduler can be launched from this server only (Fig. 1.).
+The scheduler is configured on the `Administration > Scheduler > Tasks` form. It is started automatically together with the application server; the same form lets you stop it (`Stop scheduler`) and start it again (`Start scheduler`). If a server is specified in the system settings, the scheduler can be started only from that server (Fig. 1.).
 
 ![](/assets/images/Scheduler_server-735f5ea0a1790692554314fc84d716d4.png)
 
