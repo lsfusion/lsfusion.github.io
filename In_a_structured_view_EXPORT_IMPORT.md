@@ -4,7 +4,7 @@ This operator creates an action that [opens a form](/Open_form/.md) in the [stru
 
 ### Format[​](#format "Direct link to Format")
 
-In this operator, you can define the format that all form data will be converted to: **XML**, **JSON**, **DBF**, **CSV**, **XLS**. The generated file(s) in this format is then written to the specified property.
+In this operator, you can define the format that all form data will be converted to: **XML**, **JSON**, **DBF**, **CSV**, **XLS**, **XLSX**, **TABLE**. The generated file(s) in this format is then written to the specified property.
 
 Form export is a general case of the [data export operator](/Data_export_EXPORT/.md).
 
@@ -43,7 +43,7 @@ FORM exportSku
     FILTERS in(st, s)
 ;
 
-exportSku (Store store)  {
+exportSku (Store store) {
     // uploading to DBF all Sku for which in (Store, Sku) is specified for the desired warehouse
     EXPORT exportSku OBJECTS st = store DBF CHARSET 'CP866';
     EXPORT exportSku XML;
@@ -66,7 +66,7 @@ FORM import
 
 ;
 
-importForm()  {
+importForm() {
     INPUT f = FILE DO {
         IMPORT import JSON FROM f;
         SHOW import; // showing what was imported

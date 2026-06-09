@@ -56,19 +56,13 @@ FORM printOrder
     FILTERS order(d) == o
 ;
 
-print (Order o)  {
+print (Order o) {
     PRINT printOrder OBJECTS o = o; // выводим на печать
 
     LOCAL file = FILE ();
     PRINT printOrder OBJECTS o = o DOCX TO file;
     open(file());
 
-    //v 2.0-2.1 syntax
-    LOCAL sheetName = STRING[255]();
-    sheetName() <- 'enctypted';
-    PRINT printOrder OBJECTS o = o XLS SHEET sheetName PASSWORD 'pass';
-
-    //v 2.2 syntax
-    //PRINT printOrder OBJECTS o = o XLS SHEET 'enctypted' PASSWORD 'pass';
+    PRINT printOrder OBJECTS o = o XLS SHEET 'encrypted' PASSWORD 'pass';
 }
 ```
