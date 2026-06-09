@@ -482,7 +482,7 @@
 
 ## Form_extension
 
-- [Form extension](/Form_extension.md): The form extension technique allows the developer to extend the structure and design of a form created in another module.
+- [Form extension](/Form_extension.md): The form extension technique allows the developer to extend the structure of a form created in another module — adding further objects, the properties and actions shown for them, filters, and orders, as well as refining elements the form already declares. A module can likewise customize the form's design.
 
 ## Form_operators
 
@@ -1394,7 +1394,7 @@
 
 ## User_interface
 
-- [User interface](/User_interface.md): (Under development)
+- [User interface](/User_interface.md): The platform lets the user adjust the graphical interface to their own preferences — the appearance of the client and the behavior of forms. The chosen settings are saved and reapplied the next time the user logs in, layered on top of the form design and the navigator design defined by the developer, and on top of the default values set by the administrator.
 
 ## User_IS_interaction
 
@@ -1430,7 +1430,7 @@
 
 ## WINDOW_statement
 
-- [WINDOW statement](/WINDOW_statement.md): The WINDOW statement - creating a new window.
+- [WINDOW statement](/WINDOW_statement.md): The WINDOW statement - creating a new window, the HIDE WINDOW statement - hiding an existing window.
 
 ## Working_parameters
 
