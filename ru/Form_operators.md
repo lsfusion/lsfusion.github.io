@@ -6,3 +6,4 @@
 * [Операции с группами объектов](/ru/Object_group_operators/.md)
 * [Управление фокусом](/ru/Focus_operators/.md)
 * [Снимок](/ru/Capture_SCREENSHOT/.md)
+* [Видимость контейнеров](/ru/Container_visibility_EXPAND_COLLAPSE/.md)

@@ -246,7 +246,7 @@
 
 ## COLLAPSE_operator
 
-- [COLLAPSE operator](/COLLAPSE_operator.md): The COLLAPSE operator is the creation of an action, that implements the collapse of elements in the object tree.
+- [COLLAPSE operator](/COLLAPSE_operator.md): The COLLAPSE operator creates an action that collapses either elements of an object tree on a form, or a collapsible container of a form.
 
 ## commat_statement
 
@@ -283,6 +283,10 @@
 ## Constraints
 
 - [Constraints](/Constraints.md): Constraints in the platform determine which values the data properties can have and which cannot. In general, a constraint is defined as a property which value should always be NULL.
+
+## Container_visibility_EXPAND_COLLAPSE
+
+- [Container visibility (EXPAND, COLLAPSE)](/Container_visibility_EXPAND_COLLAPSE.md): Container expansion and collapse operators control whether the contents of a collapsible container are shown on a form. A collapsible container can be collapsed to hide its contents, and expanded to show them again; this state is part of the user's interactive view of the form.
 
 ## CONTINUE_operator
 
@@ -334,7 +338,7 @@
 
 ## DIALOG_operator
 
-- [DIALOG operator](/DIALOG_operator.md): The DIALOG operator creates an action that opens a form in an interactive view in dialog mode.
+- [DIALOG operator](/DIALOG_operator.md): The DIALOG operator creates an action that opens a form in interactive view as a value-input dialog.
 
 ## Distribution_UNGROUP
 
@@ -418,7 +422,7 @@
 
 ## EXPAND_operator
 
-- [EXPAND operator](/EXPAND_operator.md): The EXPAND operator is the creation of an action, that implements the expansion of elements in the object tree.
+- [EXPAND operator](/EXPAND_operator.md): The EXPAND operator creates an action that expands either elements of an object tree on a form, or a collapsible container of a form.
 
 ## EXPORT_operator
 
@@ -462,7 +466,7 @@
 
 ## Focus_operators
 
-- [Focus operators](/Focus_operators.md): This category includes operators responsible for managing component activity:
+- [Focus operators](/Focus_operators.md): This category includes operators that manage the activity of form elements and report on it:
 
 ## FOR_operator
 
@@ -1074,7 +1078,7 @@
 
 ## Object_group_operators
 
-- [Object group operators](/Object_group_operators.md): Object group operators include the following operators:
+- [Object group operators](/Object_group_operators.md): Object group operators operate on an object group of a form:
 
 ## Object_tree_visibility_EXPAND_COLLAPSE
 
@@ -1268,6 +1272,10 @@
 
 - [Selection (CASE, IF, MULTI, OVERRIDE, EXCLUSIVE)](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md): The selection operator creates a property that determines for a set of conditions which condition is met, and returns the value of the result corresponding to that condition. If several conditions are met at once, the result corresponds to the first of them in the listed order. If none of the conditions is met, then the value of the created property will be NULL.
 
+## Selection_SELECT
+
+- [Selection (SELECT)](/Selection_SELECT.md): The selection operators create properties that report the user's row selection in an object group:
+
 ## Send_mail_EMAIL
 
 - [Send mail (EMAIL)](/Send_mail_EMAIL.md): The send mail operator creates an action that sends an email message. The message has a sender address, a list of recipient addresses each with a visibility flag, a subject, a body, and a list of attachments; in addition, the action itself is configured with a completion mode — synchronous or asynchronous.
@@ -1403,6 +1411,10 @@
 ## View_logic
 
 - [View logic](/View_logic.md): The key element of the view logic is the form. Forms are used in the platform to organize the input and output of information into the system (from the system).
+
+## View_type_VIEWTYPE
+
+- [View type (VIEWTYPE)](/View_type_VIEWTYPE.md): The view type operator creates a property whose value is the current view type in which an object group is displayed to the user: as a table, a pivot table, a map, a calendar, or a custom view.
 
 ## View_VIEW
 
