@@ -1418,7 +1418,7 @@
 
 ## View_VIEW
 
-- [View (VIEW)](/View_VIEW.md): The view operator creates a property that returns TRUE if the object collection is visible to the user in the specified object group, and NULL otherwise.
+- [View (VIEW)](/View_VIEW.md): The view operator creates a property, defined on the objects of an object group, that returns TRUE when their object collection is included in the set of object collections currently displayed to the user in the group, and NULL otherwise.
 
 ## WHEN_statement
 
