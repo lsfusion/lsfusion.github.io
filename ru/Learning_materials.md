@@ -10,7 +10,8 @@
 
 В видеоуроках этого курса на платформе **lsFusion** последовательно создаётся приложение для управления проектами, задачами в проектах и сотрудниками. Во время разработки на конкретных примерах разбираются возможности платформы, особенности реализации бизнес-логики и синтаксис языка **lsFusion**.
 
-[Видеокурс на YouTube](https://www.youtube.com/playlist?list=PL8FG-RmfUn1MrYDzWOP6UNizZQM4RJIG3) [Видеокурс VK](https://vkvideo.ru/playlist/-229037524_3)
+* [Видеокурс на YouTube](https://www.youtube.com/playlist?list=PL8FG-RmfUn1MrYDzWOP6UNizZQM4RJIG3)
+* [Видеокурс VK](https://vkvideo.ru/playlist/-229037524_3)
 
 ### [Видеоуроки](https://www.youtube.com/playlist?list=PL8FG-RmfUn1Oc30Vaw1Em3DeSzV5ElQ43)[​](#видеоуроки "Прямая ссылка на этот заголовок")
 
