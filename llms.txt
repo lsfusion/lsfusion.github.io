@@ -1340,6 +1340,18 @@
 
 - [Structured view](/Structured_view.md): All structured views (formats) can be divided into two types:
 
+## System_Authentication
+
+- [Authentication](/System_Authentication.md): Authentication is a system module that declares the users of the application and everything around signing them in: the user and contact classes, passwords and authentication tokens, the current-user properties, the locale each user works in, the design environment and color theme, the external authentication providers (LDAP, OAuth2), the HTTP API endpoints for registration and password recovery, the session-management actions, and object locks. It is pulled in via REQUIRE Authentication (it itself does REQUIRE Time, Utils).
+
+## System_Email
+
+- [Email](/System_Email.md): Email is a system module that holds the classes, properties, and actions for electronic mail: the mail accounts and their connection settings, the folder tree, stored messages with their headers, body, and attachments, the actions that receive mail from a server and import .eml files, and the compose-and-send surface built on the EMAIL operator. It is pulled in via REQUIRE Email (System, Reflection, and SystemEvents are pulled in along with it).
+
+## System_Icon
+
+- [Icon](/System_Icon.md): Icon is a system module that stores the catalogue of UI icons (Font Awesome and Bootstrap Icons) and finds the best icon for a text query through full-text search. It is pulled in via REQUIRE Icon (which in turn does REQUIRE Utils, Reflection, SystemEvents).
+
 ## System_modules
 
 - [System modules](/System_modules.md): A system module is a module shipped with the platform. An application project pulls these modules in via REQUIRE and uses their declarations (classes, properties, actions, forms) as a ready-made standard library; the platform never expects them to be redefined.
@@ -1348,13 +1360,33 @@
 
 - [System parameters](/System_parameters.md): Launch parameters
 
+## System_Reflection
+
+- [Reflection](/System_Reflection.md): Reflection is a system module that exposes the application's own metadata — the navigator, forms, properties, actions, and physical-model tables — as classes, properties, and forms, so that the running logic can introspect its own structure. It is pulled in via REQUIRE Reflection (System and Authentication are pulled in automatically).
+
+## System_Security
+
+- [Security](/System_Security.md): Security is a system module that defines the access-control model: user roles, role assignment, the permission set on properties, actions, property groups, and navigator elements, the per-role form and client settings, client memory limits, and the navigator-search form. It backs the Security policy management-side article, whose roles-and-access user interface is built on the classes, properties, and forms declared here. It is pulled in via REQUIRE Security (System, SystemEvents, Email, and Utils are pulled in automatically as its requirements).
+
+## System_Service
+
+- [Service](/System_Service.md): Service is a system module that gathers the server's administration surface: database service and recalculation actions, virtual-machine and memory control, scheduled server restart, application-wide settings, per-user diagnostics and logging flags, per-user client GUI preferences, database scaling, and the server-settings API exported to clients. It is pulled in via REQUIRE Service (it does REQUIRE System, Security, SystemEvents; its own declarations live in NAMESPACE Service).
+
 ## System_System
 
 - [System](/System_System.md): System is the root system module of the platform. It is pulled in automatically — every other module depends on it without an explicit REQUIRE. The module declares the root classes, the standard groups of properties and actions, the change-session control surface, the incoming HTTP-request context, the form-lifecycle actions, the application-identity properties, and the local buffers that the export, import, and value-request operators write to.
 
+## System_SystemEvents
+
+- [SystemEvents](/System_SystemEvents.md): SystemEvents is a system module that declares the platform's launch-event handlers, the platform-version properties, the per-environment appearance settings, and the system journals that record exceptions, server launches, client connections, change sessions, and computer pings. It also collects the push-notification and client-interaction actions and the navigator entries for the logo, the appearance dialog, and the log forms. It is pulled in via REQUIRE SystemEvents (System, Reflection, and Time are pulled in automatically).
+
 ## System_Time
 
 - [Time](/System_Time.md): Time is a system module that collects properties, actions, and classes for working with time: reading the current date and time, converting between time classes, extracting date parts, date and time arithmetic, intervals, and calendar classes (months, days of the week). It is pulled in via REQUIRE Time (System is pulled in automatically).
+
+## System_UserEvents
+
+- [UserEvents](/System_UserEvents.md): UserEvents is a system module that gives an action running on an open form programmatic read and write access to the form's filters and orders by group-object name and property name. It is pulled in via REQUIRE UserEvents. The two public actions reach the live filter structure of a group object, change a single property's filter value, and write it back, so an action can set or read a filter without the user touching the filter dialog.
 
 ## System_Utils
 
