@@ -1090,7 +1090,7 @@
 
 ## Online_demo
 
-- [Online demo](/Online_demo.md): All demos support the following browsers: Chrome (recommended), Safari, Firefox, Opera, and Internet Explorer.
+- [Online demo](/Online_demo.md): All demos support the following browsers: Chrome (recommended), Safari, Firefox, and Opera.
 
 ## Open_form
 

@@ -1,6 +1,6 @@
 # Online demo
 
-All demos support the following browsers: *Chrome* (recommended), *Safari*, *Firefox*, *Opera*, and *Internet Explorer*.
+All demos support the following browsers: *Chrome* (recommended), *Safari*, *Firefox*, and *Opera*.
 
 ### Score table[​](#score-table "Direct link to Score table")
 
@@ -14,7 +14,7 @@ The GitHub source code is located [here](https://github.com/lsfusion/samples/tre
 
 ### Materials management (MM)[​](#mm "Direct link to Materials management (MM)")
 
-Application from the [Materials Management](/Materials_management/.md) example.
+Application from the [Materials management](/Materials_management/.md) example.
 
 The demo is located at <https://demo.lsfusion.org/mm>.
 
@@ -27,3 +27,13 @@ The GitHub source code is located [here](https://github.com/lsfusion/samples/tre
 The demo is located at <https://demo.lsfusion.org/mycompany>.
 
 The GitHub source code is located [here](https://github.com/lsfusion-solutions/mycompany).
+
+### ERP[​](#erp "Direct link to ERP")
+
+A commercial ERP system with extensive functionality, deployed at enterprises with more than 500 concurrent users.
+
+The demo is located at <https://demo.lsfusion.org/erp>.
+
+Username: **guest**<br />Password: **guest**
+
+The GitHub source code is located [here](https://github.com/lsfusion-solutions/erp). The demo runs the [equ-erp-logics](https://github.com/lsfusion-solutions/erp/tree/master/erp-equ-logics) module, which includes the base ERP logic ([erp-logics](https://github.com/lsfusion-solutions/erp/tree/master/erp-logics)) and the integration layer ([equ-srv](https://github.com/lsfusion-solutions/erp/tree/master/equ-srv)) that talks to the equipment server (which lives in [equ-clt](https://github.com/lsfusion-solutions/erp/tree/master/equ-clt)).

@@ -1,6 +1,6 @@
 # Онлайн демо
 
-Во всех демо-версиях поддерживаются браузеры *Chrome* (рекомендуется), *Safari*, *Firefox*, \*Opera \*и *Internet Explorer*.
+Во всех демо-версиях поддерживаются браузеры *Chrome* (рекомендуется), *Safari*, *Firefox* и *Opera*.
 
 ### Турнирная таблица[​](#турнирная-таблица "Прямая ссылка на этот заголовок")
 
@@ -8,7 +8,7 @@
 
 Демо-версия находится по адресу <https://demo.lsfusion.org/hockeystats>.
 
-Логин : **guest**<br />Пароль : **guest**
+Логин: **guest**<br />Пароль: **guest**
 
 Исходный код на GitHub находится [здесь](https://github.com/lsfusion/samples/tree/master/hockeystats).
 
@@ -18,13 +18,15 @@
 
 Демо-версия находится по адресу <https://demo.lsfusion.org/mm>.
 
-Логин : **guest**<br />Пароль : **guest**
+Логин: **guest**<br />Пароль: **guest**
 
 Исходный код на GitHub находится [здесь](https://github.com/lsfusion/samples/tree/master/mm).
 
 ### MyCompany[​](#mycompany "Прямая ссылка на этот заголовок")
 
-Описание на [MyCompany](https://github.com/lsfusion-solutions/mycompany).
+Демо-версия находится по адресу <https://demo.lsfusion.org/mycompany>.
+
+Исходный код на GitHub находится [здесь](https://github.com/lsfusion-solutions/mycompany).
 
 ### ERP[​](#erp "Прямая ссылка на этот заголовок")
 
@@ -32,6 +34,6 @@
 
 Демо-версия находится по адресу <https://demo.lsfusion.org/erp>.
 
-Логин : **guest**<br />Пароль : **guest**
+Логин: **guest**<br />Пароль: **guest**
 
-Исходный код на GitHub находится [здесь](https://github.com/lsfusion-solutions/erp). В качестве демо-версии используется модуль [equ-erp-logics](https://github.com/lsfusion-solutions/erp/tree/master/erp-equ-logics), который включает в себя : базовую ERP логику ([erp-logics](https://github.com/lsfusion-solutions/erp/tree/master/erp-logics)) + интерфейсы общения ([equ-srv](https://github.com/lsfusion-solutions/erp/tree/master/equ-srv)) с сервером оборудования (который, в свою очередь, находится в [equ-clt](https://github.com/lsfusion-solutions/erp/tree/master/equ-clt)).
+Исходный код на GitHub находится [здесь](https://github.com/lsfusion-solutions/erp). В качестве демо-версии используется модуль [equ-erp-logics](https://github.com/lsfusion-solutions/erp/tree/master/erp-equ-logics), который включает базовую ERP-логику ([erp-logics](https://github.com/lsfusion-solutions/erp/tree/master/erp-logics)) и интерфейсы общения ([equ-srv](https://github.com/lsfusion-solutions/erp/tree/master/equ-srv)) с сервером оборудования (который, в свою очередь, находится в [equ-clt](https://github.com/lsfusion-solutions/erp/tree/master/equ-clt)).
