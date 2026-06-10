@@ -1226,7 +1226,7 @@
 
 ## Report_design
 
-- [Report design](/Report_design.md): For each report you need to specify a special file (template) which will be used to build the result document. The name of the template for a specific report is `, where the form's canonical name includes its namespace, with each . replaced by . An empty object group is considered to have no name, so if the first object group is empty, the name of the template is simply equal to the canonical name of the form (without the  postfix). The empty object group is always the form's first object group, so the form always has a top report named by the canonical name of the form alone, without a postfix; when no subreports are needed, this is the only template. Each subreport adds its own template, named with the _` postfix after its first (non-empty) object group — so a form with two independent object groups, for example, produces three templates: the top one without a postfix and one for each of the two subreports.
+- [Report design](/Report_design.md): The report design defines how each report of a form is laid out when the result document is built.
 
 ## REQUEST_operator
 

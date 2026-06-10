@@ -39,6 +39,7 @@ The `pivotOptions` options can be listed one after another in any order. The fol
 pivotType
 calcType
 settingsType
+CONFIG configFunction
 ```
 
 ### Description[​](#description "Direct link to Description")
@@ -95,6 +96,10 @@ Pivot table settings block allows you to set the initial settings for the form's
 
   * `SETTINGS` - settings are shown (default value)
   * `NOSETTINGS` - settings are not shown
+
+* `configFunction`
+
+  A [string literal](/Literals/.md#strliteral) with the name of a client-side JavaScript function that overrides the pivot table renderer options. By default, no function is applied.
 
 ### Example[​](#example "Direct link to Example")
 

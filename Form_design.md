@@ -13,6 +13,8 @@ Each component must have its own unique name within *the form*.
 
 All children of any container make an ordered list. It is necessary to determine how the child components of each container on the form should be placed. To do this, horizontal, tabbed or lines options can be specified for a container.
 
+By default, any container being created is vertical.
+
 If at some point a container has no child components , or they are invisible, it is automatically hidden. In turn, if a component is not a child of any container, then it will not be shown on the form.
 
 ### Base components[​](#base-components "Direct link to Base components")
@@ -24,6 +26,7 @@ When defining the form design, the developer can use the following base componen
 * *Table/Tree* (`GRID`): a component consisting of rows and columns in which the rows correspond to object collections of the corresponding [group of objects](/Form_structure/.md) and columns correspond to [properties](/Properties/.md) and [actions](/Actions/.md).
 * *System toolbar* (`TOOLBARSYSTEM`): a panel consisting of buttons with which the user can execute various system actions on the rows in the table. Automatically hidden if the table becomes invisible.
 * *User filter* (`FILTERS`): a component with which the user can create and apply their own filters to a table.
+* *Calculations* (`CALCULATIONS`): a component that shows the results of aggregate calculations over the table columns (for example, column sums).
 
 *Filter groups*
 
@@ -97,17 +100,17 @@ The base width of tables/trees is `130` pixels by default, and the height is `70
 
 The following formulas are used by default to determine the width of a property value cell:
 
-| Property value class | Width unit    | Width/Value                                                                                                      |
-| -------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Strings              | In characters | `IF length <= 12 result = length ELSE IF length = INFINITE result = 15 ELSE result = 12 + (length - 12) ^ 0.7`   |
-| Numbers              | In characters | `IF length <= 6 result = length ELSE IF this = DOUBLE result = 10 ELSE result = MIN(6 + (length - 6) ^ 0.7, 10)` |
-| `COLOR`              | In pixels     | `40`                                                                                                             |
-| Files and file links | In pixels     | `18`                                                                                                             |
-| `BOOLEAN`            | In pixels     | `25`                                                                                                             |
-| `DATE`               | Sample value  | `1991_11_21`                                                                                                     |
-| `DATETIME`           | Sample value  | `1991_11_21_10:55:55`                                                                                            |
-| `TIME`               | Sample value  | `10:55:55`                                                                                                       |
-| User classes         | In characters | `7`                                                                                                              |
+| Property value class | Width unit    | Width/Value                                                                                                                                                    |
+| -------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Strings              | In characters | `IF length <= 12 result = length ELSE IF length = INFINITE result = 15 ELSE result = 12 + (length - 12) ^ 0.7`                                                 |
+| Numbers              | In characters | `IF length <= 6 result = length ELSE IF this = DOUBLE result = 10 ELSE result = MIN(6 + (length - 6) ^ 0.7, 10)`<br />Where `length = integerPart + precision` |
+| `COLOR`              | In pixels     | `40`                                                                                                                                                           |
+| Files and file links | In pixels     | `18`                                                                                                                                                           |
+| `BOOLEAN`            | In pixels     | `30`                                                                                                                                                           |
+| `DATE`               | Sample value  | `1991_11_21`                                                                                                                                                   |
+| `DATETIME`           | Sample value  | `1991_11_21_10:55:55`                                                                                                                                          |
+| `TIME`               | Sample value  | `10:55:55`                                                                                                                                                     |
+| User classes         | In characters | `13`                                                                                                                                                           |
 
 The default height of a property value cell is equal to the height of the font used, except properties whose values belong to the `TEXT` class (in this case, the height is four times the font height).
 
@@ -137,26 +140,35 @@ The automatic design is generated as follows:
 
       <!-- -->
 
-      * `GRID (<group of objects / tree>)`: the base component of a Table.
+      * `FILTERBOX(<group of objects / tree>)`: contains the user filter of the object group together with its controls. Horizontal container.
+
+        <!-- -->
+
+        * `FILTERS(<group of objects / tree>)`: base component of the User filter. Alignment: `STRETCH`.
+        * `FILTERCONTROLS(<group of objects / tree>)`: base component of the user filter controls. Alignment: `CENTER`.
+
+      * `GRID(<group of objects / tree>)`: the base component of a Table.
 
       * `TOOLBARBOX(<group of objects / tree>)`: contains all the components of a toolbar (responsible for layout inside the toolbar). Horizontal container. Alignment: `STRETCH`
 
         * `TOOLBARLEFT(<group of objects / tree>)`: the left side of a toolbar. Horizontal container. Alignment: `CENTER`.
+
           <!-- -->
+
           * `TOOLBARSYSTEM(<group of objects / tree>)`: the base component of the System toolbar. Alignment: `CENTER`.
+          * `POPUP(<group of objects / tree>)`: a collapsed popup container (shown as a "⋮" menu) that holds the components moved into it.
 
         * `TOOLBARRIGHT(<group of objects / tree>)`: the right side of a toolbar. Horizontal container. Extension coefficient: `1`, alignment: `CENTER`.
 
           <!-- -->
 
+          * `CALCULATIONS(<group of objects / tree>)`: base component of the table calculations. Extension coefficient: `1`.
           * `FILTERGROUPS(<group of filters>)`: contains all the components that are created for filter groups corresponding to a object group. Horizontal container. Alignment: `CENTER`.
             <!-- -->
             * `FILTERGROUP`: base component of a Filter group. Alignment: `CENTER`.
           * `TOOLBAR(<group of objects / tree>)`: contains the components of the properties displayed in the `TOOLBAR` [view](/Interactive_view/.md#property) and [display group](/Form_structure/.md#drawgroup) equal to the specified one. Horizontal container. Alignment: `CENTER`.
             <!-- -->
             * `PROPERTY(<property>)`: base component of the Property Panel.
-
-      * `FILTERS(<group of objects / tree>)`: base component of the User filter. Alignment: `STRETCH`.
 
       * `PANEL(<group of objects / tree>)`: contains the components of the properties displayed in the `PANEL` [view](/Interactive_view/.md#property). Vertical container. Alignment: `STRETCH`. If several properties belong to [groups](/Groups_of_properties_and_actions/.md) for which it is necessary to create separate containers, then a corresponding hierarchy of containers is created for them and the components of these properties are placed in it:
         <!-- -->
