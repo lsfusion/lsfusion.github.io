@@ -10,6 +10,40 @@ During the build, each file under *src/main/web* (outside the *lib* subfolder) i
 
 A *src/main/web/lib* subfolder is treated as shared helper code: its files are not compiled into bundles of their own, but they can be imported from the entry files and are bundled in.
 
+### Without the build[​](#without-the-build "Direct link to Without the build")
+
+A project with no build set up — no `node`, no esbuild, no `org.mvnpm` dependencies — can still ship custom client JS as a plain file. Place it under *src/main/resources/web* (not *src/main/web*), register it in the [`onWebClientInit`](/INTERNAL_operator/.md) action, and the platform serves it from */web* and loads it when a page opens. The file is used as written: no bundling, no JSX, no third-party-library resolution. This is also the path `eval` uses.
+
+The file is plain JavaScript, so a React view is written with `React.createElement` against the platform-provided `window.React` instead of JSX, and the component is exposed on the global `window` (the fallback described below) instead of as a named export. A `custom` name matching `[A-Z][A-Za-z0-9_$]*` is still inferred as React:
+
+```
+function HelloBoard(props) {
+    var React = window.React;
+    var rows = (props.data.o || {}).list || [];
+    return React.createElement("div", { className: "hello-board" }, rows.length + " orders");
+}
+```
+
+```
+DESIGN orders {
+    BOX(o) { custom = 'HelloBoard'; }
+}
+
+onWebClientInit() + {
+    onWebClientInit('helloBoard.js') <- 1;
+}
+```
+
+The two paths differ as follows:
+
+|                       | Build path                                       | No-build path                                   |
+| --------------------- | ------------------------------------------------ | ----------------------------------------------- |
+| Location              | *src/main/web*                                   | *src/main/resources/web*                        |
+| Loading               | bundled to *web/.compiled*, loaded automatically | served from */web*, listed in `onWebClientInit` |
+| Source                | *.js*/*.jsx*/*.ts*/*.tsx*, JSX allowed           | plain *.js*, `React.createElement`              |
+| Registration          | named export                                     | name on `window`                                |
+| Third-party libraries | bundled via `org.mvnpm`                          | not bundled                                     |
+
 ### Named exports and auto-registration[​](#named-exports-and-auto-registration "Direct link to Named exports and auto-registration")
 
 Each module exposes its components and functions as **named exports**. At load time every named export is registered into the `window.lsfusion.custom` registry under its export name, and the client resolves a custom name against this registry first. So a `DESIGN` `custom = 'OrderBoard'`, a `CUSTOM 'orderBoard'` object view, or an `INTERNAL CLIENT 'formatSum'` action finds the export with the matching name:
@@ -22,7 +56,7 @@ export function OrderBoard(element, controller, list) {
 
 A name placed directly on the global `window` object still works as a fallback, so existing scripts that define `window.OrderBoard = ...` keep working, but named exports are the preferred form.
 
-React itself is **provided by the platform**: a single vendored production build of React is loaded before any custom script, and `react` / `react-dom` imports in a module resolve to it. An application must not bundle its own copy of React.
+React and ReactDOM are **provided by the platform**: a single vendored production build is loaded before any custom script, and `react`, `react-dom`, and `react-dom/client` imports in a module resolve to it. An application must not bundle its own copy of React or ReactDOM.
 
 ### Adding a third-party library[​](#adding-a-third-party-library "Direct link to Adding a third-party library")
 
