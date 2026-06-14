@@ -190,7 +190,7 @@ The resulting form will look like this: ![](/assets/images/How-to_Custom_compone
 
 ### Calling the server[​](#calling-the-server "Direct link to Calling the server")
 
-Besides the rendering helpers above, the *controller* lets the client JS call back into the server and get the result as a `Promise`. The same object is passed as the first argument to the JavaScript function bound by an [`INTERNAL CLIENT`](/INTERNAL_operator/.md) action.
+Besides the rendering helpers above, the *controller* lets the client JS call back into the server and get the result as a `Promise`. The same object is passed as the last argument to the JavaScript function bound by an [`INTERNAL CLIENT`](/INTERNAL_operator/.md) action, after the converted call parameters.
 
 * `exec(action, ...params)` — runs a named action; resolves to the action's `RETURN` value, if it has one.
 * `eval(script, ...params)` — runs an lsf script that defines its own `run` action, so its parameters can be declared with explicit types.
