@@ -61,9 +61,13 @@ function Row(props) {
 
 ### Отрисовка строк[​](#отрисовка-строк "Прямая ссылка на этот заголовок")
 
-Для отрисовки строк группы с экономией перерисовки по строкам используется `window.lsfusion.List`:
+Для отрисовки строк группы с экономией перерисовки по строкам используется `window.lsfusion.List`. Это глобал времени выполнения, поэтому, чтобы записать его как JSX-тег, сначала привяжите его к локальному имени с заглавной буквы; без алиаса вызывайте через `React.createElement`:
 
 ```
+const List = window.lsfusion.List;
+// ...
+<List data={props.data.o} component={Row} />
+// либо, без алиаса:
 React.createElement(window.lsfusion.List, { data: props.data.o, component: Row })
 ```
 

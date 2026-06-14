@@ -61,9 +61,13 @@ function Row(props) {
 
 ### Rendering rows[​](#rendering-rows "Direct link to Rendering rows")
 
-Use `window.lsfusion.List` to render the rows of a group with per-row render economy:
+Use `window.lsfusion.List` to render the rows of a group with per-row render economy. It is a runtime global, so to write it as a JSX tag bind it to a local capitalized name first; without an alias, call it through `React.createElement`:
 
 ```
+const List = window.lsfusion.List;
+// ...
+<List data={props.data.o} component={Row} />
+// or, without an alias:
 React.createElement(window.lsfusion.List, { data: props.data.o, component: Row })
 ```
 
