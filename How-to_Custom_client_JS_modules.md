@@ -12,9 +12,7 @@ A *src/main/web/lib* subfolder is treated as shared helper code: its files are n
 
 ### Without the build[​](#without-the-build "Direct link to Without the build")
 
-A project with no build set up — no `node`, no esbuild, no `org.mvnpm` dependencies — can still ship custom client JS as a plain file. Place it under *src/main/resources/web* (not *src/main/web*), register it in the [`onWebClientInit`](/INTERNAL_operator/.md) action, and the platform serves it from */web* and loads it when a page opens. The file is used as written: no bundling, no JSX, no third-party-library resolution. This is also the path `eval` uses.
-
-The file is plain JavaScript, so a React view is written with `React.createElement` against the platform-provided `window.React` instead of JSX, and the component is exposed on the global `window` (the fallback described below) instead of as a named export. A `custom` name matching `[A-Z][A-Za-z0-9_$]*` is still inferred as React:
+A project with no build set up — no `node`, no esbuild, no `org.mvnpm` dependencies — can still ship custom client JS as a plain file under *src/main/resources/web*, used as written: no bundling, no JSX, no third-party-library resolution. (This is also the path `eval` uses.) A React view is therefore written with `React.createElement` against the platform-provided `window.React` instead of JSX, and the component is exposed on the global `window` (the fallback described below) instead of as a named export. A `custom` name matching `[A-Z][A-Za-z0-9_$]*` is still inferred as React:
 
 ```
 function HelloBoard(props) {
@@ -24,25 +22,35 @@ function HelloBoard(props) {
 }
 ```
 
+Such a file is loaded one of two ways — the same split that distinguishes the build path's auto-loaded bundles from anything an application lists in `onWebClientInit`.
+
+**Auto-loaded — put it in *resources/web/init*.** A file under *src/main/resources/web/init* is registered automatically when a page opens, with no *onWebClientInit* entry — the no-build counterpart of how *src/main/web* bundles auto-load after the build. Use it for a self-contained component or stylesheet:
+
 ```
 DESIGN orders {
-    BOX(o) { custom = 'HelloBoard'; }
+    BOX(o) { custom = 'HelloBoard'; }   // from resources/web/init/helloBoard.js — nothing else to wire
 }
+```
 
+Files in *web/init* must be **load-order-independent**: the scan gives them all one load order, so each must register or define at load and use any other library lazily (at render or on an event), never reach into another script at load time. A *web/init/lib* subfolder is excluded from auto-loading (as *src/main/web/lib* is from the build), for helper or vendored files that are referenced explicitly rather than injected.
+
+**Registered explicitly — list it in *onWebClientInit*.** Any other file under *src/main/resources/web* — outside *web/init*, or inside the excluded *web/init/lib* — is loaded by naming it in the [`onWebClientInit`](/INTERNAL_operator/.md) action with an integer order. Use this when load order matters — a third-party library that must load before the component using it — or to load a file conditionally:
+
+```
 onWebClientInit() + {
     onWebClientInit('helloBoard.js') <- 1;
 }
 ```
 
-The two paths differ as follows:
+The build and no-build paths compare as follows:
 
-|                       | Build path                                       | No-build path                                   |
-| --------------------- | ------------------------------------------------ | ----------------------------------------------- |
-| Location              | *src/main/web*                                   | *src/main/resources/web*                        |
-| Loading               | bundled to *web/.compiled*, loaded automatically | served from */web*, listed in `onWebClientInit` |
-| Source                | *.js*/*.jsx*/*.ts*/*.tsx*, JSX allowed           | plain *.js*, `React.createElement`              |
-| Registration          | named export                                     | name on `window`                                |
-| Third-party libraries | bundled via `org.mvnpm`                          | not bundled                                     |
+|                       | Build (*src/main/web*)                  | No-build, auto (*resources/web/init*)       | No-build, explicit (*resources/web*)  |
+| --------------------- | --------------------------------------- | ------------------------------------------- | ------------------------------------- |
+| Loading               | bundled to *web/.compiled*, auto-loaded | auto-loaded by folder scan                  | listed in `onWebClientInit`           |
+| Source                | *.js*/*.jsx*/*.ts*/*.tsx*, JSX allowed  | plain *.js*                                 | plain *.js*                           |
+| Registration          | named export                            | name on `window`                            | name on `window`                      |
+| Load order            | one order (bundles are self-contained)  | one order (files must be order-independent) | explicit integer order                |
+| Third-party libraries | bundled via `org.mvnpm`                 | loaded separately, used from `window`       | loaded separately, used from `window` |
 
 ### Named exports and auto-registration[​](#named-exports-and-auto-registration "Direct link to Named exports and auto-registration")
 
@@ -74,6 +82,30 @@ A scoped npm package (`@scope/name`) uses the group `org.mvnpm.at.<scope>` and t
 
 ```
 import ApexCharts from "apexcharts";
+```
+
+### Adding a third-party library without the build[​](#adding-a-third-party-library-without-the-build "Direct link to Adding a third-party library without the build")
+
+Without the build there is no `org.mvnpm` bundling, so a third-party library is loaded as a separate browser script and used from the global name it defines — a build that assigns itself to `window` (a UMD or plain-script build). The component reads it from there (`window.confetti`, `window.dayjs`, …) instead of importing it. There are two ways to supply that script.
+
+Vendored, for an offline project. Place the library's browser build (the *.js* that assigns the global) as a static file under *src/main/resources/web/init* next to the component. Both auto-load, and the component works because it reads the global lazily, at render or on an event — so it does not matter which of the two scripts the scan injects first. Only the committed files are needed — no internet, no `org.mvnpm` dependency, no build:
+
+```
+function ConfettiBoard(props) {                        // resources/web/init/confettiBoard.js
+    var React = window.React;
+    function celebrate() { window.confetti({ particleCount: 200, spread: 120 }); }
+    return React.createElement("button", { onClick: celebrate }, "Celebrate");
+}
+// resources/web/init/confetti.umd.js sets window.confetti — both files auto-load, no onWebClientInit
+```
+
+From a URL, when the runtime is allowed to reach the internet. A URL is not a file to drop in *web/init*, so it is passed straight to `onWebClientInit`: a value that is not a local *web/* resource and is an absolute URL is loaded as a `<script src>` on the page (the resolution rule is described under [`INTERNAL`](/INTERNAL_operator/.md)), before the component that uses it:
+
+```
+onWebClientInit() + {
+    onWebClientInit('https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js') <- 1;
+    onWebClientInit('confettiBoard.js') <- 2;
+}
 ```
 
 ### React Compiler[​](#react-compiler "Direct link to React Compiler")
