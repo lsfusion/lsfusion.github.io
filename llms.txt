@@ -572,6 +572,10 @@
 
 - [How-to: CRUD](/How-to_CRUD.md): Example 1
 
+## How-to_Custom_client_JS_modules
+
+- [How-to: Custom client JS modules](/How-to_Custom_client_JS_modules.md): When an application needs its own browser JavaScript — a custom view for an object or property, a function bound by an INTERNAL CLIENT action, or any other client-side code — that code can be kept as ordinary source files in the project and compiled into the web client at build time. The platform bundles each entry file and registers what it exports, so the application does not write any explicit loading or wiring for it. This applies to the web client only.
+
 ## How-to_Custom_components_objects
 
 - [How-to: Custom Components (objects)](/How-to_Custom_components_objects.md): By default, each object on a form with GRID view is displayed on the form as a flat table with columns.
@@ -579,6 +583,14 @@
 ## How-to_Custom_components_properties
 
 - [How-to: Custom components (properties)](/How-to_Custom_components_properties.md): For each property type, by default, a predefined visual component is used to display and edit the data.
+
+## How-to_Custom_React_views
+
+- [How-to: Custom React form views](/How-to_Custom_React_views.md): A DESIGN container can be rendered by a React component instead of the standard layout. The component receives a projection of the form state and draws the container's whole subtree itself.
+
+## How-to_Custom_view_controller
+
+- [How-to: Custom view controller API](/How-to_Custom_view_controller.md): A custom view written in JavaScript talks back to the form through a controller object. In a React custom view the controller is props.controller; the same controller is also passed to a JavaScript function bound by an INTERNAL CLIENT action. With it the view sets the current object of a group, changes property values, looks up suggestions, and calls actions or scripts on the server.
 
 ## How-to_Data_entry
 
