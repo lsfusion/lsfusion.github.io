@@ -1,12 +1,33 @@
 # How-to: Custom view controller API
 
-A custom view written in JavaScript talks back to the form through a *controller* object. In a [React custom view](/How-to_Custom_React_views/.md) the controller is `props.controller`; the same controller is also passed to a JavaScript function bound by an [`INTERNAL CLIENT`](/INTERNAL_operator/.md) action. With it the view sets the current object of a group, changes property values, looks up suggestions, and calls actions or scripts on the server.
+A custom view written in JavaScript communicates with the form through a *controller* object — with it the view sets the current object of a group, changes property values, looks up suggestions, and calls actions or scripts on the server. There are three kinds of custom view; they obtain the controller differently, but all reach the same form-level controller, whose methods are documented on this page.
 
 Properties and actions are addressed by their integration name — the name on the form (or the alias / `NEW` / `DELETE` integration name of a button), the same name the [external JSON/REST API](/How-to_Integration/.md) uses.
 
-### Controller methods[​](#controller-methods "Direct link to Controller methods")
+### How a view gets its controller[​](#how-a-view-gets-its-controller "Direct link to How a view gets its controller")
 
-All controller methods; optional arguments are bracketed:
+| view                                                             | declared                        | JavaScript entry point                            | the form controller is |
+| ---------------------------------------------------------------- | ------------------------------- | ------------------------------------------------- | ---------------------- |
+| [React view](/How-to_Custom_React_views/.md)                     | `DESIGN c { custom = 'Name'; }` | a component taking `props` (`data`, `controller`) | `props.controller`     |
+| [CUSTOM object group](/How-to_Custom_components_objects/.md)     | `OBJECTS g = Cls CUSTOM 'name'` | `render` / `update` callbacks                     | `controller.form`      |
+| [CUSTOM property cell](/How-to_Custom_components_properties/.md) | `PROPERTIES p CUSTOM 'name'`    | `render` / `update` callbacks                     | `controller.form`      |
+
+A **React view** renders an entire custom container, so the `controller` in its `props` *is* the form controller — the methods below are called on it directly.
+
+A **CUSTOM object group** and a **CUSTOM property cell** are rendered by classic `render(element, controller)` / `update(element, controller, ...)` callbacks — `update` also receives the group's `list` of rows, or the cell's `value`. The `controller` they receive is a *local* controller scoped to that one group or cell: it adds the helpers those views need — value, current-row and styling getters and `diff` / `clearDiff` for an object group, the `change` edit event for a property cell — documented in [Custom components (objects)](/How-to_Custom_components_objects/.md) and [Custom components (properties)](/How-to_Custom_components_properties/.md). The local controller exposes the form controller as `controller.form`, so the form-wide methods below are reached through it:
+
+```
+controller.form.changeObject('customer', row);
+const total = await controller.form.exec('recalc', orderId);
+```
+
+Rows a classic view receives carry the same `key` and `objects` as React rows (see [Row identity](#row-identity-contract)), so they are accepted by the form-controller methods unchanged. An object group's local `changeProperty` also *delegates*: for a property that is not one of its own columns it is passed to the form controller and resolved form-wide, so the view can change a property it does not display.
+
+An [`INTERNAL CLIENT`](/INTERNAL_operator/.md) action is a fourth entry point: its bound JavaScript function receives the form controller as the argument after the call parameters.
+
+### The form controller[​](#the-form-controller "Direct link to The form controller")
+
+These methods are the same wherever the form controller is reached — directly as `props.controller`, or as `controller.form`. Optional arguments are bracketed.
 
 | method                                                                      | what it does                                                          | returns      |
 | --------------------------------------------------------------------------- | --------------------------------------------------------------------- | ------------ |
@@ -19,13 +40,13 @@ All controller methods; optional arguments are bracketed:
 | `evalAction(script, ...params)`                                             | run an action body (`$1`, `$2`, … params)                             | `Promise`    |
 | `change(property, ...keyParams, value)`                                     | set a global property                                                 | `Promise`    |
 
-The mutating methods (`changeObject` / `changeProperty` / `changeProperties`) return nothing — the new state arrives with the next `props.data` projection; the server-calling methods (`exec` / `eval` / `evalAction` / `change`) return a `Promise`. When a property's integration name is not unique across the form, scope it with a `groupSID`: a fourth positional argument to `changeProperty` (`changeProperty(property, object, value, groupSID)`), the trailing argument after `count` on `getPropertyValues`, or the `groupSIDs` array on `changeProperties`. Each method is detailed below.
+The mutating methods (`changeObject` / `changeProperty` / `changeProperties`) return nothing — the new state arrives with the next form update; the server-calling methods (`exec` / `eval` / `evalAction` / `change`) return a `Promise`. When a property's integration name is not unique across the form, scope it with a `groupSID`: a fourth positional argument to `changeProperty` (`changeProperty(property, object, value, groupSID)`), the trailing argument after `count` on `getPropertyValues`, or the `groupSIDs` array on `changeProperties`.
 
-### Changing the current object and property values[​](#changing-the-current-object-and-property-values "Direct link to Changing the current object and property values")
+#### Changing the current object and property values[​](#changing-the-current-object-and-property-values "Direct link to Changing the current object and property values")
 
-`controller.changeObject(groupSID, object)` sets the current object of the group `groupSID`. The `object` is a data row of that group, or a raw `objects` handle (see [the identity rules](#row-identity-contract) below) — not a bare `row.key`.
+`changeObject(groupSID, object)` sets the current object of the group `groupSID`. The `object` is a data row of that group, or a raw `objects` handle (see [the identity rules](#row-identity-contract) below) — not a bare `row.key`.
 
-`controller.changeProperty(property, value)` changes `property` for the group's current object. To target a specific row, pass it in between: `controller.changeProperty(property, object, value)`, where `object` is a data row or a raw handle. When `property` is an action (or any property with no editable value), the value is omitted: `controller.changeProperty('edit')` execs it on the current object, `controller.changeProperty('edit', object)` on the given row.
+`changeProperty(property, value)` changes `property` for the group's current object. To target a specific row, pass it in between: `changeProperty(property, object, value)`, where `object` is a data row or a raw handle. When `property` is an action (or any property with no editable value), the value is omitted: `changeProperty('edit')` execs it on the current object, `changeProperty('edit', object)` on the given row.
 
 ```
 function orderView(props) {
@@ -44,17 +65,15 @@ function orderView(props) {
 
 In the two-argument `changeProperty(property, X)` form the platform decides whether `X` is a value or a row: when the property accepts a value and `X` resolves to a row (a data row or a raw handle), it is read as the row and the call execs on it; otherwise `X` is the value and the call changes the current object.
 
-When the property's integration name is not unique across the form, scope it with a fourth positional `groupSID` argument — `controller.changeProperty(property, object, value, groupSID)` (the same disambiguation as the `groupSIDs` array of `changeProperties`).
-
-`controller.changeProperties(properties, objects, values)` applies several changes at once from parallel arrays — `properties[i]` is changed to `values[i]` for `objects[i]` (an entry may be `null` for the current object). An optional fourth array `groupSIDs` scopes each property to a group when its integration name is not unique across the form.
+`changeProperties(properties, objects, values)` applies several changes at once from parallel arrays — `properties[i]` is changed to `values[i]` for `objects[i]` (an entry may be `null` for the current object). The optional fourth array `groupSIDs` scopes each property to a group when its integration name is not unique across the form.
 
 ```
 controller.changeProperties(['note', 'qty'], [null, row], ['checked', 5]);
 ```
 
-### Looking up values[​](#looking-up-values "Direct link to Looking up values")
+#### Looking up values[​](#looking-up-values "Direct link to Looking up values")
 
-`controller.getPropertyValues` asks the server for a capped suggestion list for a property. The result is delivered to the `ok` callback as `{ data: [ { displayString, rawString, objects }, ... ], more }`; `more` is `true` when the list was truncated, so it is a suggestion list, not a full `SELECT DISTINCT`. In a classic `GRID` custom view the same lookup is exposed as `getValues(property, value, ok, fail)`, equivalent to `getPropertyValues` in the default `'objects'` mode; the form-level / React controller uses `getPropertyValues`.
+`getPropertyValues` asks the server for a capped suggestion list for a property. The result is delivered to the `ok` callback as `{ data: [ { displayString, rawString, objects }, ... ], more }`; `more` is `true` when the list was truncated, so it is a suggestion list, not a full `SELECT DISTINCT`.
 
 ```
 controller.getPropertyValues(property[, object], value[, mode], ok, fail[, count[, groupSID]]);
@@ -94,14 +113,14 @@ controller.getPropertyValues('customer', text, 'objects', result => {
 }, () => {});
 ```
 
-### Calling the server[​](#calling-the-server "Direct link to Calling the server")
+#### Calling the server[​](#calling-the-server "Direct link to Calling the server")
 
-`exec`, `eval`, `evalAction` and `change` each run on the server and return a `Promise`. They behave exactly as described in [How-to: Custom Components (objects)](/How-to_Custom_components_objects/.md#calling-the-server) — the same authorization gate and the same conversion of the result to a JS value.
+`exec`, `eval`, `evalAction` and `change` each run on the server and return a `Promise`. They are subject to the same authorization gate and convert the result to a JS value the same way as a classic view's server calls — see [Calling the server](/How-to_Custom_components_objects/.md#calling-the-server) for the gate and the result-to-JS conversion table.
 
-* `controller.exec(action, ...params)` — runs a named action; resolves to its `RETURN` value.
-* `controller.eval(script, ...params)` — runs an lsf script that defines its own `run` action (typed parameters).
-* `controller.evalAction(script, ...params)` — runs an action body wrapped into a `run` action, with parameters referenced as `$1`, `$2`, ….
-* `controller.change(property, ...keyParams, value)` — changes a global property; the last argument is the value, the preceding ones are the keys.
+* `exec(action, ...params)` — runs a named action; resolves to its `RETURN` value.
+* `eval(script, ...params)` — runs an lsf script that defines its own `run` action (typed parameters).
+* `evalAction(script, ...params)` — runs an action body wrapped into a `run` action, with parameters referenced as `$1`, `$2`, ….
+* `change(property, ...keyParams, value)` — changes a global property; the last argument is the value, the preceding ones are the keys.
 
 ```
 const total = await controller.exec('recalc', orderId);
@@ -111,20 +130,14 @@ await controller.change('note', orderId, 'checked');
 
 A call made after the form has been closed *rejects* with a `Form is closed` error — it never hangs — so an `await` on a closed form lands in the `catch` branch.
 
-### Row identity rules[​](#row-identity-contract "Direct link to Row identity rules")
+### Row identity[​](#row-identity-contract "Direct link to Row identity")
 
 A method that targets a row accepts one of:
 
-* a data row object the view received (from the React props / the `update` list);
+* a data row object the view received (from the React `props` / the classic `update` list);
 * a spread or `Object.assign` clone of such a row — the enumerable `objects` handle is copied with it, so the clone resolves to the same object;
 * a raw `objects` handle — `row.objects`, or `item.objects` from a `getPropertyValues` `'objects'` result.
 
 A bare `row.key` is *not* accepted: `key` is a display / React-key / diff token, not a resolution input. The field names `key`, `isCurrent` and `objects` are reserved on a row — an application property or column with one of these integration names would be overwritten.
 
 If an explicit object argument resolves to neither a row nor a raw handle, the platform does not silently fall back to the current row and does not throw: `changeProperty` logs a console error and skips that change, and `changeObject` is a no-op.
-
-### Classic CUSTOM compatibility[​](#classic-custom-compatibility "Direct link to Classic CUSTOM compatibility")
-
-The classic [render/update custom components](/How-to_Custom_components_objects/.md) keep their own `controller` — with `isCurrent`, `getValue`, the style and metadata getters, `changeProperty` / `changeObject`, and `diff` / `clearDiff` — plus the [`controller.change`](/How-to_Custom_components_properties/.md#handling-user-actions) event method of property components. Their rows now also carry the public `key` and the enumerable `objects` handle, so a row from such a view can be passed wherever a row is expected. A `controller.changeProperty(property, ...)` on a property that is *not* a column of that view's own grid is delegated to the form controller, which resolves the property form-wide — so a classic view can change a property it does not display.
-
-Every custom view gets a controller scoped to what it renders — an object/grid view's own grid controller, or a property cell's render/edit controller — with the value, styling, `diff` and `isCurrent` helpers for that group or cell. That controller also exposes `form`: the form-level controller documented on this page. So from any custom view — object group **or** property — server calls and form-wide changes go through `controller.form` (`controller.form.exec(...)`, `controller.form.changeObject(...)`, `controller.form.getPropertyValues(...)`, …). A whole-form [React view](/How-to_Custom_React_views/.md) is the exception: it owns the entire form, so its `props.controller` is the form controller directly.
