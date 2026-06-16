@@ -15,6 +15,7 @@ The following set of options is supported (the syntax of each option is indicate
 ```
 IN groupName
 viewType
+customView
 ON eventType { actionOperator }
 CHANGEKEY key [SHOW | HIDE]
 CHANGEMOUSE key [SHOW | HIDE]
@@ -35,6 +36,7 @@ ECHO
 DEFAULTCOMPARE compare
 EVENTID eventId
 LAZY [WEAK | STRONG]
+EXTID extId
 imageSetting
 annotationSetting
 ```
@@ -130,6 +132,10 @@ annotationSetting
   * `PANEL` - panel
 
   It is similar to specifying the `viewType` option in the [property block](/Properties_and_actions_block/.md) of the [`FORM` statement](/FORM_statement/.md). Thus, if this option is not specified either in the property options or in the property block directly on the form, the [default view](/Interactive_view/.md#property) of the property display group on the form is used.
+
+* `customView`
+
+  Specifying a custom view of the property value when the property is added to the form. It is similar to specifying the `customView` option in the [property block](/Properties_and_actions_block/.md) of the [`FORM` statement](/FORM_statement/.md), which can override it.
 
 * `ON eventType { actionOperator }`
 
@@ -358,6 +364,14 @@ Property annotation. Begins with `@@`. The following annotations are supported:
 * `LAZY [WEAK | STRONG]`
 
   Specifies the caching level of a property. `WEAK` means caching the property value on the application server (if reading is done for all fixed parameters). `STRONG` means that the cache will not be entirely cleared upon any property change, but instead, an event will be triggered, and specific values will be cleared. Default value is `WEAK`.
+
+* `EXTID extId`
+
+  Specifying the name to be used for [export/import](/Structured_view/.md#extid) of the property when it is added to the form. It is similar to specifying the `EXTID` option in the [property block](/Properties_and_actions_block/.md) of the [`FORM` statement](/FORM_statement/.md), which can override it.
+
+  * `extId`
+
+    String literal.
 
 ## Examples[​](#examples "Direct link to Examples")
 

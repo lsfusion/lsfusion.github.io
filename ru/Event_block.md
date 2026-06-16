@@ -5,7 +5,7 @@
 ### Синтаксис[​](#синтаксис "Прямая ссылка на этот заголовок")
 
 ```
-EVENTS formEventDecl1, ..., formEventDeclN
+[EVENTS] formEventDecl1, ..., formEventDeclN
 ```
 
 Где каждый `formEventDecli` имеет следующий синтаксис:

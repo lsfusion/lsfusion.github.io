@@ -39,7 +39,7 @@ EXTID objectExtID
 After the declaration of each object group, the group options `groupOptions` can be listed in any order:
 
 ```
-viewType
+viewType [OPTIONS optionsExpr]
 insertPosition
 defaultObjectsType
 PAGESIZE pageSize 
@@ -53,7 +53,7 @@ FOREGROUND foregroundExpr
 
 ### Description[​](#description "Direct link to Description")
 
-A single `OBJECTS` block can contain several comma-delimited declarations of [object groups](/Interactive_view/.md#objects). An object group can contain just one object or several ones. In case of a single object, you can use simplified syntax without specifying the name of an object group and using parentheses.
+A single `OBJECTS` block can contain several comma-delimited declarations of [object groups](/Interactive_view/.md#objects). An object group can contain just one object or several ones. In case of a single object, you can use simplified syntax without specifying the name of an object group and parentheses.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
@@ -77,11 +77,11 @@ A single `OBJECTS` block can contain several comma-delimited declarations of [ob
 
 ### Object options[​](#object-options "Direct link to Object options")
 
-* `ON CHANGE actionName(param1, ..., paramM)`
+* `ON CHANGE actionId(param1, ..., paramM)`
 
   Specifying an [action](/Actions/.md) that will be called when the current value of the object changes.
 
-  * `actionID`
+  * `actionId`
 
     [Action ID](/IDs/.md#propertyid).
 
@@ -118,6 +118,10 @@ A single `OBJECTS` block can contain several comma-delimited declarations of [ob
   * `TOOLBAR`
 
     Keyword that, when specified, selects the *toolbar* view type
+
+  * `POPUP`
+
+    Keyword that, when specified, selects the *popup* view type.
 
   * `GRID`
 
@@ -160,9 +164,13 @@ A single `OBJECTS` block can contain several comma-delimited declarations of [ob
       * `SETTINGS` - settings are shown (default value)
       * `NOSETTINGS` - settings are not shown
 
+    * `CONFIG configFunction`
+
+      Specifying the name of a client JavaScript function that overrides the pivot table display options; `configFunction` is a [string literal](/Literals/.md#strliteral). Similar to the same option in the [pivot block](/Pivot_block/.md).
+
   * `MAP [tileProvider]`
 
-    When the `MAP` keyword is specified, the *map* view type is selected. By default, this view uses OpenStreetMap maps. It is possible to use Google or Yandex maps. To do this you need to include the `Geo.lsf` module in the project, then obtain an API key for Google or Yandex and specify it in `Administration > Application > Settings > Navigation`.
+    When the `MAP` keyword is specified, the *map* view type is selected. By default, this view uses OpenStreetMap maps. It is possible to use Google, Yandex or 2GIS maps. To do this you need to include the `Geo.lsf` module in the project, then obtain an API key for the corresponding map source and specify it in `Administration > Application > Settings > Navigation`.
 
     * `tileProvider`
 
@@ -171,12 +179,13 @@ A single `OBJECTS` block can contain several comma-delimited declarations of [ob
       * `'openStreetMap'` (default value)
       * `'google'`
       * `'yandex'`
+      * `'twoGis'`
 
   * `CALENDAR`
 
     Keyword that, when specified, selects the *calendar* view type.
 
-  * `CUSTOM renderFunction [HEADER expr]`
+  * `CUSTOM renderFunction`
 
     When the `CUSTOM` keyword is specified, the custom view type is selected.
 
@@ -190,9 +199,13 @@ A single `OBJECTS` block can contain several comma-delimited declarations of [ob
 
       A more detailed description of the mechanism can be found in the article [How-to: Custom Components (Objects)](/How-to_Custom_components_objects/.md).
 
-    * `expr`
+* `OPTIONS optionsExpr`
 
-      Expression whose value must be an object of the JSON class. It is used to pass data that does not depend on the values of the described object group.
+  Specifying additional settings of the view type. The option is specified after the view type `viewType`. The value is used by the *custom* view type (passed as the `options` argument of the `update` function) and the *map* view type (map settings).
+
+  * `optionsExpr`
+
+    Expression whose value must be an object of the JSON class. It is used to pass data that does not depend on the values of the described object group.
 
 []()
 
@@ -332,23 +345,20 @@ FORM printLabel 'Price tag printing'
 ### Syntax[​](#syntax-1 "Direct link to Syntax")
 
 ```
-TREE [name] groupDeclaration1 [parentBlock1], ...., groupDeclarationN [parentBlockN] [insertPosition]
+TREE [name] groupDeclaration1, ...., groupDeclarationN [insertPosition]
 ```
 
-Each `groupDeclaration` is a declaration of an object group that is fully analogous to the [declaration in the object block](#objects) described above. Each `parentBlock` can be described in one of two ways:
+Each `groupDeclaration` is a declaration of an object group that is fully analogous to the [declaration in the object block](#objects) described above. In addition, the `PARENT` option can be specified for each object of the group among its object options `objectOptions`:
 
 ```
 PARENT parentExpr
-(PARENT parentExpr1, ..., parentExprK)
 ```
-
-The first option is used if an object group for which the block is specified consists of a single object, the second one is used for groups of two and more objects.
 
 ### Description[​](#description-1 "Direct link to Description")
 
 *Object tree block* lets you create an [object tree](/Interactive_view/.md#tree). The first specified object group will form a list of top-level objects, each of which will have a child list of objects of the second specified object group and so on.
 
-Use the `PARENT` block to create [hierarchical object groups](/Interactive_view/.md#treegroup). To do that, specify a property that will define the parent element for an object (or several objects if an object group contains several ones).
+Use the `PARENT` option to create [hierarchical object groups](/Interactive_view/.md#treegroup). To do that, specify a property that will define the parent element for an object (or several objects if an object group contains several ones). If an object group consists of several objects, the `PARENT` option is specified for each object inside the parentheses of the group declaration.
 
 ### Parameters[​](#parameters-1 "Direct link to Parameters")
 
@@ -360,11 +370,7 @@ Use the `PARENT` block to create [hierarchical object groups](/Interactive_view/
 
 * `parentExpr`
 
-  Expression that defines a hierarchy for a group of objects consisting of a single object. This expression must create a property that has exactly one parameter and returns the parent object for the object passed as input (or `NULL` if the passed object is at the top level).
-
-* `parentExpr1, ..., parentExprK`
-
-  A list of expressions that define a hierarchy for an object group consisting of multiple objects. These expressions should create properties with a number of parameters equal to the number of objects in the group. Each of these properties should return one of the parent objects for the object collection passed as input (or `NULL` if the passed object collection is at the top level). The first property should return the first object of the parent object collection, the second property - the second object, and so on.
+  Expression that defines a hierarchy. For an object group consisting of a single object, this expression must create a property that has exactly one parameter and returns the parent object for the object passed as input (or `NULL` if the passed object is at the top level). For an object group consisting of multiple objects, the expressions in the `PARENT` options must create properties with a number of parameters equal to the number of objects in the group. Each of these properties must return one of the parent objects for the object collection passed as input (or `NULL` if the passed object collection is at the top level). The property of the first object must return the first object of the parent object collection, the property of the second object - the second object, and so on.
 
 * `insertPosition`
 

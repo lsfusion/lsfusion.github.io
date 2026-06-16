@@ -15,6 +15,7 @@ propertyOption1 ... propertyOptionN
 ```
 IN groupName
 viewType
+customView
 ON eventType { actionOperator }
 CHANGEKEY key [SHOW | HIDE]
 CHANGEMOUSE key [SHOW | HIDE]
@@ -35,6 +36,7 @@ ECHO
 DEFAULTCOMPARE compare
 EVENTID eventId
 LAZY [WEAK | STRONG]
+EXTID extId
 imageSetting
 annotationSetting
 ```
@@ -130,6 +132,10 @@ annotationSetting
   * `PANEL` - панель
 
   По действию аналогично указанию опции `viewType` в [блоке свойств](/ru/Properties_and_actions_block/.md) [инструкции `FORM`](/ru/FORM_statement/.md). Соответственно если эта опция не указана ни в опциях свойств, ни в блоке свойств непосредственно на форме, используется тип [представления по умолчанию](/ru/Interactive_view/.md#property) для группы отображения, добавляемого на форму свойства.
+
+* `customView`
+
+  Указание пользовательского представления значения свойства при добавлении на форму. По действию аналогично указанию опции `customView` в [блоке свойств](/ru/Properties_and_actions_block/.md) [инструкции `FORM`](/ru/FORM_statement/.md), которая может его переопределить.
 
 * `ON eventType { actionOperator }`
 
@@ -362,6 +368,14 @@ annotationSetting
 * `LAZY [WEAK | STRONG]`
 
   Указание для свойства уровня кэширования. `WEAK` означает кэширование значения свойства на сервере приложений (если чтение идет для всех фиксированных параметров). `STRONG` означает, что кэш будет очищаться не целиком при любом изменении свойства, а будет создаваться событие и будут очищаться конкретные значения. По умолчанию `WEAK`.
+
+* `EXTID extId`
+
+  Указание имени, которое будет использоваться для [экспорта / импорта](/ru/Structured_view/.md#extid) свойства при добавлении на форму. По действию аналогично указанию опции `EXTID` в [блоке свойств](/ru/Properties_and_actions_block/.md) [инструкции `FORM`](/ru/FORM_statement/.md), которая может его переопределить.
+
+  * `extId`
+
+    Строковый литерал.
 
 ## Примеры[​](#примеры "Прямая ссылка на этот заголовок")
 
