@@ -16,10 +16,10 @@ SHOW [formId =] target
 formName [OBJECTS objName1 = expr1 [NULL], ..., objNameN = exprN [NULL]]
 ```
 
-а *классовая форма* открывает [форму выбора или редактирования](/ru/Interactive_view/.md#edtClass) класса (указывается ровно одно из `LIST` или `EDIT`):
+а *классовая форма* открывает [форму выбора или редактирования](/ru/Interactive_view/.md#edtClass) класса:
 
 ```
-[LIST] [EDIT] className = expr [NULL]
+classFormType className = expr [NULL]
 ```
 
 А `formActionOptions` — произвольная комбинация следующих опций в любом порядке:
@@ -59,9 +59,12 @@ IN containerName
 
   Имя формы. [Составной идентификатор](/ru/IDs/.md#cid).
 
-* `LIST`, `EDIT`
+* `classFormType`
 
-  Ключевые слова. Определяют, какая именно классовая форма открывается: `LIST` — форма выбора, `EDIT` — форма редактирования. Должно быть указано ровно одно из `LIST` или `EDIT`.
+  Тип открывающейся классовой формы. Задаётся одним из ключевых слов:
+
+  * `LIST` — форма выбора (списка)
+  * `EDIT` — форма редактирования
 
 * `className`
 
