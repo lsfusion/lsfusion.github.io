@@ -23,7 +23,7 @@ We need to define a property that returns the color of a given book.
 
 ```
 // Option 1
-nameColor1 'Color' (Book b) = staticCaption(color(b));
+nameColor1 'Color' (Book b) = caption(color(b));
 
 // Option 2
 nameColor2 'Color' (Book b) = IF color(b) == Color.white THEN 'White' ELSE 'Black';
@@ -68,7 +68,7 @@ status 'Status' (Order o) = CASE WHEN accepted(o) THEN Status.accepted
                                  WHEN agreed(o) THEN Status.agreed
                                  WHEN sent(o) THEN Status.sent
                             ELSE Status.new;
-nameStatus2 'Status' (Order o) = staticCaption(status(o));
+nameStatus2 'Status' (Order o) = caption(status(o));
 ```
 
 ## Example 3[​](#example-3 "Direct link to Example 3")
