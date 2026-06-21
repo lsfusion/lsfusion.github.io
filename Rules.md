@@ -135,6 +135,13 @@ PROPERTY RULES
 
 3. The assistant MUST assume standard `NULL` propagation for property expressions: if any parameter is `NULL`, the result is `NULL`.
 
+   Exceptions that do NOT nullify on a single `NULL` operand: `MIN` / `MAX`, the `NULL`-tolerant arithmetic `(+)` / `(-)`, and `GROUP` aggregates (`GROUP SUM`, `GROUP MAX`, etc.) — a `NULL` operand or value is skipped instead of propagating.
+
+   These exceptions still yield `NULL` when:
+
+   * every operand or aggregated value is `NULL`;
+   * `(+)` / `(-)` or `GROUP SUM` produces `0` (a zero result is returned as `NULL`).
+
 4. The assistant MUST NOT use `GROUP AGGR` inside arbitrary expressions.
 
    `GROUP AGGR` is allowed only in property definitions.
