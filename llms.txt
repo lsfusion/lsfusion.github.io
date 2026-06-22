@@ -742,7 +742,7 @@
 
 ## How-to_Numbering
 
-- [How-to: Numbering](/How-to_Numbering.md): Let's suppose we have a set of books. For each of these books, we define a number as an integer.
+- [How-to: Numbering](/How-to_Numbering.md): Numbering by hand
 
 ## How-to_Overriding_values
 
@@ -1443,6 +1443,10 @@
 ## User_IS_interaction
 
 - [User/IS interaction](/User_IS_interaction.md): This category includes operators for interacting with the user and with other information systems:
+
+## Utils_Numerator
+
+- [Numerator](/Utils_Numerator.md): The Numerator module generates sequential, human-readable numbers and codes for objects — order numbers, invoice numbers, partner codes, and similar. Each kind of object keeps its own counter, the generated value carries an optional series prefix and a fixed number of leading zeros, and the generation survives several users creating objects at the same time without producing duplicate or skipped numbers.
 
 ## Value_input
 
