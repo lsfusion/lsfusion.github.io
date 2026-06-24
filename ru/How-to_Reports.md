@@ -253,7 +253,9 @@ EXTEND FORM invoices
 
 ![](/ru/assets/images/How-to_Reports_ex2_template_change-a50b92d9614f516cbfda93fb6cbcdea2.png)
 
-**Шаблон** `Sample_invoice_i.jrxml`:
+Поскольку группы объектов `i` и `d` зависят друг от друга, формируется один плоский отчет, поэтому шаблон будет единственным и называется по [каноническому имени формы](/ru/Report_design/.md#template) без постфикса (как и в [**Примере 1**](#%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80-1)).
+
+**Шаблон** `Sample_invoice.jrxml`:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>

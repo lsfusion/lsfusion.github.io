@@ -199,7 +199,9 @@ Let's move the invoice data from the group header (**Group Header**) to the invo
 
 ![](/assets/images/How-to_Reports_ex2_template_change-a50b92d9614f516cbfda93fb6cbcdea2.png)
 
-**Template** `Sample_invoice_i.jrxml`:
+Since the `i` and `d` object groups depend on each other, a single flat report is generated, so there is only one template, named by the [form's canonical name](/Report_design/.md#template) without a postfix (as in [**Example 1**](#example-1)).
+
+**Template** `Sample_invoice.jrxml`:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
