@@ -328,17 +328,19 @@ FORM RULES
 
    Without `SELECTOR`, the panel cell does not open a selection dialog and the object cannot be changed. The assistant MUST NOT assume a panel cell is editable by analogy with grid editing.
 
-7. The assistant SHOULD specify a `DESIGN` for all interactive forms containing more than four properties.
+7. These form rules do NOT cover `DESIGN` layout — the default container tree, the flexbox `fill` / alignment model, or the container idioms. They give only placement meta-advice. Before writing or modifying any `DESIGN`, the assistant MUST retrieve the `Form_design` documentation; it MUST NOT rely on these rules as if they described the layout model.
 
-8. Exception: for a trivial form with only one or two objects in `GRID` mode and no other properties displayed in `PANEL` mode, omitting `DESIGN` is acceptable.
+8. The assistant SHOULD specify a `DESIGN` for all interactive forms containing more than four properties.
 
-9. In `DESIGN`, the assistant SHOULD prefer moving `BOX(...)` containers for tables first.
+9. Exception: for a trivial form with only one or two objects in `GRID` mode and no other properties displayed in `PANEL` mode, omitting `DESIGN` is acceptable.
 
-   `GRID(...)` SHOULD be used only when absolutely necessary.
+10. In `DESIGN`, the assistant SHOULD prefer moving `BOX(...)` containers for tables first.
 
-10. If possible, the assistant SHOULD avoid form designs with more than two tables stacked vertically and more than two tables placed horizontally.
+    `GRID(...)` SHOULD be used only when absolutely necessary.
 
-11. In a form `PROPERTIES` block, the parameter style on the property or action being added to the form MUST match the block header:
+11. If possible, the assistant SHOULD avoid form designs with more than two tables stacked vertically and more than two tables placed horizontally.
+
+12. In a form `PROPERTIES` block, the parameter style on the property or action being added to the form MUST match the block header:
 
     * With a common-parameter header `PROPERTIES(p1, ..., pN)`, each entry MUST be specified by its ID only — the common parameters are bound implicitly. Writing `propName(p1, ..., pN)` after the ID is a parse error.
     * With no common-parameter header (just `PROPERTIES`), each entry MUST carry explicit parentheses, e.g. `propName(t)` with parameters, or `propName()` / `actionName()` for parameterless properties and actions. Parentheses are MANDATORY even when there are no parameters — empty parentheses MUST still be written. Writing the bare name without parentheses is a parse error.
@@ -388,6 +390,18 @@ MODULE DESIGN RULES
     If the owning module is not in the transitive `REQUIRE` closure, the platform raises a "Property not found" (or analogous "not found") error at startup.
 
     The assistant MUST add the owning module (or any module that already requires it) to the current module's `REQUIRE` list before using its elements.
+
+***
+
+MIGRATION RULES (`migration.script`)
+
+1. Renaming a property or action, or moving it to another namespace, changes its canonical name. Whenever the assistant renames or re-namespaces an existing element, it MUST record the change in `migration.script` in the same edit; otherwise the platform treats the old and new names as unrelated elements — the old one is dropped and the new one starts empty.
+
+2. For a primary (`DATA`) property this is silently destructive and the assistant MUST take special care. The rename / namespace change MUST be recorded as a `STORED PROPERTY` change (`old canonical name -> new canonical name`), which renames the underlying database column and preserves its data. A plain `PROPERTY` change carries over only the security-policy and reflection settings, NOT the stored data.
+
+3. Without the `STORED PROPERTY` entry, on the next server start the old column is renamed to `<oldID>_deleted` and a fresh empty column is created for the new name, so all existing values of the property are lost. The assistant MUST NOT rename or move a `DATA` property to another namespace without adding this entry.
+
+4. Renaming a custom class, or moving it to another namespace, MUST be recorded as a `CLASS` change to preserve its objects and their data. Such a class rename can also change the canonical names of its `DATA` properties; these are not tracked automatically and MUST be added as their own `STORED PROPERTY` changes.
 
 ***
 
