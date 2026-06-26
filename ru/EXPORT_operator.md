@@ -20,8 +20,8 @@ EXPORT formName [OBJECTS objName1 = expr1, ..., objNameK = exprK] [exportFormat]
 JSON [CHARSET charsetStr]
 XML [HEADER | NOHEADER] [ROOT rootExpr] [TAG tagExpr] [ATTR] [CHARSET charsetStr]
 CSV [separator] [HEADER | NOHEADER] [ESCAPE | NOESCAPE] [CHARSET charsetStr]
-XLS [SHEET sheetProperty] [HEADER | NOHEADER]
-XLSX [SHEET sheetProperty] [HEADER | NOHEADER]
+XLS [SHEET sheetExpr] [HEADER | NOHEADER]
+XLSX [SHEET sheetExpr] [HEADER | NOHEADER]
 DBF [CHARSET charsetStr]
 TABLE
 ```
@@ -132,9 +132,9 @@ TABLE
 
     Cтроковый литерал, определяющий кодировку. По умолчанию для `JSON`, `XML`, `CSV` используется `UTF-8`, для `DBF` - `CP1251`.
 
-* `sheetProperty`
+* `sheetExpr`
 
-  [Идентификатор свойства](/ru/IDs/.md#propertyid), значение которого применяется в качестве названия листа в выгружаемом файле. У свойства не должно быть параметров. Используется для форматов экспорта `XLS`, `XLSX`.
+  Выражение, значение которого применяется в качестве названия листа в выгружаемом файле. Используется для форматов экспорта `XLS`, `XLSX`.
 
 ### Назначение экспорта[​](#назначение-экспорта "Прямая ссылка на этот заголовок")
 

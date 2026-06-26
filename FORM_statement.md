@@ -34,7 +34,6 @@ PIVOT ...
 HINTNOUPDATE LIST propertyId1, ..., propertyIdN
 HINTTABLE LIST propertyId1, ..., propertyIdN
 REPORT propertyExpression
-REPORTFILES reportPath1, ..., reportPathN
 REPORTS reportPath1, ..., reportPathN
 FORMEXTID extID
 EDIT className OBJECT objectName
@@ -196,9 +195,9 @@ The `FORM` statement declares a new form and adds it to the current [module](/Mo
 
     [Expression](/Expression/.md).
 
-* `REPORTFILES reportPath1, ..., reportPathN`
+* `REPORTS reportPath1, ..., reportPathN`
 
-  Specifying the properties whose values will be used as the names of the report files for the object groups of the form. The keyword `REPORTS` can be used as a synonym of `REPORTFILES`.
+  Specifying the properties whose values will be used as the names of the report files for the object groups of the form. The keyword `REPORTFILES` can be used as a synonym of `REPORTS`.
 
   * `TOP`
 
@@ -313,7 +312,7 @@ EXTEND FORM printInvoice
     // ... adding properties and filters to the form
 
     // setting the report file for the object group d, marking it as a separate report
-    REPORTFILES d 'printInvoiceDetail.jrxml'
+    REPORTS d 'printInvoiceDetail.jrxml'
 ;
 // declaring an action that will open the invoice print form
 print (Invoice invoice)  { PRINT printInvoice OBJECTS i = invoice; } 
