@@ -125,7 +125,7 @@ Each filter is defined with an [expression](/Expression/.md) that defines the fi
 
   * `bindingType`
 
-    Binding kind. One of:
+    Binding kind. It is specified by one of the keywords:
 
     * `KEY` - a keyboard shortcut (default value)
     * `MOUSE` - a mouse event
@@ -136,7 +136,7 @@ Each filter is defined with an [expression](/Expression/.md) that defines the fi
 
   * `showType`
 
-    Whether the binding is shown in the filter caption in the user interface. One of:
+    Whether the binding is shown in the filter caption in the user interface. It is specified by one of the keywords:
 
     * `SHOW` - shown (default value)
     * `HIDE` - not shown

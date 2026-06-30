@@ -242,7 +242,7 @@ PROPERTIES(o) d=date, Order.number;
 
 * `viewType`
 
-  Указание [типа представления](/ru/Interactive_view/.md#property) добавляемого свойства или действия:
+  Указание [типа представления](/ru/Interactive_view/.md#property) добавляемого свойства или действия. Задается одним из ключевых слов:
 
   * `GRID` - колонка таблицы
   * `TOOLBAR` - тулбар
@@ -283,7 +283,7 @@ PROPERTIES(o) d=date, Order.number;
 
 * `sessionScopeType`
 
-  Сессия, в которой должны выполняться операции работы с объектами (`NEW`, `EDIT`, `DELETE`, `NEWEDIT`). Одно из:
+  Сессия, в которой должны выполняться операции работы с объектами (`NEW`, `EDIT`, `DELETE`, `NEWEDIT`). Задается одним из ключевых слов:
 
   * `NEWSESSION` - новая сессия
   * `NESTEDSESSION` - вложенная сессия
