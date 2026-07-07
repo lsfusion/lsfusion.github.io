@@ -168,6 +168,8 @@ For a simple property composition that only forwards another property, the assis
 
     The assistant MUST use `caption` and `name` instead.
 
+    This applies to reads: `caption` and `name` are calculated (materialized) properties and do not allow writes. At assignment sites (for example, when programmatically filling a static object's caption) the DATA properties `staticCaption` / `staticName` remain.
+
 12. Property names SHOULD be concise and avoid unnecessary words.
 
 13. The assistant SHOULD NOT use words in a property name that duplicate parameter class names unless required for clarity.
@@ -179,6 +181,10 @@ For a simple property composition that only forwards another property, the assis
     Attributes that form the object's business identity and appear in its representation SHOULD go in the `id` group; other primary attributes go in the `base` group (`id` is nested under `base`).
 
     A property SHOULD NOT be placed in `id` or `base` when it is not the object's own primary attribute.
+
+16. When dividing values of integer classes, the assistant MUST cast one of the operands to `NUMERIC`, not the result.
+
+    The ratio of two integers is integer division, so an outer cast like `NUMERIC[16,4](a * b / c)` silently drops the fractional part; the correct form is `NUMERIC[16,4](a) * b / c`.
 
 ***
 
@@ -224,6 +230,10 @@ ACTION RULES
 6. These are recommendations, not hard prohibitions. If the assistant cannot find a working syntax for a `LOCAL`-free construction, or some other approach keeps failing and a clean action cannot be built, falling back to a `LOCAL` is acceptable as a last resort.
 
    Established `LOCAL` patterns mandated by other rules (e.g. import staging, nested-session carry-over) remain valid; the assistant SHOULD still keep such `LOCAL`s minimal in count and scope.
+
+7. The parameters of the top-level statements of an action body share one parameter context: identical names denote the same parameter, and a parameter's class is declared only at its first use.
+
+   In generated scripts (`eval`, data seeding) the assistant SHOULD give the parameters of top-level statements unique names, so as not to depend on the statement order.
 
 ***
 

@@ -89,6 +89,10 @@ lsFusion startup parameters for the web server can be set in one of the followin
 | -------------------------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
 | []()`host`, `port`, `exportName` | `string`, `int`, `string` | Connection settings for the application server. Must match the [access parameters](#accessapp) for the application server.- `host` - application server address<br />- `port` - port of the application server. Must match the parameter `rmi.port`<br />- `exportName` - name of the application server. Must match the parameter `rmi.exportName` | `localhost`, `7652`, `default` |
 
+info
+
+To work with several application servers on one computer, it is recommended to use one web server, selecting the application server with URL parameters (`?host=...&port=...&exportName=...`), rather than to start a separate web server for each application server. The browser separates the session cookie (`JSESSIONID`) by domain and path, but not by port, so several web servers on different ports of the same domain clobber each other's sessions (accessing the second web server breaks the session of the first). If separate web servers are still necessary, each of them needs its own domain (for example, `*.localhost` subdomains), its own context path, or its own session cookie name in the Tomcat configuration.
+
 ### Example Tomcat configuration file ([section 3](#weblsfusion) in context parameters):[​](#filewebsettings "Direct link to filewebsettings")
 
 **$CATALINA\_BASE/conf/\[enginename]/\[hostname]/ROOT.xml**

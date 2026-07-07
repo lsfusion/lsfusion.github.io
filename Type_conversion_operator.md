@@ -12,6 +12,8 @@ className(expr)
 
 The operator creates a property whose value is the value of `expr` converted to the [built-in class](/Built-in_classes/.md) `className`. Which conversions are meaningful, and when the result is `NULL`, is determined by the [type conversion](/Type_conversion/.md) abstraction.
 
+For user classes no conversion is defined; a value narrowed to a user class is returned by the [`AS`](/IS_AS_operators/.md) operator.
+
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `className`

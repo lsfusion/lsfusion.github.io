@@ -49,7 +49,7 @@ NAVIGATOR {
 }
 ```
 
-The keyword **CUSTOM** specifies that not the standard tabular interface should be used to draw the list of items, but the components created by the function *itemCards*. Let's declare this function in the file *itemcards.js*, which we'll place in the folder *resources/web*. This is the no-build path — a plain `.js` file, no JSX or bundling; see [How-to: Custom client JS modules](/How-to_Custom_client_JS_modules/.md) for where custom JS goes and for the with-build alternative. It will return an object consisting of two functions: *render* and *update*.
+The keyword **CUSTOM** specifies that not the standard tabular interface should be used to draw the list of items, but the components created by the function *itemCards*. Let's declare this function in the file *itemcards.js*, which we'll place in the folder *resources/web*. This is the no-build path — a plain `.js` file, no JSX or bundling; see [How-to: Custom client JS modules](/How-to_Custom_client_JS_modules/.md) for where custom JS goes and for the with-build alternative. It will return an object consisting of two functions: *render* and *update*. It is the function that is registered: the platform itself calls *itemCards()* and takes *render* and *update* from the result, so the object with these functions cannot be registered without the wrapping function.
 
 The function *render* takes as input the controller and the element inside which the new elements necessary to display the data are to be created:
 
@@ -109,6 +109,8 @@ update: (element, controller, list) => {
 
 Because the *update* function is called whenever the data changes, the first thing that happens is that all previously created elements (namely, item cards) are deleted.
 
+*list* receives only the read page, not the whole set of objects: for an object group with the `CUSTOM` view type its default size is 1000 objects. For the view to receive all objects of the group, specify the `PAGESIZE 0` option (read all objects) in the [`OBJECTS`](/Object_blocks/.md) block.
+
 This example uses the simplest update scheme, but if necessary, it can be optimized by updating the DOM only for changed values. To do that, the *controller* has *getDiff* method, where you pass a new *list* of objects as a parameter. This method will return as a result an object with arrays *add*, *update*, *remove*, which store added, changed and deleted objects respectively. Example:
 
 ```
@@ -118,7 +120,7 @@ for (let object of diff.update) { ... }
 for (let object of diff.remove) { ... }
 ```
 
-After removing the old elements, for each object in the *list* array a *div* *card* is created, in which the desired display elements of each property are placed. The names of the object fields correspond to the names of the properties on the form. The *isCurrent* method determines which object from the list is current.
+After removing the old elements, for each object in the *list* array a *div* *card* is created, in which the desired display elements of each property are placed. The names of the object fields correspond to the names of the properties on the form. The property values are converted to JS values in the same way as in the rows of a [React view](/How-to_Custom_React_views/.md): for example, values of the date and time classes are passed as `Date`, and `JSON` — as a parsed object. The *isCurrent* method determines which object from the list is current.
 
 At the very end of the function, mouse click handlers are added to the item card.
 
