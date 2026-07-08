@@ -203,7 +203,7 @@ FOREGROUND foregroundExpr
 
       * `render(element, controller)`
       * `update(element, controller, list, options)`
-      * `clear(element)` (опциональна)
+      * `clear(element, controller)` (опциональна)
 
       Более подробное описание механизма можно прочитать в статье [How-to: Пользовательские компоненты (объекты)](/ru/How-to_Custom_components_objects/.md).
 
