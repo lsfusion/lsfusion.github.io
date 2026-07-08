@@ -24,8 +24,11 @@ LOCALASYNC
 ```
 [EXTEND] FORMS formItem1, ..., formItemN
 OBJECTS ... 
+EXTEND OBJECTS ...
 TREE ...
+EXTEND TREE ...
 PROPERTIES ...
+EXTEND PROPERTIES ...
 FILTERS ...
 [EXTEND] FILTERGROUP ...
 ORDERS ...
@@ -139,13 +142,25 @@ groupObjectName propertyExpression
 
   Добавляет объекты на форму. [Синтаксис блока объектов](/ru/Object_blocks/.md).
 
+* `EXTEND OBJECTS ...`
+
+  Изменяет группы объектов, уже добавленные на форму (в частности, перемещает их в списке групп объектов). [Синтаксис блока расширения объектов](/ru/Object_blocks/.md#extendobjects).
+
 * `TREE ...`
 
   Добавляет дерево объектов на форму. [Синтаксис блока дерева объектов](/ru/Object_blocks/.md#tree).
 
+* `EXTEND TREE ...`
+
+  Перемещает дерево объектов, уже добавленное на форму, в списке групп объектов. [Синтаксис блока расширения дерева объектов](/ru/Object_blocks/.md#extendtree).
+
 * `PROPERTIES ...`
 
   Добавляет [свойства](/ru/Properties/.md) и [действия](/ru/Actions/.md) на форму. [Синтаксис блока свойств и действий](/ru/Properties_and_actions_block/.md).
+
+* `EXTEND PROPERTIES ...`
+
+  Изменяет свойства и действия, уже добавленные на форму. [Синтаксис блока расширения свойств и действий](/ru/Properties_and_actions_block/.md#extendproperties).
 
 * `FILTERS ...`
 
