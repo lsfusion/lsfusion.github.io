@@ -12,7 +12,7 @@ A *src/main/web/lib* subfolder is treated as shared helper code: its files are n
 
 ### Without the build[​](#without-the-build "Direct link to Without the build")
 
-A project with no build set up — no `node`, no esbuild, no `org.mvnpm` dependencies — can still ship custom client JS as a plain file under *src/main/resources/web*, used as written: no bundling, no JSX, no third-party-library resolution. (This is also the path `eval` uses.) A React view is therefore written with `React.createElement` against the platform-provided `window.React` instead of JSX, and the component is exposed on the global `window` (the fallback described below) instead of as a named export. A `custom` name matching `[A-Z][A-Za-z0-9_$]*` is still inferred as React:
+A project with no build set up — no esbuild, no `org.mvnpm` dependencies — can still ship custom client JS as a plain file under *src/main/resources/web*, used as written: no bundling, no third-party-library resolution. (This is also the path `eval` uses.) A React view in a *.js* file is therefore written with `React.createElement` against the platform-provided `window.React` instead of JSX (a *.jsx* file keeps the JSX syntax — see the lightweight *.jsx* section below), and the component is exposed on the global `window` (the fallback described below) instead of as a named export. A `custom` name matching `[A-Z][A-Za-z0-9_$]*` is still inferred as React:
 
 ```
 function HelloBoard(props) {
@@ -46,13 +46,35 @@ onWebClientInit() + {
 
 The build and no-build paths compare as follows:
 
-|                       | Build (*src/main/web*)                  | No-build, auto (*resources/web/init*)       | No-build, explicit (*resources/web*)  |
-| --------------------- | --------------------------------------- | ------------------------------------------- | ------------------------------------- |
-| Loading               | bundled to *web/.compiled*, auto-loaded | auto-loaded by folder scan                  | listed in `onWebClientInit`           |
-| Source                | *.js*/*.jsx*/*.ts*/*.tsx*, JSX allowed  | plain *.js*                                 | plain *.js*                           |
-| Registration          | named export                            | name on `window`                            | name on `window`                      |
-| Load order            | one order (bundles are self-contained)  | one order (files must be order-independent) | explicit integer order                |
-| Third-party libraries | bundled via `org.mvnpm`                 | loaded separately, used from `window`       | loaded separately, used from `window` |
+|                       | Build (*src/main/web*)                  | No-build, auto (*resources/web/init*)       | No-build, explicit (*resources/web*)      |
+| --------------------- | --------------------------------------- | ------------------------------------------- | ----------------------------------------- |
+| Loading               | bundled to *web/.compiled*, auto-loaded | auto-loaded by folder scan                  | listed in `onWebClientInit`               |
+| Source                | *.js*/*.jsx*/*.ts*/*.tsx*, JSX allowed  | *.js* or *.jsx* (transformed when served)   | *.js* or *.jsx* (transformed when served) |
+| Registration          | named export                            | name on `window`                            | name on `window`                          |
+| Load order            | one order (bundles are self-contained)  | one order (files must be order-independent) | explicit integer order                    |
+| Third-party libraries | bundled via `org.mvnpm`                 | loaded separately, used from `window`       | loaded separately, used from `window`     |
+
+### Lightweight .jsx (no build)[​](#lightweight-jsx-no-build "Direct link to Lightweight .jsx (no build)")
+
+A no-build file can also be written in JSX: a *.jsx* file under *src/main/resources/web* is transformed on the server when it is served, so the JSX syntax works with no `node`, no esbuild, and no build step, and the browser receives a plain script. Only the syntax changes — the file is still a no-build file: the JSX compiles to `React.createElement` calls against the platform-provided `window.React`, and the file runs as a classic top-level script, so a top-level `function` declaration is already a name on `window` — nothing else is needed. An `import` or `export` in a *.jsx* file is an error, reported in the browser console with the file skipped — importing modules is what the build (*src/main/web*) adds. Eligible components are also memoized automatically (React Compiler) during the same server-side transformation, so a no-build component re-renders only when its inputs change — no annotations, no build step. Because that transformation runs on the server, the application server must run on Java 11 or newer; on an older JVM a served *.jsx* reports the requirement to the browser console instead of rendering (a plain *.js* resource is unaffected).
+
+A *.jsx* file is loaded the same two ways as a plain *.js*: dropped into *resources/web/init* it auto-loads with no wiring, and anywhere else under *resources/web* it is listed in `onWebClientInit`:
+
+```
+// resources/web/init/helloBoard.jsx — auto-loads, nothing else to wire
+function HelloBoard(props) {
+    const rows = (props.data.o || {}).list || [];
+    return <div className="hello-board">{rows.length} orders</div>;
+}
+```
+
+```
+DESIGN orders {
+    BOX(o) { custom = 'HelloBoard'; }
+}
+```
+
+Load order: a *.jsx* file loads and runs at its resource slot, exactly like a plain *.js* — the `onWebClientInit` order holds verbatim across *.js* and *.jsx* files in both directions, so at load time either kind may read a global defined by any earlier resource; the one reserved range is the platform's own — a *.jsx* registered at an order of -108 or below runs before the platform-provided memoization runtime and is out of contract.
 
 ### Named exports and auto-registration[​](#named-exports-and-auto-registration "Direct link to Named exports and auto-registration")
 
@@ -112,21 +134,11 @@ onWebClientInit() + {
 
 ### React Compiler[​](#react-compiler "Direct link to React Compiler")
 
-By default the source is bundled as written. The optional **React Compiler** pass is general automatic memoization of React components — it stands in for hand-written `useMemo` / `useCallback` / `React.memo`. It is enabled per application by configuring the build plugin:
+A module's JSX (any *.jsx* or *.tsx* source) is run through the **React Compiler**, general automatic memoization of React components that stands in for hand-written `useMemo` / `useCallback` / `React.memo`. It runs whenever the module has JSX — the same as the no-build *.jsx* tier — and a component that violates the rules of React is left untouched, so it needs no configuration. A module with only plain *.js*/*.ts* sources is bundled without it.
 
-```
-<plugin>
-    <groupId>lsfusion.platform.build</groupId>
-    <artifactId>web-compile-maven-plugin</artifactId>
-    <configuration>
-        <reactCompiler>true</reactCompiler>
-    </configuration>
-</plugin>
-```
+Like plain bundling, this pass needs no Node and no other external toolchain: the compiler (Babel with `babel-plugin-react-compiler`) is vendored with the build plugin and runs in-process on the JVM. It is a build-time step only — a runtime / deploy box is unaffected. A module with JSX does require the build JVM to be Java 11 or newer; on an older JVM it fails with that guidance — a *.js*/*.ts*-only module builds regardless, or set `-Dlsfusion.web.skip=true` to skip the web compile entirely. An offline build (`mvn -o`) works as usual.
 
-Unlike plain bundling — which uses the esbuild native binary and needs no Node — this pass runs through Node, which the build **acquires automatically**: it uses Node from `PATH` if present, otherwise it downloads a pinned, checksum-verified Node once and caches it (under *\~/.m2*, so later builds and a CI *\~/.m2* cache reuse it). So enabling the flag is enough — no manual Node install on developer machines or CI. The exception is an **offline build** (`mvn -o`), which never downloads: if Node is then neither on `PATH` nor cached, it fails with guidance (install Node, or run one online build to seed the cache). Node is a build-time dependency only — a runtime / deploy box never needs it. (The plugin's `nodeVersion`, and `nodeDownloadRoot` for a mirror, are overridable if needed.)
-
-It is **off by default, and most applications do not need it**: the common large-grid performance case — re-rendering only the rows that actually changed — is already handled by [`window.lsfusion.List`](/How-to_Custom_React_views/.md), independently of this pass, and `List` stays the right tool for it whether or not the compiler is on. Turn `reactCompiler` on when a custom React view itself has enough derived values, callbacks, or nested subtrees to benefit from general auto-memoization.
+The pass is not a substitute for [`window.lsfusion.List`](/How-to_Custom_React_views/.md): the common large-grid performance case — re-rendering only the rows that actually changed — is handled by `List` independently.
 
 ### Example[​](#example "Direct link to Example")
 
@@ -160,7 +172,7 @@ Recommended styling:
 
 For a full styling system beyond static class names, a **runtime CSS-in-JS** library (such as `styled-components` or `@emotion`) works as an ordinary `org.mvnpm` dependency: it is bundled with the module and injects its styles at runtime. Use the `styled` API or `className={css(...)}`; Emotion's `css` *prop* (`<div css={...} />`) needs a JSX transform that the build does not run, so it is not available.
 
-CSS preprocessors (Sass/SCSS, Less, Stylus) and utility frameworks that generate CSS from a build step (Tailwind, UnoCSS) are **not** part of this build — plain bundling runs the esbuild binary only, with no Node or plugin phase (the optional React Compiler above is the only step that uses Node). Native CSS (nesting, custom properties) and CSS modules cover most of what a preprocessor was used for; if you do need one of these tools, generate the CSS with a separate step and ship the result as a plain stylesheet through `onWebClientInit`.
+CSS preprocessors (Sass/SCSS, Less, Stylus) and utility frameworks that generate CSS from a build step (Tailwind, UnoCSS) are **not** part of this build — plain bundling runs the esbuild binary only, with no Node or plugin phase. Native CSS (nesting, custom properties) and CSS modules cover most of what a preprocessor was used for; if you do need one of these tools, generate the CSS with a separate step and ship the result as a plain stylesheet through `onWebClientInit`.
 
 A standalone stylesheet that is not part of the build can still be shipped as a plain file and loaded through the [`onWebClientInit`](/INTERNAL_operator/.md) action, like the CSS of a classic custom component (see [How-to: Custom Components (objects)](/How-to_Custom_components_objects/.md)).
 
