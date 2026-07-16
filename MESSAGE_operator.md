@@ -5,7 +5,7 @@ The `MESSAGE` operator creates an [action](/Actions/.md) that shows the user a [
 ### Syntax[​](#syntax "Direct link to Syntax")
 
 ```
-MESSAGE expression options
+MESSAGE expression [HEADER headerExpression] options
 ```
 
 Operator options `options` can be listed one after another in any order. The following set of options is supported:
@@ -25,6 +25,10 @@ The `MESSAGE` operator creates an action that shows a message to the user either
 
   An expression which value is the message text.
 
+* `headerExpression`
+
+  An expression whose value is used as the dialog header. If omitted, or if its value is `NULL`, the `lsFusion` header is used.
+
 * `syncType`
 
   Synchronisation type. Specifies when the execution of the created action completes. Specified by one of the keywords:
@@ -35,24 +39,26 @@ The `MESSAGE` operator creates an action that shows a message to the user either
 
 * `messageType`
 
-  Message type. Specifies how the message will be displayed on the screen. Specified by one of the keywords:
+  Message type. Specifies where the message is shown and its severity icon. Specified by one of the keywords:
 
-  * `LOG` - message in the `System.log` window.
+  * `LOG` - shown in the `System.log` window only (no dialog box).
 
-  * `INFO` - information message.
+  * `INFO` - shown as a notification and in the `System.log` window (no dialog box).
 
-  * `SUCCESS` - success message.
+  * `SUCCESS` - shown as a dialog box with a success icon.
 
-  * `WARN` - warning message.
+  * `WARN` - shown as a dialog box with a warning icon.
 
-  * `ERROR` - error message.
+  * `ERROR` - shown as a dialog box with an error icon, and also written to the `System.log` window.
 
-  * `DEFAULT` - plain message. This value is used by default.
+  * `DEFAULT` - shown as a plain dialog box. This value is used by default.
 
 ### Examples[​](#examples "Direct link to Examples")
 
 ```
 message { MESSAGE 'Hello World!'; } // plain text message
+
+messageWithHeader { MESSAGE 'Hello World!' HEADER 'Greeting'; } // dialog with a custom header
 
 isGood = DATA BOOLEAN (Item);
 stringData(Item i) {

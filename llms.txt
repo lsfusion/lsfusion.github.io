@@ -862,7 +862,7 @@
 
 ## INPUT_operator
 
-- [INPUT operator](/INPUT_operator.md): The INPUT operator creates an action that inputs a primitive value or selects an object of a custom class.
+- [INPUT operator](/INPUT_operator.md): The INPUT operator creates an action that inputs a value of a built-in or custom class.
 
 ## Install
 
@@ -1166,7 +1166,7 @@
 
 ## Primitive_input_INPUT
 
-- [Primitive input (INPUT)](/Primitive_input_INPUT.md): The  primitive input operator creates an action that requests the client to input a value of a builtin class. The user can cancel the input, for example by pressing the Esc key on the keyboard.
+- [Value input (INPUT)](/Primitive_input_INPUT.md): The value input operator creates an action that requests the user to input a value. The requested value can be an object of a built-in class (for example, a string, a number, a date, or a file) or an object of a custom class. The user can cancel the input, for example by pressing the Esc key on the keyboard.
 
 ## PRINT_operator
 
@@ -1314,7 +1314,7 @@
 
 ## Show_message_MESSAGE_ASK
 
-- [Show message (MESSAGE, ASK)](/Show_message_MESSAGE_ASK.md): The show message operators create actions that show a text message to the user. The message is defined as a property whose value will be used as the message content. This message can be displayed either using a dialog box or in the System.log system window.
+- [Show message (MESSAGE, ASK)](/Show_message_MESSAGE_ASK.md): The show message operators create actions that show a text message to the user. The message is defined as a property whose value will be used as the message content. This message can be displayed either using a dialog box or in the System.log system window. The dialog box also has a header that may be defined as a property.
 
 ## SHOW_operator
 
@@ -1462,7 +1462,7 @@
 
 ## Value_request_REQUEST
 
-- [Value request (REQUEST)](/Value_request_REQUEST.md): The value request operator creates an action in which requesting value(s) is separated from directly processing the value(s). Accordingly, this operator allows not to perform a value request if its result is known in advance in the context of the call (the value of the System.requestPushed property is equal to TRUE). This, in turn, automatically gives you the following capabilities in various use cases:
+- [Value request (REQUEST)](/Value_request_REQUEST.md): The value request operator creates an action in which requesting values is separated from directly processing the values. Accordingly, this operator allows not to perform a value request if its result is known in advance in the context of the call (the value of the System.requestPushed property is equal to TRUE). This, in turn, automatically gives you the following capabilities in various use cases:
 
 ## View_logic
 
