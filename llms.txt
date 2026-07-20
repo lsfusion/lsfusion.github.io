@@ -214,7 +214,7 @@
 
 ## Chat
 
-- [Chat](/Chat.md): (Under development)
+- [Chat](/Chat.md): The chat is a built-in platform mechanism for exchanging text messages between system users and for broadcasting system notifications. The chat supports group rooms and one-to-one dialogs, file attachments, replies, editing and deletion within a bounded time window, read-status tracking, and push notifications.
 
 ## Class_change_CHANGECLASS_DELETE
 
@@ -914,7 +914,7 @@
 
 ## Journals_and_logs
 
-- [Journals and logs](/Journals_and_logs.md): Logs
+- [Journals and logs](/Journals_and_logs.md): Journals
 
 ## JSON_operator
 
@@ -1178,11 +1178,11 @@
 
 ## Process_monitor
 
-- [Process monitor](/Process_monitor.md): (Under development)
+- [Process monitor](/Process_monitor.md): The process monitor is a built-in platform mechanism that shows the current state of the application server and the database server: active application server threads, active SQL queries, lock chains, and a set of actions for interrupting and forcibly terminating these processes.
 
 ## Profiler
 
-- [Profiler](/Profiler.md): (Under development)
+- [Profiler](/Profiler.md): The profiler is a built-in platform mechanism that collects execution statistics for properties and actions over a given time interval and presents them as a call graph with aggregated metrics. Unlike the process monitor, which shows the system state at the current moment, the profiler describes system behavior over a past interval.
 
 ## Projects
 
@@ -1319,6 +1319,10 @@
 ## SHOW_operator
 
 - [SHOW operator](/SHOW_operator.md): The SHOW operator creates an action that opens a form in interactive view.
+
+## SHOWDEP_operator
+
+- [SHOWDEP, SHOWREC operators](/SHOWDEP_operator.md): The SHOWDEP and SHOWREC operators create diagnostic actions over a list of properties and actions: SHOWDEP outputs their static dependency graph, SHOWREC enables runtime tracking of recursive event firing.
 
 ## Simple_constraints
 
