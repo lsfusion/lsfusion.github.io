@@ -156,6 +156,14 @@
 
 - [BREAK operator](/BREAK_operator.md): The BREAK operator creates an action that implements a loop interruption.
 
+## Brief_export
+
+- [Brief: data export](/Brief_export.md): Data export map
+
+## Brief_physical_model
+
+- [Brief: physical model](/Brief_physical_model.md): Physical model map
+
 ## Brief
 
 - [lsFusion Brief](/Brief.md): Brief on lsFusion elements for AI agents
@@ -1263,6 +1271,14 @@
 ## Rounding_operator_ROUND
 
 - [Rounding operator (ROUND)](/Rounding_operator_ROUND.md): The rounding operator creates a property whose value is the result of rounding a number to the specified number of digits. The arguments of this operator are properties that determine the number to be rounded and, optionally, the rounding precision. The number must belong to one of the numeric built-in classes, and the precision must belong to the INTEGER class. When no precision is given, the number is rounded to the nearest integer. Negative precision values indicate the number of least significant digits to be rounded in the integer part of the number, allowing you to round the number to tens, hundreds, etc.
+
+## Rules_export
+
+- [Rules: data export](/Rules_export.md): Scope
+
+## Rules_physical_model
+
+- [Rules: physical model](/Rules_physical_model.md): Scope
 
 ## Rules
 
