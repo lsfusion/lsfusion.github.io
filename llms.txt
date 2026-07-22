@@ -130,7 +130,7 @@
 
 ## Automatic_installation
 
-- [Install automatically](/Automatic_installation.md): For development
+- [Install automatically](/Automatic_installation.md): Automatic installation installs the lsFusion platform together with all the additional applications it requires (a Java runtime, PostgreSQL, a web server, an IDE) using a single installer or a single script.
 
 ## Backup_restore
 
@@ -354,7 +354,7 @@
 
 ## Docker
 
-- [Docker installation](/Docker.md): To work with Docker containers, you need to install Docker and Docker Compose.
+- [Docker installation](/Docker.md): The Docker installation runs the lsFusion platform — the database server, the application server, and the web client — as three containers described by a single compose.yaml file, without installing the platform components on the host. A project that inherits the Maven module of the platform can also build its own Docker image of the application and generate its own compose.yaml.
 
 ## Domain_logic
 
@@ -874,7 +874,7 @@
 
 ## Install
 
-- [Install](/Install.md): Install automatically
+- [Install](/Install.md): The lsFusion platform is installed together with the additional applications it requires at runtime: a Java runtime, PostgreSQL, a web server (Apache Tomcat), and — for development — an IDE (IntelliJ IDEA) with the built-in lsFusion plugin. The platform can be installed in one of three ways — automatically, manually, or with Docker containers.
 
 ## Integration
 
@@ -974,7 +974,7 @@
 
 ## Manual_installation
 
-- [Install manually](/Manual_installation.md): For development
+- [Install manually](/Manual_installation.md): Manual installation installs the lsFusion platform components separately on top of already prepared additional applications (a Java runtime, PostgreSQL, a web server, an IDE) — including different versions and environments not covered by automatic installation.
 
 ## MATCH_operator
 
