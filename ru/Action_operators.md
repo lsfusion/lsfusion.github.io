@@ -18,6 +18,7 @@
 * [Оператор `CASE`](/ru/CASE_action_operator/.md)
 * [Оператор `CHANGE`](/ru/CHANGE_operator/.md)
 * [Оператор `CHANGECLASS`](/ru/CHANGECLASS_operator/.md)
+* [Оператор `CLOSE FORM`](/ru/CLOSE_FORM_operator/.md)
 * [Оператор `COLLAPSE`](/ru/COLLAPSE_operator/.md)
 * [Оператор `CONTINUE`](/ru/CONTINUE_operator/.md)
 * [Оператор `DELETE`](/ru/DELETE_operator/.md)

@@ -248,6 +248,10 @@
 
 - [Classification (IS/AS)](/Classification_IS_AS.md): Classification operators create properties that determine whether an object belongs to the class specified, which can be a user class or a built-in class. The value of the created property depends on whether the object belongs to that class:
 
+## CLOSE_FORM_operator
+
+- [CLOSE FORM operator](/CLOSE_FORM_operator.md): The CLOSE FORM operator creates an action that closes an open form instance with the given identifier in the interactive view.
+
 ## Coding_conventions
 
 - [Coding conventions](/Coding_conventions.md): Common
