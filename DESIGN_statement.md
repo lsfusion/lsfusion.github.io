@@ -251,17 +251,17 @@ To access design components, you can use their names or address property compone
 
 ### Toolbar properties[​](#toolbar-properties "Direct link to Toolbar properties")
 
-| Property name       | Description                                                                | Value type               | Default value | Examples            |
-| ------------------- | -------------------------------------------------------------------------- | ------------------------ | ------------- | ------------------- |
-| `visible`           | Specifying the visibility of the component                                 | Logical literal          | `TRUE`        | `TRUE`<br />`FALSE` |
-| `showGroup`         | Show the view buttons<br />**deprecated since version 6, use `showViews`** | Extended Logical literal | `TRUE`        | `TRUE`<br />`FALSE` |
-| `showViews`         | Show the view buttons                                                      | Extended Logical literal | `TRUE`        | `TRUE`<br />`FALSE` |
-| `showFilters`       | Show the filters setting button                                            | Extended Logical literal | `TRUE`        | `TRUE`<br />`FALSE` |
-| `showSettings`      | Show the table setting button                                              | Extended Logical literal | `TRUE`        | `TRUE`<br />`FALSE` |
-| `showCountQuantity` | Show the row quantity calculation button                                   | Extended Logical literal | `TRUE`        | `TRUE`<br />`FALSE` |
-| `showCalculateSum`  | Show the column sum calculation button                                     | Extended Logical literal | `TRUE`        | `TRUE`<br />`FALSE` |
-| `showPrintGroupXls` | Show the XLS export button                                                 | Extended Logical literal | `TRUE`        | `TRUE`<br />`FALSE` |
-| `showManualUpdate`  | Show the manual update button                                              | Extended Logical literal | `TRUE`        | `TRUE`<br />`FALSE` |
+| Property name       | Description                                                                                              | Value type               | Default value | Examples            |
+| ------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------ | ------------- | ------------------- |
+| `visible`           | Specifying the visibility of the component                                                               | Logical literal          | `TRUE`        | `TRUE`<br />`FALSE` |
+| `showGroup`         | Show the view buttons<br />**deprecated since version 6, use `showViews`**                               | Extended Logical literal | `TRUE`        | `TRUE`<br />`FALSE` |
+| `showViews`         | Show the view buttons                                                                                    | Extended Logical literal | `TRUE`        | `TRUE`<br />`FALSE` |
+| `showFilters`       | Show the filters setting button                                                                          | Extended Logical literal | `TRUE`        | `TRUE`<br />`FALSE` |
+| `showSettings`      | Show the table setting button                                                                            | Extended Logical literal | `TRUE`        | `TRUE`<br />`FALSE` |
+| `showCountQuantity` | Show the row quantity calculation button. If the user has marked rows, only they are counted             | Extended Logical literal | `TRUE`        | `TRUE`<br />`FALSE` |
+| `showCalculateSum`  | Show the column sum calculation button. If the user has marked rows, the sum is calculated only for them | Extended Logical literal | `TRUE`        | `TRUE`<br />`FALSE` |
+| `showPrintGroupXls` | Show the XLS export button                                                                               | Extended Logical literal | `TRUE`        | `TRUE`<br />`FALSE` |
+| `showManualUpdate`  | Show the manual update button                                                                            | Extended Logical literal | `TRUE`        | `TRUE`<br />`FALSE` |
 
 ### Grid properties[​](#grid-properties "Direct link to Grid properties")
 
