@@ -168,7 +168,7 @@ For a simple property composition that only forwards another property, the assis
 
     The assistant MUST use `caption` and `name` instead.
 
-    This applies to reads: `caption` and `name` are calculated (materialized) properties and do not allow writes. At assignment sites (for example, when programmatically filling a static object's caption) the DATA properties `staticCaption` / `staticName` remain.
+    This applies to writing as well: `caption` and `name` are simple compositions over the stored caption and name, so an assignment to them passes into the stored property. A static object's caption is assigned through `caption`; the name must not be changed — changing `name` is forbidden by a system constraint.
 
 12. Property names SHOULD be concise and avoid unnecessary words.
 
@@ -395,7 +395,13 @@ FORM RULES
 
 15. The default `CHANGE` handling of a property shown on a form is derived not from what its expression looks like, but from the property's write path: changeable properties are data properties, the selection operator, and compositions of changeable properties — a write is passed through the composition into the underlying changeable property. The write path is not visible at the usage site, so the assistant MUST NOT assume that a computed-looking property is non-editable.
 
-    Every property displayed for reading only MUST be explicitly marked `READONLY` — block-level (`PROPERTIES(o) READONLY ...`) or on the individual entry — in all form contexts: not only in the grids of list forms, but also in panels, dialogs, dashboards, and charts. The explicit mark also documents intent for the code reader.
+    Outwardly similar entries are edited differently:
+
+    * a composition through an object link (`name(customer(o))`) — the user is offered a choice of the linked object, and the link (`customer(o)`) is written; this is the usual way of entering data;
+    * an attribute of the row object itself (`name(c)`) — the entered value is written in place, that is, the object is renamed;
+    * a property of a static object (`caption(st)`) — the write goes into the stored caption of the static object and lasts until the next synchronization of the database with the code (normally at server startup), which restores the caption from the code.
+
+    Every property displayed for reading only MUST be explicitly marked `READONLY` — in all form contexts: not only in the grids of list forms, but also in panels, dialogs, dashboards, and charts. When the whole block is displayed for reading only, the block SHOULD be marked as a whole (`PROPERTIES(o) READONLY ...`) rather than every entry; marking an individual entry remains for blocks where some entries are meant for input. In browsing and selection contexts every entry carries an explicit `READONLY` except the ones deliberately meant for input. The explicit mark also documents intent for the code reader.
 
 ***
 
