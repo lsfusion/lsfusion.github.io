@@ -472,6 +472,10 @@
 
 - [Filter (FILTER)](/Filter_FILTER.md): The filter operator creates a property, defined on the objects of an object group, that returns TRUE when their object collection is included in the group's current filter, and NULL otherwise.
 
+## FILTER_ORDER_operators
+
+- [Form filter and order operators](/FILTER_ORDER_operators.md): The ORDER, FILTER, FILTERGROUP, FILTER PROPERTY operators (and their variants ORDERS, FILTERS, FILTERGROUPS, FILTERS PROPERTY) create actions that apply or read the current user filters and orders of the elements of an open form.
+
 ## Filters_and_sortings_block
 
 - [Filter and sorting blocks](/Filters_and_sortings_block.md): The filter and order blocks of the FORM statement – adding filters and orderings to the form structure, as well as filter groups and user filters to the interactive form view.

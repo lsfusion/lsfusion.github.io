@@ -33,6 +33,7 @@
 
 ### Язык[​](#язык "Прямая ссылка на этот заголовок")
 
+* [Операторы `ORDER`, `FILTER`, `FILTERGROUP`, `FILTER PROPERTY`](/ru/FILTER_ORDER_operators/.md) — применяют или читают порядки и фильтры элемента формы.
 * [Оператор `EVAL`](/ru/EVAL_operator/.md) — запускает действие формы `FILTERS` / `FILTER`, читающее и заново применяющее фильтры группы объектов.
 * [Оператор `IMPORT`](/ru/IMPORT_operator/.md) — читает форму `filters` в промежуточную структуру.
 * [Оператор `EXPORT`](/ru/EXPORT_operator/.md) — пишет промежуточную структуру обратно в форму `filters`.
