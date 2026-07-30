@@ -1514,7 +1514,7 @@
 
 ## WINDOW_statement
 
-- [WINDOW statement](/WINDOW_statement.md): The WINDOW statement - creating a new window, the HIDE WINDOW statement - hiding an existing window.
+- [WINDOW statement](/WINDOW_statement.md): The WINDOW statement - creating a new window, the EXTEND WINDOW statement - changing the renderer of an existing window, the HIDE WINDOW statement - hiding an existing window.
 
 ## Working_parameters
 
