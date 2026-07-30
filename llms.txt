@@ -1110,7 +1110,7 @@
 
 ## Object_group_operator
 
-- [Object group operator](/Object_group_operator.md): Object group operators are used for creating properties working with the current state of the object group on the form.
+- [Object group operator](/Object_group_operator.md): Object group operators are used for creating properties working with the current state of the object group and its properties on the form.
 
 ## Object_group_operators
 
@@ -1318,7 +1318,7 @@
 
 ## Selection_SELECT
 
-- [Selection (SELECT)](/Selection_SELECT.md): The selection operators create properties that report the user's row selection in an object group:
+- [Selection (SELECT)](/Selection_SELECT.md): The selection operators create properties that report the user's row and column selection in an object group:
 
 ## Send_mail_EMAIL
 

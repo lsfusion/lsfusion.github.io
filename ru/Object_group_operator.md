@@ -1,6 +1,6 @@
 # Операторы групп объектов
 
-Операторы [групп объектов](/ru/Form_structure/.md) - это набор операторов для создания [свойств](/ru/Properties/.md), работающих с [текущим состоянием](/ru/Object_group_operators/.md) группы объектов на [форме](/ru/Forms/.md).
+Операторы [групп объектов](/ru/Form_structure/.md) - это набор операторов для создания [свойств](/ru/Properties/.md), работающих с [текущим состоянием](/ru/Object_group_operators/.md) группы объектов и её свойств на [форме](/ru/Forms/.md).
 
 ### Синтаксис[​](#синтаксис "Прямая ссылка на этот заголовок")
 
@@ -11,6 +11,7 @@ ORDER groupObjectId
 SELECT groupObjectId
 SELECT ACTIVE groupObjectId
 VIEWTYPE groupObjectId
+SELECT PROPERTY formPropertyId
 ```
 
 ### Описание[​](#описание "Прямая ссылка на этот заголовок")
@@ -29,11 +30,17 @@ VIEWTYPE groupObjectId
 
 Оператор `VIEWTYPE` создаёт свойство без параметров, значением которого является текущий вид отображения группы объектов — объект системного класса `ListViewType` (`grid`, `pivot`, `map`, `custom` или `calendar`).
 
+Оператор `SELECT PROPERTY` создаёт свойство, значением которого будет являться `TRUE`, если указанное свойство формы сейчас выделено пользователем, иначе `NULL`. На вход оно принимает объекты, по которым это свойство выводится по колонкам; для свойства, показанного одной колонкой, параметров нет.
+
 ### Параметры[​](#параметры "Прямая ссылка на этот заголовок")
 
 * `groupObjectId`
 
   Глобальный [идентификатор группы объектов](/ru/IDs/.md#groupobjectid).
+
+* `formPropertyId`
+
+  Глобальный [идентификатор свойства или действия на форме](/ru/IDs/.md#formpropertyid).
 
 ### Примеры[​](#примеры "Прямая ссылка на этот заголовок")
 
@@ -43,12 +50,14 @@ name = DATA STRING[100] (Store);
 
 FORM stores
     OBJECTS s = Store
+    PROPERTIES(s) name
 ;
 countF 'Кол-во фильтр. складов' = GROUP SUM 1 IF [ VIEW stores.s](Store s);
 orderF 'Порядок в группе объектов' (Store s) = PARTITION SUM 1 IF [ FILTER stores.s](s) ORDER [ ORDER stores.s](s), s;
 isPivot 'Склады в виде сводной таблицы' () = [ VIEWTYPE stores.s]() == ListViewType.pivot;
 selectedCount 'Количество выделенных складов' () = GROUP SUM 1 IF [ SELECT stores.s](Store s);
 multiSelectActive 'Включено выделение нескольких строк' () = [ SELECT ACTIVE stores.s]();
+nameSelected 'Свойство name выделено' () = [ SELECT PROPERTY stores.name]();
 setNameX 'Добавить X к имени'()  {
     LOCAL k = INTEGER ();
     k() <- 0;
