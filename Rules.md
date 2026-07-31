@@ -113,6 +113,8 @@ SYNTAX RULES
 
 4. Expressions with commas (`OVERRIDE` with multiple operands, multi-argument `FORMULA` calls such as `toChar(...)`, `GROUP CONCAT` with an explicit separator, and similar) placed inside a comma-separated field list (`PROPERTIES` blocks, `EXPORT FROM`, `JSON FROM`, `ORDER` lists, group-object lists, parameter lists) MUST be wrapped in an extra pair of parentheses or extracted into a separately named property. Otherwise the inner comma is parsed as the list separator and the list silently reshapes into something other than the intent.
 
+5. When introducing a new parameter, the assistant MUST declare its class explicitly at the first use (`prop(Class x)`, `GROUP MAX Class x IF ...`). `AS` does NOT declare the parameter's class: it is a cast — the parameter itself stays untyped at later occurrences.
+
 ***
 
 BOOLEAN TYPE RULES
@@ -220,7 +222,7 @@ ACTION RULES
 
 3. The assistant SHOULD avoid introducing `LOCAL` properties without a concrete need.
 
-   Each `LOCAL` is backed by a temporary table in PostgreSQL, so it carries a real runtime cost well above a stack variable in a conventional language.
+   A `LOCAL` materializes a temporary table in PostgreSQL only once it holds more than one row, so the runtime cost well above a stack variable in a conventional language applies to `LOCAL`s with parameters (buffers keyed by row number, per-object values). A parameterless `LOCAL` holds at most one row and always stays in memory, so parameterless flags and single values are cheap; avoid them to keep the number of entities down, not because of cost.
 
 4. A `LOCAL` is normally justified when BOTH conditions hold:
 
@@ -259,6 +261,8 @@ ASSIGNMENT RULES (`<-`)
 
    To read previous data with current arguments, the assistant MUST wrap `PREV` in a separate property — `prevF(x) = PREV(f(x));` — and call it instead of writing `PREV(f(<session-computed arg>))` inline.
 
+4. A parameter through which a property whose name is declared on several classes is read or changed MUST be annotated with its class at first use (`date(Interaction i) <- ...`): an overloaded name is resolved by the parameter classes, and an untyped parameter yields an "ambiguous name" error. This especially concerns events: their statement is a separate parameter context in which the class is not inferred from anywhere else, and an `i IS Interaction` condition does not set the parameter's class.
+
 ***
 
 EVENT RULES (`WHEN`)
@@ -276,6 +280,14 @@ EVENT RULES (`WHEN`)
    So to default a value while yielding to an explicit change, the calculated event form alone is enough — no guard is needed. Testing `CHANGED(<target>)` in its condition is not possible in any case: the target would then depend on its own change, forming a cycle `<target>` -> `CHANGED(<target>)` -> `<target>`.
 
    In the absence of an explicit change the event writes the value of the expression even when it is `NULL`.
+
+***
+
+ABSTRACT PROPERTY RULES (`+=`)
+
+1. The value class of a `+=` implementation MUST fit within the value class declared on the abstract property; there is no implicit cast — an implementation with a wider class is rejected at server startup with a "wrong value class of implementation" error.
+
+   An expression that widens the value class — above all string concatenation, which sums the operands' lengths (`ISTRING[326]` against a declared `ISTRING[250]`) — the assistant MUST wrap in an explicit cast to the declared class: `f(X x) += ISTRING[250](a(x) + b(x));`
 
 ***
 
@@ -463,9 +475,9 @@ MODULE DESIGN RULES
 
     The assistant MUST add the owning module (or any module that already requires it) to the current module's `REQUIRE` list before using its elements.
 
-11. The server ships bundled system modules whose names MUST NOT be reused for application modules — the server fails at startup with `module '<name>' has already been added`. The bundled names are: System, Utils, UserEvents, Scheduler, Email, Time, Reflection, Security, Service, Icon, Authentication, SystemEvents, Word, WebSocket, Integration, Profiler, SQLUtils, ProcessMonitor, DefaultData, Image, Printer, Numerator, Chat, Eval, I18n, Com, Sound, Backup, OpenCV, Geo, Historizable, Schedule, Document, QZTray, Excel, Hierarchy, RabbitMQ, MasterData, JKanban, FrappeGantt, Chart, Carousel, Messenger, Whatsapp, Skype, Telegram, Viber, Slack.
+11. The server ships bundled system modules whose names MUST NOT be reused for application modules — the server fails at startup with `module '<name>' has already been added`. The bundled names are: System, Utils, UserEvents, Scheduler, Email, Time, Reflection, Security, Service, Icon, Authentication, SystemEvents, Word, WebSocket, Integration, Profiler, SQLUtils, ProcessMonitor, DefaultData, Image, Printer, Numerator, Chat, Eval, I18n, Com, Sound, Backup, OpenCV, Geo, Historizable, Schedule, Document, QZTray, Excel, Hierarchy, RabbitMQ, MasterData, Messenger, Whatsapp, Skype, Telegram, Viber, Slack.
 
-    For generic domain names from this list (`MasterData`, `Document`, `Schedule`, `Chart`, `Numerator`), the assistant SHOULD add a project prefix to the module name.
+    For generic domain names from this list (`MasterData`, `Document`, `Schedule`, `Numerator`), the assistant SHOULD add a project prefix to the module name.
 
 ***
 
