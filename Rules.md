@@ -303,10 +303,6 @@ CONSTRAINT RULES
 
    For such expensive checks, use a `WHEN` event instead: a cheap change-detector condition, reads of the heavy values into `LOCAL`s in the handler, then `MESSAGE` + `CANCEL` on violation.
 
-4. The constraint condition is also checked on objects deleted in the session: when an object is deleted, its data properties are reset to `NULL`, so `CHANGED(prop(c))` is true for every deleted object whose `prop` had a non-`NULL` previous value, and a guard like `NOT editable(c)` is also true: a property that requires the object's class membership returns `NULL` for the deleted object, and the negation of `NULL` is true. Such a constraint unexpectedly blocks the deletion of those objects.
-
-   When the constraint is not meant to prohibit deletion and its condition does not otherwise exclude deleted objects (for example, by a positive condition on the current state), the assistant SHOULD add `c IS <Class>` to the condition: for the deleted object it returns `NULL`, and the condition does not fire. A deliberate deletion prohibition is instead built with `DROPPED(c IS <Class>)`, reading the old values via `PREV` when the condition needs them. A class change that moves the object out of `<Class>` behaves in the same way as deletion.
-
 ***
 
 PROPERTY NAMING POLICY
@@ -374,33 +370,33 @@ FORM RULES
 
    `INPUT` is allowed only in form property change handlers.
 
-4. The assistant MUST NOT display internal object identifiers on a form.
+4. The assistant MUST NOT display internal object identifiers on a form, including through object-valued properties: an object value is displayed as its internal identifier — a number that tells the user nothing.
 
-   Meaningful properties MUST be shown instead.
+   Meaningful primitive or derived primitive / text properties MUST be exposed instead.
 
-5. The assistant MUST NOT add object-valued properties to forms.
+   The most common case is a link to a static object of an enumeration class (`status = DATA Status (Project)`): the platform does NOT substitute the static object's caption by itself. The form exposes the caption composition — `captionStatus 'Status' = caption(status(p))`: a write through the composition goes into the link, not into the static object's caption (see rule 14), and with a small number of options, as enumerations have, the web client shows it as a selection element (button group / list / dropdown — by the number of options and the length of the captions).
 
-   Primitive or derived primitive / text properties MUST be exposed instead.
-
-6. A `PANEL` object of a user-defined class is NOT user-selectable by default.
+5. A `PANEL` object of a user-defined class is NOT user-selectable by default.
 
    If such an object is meant to be chosen by the user (for example, a filter parameter shown on the form), the assistant MUST mark a displayed property of that object with `SELECTOR` in the `PROPERTIES` block.
 
    Without `SELECTOR`, the panel cell does not open a selection dialog and the object cannot be changed. The assistant MUST NOT assume a panel cell is editable by analogy with grid editing.
 
-7. These form rules do NOT cover `DESIGN` layout — the default container tree, the flexbox `fill` / alignment model, or the container idioms. They give only placement meta-advice. Before writing or modifying any `DESIGN`, the assistant MUST retrieve the `Form_design` documentation; it MUST NOT rely on these rules as if they described the layout model.
+6. These form rules do NOT cover `DESIGN` layout — the default container tree, the flexbox `fill` / alignment model, or the container idioms. They give only placement meta-advice. Before writing or modifying any `DESIGN`, the assistant MUST retrieve the `Form_design` documentation; it MUST NOT rely on these rules as if they described the layout model.
 
-8. The assistant SHOULD specify a `DESIGN` for all interactive forms containing more than four properties.
+   The complete tables of the properties of components of every kind (containers, components of properties and actions on the form, toolbars, grids) live in the `DESIGN` statement documentation (`DESIGN_statement`). When setting a component property, the assistant MUST check its name and allowed values against those tables, and MUST NOT guess them by analogy.
 
-9. Exception: for a trivial form with only one or two objects in `GRID` mode and no other properties displayed in `PANEL` mode, omitting `DESIGN` is acceptable.
+7. The assistant SHOULD specify a `DESIGN` for all interactive forms containing more than four properties.
 
-10. In `DESIGN`, the assistant SHOULD prefer moving `BOX(...)` containers for tables first.
+8. Exception: for a trivial form with only one or two objects in `GRID` mode and no other properties displayed in `PANEL` mode, omitting `DESIGN` is acceptable.
 
-    `GRID(...)` SHOULD be used only when absolutely necessary.
+9. In `DESIGN`, the assistant SHOULD prefer moving `BOX(...)` containers for tables first.
 
-11. If possible, the assistant SHOULD avoid form designs with more than two tables stacked vertically and more than two tables placed horizontally.
+   `GRID(...)` SHOULD be used only when absolutely necessary.
 
-12. In a form `PROPERTIES` block, the parameter style on the property or action being added to the form MUST match the block header:
+10. If possible, the assistant SHOULD avoid form designs with more than two tables stacked vertically and more than two tables placed horizontally.
+
+11. In a form `PROPERTIES` block, the parameter style on the property or action being added to the form MUST match the block header:
 
     * With a common-parameter header `PROPERTIES(p1, ..., pN)`, each entry MUST be specified by its ID only — the common parameters are bound implicitly. Writing `propName(p1, ..., pN)` after the ID is a parse error.
     * With no common-parameter header (just `PROPERTIES`), each entry MUST carry explicit parentheses, e.g. `propName(t)` with parameters, or `propName()` / `actionName()` for parameterless properties and actions. Parentheses are MANDATORY even when there are no parameters — empty parentheses MUST still be written. Writing the bare name without parentheses is a parse error.
@@ -409,11 +405,11 @@ FORM RULES
 
     This rule applies only to the entry being added to the form. Argument lists inside option clauses such as `ON CHANGE actionName(...)`, `READONLYIF expr`, `BACKGROUND expr`, etc. are regular action calls / expressions and ALWAYS use explicit parameters, regardless of the block header.
 
-13. Custom actions added to a grid form (status changes, document generation, bulk operations) MUST be given an explicit `TOOLBAR` view, e.g. `PROPERTIES(o) confirmDoc TOOLBAR`. Actions default to the `PANEL` view, so without `TOOLBAR` the custom button is drawn as a separate group below the table instead of in the grid toolbar next to the predefined `NEW` / `EDIT` / `DELETE` (which the platform places in the system toolbar itself). The property / action views are `GRID`, `TOOLBAR`, `PANEL`, and `POPUP`.
+12. Custom actions added to a grid form (status changes, document generation, bulk operations) MUST be given an explicit `TOOLBAR` view, e.g. `PROPERTIES(o) confirmDoc TOOLBAR`. Actions default to the `PANEL` view, so without `TOOLBAR` the custom button is drawn as a separate group below the table instead of in the grid toolbar next to the predefined `NEW` / `EDIT` / `DELETE` (which the platform places in the system toolbar itself). The property / action views are `GRID`, `TOOLBAR`, `PANEL`, and `POPUP`.
 
-14. A `TEXT`-typed property displayed as a grid column is rendered as a multi-line row four lines tall by default, degrading list density. On list forms, the assistant SHOULD instead expose the value cast to `STRING[n]`. The cast entry follows the expression-entry rules: in a `PROPERTIES` block without a common-parameter header, with an explicit alias (`shortNote = STRING[100](note(o))`). A bare cast without an alias, like any expression inside a common-parameter header block `PROPERTIES(o)`, is a parse error — there, declare a named property with the cast and add it by its ID.
+13. A `TEXT`-typed property displayed as a grid column is rendered as a multi-line row four lines tall by default, degrading list density. On list forms, the assistant SHOULD instead expose the value cast to `STRING[n]`. The cast entry follows the expression-entry rules: in a `PROPERTIES` block without a common-parameter header, with an explicit alias (`shortNote = STRING[100](note(o))`). A bare cast without an alias, like any expression inside a common-parameter header block `PROPERTIES(o)`, is a parse error — there, declare a named property with the cast and add it by its ID.
 
-15. The default `CHANGE` handling of a property shown on a form is derived not from what its expression looks like, but from the property's write path: changeable properties are data properties, the selection operator, and compositions of changeable properties — a write is passed through the composition into the underlying changeable property. The write path is not visible at the usage site, so the assistant MUST NOT assume that a computed-looking property is non-editable.
+14. The default `CHANGE` handling of a property shown on a form is derived not from what its expression looks like, but from the property's write path: changeable properties are data properties, the selection operator, and compositions of changeable properties — a write is passed through the composition into the underlying changeable property. The write path is not visible at the usage site, so the assistant MUST NOT assume that a computed-looking property is non-editable.
 
     Outwardly similar entries are edited differently:
 

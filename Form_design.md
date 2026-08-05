@@ -176,7 +176,7 @@ The automatic design is generated as follows:
           <!-- -->
           * `PROPERTY(<property>)`: base component of the Property Panel.
 
-  * `TOOLBARBOX`: contains property components that are displayed in `TOOLBAR` [view](/Interactive_view/.md#property) and have no [display group](/Form_structure/.md#drawgroup) (for example, the property has no parameters). The internal structure and layout are similar to the corresponding internal structure and layout of an object group (except for `FILTERGROUPS`, which does not make sense when there is no object group, and therefore is not present in this container).
+  * `TOOLBARBOX`: contains property components that are displayed in `TOOLBAR` [view](/Interactive_view/.md#property) and have no [display group](/Form_structure/.md#drawgroup) (for example, the property has no parameters). The internal structure and layout are similar to the corresponding internal structure and layout of an object group (except for `FILTERGROUPS`, which does not make sense when there is no object group, and therefore is not present in this container). This container is added to the end of `BOX`, and components that the form design adds to `BOX` in the order of insertion are placed above it.
     <!-- -->
     * `TOOLBARLEFT, TOOLBARRIGHT, TOOLBAR...`
 
@@ -198,7 +198,7 @@ The hierarchy of containers and components in the default design will look like 
 
 ### Language[​](#language "Direct link to Language")
 
-To set up the design of the form, use the [`DESIGN` statement](/DESIGN_statement/.md).
+To set up the design of the form, use the [`DESIGN` statement](/DESIGN_statement/.md); its article also gives the complete tables of the properties of components of every kind (containers, components of properties and actions on the form, toolbars, grids) set by this statement.
 
 ### Examples[​](#examples "Direct link to Examples")
 

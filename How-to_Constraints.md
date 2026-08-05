@@ -150,3 +150,24 @@ WHEN (GROUP MAX constraintBook(OrderDetail d)) DO {
 ```
 
 The second scenario is similar to the first one, but lets you modify the message shown to the user and the logic of constraint handling.
+
+## Example 7[​](#example-7 "Direct link to Example 7")
+
+### Task[​](#task-6 "Direct link to Task")
+
+Identical to [**Example 2**](#example-2). The order has a flag that allows editing.
+
+```
+editable 'Editing allowed' = DATA BOOLEAN (Order);
+```
+
+You need to prohibit changing the date of an order whose editing is not allowed, without prohibiting the deletion of orders.
+
+### Solution[​](#solution-6 "Direct link to Solution")
+
+```
+CONSTRAINT CHANGED(date(Order o)) AND NOT editable(o) AND o IS Order
+    MESSAGE 'It is forbidden to change the date of an order closed for editing';
+```
+
+[The constraint condition is also checked on objects deleted in the session](/Constraints/.md): when an order is deleted, its data properties are reset to `NULL`, so `CHANGED(date(o))` is true, and `NOT editable(o)` is also true — a property of the deleted object returns `NULL`, and the negation of `NULL` is true. Without `o IS Order` such a constraint would unexpectedly block the deletion of any order with a date set. For the deleted order `o IS Order` returns `NULL`, and the constraint does not fire. In [**Example 2**](#example-2) no guard is needed: the `posted(o)` condition there is positive, and for a deleted order it returns `NULL` by itself. A deliberate deletion prohibition is instead built with `DROPPED`, as in [**Example 3**](#example-3).
