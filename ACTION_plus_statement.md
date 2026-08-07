@@ -15,7 +15,7 @@ The `ACTION+` statement adds an implementation to an [abstract action](/Action_e
 
 The `ACTION+` statement does not create a new action, but adds another implementation to an already declared [abstract action](/Action_extension/.md).
 
-For an abstract action of type `CASE`, the `WHEN conditionExpr THEN` block is used. For abstract actions of types `MULTI` and `LIST`, the implementation is written without the `WHEN ... THEN` block.
+For an abstract action of type `CASE`, the `WHEN conditionExpr THEN` block is required. For abstract actions of types `MULTI` and `LIST`, the `WHEN ... THEN` block is not used and the implementation is written directly after `+`.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
