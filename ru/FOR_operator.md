@@ -105,7 +105,7 @@ copy (Sku old)  {
 }
 
 createDetails (Order o)  {
-    FOR in(Sku s) NEW d = OrderDetail TOP 100 DO {
+    FOR in(Sku s) TOP 100 NEW d = OrderDetail DO {
         order(d) <- o;
         sku(d) <- s;
     }
