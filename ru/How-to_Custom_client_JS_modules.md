@@ -154,7 +154,7 @@ export function formatSum(amount, currency) {
 
 ```
 formatOrderSum 'Format' (Order o) {
-    INTERNAL CLIENT 'formatSum' (sum(o), 'USD');
+    INTERNAL CLIENT 'formatSum' PARAMS sum(o), 'USD';
 }
 ```
 

@@ -62,7 +62,7 @@ MODULE MyBook;
 REQUIRE Book;
 
 name = DATA STRING[100] (Book); // adding some name property to the product
-overCopy (Book s, Book d) + {
+overCopy (Book d, Book s) + {
     name(d) <- name(s); // connecting the copying of the created property to the product copy action
 }
 ```

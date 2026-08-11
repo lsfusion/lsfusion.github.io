@@ -157,7 +157,7 @@ EXTEND FORM report
 ```
 FORM report 'Отчет'
     OBJECTS dFrom = DATE PANEL, dTo = DATE PANEL
-    PROPERTIES VALUE(dFrom), VALUE(dTo)
+    PROPERTIES dFrom = VALUE(dFrom), dTo = VALUE(dTo)
 ;
 ```
 

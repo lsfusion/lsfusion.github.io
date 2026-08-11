@@ -42,7 +42,7 @@
 
 * **Аналогия**: ограничения целостности, не зависящие от времени инварианты.
 * **Описание**: проверяются на `APPLY`; виды: общие (`CONSTRAINT`), простые (`=>`, `NONULL`, уникальность через `GROUP AGGR`).
-* **Синтаксис (поиск)**: `CONSTRAINT name 'Caption' CHECK condition(...);` или `premise(...) => consequence(...) [RESOLVE LEFT|RIGHT];`
+* **Синтаксис (поиск)**: `CONSTRAINT condition(...) [CHECKED [BY prop, ...]] MESSAGE 'text' [PROPERTIES prop, ...];` или `premise(...) => consequence(...) [RESOLVE [LEFT] [RIGHT]];`
 
 ### Агрегации (Aggregations)[​](#агрегации-aggregations "Прямая ссылка на этот заголовок")
 
