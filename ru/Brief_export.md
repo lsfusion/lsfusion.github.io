@@ -55,7 +55,7 @@ EXPORT formName [OBJECTS objName = expr, ...] [format] [TOP ...] [OFFSET ...] [T
 
 * `TO propertyId` — свойство без параметров, класс значения которого файловый (`FILE`, `RAWFILE`, `JSONFILE` и т.п.).
 * Если `TO` не указано, используется свойство `System.exportFile`.
-* При экспорте формы в плоский формат приемник задается для каждой группы объектов: `TO (groupId1 = propertyId1, ...)`; [пустая группа объектов](/ru/Static_view/.md#empty) называется `root`.
+* При экспорте формы в плоский формат приемники задаются по группам объектов: `TO groupId1 = propertyId1, ...` — группы, не указанные в списке, не выгружаются, а экспорт формы в плоском формате в один файл не поддерживается; [пустая группа объектов](/ru/Static_view/.md#empty) называется `root`.
 
 ## Умолчания, которые определяют результат[​](#умолчания-которые-определяют-результат "Прямая ссылка на этот заголовок")
 
@@ -77,6 +77,7 @@ exportSkus (Store store) {
 
 ```
 exportSku (Store store) {
+    // плоский формат: файл задается для группы объектов s
     EXPORT exportSku OBJECTS st = store DBF CHARSET 'CP866' TO s = exportFile;
     EXPORT exportSku XML;
 }
