@@ -43,5 +43,6 @@
 
 * [Хабр](https://habr.com/ru/company/lsfusion/blog/)
 * [GitHub](https://github.com/lsfusion/platform)
+* [Лицензия](/ru/license/)
 
-Copyright © 2026 lsFusion Foundation. Built with Docusaurus.
+Copyright © 2026 lsFusion Foundation. Содержимое доступно по лицензии [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ru). Built with Docusaurus.
