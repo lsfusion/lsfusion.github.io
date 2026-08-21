@@ -117,6 +117,8 @@ SYNTAX RULES
 
 6. The body of a `META` statement consists of module-level statements; action operators (`NEW ...`, assignments) cannot appear there directly, and the `@` statement using a metacode is itself a module-level statement and cannot be used inside an action body. For parameterized object creation, declare an action with parameters and call it.
 
+7. The two declaration forms of a local property belong to different levels and MUST NOT be mixed up: the `LOCAL name = Class (...);` statement is valid only inside an action body `{ ... }`, while at module level a local property is declared as a property definition `name = DATA LOCAL Class (...);`. A module-level `LOCAL ...` line does not parse (`missing EOF at 'LOCAL'`).
+
 ***
 
 BOOLEAN TYPE RULES
@@ -139,7 +141,7 @@ PROPERTY RULES
 
 3. The assistant MUST assume standard `NULL` propagation for property expressions: if any parameter is `NULL`, the result is `NULL`.
 
-   Exceptions that do NOT nullify on a single `NULL` operand: `MIN` / `MAX`, the `NULL`-tolerant arithmetic `(+)` / `(-)`, and `GROUP` aggregates (`GROUP SUM`, `GROUP MAX`, etc.) — a `NULL` operand or value is skipped instead of propagating.
+   Exceptions that do NOT nullify on a single `NULL` operand: `MIN` / `MAX`, the `NULL`-tolerant arithmetic `(+)` / `(-)`, the `CONCAT` concatenation (a `NULL` operand is skipped together with its separator), and `GROUP` aggregates (`GROUP SUM`, `GROUP MAX`, etc.) — a `NULL` operand or value is skipped instead of propagating.
 
    These exceptions still yield `NULL` when:
 
@@ -530,7 +532,7 @@ CHANGE SESSION RULES (`NEWSESSION`, `NESTEDSESSION`, `APPLY`)
 
    A `LOCAL` value survives `APPLY` when EITHER:
 
-   * the `LOCAL` is declared as `NESTED` at declaration time (`LOCAL NESTED name = Type;` or `name = DATA LOCAL NESTED Type (...);`), OR
+   * the `LOCAL` is declared as `NESTED` at declaration time (`LOCAL NESTED name = Type ();` or `name = DATA LOCAL NESTED Type (...);`), OR
    * the `APPLY` explicitly preserves it via `APPLY NESTED (name1, ..., nameN)` or `APPLY NESTED LOCAL` for all locals.
 
    The assistant MUST NOT rely on a plain `LOCAL` value computed before `APPLY` to still be readable after it. If a staged value must outlive `APPLY` — for example, an import buffer read during post-apply follow-up — the assistant MUST either declare it with `NESTED`, or list it in `APPLY NESTED (...)` (or use `APPLY NESTED LOCAL`) at the call site.

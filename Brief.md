@@ -251,7 +251,7 @@ Which branch: `language` — statement / operator syntax; `paradigm` — concept
 ## Identification & ergonomics[​](#identification--ergonomics "Direct link to Identification & ergonomics")
 
 * **Namespaces**: control visible names. **Syntax (search)**: `NAMESPACE MyNamespace;`
-* **Explicit typing**: params/local props are typed. **Syntax (search)**: `LOCAL var = Type ();`
+* **Explicit typing**: params/local props are typed. **Syntax (search)**: `LOCAL var = Type ();` (inside an action body only; at module level — `var = DATA LOCAL Type ();`)
 * **String interpolation**: build strings from identifiers/values (also for i18n). **Syntax (search)**: `'{namespace.element}'`
 
 ***
