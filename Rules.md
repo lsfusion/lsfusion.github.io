@@ -374,9 +374,9 @@ FORM RULES
 
    Raw expressions, objects, or properties not added to the form MUST NOT be placed into `ORDERS`.
 
-3. The assistant MUST NOT use `INPUT` inside actions added directly to a form through `PROPERTIES`, unless that action is used in an `ON CHANGE` handler.
+3. The assistant MUST NOT use `INPUT` inside actions added directly to a form through `PROPERTIES`, unless that action is used in an `ON CHANGE` handler: a built-in-class value is entered in the editor of the property whose change is being handled, so outside a change handler there is nowhere to render it. The exceptions are file and color values, which are entered through a separate dialog and MAY be requested from any form action.
 
-   `INPUT` is allowed only in form property change handlers.
+   To request values from a button instead, the assistant SHOULD either place the input properties on the form itself (data properties, including local ones, in a panel) and read them in the action, or open a dialog form returning the entered values (`DIALOG` with `INPUT`-marked objects).
 
 4. The assistant MUST NOT display internal object identifiers on a form, including through object-valued properties: an object value is displayed as its internal identifier — a number that tells the user nothing.
 
@@ -429,7 +429,7 @@ FORM DESIGN RULES
 
 6. Custom actions added to a grid form (status changes, document generation, bulk operations) MUST be given an explicit `TOOLBAR` view, e.g. `PROPERTIES(o) confirmDoc TOOLBAR`. Actions default to the `PANEL` view, so without `TOOLBAR` the custom button is drawn as a separate group below the table instead of in the grid toolbar next to the predefined `NEW` / `EDIT` / `DELETE` (which the platform places in the system toolbar itself). The property / action views are `GRID`, `TOOLBAR`, `PANEL`, and `POPUP`.
 
-7. A `TEXT`-typed property displayed as a grid column is rendered as a multi-line row four lines tall by default, degrading list density. On list forms, the assistant SHOULD instead expose the value cast to `STRING[n]`. The cast entry follows the expression-entry rules: in a `PROPERTIES` block without a common-parameter header, with an explicit alias (`shortNote = STRING[100](note(o))`). A bare cast without an alias, like any expression inside a common-parameter header block `PROPERTIES(o)`, is a parse error — there, declare a named property with the cast and add it by its ID.
+7. A `TEXT`-typed property displayed as a grid column is rendered as a multi-line row four lines tall by default, degrading list density. Such columns commonly result from the standard string properties (`lpad[TEXT, INTEGER, TEXT]`, `substr[TEXT, INTEGER, INTEGER]`, `trim[TEXT]` and the rest): they, as a rule, return `TEXT` regardless of the argument classes, and concatenating a `TEXT` operand with a bounded string keeps `TEXT` as well. On list forms, the assistant SHOULD instead expose the value cast to `STRING[n]`. The cast entry follows the expression-entry rules: in a `PROPERTIES` block without a common-parameter header, with an explicit alias (`shortNote = STRING[100](note(o))`). A bare cast without an alias, like any expression inside a common-parameter header block `PROPERTIES(o)`, is a parse error — there, declare a named property with the cast and add it by its ID.
 
 8. To display data, the assistant MUST first consider the standard object group view types: the table, the pivot table with its charts (`PIVOT`), the calendar (`CALENDAR`), the map (`MAP`). A custom view on a React component — a `DESIGN` container with the `custom` attribute; web client only, the desktop client renders the container's regular subtree — is used when something beyond a simple table, a simple calendar, a simple chart, or a pivot table is needed: a kanban board, a timetable, a card feed, a seating chart, drag-and-drop the standard views do not provide, a nonstandard layout or interactivity. Before creating such a view, the assistant MUST retrieve the `How-to_Custom_React_views` documentation.
 
