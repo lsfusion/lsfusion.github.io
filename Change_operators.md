@@ -1,6 +1,6 @@
 # Change operators
 
-Change operators - a set of operators that determine various types of [property value changes](/Change_operators_SET_CHANGED_etc/.md).
+Change operators - a set of operators that determine various types of [property value changes](/Change_operators_SET_CHANGED_etc.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -10,7 +10,7 @@ typeChange(propExpr)
 
 ### Description[​](#description "Direct link to Description")
 
-Change operators create [properties](/Properties/.md) which determine whether a given type of change has occurred for a certain property in the current session. They are [context-dependent](/Property_operators/.md) property operators and can be used inside [expressions](/Expression/.md). Inside an [event handler](/Events/.md#change) they switch to event mode and report changes since the previous occurrence of that event.
+Change operators create [properties](/Properties.md) which determine whether a given type of change has occurred for a certain property in the current session. They are [context-dependent](/Property_operators.md) property operators and can be used inside [expressions](/Expression.md). Inside an [event handler](/Events.md#change) they switch to event mode and report changes since the previous occurrence of that event.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
@@ -27,7 +27,7 @@ Change operators create [properties](/Properties/.md) which determine whether a 
 
 * `propExpr`
 
-  The [expression](/Expression/.md) whose change is checked. It must denote a property; a bare parameter cannot be used as the operand.
+  The [expression](/Expression.md) whose change is checked. It must denote a property; a bare parameter cannot be used as the operand.
 
 ### Examples[​](#examples "Direct link to Examples")
 

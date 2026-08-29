@@ -1,6 +1,6 @@
 # UserEvents
 
-`UserEvents` is a [system module](/System_modules/.md) that gives an action running on an open form programmatic read and write access to the form's filters and orders by group-object name and property name. It is pulled in via `REQUIRE UserEvents`. The two public actions reach the live filter structure of a group object, change a single property's filter value, and write it back, so an action can set or read a filter without the user touching the filter dialog.
+`UserEvents` is a [system module](/System_modules.md) that gives an action running on an open form programmatic read and write access to the form's filters and orders by group-object name and property name. It is pulled in via `REQUIRE UserEvents`. The two public actions reach the live filter structure of a group object, change a single property's filter value, and write it back, so an action can set or read a filter without the user touching the filter dialog.
 
 ### Local staging[​](#local-staging "Direct link to Local staging")
 
@@ -33,14 +33,14 @@ The `orders` form exposes the order rows (one `INTEGER` object, with `property` 
 
 ### Language[​](#language "Direct link to Language")
 
-* [`ORDER`, `FILTER`, `FILTERGROUP`, `FILTER PROPERTY` operators](/FILTER_ORDER_operators/.md) — apply or read a form element's orders and filters.
-* [`EVAL` operator](/EVAL_operator/.md) — runs the `FILTERS` / `FILTER` form action that reads and re-applies a group object's filters.
-* [`IMPORT` operator](/IMPORT_operator/.md) — reads the `filters` form into the staging structure.
-* [`EXPORT` operator](/EXPORT_operator/.md) — writes the staging structure back into the `filters` form.
+* [`ORDER`, `FILTER`, `FILTERGROUP`, `FILTER PROPERTY` operators](/FILTER_ORDER_operators.md) — apply or read a form element's orders and filters.
+* [`EVAL` operator](/EVAL_operator.md) — runs the `FILTERS` / `FILTER` form action that reads and re-applies a group object's filters.
+* [`IMPORT` operator](/IMPORT_operator.md) — reads the `filters` form into the staging structure.
+* [`EXPORT` operator](/EXPORT_operator.md) — writes the staging structure back into the `filters` form.
 
 ### See also[​](#see-also "Direct link to See also")
 
-* [`System modules`](/System_modules/.md) — the general list of platform modules.
-* [`Eval (EVAL)`](/Eval_EVAL/.md) — running generated lsFusion code, used here to read and re-apply form filters.
-* [`Forms`](/Forms/.md) — what a form is, and its group objects, filters, and orders.
-* [`Reflection`](/System_Reflection/.md) — metadata about forms, group objects, and properties addressed here by name.
+* [`System modules`](/System_modules.md) — the general list of platform modules.
+* [`Eval (EVAL)`](/Eval_EVAL.md) — running generated lsFusion code, used here to read and re-apply form filters.
+* [`Forms`](/Forms.md) — what a form is, and its group objects, filters, and orders.
+* [`Reflection`](/System_Reflection.md) — metadata about forms, group objects, and properties addressed here by name.

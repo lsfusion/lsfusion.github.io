@@ -1,6 +1,6 @@
 # SHOW operator
 
-The `SHOW` operator creates an [action](/Actions/.md) that [opens a form](/Open_form/.md) in [interactive view](/In_an_interactive_view_SHOW_DIALOG/.md).
+The `SHOW` operator creates an [action](/Actions.md) that [opens a form](/Open_form.md) in [interactive view](/In_an_interactive_view_SHOW_DIALOG.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -16,7 +16,7 @@ Where `target` is one of two forms — the *named-form* opens a previously decla
 formName [OBJECTS objName1 = expr1 [NULL], ..., objNameN = exprN [NULL]]
 ```
 
-and the *class-form* opens the [list or edit form](/Interactive_view/.md#edtClass) of a class:
+and the *class-form* opens the [list or edit form](/Interactive_view.md#edtClass) of a class:
 
 ```
 classFormType className = expr [NULL]
@@ -47,17 +47,17 @@ IN containerName
 
 ### Description[​](#description "Direct link to Description")
 
-The `SHOW` operator creates an action that opens the specified form. The `OBJECTS` block sets [initial values](/Open_form/.md#params) for the form's objects (in the class-form, the single `= expr` plays the same role for the form's only object, which is implicitly named `object` and can be referenced by that name inside `FILTERS` expressions). Inside `formActionOptions`, the `FILTERS` clause attaches [additional filters](/Open_form/.md#contextFilters) computed from the calling context; the remaining options control the form-opening behavior — flow, layout, session, system-action visibility, and other modifiers. The trailing block `{initActionOperator}` runs once when the form is opened.
+The `SHOW` operator creates an action that opens the specified form. The `OBJECTS` block sets [initial values](/Open_form.md#params) for the form's objects (in the class-form, the single `= expr` plays the same role for the form's only object, which is implicitly named `object` and can be referenced by that name inside `FILTERS` expressions). Inside `formActionOptions`, the `FILTERS` clause attaches [additional filters](/Open_form.md#contextFilters) computed from the calling context; the remaining options control the form-opening behavior — flow, layout, session, system-action visibility, and other modifiers. The trailing block `{initActionOperator}` runs once when the form is opened.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `formId`
 
-  [String literal](/Literals/.md#strliteral) that uniquely identifies the opened form instance for later form-management actions (for example, to close that exact form). By default, the opened form has no such identifier.
+  [String literal](/Literals.md#strliteral) that uniquely identifies the opened form instance for later form-management actions (for example, to close that exact form). By default, the opened form has no such identifier.
 
 * `formName`
 
-  Form name. [Composite ID](/IDs/.md#cid).
+  Form name. [Composite ID](/IDs.md#cid).
 
 * `classFormType`
 
@@ -68,15 +68,15 @@ The `SHOW` operator creates an action that opens the specified form. The `OBJECT
 
 * `className`
 
-  Name of the [custom class](/User_classes/.md) whose list or edit form is opened. Composite ID.
+  Name of the [custom class](/User_classes.md) whose list or edit form is opened. Composite ID.
 
 * `objName1, ..., objNameN`
 
-  Names of form objects for which initial values are specified. [Simple IDs](/IDs/.md#id).
+  Names of form objects for which initial values are specified. [Simple IDs](/IDs.md#id).
 
 * `expr`, `expr1, ..., exprN`
 
-  [Expressions](/Expression/.md) whose values are used as the initial values of the corresponding form objects.
+  [Expressions](/Expression.md) whose values are used as the initial values of the corresponding form objects.
 
 * `NULL` after the initial value
 
@@ -84,7 +84,7 @@ The `SHOW` operator creates an action that opens the specified form. The `OBJECT
 
 * `initActionOperator`
 
-  [Context-dependent action operator](/Action_operators/.md#contextdependent) that runs on form opening, after the form's [`EVENTS ON INIT`](/Event_block/.md) handlers.
+  [Context-dependent action operator](/Action_operators.md#contextdependent) that runs on form opening, after the form's [`EVENTS ON INIT`](/Event_block.md) handlers.
 
 ### Options[​](#options "Direct link to Options")
 
@@ -94,7 +94,7 @@ The `SHOW` operator creates an action that opens the specified form. The `OBJECT
 
 * `syncType`
 
-  The [flow-control](/In_an_interactive_view_SHOW_DIALOG/.md#flow) mode. One of:
+  The [flow-control](/In_an_interactive_view_SHOW_DIALOG.md#flow) mode. One of:
 
   * `WAIT` — synchronous (wait for the form to close)
   * `NOWAIT` — asynchronous (continue immediately after opening)
@@ -103,11 +103,11 @@ The `SHOW` operator creates an action that opens the specified form. The `OBJECT
 
 * `windowType`
 
-  The [form layout](/In_an_interactive_view_SHOW_DIALOG/.md#location): `FLOAT` shows the form as a floating window, `DOCKED` as a tab in the system forms window, `EMBEDDED` and `POPUP` as in-place editors, and `IN` places the form inside `containerName` — a form-qualified [design component](/DESIGN_statement/.md#selector) (the form's name followed by the component's path within that form's design) that must be a container. By default, `FLOAT` is used in synchronous mode and `DOCKED` in asynchronous mode.
+  The [form layout](/In_an_interactive_view_SHOW_DIALOG.md#location): `FLOAT` shows the form as a floating window, `DOCKED` as a tab in the system forms window, `EMBEDDED` and `POPUP` as in-place editors, and `IN` places the form inside `containerName` — a form-qualified [design component](/DESIGN_statement.md#selector) (the form's name followed by the component's path within that form's design) that must be a container. By default, `FLOAT` is used in synchronous mode and `DOCKED` in asynchronous mode.
 
 * `manageSessionType`
 
-  Overrides whether the opened form is the [session owner](/Interactive_view/.md#owner). One of:
+  Overrides whether the opened form is the [session owner](/Interactive_view.md#owner). One of:
 
   * `MANAGESESSION` — force ownership
   * `NOMANAGESESSION` — force non-ownership
@@ -119,7 +119,7 @@ The `SHOW` operator creates an action that opens the specified form. The `OBJECT
   The session in which the form is opened. One of:
 
   * `NEWSESSION` — a new top-level session
-  * `NESTEDSESSION` — a new [nested](/New_session_NEWSESSION_NESTEDSESSION/.md) session
+  * `NESTEDSESSION` — a new [nested](/New_session_NEWSESSION_NESTEDSESSION.md) session
   * `THISSESSION` — the current session (default)
 
 * `cancelType`
@@ -133,7 +133,7 @@ The `SHOW` operator creates an action that opens the specified form. The `OBJECT
 
 * `READONLY`
 
-  Keyword. If specified, the form is opened in [read-only](/In_an_interactive_view_SHOW_DIALOG/.md#extra) mode.
+  Keyword. If specified, the form is opened in [read-only](/In_an_interactive_view_SHOW_DIALOG.md#extra) mode.
 
 * `CHECK`
 

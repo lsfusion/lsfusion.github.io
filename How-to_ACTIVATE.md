@@ -61,7 +61,7 @@ EXTEND FORM books
 ;
 ```
 
-After closing the form, we need to call the [`ACTIVATE` operator](/ACTIVATE_operator/.md) which will make the added object active.
+After closing the form, we need to call the [`ACTIVATE` operator](/ACTIVATE_operator.md) which will make the added object active.
 
 ## Example 2[​](#example-2 "Direct link to Example 2")
 
@@ -104,7 +104,7 @@ EXTEND FORM prices
 ;
 ```
 
-The property with the default customer is added to the `'Settings'` form on the `'General'` tab. The current object will change once the user opens the form, since the [`ON INIT` event](/Event_block/.md) will be triggered.
+The property with the default customer is added to the `'Settings'` form on the `'General'` tab. The current object will change once the user opens the form, since the [`ON INIT` event](/Event_block.md) will be triggered.
 
 ## Example 3[​](#example-3 "Direct link to Example 3")
 
@@ -146,7 +146,7 @@ EXTEND FORM report
 ;
 ```
 
-Date properties can be found in the `Time` [system module](/Modules/.md) which is loaded at the very beginning using the `REQUIRE` statement.
+Date properties can be found in the `Time` [system module](/Modules.md) which is loaded at the very beginning using the `REQUIRE` statement.
 
 ## Example 4[​](#example-4 "Direct link to Example 4")
 
@@ -169,7 +169,7 @@ EXTEND FORM report
 ;
 ```
 
-On form open, the [`ON INIT`](/Event_block/.md) event fires and the [`ACTIVATE` operator](/ACTIVATE_operator/.md) moves focus to the `dFrom` field. `ACTIVATE PROPERTY` works for any property displayed on the form — panel, grid, and tree alike.
+On form open, the [`ON INIT`](/Event_block.md) event fires and the [`ACTIVATE` operator](/ACTIVATE_operator.md) moves focus to the `dFrom` field. `ACTIVATE PROPERTY` works for any property displayed on the form — panel, grid, and tree alike.
 
 ## Example 5[​](#example-5 "Direct link to Example 5")
 

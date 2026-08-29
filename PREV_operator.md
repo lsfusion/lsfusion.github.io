@@ -1,6 +1,6 @@
 # PREV operator
 
-The `PREV` operator creates a [property](/Properties/.md) using a [previous value operator](/Previous_value_PREV/.md).
+The `PREV` operator creates a [property](/Properties.md) using a [previous value operator](/Previous_value_PREV.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -10,17 +10,17 @@ PREV(propExpr)
 
 ### Description[​](#description "Direct link to Description")
 
-The `PREV` operator creates a property that returns the value of the given expression at the start of the current [change session](/Change_sessions/.md) — i.e., the value that existed before the changes made in this session. It always uses the session-start scope (it does not switch modes based on the surrounding context); see the paradigm article and [`Events.md#change`](/Events/.md#change) for how this relates to event-mode behavior of [change operators](/Change_operators_SET_CHANGED_etc/.md). It is a [context-dependent](/Property_operators/.md) property operator and can appear inside [expressions](/Expression/.md).
+The `PREV` operator creates a property that returns the value of the given expression at the start of the current [change session](/Change_sessions.md) — i.e., the value that existed before the changes made in this session. It always uses the session-start scope (it does not switch modes based on the surrounding context); see the paradigm article and [`Events.md#change`](/Events.md#change) for how this relates to event-mode behavior of [change operators](/Change_operators_SET_CHANGED_etc.md). It is a [context-dependent](/Property_operators.md) property operator and can appear inside [expressions](/Expression.md).
 
 info
 
-It's important to understand that `PREV` is not a built-in property with [composition](/Composition_JOIN/.md) but an operator. Thus, in particular `PREV(f(a))` is not equal to `[PREV(a)](f(a))`: the session-start scope applies to the entire operand expression, including its argument sub-expressions. For example, in `PREV(f(g(a)))` the value of `g(a)` is also taken at the start of the session; if `g` is a [local property](/Data_properties_DATA/.md#local) filled in the current session, inside `PREV` it returns `NULL`, and the whole expression returns `NULL` as well. To read the previous value of a property for arguments computed in the current session, wrap `PREV` in a separate property: with `prevF(x) = PREV(f(x))` the call `prevF(g(a))` evaluates `g(a)` in the current session, and only `f` is read in the session-start state.
+It's important to understand that `PREV` is not a built-in property with [composition](/Composition_JOIN.md) but an operator. Thus, in particular `PREV(f(a))` is not equal to `[PREV(a)](f(a))`: the session-start scope applies to the entire operand expression, including its argument sub-expressions. For example, in `PREV(f(g(a)))` the value of `g(a)` is also taken at the start of the session; if `g` is a [local property](/Data_properties_DATA.md#local) filled in the current session, inside `PREV` it returns `NULL`, and the whole expression returns `NULL` as well. To read the previous value of a property for arguments computed in the current session, wrap `PREV` in a separate property: with `prevF(x) = PREV(f(x))` the call `prevF(g(a))` evaluates `g(a)` in the current session, and only `f` is read in the session-start state.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `propExpr`
 
-  The [expression](/Expression/.md) whose previous value is returned. It must denote a property; a bare parameter cannot be used as the operand.
+  The [expression](/Expression.md) whose previous value is returned. It must denote a property; a bare parameter cannot be used as the operand.
 
 ### Examples[​](#examples "Direct link to Examples")
 

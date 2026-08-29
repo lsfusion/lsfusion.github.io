@@ -1,6 +1,6 @@
 # In a print view (PRINT)
 
-This operator creates an action that [opens a form](/Open_form/.md) in the [print](/Print_view/.md) view.
+This operator creates an action that [opens a form](/Open_form.md) in the [print](/Print_view.md) view.
 
 ### Format[​](#format "Direct link to Format")
 
@@ -14,9 +14,9 @@ Apart from the export in a specified format, the print view allows to display in
 
 * *Preview* (`PREVIEW`) - the form on the client side will be shown in a new preview window, so that the user can decide on the format to export this form to or send it to the printer. This mode is used by default if other modes/formats are not defined.
 * *Print to printer* (`NOPREVIEW`) - the form will be automatically sent to the printer. In this and the previous modes, you can specify a property that will be used to determine the printer that will be used to print the form (if you don't do it, the default printer will be used).
-* *Message* (`MESSAGE`) - the form will be shown as a message. In this case, it is assumed that the form consists of a single object group. Accordingly, the shown message consists of a header with all the properties having an [empty](/Static_view/.md#empty) [display group](/Form_structure/.md#drawgroup), and a table in which rows are object collections of this only object group and columns are properties that are not displayed in the header (i.e. for which the display group exists and is equal to the only object group of the form being opened). The operator working in this mode is essentially a generalization of the [message display](/Show_message_MESSAGE_ASK/.md) operator. It is worth noting that this operator mode is used in [constraints](/Constraints/.md) (when the user is shown objects for which a constraint was violated).
+* *Message* (`MESSAGE`) - the form will be shown as a message. In this case, it is assumed that the form consists of a single object group. Accordingly, the shown message consists of a header with all the properties having an [empty](/Static_view.md#empty) [display group](/Form_structure.md#drawgroup), and a table in which rows are object collections of this only object group and columns are properties that are not displayed in the header (i.e. for which the display group exists and is equal to the only object group of the form being opened). The operator working in this mode is essentially a generalization of the [message display](/Show_message_MESSAGE_ASK.md) operator. It is worth noting that this operator mode is used in [constraints](/Constraints.md) (when the user is shown objects for which a constraint was violated).
 
-Similarly to the [interactive view](/In_an_interactive_view_SHOW_DIALOG/.md), the interactive modes of the print view support [flow management](/In_an_interactive_view_SHOW_DIALOG/.md#flow) — synchronous or asynchronous execution, with the same behavior as in the form opening operator in the interactive view. The resulting form location (a window or a tab) is determined automatically by the mode and the execution type, as described below.
+Similarly to the [interactive view](/In_an_interactive_view_SHOW_DIALOG.md), the interactive modes of the print view support [flow management](/In_an_interactive_view_SHOW_DIALOG.md#flow) — synchronous or asynchronous execution, with the same behavior as in the form opening operator in the interactive view. The resulting form location (a window or a tab) is determined automatically by the mode and the execution type, as described below.
 
 info
 
@@ -24,7 +24,7 @@ Current implementation: in the `MESSAGE` mode, the form is always shown as a win
 
 ### Language[​](#language "Direct link to Language")
 
-To open the form in the print view, the [`PRINT` operator](/PRINT_operator/.md) is used.
+To open the form in the print view, the [`PRINT` operator](/PRINT_operator.md) is used.
 
 ### Examples[​](#examples "Direct link to Examples")
 

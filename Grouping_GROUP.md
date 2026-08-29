@@ -1,10 +1,10 @@
 # Grouping (GROUP)
 
-The *group* operator creates a [property](/Properties/.md) that divides all object collections in the system into groups, and calculates an [aggregating function](/Set_operations/.md#func) for each group following specified order. Accordingly, the set for which this aggregating function is calculated is determined as all the object collections belonging to this group. If the grouping set is empty and the operator does not reference any upper parameters, all matching object collections belong to one common group. Any upper parameters that the operator does reference implicitly extend the grouping set, so that each combination of their values forms a separate group.
+The *group* operator creates a [property](/Properties.md) that divides all object collections in the system into groups, and calculates an [aggregating function](/Set_operations.md#func) for each group following specified order. Accordingly, the set for which this aggregating function is calculated is determined as all the object collections belonging to this group. If the grouping set is empty and the operator does not reference any upper parameters, all matching object collections belong to one common group. Any upper parameters that the operator does reference implicitly extend the grouping set, so that each combination of their values forms a separate group.
 
-Groups are defined for this operator as a set of properties (*groups*), and the order is defined as a list of properties and an increasing or decreasing marker. If the aggregation function is not [commutative](/Set_operations/.md#commutative), then the order must be uniquely determined. For commutative aggregators, the order does not change the final value by itself, but it becomes important when aggregation is performed not over the whole group, but only over some ordered fragment of the group.
+Groups are defined for this operator as a set of properties (*groups*), and the order is defined as a list of properties and an increasing or decreasing marker. If the aggregation function is not [commutative](/Set_operations.md#commutative), then the order must be uniquely determined. For commutative aggregators, the order does not change the final value by itself, but it becomes important when aggregation is performed not over the whole group, but only over some ordered fragment of the group.
 
-At the same time, it is useful to distinguish between the *group key* and the *group elements*. The group key determines which object collections belong to the same group and for which set of values a result exists, while the group elements determine from which data that result is calculated. This distinction helps explain why grouping returns one value per group rather than a separate value for each source object collection, as in [partitioning / ordering](/Partitioning_sorting_PARTITION_..._ORDER/.md).
+At the same time, it is useful to distinguish between the *group key* and the *group elements*. The group key determines which object collections belong to the same group and for which set of values a result exists, while the group elements determine from which data that result is calculated. This distinction helps explain why grouping returns one value per group rather than a separate value for each source object collection, as in [partitioning / ordering](/Partitioning_sorting_PARTITION_..._ORDER.md).
 
 Functionally, grouping can be viewed as follows:
 
@@ -22,7 +22,7 @@ A uniquely determined order can be guaranteed if, for example, the IDs of all ob
 
 In addition to the standard types of aggregate functions for grouping, there are three additional types: `EQUAL`, `AGGR` and `NAGGR`.
 
-* `EQUAL` is a special case of the aggregation function `MAX` (or `MIN`), with the additional [constraint](/Constraints/.md) that the value of the operand of the aggregating function within each group must be the same. The result class is the class of the operand.
+* `EQUAL` is a special case of the aggregation function `MAX` (or `MIN`), with the additional [constraint](/Constraints.md) that the value of the operand of the aggregating function within each group must be the same. The result class is the class of the operand.
 * `AGGR` and `NAGGR` are a special case of `EQUAL`, but with an even more strict constraint: for each group there is no more than one object collection, the operand of the aggregating function is one of the objects, and the groups include all other objects. Aggregate function `NAGGR` only differs from `AGGR` in the fact that if it is used, no constraint is created (it is assumed that the constraint follows from the semantics of the properties of the operands and / or groupings themselves). Since the operand is itself one of the objects of the group, the result class is the class of that object.
 
 User-defined DBMS aggregate functions and custom aggregate functions declared in the database can also be used in grouping. Functionally, there are two different scenarios here:
@@ -34,7 +34,7 @@ The result class of a custom aggregate may be set explicitly. Otherwise it is in
 
 ### Language[​](#language "Direct link to Language")
 
-To declare a property that implements grouping, use the [`GROUP` operator](/GROUP_operator/.md).
+To declare a property that implements grouping, use the [`GROUP` operator](/GROUP_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

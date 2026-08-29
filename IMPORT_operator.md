@@ -1,6 +1,6 @@
 # IMPORT operator
 
-The `IMPORT` operator creates an [action](/Actions/.md) that imports data from a specified file into [specified properties (parameters)](/Data_import_IMPORT/.md) or, in general, into a [specified form](/In_a_structured_view_EXPORT_IMPORT/.md#importForm).
+The `IMPORT` operator creates an [action](/Actions.md) that imports data from a specified file into [specified properties (parameters)](/Data_import_IMPORT.md) or, in general, into a [specified form](/In_a_structured_view_EXPORT_IMPORT.md#importForm).
 
 ## Syntax[​](#syntax "Direct link to Syntax")
 
@@ -52,21 +52,21 @@ The first passed file is used to automatically determine a flat file format by i
 
 * `fileExpr`
 
-[Expression](/Expression/.md) whose value is the imported file. The value of the expression must be an object of a file class (`FILE`, `RAWFILE`, `JSONFILE` etc. ). If this expression is not specified when importing a form, then the default expression is `System.importFile()`.
+[Expression](/Expression.md) whose value is the imported file. The value of the expression must be an object of a file class (`FILE`, `RAWFILE`, `JSONFILE` etc. ). If this expression is not specified when importing a form, then the default expression is `System.importFile()`.
 
 * `groupId1, ..., groupIdM`
 
-  Names of object groups of the imported form for which you want to import data. [Simple IDs](/IDs/.md#id). Used only for importing a form from flat formats.
+  Names of object groups of the imported form for which you want to import data. [Simple IDs](/IDs.md#id). Used only for importing a form from flat formats.
 
 * `fileExpr1, ..., fileExprM`
 
-  Expressions whose values are files that need to be imported for the specified object groups. The value of each expression must be an object of a file class (`FILE`, `RAWFILE`, `JSONFILE` etc. ). Used only to import forms from flat formats. For the [empty object group](/Static_view/.md#empty), the name `root` is used.
+  Expressions whose values are files that need to be imported for the specified object groups. The value of each expression must be an object of a file class (`FILE`, `RAWFILE`, `JSONFILE` etc. ). Used only to import forms from flat formats. For the [empty object group](/Static_view.md#empty), the name `root` is used.
 
 ### Import format[​](#import-format "Direct link to Import format")
 
 * `rootExpr`
 
-  [Expression](/Expression/.md) of a string class specifying the name of the element treated as the root on import. The source file is searched recursively for the first element (for **JSON** — key) with that name; processing of nested records starts from the found element (for **JSON** — from the value of the found key). If no element with the specified name is found, the import fails with an error. Only applicable for import from **JSON** and **XML**.
+  [Expression](/Expression.md) of a string class specifying the name of the element treated as the root on import. The source file is searched recursively for the first element (for **JSON** — key) with that name; processing of nested records starts from the found element (for **JSON** — from the value of the found key). If no element with the specified name is found, the import fails with an error. Only applicable for import from **JSON** and **XML**.
 
 * `ATTR`
 
@@ -74,7 +74,7 @@ The first passed file is used to automatically determine a flat file format by i
 
 * `separator`
 
-  Delimiter in a **CSV** file. [String literal](/Literals/.md#strliteral). If not specified, then the default delimiter is `;`.
+  Delimiter in a **CSV** file. [String literal](/Literals.md#strliteral). If not specified, then the default delimiter is `;`.
 
 * `HEADER` | `NOHEADER`
 
@@ -111,7 +111,7 @@ The first passed file is used to automatically determine a flat file format by i
 
 * `whereExpr`
 
-  [Expression](/Expression/.md) of a string class specifying a textual row-filter condition. The condition is a chain of `field sign value` triplets joined with `AND` or `OR` (each optionally prefixed with `NOT `), where `field` is the imported column (field) name, `sign` is one of `=`, `<`, `>`, `<=`, `>=`, `IN`, and `value` is a literal of the same type as the column (spaces inside `value` are not allowed). Only rows for which the condition holds are imported. Applicable for all formats; not supported when importing a whole form.
+  [Expression](/Expression.md) of a string class specifying a textual row-filter condition. The condition is a chain of `field sign value` triplets joined with `AND` or `OR` (each optionally prefixed with `NOT `), where `field` is the imported column (field) name, `sign` is one of `=`, `<`, `>`, `<=`, `>=`, `IN`, and `value` is a literal of the same type as the column (spaces inside `value` are not allowed). Only rows for which the condition holds are imported. Applicable for all formats; not supported when importing a whole form.
 
 * `memoExpr`
 
@@ -119,7 +119,7 @@ The first passed file is used to automatically determine a flat file format by i
 
 * `actionOperator`
 
-  [Context-dependent action operator](/Action_operators/.md#contextdependent) describing the action that is executed for each imported record.
+  [Context-dependent action operator](/Action_operators.md#contextdependent) describing the action that is executed for each imported record.
 
 * `elseActionOperator`
 
@@ -129,19 +129,19 @@ The first passed file is used to automatically determine a flat file format by i
 
 * `formName`
 
-  The name of the form into which data has to be imported. [Composite ID](/IDs/.md#cid).
+  The name of the form into which data has to be imported. [Composite ID](/IDs.md#cid).
 
 * `objClassId1, ..., objClassIdK`
 
-  Classes of the [imported](/Data_import_IMPORT/.md) objects. Specified by [class IDs](/IDs/.md#classid). `K <= 1`. By default, it is assumed that what is being imported is one object of class `INTEGER`.
+  Classes of the [imported](/Data_import_IMPORT.md) objects. Specified by [class IDs](/IDs.md#classid). `K <= 1`. By default, it is assumed that what is being imported is one object of class `INTEGER`.
 
 * `objAlias1, ..., objAliasK`
 
-  Names of local parameters into which imported objects are written. [Simple IDs](/IDs/.md#id). `K <= 1`. By default, it is assumed that one object is being imported with the name `row`.
+  Names of local parameters into which imported objects are written. [Simple IDs](/IDs.md#id). `K <= 1`. By default, it is assumed that one object is being imported with the name `row`.
 
 * `propertyId1, ..., propertyIdN`
 
-  List [property IDs](/IDs/.md#propertyid) into which columns (fields) of data are imported. Property parameters and their classes must match the imported objects and their classes.
+  List [property IDs](/IDs.md#propertyid) into which columns (fields) of data are imported. Property parameters and their classes must match the imported objects and their classes.
 
 * `columnId1, ..., columnIdN`
 
@@ -149,11 +149,11 @@ The first passed file is used to automatically determine a flat file format by i
 
 * `whereId`
 
-  Property ID to which [a default value](/Built-in_classes/.md#defaultvalue) of the class of this property value will be written for each imported object. Property parameters and classes must match the imported objects and their classes. If the property is not specified and the number of imported objects is greater than `0`, a property with the name `imported` and classes of imported objects (e.g. `System.imported[INTEGER]`) is used.
+  Property ID to which [a default value](/Built-in_classes.md#defaultvalue) of the class of this property value will be written for each imported object. Property parameters and classes must match the imported objects and their classes. If the property is not specified and the number of imported objects is greater than `0`, a property with the name `imported` and classes of imported objects (e.g. `System.imported[INTEGER]`) is used.
 
 * `propClassId1, ..., propClassIdN`
 
-  List of names of [builtin classes](/Built-in_classes/.md) of the imported columns.
+  List of names of [builtin classes](/Built-in_classes.md) of the imported columns.
 
 * `propAlias1, ..., propAliasN`
 

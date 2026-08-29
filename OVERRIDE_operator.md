@@ -1,6 +1,6 @@
 # OVERRIDE operator
 
-The `OVERRIDE` operator creates a [property](/Properties/.md) that implements the [selection](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md#poly) of one of the values (polymorphic form).
+The `OVERRIDE` operator creates a [property](/Properties.md) that implements the [selection](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md#poly) of one of the values (polymorphic form).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -16,7 +16,7 @@ The `OVERRIDE` operator creates a property whose value will be the value of one 
 
 * `expr1, ..., exprN`
 
-  List of [expressions](/Expression/.md) whose values will determine the value of the property.
+  List of [expressions](/Expression.md) whose values will determine the value of the property.
 
 ### Examples[​](#examples "Direct link to Examples")
 

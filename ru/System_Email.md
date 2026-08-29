@@ -1,6 +1,6 @@
 # Email
 
-`Email` — [системный модуль](/ru/System_modules/.md), содержащий классы, свойства и действия для электронной почты: почтовые учётные записи и их настройки соединения, дерево папок, хранимые письма с их заголовками, телом и вложениями, действия приёма почты с сервера и импорта `.eml`-файлов, а также средства составления и отправки письма поверх оператора `EMAIL`. Подключается через `REQUIRE Email` (вместе с ним подключаются `System`, `Reflection` и `SystemEvents`).
+`Email` — [системный модуль](/ru/System_modules.md), содержащий классы, свойства и действия для электронной почты: почтовые учётные записи и их настройки соединения, дерево папок, хранимые письма с их заголовками, телом и вложениями, действия приёма почты с сервера и импорта `.eml`-файлов, а также средства составления и отправки письма поверх оператора `EMAIL`. Подключается через `REQUIRE Email` (вместе с ним подключаются `System`, `Reflection` и `SystemEvents`).
 
 ### Учётная запись[​](#учётная-запись "Прямая ссылка на этот заголовок")
 
@@ -23,7 +23,7 @@
 | `fromAddress[Account]`                    | адрес отправителя, проставляемый в исходящую почту                            |
 | `isDefaultInbox[Account]`                 | признак, помечающий учётную запись как используемую по умолчанию для отправки |
 
-`EncryptedConnectionTypeStatus` — статический [класс](/ru/User_classes/.md#static) из двух объектов — `SSL` и `TLS` — для режима шифрования SMTP. Форма `encryptedConnectionTypeStatuses` показывает их списком.
+`EncryptedConnectionTypeStatus` — статический [класс](/ru/User_classes.md#static) из двух объектов — `SSL` и `TLS` — для режима шифрования SMTP. Форма `encryptedConnectionTypeStatuses` показывает их списком.
 
 `inboxAccount[STRING]` выбирает учётную запись для отправки письма с заданного адреса отправителя: возвращает запись, чей `fromAddress[Account]` совпадает с этим адресом (`accountFromAddress`), а при отсутствии совпадения берёт запись с признаком `isDefaultInbox[Account]` (`defaultInboxAccount`).
 
@@ -42,7 +42,7 @@
 | `ignoreExceptions[Account]`                     | признак продолжения работы после письма, которое не удалось обработать |
 | `readAllFolders[Account]`                       | признак чтения всех папок сервера, а не только входящих                |
 
-`ReceiveAccountType` — статический [класс](/ru/User_classes/.md#static) из четырёх объектов для протокола приёма: `POP3`, `POP3S`, `IMAP`, `IMAPS`. Форма `receiveAccountTypes` показывает их списком.
+`ReceiveAccountType` — статический [класс](/ru/User_classes.md#static) из четырёх объектов для протокола приёма: `POP3`, `POP3S`, `IMAP`, `IMAPS`. Форма `receiveAccountTypes` показывает их списком.
 
 ### Папки[​](#папки "Прямая ссылка на этот заголовок")
 
@@ -116,13 +116,13 @@
 
 ### Язык[​](#язык "Прямая ссылка на этот заголовок")
 
-* [Оператор `EMAIL`](/ru/EMAIL_operator/.md) — отправляет письмо; через него написано `send[Email]`.
-* [Оператор `INTERNAL`](/ru/INTERNAL_operator/.md) — привязывает действия приёма почты к их Java-реализации.
+* [Оператор `EMAIL`](/ru/EMAIL_operator.md) — отправляет письмо; через него написано `send[Email]`.
+* [Оператор `INTERNAL`](/ru/INTERNAL_operator.md) — привязывает действия приёма почты к их Java-реализации.
 
 ### Связано[​](#связано "Прямая ссылка на этот заголовок")
 
-* [`System modules`](/ru/System_modules/.md) — общий список модулей платформы.
-* [`SystemEvents`](/ru/System_SystemEvents/.md) — модуль событий жизненного цикла сервера, подключаемый вместе с `Email`.
-* [`Reflection`](/ru/System_Reflection/.md) — модуль метаданных, подключаемый вместе с `Email`.
-* [`Access to an external system (EXTERNAL)`](/ru/Access_to_an_external_system_EXTERNAL/.md) — обращение к внешним сервисам; почта — одна из таких внешних систем.
-* [`Security`](/ru/System_Security/.md) — использует почту для отправки письма со сбросом пароля.
+* [`System modules`](/ru/System_modules.md) — общий список модулей платформы.
+* [`SystemEvents`](/ru/System_SystemEvents.md) — модуль событий жизненного цикла сервера, подключаемый вместе с `Email`.
+* [`Reflection`](/ru/System_Reflection.md) — модуль метаданных, подключаемый вместе с `Email`.
+* [`Access to an external system (EXTERNAL)`](/ru/Access_to_an_external_system_EXTERNAL.md) — обращение к внешним сервисам; почта — одна из таких внешних систем.
+* [`Security`](/ru/System_Security.md) — использует почту для отправки письма со сбросом пароля.

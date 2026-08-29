@@ -2,7 +2,7 @@
 
 ## Tables[​](#tables "Direct link to Tables")
 
-How data is stored in the database is described in [tables](/Tables/.md).
+How data is stored in the database is described in [tables](/Tables.md).
 
 1. Tables should be declared explicitly for every set of key classes in use, and properties with that set of parameters should be placed into them with the `TABLE` option. No logic should rely on an automatically created `_auto_...` table: its name is built from the property's class IDs sorted alphabetically, so changing which classes a property takes moves the data to a different table — while merely reordering the same classes leaves it in the one it is in.
 
@@ -16,7 +16,7 @@ How data is stored in the database is described in [tables](/Tables/.md).
 
 ## Materializations[​](#materializations "Direct link to Materializations")
 
-The mechanism itself is described in [materializations](/Materializations/.md).
+The mechanism itself is described in [materializations](/Materializations.md).
 
 1. Aggregated properties that are read, or used in filter conditions, considerably more often than the data they depend on changes should be materialized.
 
@@ -26,11 +26,11 @@ The mechanism itself is described in [materializations](/Materializations/.md).
 
 4. A property that depends on frequently changing data and is read rarely should not be materialized — its stored values would be updated on every change.
 
-5. After a materialized property's definition changes, or after a direct data fix in the database, the stored values should be recomputed with the [`RECALCULATE` operator](/RECALCULATE_operator/.md).
+5. After a materialized property's definition changes, or after a direct data fix in the database, the stored values should be recomputed with the [`RECALCULATE` operator](/RECALCULATE_operator.md).
 
 ## Indexes[​](#indexes "Direct link to Indexes")
 
-The mechanism itself is described in [indexes](/Indexes/.md).
+The mechanism itself is described in [indexes](/Indexes.md).
 
 1. Indexes should be created for properties used for filtering or search in forms and queries, and should not be created just in case: every index is updated whenever the values of its fields change.
 

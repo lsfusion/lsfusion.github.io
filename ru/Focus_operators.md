@@ -2,5 +2,5 @@
 
 Эта категория включает в себя операторы, которые управляют активностью элементов формы и сообщают о ней:
 
-* [Активация (`ACTIVATE`)](/ru/Activation_ACTIVATE/.md)
-* [Активность (`ACTIVE`)](/ru/Activity_ACTIVE/.md)
+* [Активация (`ACTIVATE`)](/ru/Activation_ACTIVATE.md)
+* [Активность (`ACTIVE`)](/ru/Activity_ACTIVE.md)

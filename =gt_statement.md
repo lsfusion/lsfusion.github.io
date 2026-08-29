@@ -1,6 +1,6 @@
 # => statement
 
-The `=>` statement creates a [consequence](/Simple_constraints/.md).
+The `=>` statement creates a [consequence](/Simple_constraints.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -12,13 +12,13 @@ leftPropertyId(param1, ..., paramN) => [eventClause] rightExpr [RESOLVE [LEFT] [
 
 The `=>` statement creates a consequence. This operator can declare its own local parameters when specifying the property of the consequence premise. These parameters can then be used in the expression of the consequence.
 
-When creating a consequence a [constraint](/Constraints/.md) will be created, which is pretty similar to the following statement
+When creating a consequence a [constraint](/Constraints.md) will be created, which is pretty similar to the following statement
 
 ```
 CONSTRAINT eventClause leftPropertyId(param1, ..., paramN) AND NOT rightExpr MESSAGE 'Consequence violated';
 ```
 
-but it allows you to automatically resolve situations where this constraint is violated. So using the `LEFT` option of `RESOLVE` is similar to creating [a simple event](/Simple_event/.md):
+but it allows you to automatically resolve situations where this constraint is violated. So using the `LEFT` option of `RESOLVE` is similar to creating [a simple event](/Simple_event.md):
 
 ```
 WHEN eventClause SET(leftPropertyId(param1, ..., paramN)) DO 
@@ -36,19 +36,19 @@ WHEN eventClause DROPPED(rightExpr) DO
 
 * `leftPropertyId`
 
-  [ID of the property](/IDs/.md#propertyid) specifying the consequence premise.
+  [ID of the property](/IDs.md#propertyid) specifying the consequence premise.
 
 * `param1, ..., paramN`
 
-  List of [parameters](/IDs/.md#paramid) of the property that defines the premise of the consequence. The number of these parameters must be equal to the number of parameters of the property.
+  List of [parameters](/IDs.md#paramid) of the property that defines the premise of the consequence. The number of these parameters must be equal to the number of parameters of the property.
 
 * `rightExpr`
 
-  [Expression](/Expression/.md) whose value determines the consequence.
+  [Expression](/Expression.md) whose value determines the consequence.
 
 * `LEFT`
 
-  Turns on [auto resolution](/Simple_event/.md) of the consequence: if the premise (the left part of the statement) is changed to non-`NULL`, then the consequence changes to non-`NULL`.
+  Turns on [auto resolution](/Simple_event.md) of the consequence: if the premise (the left part of the statement) is changed to non-`NULL`, then the consequence changes to non-`NULL`.
 
 * `RIGHT`
 
@@ -56,7 +56,7 @@ WHEN eventClause DROPPED(rightExpr) DO
 
 * `eventClause`
 
-  [Event description block](/Event_description_block/.md). Describes an [event](/Events/.md) upon the occurrence of which the created consequence will be checked and automatic resolution operations will be performed. If omitted, the global `APPLY` event is used.
+  [Event description block](/Event_description_block.md). Describes an [event](/Events.md) upon the occurrence of which the created consequence will be checked and automatic resolution operations will be performed. If omitted, the global `APPLY` event is used.
 
 ### Examples[​](#examples "Direct link to Examples")
 

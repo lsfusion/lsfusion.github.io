@@ -1,6 +1,6 @@
 # IF ... THEN operator
 
-The `IF ... THEN` operator creates a [property](/Properties/.md) that implements [selection](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md#single) with one condition (single form).
+The `IF ... THEN` operator creates a [property](/Properties.md) that implements [selection](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md#single) with one condition (single form).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -18,7 +18,7 @@ The `IF ... THEN` operator creates a property that implements conditional select
 
 * `condition`
 
-  [Expression](/Expression/.md) defining a condition.
+  [Expression](/Expression.md) defining a condition.
 
 * `value`
 

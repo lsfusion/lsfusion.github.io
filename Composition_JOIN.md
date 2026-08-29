@@ -1,12 +1,12 @@
 # Composition (JOIN)
 
-The *composition* operator creates a [property](/Properties/.md) whose value is another property — the *main* property — applied to the values returned by other properties supplied as its *arguments*.
+The *composition* operator creates a [property](/Properties.md) whose value is another property — the *main* property — applied to the values returned by other properties supplied as its *arguments*.
 
 The result class is the value class of the main property.
 
 ### Language[​](#language "Direct link to Language")
 
-To implement composition, use the [`JOIN` operator](/JOIN_operator/.md).
+To implement composition, use the [`JOIN` operator](/JOIN_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

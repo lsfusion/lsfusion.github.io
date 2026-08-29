@@ -1,6 +1,6 @@
 # REQUEST operator
 
-The `REQUEST` operator creates an [action](/Actions/.md) that [requests a value](/Value_request_REQUEST/.md).
+The `REQUEST` operator creates an [action](/Actions.md) that [requests a value](/Value_request_REQUEST.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -17,7 +17,7 @@ The `REQUEST` operator creates an action that allows the separation of a request
 
 * `requestAction`
 
-  A [context-dependent action operator](/Action_operators/.md#contextdependent) that requests a value.
+  A [context-dependent action operator](/Action_operators.md#contextdependent) that requests a value.
 
 * `doAction`
 
@@ -25,7 +25,7 @@ The `REQUEST` operator creates an action that allows the separation of a request
 
 * `elseAction`
 
-  A context-dependent action operator that is executed if the input was [cancelled](/Value_input/.md#result).
+  A context-dependent action operator that is executed if the input was [cancelled](/Value_input.md#result).
 
 ### Examples[​](#examples "Direct link to Examples")
 

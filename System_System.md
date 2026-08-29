@@ -1,6 +1,6 @@
 # System
 
-`System` is the root [system module](/System_modules/.md) of the platform. It is pulled in automatically — every other module depends on it without an explicit `REQUIRE`. The module declares the root [classes](/User_classes/.md), the standard [groups](/Groups_of_properties_and_actions/.md) of properties and actions, the change-session control surface, the incoming HTTP-request context, the form-lifecycle actions, the application-identity properties, and the local buffers that the export, import, and value-request operators write to.
+`System` is the root [system module](/System_modules.md) of the platform. It is pulled in automatically — every other module depends on it without an explicit `REQUIRE`. The module declares the root [classes](/User_classes.md), the standard [groups](/Groups_of_properties_and_actions.md) of properties and actions, the change-session control surface, the incoming HTTP-request context, the form-lifecycle actions, the application-identity properties, and the local buffers that the export, import, and value-request operators write to.
 
 ### Root classes[​](#root-classes "Direct link to Root classes")
 
@@ -127,22 +127,22 @@ Graphics: `logicsLogo[]` (logo image), `logicsIcon[]` (application icon), `PWAIc
 
 ### Windows and navigator[​](#windows-and-navigator "Direct link to Windows and navigator")
 
-The module fixes the main [windows](/Form_views/.md): `logo`, `root`, `system` (the top horizontal bar), `toolbar` (the left vertical strip), `forms` (the central area), `log` (the right notification strip). Each window has an abstract CSS class (`logoWindowClass[]`, …) for customization.
+The module fixes the main [windows](/Form_views.md): `logo`, `root`, `system` (the top horizontal bar), `toolbar` (the left vertical strip), `forms` (the central area), `log` (the right notification strip). Each window has an abstract CSS class (`logoWindowClass[]`, …) for customization.
 
 The navigator gets a system folder `Administration` with subfolders `Application` (options / integration / migration) and `System` (performance, notifications, scheduler, logs).
 
 ### Language[​](#language "Direct link to Language")
 
-* [Module header](/Module_header/.md) — the `MODULE` / `REQUIRE` syntax; the `System` module is pulled in automatically.
-* [`APPLY` operator](/APPLY_operator/.md) — underlies the session-control actions.
-* [`CANCEL` operator](/CANCEL_operator/.md) — cancels session changes.
-* [`EXPORT` operator](/EXPORT_operator/.md) — writes into the `export…` local buffers.
-* [`IMPORT` operator](/IMPORT_operator/.md) — fills `imported`, `importedString`, and related local properties.
+* [Module header](/Module_header.md) — the `MODULE` / `REQUIRE` syntax; the `System` module is pulled in automatically.
+* [`APPLY` operator](/APPLY_operator.md) — underlies the session-control actions.
+* [`CANCEL` operator](/CANCEL_operator.md) — cancels session changes.
+* [`EXPORT` operator](/EXPORT_operator.md) — writes into the `export…` local buffers.
+* [`IMPORT` operator](/IMPORT_operator.md) — fills `imported`, `importedString`, and related local properties.
 
 ### See also[​](#see-also "Direct link to See also")
 
-* [`System modules`](/System_modules/.md) — the general inventory of platform modules.
-* [`Time`](/System_Time/.md) — the separate Time module pulled in via `REQUIRE Time`.
-* [`Utils`](/System_Utils/.md) — the helper-property collection.
-* [`Change sessions`](/Change_sessions/.md) — the session concept and its commit.
-* [`Forms`](/Forms/.md) — what a form is and how its lifecycle relates to the system actions.
+* [`System modules`](/System_modules.md) — the general inventory of platform modules.
+* [`Time`](/System_Time.md) — the separate Time module pulled in via `REQUIRE Time`.
+* [`Utils`](/System_Utils.md) — the helper-property collection.
+* [`Change sessions`](/Change_sessions.md) — the session concept and its commit.
+* [`Forms`](/Forms.md) — what a form is and how its lifecycle relates to the system actions.

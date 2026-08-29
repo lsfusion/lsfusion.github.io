@@ -1,6 +1,6 @@
 # JOIN operator
 
-The `JOIN` operator creates a [property](/Properties/.md) that implements a [composition](/Composition_JOIN/.md).
+The `JOIN` operator creates a [property](/Properties.md) that implements a [composition](/Composition_JOIN.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -22,7 +22,7 @@ Where `"["` and `"]"` are ordinary brackets.
 
 ### Description[​](#description "Direct link to Description")
 
-When the main property is given in brackets — as a [context-independent](/Property_operators/.md#contextindependent) property operator or an [expression](/Expression/.md) — the property is built anonymously at the place of use, so an intermediate property need not be declared via the [`=` statement](/=_statement/.md).
+When the main property is given in brackets — as a [context-independent](/Property_operators.md#contextindependent) property operator or an [expression](/Expression.md) — the property is built anonymously at the place of use, so an intermediate property need not be declared via the [`=` statement](/=_statement.md).
 
 An operator or expression in brackets may reference external parameters; the parameters of the resulting anonymous property follow the same rules as a property defined with `=` without explicit parameters.
 
@@ -30,7 +30,7 @@ An operator or expression in brackets may reference external parameters; the par
 
 * `propertyId`
 
-  [Property ID](/IDs/.md#propertyid) of an existing property.
+  [Property ID](/IDs.md#propertyid) of an existing property.
 
 * `operator`
 

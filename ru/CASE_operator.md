@@ -1,6 +1,6 @@
 # Оператор CASE
 
-Оператор `CASE` - создание [свойства](/ru/Properties/.md), осуществляющего [выбор](/ru/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md) результата по условию.
+Оператор `CASE` - создание [свойства](/ru/Properties.md), осуществляющего [выбор](/ru/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md) результата по условию.
 
 ### Синтаксис[​](#синтаксис "Прямая ссылка на этот заголовок")
 
@@ -20,7 +20,7 @@ CASE [exclusionType]
 
 * `exclusionType`
 
-  [Тип взаимоисключения](/ru/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md#exclusive). Определяет, могут ли несколько свойств-условий одновременно выполняться при некотором наборе параметров. Задается одним из ключевых слов:
+  [Тип взаимоисключения](/ru/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md#exclusive). Определяет, могут ли несколько свойств-условий одновременно выполняться при некотором наборе параметров. Задается одним из ключевых слов:
 
   * `EXCLUSIVE`
   * `OVERRIDE`
@@ -31,7 +31,7 @@ CASE [exclusionType]
 
 * `condition1 ... conditionN`
 
-  [Выражения](/ru/Expression/.md), значения которых определяют условие выбора.
+  [Выражения](/ru/Expression.md), значения которых определяют условие выбора.
 
 * `result1 ... resultN`
 

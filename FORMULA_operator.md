@@ -1,6 +1,6 @@
 # FORMULA operator
 
-The `FORMULA` operator creates a [property](/Properties/.md) that implements a [custom formula](/Custom_formula_FORMULA/.md).
+The `FORMULA` operator creates a [property](/Properties.md) that implements a [custom formula](/Custom_formula_FORMULA.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -24,9 +24,9 @@ classId1 [paramId1], ..., classIdK [paramIdK]
 
 The `FORMULA` operator creates a property that executes an arbitrary formula in SQL. It is possible to specify different formulas for different SQL dialects so that these properties are portable between different DBMSs.
 
-`FORMULA` is a [context-independent](/Property_operators/.md#contextindependent) property operator: it cannot appear inside [expressions](/Expression/.md). Use it on the right-hand side of an `=` statement or anonymously inside brackets in a [`JOIN` operator](/JOIN_operator/.md) usage.
+`FORMULA` is a [context-independent](/Property_operators.md#contextindependent) property operator: it cannot appear inside [expressions](/Expression.md). Use it on the right-hand side of an `=` statement or anonymously inside brackets in a [`JOIN` operator](/JOIN_operator.md) usage.
 
-See the [custom formula](/Custom_formula_FORMULA/.md) abstraction for what the operator produces — the default result class, the `NULL`-handling relaxations, and the table-valued mode; this article covers how those options are written.
+See the [custom formula](/Custom_formula_FORMULA.md) abstraction for what the operator produces — the default result class, the `NULL`-handling relaxations, and the table-valued mode; this article covers how those options are written.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
@@ -39,11 +39,11 @@ See the [custom formula](/Custom_formula_FORMULA/.md) abstraction for what the o
 
 * `className`
 
-  The name of the [builtin class](/Built-in_classes/.md) of the value returned by the property. If not specified, the resulting class is considered to be the [common ancestor](/Built-in_classes/.md#commonparentclass) of all property operands. Required for table-valued formulas (see the parameter list below): the value column of the returned table needs an explicit type.
+  The name of the [builtin class](/Built-in_classes.md) of the value returned by the property. If not specified, the resulting class is considered to be the [common ancestor](/Built-in_classes.md#commonparentclass) of all property operands. Required for table-valued formulas (see the parameter list below): the value column of the returned table needs an explicit type.
 
 * `valueId`
 
-  Identifier or [string literal](/Literals/.md#strliteral) placed right after `className`. Names the value column of the table returned by the formula — required for table-valued formulas (see the parameter list below) and ignored for non-table ones. The literal form is typically used to name an existing column in an external table; the identifier form is typically used for the value produced by a set-returning function.
+  Identifier or [string literal](/Literals.md#strliteral) placed right after `className`. Names the value column of the table returned by the formula — required for table-valued formulas (see the parameter list below) and ignored for non-table ones. The literal form is typically used to name an existing column in an external table; the identifier form is typically used for the value produced by a set-returning function.
 
 * `syntaxType1, ..., syntaxTypeN`
 
@@ -56,7 +56,7 @@ See the [custom formula](/Custom_formula_FORMULA/.md) abstraction for what the o
 
 * `text1, ..., textN`
 
-  [String literals](/Literals/.md#strliteral), each of which contains a formula in SQL syntax. Formula parameters are referenced as `$1`, `$2`, ... by position, or as `$paramId` when the parameter is named. Positional parameter numbers start from `1`. When several implementations are supplied (one per dialect plus optionally a default), they must all describe the same parameter set — a mismatch in arity across them is rejected at parse time.
+  [String literals](/Literals.md#strliteral), each of which contains a formula in SQL syntax. Formula parameters are referenced as `$1`, `$2`, ... by position, or as `$paramId` when the parameter is named. Positional parameter numbers start from `1`. When several implementations are supplied (one per dialect plus optionally a default), they must all describe the same parameter set — a mismatch in arity across them is rejected at parse time.
 
 * `classId1 ... classIdK`
 

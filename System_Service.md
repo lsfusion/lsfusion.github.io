@@ -1,6 +1,6 @@
 # Service
 
-`Service` is a [system module](/System_modules/.md) that gathers the server's administration surface: database service and recalculation actions, virtual-machine and memory control, scheduled server restart, application-wide settings, per-user diagnostics and logging flags, per-user client GUI preferences, database scaling, and the server-settings API exported to clients. It is pulled in via `REQUIRE Service` (it does `REQUIRE System, Security, SystemEvents`; its own declarations live in `NAMESPACE Service`).
+`Service` is a [system module](/System_modules.md) that gathers the server's administration surface: database service and recalculation actions, virtual-machine and memory control, scheduled server restart, application-wide settings, per-user diagnostics and logging flags, per-user client GUI preferences, database scaling, and the server-settings API exported to clients. It is pulled in via `REQUIRE Service` (it does `REQUIRE System, Security, SystemEvents`; its own declarations live in `NAMESPACE Service`).
 
 Most actions are declared through the `INTERNAL` operator over a Java implementation class, so they expose server operations that have no pure-`.lsf` body. The module also publishes the forms `maintenance`, `settings`, and `scaling` together with the matching navigator entries under the system folder.
 
@@ -80,7 +80,7 @@ The module controls a graceful server restart and a login lock. `restartPushed[]
 
 ### Settings[​](#settings "Direct link to Settings")
 
-The `Setting` mechanism stores named application-wide settings whose value can be overridden per [user role](/System_Authentication/.md). A `Setting` object is identified by its `name[Setting]` (`ISTRING`); `setting[ISTRING]` looks a setting up by name.
+The `Setting` mechanism stores named application-wide settings whose value can be overridden per [user role](/System_Authentication.md). A `Setting` object is identified by its `name[Setting]` (`ISTRING`); `setting[ISTRING]` looks a setting up by name.
 
 A setting carries three stored values and resolves them by `OVERRIDE`, taking the first non-empty one:
 
@@ -176,15 +176,15 @@ The navigator adds `settings` (first), `maintenance` (after `performance`), and 
 
 ### Language[​](#language "Direct link to Language")
 
-* [`INTERNAL` operator](/INTERNAL_operator/.md) — declares the service, mode, diagnostics, settings, and scaling actions over their Java implementation classes.
+* [`INTERNAL` operator](/INTERNAL_operator.md) — declares the service, mode, diagnostics, settings, and scaling actions over their Java implementation classes.
 
 ### See also[​](#see-also "Direct link to See also")
 
-* [`System modules`](/System_modules/.md) — the general inventory of platform modules.
-* [`Process monitor`](/Process_monitor/.md) — the running-process view this module's diagnostics and dumps support.
-* [`Journals and logs`](/Journals_and_logs/.md) — the server logs the per-user logging flags feed.
-* [`Working parameters`](/Working_parameters/.md) — the runtime parameters and settings the management surface configures.
-* [`Backup and restore`](/Backup_restore/.md) — database backup, alongside the database service actions here.
-* [`Reflection`](/System_Reflection/.md) — the metadata module that backs the administration forms.
-* [`SystemEvents`](/System_SystemEvents/.md) — the server-lifecycle events module, pulled in via `REQUIRE`.
-* [`Authentication`](/System_Authentication/.md) — users and roles, against which settings and GUI preferences are stored.
+* [`System modules`](/System_modules.md) — the general inventory of platform modules.
+* [`Process monitor`](/Process_monitor.md) — the running-process view this module's diagnostics and dumps support.
+* [`Journals and logs`](/Journals_and_logs.md) — the server logs the per-user logging flags feed.
+* [`Working parameters`](/Working_parameters.md) — the runtime parameters and settings the management surface configures.
+* [`Backup and restore`](/Backup_restore.md) — database backup, alongside the database service actions here.
+* [`Reflection`](/System_Reflection.md) — the metadata module that backs the administration forms.
+* [`SystemEvents`](/System_SystemEvents.md) — the server-lifecycle events module, pulled in via `REQUIRE`.
+* [`Authentication`](/System_Authentication.md) — users and roles, against which settings and GUI preferences are stored.

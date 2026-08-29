@@ -10,10 +10,10 @@ A guide to **lsFusion** programming, based on the author's experience (available
 
 A series of videos that demonstrate techniques for working with the **lsFusion** platform in real time.
 
-### [Examples](/Examples/.md)[​](#examples "Direct link to examples")
+### [Examples](/Examples.md)[​](#examples "Direct link to examples")
 
 Examples of simple application development that demonstrate the features of the platform.
 
-### [Typical tasks](/How-to/.md)[​](#typical-tasks "Direct link to typical-tasks")
+### [Typical tasks](/How-to.md)[​](#typical-tasks "Direct link to typical-tasks")
 
 Examples of solutions to typical tasks, grouped by category.

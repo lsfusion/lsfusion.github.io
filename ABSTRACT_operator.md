@@ -1,6 +1,6 @@
 # ABSTRACT operator
 
-The `ABSTRACT` operator creates an [abstract property](/Property_extension/.md).
+The `ABSTRACT` operator creates an [abstract property](/Property_extension.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -10,9 +10,9 @@ ABSTRACT [type [exclusionType] [order]] [FULL] returnClassName [(argClassName1, 
 
 ### Description[​](#description "Direct link to Description")
 
-The `ABSTRACT` operator creates an abstract property. Its implementations are added later by [`+=` statements](/plus_equals_statement/.md). Depending on the selected type, the platform builds from them the behavior of a [selection operator](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md).
+The `ABSTRACT` operator creates an abstract property. Its implementations are added later by [`+=` statements](/plus_equals_statement.md). Depending on the selected type, the platform builds from them the behavior of a [selection operator](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md).
 
-The `ABSTRACT` operator cannot be used inside [expressions](/Expression/.md).
+The `ABSTRACT` operator cannot be used inside [expressions](/Expression.md).
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
@@ -20,15 +20,15 @@ The `ABSTRACT` operator cannot be used inside [expressions](/Expression/.md).
 
   Option. Possible values:
 
-  * `CASE` - the explicit conditional form of the abstract property. The selection condition of each implementation is defined in the corresponding [`+=` statement](/plus_equals_statement/.md) using the `WHEN` block.
-  * `MULTI` - [a polymorphic form](/Property_extension/.md#poly) of the abstract property. An implementation is selected when the current arguments are compatible with its [signature](/ISCLASS_operator/.md).
+  * `CASE` - the explicit conditional form of the abstract property. The selection condition of each implementation is defined in the corresponding [`+=` statement](/plus_equals_statement.md) using the `WHEN` block.
+  * `MULTI` - [a polymorphic form](/Property_extension.md#poly) of the abstract property. An implementation is selected when the current arguments are compatible with its [signature](/ISCLASS_operator.md).
   * `VALUE` - the polymorphic value-based form. An implementation is considered matching if it returns a defined value, that is, a non-`NULL` value.
 
   If this option is omitted, `MULTI` is used by default.
 
 * `exclusionType`
 
-  Option. It specifies the [type of mutual exclusion](/Property_extension/.md#exclusive). Possible values:
+  Option. It specifies the [type of mutual exclusion](/Property_extension.md#exclusive). Possible values:
 
   * `EXCLUSIVE` - the mutually exclusive mode for the `CASE`, `MULTI`, and `VALUE` forms. In this mode, for each set of arguments there must be at most one matching implementation.
   * `OVERRIDE` - the mode for the `CASE`, `MULTI`, and `VALUE` forms in which several implementations may match simultaneously.
@@ -44,19 +44,19 @@ The `ABSTRACT` operator cannot be used inside [expressions](/Expression/.md).
 
   Used only with `OVERRIDE`.
 
-  The addition order across modules is the module initialization order: implementations from [required modules](/Module_header/.md) are added before implementations from the modules that depend on them, and within one module — in the order they appear in the source.
+  The addition order across modules is the module initialization order: implementations from [required modules](/Module_header.md) are added before implementations from the modules that depend on them, and within one module — in the order they appear in the source.
 
 * `FULL`
 
-  Keyword. If specified, the platform automatically checks the [completeness of implementations](/Property_extension/.md#full): for all descendants of the argument classes there must be at least one applicable implementation, or exactly one if the conditions are mutually exclusive.
+  Keyword. If specified, the platform automatically checks the [completeness of implementations](/Property_extension.md#full): for all descendants of the argument classes there must be at least one applicable implementation, or exactly one if the conditions are mutually exclusive.
 
 * `returnClassName`
 
-  Class of the return value of the property. [Class ID](/IDs/.md#classid).
+  Class of the return value of the property. [Class ID](/IDs.md#classid).
 
 * `argClassName1, ..., argClassNameN`
 
-  List of class names of property arguments. Each name is defined by a [class ID](/IDs/.md#classid). The list may be empty. If the list is omitted, the parameter classes are taken from the property declaration in which the `ABSTRACT` operator is used.
+  List of class names of property arguments. Each name is defined by a [class ID](/IDs.md#classid). The list may be empty. If the list is omitted, the parameter classes are taken from the property declaration in which the `ABSTRACT` operator is used.
 
 ### Examples[​](#examples "Direct link to Examples")
 

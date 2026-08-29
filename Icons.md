@@ -1,6 +1,6 @@
 # Icon assignment mechanism
 
-In the lsFusion platform, developers can manually assign icons to UI elements corresponding to [properties](/Properties/.md), [actions](/Actions/.md), [forms](/Forms/.md), [containers](/Form_design/.md#containers), and [navigator elements](/Navigator/.md). You can specify either an image file path or icon font CSS classes.
+In the lsFusion platform, developers can manually assign icons to UI elements corresponding to [properties](/Properties.md), [actions](/Actions.md), [forms](/Forms.md), [containers](/Form_design.md#containers), and [navigator elements](/Navigator.md). You can specify either an image file path or icon font CSS classes.
 
 In addition, the platform provides a mechanism that can automatically assign suitable icons for these elements. The mechanism analyzes their names and captions and selects the most appropriate icons from the available sets.
 
@@ -40,7 +40,7 @@ Keywords are formed from the caption and/or the element name according to the fo
 
 ### Settings and parameters[​](#settings-and-parameters "Direct link to Settings and parameters")
 
-Automatic icon assignment is configured via a set of [working parameters](/Working_parameters/.md#iconSettings).
+Automatic icon assignment is configured via a set of [working parameters](/Working_parameters.md#iconSettings).
 
 Parameters that change ranking thresholds:
 

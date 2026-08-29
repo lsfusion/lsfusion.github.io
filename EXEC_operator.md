@@ -1,6 +1,6 @@
 # EXEC operator
 
-The `EXEC` operator creates an [action](/Actions/.md) that [executes](/Call_EXEC/.md) another action.
+The `EXEC` operator creates an [action](/Actions.md) that [executes](/Call_EXEC.md) another action.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -10,13 +10,13 @@ The `EXEC` operator creates an [action](/Actions/.md) that [executes](/Call_EXEC
 
 ### Description[​](#description "Direct link to Description")
 
-The `EXEC` operator creates an action that executes another action, passing it the values of [expressions](/Expression/.md) as parameters. If the executed action has a [result](/Actions/.md), it can be written into the property specified after `TO`.
+The `EXEC` operator creates an action that executes another action, passing it the values of [expressions](/Expression.md) as parameters. If the executed action has a [result](/Actions.md), it can be written into the property specified after `TO`.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `actionId`
 
-  [Action ID](/IDs/.md#propertyid).
+  [Action ID](/IDs.md#propertyid).
 
 * `expression1, ..., expressionN`
 
@@ -24,7 +24,7 @@ The `EXEC` operator creates an action that executes another action, passing it t
 
 * `toProperty`
 
-  Optional [property ID](/IDs/.md#propertyid). If specified, the value returned by the executed action is written to this property. The value class and signature of `toProperty` must match the result class and the result parameters of the executed action.
+  Optional [property ID](/IDs.md#propertyid). If specified, the value returned by the executed action is written to this property. The value class and signature of `toProperty` must match the result class and the result parameters of the executed action.
 
 ### Examples[​](#examples "Direct link to Examples")
 

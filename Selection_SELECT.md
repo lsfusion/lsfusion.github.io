@@ -1,6 +1,6 @@
 # Selection (SELECT)
 
-The selection operators create [properties](/Properties/.md) that report the user's row and column selection in an [object group](/Form_structure/.md#objects):
+The selection operators create [properties](/Properties.md) that report the user's row and column selection in an [object group](/Form_structure.md#objects):
 
 * the property of an object collection returns `TRUE` if that collection is currently selected (checked) by the user in the group, and `NULL` otherwise;
 * the property of the group as a whole returns `TRUE` if the user selected rows in the group, and `NULL` otherwise;
@@ -10,7 +10,7 @@ As long as the user has not selected any row, the property of an object collecti
 
 ### Language[​](#language "Direct link to Language")
 
-To declare these properties, use the [`SELECT`, `SELECT ACTIVE`, and `SELECT PROPERTY` operators](/Object_group_operator/.md).
+To declare these properties, use the [`SELECT`, `SELECT ACTIVE`, and `SELECT PROPERTY` operators](/Object_group_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

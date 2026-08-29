@@ -1,6 +1,6 @@
 # Action options
 
-When declaring an [action](/Actions/.md) in the [`ACTION` statement](/ACTION_statement/.md) a certain set of *action options* may be specified at the end of the declaration.
+When declaring an [action](/Actions.md) in the [`ACTION` statement](/ACTION_statement.md) a certain set of *action options* may be specified at the end of the declaration.
 
 ## Syntax[​](#syntax "Direct link to Syntax")
 
@@ -31,31 +31,31 @@ EXTID extID
 
 * `IN groupName`
 
-  Specifying the [group of properties and actions](/Groups_of_properties_and_actions/.md) to which the action belongs. If the option is not specified, then the action will belong by default to the `System.private` group.
+  Specifying the [group of properties and actions](/Groups_of_properties_and_actions.md) to which the action belongs. If the option is not specified, then the action will belong by default to the `System.private` group.
 
   * `groupName`
 
-    A group name. [Composite ID](/IDs/.md#cid).
+    A group name. [Composite ID](/IDs.md#cid).
 
 ### Interactive view block[​](#interactive-view-block "Direct link to Interactive view block")
 
 * `viewType`
 
-  Specifying the type of the [action view](/Interactive_view/.md#property) when added to the form.
+  Specifying the type of the [action view](/Interactive_view.md#property) when added to the form.
 
   * `GRID` - table column
   * `TOOLBAR` - toolbar
   * `PANEL` - panel
 
-  It is similar to specifying the viewType option in the [property block](/Properties_and_actions_block/.md) of the [`FORM` statement](/FORM_statement/.md). Thus, if this option is not specified either in the action options or in the property block directly on the form, the [default view](/Interactive_view/.md#property) of the action display group on the form is used.
+  It is similar to specifying the viewType option in the [property block](/Properties_and_actions_block.md) of the [`FORM` statement](/FORM_statement.md). Thus, if this option is not specified either in the action options or in the property block directly on the form, the [default view](/Interactive_view.md#property) of the action display group on the form is used.
 
 * `ON eventType { actionOperator }`
 
-  Specifying an action that will be the default handler of a certain [event](/Form_events/.md) for all the interactive views of this action. Can be overridden in the property block of the `FORM` statement.
+  Specifying an action that will be the default handler of a certain [event](/Form_events.md) for all the interactive views of this action. Can be overridden in the property block of the `FORM` statement.
 
   * `eventType`
 
-    A [form event](/Form_events/.md) type. It is specified in one of the following forms:
+    A [form event](/Form_events.md) type. It is specified in one of the following forms:
 
     * `CHANGE [eventPhase]` - occurs when the user tries to change the value of the specified property.
 
@@ -68,7 +68,7 @@ EXTID extID
 
         If not specified, the handler runs on the change attempt itself and replaces the default handler.
 
-    * `CHANGEWYS` - occurs when the user tries to change the value of the specified property using a special input mechanism. You can read more in the description of the [form events](/Form_events/.md).
+    * `CHANGEWYS` - occurs when the user tries to change the value of the specified property using a special input mechanism. You can read more in the description of the [form events](/Form_events.md).
 
     * `GROUPCHANGE` - occurs when the user tries to change the property value for all objects in the table (group editing).
 
@@ -78,7 +78,7 @@ EXTID extID
 
       * `caption`
 
-        [String literal](/Literals/.md#strliteral) that specifies the caption of the context menu item. If not specified, it defaults to the action caption.
+        [String literal](/Literals.md#strliteral) that specifies the caption of the context menu item. If not specified, it defaults to the action caption.
 
     * `KEYPRESS key` - the user has pressed the specified key on the keyboard.
 
@@ -88,11 +88,11 @@ EXTID extID
 
   * `actionOperator`
 
-    A [context-dependent action operator](/Action_operators/.md#contextdependent). An operator that defines the action executed on an event. You can use the parameters of the property itself as operator parameters.
+    A [context-dependent action operator](/Action_operators.md#contextdependent). An operator that defines the action executed on an event. You can use the parameters of the property itself as operator parameters.
 
 * `ASON eventType [ACTION] propertyId`
 
-  Specifies that this action will be the default handler of a certain [event](/Form_events/.md) for all the interactive views of the specified property or action. Can be overridden in the [property and action block](/Properties_and_actions_block/.md) of the `FORM` statement.
+  Specifies that this action will be the default handler of a certain [event](/Form_events.md) for all the interactive views of the specified property or action. Can be overridden in the [property and action block](/Properties_and_actions_block.md) of the `FORM` statement.
 
   * `eventType`
 
@@ -100,7 +100,7 @@ EXTID extID
 
   * `propertyId`
 
-    An [ID of the property or action](/IDs/.md#propertyid) for which the created action will be executed when the specified form event occurs.
+    An [ID of the property or action](/IDs.md#propertyid) for which the created action will be executed when the specified form event occurs.
 
   * `ACTION`
 
@@ -112,7 +112,7 @@ EXTID extID
 
   * `IMAGE`
 
-    [Manual icon specification](/Icons/.md#manual), optionally followed by `imageLiteral` — a [string literal](/Literals/.md#strliteral) whose value defines the icon. If `imageLiteral` is omitted, the [automatic assignment](/Icons/.md#auto) mode is enabled.
+    [Manual icon specification](/Icons.md#manual), optionally followed by `imageLiteral` — a [string literal](/Literals.md#strliteral) whose value defines the icon. If `imageLiteral` is omitted, the [automatic assignment](/Icons.md#auto) mode is enabled.
 
   * `NOIMAGE`
 
@@ -132,11 +132,11 @@ Action annotation. Begins with `@@`. The following annotations are supported:
 
 * `@@ui`
 
-  Forces the action to be treated as [interactive](/Access_from_an_external_system/.md#interactive) (requiring UI) when called through the external API.
+  Forces the action to be treated as [interactive](/Access_from_an_external_system.md#interactive) (requiring UI) when called through the external API.
 
 * `@@noui`
 
-  Suppresses the automatic [interactive](/Access_from_an_external_system/.md#interactive) detection, so the action runs synchronously through the external API (unless the client explicitly requests a notification ID via the `Need-Notification-Id` header).
+  Suppresses the automatic [interactive](/Access_from_an_external_system.md#interactive) detection, so the action runs synchronously through the external API (unless the client explicitly requests a notification ID via the `Need-Notification-Id` header).
 
 * `@@deprecated`
 
@@ -152,17 +152,17 @@ Action annotation. Begins with `@@`. The following annotations are supported:
 
 * `EXTID extID`
 
-  Specifying the name to be used for [access from an external system](/Access_from_an_external_system/.md#http).
+  Specifying the name to be used for [access from an external system](/Access_from_an_external_system.md#http).
 
 ### `DESIGN` statement default values block[​](#design-statement-default-values-block "Direct link to design-statement-default-values-block")
 
 * `CHANGEKEY key [SHOW | HIDE]`
 
-  Specifies a [keyboard shortcut](/Form_events/.md#keyboard) which triggers this action. Sets the value for the [default design](/Form_design/.md#defaultDesign) and can be overridden in the [`DESIGN` statement](/DESIGN_statement/.md).
+  Specifies a [keyboard shortcut](/Form_events.md#keyboard) which triggers this action. Sets the value for the [default design](/Form_design.md#defaultDesign) and can be overridden in the [`DESIGN` statement](/DESIGN_statement.md).
 
   * `key`
 
-  [String literal](/Literals/.md#strliteral), that defines a keyboard shortcut. Syntax:
+  [String literal](/Literals.md#strliteral), that defines a keyboard shortcut. Syntax:
 
   ```
   keyStroke [;(modeKey=modeValue;)*]
@@ -241,7 +241,7 @@ Action annotation. Begins with `@@`. The following annotations are supported:
 
   * `key`
 
-  [String literal](/Literals/.md#strliteral)describing a mouse key combination. Syntax:
+  [String literal](/Literals.md#strliteral)describing a mouse key combination. Syntax:
 
   ```
   keyStroke [;(modeKey=modeValue;)*]
@@ -273,4 +273,4 @@ Action annotation. Begins with `@@`. The following annotations are supported:
 
 * `CONFIRM`
 
-  Keyword. If specified, the user will be asked to confirm the action when executing it interactively on a form. The confirmation is requested by the client only on interactive activation (for example, a button click); when the action is invoked from another action or through the [external API](/Access_from_an_external_system/.md), no confirmation is requested. Sets the value for the default design ([`askConfirm` attribute](/DESIGN_statement/.md)) and can be overridden in the `DESIGN` statement.
+  Keyword. If specified, the user will be asked to confirm the action when executing it interactively on a form. The confirmation is requested by the client only on interactive activation (for example, a button click); when the action is invoked from another action or through the [external API](/Access_from_an_external_system.md), no confirmation is requested. Sets the value for the default design ([`askConfirm` attribute](/DESIGN_statement.md)) and can be overridden in the `DESIGN` statement.

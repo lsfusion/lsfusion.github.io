@@ -1,6 +1,6 @@
 # RETURN operator
 
-The `RETURN` operator creates an [action](/Actions/.md) that implements [exit](/Exit_RETURN/.md) from an [action call](/Call_EXEC/.md).
+The `RETURN` operator creates an [action](/Actions.md) that implements [exit](/Exit_RETURN.md) from an [action call](/Call_EXEC.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -10,11 +10,11 @@ RETURN [resultExpr]
 
 ### Description[​](#description "Direct link to Description")
 
-The `RETURN` operator creates an action that exits from the innermost enclosing [action call](/Call_EXEC/.md). If `resultExpr` is specified, its value becomes the result of that call. Otherwise the call simply exits without producing a value.
+The `RETURN` operator creates an action that exits from the innermost enclosing [action call](/Call_EXEC.md). If `resultExpr` is specified, its value becomes the result of that call. Otherwise the call simply exits without producing a value.
 
 The result class of the surrounding action is determined in one of two ways:
 
-* For [abstract actions](/Action_extension/.md), the result class is declared in the [`ABSTRACT` operator](/ABSTRACT_action_operator/.md); the value class of `resultExpr` must conform to the declared class.
+* For [abstract actions](/Action_extension.md), the result class is declared in the [`ABSTRACT` operator](/ABSTRACT_action_operator.md); the value class of `resultExpr` must conform to the declared class.
 * For other actions, the result class is inferred from `resultExpr` of all `RETURN` operators in the body. If several `RETURN` operators are present, the resulting class is the common ancestor of the classes of their expression values.
 
 If the platform cannot determine the value class of `resultExpr`, such a `RETURN` is invalid. For example, the class cannot be inferred from an untyped `NULL` value.
@@ -27,7 +27,7 @@ A bare `RETURN` is allowed in any action regardless of whether the action declar
 
 * `resultExpr`
 
-  Optional [expression](/Expression/.md). Its value is returned to the caller as the result of the surrounding action. For abstract actions, the value class of this expression must conform to the declared result class. For other actions, the platform must be able to infer this class.
+  Optional [expression](/Expression.md). Its value is returned to the caller as the result of the surrounding action. For abstract actions, the value class of this expression must conform to the declared result class. For other actions, the platform must be able to infer this class.
 
 ### Examples[​](#examples "Direct link to Examples")
 

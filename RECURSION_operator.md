@@ -1,6 +1,6 @@
 # RECURSION operator
 
-The `RECURSION` operator creates a [property](/Properties/.md) that implements [recursion](/Recursion_RECURSION/.md).
+The `RECURSION` operator creates a [property](/Properties.md) that implements [recursion](/Recursion_RECURSION.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -10,9 +10,9 @@ RECURSION initialExpr STEP stepExpr [CYCLES policy]
 
 ### Description[​](#description "Direct link to Description")
 
-The `RECURSION` operator creates a property that implements recursion. An [expression](/Expression/.md) that describes the next step of the recursion may access not only the property parameters but also the parameters at the previous step. This access has the syntax `$name`, where `name` is the name of the parameter. If `$name` is used, the corresponding parameter `name` (without `$`) must also appear in `initialExpr` or `stepExpr` — using `$name` alone in `stepExpr` is not enough.
+The `RECURSION` operator creates a property that implements recursion. An [expression](/Expression.md) that describes the next step of the recursion may access not only the property parameters but also the parameters at the previous step. This access has the syntax `$name`, where `name` is the name of the parameter. If `$name` is used, the corresponding parameter `name` (without `$`) must also appear in `initialExpr` or `stepExpr` — using `$name` alone in `stepExpr` is not enough.
 
-Values produced across all iterations are aggregated: if `initialExpr` and `stepExpr` are of a numeric class, the `SUM` aggregation is used; otherwise (typically when they are `BOOLEAN`), the `OR` aggregation is used. For a detailed description of the semantics and cycle policies, see [Recursion (RECURSION)](/Recursion_RECURSION/.md).
+Values produced across all iterations are aggregated: if `initialExpr` and `stepExpr` are of a numeric class, the `SUM` aggregation is used; otherwise (typically when they are `BOOLEAN`), the `OR` aggregation is used. For a detailed description of the semantics and cycle policies, see [Recursion (RECURSION)](/Recursion_RECURSION.md).
 
 Another `RECURSION` operator cannot be used inside `stepExpr` — such nesting is forbidden. The restriction applies only to `stepExpr`; `RECURSION` may appear inside `initialExpr`.
 

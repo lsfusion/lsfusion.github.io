@@ -38,7 +38,7 @@ book1 'Book' (INTEGER i) = GROUP MAX Book b BY id(b);
 book2 'Book' (INTEGER i) = GROUP AGGR Book b BY id(b);
 ```
 
-The difference between Option 2 and Option 1 is that declaration of this property puts a [constraint](/Constraints/.md) on the uniqueness of book IDs. Any attempt to add two or more books with the same ID will result in the error message.
+The difference between Option 2 and Option 1 is that declaration of this property puts a [constraint](/Constraints.md) on the uniqueness of book IDs. Any attempt to add two or more books with the same ID will result in the error message.
 
 ## Example 3[​](#example-3 "Direct link to Example 3")
 

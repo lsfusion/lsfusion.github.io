@@ -1,6 +1,6 @@
 # RECALCULATE operator
 
-The `RECALCULATE` operator creates an [action](/Actions/.md) that recalculates the stored values of a [materialized](/Materializations/.md) property.
+The `RECALCULATE` operator creates an [action](/Actions.md) that recalculates the stored values of a [materialized](/Materializations.md) property.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -16,11 +16,11 @@ The `RECALCULATE` operator creates an action that recomputes the stored values o
 
 * `propertyId`
 
-  [ID](/IDs/.md#propertyid) of the property whose stored values are recalculated. The property must be [materialized](/Materializations/.md).
+  [ID](/IDs.md#propertyid) of the property whose stored values are recalculated. The property must be [materialized](/Materializations.md).
 
 * `expr1, ..., exprN`
 
-  A list of [expressions](/Expression/.md) or [typed parameters](/IDs/.md#paramid) defining the arguments of the property. When using typed parameters, you can both reference already declared parameters and declare new local parameters; when using expressions, new local parameters cannot be added. The number of items in this list must equal the number of parameters of the property.
+  A list of [expressions](/Expression.md) or [typed parameters](/IDs.md#paramid) defining the arguments of the property. When using typed parameters, you can both reference already declared parameters and declare new local parameters; when using expressions, new local parameters cannot be added. The number of items in this list must equal the number of parameters of the property.
 
 * `CLASSES | NOCLASSES`
 

@@ -1,12 +1,12 @@
 # Read file (READ)
 
-The *read file* operator creates an [action](/Actions/.md) that reads a file from a defined source and [writes](/Property_change_CHANGE/.md) this file to the specified property without parameters.
+The *read file* operator creates an [action](/Actions.md) that reads a file from a defined source and [writes](/Property_change_CHANGE.md) this file to the specified property without parameters.
 
 The source is defined by a string value — the URL to read from. The following types of data sources (URLs) are supported: FILE, HTTP, HTTPS, FTP, FTPS, SFTP.
 
 ### Language[​](#language "Direct link to Language")
 
-To declare an action that reads a file, use the [`READ` operator](/READ_operator/.md).
+To declare an action that reads a file, use the [`READ` operator](/READ_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

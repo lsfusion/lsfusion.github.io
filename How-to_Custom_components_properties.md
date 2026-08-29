@@ -1,6 +1,6 @@
 # How-to: Custom components (properties)
 
-For each [property](/Properties/.md) type, by default, a predefined visual component is used to display and edit the data. However, it is possible to override components with your own, created with JavaScript. This functionality is only supported in the web client.
+For each [property](/Properties.md) type, by default, a predefined visual component is used to display and edit the data. However, it is possible to override components with your own, created with JavaScript. This functionality is only supported in the web client.
 
 Consider the task of creating a chat room for communication between users to demonstrate this capability.
 
@@ -52,7 +52,7 @@ Example value:
 }
 ```
 
-Next, use JavaScript and CSS to create a component that will display messages in the browser. The component will be created in the chat.js file, which will be located in the *resources/web* folder. This is the no-build path — a plain `.js` file, no JSX or bundling; see [How-to: Custom client JS modules](/How-to_Custom_client_JS_modules/.md) for where custom JS goes and for the with-build alternative. The `controller` these classic components receive is described in [How-to: Custom view controller](/How-to_Custom_view_controller/.md).
+Next, use JavaScript and CSS to create a component that will display messages in the browser. The component will be created in the chat.js file, which will be located in the *resources/web* folder. This is the no-build path — a plain `.js` file, no JSX or bundling; see [How-to: Custom client JS modules](/How-to_Custom_client_JS_modules.md) for where custom JS goes and for the with-build alternative. The `controller` these classic components receive is described in [How-to: Custom view controller](/How-to_Custom_view_controller.md).
 
 Inside the chat.js file, create *chatMessageRender* function. It will return an object consisting of two functions: *render* and *update*.
 
@@ -251,7 +251,7 @@ The message displayed by the created component will look like this:
 
 ### Handling user actions[​](#handling-user-actions "Direct link to Handling user actions")
 
-In this example, we will handle two user actions for any of the messages: clicking on the quoted message and clicking on the Reply button. In the first case, the transition to the original message will be done, and in the second case - storing the message in [local property](/Data_properties_DATA/.md#---local) and setting the focus in the input field of the new message.
+In this example, we will handle two user actions for any of the messages: clicking on the quoted message and clicking on the Reply button. In the first case, the transition to the original message will be done, and in the second case - storing the message in [local property](/Data_properties_DATA.md#---local) and setting the focus in the input field of the new message.
 
 The *controller* parameter, passed to the *update* function, is used to notify the server of an event made by the user:
 
@@ -268,7 +268,7 @@ element.replyContent.onmousedown = function(event) {
 
 Clicking on the quoted message also searches for the message field using jQuery and sets the current focus to it. The DOM element with the class chat-message-input-area will be created later.
 
-Depending on the action made by the user, the *change* method is called on the controller, which sends information about the event as a JSON-object. The platform will automatically pass the value to the defined [action](/Actions/.md) *changeMessage* :
+Depending on the action made by the user, the *change* method is called on the controller, which sends information about the event as a JSON-object. The platform will automatically pass the value to the defined [action](/Actions.md) *changeMessage* :
 
 ```
 replyTo = DATA LOCAL Message ();
@@ -328,7 +328,7 @@ NAVIGATOR {
 
 It remains to add to the form the ability for the user to create new messages.
 
-First, let's create a *send* action that will create a new message in a separate [session](/Change_sessions/.md) based on the local *message* property and the previously defined *replyTo* property:
+First, let's create a *send* action that will create a new message in a separate [session](/Change_sessions.md) based on the local *message* property and the previously defined *replyTo* property:
 
 ```
 message = DATA LOCAL TEXT ();
@@ -526,20 +526,20 @@ The final form will look like this:
 
 The methods of the controller passed to the *update* function, internal helpers aside (optional arguments are bracketed):
 
-| method                                            | what it does                                                                                                                                                                          |
-| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `change([value])`                                 | pass a value change (see above); with no argument the change action is called without a value                                                                                         |
-| `getValues(value, ok[, fail][, count])`           | a server suggestion list for the typed `value` — the same suggestions as when the property is edited normally                                                                         |
-| `isReadOnly()`                                    | whether the property can be edited: `null` — editable, `false` — read-only, `true` — disabled                                                                                         |
-| `diff(list, fnc[, noDiffObjects][, removeFirst])` | compute the changes of a value array — like the `diff` method in [Custom components (objects)](/How-to_Custom_components_objects/.md); the items are matched by their `objects` field |
-| `getColorThemeName()`                             | the current color theme name: `'LIGHT'` or `'DARK'`                                                                                                                                   |
-| `form`                                            | the [form controller](/How-to_Custom_view_controller/.md)                                                                                                                             |
+| method                                            | what it does                                                                                                                                                                         |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `change([value])`                                 | pass a value change (see above); with no argument the change action is called without a value                                                                                        |
+| `getValues(value, ok[, fail][, count])`           | a server suggestion list for the typed `value` — the same suggestions as when the property is edited normally                                                                        |
+| `isReadOnly()`                                    | whether the property can be edited: `null` — editable, `false` — read-only, `true` — disabled                                                                                        |
+| `diff(list, fnc[, noDiffObjects][, removeFirst])` | compute the changes of a value array — like the `diff` method in [Custom components (objects)](/How-to_Custom_components_objects.md); the items are matched by their `objects` field |
+| `getColorThemeName()`                             | the current color theme name: `'LIGHT'` or `'DARK'`                                                                                                                                  |
+| `form`                                            | the [form controller](/How-to_Custom_view_controller.md)                                                                                                                             |
 
 The `ok` handler of `getValues` receives the result in the same format as the form controller's `getPropertyValues`. The *render* function and the optional *clear* function, invoked when the cell is cleared, receive a reduced controller as the second argument — of its methods, `clearDiff()` is the useful one, resetting the list remembered by `diff`.
 
 ### Custom editor[​](#custom-editor "Direct link to Custom editor")
 
-By default the value is edited by the property's standard mechanism — a text input, for instance. The `CHANGE` keyword of the [`CUSTOM` value view](/Properties_and_actions_block/.md) replaces or extends that mechanism with an editor of your own, written in JavaScript:
+By default the value is edited by the property's standard mechanism — a text input, for instance. The `CHANGE` keyword of the [`CUSTOM` value view](/Properties_and_actions_block.md) replaces or extends that mechanism with an editor of your own, written in JavaScript:
 
 ```
 PROPERTIES(o) address CUSTOM CHANGE 'googleAutocomplete'
@@ -567,7 +567,7 @@ The editor controller provides:
 | `cancel()`                      | cancel the edit                                                                                        |
 | `setDeferredCommitOnBlur(true)` | defer the commit on focus loss — for picking from a suggestion list rendered outside `element`         |
 | `getColorThemeName()`           | the current color theme name                                                                           |
-| `form`                          | the [form controller](/How-to_Custom_view_controller/.md)                                              |
+| `form`                          | the [form controller](/How-to_Custom_view_controller.md)                                               |
 
 The committed value goes through the property's ordinary change channel — the same way as a value entered by the standard editor.
 

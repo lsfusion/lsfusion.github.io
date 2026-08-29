@@ -1,6 +1,6 @@
 # WINDOW statement
 
-The `WINDOW` statement - creating a new [window](/Navigator_design/.md), the `EXTEND WINDOW` statement - changing the renderer of an existing window, the `HIDE WINDOW` statement - hiding an existing window.
+The `WINDOW` statement - creating a new [window](/Navigator_design.md), the `EXTEND WINDOW` statement - changing the renderer of an existing window, the `HIDE WINDOW` statement - hiding an existing window.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -33,9 +33,9 @@ HIDE WINDOW windowName;
 
 ### Description[​](#description "Direct link to Description")
 
-The `WINDOW` statement declares a new window and adds it to the current [module](/Modules/.md).
+The `WINDOW` statement declares a new window and adds it to the current [module](/Modules.md).
 
-By default a window is created that displays [navigator elements](/Navigator/.md).
+By default a window is created that displays [navigator elements](/Navigator.md).
 
 The `EXTEND WINDOW` statement gives an already declared window - a standard one included - the React component or HTML template that draws its navigator elements, leaving everything else about the window as it is. The elements keep the window they were placed in, so the navigator's structure, its selection and its startup behavior stay as they were, and only the renderer changes. The window must already exist. Of the `NATIVE` windows only `System.forms` and `System.log` can be given a component, and no `NATIVE` window can be given a template. When several modules extend one window, the last literal is the markup the window starts with and the last property is the one that recomputes it.
 
@@ -45,11 +45,11 @@ The `HIDE WINDOW` statement hides the specified window, making it invisible. A h
 
 * `name`
 
-  Window name. [Simple ID](/IDs/.md#id). The name must be unique within the current [namespace](/Naming/.md#namespace).
+  Window name. [Simple ID](/IDs.md#id). The name must be unique within the current [namespace](/Naming.md#namespace).
 
 * `caption`
 
-  Window caption. [String literal](/Literals/.md#strliteral). If caption is not specified, the window's name will be used as the caption.
+  Window caption. [String literal](/Literals.md#strliteral). If caption is not specified, the window's name will be used as the caption.
 
 * `NATIVE`
 
@@ -57,7 +57,7 @@ The `HIDE WINDOW` statement hides the specified window, making it invisible. A h
 
 * `windowName`
 
-  Name of the window to hide. [Composite ID](/IDs/.md#cid) of an existing window.
+  Name of the window to hide. [Composite ID](/IDs.md#cid) of an existing window.
 
 ### Options[​](#options "Direct link to Options")
 
@@ -82,7 +82,7 @@ The `HIDE WINDOW` statement hides the specified window, making it invisible. A h
 
   * `x`
 
-    The left window coordinate. [Integer literal](/Literals/.md#intliteral) ranging from `0` to `100`.
+    The left window coordinate. [Integer literal](/Literals.md#intliteral) ranging from `0` to `100`.
 
   * `y`
 
@@ -159,7 +159,7 @@ The `HIDE WINDOW` statement hides the specified window, making it invisible. A h
 
   * `cssClassExpr`
 
-    [Expression](/Expression/.md), whose value determines the class name.
+    [Expression](/Expression.md), whose value determines the class name.
 
 * `CUSTOM customExpr`
 
@@ -167,11 +167,11 @@ The `HIDE WINDOW` statement hides the specified window, making it invisible. A h
 
   * `customExpr`
 
-    [Expression](/Expression/.md) (string value). A [string literal](/Literals/.md#strliteral) matching `[A-Z][A-Za-z0-9_$]*` names a React component; a literal with markup in it, and any property, is an HTML template; a literal that is neither is an error. Only a literal names a component, since the renderer is chosen before the first value arrives, while a template given by a property is recomputed as that value changes and the window is drawn again from the new markup.
+    [Expression](/Expression.md) (string value). A [string literal](/Literals.md#strliteral) matching `[A-Z][A-Za-z0-9_$]*` names a React component; a literal with markup in it, and any property, is an HTML template; a literal that is neither is an error. Only a literal names a component, since the renderer is chosen before the first value arrives, while a template given by a property is recomputed as that value changes and the window is drawn again from the new markup.
 
     A literal and a property may be given together, the way `CLASS` takes a literal and a property: the literal is the markup the window is drawn from until the property computes its first value, and the property replaces it from then on. A React component cannot be paired with a property, since the component draws the window itself and a computed template would never be drawn.
 
-    The template is markup the application writes and the platform inserts as it is, so what it contains is the application's: a `<script>` in it does not run, while an event attribute written on an element - `onclick`, `onerror` - does. The template is the one the `custom` attribute of a [`DESIGN`](/DESIGN_statement/.md) container takes, with the same rules for writing a place; here `<Lsf:name>` is the place the standard button of the navigator element with that name goes into. In a literal the name is resolved in the module's [namespaces](/Naming/.md#namespace), so the element must already be declared and a name that resolves to nothing is an error; a template computed by a property is not resolved, and there the [canonical name](/Naming/.md#canonicalname) is written.
+    The template is markup the application writes and the platform inserts as it is, so what it contains is the application's: a `<script>` in it does not run, while an event attribute written on an element - `onclick`, `onerror` - does. The template is the one the `custom` attribute of a [`DESIGN`](/DESIGN_statement.md) container takes, with the same rules for writing a place; here `<Lsf:name>` is the place the standard button of the navigator element with that name goes into. In a literal the name is resolved in the module's [namespaces](/Naming.md#namespace), so the element must already be declared and a name that resolves to nothing is an error; a template computed by a property is not resolved, and there the [canonical name](/Naming.md#canonicalname) is written.
 
     The `System.forms` and `System.log` windows are the exception among `NATIVE` windows. They hold no navigator elements, but each can be given a React component, and that component is given what the running application put into the window instead - the forms open in `System.forms`, the messages logged in `System.log`. It places one of those with `<Lsf name/>`, and what it places nowhere is not lost: a form stays open and hidden, a message stays logged. Only a component may be given: there are no navigator elements for a template's places to take, and what such a window shows exists only while the application runs, so neither a template nor a property is accepted here.
 

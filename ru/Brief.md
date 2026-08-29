@@ -14,37 +14,37 @@
 
 * **Описание**: базовый элемент — множество объектов. Задают типы объектов; используются в сигнатурах свойств и действий и как классы объектов формы. Наследование (может быть множественным). Встроенные и пользовательские классы. Полиморфизм через наследование, `ABSTRACT` + `+=` / `ACTION+`, `MULTI`.
 * **Аналогия**: классы ООП, с множественной диспетчеризацией по классам параметров.
-* **Инструкция** ([`CLASS`](/ru/CLASS_statement/.md)): `CLASS ABSTRACT name [caption] [imageSetting] [: parent1, ..., parentN];` и `CLASS [NATIVE] name [caption] [imageSetting] [{ objectName1 [objectCaption1] [imageSetting], ... }] [: parent1, ..., parentN];` для класса со статическими объектами
+* **Инструкция** ([`CLASS`](/ru/CLASS_statement.md)): `CLASS ABSTRACT name [caption] [imageSetting] [: parent1, ..., parentN];` и `CLASS [NATIVE] name [caption] [imageSetting] [{ objectName1 [objectCaption1] [imageSetting], ... }] [: parent1, ..., parentN];` для класса со статическими объектами
 
 ### Свойства (Properties)[​](#свойства-properties "Прямая ссылка на этот заголовок")
 
 * **Описание**: вычисляют факты, не меняют состояние. DATA (хранятся в базе, если не объявлены `LOCAL` — те живут в сессии) и вычисляемые (формулы, агрегации, композиции).
 * **Аналогия**: математические / чистые функции. Декларативны, близки к SQL.
-* **Инструкция** ([`=`](/ru/=_statement/.md)): `name [caption] [(param1, ..., paramN)] = expression [options];`; хранимое — `= DATA [LOCAL [NESTED [MANAGESESSION | NOMANAGESESSION]]] returnClass [(argumentClass1, ..., argumentClassN)]` ([`DATA`](/ru/DATA_operator/.md)).
+* **Инструкция** ([`=`](/ru/=_statement.md)): `name [caption] [(param1, ..., paramN)] = expression [options];`; хранимое — `= DATA [LOCAL [NESTED [MANAGESESSION | NOMANAGESESSION]]] returnClass [(argumentClass1, ..., argumentClassN)]` ([`DATA`](/ru/DATA_operator.md)).
 
 ### Действия (Actions)[​](#действия-actions "Прямая ссылка на этот заголовок")
 
 * **Описание**: меняют состояние (БД или внешнее). Двойственны свойствам: свойства = что; действия = как это изменяется.
 * **Аналогия**: процедуры / методы. Императивны, близки к Java.
-* **Инструкция** ([`ACTION`](/ru/ACTION_statement/.md)): `name [caption] [(param1, ..., paramN)] { actionBody } [options]`
+* **Инструкция** ([`ACTION`](/ru/ACTION_statement.md)): `name [caption] [(param1, ..., paramN)] { actionBody } [options]`
 * **Сессии изменений**: изменения не попадают в базу по мере внесения — они копятся в текущей сессии, пока `APPLY` их не запишет, а `CANCEL` не отбросит; `NEWSESSION` и `NESTEDSESSION` выполняют действие в отдельной сессии. Во вложенной сессии `APPLY` копирует изменения в родительскую, а не пишет их, а внутри транзакции применения сессия не создается вовсе — действие откладывается в текущую.
 
 ### События (Events)[​](#события-events "Прямая ссылка на этот заголовок")
 
 * **Описание**: зависящие от времени реакции — глобальное событие выполняет действие в некоторый момент жизни сессии, чаще всего при изменении данных; событие формы — в точке жизни формы (`INIT`, `APPLY`, `CANCEL`, `CLOSE`, `DROP`), на действие пользователя, от клавиши до вкладки или выбора строки, либо по таймеру через `ON SCHEDULE`. Основная инструкция `WHEN`; `<- WHEN` объявляет вычисляемое событие: значение выводится при чтении свойства, а явная запись имеет приоритет; анализаторы изменений сессии `CHANGED`, `SET`, `DROPPED`, `PREV` и т. д. События формы навешиваются через `ON`: `ON CHANGE`/`ON EDIT`/`ON CONTEXTMENU`/`ON GROUPCHANGE`/`ON CHANGEWYS`. Инструкции `BEFORE` / `AFTER` задают действие-аспект, вызываемое перед / после другого действия.
 * **Аналогия**: триггеры БД, но шире.
-* **Инструкции** ([`WHEN`](/ru/WHEN_statement/.md), [`ON`](/ru/ON_statement/.md)): `WHEN eventClause eventExpr [ORDER [DESC] orderExpr1, ..., orderExprN] DO eventAction;` и `ON eventClause eventAction;`
+* **Инструкции** ([`WHEN`](/ru/WHEN_statement.md), [`ON`](/ru/ON_statement.md)): `WHEN eventClause eventExpr [ORDER [DESC] orderExpr1, ..., orderExprN] DO eventAction;` и `ON eventClause eventAction;`
 
 ### Ограничения (Constraints)[​](#ограничения-constraints "Прямая ссылка на этот заголовок")
 
 * **Описание**: не зависящие от времени инварианты над базой. Проверяются на событии, заданном `eventClause`; если оно не указано — на `APPLY`. Виды: общие (`CONSTRAINT`), простые — следствие `=>`, у которого есть клауза `RESOLVE [LEFT] [RIGHT]`, указывающая платформе, какую сторону исправлять автоматически, и определенность `NONULL [DELETE]`, у которой такой клаузы нет; уникальность агрегируемых объектов добавляют `GROUP AGGR` / `AGGR`.
 * **Аналогия**: `CHECK` и `NOT NULL` в SQL, но условием служит произвольное свойство над всей базой.
-* **Инструкция** ([`CONSTRAINT`](/ru/CONSTRAINT_statement/.md)): `CONSTRAINT [eventClause] constraintExpr [CHECKED [BY propertyId1, ..., propertyIdN]] MESSAGE messageExpr [PROPERTIES outExpr1, ..., outExprM];`
+* **Инструкция** ([`CONSTRAINT`](/ru/CONSTRAINT_statement.md)): `CONSTRAINT [eventClause] constraintExpr [CHECKED [BY propertyId1, ..., propertyIdN]] MESSAGE messageExpr [PROPERTIES outExpr1, ..., outExprM];`
 
 ### Агрегации (Aggregations)[​](#агрегации-aggregations "Прямая ссылка на этот заголовок")
 
-* **Описание**: агрегируемые объекты, которые платформа создаёт и удаляет по правилу — `AGGR` создаёт объект, когда агрегируемое выражение становится не `NULL`, и удаляет, когда оно снова становится `NULL`; срабатывает на изменениях, а не на уже существующих данных. `GROUP AGGR` возвращает объект группы. См. [Brief: свойства](/ru/Brief_properties/.md) и [Brief: ограничения](/ru/Brief_constraints/.md).
-* **Оператор** ([`AGGR`](/ru/AGGR_operator/.md)): `AGGR [eventClause] aggrClass WHERE aggrExpr [NEW [newEventClause]] [DELETE [deleteEventClause]]`
+* **Описание**: агрегируемые объекты, которые платформа создаёт и удаляет по правилу — `AGGR` создаёт объект, когда агрегируемое выражение становится не `NULL`, и удаляет, когда оно снова становится `NULL`; срабатывает на изменениях, а не на уже существующих данных. `GROUP AGGR` возвращает объект группы. См. [Brief: свойства](/ru/Brief_properties.md) и [Brief: ограничения](/ru/Brief_constraints.md).
+* **Оператор** ([`AGGR`](/ru/AGGR_operator.md)): `AGGR [eventClause] aggrClass WHERE aggrExpr [NEW [newEventClause]] [DELETE [deleteEventClause]]`
 
 ## Логика представления — та же модель, показанная пользователю или другой системе[​](#логика-представления--та-же-модель-показанная-пользователю-или-другой-системе "Прямая ссылка на этот заголовок")
 
@@ -52,7 +52,7 @@
 
 * **Описание**: универсальный элемент данных/UI. `OBJECTS` (группы), `PROPERTIES` (что показывать / действия), `FILTERS` (фильтр строк). Представления: интерактивное (`SHOW`), печатное (`PRINT`), структурное (`EXPORT`/`IMPORT`). Расширяется через `EXTEND FORM`.
 * **Аналогия**: SQL-запрос, но шире (много таблиц сразу).
-* **Инструкция** ([`FORM`](/ru/FORM_statement/.md)): `FORM name [caption] formOptions formBlock1 ... formBlockN;`
+* **Инструкция** ([`FORM`](/ru/FORM_statement.md)): `FORM name [caption] formOptions formBlock1 ... formBlockN;`
 * **Дизайн** (`DESIGN`): интерактивное представление собирается из компонентов, которые платформа порождает по структуре формы; `DESIGN` их перемещает, скрывает и настраивает.
 
 ### Навигатор и окна[​](#навигатор-и-окна "Прямая ссылка на этот заголовок")
@@ -68,11 +68,11 @@
 
 * **Описание**: единица переиспользования (один `.lsf`-файл); содержит классы/свойства/действия/формы/события/ограничения; зависимости через `REQUIRE`.
 * **Аналогия**: пакет / сборка.
-* **Инструкция** ([заголовок модуля](/ru/Module_header/.md)): `MODULE name;` `[REQUIRE moduleName1, ..., moduleNameN;]` `[PRIORITY namespaceName1, ..., namespaceNameM;]` `[NAMESPACE namespaceName;]`
+* **Инструкция** ([заголовок модуля](/ru/Module_header.md)): `MODULE name;` `[REQUIRE moduleName1, ..., moduleNameN;]` `[PRIORITY namespaceName1, ..., namespaceNameM;]` `[NAMESPACE namespaceName;]`
 
 ### Системные модули (стандартная библиотека)[​](#системные-модули-стандартная-библиотека "Прямая ссылка на этот заголовок")
 
-Двенадцать из них платформа загружает сама, среди них `System`, `Utils`, `Time`, `Authentication`, — но загрузить не значит зависеть: объявления модуля становятся доступны через `REQUIRE`, и неявен только `System`. Какие это двенадцать и для чего нужен каждый — в [Brief: модули](/ru/Brief_modularity/.md).
+Двенадцать из них платформа загружает сама, среди них `System`, `Utils`, `Time`, `Authentication`, — но загрузить не значит зависеть: объявления модуля становятся доступны через `REQUIRE`, и неявен только `System`. Какие это двенадцать и для чего нужен каждый — в [Brief: модули](/ru/Brief_modularity.md).
 
 ### Разработка и интеграция[​](#разработка-и-интеграция "Прямая ссылка на этот заголовок")
 
@@ -90,7 +90,7 @@
 
 ### Управление — эксплуатация результата[​](#управление--эксплуатация-результата "Прямая ссылка на этот заголовок")
 
-* Параметры запуска и рабочие настройки, пользовательский интерфейс, [политика безопасности](/ru/Security_policy/.md), интерпретатор, планировщик, резервные копии, мониторинг, логи, профайлер и чат. Своей статьи в brief нет: их запрашивают из ветки `paradigm`.
+* Параметры запуска и рабочие настройки, пользовательский интерфейс, [политика безопасности](/ru/Security_policy.md), интерпретатор, планировщик, резервные копии, мониторинг, логи, профайлер и чат. Своей статьи в brief нет: их запрашивают из ветки `paradigm`.
 
 ## Мини-карта для ИИ[​](#мини-карта-для-ии "Прямая ссылка на этот заголовок")
 

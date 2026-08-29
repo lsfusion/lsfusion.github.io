@@ -1,6 +1,6 @@
 # Email
 
-`Email` is a [system module](/System_modules/.md) that holds the classes, properties, and actions for electronic mail: the mail accounts and their connection settings, the folder tree, stored messages with their headers, body, and attachments, the actions that receive mail from a server and import `.eml` files, and the compose-and-send surface built on the `EMAIL` operator. It is pulled in via `REQUIRE Email` (`System`, `Reflection`, and `SystemEvents` are pulled in along with it).
+`Email` is a [system module](/System_modules.md) that holds the classes, properties, and actions for electronic mail: the mail accounts and their connection settings, the folder tree, stored messages with their headers, body, and attachments, the actions that receive mail from a server and import `.eml` files, and the compose-and-send surface built on the `EMAIL` operator. It is pulled in via `REQUIRE Email` (`System`, `Reflection`, and `SystemEvents` are pulled in along with it).
 
 ### Account[​](#account "Direct link to Account")
 
@@ -23,7 +23,7 @@
 | `fromAddress[Account]`                    | sender address put into outgoing mail                        |
 | `isDefaultInbox[Account]`                 | flag marking the account as the default one for sending      |
 
-`EncryptedConnectionTypeStatus` is a static [class](/User_classes/.md#static) with two objects — `SSL` and `TLS` — for the SMTP encryption mode. The `encryptedConnectionTypeStatuses` form lists them.
+`EncryptedConnectionTypeStatus` is a static [class](/User_classes.md#static) with two objects — `SSL` and `TLS` — for the SMTP encryption mode. The `encryptedConnectionTypeStatuses` form lists them.
 
 `inboxAccount[STRING]` picks the account used to send a message from a given sender address: it returns the account whose `fromAddress[Account]` equals that address (`accountFromAddress`), and falls back to the account flagged `isDefaultInbox[Account]` (`defaultInboxAccount`) when no account matches the address.
 
@@ -42,7 +42,7 @@
 | `ignoreExceptions[Account]`                     | flag to keep going past a message that fails to process       |
 | `readAllFolders[Account]`                       | flag to read every server folder, not just the inbox          |
 
-`ReceiveAccountType` is a static [class](/User_classes/.md#static) with four objects for the receive protocol: `POP3`, `POP3S`, `IMAP`, `IMAPS`. The `receiveAccountTypes` form lists them.
+`ReceiveAccountType` is a static [class](/User_classes.md#static) with four objects for the receive protocol: `POP3`, `POP3S`, `IMAP`, `IMAPS`. The `receiveAccountTypes` form lists them.
 
 ### Folders[​](#folders "Direct link to Folders")
 
@@ -116,13 +116,13 @@ The navigator gets the `mail` form under the `notification` folder.
 
 ### Language[​](#language "Direct link to Language")
 
-* [`EMAIL` operator](/EMAIL_operator/.md) — sends a message; `send[Email]` is written with it.
-* [`INTERNAL` operator](/INTERNAL_operator/.md) — binds the mail-receiving actions to their Java implementation.
+* [`EMAIL` operator](/EMAIL_operator.md) — sends a message; `send[Email]` is written with it.
+* [`INTERNAL` operator](/INTERNAL_operator.md) — binds the mail-receiving actions to their Java implementation.
 
 ### See also[​](#see-also "Direct link to See also")
 
-* [`System modules`](/System_modules/.md) — the general list of platform modules.
-* [`SystemEvents`](/System_SystemEvents/.md) — the server-lifecycle module pulled in with `Email`.
-* [`Reflection`](/System_Reflection/.md) — the metadata module pulled in with `Email`.
-* [`Access to an external system (EXTERNAL)`](/Access_to_an_external_system_EXTERNAL/.md) — calling out to external services; mail is one such external system.
-* [`Security`](/System_Security/.md) — uses email to send a password-reset message.
+* [`System modules`](/System_modules.md) — the general list of platform modules.
+* [`SystemEvents`](/System_SystemEvents.md) — the server-lifecycle module pulled in with `Email`.
+* [`Reflection`](/System_Reflection.md) — the metadata module pulled in with `Email`.
+* [`Access to an external system (EXTERNAL)`](/Access_to_an_external_system_EXTERNAL.md) — calling out to external services; mail is one such external system.
+* [`Security`](/System_Security.md) — uses email to send a password-reset message.

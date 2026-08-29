@@ -2,7 +2,7 @@
 
 ## Choosing the export source[​](#choosing-the-export-source "Direct link to Choosing the export source")
 
-Data is exported with the [`EXPORT` operator](/EXPORT_operator/.md).
+Data is exported with the [`EXPORT` operator](/EXPORT_operator.md).
 
 1. Exporting a list of properties (`EXPORT FROM ...`) is used when the result is a single flat table of columns and its structure matches no existing form.
 

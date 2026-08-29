@@ -1,6 +1,6 @@
 # Time
 
-`Time` is a [system module](/System_modules/.md) that collects properties, actions, and classes for working with time: reading the current date and time, converting between time classes, extracting date parts, date and time arithmetic, intervals, and calendar classes (months, days of the week). It is pulled in via `REQUIRE Time` (`System` is pulled in automatically).
+`Time` is a [system module](/System_modules.md) that collects properties, actions, and classes for working with time: reading the current date and time, converting between time classes, extracting date parts, date and time arithmetic, intervals, and calendar classes (months, days of the week). It is pulled in via `REQUIRE Time` (`System` is pulled in automatically).
 
 The signatures below use the built-in time classes `DATE`, `TIME`, `DATETIME` (without time zone) and `ZDATETIME` (with time zone), as well as `INTEGER` / `LONG` for counts of days, seconds, milliseconds, and so on. Most properties are thin wrappers over the matching PostgreSQL date/time functions; the underlying PostgreSQL expression is given in each row where the property maps directly to one (`$1`, `$2`, … are the arguments in the listed order). The rest are compositions of other `Time` properties, and the composition is named instead.
 
@@ -87,7 +87,7 @@ The signatures below use the built-in time classes `DATE`, `TIME`, `DATETIME` (w
 
 ### Calendar classes and forms[​](#calendar-classes-and-forms "Direct link to Calendar classes and forms")
 
-`Month` and `DOW` are built-in static [classes](/User_classes/.md#static) describing months (12 objects) and days of the week (7 objects). They carry these properties:
+`Month` and `DOW` are built-in static [classes](/User_classes.md#static) describing months (12 objects) and days of the week (7 objects). They carry these properties:
 
 | Property        | What it returns                                                                                                                                    |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -99,7 +99,7 @@ The signatures below use the built-in time classes `DATE`, `TIME`, `DATETIME` (w
 
 Lookup by number runs the other way: `month[INTEGER]`, `DOW[INTEGER]`. The forms `months` and `DOWs` show these classes as directories.
 
-`DateTimePickerRanges` and `DateTimeIntervalPickerRanges` are static [classes](/User_classes/.md#static) with ready-made shortcut sets (`rangeToday`, `rangeYesterday`, `rangeLast7Days`, and so on) for picking a single date or a date interval in the UI.
+`DateTimePickerRanges` and `DateTimeIntervalPickerRanges` are static [classes](/User_classes.md#static) with ready-made shortcut sets (`rangeToday`, `rangeYesterday`, `rangeLast7Days`, and so on) for picking a single date or a date interval in the UI.
 
 ### Recipes[​](#recipes "Direct link to Recipes")
 
@@ -127,6 +127,6 @@ lastDayOfMonth(d)
 
 ### See also[​](#see-also "Direct link to See also")
 
-* [`System modules`](/System_modules/.md) — the general list of platform modules.
-* [`Built-in classes`](/Built-in_classes/.md) — description of the `DATE`, `TIME`, `DATETIME`, `ZDATETIME`, `INTERVAL[…]` classes.
-* [`Scheduler`](/Scheduler/.md) — running actions on a schedule.
+* [`System modules`](/System_modules.md) — the general list of platform modules.
+* [`Built-in classes`](/Built-in_classes.md) — description of the `DATE`, `TIME`, `DATETIME`, `ZDATETIME`, `INTERVAL[…]` classes.
+* [`Scheduler`](/Scheduler.md) — running actions on a schedule.

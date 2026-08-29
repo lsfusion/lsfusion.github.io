@@ -1,6 +1,6 @@
 # ROUND operator
 
-`ROUND` operator creates a [property](/Properties/.md) that implements the [rounding operation](/Rounding_operator_ROUND/.md).
+`ROUND` operator creates a [property](/Properties.md) that implements the [rounding operation](/Rounding_operator_ROUND.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -10,13 +10,13 @@ ROUND(numExpr[, scaleExpr])
 
 ### Description[​](#description "Direct link to Description")
 
-The `ROUND` operator creates a property whose value is the number rounded to the given precision. See the [rounding operation](/Rounding_operator_ROUND/.md) for the result class and the rounding behavior, including how the precision determines the rounding direction.
+The `ROUND` operator creates a property whose value is the number rounded to the given precision. See the [rounding operation](/Rounding_operator_ROUND.md) for the result class and the rounding behavior, including how the precision determines the rounding direction.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `numExpr`
 
-  [Expression](/Expression/.md) whose value determines the number to be rounded. The value must belong to one of the numeric [built-in classes](/Built-in_classes/.md).
+  [Expression](/Expression.md) whose value determines the number to be rounded. The value must belong to one of the numeric [built-in classes](/Built-in_classes.md).
 
 * `scaleExpr`
 

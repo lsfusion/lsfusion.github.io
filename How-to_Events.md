@@ -27,7 +27,7 @@ WHEN CHANGED(currentDate()) AND date(Order o) < currentDate() DO
     isClosed(o) <- TRUE;
 ```
 
-In the first case, the event will only be executed in one transaction at the time the expression inside the [`SET` operator](/Change_operators_SET_CHANGED_etc/.md) operator changes. That is, at the moment when the order date becomes smaller than the current date. However, if the user manually changes the order date to one greater than the current date and saves, the system will automatically execute this event and close the order. Therefore, the second option is preferable, since it will only come into effect when the current date changes at midnight.
+In the first case, the event will only be executed in one transaction at the time the expression inside the [`SET` operator](/Change_operators_SET_CHANGED_etc.md) operator changes. That is, at the moment when the order date becomes smaller than the current date. However, if the user manually changes the order date to one greater than the current date and saves, the system will automatically execute this event and close the order. Therefore, the second option is preferable, since it will only come into effect when the current date changes at midnight.
 
 ## Example 2[​](#example-2 "Direct link to Example 2")
 
@@ -155,4 +155,4 @@ WHEN CHANGED(status(Order o)) AND o IS Order DO {
 }
 ```
 
-[The condition of a simple event is also checked on objects deleted in the session](/Simple_event/.md): when an order is deleted, its data properties are reset to `NULL`, so without `o IS Order` the event would also fire on deletion — a history record would be created for the already deleted order. Its `order(l)` link would also be reset to `NULL` at apply (the value is no longer valid for the deleted object), and the `NONULL` would block the deletion of the order even though no deletion prohibition is declared anywhere. For the deleted order `o IS Order` returns `NULL`, and the event does not occur. When, on the contrary, deletion itself must be logged, an event with the `DROPPED` modifier reading the old values via `PREV` is used, as in [**Example 4**](#example-4).
+[The condition of a simple event is also checked on objects deleted in the session](/Simple_event.md): when an order is deleted, its data properties are reset to `NULL`, so without `o IS Order` the event would also fire on deletion — a history record would be created for the already deleted order. Its `order(l)` link would also be reset to `NULL` at apply (the value is no longer valid for the deleted object), and the `NONULL` would block the deletion of the order even though no deletion prohibition is declared anywhere. For the deleted order `o IS Order` returns `NULL`, and the event does not occur. When, on the contrary, deletion itself must be logged, an event with the `DROPPED` modifier reading the old values via `PREV` is used, as in [**Example 4**](#example-4).

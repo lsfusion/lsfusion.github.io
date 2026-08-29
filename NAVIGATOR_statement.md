@@ -1,6 +1,6 @@
 # NAVIGATOR statement
 
-The `NAVIGATOR` statement - managing and configuring the [navigator](/Navigator/.md).
+The `NAVIGATOR` statement - managing and configuring the [navigator](/Navigator.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -50,7 +50,7 @@ CHANGEMOUSE key [showSetting]
 
 ### Description[​](#description "Direct link to Description")
 
-The `NAVIGATOR` statement allows to modify the navigator. Each navigator statement block enclosed in braces allows to change the descendants of a particular [navigator element](/Navigator/.md), which we will call the *current element*. In the outer block that follows the `NAVIGATOR` keyword, the current element is the root system folder `System.root`. There are three types of navigator statements:
+The `NAVIGATOR` statement allows to modify the navigator. Each navigator statement block enclosed in braces allows to change the descendants of a particular [navigator element](/Navigator.md), which we will call the *current element*. In the outer block that follows the `NAVIGATOR` keyword, the current element is the root system folder `System.root`. There are three types of navigator statements:
 
 * The *create statement* (`NEW`) allows to create a new navigator element, making it a child of the current element. The created navigator elements can be of three types: folder, form element, and action element. The type of element to be created is specified by the keywords `FOLDER`, `FORM`, and `ACTION`. If the type is not specified, a form with the given name is searched first. If no form is found, the action is searched. The navigator statement block contained in this statement (if any) describes the descendants of the element being created.
 * The *move statement* (`MOVE`) allows to move an existing element to the current navigator element, making it a child element. Prior to this, the navigator element being moved is deleted from its previous location. The navigator statement block contained in this statement describes the descendants of the element being added.
@@ -64,15 +64,15 @@ The hierarchy described within a single `NAVIGATOR` statement can have an arbitr
 
 * `name`
 
-  Navigator element name. In the create statement, it is [a simple ID](/IDs/.md#id) and must be unique within the current [namespace](/Naming/.md#namespace), while in the rest of the statements it is a [composite ID](/IDs/.md#cid). The name does not have to be specified when creating a form element or action element. Here the form name or action name is used as the element name. The element is created in the current namespace in either case, so its [canonical name](/Naming/.md#canonicalname) is that namespace and the element name — not the namespace of the form or action it was created from.
+  Navigator element name. In the create statement, it is [a simple ID](/IDs.md#id) and must be unique within the current [namespace](/Naming.md#namespace), while in the rest of the statements it is a [composite ID](/IDs.md#cid). The name does not have to be specified when creating a form element or action element. Here the form name or action name is used as the element name. The element is created in the current namespace in either case, so its [canonical name](/Naming.md#canonicalname) is that namespace and the element name — not the namespace of the form or action it was created from.
 
 * `caption`
 
-  Navigator element caption. [String literal](/Literals/.md#strliteral). In the create statement, if the caption is not specified, the caption will be the name of the created element. In the rest of the statements it modifies the existing caption.
+  Navigator element caption. [String literal](/Literals.md#strliteral). In the create statement, if the caption is not specified, the caption will be the name of the created element. In the rest of the statements it modifies the existing caption.
 
 * `actionName`
 
-  The [action ID](/IDs/.md#propertyid) for which the navigator element will be created. The action must not take any parameters.
+  The [action ID](/IDs.md#propertyid) for which the navigator element will be created. The action must not take any parameters.
 
 * `formName`
 
@@ -88,13 +88,13 @@ The hierarchy described within a single `NAVIGATOR` statement can have an arbitr
 
   * `actionOperator`
 
-    [Action operator](/Action_operators/.md) specifying the action to execute. No parameters are available in it.
+    [Action operator](/Action_operators.md) specifying the action to execute. No parameters are available in it.
 
 ### Options[​](#options "Direct link to Options")
 
 * `WINDOW windowName [PARENT]`
 
-  Specifying the [window](/Navigator_design/.md) in which the descendants of this navigator element will be displayed (unless another window is specified for them), and the element itself, if the keyword `PARENT` is specified.
+  Specifying the [window](/Navigator_design.md) in which the descendants of this navigator element will be displayed (unless another window is specified for them), and the element itself, if the keyword `PARENT` is specified.
 
   * `windowName`
 
@@ -138,11 +138,11 @@ The hierarchy described within a single `NAVIGATOR` statement can have an arbitr
 
   * `IMAGE [imageExpr]`
 
-    [Manual icon specification](/Icons/.md#manual) for the navigator element. If `imageExpr` is not provided, the [automatic assignment](/Icons/.md#auto) mode is enabled.
+    [Manual icon specification](/Icons.md#manual) for the navigator element. If `imageExpr` is not provided, the [automatic assignment](/Icons.md#auto) mode is enabled.
 
     * `imageExpr`
 
-      [Expression](/Expression/.md) whose string value defines the icon.
+      [Expression](/Expression.md) whose string value defines the icon.
 
   * `NOIMAGE`
 
@@ -178,11 +178,11 @@ The hierarchy described within a single `NAVIGATOR` statement can have an arbitr
 
 * `CHANGEKEY key [showSetting]`
 
-  Specifying the [key combination](/Form_events/.md#keyboard) that selects this navigator element when pressed.
+  Specifying the [key combination](/Form_events.md#keyboard) that selects this navigator element when pressed.
 
   * `key`
 
-    [String literal](/Literals/.md#strliteral) describing the key combination. The mode parameters (`editing=`, `showing=`, etc.) allowed after `;` in the combinations of [properties and actions](/Property_options/.md) are not applied to navigator elements in the web client. The combination is handled globally, but after the handlers of the open form: an identical combination of a form property or action takes priority.
+    [String literal](/Literals.md#strliteral) describing the key combination. The mode parameters (`editing=`, `showing=`, etc.) allowed after `;` in the combinations of [properties and actions](/Property_options.md) are not applied to navigator elements in the web client. The combination is handled globally, but after the handlers of the open form: an identical combination of a form property or action takes priority.
 
   * `showSetting`
 

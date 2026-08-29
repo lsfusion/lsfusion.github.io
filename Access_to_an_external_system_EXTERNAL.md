@@ -1,6 +1,6 @@
 # Access to an external system (EXTERNAL)
 
-The platform allows an lsFusion-based system to access external systems using various types of interactions / protocols, as the external counterpart to the [internal call](/Internal_call_INTERNAL/.md). The interface of such an access is the execution of code in the language / paradigm of the external system with specified parameters and, if necessary, the return of certain values as *results* written into the specified properties (without parameters). It is assumed that all parameter and result objects are objects of [built-in classes](/Built-in_classes/.md).
+The platform allows an lsFusion-based system to access external systems using various types of interactions / protocols, as the external counterpart to the [internal call](/Internal_call_INTERNAL.md). The interface of such an access is the execution of code in the language / paradigm of the external system with specified parameters and, if necessary, the return of certain values as *results* written into the specified properties (without parameters). It is assumed that all parameter and result objects are objects of [built-in classes](/Built-in_classes.md).
 
 ## Types of interactions / protocols[​](#types-of-interactions--protocols "Direct link to Types of interactions / protocols")
 
@@ -22,13 +22,13 @@ Parameters can be passed both in the request string (to refer to the parameter, 
 
 When processing file class parameters (`FILE`, `PDFFILE`, etc.) to BODY, the [content type](https://en.wikipedia.org/wiki/Media_type) of the parameter, depending on the file extension, is determined in accordance with the following [table](https://github.com/lsfusion/platform/blob/master/api/src/main/resources/MIMETypes.properties). If the file extension is not found in this table, the content type is set to `application/<file extension>`.
 
-The file extension in this case is determined automatically, similarly to the [`WRITE` operator](/Write_file_WRITE/.md).
+The file extension in this case is determined automatically, similarly to the [`WRITE` operator](/Write_file_WRITE.md).
 
 In each of the three cases above, if the parameter value is `NULL`, `null` is substituted for the file extension in the content type (for example, `application/null`), and an empty string is passed as the parameter itself.
 
 Parameters of classes that differ from those of files are converted into strings and are passed as a `text/plain` content type. `NULL` values are passed as empty strings.
 
-Custom request [headers](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields) and [cookies](https://en.wikipedia.org/wiki/HTTP_cookie) can be supplied with the call. Declare a separate local property for the outgoing headers rather than the system property `System.headers[TEXT]`: in an action called [from an external system](/Access_from_an_external_system/.md#request) it is already filled with the headers of the incoming request, and all of them, including service ones (such as `Content-Length`), will go into the outgoing request — usually resulting in a runtime error. If `System.headers[TEXT]` is used anyway, clear it before the call.
+Custom request [headers](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields) and [cookies](https://en.wikipedia.org/wiki/HTTP_cookie) can be supplied with the call. Declare a separate local property for the outgoing headers rather than the system property `System.headers[TEXT]`: in an action called [from an external system](/Access_from_an_external_system.md#request) it is already filled with the headers of the incoming request, and all of them, including service ones (such as `Content-Length`), will go into the outgoing request — usually resulting in a runtime error. If `System.headers[TEXT]` is used anyway, clear it before the call.
 
 The literal text of the connection string and of any body template is URL-encoded before the request is sent (suppressible); parameter values substituted via `$N` are URL-encoded independently.
 
@@ -40,7 +40,7 @@ Results with content types different from the ones above are considered strings 
 
 Response [headers](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields) and [cookies](https://en.wikipedia.org/wiki/HTTP_cookie) can be captured into properties. The captured cookies combine the ones sent with the request and those received in `Set-Cookie` response headers; cookie attributes (`path`, `domain`, etc.) are dropped.
 
-The HTTP [status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) of the response is written to the `System.statusHttp[]` property. A non-`2xx` status also throws a runtime exception with the status and response body, which can be intercepted with the [`TRY`](/Exception_handling_TRY/.md) operator to inspect `System.statusHttp[]` instead. Under client execution in the regular browser, a network / CORS / DNS failure surfaces as `status = 0`; in that case the exception carries a generic localized error message rather than a status + body.
+The HTTP [status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) of the response is written to the `System.statusHttp[]` property. A non-`2xx` status also throws a runtime exception with the status and response body, which can be intercepted with the [`TRY`](/Exception_handling_TRY.md) operator to inspect `System.statusHttp[]` instead. Under client execution in the regular browser, a network / CORS / DNS failure surfaces as `status = 0`; in that case the exception carries a generic localized error message rather than a status + body.
 
 #### Multiple results / parameters in BODY[​](#multiple-results--parameters-in-body "Direct link to Multiple results / parameters in BODY")
 
@@ -55,7 +55,7 @@ In turn, if the response content type is `multipart/*` or `application/x-www-for
 
 info
 
-Note that the processing of parameters and request results is largely similar to their processing during [access from an external system](/Access_from_an_external_system/.md) over the HTTP protocol (here parameters are processed as results and, conversely, results are processed as parameters)
+Note that the processing of parameters and request results is largely similar to their processing during [access from an external system](/Access_from_an_external_system.md) over the HTTP protocol (here parameters are processed as results and, conversely, results are processed as parameters)
 
 ### SQL - executing an SQL server command[​](#sql "Direct link to SQL - executing an SQL server command")
 
@@ -78,13 +78,13 @@ The execution results are: for DML requests - numbers equal to the number of pro
 
 For this type of interaction, the following things need to be specified: the connection string for connecting to the lsFusion server (or its web server, if any), the action being executed, and the list of properties (without parameters) to whose values the results of the call will be written. The parameters passed must match the parameters of the action being performed by number and by class.
 
-The way of defining an action in this type of interaction fully corresponds to the [way of defining](/Access_from_an_external_system/.md#actiontype) an action during [access from an external system](/Access_from_an_external_system/.md).
+The way of defining an action in this type of interaction fully corresponds to the [way of defining](/Access_from_an_external_system.md#actiontype) an action during [access from an external system](/Access_from_an_external_system.md).
 
-By default, this type of interaction is implemented via HTTP protocol using the corresponding interfaces for access [to](#http) and [from](/Access_from_an_external_system/.md#http) an external system.
+By default, this type of interaction is implemented via HTTP protocol using the corresponding interfaces for access [to](#http) and [from](/Access_from_an_external_system.md#http) an external system.
 
 info
 
-You can also use operators for [reading](/Read_file_READ/.md) and [writing](/Write_file_WRITE/.md) files to access external systems (if file exchange is the interface for this interaction).
+You can also use operators for [reading](/Read_file_READ.md) and [writing](/Write_file_WRITE.md) files to access external systems (if file exchange is the interface for this interaction).
 
 ### TCP / UDP - sending raw bytes over a socket[​](#tcp "Direct link to TCP / UDP - sending raw bytes over a socket")
 
@@ -104,11 +104,11 @@ Input column names are truncated to the DBF 10-character limit before being used
 
 ## Preserving connections across calls[​](#preserving-connections-across-calls "Direct link to Preserving connections across calls")
 
-When several calls hit the same endpoint, the open connection can be [reused](/New_connection_NEWCONNECTION/.md) across them instead of being opened anew each time. This saves the cost of establishing the connection and lets calls share state that the connection itself holds — SQL temporary tables and session variables, an open TCP socket and its read buffer, the current position inside a DBF file, and so on.
+When several calls hit the same endpoint, the open connection can be [reused](/New_connection_NEWCONNECTION.md) across them instead of being opened anew each time. This saves the cost of establishing the connection and lets calls share state that the connection itself holds — SQL temporary tables and session variables, an open TCP socket and its read buffer, the current position inside a DBF file, and so on.
 
 ## Language[​](#language "Direct link to Language")
 
-To declare an action that accesses an external system, use the [`EXTERNAL` operator](/EXTERNAL_operator/.md). To reuse an external connection across several calls within one block, use the [`NEWCONNECTION` operator](/NEWCONNECTION_operator/.md).
+To declare an action that accesses an external system, use the [`EXTERNAL` operator](/EXTERNAL_operator.md). To reuse an external connection across several calls within one block, use the [`NEWCONNECTION` operator](/NEWCONNECTION_operator.md).
 
 ## Examples[​](#examples "Direct link to Examples")
 

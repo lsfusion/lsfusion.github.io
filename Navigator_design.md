@@ -2,7 +2,7 @@
 
 *Navigator design* determines how the navigator is displayed to the user on the screen of his device (we will call the screen space on which the navigator is displayed the *desktop*).
 
-The navigator design consists of multiple *windows*, desktop components, each of which displays certain [navigator](/Navigator/.md) elements.
+The navigator design consists of multiple *windows*, desktop components, each of which displays certain [navigator](/Navigator.md) elements.
 
 Each window must have a *caption* which will be used when displaying the window in the user interface.
 
@@ -48,7 +48,7 @@ By default, the desktop has the following layout (the left coordinate, upper coo
 
 ### Language[​](#language "Direct link to Language")
 
-To manage windows, use the [`WINDOW` statement](/WINDOW_statement/.md).
+To manage windows, use the [`WINDOW` statement](/WINDOW_statement.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

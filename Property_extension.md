@@ -1,6 +1,6 @@
 # Property extension
 
-The [properties](/Properties/.md) [extension](/Extensions/.md) technique allows an *abstract property* to be declared in one [module](/Modules/.md) and its implementations to be defined in other modules. This is deferred construction of a property computed as the corresponding [selection operator](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md): the base module defines the form of the future operator and the requirements for its implementations, while other modules gradually add individual implementations.
+The [properties](/Properties.md) [extension](/Extensions.md) technique allows an *abstract property* to be declared in one [module](/Modules.md) and its implementations to be defined in other modules. This is deferred construction of a property computed as the corresponding [selection operator](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md): the base module defines the form of the future operator and the requirements for its implementations, while other modules gradually add individual implementations.
 
 An abstract property defines the extension contract: the result class determines the returned value, and the parameter classes determine the allowed implementations.
 
@@ -44,15 +44,15 @@ An implementation must not narrow the signature of the abstract property. In par
 
 ### Polymorphic form[​](#poly "Direct link to Polymorphic form")
 
-As in a [selection operator](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md#poly), an abstract property also has a *polymorphic form*: one property defines both the selection condition and the corresponding result. In this form, the condition can be either matching the signature of that property or the property itself.
+As in a [selection operator](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md#poly), an abstract property also has a *polymorphic form*: one property defines both the selection condition and the corresponding result. In this form, the condition can be either matching the signature of that property or the property itself.
 
 ### Mutual exclusion of conditions[​](#exclusive "Direct link to Mutual exclusion of conditions")
 
-As in a [selection operator](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md#exclusive), you can specify that all conditions of an abstract property must be *mutually exclusive*. In this mode, for each set of arguments there must be at most one applicable implementation.
+As in a [selection operator](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md#exclusive), you can specify that all conditions of an abstract property must be *mutually exclusive*. In this mode, for each set of arguments there must be at most one applicable implementation.
 
 ### Language[​](#language "Direct link to Language")
 
-This technique uses two language constructs: the [`ABSTRACT` operator](/ABSTRACT_operator/.md) for declaring an abstract property and the [`+=` statement](/plus_equals_statement/.md) for adding implementations.
+This technique uses two language constructs: the [`ABSTRACT` operator](/ABSTRACT_operator.md) for declaring an abstract property and the [`+=` statement](/plus_equals_statement.md) for adding implementations.
 
 ### Examples[​](#examples "Direct link to Examples")
 

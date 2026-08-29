@@ -1,6 +1,6 @@
 # CLASS statement
 
-`CLASS` statement - creating a new [custom class](/User_classes/.md).
+`CLASS` statement - creating a new [custom class](/User_classes.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -25,9 +25,9 @@ NOIMAGE
 
 ### Description[​](#description "Direct link to Description")
 
-The `CLASS` statement declares a new class and adds it to the current [module](/Modules/.md).
+The `CLASS` statement declares a new class and adds it to the current [module](/Modules.md).
 
-The statement has two forms: `CLASS ABSTRACT` for declaring an [abstract class](/User_classes/.md#abstract) and just `CLASS` for declaring a concrete class. In the latter case, during declaration, you can declare the [static objects](/Static_objects/.md) of this class and specify their names and captions in a curly brackets block.
+The statement has two forms: `CLASS ABSTRACT` for declaring an [abstract class](/User_classes.md#abstract) and just `CLASS` for declaring a concrete class. In the latter case, during declaration, you can declare the [static objects](/Static_objects.md) of this class and specify their names and captions in a curly brackets block.
 
 The `NATIVE` keyword is used in some system modules. It is used to declare individual system classes that are created before the modules are initialized.
 
@@ -35,11 +35,11 @@ The `NATIVE` keyword is used in some system modules. It is used to declare indiv
 
 * `name`
 
-  Class name. [Simple ID](/IDs/.md#id). The name must be unique within the current [namespace](/Naming/.md#namespace).
+  Class name. [Simple ID](/IDs.md#id). The name must be unique within the current [namespace](/Naming.md#namespace).
 
 * `caption`
 
-  Class caption. [String literal](/Literals/.md#strliteral). If the caption is not defined, the name of the class will be its caption.
+  Class caption. [String literal](/Literals.md#strliteral). If the caption is not defined, the name of the class will be its caption.
 
 * `imageSetting`
 
@@ -47,7 +47,7 @@ The `NATIVE` keyword is used in some system modules. It is used to declare indiv
 
   * `IMAGE`
 
-    [Manual icon specification](/Icons/.md#manual), optionally followed by `imageLiteral` — a [string literal](/Literals/.md#strliteral) whose value defines the icon. If `imageLiteral` is omitted, the [automatic assignment](/Icons/.md#auto) mode is enabled.
+    [Manual icon specification](/Icons.md#manual), optionally followed by `imageLiteral` — a [string literal](/Literals.md#strliteral) whose value defines the icon. If `imageLiteral` is omitted, the [automatic assignment](/Icons.md#auto) mode is enabled.
 
   * `NOIMAGE`
 
@@ -55,7 +55,7 @@ The `NATIVE` keyword is used in some system modules. It is used to declare indiv
 
 * `objectName1, ..., objectNameM`
 
-  The names of static objects of this class. Each name is defined by a simple ID. The `name[StaticObject]` property returns this name qualified with the namespace and class — the object's [canonical name](/Static_objects/.md).
+  The names of static objects of this class. Each name is defined by a simple ID. The `name[StaticObject]` property returns this name qualified with the namespace and class — the object's [canonical name](/Static_objects.md).
 
 * `objectCaption1, ..., objectCaptionM`
 
@@ -63,7 +63,7 @@ The `NATIVE` keyword is used in some system modules. It is used to declare indiv
 
 * `parent1, ..., parentN`
 
-  List of parent class names. Each name is defined by a [composite ID](/IDs/.md#cid). If the list of parent classes is not specified, the class is inherited from the `System.Object` class.
+  List of parent class names. Each name is defined by a [composite ID](/IDs.md#cid). If the list of parent classes is not specified, the class is inherited from the `System.Object` class.
 
 ### Examples[​](#examples "Direct link to Examples")
 

@@ -1,6 +1,6 @@
 # String literal
 
-*A string literal* denotes a value of a string [built-in class](/Built-in_classes/.md) (`STRING[N]` or `TEXT`) — in the simple case, a [constant](/Constant/.md).
+*A string literal* denotes a value of a string [built-in class](/Built-in_classes.md) (`STRING[N]` or `TEXT`) — in the simple case, a [constant](/Constant.md).
 
 ## Syntax[​](#syntax "Direct link to Syntax")
 
@@ -53,9 +53,9 @@ query = 'SELECT *
 
 ## Localization[​](#localization "Direct link to Localization")
 
-Inside a string literal, string-data identifiers in curly braces (for example, `'{form.title}'`) are replaced, when the value is sent to the client, with the translation corresponding to the [current locale](/Internationalization/.md#current). If there is no translation for the identifier in any ResourceBundle, the identifier itself (without the curly braces) is substituted in its place.
+Inside a string literal, string-data identifiers in curly braces (for example, `'{form.title}'`) are replaced, when the value is sent to the client, with the translation corresponding to the [current locale](/Internationalization.md#current). If there is no translation for the identifier in any ResourceBundle, the identifier itself (without the curly braces) is substituted in its place.
 
-If the server is started with the `logics.lsfStrLiteralsLanguage` [parameter](/Launch_parameters/.md) (reverse translation of literals), which specifies the language of the string literals in the code, a plain (non-localizable) literal can automatically become localizable. If its value (excluding leading and trailing spaces) matches the value of a ResourceBundle entry in that language, at code parse time the literal is replaced with that entry's identifier and then behaves like the localizable literal `'{id}'`. Leading and trailing spaces are preserved, and an empty literal or one consisting only of spaces is not replaced.
+If the server is started with the `logics.lsfStrLiteralsLanguage` [parameter](/Launch_parameters.md) (reverse translation of literals), which specifies the language of the string literals in the code, a plain (non-localizable) literal can automatically become localizable. If its value (excluding leading and trailing spaces) matches the value of a ResourceBundle entry in that language, at code parse time the literal is replaced with that entry's identifier and then behaves like the localizable literal `'{id}'`. Leading and trailing spaces are preserved, and an empty literal or one consisting only of spaces is not replaced.
 
 Curly braces that should be just part of the string must be escaped: `\{` and `\}`.
 
@@ -69,7 +69,7 @@ json = '\{"status": {order.status}\}';       // \{ \} are part of the string, {o
 
 ## Interpolation[​](#interpolation "Direct link to Interpolation")
 
-Interpolation lets you insert the values of expressions directly into a string literal instead of assembling the string by hand with `+`. A `${expr}` block substitutes the value of an [expression](/Expression/.md), converting it to a string: the literal becomes a concatenation (`'a${x}b'` is equivalent to `'a' + STRING(x) + 'b'`). A literal may contain several such blocks, and the text between them follows the usual literal rules (escaping, localization).
+Interpolation lets you insert the values of expressions directly into a string literal instead of assembling the string by hand with `+`. A `${expr}` block substitutes the value of an [expression](/Expression.md), converting it to a string: the literal becomes a concatenation (`'a${x}b'` is equivalent to `'a' + STRING(x) + 'b'`). A literal may contain several such blocks, and the text between them follows the usual literal rules (escaping, localization).
 
 Since the result is a concatenation, a literal with interpolation is an expression, not a constant, and is allowed only where an expression is allowed. The expression can use all parameters of the surrounding construction.
 
@@ -89,7 +89,7 @@ Inline sequences insert external content into the string. Like interpolation, th
 
 * `$I{resourceName}` — includes the content of a **text** file `resourceName` in the string literal. The file is read at code parse time, and its content becomes part of the literal. Interpolation blocks `${...}` in it are processed as ordinary interpolation with the parameters of the current construction. Because of this, the literal sequence `${` cannot be used in the file (for example, in JavaScript or CSS). All other characters, such as quotes, backslashes, and curly braces, do not need to be escaped in the file — the platform does it automatically. Can be used to keep large parameterizable templates (HTML emails, pages, fragments, etc.) in separate files.
 * `$R{resourceName}` — embeds the content of the file `resourceName` into the string not at code parse time, but at the moment the **value is sent to the client**. The file may be **arbitrary**, including binary (an image, a PDF), and its content is not processed as code. Can be used inside HTML.
-* `$M{imageName}` — embeds an image by the name `imageName`. Unlike `$R{}` (a file by path), this name is interpreted the same way as the names of [property and action icons](/Icons/.md#manual).
+* `$M{imageName}` — embeds an image by the name `imageName`. Unlike `$R{}` (a file by path), this name is interpreted the same way as the names of [property and action icons](/Icons.md#manual).
 
 ### Examples[​](#examples-4 "Direct link to Examples")
 
@@ -132,4 +132,4 @@ quoted = r!'don't stop'!;                    // a quote inside — the delimiter
 
 ## Value class[​](#value-class "Direct link to Value class")
 
-The class of a literal-constant is `STRING[N]`, where `N` is the number of characters. If the literal uses localization, its class is `TEXT` (see [built-in classes](/Built-in_classes/.md)). For example, `'abc'` has class `STRING[3]`, and `'{orders.title}'` has class `TEXT`. A literal with interpolation or an inline sequence (`${...}`, `$I{...}`, `$R{...}`, `$M{...}`) is an expression, so the class of its value is a string class (`STRING[N]` or `TEXT`) derived from its parts (the constant fragments and the inserted values).
+The class of a literal-constant is `STRING[N]`, where `N` is the number of characters. If the literal uses localization, its class is `TEXT` (see [built-in classes](/Built-in_classes.md)). For example, `'abc'` has class `STRING[3]`, and `'{orders.title}'` has class `TEXT`. A literal with interpolation or an inline sequence (`${...}`, `$I{...}`, `$R{...}`, `$M{...}`) is an expression, so the class of its value is a string class (`STRING[N]` or `TEXT`) derived from its parts (the constant fragments and the inserted values).

@@ -1,6 +1,6 @@
 # FOR operator
 
-The `FOR` operator creates an [action](/Actions/.md) that implements [loop](/Loop_FOR/.md).
+The `FOR` operator creates an [action](/Actions.md) that implements [loop](/Loop_FOR.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -21,7 +21,7 @@ action
 
 ### Description[​](#description "Direct link to Description")
 
-The `FOR` operator creates an action that implements a loop. This operator can add its local parameters when defining a condition. These parameters correspond to the objects being iterated and are not parameters of the created action. You can also use a `NEW` block to specify the [class](/Classes/.md) of the object that will be created for each object collection that meets the condition. The created object is bound to the local parameter named by `alias` (or `added` by default), which can be used in the main action.
+The `FOR` operator creates an action that implements a loop. This operator can add its local parameters when defining a condition. These parameters correspond to the objects being iterated and are not parameters of the created action. You can also use a `NEW` block to specify the [class](/Classes.md) of the object that will be created for each object collection that meets the condition. The created object is bound to the local parameter named by `alias` (or `added` by default), which can be used in the main action.
 
 The object iteration order in the `FOR` operator can be specified with an `ORDER` block. If a new parameter is declared in the expressions that define the order (a parameter not previously encountered in the `FOR` clause or in the upper context), the condition that all these expressions are non-`NULL` is automatically added.
 
@@ -33,7 +33,7 @@ In the case when the operator contains a `NEW` block, and no condition is specif
 
 * `expression`
 
-  [Expression](/Expression/.md) defining a condition. In this expression, you can both access already declared parameters and declare new local parameters.
+  [Expression](/Expression.md) defining a condition. In this expression, you can both access already declared parameters and declare new local parameters.
 
 * `DESC`
 
@@ -53,15 +53,15 @@ In the case when the operator contains a `NEW` block, and no condition is specif
 
 * `alias`
 
-  The name of the local parameter that will correspond to the object being created. [Simple ID](/IDs/.md#id). If omitted, the parameter is named `added`.
+  The name of the local parameter that will correspond to the object being created. [Simple ID](/IDs.md#id). If omitted, the parameter is named `added`.
 
 * `className`
 
-  The name of the class of the object to create. Defined by a [class ID](/IDs/.md#classid).
+  The name of the class of the object to create. Defined by a [class ID](/IDs.md#classid).
 
 * `action`
 
-  [Context-dependent action operator](/Action_operators/.md#contextdependent) describing the main action.
+  [Context-dependent action operator](/Action_operators.md#contextdependent) describing the main action.
 
 * `alternativeAction`
 

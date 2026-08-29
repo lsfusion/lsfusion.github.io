@@ -1,14 +1,14 @@
 # Print view
 
-Print view of the [form](/Forms/.md) consists of a set of templates (*reports*). When data is substituted in these templates, a *document* is formed in graphic (with pixel positioning) or pseudographic (with cell positioning) format. This document is displayed to the user using a special graphic component, inside which the user can navigate through pages, zoom in/out within pages and print the contents of the component or export it to various formats (for example, PDF or Excel). If necessary, it is possible to skip the display of the component to the user and send the document for printing or save it into a selected file in the specified format.
+Print view of the [form](/Forms.md) consists of a set of templates (*reports*). When data is substituted in these templates, a *document* is formed in graphic (with pixel positioning) or pseudographic (with cell positioning) format. This document is displayed to the user using a special graphic component, inside which the user can navigate through pages, zoom in/out within pages and print the contents of the component or export it to various formats (for example, PDF or Excel). If necessary, it is possible to skip the display of the component to the user and send the document for printing or save it into a selected file in the specified format.
 
-For each report, a set of the form [object groups](/Form_structure/.md#objects) that it will display is determined.
+For each report, a set of the form [object groups](/Form_structure.md#objects) that it will display is determined.
 
 ### Report hierarchy[​](#report-hierarchy "Direct link to Report hierarchy")
 
 Similar to an object group, each report has a *parent* report, so all reports form a hierarchy. The report hierarchy should:
 
-* include [the hierarchy of object groups](/Static_view/.md), i.e. if a group of objects of one report is a child of a group of objects of the other report, then the first report must match the second one or be its child as well
+* include [the hierarchy of object groups](/Static_view.md), i.e. if a group of objects of one report is a child of a group of objects of the other report, then the first report must match the second one or be its child as well
 * within one report, each group of objects must have exactly one child.
 
 ### Building report hierarchy[​](#buildhierarchy "Direct link to Building report hierarchy")
@@ -21,7 +21,7 @@ Using this option comes down to whether to display data for a parent object grou
 
 ### Report hierarchy example[​](#report-hierarchy-example "Direct link to Report hierarchy example")
 
-The form is similar to the [example of building an object group hierarchy](/Static_view/.md#hierarchysample):
+The form is similar to the [example of building an object group hierarchy](/Static_view.md#hierarchysample):
 
 ```
 
@@ -38,11 +38,11 @@ The report hierarchy for this form is built as follows:
 
 ### Language[​](#language "Direct link to Language")
 
-All of the above options, as well as defining the form structure, can be done using the [`FORM` statement](/FORM_statement/.md).
+All of the above options, as well as defining the form structure, can be done using the [`FORM` statement](/FORM_statement.md).
 
 ### Open form[​](#open-form "Direct link to Open form")
 
-To display the form in print view, the corresponding [open form](/Open_form/.md) in the [print view](/In_a_print_view_PRINT/.md) operator is used.
+To display the form in print view, the corresponding [open form](/Open_form.md) in the [print view](/In_a_print_view_PRINT.md) operator is used.
 
 ### Examples[​](#examples "Direct link to Examples")
 

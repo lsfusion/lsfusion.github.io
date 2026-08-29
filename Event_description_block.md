@@ -1,6 +1,6 @@
 # Event description block
 
-*Event description block* describes an [event](/Events/.md) in different statements.
+*Event description block* describes an [event](/Events.md) in different statements.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -20,7 +20,7 @@
 
 * `formName1, ..., formNameN`
 
-  A list of names of the [forms](/Forms/.md) in which the event will occur. Each element of the list is a [composite ID](/IDs/.md#cid). If the list is not defined, the event will occur in all forms.
+  A list of names of the [forms](/Forms.md) in which the event will occur. Each element of the list is a [composite ID](/IDs.md#cid). If the list is not defined, the event will occur in all forms.
 
 * `GOAFTER` | `AFTER`
 
@@ -28,4 +28,4 @@
 
 * `propertyId1, ..., propertyIdM`
 
-  List of [IDs](/IDs/.md#propertyid) of properties or actions. This list means that all event handlers that change one of the specified properties, as well as the specified actions, must be executed earlier than the handlers that will be defined in the statement for which this event description block is being defined.
+  List of [IDs](/IDs.md#propertyid) of properties or actions. This list means that all event handlers that change one of the specified properties, as well as the specified actions, must be executed earlier than the handlers that will be defined in the statement for which this event description block is being defined.

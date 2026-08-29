@@ -17,9 +17,9 @@ respond () {
 }
 ```
 
-The [`EXPORT` operator](/EXPORT_operator/.md) with the `JSON` format takes a list of named columns and writes the result to the file given after `TO`. The expressions in `FROM` carry no row parameters, so the platform produces exactly one JSON object — `{"code":"OK","message":"привет"}`. Key names come from the left side of `=`; without one, the column is named `exprN`.
+The [`EXPORT` operator](/EXPORT_operator.md) with the `JSON` format takes a list of named columns and writes the result to the file given after `TO`. The expressions in `FROM` carry no row parameters, so the platform produces exactly one JSON object — `{"code":"OK","message":"привет"}`. Key names come from the left side of `=`; without one, the column is named `exprN`.
 
-Reading the result: `fileToString(f(), 'UTF-8')` (from the [`Utils`](/System_Utils/.md) module) fills the system local property `resultString[]`, which `MESSAGE` displays.
+Reading the result: `fileToString(f(), 'UTF-8')` (from the [`Utils`](/System_Utils.md) module) fills the system local property `resultString[]`, which `MESSAGE` displays.
 
 ## Example 2[​](#example-2 "Direct link to Example 2")
 
@@ -109,7 +109,7 @@ exportCatalog () {
 }
 ```
 
-The `books = (JSON FROM …)` construct embeds a [`JSON` operator](/JSON_operator/.md) expression as the value of the `books` column. The outer `EXPORT JSON FROM` builds one object (`title` has no parameters), and the inner `JSON FROM` iterates books and supplies the array:
+The `books = (JSON FROM …)` construct embeds a [`JSON` operator](/JSON_operator.md) expression as the value of the `books` column. The outer `EXPORT JSON FROM` builds one object (`title` has no parameters), and the inner `JSON FROM` iterates books and supplies the array:
 
 ```
 {"title":"Books catalog",
@@ -186,7 +186,7 @@ Note: inside the objects, `lines` and `name` do not appear in declaration order.
 
 ### Task[​](#task-5 "Direct link to Task")
 
-The same JSON as in [Example 5](#example-5), but through a [form](/Forms/.md) — export a specific form rather than a composition of `JSON FROM` expressions. Convenient when the export and the interactive view should share one and the same field structure.
+The same JSON as in [Example 5](#example-5), but through a [form](/Forms.md) — export a specific form rather than a composition of `JSON FROM` expressions. Convenient when the export and the interactive view should share one and the same field structure.
 
 ### Solution[​](#solution-5 "Direct link to Solution")
 
@@ -215,10 +215,10 @@ exportOrdersForm () {
 }
 ```
 
-`EXPORT formName JSON` builds JSON by the [form hierarchy](/In_a_structured_view_EXPORT_IMPORT/.md): the root is an object whose keys are the names of property groups, object groups, or parameterless scalar properties on the form, and whose values are the corresponding nested objects, arrays of rows, or the scalars themselves. Here:
+`EXPORT formName JSON` builds JSON by the [form hierarchy](/In_a_structured_view_EXPORT_IMPORT.md): the root is an object whose keys are the names of property groups, object groups, or parameterless scalar properties on the form, and whose values are the corresponding nested objects, arrays of rows, or the scalars themselves. Here:
 
 * `title = 'Orders'` is a parameterless scalar property — it lands as a root-level scalar;
-* `GROUP store;` declares a [property group](/Groups_of_properties_and_actions/.md); `PROPERTIES IN store id = 'S-7', name = 'Main warehouse'` puts two scalars inside it — on export this becomes a **nested object** `"store":{"id":"S-7","name":"Main warehouse"}` (no array appears because the group contains no object groups);
+* `GROUP store;` declares a [property group](/Groups_of_properties_and_actions.md); `PROPERTIES IN store id = 'S-7', name = 'Main warehouse'` puts two scalars inside it — on export this becomes a **nested object** `"store":{"id":"S-7","name":"Main warehouse"}` (no array appears because the group contains no object groups);
 * the group `OBJECTS orders = Order` becomes the **array** `orders`; the keys inside an element are `number` and `customer` (the latter renamed from `customerName` via `customer = customerName`);
 * the nested group `OBJECTS lines = OrderLine` with `FILTERS order(lines) = orders` lands as a `lines` array inside every `orders` element.
 
@@ -235,4 +235,4 @@ The resulting JSON has the same structure as in Example 5 — same keys, same va
      {"item":"SKU-300","quantity":5,"price":12}]}]}
 ```
 
-Key names in the form-based variant come from the names of object groups and form columns; a column can be renamed by the same `EXTID` mechanism as in the reverse [form-based import](/How-to_JSON_parsing/.md#example-5).
+Key names in the form-based variant come from the names of object groups and form columns; a column can be renamed by the same `EXTID` mechanism as in the reverse [form-based import](/How-to_JSON_parsing.md#example-5).

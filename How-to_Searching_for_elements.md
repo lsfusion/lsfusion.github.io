@@ -2,5 +2,5 @@
 
 ### How to read these sections[​](#how-to-read-these-sections "Direct link to How to read these sections")
 
-1. [Namespaces](/How-to_Namespaces/.md) . Principles of working with different namespaces.
-2. [Explicit typing](/How-to_Explicit_typing/.md). The principle of working with parameter classes.
+1. [Namespaces](/How-to_Namespaces.md) . Principles of working with different namespaces.
+2. [Explicit typing](/How-to_Explicit_typing.md). The principle of working with parameter classes.

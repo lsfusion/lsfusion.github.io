@@ -1,6 +1,6 @@
 # IDs
 
-Identifiers or *IDs* in the **lsFusion** language are used for naming or referring to [system elements](/Element_identification/.md), parameters of [properties](/Properties/.md) and [actions](/Actions/.md), [static objects](/Static_objects/.md), properties and actions on a form, and other entities.
+Identifiers or *IDs* in the **lsFusion** language are used for naming or referring to [system elements](/Element_identification.md), parameters of [properties](/Properties.md) and [actions](/Actions.md), [static objects](/Static_objects.md), properties and actions on a form, and other entities.
 
 ### Simple ID[​](#id "Direct link to Simple ID")
 
@@ -22,7 +22,7 @@ bankAccount
 [namespace.]name
 ```
 
-*Composite ID* is used to reference a system element by name, with the option of specifying а [namespace](/Naming/.md#namespace). It can consist of either a single simple ID or two simple IDs separated by a dot. If you need to specify a namespace, you first specify the namespace name, then a dot, followed by the name of the system element.
+*Composite ID* is used to reference a system element by name, with the option of specifying а [namespace](/Naming.md#namespace). It can consist of either a single simple ID or two simple IDs separated by a dot. If you need to specify a namespace, you first specify the namespace name, then a dot, followed by the name of the system element.
 
 #### Examples[​](#examples-1 "Direct link to Examples")
 
@@ -34,7 +34,7 @@ name
 
 ### Class ID[​](#classid "Direct link to Class ID")
 
-*Class ID* is used to reference either a [user](/User_classes/.md) or [built-in](/Built-in_classes/.md) class. For a user class, the identifier is represented as a composite ID, while for a built-in class, special [keywords](/Built-in_classes/.md) are used to specify the built-in class.
+*Class ID* is used to reference either a [user](/User_classes.md) or [built-in](/Built-in_classes.md) class. For a user class, the identifier is represented as a composite ID, while for a built-in class, special [keywords](/Built-in_classes.md) are used to specify the built-in class.
 
 #### Examples[​](#examples-2 "Direct link to Examples")
 
@@ -51,7 +51,7 @@ STRING
 [namespace.]className.objectName
 ```
 
-*Static object ID* is used to reference a [static object](/Static_objects/.md) of a class. It consists of a user class ID and a simple ID (name of the static object) separated by a dot.
+*Static object ID* is used to reference a [static object](/Static_objects.md) of a class. It consists of a user class ID and a simple ID (name of the static object) separated by a dot.
 
 #### Examples[​](#examples-3 "Direct link to Examples")
 
@@ -80,7 +80,7 @@ quantity[Document, ?, Store]
 [namespace.]formName.formPropertyName
 ```
 
-*Property on a form ID* or *action on a form ID* is used to reference a property or action added to a form. It consists of a composite ID that specifies the form and the [name of the property (action) on a form](/Properties_and_actions_block/.md#name), separated by a dot.
+*Property on a form ID* or *action on a form ID* is used to reference a property or action added to a form. It consists of a composite ID that specifies the form and the [name of the property (action) on a form](/Properties_and_actions_block.md#name), separated by a dot.
 
 #### Examples[​](#examples-5 "Direct link to Examples")
 
@@ -92,7 +92,7 @@ Consignment.dashboard.date
 
 ### Group object ID[​](#groupobjectid "Direct link to Group object ID")
 
-*Object group ID* is used to reference an [object group](/Form_structure/.md) (or object) on a form. It consists of a composite ID that specifies the form and the name of the object group (or the name of the object), separated by a dot.
+*Object group ID* is used to reference an [object group](/Form_structure.md) (or object) on a form. It consists of a composite ID that specifies the form and the name of the object group (or the name of the object), separated by a dot.
 
 #### Examples[​](#examples-6 "Direct link to Examples")
 
@@ -107,7 +107,7 @@ Item.form.object
 [classID] name
 ```
 
-*Typed parameter* is used to reference a [property (or action) parameter](/Properties/.md) (action). It consists of an optional parameter class ID and a simple ID representing the parameter's name. If the class ID is specified, it is used to resolve same-named [properties and actions](#propertyid) (by their signatures) and determines the parameter's class in the signature of the element being declared. By itself it is not a runtime condition: in an [expression](/Expression/.md) the set of parameter values for which the value is computed is determined by the properties used. For example, if a property declared on a parent class is read with a parameter declared with a child class, the value is computed for all objects of the parent class (and, say, a `GROUP SUM` over it aggregates over all of them). To restrict the computation to objects of the class, add an explicit condition with the [`IS` operator](/IS_AS_operators/.md).
+*Typed parameter* is used to reference a [property (or action) parameter](/Properties.md) (action). It consists of an optional parameter class ID and a simple ID representing the parameter's name. If the class ID is specified, it is used to resolve same-named [properties and actions](#propertyid) (by their signatures) and determines the parameter's class in the signature of the element being declared. By itself it is not a runtime condition: in an [expression](/Expression.md) the set of parameter values for which the value is computed is determined by the properties used. For example, if a property declared on a parent class is read with a parameter declared with a child class, the value is computed for all objects of the parent class (and, say, a `GROUP SUM` over it aggregates over all of them). To restrict the computation to objects of the class, add an explicit condition with the [`IS` operator](/IS_AS_operators.md).
 
 When a syntax construction uses typed parameters, they are interpreted in that construction's parameter context unless the article for that construction says otherwise. Within one such context, identical names denote the same parameter. If the parameter class has already been determined in that context, it is not specified again. Whether a specific construction starts a new local parameter context, allows introducing new parameters, or can infer them implicitly is described in the article for that construction.
 

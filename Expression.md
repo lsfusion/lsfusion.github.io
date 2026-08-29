@@ -1,28 +1,28 @@
 # Expression
 
-An *expression* is a combination of [property operators](/Property_operators/.md) and [parameters](/Properties/.md). When an expression is evaluated sequentially in [priority](/Operator_priority/.md) order, all the operators are executed.
+An *expression* is a combination of [property operators](/Property_operators.md) and [parameters](/Properties.md). When an expression is evaluated sequentially in [priority](/Operator_priority.md) order, all the operators are executed.
 
-The result of that execution will be either a [property](/Properties/.md) or a parameter (in the case of single-parameter expression). Their value shall be called the *value* of the expression.
+The result of that execution will be either a [property](/Properties.md) or a parameter (in the case of single-parameter expression). Their value shall be called the *value* of the expression.
 
 An expression can be described by the following set of recursive rules:
 
 | Rule                                                          | Description                                                                        |
 | ------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `expression` := `parameter` \| `constant` \| `prefixOperator` | A single parameter, [constant](/Constant/.md), or non-arithmetic prefix operator   |
+| `expression` := `parameter` \| `constant` \| `prefixOperator` | A single parameter, [constant](/Constant.md), or non-arithmetic prefix operator    |
 | `expression` := `prefixArithmOp expression`                   | A unary arithmetic prefix operator, with the expression passed to it as an operand |
 | `expression` := `expression postfixOp`                        | A unary postfix operator, with the expression passed to it as an operand           |
 | `expression` := `expression binaryOp expression`              | A binary operator with the expressions passed to it as operands                    |
 | `expression` := `( expression )`                              | Expression in parentheses                                                          |
 
-An expression cannot include [context-independent](/Property_operators/.md#contextindependent) property operators.
+An expression cannot include [context-independent](/Property_operators.md#contextindependent) property operators.
 
 ### Using actions inside expressions[​](#using-actions-inside-expressions "Direct link to Using actions inside expressions")
 
-Inside an action body, an expression can also use a call to an [action](/Actions/.md) that returns a result, treating it as a property. In this case the parentheses first list the values of the action's input parameters, and then the new local parameters that become the names of the result's parameters for further use in the expression.
+Inside an action body, an expression can also use a call to an [action](/Actions.md) that returns a result, treating it as a property. In this case the parentheses first list the values of the action's input parameters, and then the new local parameters that become the names of the result's parameters for further use in the expression.
 
 Such a call is equivalent to the sequential execution of:
 
-* creation of a [local property](/Data_properties_DATA/.md#local) with the signature of the action's result;
+* creation of a [local property](/Data_properties_DATA.md#local) with the signature of the action's result;
 * call of the action with the result written into that local property;
 * substitution of that local property into the expression.
 

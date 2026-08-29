@@ -1,6 +1,6 @@
 # Authentication
 
-`Authentication` is a [system module](/System_modules/.md) that declares the users of the application and everything around signing them in: the user and contact [classes](/User_classes/.md), passwords and authentication tokens, the current-user properties, the locale each user works in, the design environment and color theme, the external authentication providers (LDAP, OAuth2), the HTTP API endpoints for registration and password recovery, the session-management actions, and object locks. It is pulled in via `REQUIRE Authentication` (it itself does `REQUIRE Time, Utils`).
+`Authentication` is a [system module](/System_modules.md) that declares the users of the application and everything around signing them in: the user and contact [classes](/User_classes.md), passwords and authentication tokens, the current-user properties, the locale each user works in, the design environment and color theme, the external authentication providers (LDAP, OAuth2), the HTTP API endpoints for registration and password recovery, the session-management actions, and object locks. It is pulled in via `REQUIRE Authentication` (it itself does `REQUIRE Time, Utils`).
 
 ### Design environment[​](#design-environment "Direct link to Design environment")
 
@@ -175,7 +175,7 @@ A lock records which user holds an object, so two users do not edit it at once. 
 
 ### Date-time picker ranges[​](#date-time-picker-ranges "Direct link to Date-time picker ranges")
 
-Each user selects which predefined ranges appear in the single-date and date-interval pickers. `isDateTimeRangeSelected[DateTimePickerRanges, CustomUser]` and `isIntervalRangeSelected[DateTimeIntervalPickerRanges, CustomUser]` are the per-range selection flags; no more than seven of each may be selected. `setDefaultRanges[CustomUser]` turns on the standard starting set, and runs automatically when a `CustomUser` is created. The picker classes themselves come from [`Time`](/System_Time/.md).
+Each user selects which predefined ranges appear in the single-date and date-interval pickers. `isDateTimeRangeSelected[DateTimePickerRanges, CustomUser]` and `isIntervalRangeSelected[DateTimeIntervalPickerRanges, CustomUser]` are the per-range selection flags; no more than seven of each may be selected. `setDefaultRanges[CustomUser]` turns on the standard starting set, and runs automatically when a `CustomUser` is created. The picker classes themselves come from [`Time`](/System_Time.md).
 
 ### Forms and navigator[​](#forms-and-navigator "Direct link to Forms and navigator")
 
@@ -192,15 +192,15 @@ The navigator gets a `security` folder (under `System`, holding `customUsers` an
 
 ### Language[​](#language "Direct link to Language")
 
-* [Module header](/Module_header/.md) — the `MODULE` / `REQUIRE` syntax; `Authentication` is pulled in via `REQUIRE Authentication`.
-* [`DATA` operator](/DATA_operator/.md) — declares the stored properties of the users, contacts, and settings.
+* [Module header](/Module_header.md) — the `MODULE` / `REQUIRE` syntax; `Authentication` is pulled in via `REQUIRE Authentication`.
+* [`DATA` operator](/DATA_operator.md) — declares the stored properties of the users, contacts, and settings.
 
 ### See also[​](#see-also "Direct link to See also")
 
-* [`System modules`](/System_modules/.md) — the general inventory of platform modules.
-* [`User classes`](/User_classes/.md) — what abstract and static classes are, as used by `User`, `Contact`, and `ColorTheme`.
-* [`Security policy`](/Security_policy/.md) — how access rights are assigned to the users declared here.
-* [`Security`](/System_Security/.md) — the separate module for roles and access policies.
-* [`Service`](/System_Service/.md) — administration and service actions.
-* [`SystemEvents`](/System_SystemEvents/.md) — login and connection events.
-* [`Time`](/System_Time/.md) — the picker-range classes and the date/time helpers.
+* [`System modules`](/System_modules.md) — the general inventory of platform modules.
+* [`User classes`](/User_classes.md) — what abstract and static classes are, as used by `User`, `Contact`, and `ColorTheme`.
+* [`Security policy`](/Security_policy.md) — how access rights are assigned to the users declared here.
+* [`Security`](/System_Security.md) — the separate module for roles and access policies.
+* [`Service`](/System_Service.md) — administration and service actions.
+* [`SystemEvents`](/System_SystemEvents.md) — login and connection events.
+* [`Time`](/System_Time.md) — the picker-range classes and the date/time helpers.

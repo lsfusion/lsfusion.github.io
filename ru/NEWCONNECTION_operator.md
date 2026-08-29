@@ -1,6 +1,6 @@
 # Оператор NEWCONNECTION
 
-Оператор `NEWCONNECTION` создаёт [действие](/ru/Actions/.md), которое выполняет другое действие с сохранением [внешних подключений](/ru/New_connection_NEWCONNECTION/.md) (`SQL`, `TCP`, `DBF`) между вызовами [`EXTERNAL`](/ru/EXTERNAL_operator/.md).
+Оператор `NEWCONNECTION` создаёт [действие](/ru/Actions.md), которое выполняет другое действие с сохранением [внешних подключений](/ru/New_connection_NEWCONNECTION.md) (`SQL`, `TCP`, `DBF`) между вызовами [`EXTERNAL`](/ru/EXTERNAL_operator.md).
 
 ### Синтаксис[​](#синтаксис "Прямая ссылка на этот заголовок")
 
@@ -16,7 +16,7 @@ NEWCONNECTION action
 
 * `action`
 
-  [Контекстно-зависимый оператор-действие](/ru/Action_operators/.md#contextdependent), описывающий действие, которое будет выполнено.
+  [Контекстно-зависимый оператор-действие](/ru/Action_operators.md#contextdependent), описывающий действие, которое будет выполнено.
 
 ### Примеры[​](#примеры "Прямая ссылка на этот заголовок")
 

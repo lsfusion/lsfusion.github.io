@@ -1,6 +1,6 @@
 # META statement
 
-The `META` statement creates a new [metacode](/Metaprogramming/.md#metacode).
+The `META` statement creates a new [metacode](/Metaprogramming.md#metacode).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -14,7 +14,7 @@ END
 
 ### Description[​](#description "Direct link to Description")
 
-The `META` statement declares a new metacode and adds it to the current [module](/Modules/.md).
+The `META` statement declares a new metacode and adds it to the current [module](/Modules.md).
 
 The `META` statement is an exception - it is not supposed to end with a semicolon.
 
@@ -22,7 +22,7 @@ The `META` statement is an exception - it is not supposed to end with a semicolo
 
 * `name`
 
-  Metacode name. [Simple ID](/IDs/.md#id). Must be unique within the current namespace among metacodes with the same number of parameters.
+  Metacode name. [Simple ID](/IDs.md#id). Must be unique within the current namespace among metacodes with the same number of parameters.
 
 * `param1, ..., paramN`
 
@@ -30,7 +30,7 @@ The `META` statement is an exception - it is not supposed to end with a semicolo
 
 * `statement1 ... statementM`
 
-  A sequence of [statements](/Statements/.md) represented by a block of code. Statements may contain [special operators `##` and `###`](/Metaprogramming/.md#concat) used for concatenating [lexemes](/Tokens/.md). Statements cannot include another `META` statement.
+  A sequence of [statements](/Statements.md) represented by a block of code. Statements may contain [special operators `##` and `###`](/Metaprogramming.md#concat) used for concatenating [lexemes](/Tokens.md). Statements cannot include another `META` statement.
 
 ### Examples[​](#examples "Direct link to Examples")
 

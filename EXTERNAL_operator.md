@@ -1,6 +1,6 @@
 # EXTERNAL operator
 
-The `EXTERNAL` operator creates an [action](/Actions/.md) that implements [accessing to an external system](/Access_to_an_external_system_EXTERNAL/.md).
+The `EXTERNAL` operator creates an [action](/Actions.md) that implements [accessing to an external system](/Access_to_an_external_system_EXTERNAL.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -40,7 +40,7 @@ The `EXTERNAL` operator creates an action that performs a single call to an exte
 
 * `HTTP`, `TCP`, `UDP`, `SQL`, `LSF`, `DBF`
 
-  Keywords. Select the type of external call; see [Access to an external system](/Access_to_an_external_system_EXTERNAL/.md) for the semantics of each.
+  Keywords. Select the type of external call; see [Access to an external system](/Access_to_an_external_system_EXTERNAL.md) for the semantics of each.
 
 * `requestType`
 
@@ -64,31 +64,31 @@ The `EXTERNAL` operator creates an action that performs a single call to an exte
 
 * `charsetLiteral`
 
-  [String literal](/Literals/.md#strliteral) with the charset used for the `.dbf` file. Defaults to `UTF-8`.
+  [String literal](/Literals.md#strliteral) with the charset used for the `.dbf` file. Defaults to `UTF-8`.
 
 * `connectionStrExpr`
 
-  [Expression](/Expression/.md). `HTTP`: http request string. `TCP` / `UDP`: `host:port` of the target socket. `SQL`: DBMS connection string. `LSF`: URL of an lsFusion application or web server. `DBF`: path to the `.dbf` file.
+  [Expression](/Expression.md). `HTTP`: http request string. `TCP` / `UDP`: `host:port` of the target socket. `SQL`: DBMS connection string. `LSF`: URL of an lsFusion application or web server. `DBF`: path to the `.dbf` file.
 
 * `bodyStrExpr`
 
-  [Expression](/Expression/.md). BODY string with `$N` parameter substitutions. All parameters remaining after URL substitution must be consumed inside this string, otherwise the call fails. For `GET` `BODYURL` has no effect and any remaining parameters are silently dropped.
+  [Expression](/Expression.md). BODY string with `$N` parameter substitutions. All parameters remaining after URL substitution must be consumed inside this string, otherwise the call fails. For `GET` `BODYURL` has no effect and any remaining parameters are silently dropped.
 
 * `bodyParamNameExpr1, ..., bodyParamNameExprK`
 
-  List of [expressions](/Expression/.md). Each evaluates to a BODY part name in the form `'name'` or `'name;filename'` (the part after `;` sets the multipart file name). Without `BODYPARAMNAMES` BODY parts get default auto-names `param0`, `param1`, ... (file parts without an explicit filename similarly get `file0`, `file1`, ...).
+  List of [expressions](/Expression.md). Each evaluates to a BODY part name in the form `'name'` or `'name;filename'` (the part after `;` sets the multipart file name). Without `BODYPARAMNAMES` BODY parts get default auto-names `param0`, `param1`, ... (file parts without an explicit filename similarly get `file0`, `file1`, ...).
 
 * `bodyParamHeadersPropertyId1, ..., bodyParamHeadersPropertyIdK`
 
-  List of [property IDs](/IDs/.md#propertyid). Each property has one string-class parameter (the header name) and a string-class value (the header value). Without `BODYPARAMHEADERS` no extra headers are attached to BODY parts.
+  List of [property IDs](/IDs.md#propertyid). Each property has one string-class parameter (the header name) and a string-class value (the header value). Without `BODYPARAMHEADERS` no extra headers are attached to BODY parts.
 
 * `headersPropertyId`, `headersToPropertyId`
 
-  [Property IDs](/IDs/.md#propertyid). Each property has one string-class parameter (the header name) and a string-class value (the header value). Without `HEADERS` no custom request headers are sent; without `HEADERSTO` response headers are not captured.
+  [Property IDs](/IDs.md#propertyid). Each property has one string-class parameter (the header name) and a string-class value (the header value). Without `HEADERS` no custom request headers are sent; without `HEADERSTO` response headers are not captured.
 
 * `cookiesPropertyId`, `cookiesToPropertyId`
 
-  [Property IDs](/IDs/.md#propertyid). Each property has one string-class parameter (the cookie name) and a string-class value (the cookie value). Without `COOKIES` no custom cookies are sent; without `COOKIESTO` cookies are not captured.
+  [Property IDs](/IDs.md#propertyid). Each property has one string-class parameter (the cookie name) and a string-class value (the cookie value). Without `COOKIES` no custom cookies are sent; without `COOKIESTO` cookies are not captured.
 
 * `NOENCODE`
 
@@ -96,7 +96,7 @@ The `EXTERNAL` operator creates an action that performs a single call to an exte
 
 * `lsfExecType`
 
-  Keyword. Specifies the [way of defining](/Access_from_an_external_system/.md#actiontype) the action:
+  Keyword. Specifies the [way of defining](/Access_from_an_external_system.md#actiontype) the action:
 
   * `EXEC` – the name of the action is specified.
   * `EVAL` – the code of the action is specified in the **lsFusion** language. It is assumed that this code contains a declaration of an action named `run`. This is the action that will be called.
@@ -104,7 +104,7 @@ The `EXTERNAL` operator creates an action that performs a single call to an exte
 
 * `execStrExpr`
 
-  [Expression](/Expression/.md). `SQL`: SQL command(s) — an expression ending in `.sql` is treated as a path to a classpath resource whose contents are used as the command. `LSF`: action name or code, per `lsfExecType`.
+  [Expression](/Expression.md). `SQL`: SQL command(s) — an expression ending in `.sql` is treated as a path to a classpath resource whose contents are used as the command. `LSF`: action name or code, per `lsfExecType`.
 
 * `paramExpr1, ..., paramExprN`
 

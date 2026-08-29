@@ -44,7 +44,7 @@ For each order we need to find the date of the previous order placed by the same
 prevOrderDate 'Previous order' (Order o) = PARTITION PREV date(o) ORDER date(o), o BY customer(o);
 ```
 
-Similar to [How-to: `GROUP CONCAT`](/How-to_GROUP_CONCAT/.md), the order should be uniquely determined. Therefore, we add the order itself (i. e. its internal ID) as the last argument for `ORDER`.
+Similar to [How-to: `GROUP CONCAT`](/How-to_GROUP_CONCAT.md), the order should be uniquely determined. Therefore, we add the order itself (i. e. its internal ID) as the last argument for `ORDER`.
 
 ## Example 3[​](#example-3 "Direct link to Example 3")
 

@@ -1,6 +1,6 @@
 # ABSTRACT operator
 
-The `ABSTRACT` operator creates an [abstract action](/Action_extension/.md).
+The `ABSTRACT` operator creates an [abstract action](/Action_extension.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -10,9 +10,9 @@ ABSTRACT [type [exclusionType] [order]] [FULL] [(argClassName1, ..., argClassNam
 
 ### Description[​](#description "Direct link to Description")
 
-The `ABSTRACT` operator creates an abstract action. Its implementations are added later by [`ACTION+` statements](/ACTION_plus_statement/.md). Depending on the selected type, the platform builds from them the behavior of a [branch operator](/Branching_CASE_IF_MULTI/.md) or a [sequence operator](/Sequence/.md).
+The `ABSTRACT` operator creates an abstract action. Its implementations are added later by [`ACTION+` statements](/ACTION_plus_statement.md). Depending on the selected type, the platform builds from them the behavior of a [branch operator](/Branching_CASE_IF_MULTI.md) or a [sequence operator](/Sequence.md).
 
-The `ABSTRACT` operator is a [context-independent action operator](/Action_operators/.md#contextindependent), so it can only be used in the [`ACTION` statement](/ACTION_statement/.md).
+The `ABSTRACT` operator is a [context-independent action operator](/Action_operators.md#contextindependent), so it can only be used in the [`ACTION` statement](/ACTION_statement.md).
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
@@ -20,15 +20,15 @@ The `ABSTRACT` operator is a [context-independent action operator](/Action_opera
 
   Option. Possible values:
 
-  * `CASE` - the explicit conditional form of the abstract action. The selection condition of each implementation is defined in the corresponding [`ACTION+` statement](/ACTION_plus_statement/.md) using the `WHEN` block.
-  * `MULTI` - [a polymorphic form](/Branching_CASE_IF_MULTI/.md#poly) of the abstract action. An implementation is selected when the current arguments are compatible with its [signature](/ISCLASS_operator/.md).
+  * `CASE` - the explicit conditional form of the abstract action. The selection condition of each implementation is defined in the corresponding [`ACTION+` statement](/ACTION_plus_statement.md) using the `WHEN` block.
+  * `MULTI` - [a polymorphic form](/Branching_CASE_IF_MULTI.md#poly) of the abstract action. An implementation is selected when the current arguments are compatible with its [signature](/ISCLASS_operator.md).
   * `LIST` - the sequential form of the abstract action. In this form all implementations are executed one after another.
 
   If this option is omitted, `MULTI` is used by default.
 
 * `exclusionType`
 
-  Option. It specifies the [type of mutual exclusion](/Branching_CASE_IF_MULTI/.md#exclusive). Possible values:
+  Option. It specifies the [type of mutual exclusion](/Branching_CASE_IF_MULTI.md#exclusive). Possible values:
 
   * `EXCLUSIVE` - the mutually exclusive mode for the `CASE` and `MULTI` forms. In this mode, for each set of arguments there must be at most one matching implementation.
   * `OVERRIDE` - the mode for the `CASE` and `MULTI` forms in which several implementations may match simultaneously.
@@ -44,23 +44,23 @@ The `ABSTRACT` operator is a [context-independent action operator](/Action_opera
 
   Used either after `OVERRIDE` for the `CASE` and `MULTI` forms or after `LIST`.
 
-  The addition order across modules is the module initialization order: implementations from [required modules](/Module_header/.md) are added before implementations from the modules that depend on them, and within one module — in the order they appear in the source. In particular, in the `LIST` form (without `FIRST`) implementations from a base module are executed before implementations added to the same action by dependent modules.
+  The addition order across modules is the module initialization order: implementations from [required modules](/Module_header.md) are added before implementations from the modules that depend on them, and within one module — in the order they appear in the source. In particular, in the `LIST` form (without `FIRST`) implementations from a base module are executed before implementations added to the same action by dependent modules.
 
 * `FULL`
 
-  Keyword. If specified, the platform automatically checks the [completeness of implementations](/Action_extension/.md#full): for all descendants of the argument classes there must be at least one applicable implementation, or exactly one if the conditions are mutually exclusive.
+  Keyword. If specified, the platform automatically checks the [completeness of implementations](/Action_extension.md#full): for all descendants of the argument classes there must be at least one applicable implementation, or exactly one if the conditions are mutually exclusive.
 
 * `argClassName1, ..., argClassNameN`
 
-  List of class names of action arguments. Each name is defined by a [class ID](/IDs/.md#classid). The list may be empty. If the list is omitted, the parameter classes are taken from the [`ACTION` statement](/ACTION_statement/.md) in which the `ABSTRACT` operator is used.
+  List of class names of action arguments. Each name is defined by a [class ID](/IDs.md#classid). The list may be empty. If the list is omitted, the parameter classes are taken from the [`ACTION` statement](/ACTION_statement.md) in which the `ABSTRACT` operator is used.
 
 * `returnClassName`
 
-  Name of the class of the value returned by the action. It is defined by a [class ID](/IDs/.md#classid). If this parameter is specified, the abstract action is declared as an action with a result.
+  Name of the class of the value returned by the action. It is defined by a [class ID](/IDs.md#classid). If this parameter is specified, the abstract action is declared as an action with a result.
 
 * `returnArgClassName1, ..., returnArgClassNameM`
 
-  List of class names of the additional parameters on which the returned value depends. It is used when the action returns not a single value, but a set of values over those parameters. Each name is defined by a [class ID](/IDs/.md#classid). The list may be empty.
+  List of class names of the additional parameters on which the returned value depends. It is used when the action returns not a single value, but a set of values over those parameters. Each name is defined by a [class ID](/IDs.md#classid). The list may be empty.
 
 ### Examples[​](#examples "Direct link to Examples")
 

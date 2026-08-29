@@ -1,6 +1,6 @@
 # EXPORT operator
 
-The `EXPORT` operator: creates an [action](/Actions/.md) that exports [specified properties](/Data_export_EXPORT/.md) to a file, or, in common case, that [opens a form](/In_a_structured_view_EXPORT_IMPORT/.md) in a structured view.
+The `EXPORT` operator: creates an [action](/Actions.md) that exports [specified properties](/Data_export_EXPORT.md) to a file, or, in common case, that [opens a form](/In_a_structured_view_EXPORT_IMPORT.md) in a structured view.
 
 ## Syntax[​](#syntax "Direct link to Syntax")
 
@@ -63,7 +63,7 @@ If the property to which the data is exported is of class `FILE`, then the exten
 | **DBF**   | dbf       |
 | **TABLE** | table     |
 
-When exporting a form in an `OBJECTS` block, it is possible to add extra filters to check for the equality of the objects on the form with [the values passed](/Open_form/.md#params). These objects [will not participate](/Structured_view/.md#objects) in building the object group hierarchy.
+When exporting a form in an `OBJECTS` block, it is possible to add extra filters to check for the equality of the objects on the form with [the values passed](/Open_form.md#params). These objects [will not participate](/Structured_view.md#objects) in building the object group hierarchy.
 
 When a form is exported to a hierarchical format (**JSON**, **XML**), a single file is generated and written to the `propertyId` property. For flat formats (**CSV**, **XLS**, **XLSX**, **DBF**, **TABLE**) each object group is exported to its own file, so the destinations are specified as a list per object group (`groupId = propertyId`) — not necessarily for all groups: groups not listed are not exported. A form cannot be exported to a single file in a flat format.
 
@@ -73,31 +73,31 @@ When a form is exported to a hierarchical format (**JSON**, **XML**), a single f
 
 * `formName`
 
-  The name of the form from which you want to export data. [Composite ID](/IDs/.md#cid).
+  The name of the form from which you want to export data. [Composite ID](/IDs.md#cid).
 
 * `objName1 ... objNameK`
 
-  Names of form objects for which filtered (fixed) values are specified. [Simple IDs](/IDs/.md#id).
+  Names of form objects for which filtered (fixed) values are specified. [Simple IDs](/IDs.md#id).
 
 * `expr1 ... exprK`
 
-  [Expressions](/Expression/.md) whose values determine the filtered (fixed) values for form objects.
+  [Expressions](/Expression.md) whose values determine the filtered (fixed) values for form objects.
 
 * `propertyExpr1, ..., propertyExprN`
 
-  List of [expressions](/Expression/.md) from whose values the data is exported. Each property is mapped to a table column of the result file.
+  List of [expressions](/Expression.md) from whose values the data is exported. Each property is mapped to a table column of the result file.
 
 * `columnId1, ..., columnIdN`
 
-  A list of column IDs in the resulting file into which data from the corresponding property will be exported. Each list element is either [a simple ID](/IDs/.md#id) or a [string literal](/Literals/.md#strliteral). If no ID is specified, it is considered equal to `expr<Column number>` by default.
+  A list of column IDs in the resulting file into which data from the corresponding property will be exported. Each list element is either [a simple ID](/IDs.md#id) or a [string literal](/Literals.md#strliteral). If no ID is specified, it is considered equal to `expr<Column number>` by default.
 
 * `whereExpr`
 
-  An expression whose value is a condition for the export. If not specified, it is considered equal to the [disjunction](/Logical_operators_AND_OR_NOT_XOR/.md) of all exported properties (that is, at least one of the properties must be non-`NULL`).
+  An expression whose value is a condition for the export. If not specified, it is considered equal to the [disjunction](/Logical_operators_AND_OR_NOT_XOR.md) of all exported properties (that is, at least one of the properties must be non-`NULL`).
 
 * `orderExpr1, ..., orderExprL`
 
-  List of [expressions](/Expression/.md) by which the exported data is sorted. The expressions are arbitrary: they do not have to be present in the list `propertyExpr1, ..., propertyExprN`. A sort expression is added to the internal query as a hidden column and does not appear in the export result.
+  List of [expressions](/Expression.md) by which the exported data is sorted. The expressions are arbitrary: they do not have to be present in the list `propertyExpr1, ..., propertyExprN`. A sort expression is added to the internal query as a hidden column and does not appear in the export result.
 
 * `DESC`
 
@@ -131,7 +131,7 @@ When a form is exported to a hierarchical format (**JSON**, **XML**), a single f
 
 * `rootExpr`
 
-  [Expression](/Expression/.md) whose value is used as the name of the root XML element. The value of the expression must be of a string class. If not specified, the name of the exported form is used (`export` when properties are exported directly). Only applicable for export to **XML**.
+  [Expression](/Expression.md) whose value is used as the name of the root XML element. The value of the expression must be of a string class. If not specified, the name of the exported form is used (`export` when properties are exported directly). Only applicable for export to **XML**.
 
 * `tagExpr`
 
@@ -143,7 +143,7 @@ When a form is exported to a hierarchical format (**JSON**, **XML**), a single f
 
 * `separator`
 
-  Delimiter in a **CSV** file. [String literal](/Literals/.md#strliteral). If not specified, then the default delimiter is `;`.
+  Delimiter in a **CSV** file. [String literal](/Literals.md#strliteral). If not specified, then the default delimiter is `;`.
 
 * `HEADER | NOHEADER`
 
@@ -169,21 +169,21 @@ When a form is exported to a hierarchical format (**JSON**, **XML**), a single f
 
   Expression whose value is used as the name of the sheet in the exported file. It is used for `XLS` and `XLSX` export formats.
 
-Date and time class values in text formats (**JSON**, **XML**, **CSV**) are written as strings, by default in ISO 8601 formats (for example, `2026-08-17`, `2026-08-17T12:34:56`; `ZDATETIME` values — the instant in UTC with the `Z` suffix). This behavior is defined by the `useISOTimeFormatsInIntegration` [working parameter](/Working_parameters/.md): when it is off, the formats of the current locale are used. In the **XLS** and **XLSX** formats such values are written as typed date/time values, not as strings. In the **DBF** format, `DATE` and `DATETIME` values are written to a date field (the time part of `DATETIME` is lost), while `TIME` is written as an `HH:mm:ss` string.
+Date and time class values in text formats (**JSON**, **XML**, **CSV**) are written as strings, by default in ISO 8601 formats (for example, `2026-08-17`, `2026-08-17T12:34:56`; `ZDATETIME` values — the instant in UTC with the `Z` suffix). This behavior is defined by the `useISOTimeFormatsInIntegration` [working parameter](/Working_parameters.md): when it is off, the formats of the current locale are used. In the **XLS** and **XLSX** formats such values are written as typed date/time values, not as strings. In the **DBF** format, `DATE` and `DATETIME` values are written to a date field (the time part of `DATETIME` is lost), while `TIME` is written as an `HH:mm:ss` string.
 
 ### Export destination[​](#export-destination "Direct link to Export destination")
 
 * `propertyId`
 
-  [Property ID](/IDs/.md#propertyid) to which the generated file will be written. This property must not have parameters and its value must be of a file class (`FILE`, `RAWFILE`, `JSONFILE`, etc.). If this property is not specified, the `System.exportFile` property is used by default. When exporting a form, applicable only for hierarchical formats (**JSON**, **XML**).
+  [Property ID](/IDs.md#propertyid) to which the generated file will be written. This property must not have parameters and its value must be of a file class (`FILE`, `RAWFILE`, `JSONFILE`, etc.). If this property is not specified, the `System.exportFile` property is used by default. When exporting a form, applicable only for hierarchical formats (**JSON**, **XML**).
 
 * `groupId1, ..., groupIdM`
 
-  Names of object groups from the exported form for which you want to export data. [Simple IDs](/IDs/.md#id). Used only for exporting forms to flat formats.
+  Names of object groups from the exported form for which you want to export data. [Simple IDs](/IDs.md#id). Used only for exporting forms to flat formats.
 
 * `propertyId1 , ..., propertyIdM`
 
-  [Property IDs](/IDs/.md#propertyid) to which the generated files for specified object groups will be written. These properties must not have parameters and their value must be of file classes (`FILE`, `RAWFILE`, `JSONFILE`, etc.). Used only for exporting forms to flat formats. For the [empty group](/Static_view/.md#empty) of objects, the name `root` is used.
+  [Property IDs](/IDs.md#propertyid) to which the generated files for specified object groups will be written. These properties must not have parameters and their value must be of file classes (`FILE`, `RAWFILE`, `JSONFILE`, etc.). Used only for exporting forms to flat formats. For the [empty group](/Static_view.md#empty) of objects, the name `root` is used.
 
 ## Examples[​](#examples "Direct link to Examples")
 

@@ -1,6 +1,6 @@
 # Classes
 
-The base element in **lsFusion** is the object. Each object is an *instance* of some *class*, which determines the qualities of all its instances. Classes in turn can be divided into [built-in classes](/Built-in_classes/.md), which are responsible for primitive data types, and [user classes](/User_classes/.md).
+The base element in **lsFusion** is the object. Each object is an *instance* of some *class*, which determines the qualities of all its instances. Classes in turn can be divided into [built-in classes](/Built-in_classes.md), which are responsible for primitive data types, and [user classes](/User_classes.md).
 
 ### Inheritance[​](#inheritance "Direct link to Inheritance")
 
@@ -10,14 +10,14 @@ The idea of inheritance is as follows: if class `B` inherits from class `A`, the
 
 Let's say that an object *belongs to* class `A` if that object is either an instance of class `A` or an instance of a class `A` descendant.
 
-To implement polymorphism, inheritance is usually used together with [properties](/Property_extension/.md) and [actions](/Action_extension/.md) extension mechanism.
+To implement polymorphism, inheritance is usually used together with [properties](/Property_extension.md) and [actions](/Action_extension.md) extension mechanism.
 
 ### Class limitations[​](#class-limitations "Direct link to Class limitations")
 
 The class mechanism has several limitations:
 
-1. Belonging to a class cannot be calculated (only set explicitly when [creating](/New_object_NEW/.md) and [changing the class](/Class_change_CHANGECLASS_DELETE/.md)) of an object.
+1. Belonging to a class cannot be calculated (only set explicitly when [creating](/New_object_NEW.md) and [changing the class](/Class_change_CHANGECLASS_DELETE.md)) of an object.
 2. A class is set for only one object (not for an object collection).
 3. It is not possible to inherit the same class multiple times (it always remains a single class, not the same class appearing as two separate ones).
 
-Accordingly, if the class mechanism is not sufficient, the platform also supports the [aggregation](/Aggregations/.md) mechanism, which together with inheritance allows implementing almost any polymorphic logic.
+Accordingly, if the class mechanism is not sufficient, the platform also supports the [aggregation](/Aggregations.md) mechanism, which together with inheritance allows implementing almost any polymorphic logic.

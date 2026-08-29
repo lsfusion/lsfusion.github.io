@@ -1,6 +1,6 @@
 # CASE operator
 
-The `CASE` operator creates an [action](/Actions/.md) that implements [branching](/Branching_CASE_IF_MULTI/.md).
+The `CASE` operator creates an [action](/Actions.md) that implements [branching](/Branching_CASE_IF_MULTI.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -20,18 +20,18 @@ The `CASE` operator creates an action that executes one of the actions passed to
 
 * `exclusionType`
 
-  [Type of mutual exclusion](/Branching_CASE_IF_MULTI/.md#exclusive). Determines whether several conditions can be met simultaneously for a certain set of parameters:
+  [Type of mutual exclusion](/Branching_CASE_IF_MULTI.md#exclusive). Determines whether several conditions can be met simultaneously for a certain set of parameters:
 
   * `EXCLUSIVE` - none of the conditions can be met simultaneously.
   * `OVERRIDE` - several conditions can be met simultaneously; in this case the action corresponding to the first met condition is executed. Used by default.
 
 * `condition1 ... conditionN`
 
-  [Expressions](/Expression/.md) whose values determine the selection conditions.
+  [Expressions](/Expression.md) whose values determine the selection conditions.
 
 * `action1 ... actionN`
 
-  [Context-dependent operators](/Action_operators/.md#contextdependent) that describe actions that may be called when the corresponding condition is met.
+  [Context-dependent operators](/Action_operators.md#contextdependent) that describe actions that may be called when the corresponding condition is met.
 
 * `elseAction`
 

@@ -1,6 +1,6 @@
 # += statement
 
-The `+=` statement adds an implementation to an [abstract property](/Property_extension/.md).
+The `+=` statement adds an implementation to an [abstract property](/Property_extension.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -16,21 +16,21 @@ The `+=` statement does not create a new property. It adds another implementatio
 
 For an abstract property of type `CASE`, the `WHEN conditionExpr THEN` block is required. For abstract properties of types `MULTI` and `VALUE`, the `WHEN ... THEN` block is not used and the implementation expression appears directly after `+=`.
 
-The position of the added implementation in the abstract property's [implementation list](/Property_extension/.md#poly) is determined by the abstract property's `OVERRIDE FIRST` / `OVERRIDE LAST` setting; see the [`ABSTRACT` operator](/ABSTRACT_operator/.md) for the available modes.
+The position of the added implementation in the abstract property's [implementation list](/Property_extension.md#poly) is determined by the abstract property's `OVERRIDE FIRST` / `OVERRIDE LAST` setting; see the [`ABSTRACT` operator](/ABSTRACT_operator.md) for the available modes.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `abstractProperty`
 
-  [ID](/IDs/.md#propertyid) of the abstract property being extended.
+  [ID](/IDs.md#propertyid) of the abstract property being extended.
 
 * `param1, ..., paramN`
 
-  List of [typed parameters](/IDs/.md#paramid) of the implementation being added; defines its signature. The list may be empty. The number of parameters and their classes must be compatible with the signature of the abstract property. These parameters can be used in `implementationExpr` and, for the `CASE` form, in `conditionExpr`.
+  List of [typed parameters](/IDs.md#paramid) of the implementation being added; defines its signature. The list may be empty. The number of parameters and their classes must be compatible with the signature of the abstract property. These parameters can be used in `implementationExpr` and, for the `CASE` form, in `conditionExpr`.
 
 * `conditionExpr`
 
-  [Expression](/Expression/.md) for the selection condition of this implementation. Used only for an abstract property of type `CASE`.
+  [Expression](/Expression.md) for the selection condition of this implementation. Used only for an abstract property of type `CASE`.
 
 * `implementationExpr`
 

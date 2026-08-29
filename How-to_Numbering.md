@@ -23,9 +23,9 @@ bookExists (INTEGER number)  {
 }
 ```
 
-The [`GROUP AGGR` operator](/Grouping_GROUP/.md) automatically adds a constraint on the uniqueness of the number. If you try to save the same number to the database, you will get an error message.
+The [`GROUP AGGR` operator](/Grouping_GROUP.md) automatically adds a constraint on the uniqueness of the number. If you try to save the same number to the database, you will get an error message.
 
-Let's add an [event](/Events/.md) that will automatically number books by increasing the maximum number existing in the database.
+Let's add an [event](/Events.md) that will automatically number books by increasing the maximum number existing in the database.
 
 ```
 WHEN SET(Book b IS Book) AND NOT number(b) DO {
@@ -72,7 +72,7 @@ WHEN SET(Order o IS Order) AND NOT CHANGED(numerator(o)) DO
     numerator(o) <- defaultNumerator();
 ```
 
-The platform ships a ready-to-use implementation of this approach — series, leading zeros, default numerators, and conflict-safe generation — in the [`Numerator`](/Utils_Numerator/.md) module. The patterns below build on it; in each of them the number is filled only when it has not been set already, so a value typed by the user or loaded by import is never overwritten.
+The platform ships a ready-to-use implementation of this approach — series, leading zeros, default numerators, and conflict-safe generation — in the [`Numerator`](/Utils_Numerator.md) module. The patterns below build on it; in each of them the number is filled only when it has not been set already, so a value typed by the user or loaded by import is never overwritten.
 
 ### Sequential number for a class[​](#sequential-number-for-a-class "Direct link to Sequential number for a class")
 

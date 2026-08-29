@@ -1,6 +1,6 @@
 # Оператор IF ... THEN
 
-Оператор `IF ... THEN` - создание [свойства](/ru/Properties/.md), реализующего [выбор](/ru/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md#single) с одним условием (одиночная форма).
+Оператор `IF ... THEN` - создание [свойства](/ru/Properties.md), реализующего [выбор](/ru/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md#single) с одним условием (одиночная форма).
 
 ### Синтаксис[​](#синтаксис "Прямая ссылка на этот заголовок")
 
@@ -18,7 +18,7 @@ IF condition
 
 * `condition`
 
-  [Выражение](/ru/Expression/.md), задающее условие.
+  [Выражение](/ru/Expression.md), задающее условие.
 
 * `value`
 

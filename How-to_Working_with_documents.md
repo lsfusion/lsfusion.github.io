@@ -155,7 +155,7 @@ We need to add some invoicing logic so that an order could automatically create 
 
 ### Solution[​](#solution-2 "Direct link to Solution")
 
-In order to implement this logic, you need to create an abstract `Invoice` [class](/Classes/.md) with the necessary set of [abstract properties](/Property_extension/.md).
+In order to implement this logic, you need to create an abstract `Invoice` [class](/Classes.md) with the necessary set of [abstract properties](/Property_extension.md).
 
 ```
 CLASS ABSTRACT Invoice 'Invoice';
@@ -232,7 +232,7 @@ EXTEND FORM invoices
 ;
 ```
 
-For orders, let's create a `createInvoice` option that will be used for generating an invoice. We will now need to create a `OrderInvoice` class that will be inherited from `Invoice`. An object of this class will be automatically created and deleted by the system for every order with the `createInvoice` option. Therefore, this invoice is an [aggregated object](/Aggregations/.md) for the corresponding order. Aggregation for the invoice line relative to the order line is created identically.
+For orders, let's create a `createInvoice` option that will be used for generating an invoice. We will now need to create a `OrderInvoice` class that will be inherited from `Invoice`. An object of this class will be automatically created and deleted by the system for every order with the `createInvoice` option. Therefore, this invoice is an [aggregated object](/Aggregations.md) for the corresponding order. Aggregation for the invoice line relative to the order line is created identically.
 
 ```
 createInvoice 'Create invoice' = DATA BOOLEAN (Order);

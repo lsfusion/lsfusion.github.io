@@ -11,9 +11,9 @@ CLASS SKU 'SKU';
 CLASS Stock 'Warehouse';
 ```
 
-Theoretically we could just create a [property](/Properties/.md) that would sum up all incomings and subtract all outgoings, with all operations set explicitly. The weakness of this approach is that whenever a new operation is added, it needs to be added to the formula for calculating the balance. In addition, it will be difficult to build a form with a list of all the operations that can affect the balance for a specific SKU and warehouse. [Modularity](/Modularity/.md) will also be violated, because the module in which the balance property is declared will depend on all modules containing operations that affect it.
+Theoretically we could just create a [property](/Properties.md) that would sum up all incomings and subtract all outgoings, with all operations set explicitly. The weakness of this approach is that whenever a new operation is added, it needs to be added to the formula for calculating the balance. In addition, it will be difficult to build a form with a list of all the operations that can affect the balance for a specific SKU and warehouse. [Modularity](/Modularity.md) will also be violated, because the module in which the balance property is declared will depend on all modules containing operations that affect it.
 
-To give the system efficient [extensibility](/Extensions/.md), it is best to implement this kind of functionality using *ledgers*. To do this, we introduce an abstract class `SKULedger`. One instance of the class will reflect a single change in the balance by a given amount (positive or negative) for one SKU in one warehouse. Abstract properties are set for it, which need to be defined when the class is implemented.
+To give the system efficient [extensibility](/Extensions.md), it is best to implement this kind of functionality using *ledgers*. To do this, we introduce an abstract class `SKULedger`. One instance of the class will reflect a single change in the balance by a given amount (positive or negative) for one SKU in one warehouse. Abstract properties are set for it, which need to be defined when the class is implemented.
 
 info
 
@@ -55,7 +55,7 @@ quantity 'Qty' = DATA NUMERIC[14,2] (ReceiptDetail);
 price 'Price' = DATA NUMERIC[14,2] (ReceiptDetail);
 ```
 
-To "post" it into the ledger, we need to [extend the class](/Class_extension/.md) `SKULedger` with a `ReceiptDetail` class for stock receipt. We also need to [extend the properties](/Property_extension/.md) of the ledger.
+To "post" it into the ledger, we need to [extend the class](/Class_extension.md) `SKULedger` with a `ReceiptDetail` class for stock receipt. We also need to [extend the properties](/Property_extension.md) of the ledger.
 
 ```
 EXTEND CLASS ReceiptDetail : SKULedger;
@@ -103,7 +103,7 @@ sku(TransferDetail d) += sku(d);
 quantity(TransferDetail d) += -quantity(d);
 ```
 
-To post it into the ledger for the warehouse where the SKUs are being transferred to, we use object [aggregation](/Aggregations/.md). The line in the transfer document will generate an object, which in turn will be "posted" into the ledger.
+To post it into the ledger for the warehouse where the SKUs are being transferred to, we use object [aggregation](/Aggregations.md). The line in the transfer document will generate an object, which in turn will be "posted" into the ledger.
 
 ```
 CLASS TransferSKULedger 'Moving to warehouse (register)' : SKULedger;

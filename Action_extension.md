@@ -1,6 +1,6 @@
 # Action extension
 
-The [actions](/Actions/.md) [extension](/Extensions/.md) technique allows an abstract action to be declared in one [module](/Modules/.md) and implementations to be added to it in other modules. This is deferred construction of the corresponding [branch operator](/Branching_CASE_IF_MULTI/.md) or [sequence operator](/Sequence/.md): the base module defines the form of the future operator and the requirements for its implementations, while other modules gradually add individual implementations.
+The [actions](/Actions.md) [extension](/Extensions.md) technique allows an abstract action to be declared in one [module](/Modules.md) and implementations to be added to it in other modules. This is deferred construction of the corresponding [branch operator](/Branching_CASE_IF_MULTI.md) or [sequence operator](/Sequence.md): the base module defines the form of the future operator and the requirements for its implementations, while other modules gradually add individual implementations.
 
 An abstract action defines the extension contract: parameter classes determine the allowed implementations, and if necessary the action can also declare the result class and the classes of its parameters.
 
@@ -53,15 +53,15 @@ If an abstract action has at least one implementation with this marker, those im
 
 ### Polymorphic form[​](#poly "Direct link to Polymorphic form")
 
-As in the [branch operator](/Branching_CASE_IF_MULTI/.md#poly), an abstract action also has a *polymorphic form*: the condition can be omitted and replaced with matching the signature of the corresponding action.
+As in the [branch operator](/Branching_CASE_IF_MULTI.md#poly), an abstract action also has a *polymorphic form*: the condition can be omitted and replaced with matching the signature of the corresponding action.
 
 ### Mutual exclusion of conditions[​](#exclusive "Direct link to Mutual exclusion of conditions")
 
-As in the [branch operator](/Branching_CASE_IF_MULTI/.md#exclusive), you can specify that all conditions of an abstract action must be *mutually exclusive*. In this mode, for each set of arguments there must be at most one applicable implementation.
+As in the [branch operator](/Branching_CASE_IF_MULTI.md#exclusive), you can specify that all conditions of an abstract action must be *mutually exclusive*. In this mode, for each set of arguments there must be at most one applicable implementation.
 
 ### Language[​](#language "Direct link to Language")
 
-This technique uses two language constructs: the [`ABSTRACT` operator](/ABSTRACT_action_operator/.md) for declaring an abstract action and the [`ACTION+` statement](/ACTION_plus_statement/.md) for adding implementations.
+This technique uses two language constructs: the [`ABSTRACT` operator](/ABSTRACT_action_operator.md) for declaring an abstract action and the [`ACTION+` statement](/ACTION_plus_statement.md) for adding implementations.
 
 ### Examples[​](#examples "Direct link to Examples")
 

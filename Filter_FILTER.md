@@ -1,10 +1,10 @@
 # Filter (FILTER)
 
-The *filter* operator creates a [property](/Properties/.md), defined on the objects of an object group, that returns `TRUE` when their object collection is included in the group's current [filter](/Form_structure/.md#filters), and `NULL` otherwise.
+The *filter* operator creates a [property](/Properties.md), defined on the objects of an object group, that returns `TRUE` when their object collection is included in the group's current [filter](/Form_structure.md#filters), and `NULL` otherwise.
 
 ### Language[​](#language "Direct link to Language")
 
-To declare a property that determines matching the filter use the [`FILTER` operator](/Object_group_operator/.md).
+To declare a property that determines matching the filter use the [`FILTER` operator](/Object_group_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

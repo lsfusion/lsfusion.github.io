@@ -1,6 +1,6 @@
 # Distribution (UNGROUP)
 
-The *distribution* operator creates a property, the [grouping](/Grouping_GROUP/.md) value of which using sum function will be equal to the value of the specified property (*distributable*). Accordingly, as for a group operator, for a distribution operator multiple properties (*groups*) must be set by which the grouping will take place.
+The *distribution* operator creates a property, the [grouping](/Grouping_GROUP.md) value of which using sum function will be equal to the value of the specified property (*distributable*). Accordingly, as for a group operator, for a distribution operator multiple properties (*groups*) must be set by which the grouping will take place.
 
 There are many different ways to build this kind of distribution. At present the platform supports the two most commonly used:
 
@@ -31,9 +31,9 @@ The algorithm of the operator’s work likewise changes accordingly.
 
 ### Language[​](#language "Direct link to Language")
 
-Since the simple form of the operator is semantically very similar to the operator [partition/sort](/Partitioning_sorting_PARTITION_..._ORDER/.md), to declare a property that implements a simple distribution the [`PARTITION` operator](/PARTITION_operator/.md) is also used.
+Since the simple form of the operator is semantically very similar to the operator [partition/sort](/Partitioning_sorting_PARTITION_..._ORDER.md), to declare a property that implements a simple distribution the [`PARTITION` operator](/PARTITION_operator.md) is also used.
 
-For the extended form, use the [`UNGROUP` operator](/UNGROUP_operator/.md).
+For the extended form, use the [`UNGROUP` operator](/UNGROUP_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

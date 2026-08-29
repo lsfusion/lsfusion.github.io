@@ -1,6 +1,6 @@
 # ACTION+ statement
 
-The `ACTION+` statement adds an implementation to an [abstract action](/Action_extension/.md).
+The `ACTION+` statement adds an implementation to an [abstract action](/Action_extension.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -13,7 +13,7 @@ The `ACTION+` statement adds an implementation to an [abstract action](/Action_e
 
 ### Description[​](#description "Direct link to Description")
 
-The `ACTION+` statement does not create a new action, but adds another implementation to an already declared [abstract action](/Action_extension/.md).
+The `ACTION+` statement does not create a new action, but adds another implementation to an already declared [abstract action](/Action_extension.md).
 
 For an abstract action of type `CASE`, the `WHEN conditionExpr THEN` block is required. For abstract actions of types `MULTI` and `LIST`, the `WHEN ... THEN` block is not used and the implementation is written directly after `+`.
 
@@ -25,19 +25,19 @@ For an abstract action of type `CASE`, the `WHEN conditionExpr THEN` block is re
 
 * `abstractAction`
 
-  [ID](/IDs/.md#propertyid) of the abstract action being extended.
+  [ID](/IDs.md#propertyid) of the abstract action being extended.
 
 * `param1, ..., paramN`
 
-  List of [typed parameters](/IDs/.md#paramid) of the implementation being added. It defines its signature. The list may be empty. The number of parameters and their classes must be compatible with the signature of the abstract action. These parameters can be used in `actionBody` and, for the `CASE` form, in `conditionExpr`.
+  List of [typed parameters](/IDs.md#paramid) of the implementation being added. It defines its signature. The list may be empty. The number of parameters and their classes must be compatible with the signature of the abstract action. These parameters can be used in `actionBody` and, for the `CASE` form, in `conditionExpr`.
 
 * `conditionExpr`
 
-  [Expression](/Expression/.md) for the selection condition of this implementation. Used only for an abstract action of type `CASE`.
+  [Expression](/Expression.md) for the selection condition of this implementation. Used only for an abstract action of type `CASE`.
 
 * `actionBody`
 
-  Body of the added implementation: contents of the [`{...}` operator](/Braces_operator/.md), i.e. a sequence of [action operators](/Action_operators/.md) and, if necessary, `LOCAL` declarations. If the abstract action declares a result, the returned value and its parameters must be compatible with that result.
+  Body of the added implementation: contents of the [`{...}` operator](/Braces_operator.md), i.e. a sequence of [action operators](/Action_operators.md) and, if necessary, `LOCAL` declarations. If the abstract action declares a result, the returned value and its parameters must be compatible with that result.
 
 * `OPTIMISTICASYNC`
 

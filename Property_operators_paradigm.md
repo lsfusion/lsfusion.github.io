@@ -2,10 +2,10 @@
 
 The platform currently supports the following property creation operators:
 
-* [Data properties (`DATA`)](/Data_properties_DATA/.md)
-* [Composition (`JOIN`)](/Composition_JOIN/.md)
-* [Constant](/Constant/.md)
-* [Operations with primitives](/Operations_with_primitives/.md)
-* [Class operators](/Class_operators/.md)
-* [Selection (`IF`/`CASE`)](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md)
-* [Set operators](/Set_operations/.md)
+* [Data properties (`DATA`)](/Data_properties_DATA.md)
+* [Composition (`JOIN`)](/Composition_JOIN.md)
+* [Constant](/Constant.md)
+* [Operations with primitives](/Operations_with_primitives.md)
+* [Class operators](/Class_operators.md)
+* [Selection (`IF`/`CASE`)](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md)
+* [Set operators](/Set_operations.md)

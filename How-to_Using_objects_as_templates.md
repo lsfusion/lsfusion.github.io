@@ -45,7 +45,7 @@ EXTEND FORM books
 ;
 ```
 
-When the button is pressed, a new [change session](/Change_sessions/.md) will be created within which the book will be created and the new form will work with. If the user closes the form without saving, the new book will not be saved to the database and will be lost. The word `TOOLBAR` specifies that this button should be displayed in the toolbar of the table with the list of orders.
+When the button is pressed, a new [change session](/Change_sessions.md) will be created within which the book will be created and the new form will work with. If the user closes the form without saving, the new book will not be saved to the database and will be lost. The word `TOOLBAR` specifies that this button should be displayed in the toolbar of the table with the list of orders.
 
 ## Example 2[​](#example-2 "Direct link to Example 2")
 
@@ -108,7 +108,7 @@ FORM invoice 'Invoice'
 ;
 ```
 
-We need to implement an [action](/Actions/.md) that will create an invoice based on an order and open a form for editing it.
+We need to implement an [action](/Actions.md) that will create an invoice based on an order and open a form for editing it.
 
 ### Solution[​](#solution-1 "Direct link to Solution")
 
@@ -143,7 +143,7 @@ EXTEND FORM orders
 
 Similar to [**Example 2**](#example-2).
 
-We need to implement an [action](/Actions/.md) that will open a dialog for the invoice with a list of orders and add lines from the selected one.
+We need to implement an [action](/Actions.md) that will open a dialog for the invoice with a list of orders and add lines from the selected one.
 
 ### Solution[​](#solution-2 "Direct link to Solution")
 

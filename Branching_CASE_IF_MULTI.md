@@ -1,12 +1,12 @@
 # Branching (CASE, IF, MULTI)
 
-*The branching operator* creates an [action](/Actions/.md) that determines for a set of *conditions* which condition is met, and calls the corresponding action.
+*The branching operator* creates an [action](/Actions.md) that determines for a set of *conditions* which condition is met, and calls the corresponding action.
 
-All conditions are defined as [properties](/Properties/.md) and/or parameters. Accordingly, a condition is *met* if the value of the property or parameter by which it is set is not equal to `NULL`.
+All conditions are defined as [properties](/Properties.md) and/or parameters. Accordingly, a condition is *met* if the value of the property or parameter by which it is set is not equal to `NULL`.
 
 Conditions are checked in the order written; the first met condition selects the action to be called, and the remaining conditions are not checked. You can also specify an *alternative action* that is called only if none of the conditions is met.
 
-[Interruption](/Interruption_BREAK/.md), [next iteration](/Next_iteration_CONTINUE/.md) and [exit](/Exit_RETURN/.md) signals raised by the called action are passed on to the surrounding action — the branching operator itself does not consume them.
+[Interruption](/Interruption_BREAK.md), [next iteration](/Next_iteration_CONTINUE.md) and [exit](/Exit_RETURN.md) signals raised by the called action are passed on to the surrounding action — the branching operator itself does not consume them.
 
 ### Polymorphic form[​](#poly "Direct link to Polymorphic form")
 
@@ -20,7 +20,7 @@ The general form is non-exclusive by default and may be marked exclusive explici
 
 ### Implicit definition[​](#implicit-definition "Direct link to Implicit definition")
 
-The general and polymorphic forms support [implicit definition](/Action_extension/.md) through the technique of [extensions](/Extensions/.md). The single form has one fixed condition and does not support implicit definition.
+The general and polymorphic forms support [implicit definition](/Action_extension.md) through the technique of [extensions](/Extensions.md). The single form has one fixed condition and does not support implicit definition.
 
 ### Single form[​](#single "Direct link to Single form")
 
@@ -28,7 +28,7 @@ The *single* form of the branching operator checks exactly one condition. If thi
 
 ### Language[​](#language "Direct link to Language")
 
-To declare an action implementing general form of branching, the [`CASE` operator](/CASE_action_operator/.md) is used. For the single form of branching, the [`IF` operator](/IF_..._THEN_action_operator/.md) is used, and for the polymorphic form the [`MULTI` operator](/MULTI_action_operator/.md).
+To declare an action implementing general form of branching, the [`CASE` operator](/CASE_action_operator.md) is used. For the single form of branching, the [`IF` operator](/IF_..._THEN_action_operator.md) is used, and for the polymorphic form the [`MULTI` operator](/MULTI_action_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

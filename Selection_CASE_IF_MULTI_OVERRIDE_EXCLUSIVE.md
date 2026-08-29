@@ -10,7 +10,7 @@ The platform also allows you to define a condition and the corresponding result 
 
 info
 
-Note that the [extremum operator](/Extremum_MAX_MIN/.md) and [logical operators](/Logical_operators_AND_OR_NOT_XOR/.md) basically are also varieties of the selection operator (and of its polymorphic form, i.e. the conditions and result are defined by one property)
+Note that the [extremum operator](/Extremum_MAX_MIN.md) and [logical operators](/Logical_operators_AND_OR_NOT_XOR.md) basically are also varieties of the selection operator (and of its polymorphic form, i.e. the conditions and result are defined by one property)
 
 ### Mutual exclusion of conditions[​](#exclusive "Direct link to Mutual exclusion of conditions")
 
@@ -18,7 +18,7 @@ The selection operator lets you specify that all its conditions are *mutually ex
 
 ### Implicit definition[​](#implicit-definition "Direct link to Implicit definition")
 
-This operator supports [implicit definition](/Property_extension/.md), where its conditions and results are added piecemeal across modules. When such an implicitly defined operator is also declared mutually exclusive, its conditions across all modules must not overlap; the platform verifies this at module finalization. For an operator defined inline, the same requirement is taken on trust.
+This operator supports [implicit definition](/Property_extension.md), where its conditions and results are added piecemeal across modules. When such an implicitly defined operator is also declared mutually exclusive, its conditions across all modules must not overlap; the platform verifies this at module finalization. For an operator defined inline, the same requirement is taken on trust.
 
 ### Single form[​](#single "Direct link to Single form")
 
@@ -28,15 +28,15 @@ The mutual-exclusion option and implicit definition do not apply to the single f
 
 ### Result class[​](#result-class "Direct link to Result class")
 
-The result class is the common ancestor ([built-in](/Built-in_classes/.md#commonparentclass) or [user-defined](/User_classes/.md#commonparentclass)) of its possible results. If the possible results have no common ancestor (for example, the `HTML` class and a string class), the property cannot take any values, and the server reports the `property '...' is always NULL` error at startup.
+The result class is the common ancestor ([built-in](/Built-in_classes.md#commonparentclass) or [user-defined](/User_classes.md#commonparentclass)) of its possible results. If the possible results have no common ancestor (for example, the `HTML` class and a string class), the property cannot take any values, and the server reports the `property '...' is always NULL` error at startup.
 
 ### Language[​](#language "Direct link to Language")
 
-To create a property implementing the general form of selection — explicit conditions with results — the [`CASE`](/CASE_operator/.md) operator is used.
+To create a property implementing the general form of selection — explicit conditions with results — the [`CASE`](/CASE_operator.md) operator is used.
 
-In the polymorphic form, [`MULTI`](/MULTI_operator/.md) selects the operand whose signature matches the parameter classes; [`OVERRIDE`](/OVERRIDE_operator/.md) returns the first operand whose value is not `NULL`; [`EXCLUSIVE`](/EXCLUSIVE_operator/.md) does the same as `OVERRIDE` and additionally declares that at most one operand has a non-`NULL` value.
+In the polymorphic form, [`MULTI`](/MULTI_operator.md) selects the operand whose signature matches the parameter classes; [`OVERRIDE`](/OVERRIDE_operator.md) returns the first operand whose value is not `NULL`; [`EXCLUSIVE`](/EXCLUSIVE_operator.md) does the same as `OVERRIDE` and additionally declares that at most one operand has a non-`NULL` value.
 
-In the single form, the [`IF`](/IF_operator/.md) operator returns the result when the condition is met; the [`IF ... THEN`](/IF_..._THEN_operator/.md) operator additionally accepts an alternative result returned when the condition is not met.
+In the single form, the [`IF`](/IF_operator.md) operator returns the result when the condition is met; the [`IF ... THEN`](/IF_..._THEN_operator.md) operator additionally accepts an alternative result returned when the condition is not met.
 
 ### Examples[​](#examples "Direct link to Examples")
 

@@ -35,7 +35,7 @@ These two expressions provide identical results.
 
 ### Task[​](#task-1 "Direct link to Task")
 
-We have multiple purchase orders to suppliers for books. For each purchase order defined it's status if it was placed, agreed and delivered. In this example these statuses are declared as [data](/Data_properties_DATA/.md) properties, but in more sophisticated cases they may be calculated.
+We have multiple purchase orders to suppliers for books. For each purchase order defined it's status if it was placed, agreed and delivered. In this example these statuses are declared as [data](/Data_properties_DATA.md) properties, but in more sophisticated cases they may be calculated.
 
 ```
 CLASS Order 'Order';
@@ -162,4 +162,4 @@ lePeriod (Doc a, Doc b) = quarterOrd(a) <= quarterOrd(b) OR monthOrd(a) <= month
 notLaterCount 'Not later' (Doc d) = GROUP SUM 1 IF lePeriod(Doc dd, d);
 ```
 
-The straightforward condition `ord(dd) <= ord(d)` compares two multi-branch selections with each other: on compilation the product of their branches is expanded, so with more granularities and heavier branch properties the query text grows multiplicatively and can exceed the maximum query length. The branch-wise comparison compares each granularity only with itself: in a mixed pair one operand of each comparison is `NULL`, so the pair is not counted — here exactly the required semantics. Rewriting the comparison this way is possible only when values of different branches must not be compared with each other; otherwise, store the composed ordinal by marking the property [`MATERIALIZED`](/Materializations/.md).
+The straightforward condition `ord(dd) <= ord(d)` compares two multi-branch selections with each other: on compilation the product of their branches is expanded, so with more granularities and heavier branch properties the query text grows multiplicatively and can exceed the maximum query length. The branch-wise comparison compares each granularity only with itself: in a mixed pair one operand of each comparison is `NULL`, so the pair is not counted — here exactly the required semantics. Rewriting the comparison this way is possible only when values of different branches must not be compared with each other; otherwise, store the composed ordinal by marking the property [`MATERIALIZED`](/Materializations.md).

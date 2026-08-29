@@ -25,7 +25,7 @@ NAVIGATOR {
 }
 ```
 
-To solve the task, create an action using the [`INTERNAL` operator](/INTERNAL_operator/.md) which will generate an object of the `GetIP` class (if the class has a package, then you must also specify "package" in the class name) and will call the `executeInternal` method. The source code for this class will be as follows:
+To solve the task, create an action using the [`INTERNAL` operator](/INTERNAL_operator.md) which will generate an object of the `GetIP` class (if the class has a package, then you must also specify "package" in the class name) and will call the `executeInternal` method. The source code for this class will be as follows:
 
 #### GetIP.java[​](#getipjava "Direct link to GetIP.java")
 
@@ -291,7 +291,7 @@ We need to implement an action that will listen to a specific port and call the 
 
 info
 
-The canonical pattern for a long-lived server component is a bean registered in Spring and hooked into the platform lifecycle; see [custom Spring bean (`EventServer`)](/Custom_Spring_bean_EventServer/.md). The solution below creates a `MonitorServer` from inside an `InternalAction` without Spring registration — a working but less canonical alternative.
+The canonical pattern for a long-lived server component is a bean registered in Spring and hooked into the platform lifecycle; see [custom Spring bean (`EventServer`)](/Custom_Spring_bean_EventServer.md). The solution below creates a `MonitorServer` from inside an `InternalAction` without Spring registration — a working but less canonical alternative.
 
 ### Solution[​](#solution-4 "Direct link to Solution")
 

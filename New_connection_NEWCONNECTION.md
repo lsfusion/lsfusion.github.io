@@ -1,16 +1,16 @@
 # New external connections (NEWCONNECTION)
 
-The *new external connection* operator scopes a block inside which every call to the same external endpoint reuses an [external connection](/Access_to_an_external_system_EXTERNAL/.md) opened earlier in the block, instead of opening a new one each time. This saves the cost of establishing the connection and also lets calls share state that the connection itself holds — SQL temporary tables and session variables, an open TCP socket and its read buffer, the current position inside a DBF file, and so on.
+The *new external connection* operator scopes a block inside which every call to the same external endpoint reuses an [external connection](/Access_to_an_external_system_EXTERNAL.md) opened earlier in the block, instead of opening a new one each time. This saves the cost of establishing the connection and also lets calls share state that the connection itself holds — SQL temporary tables and session variables, an open TCP socket and its read buffer, the current position inside a DBF file, and so on.
 
 Typical cases — a series of SQL queries against the same external database, a series of operations over DBF files in a single directory, or a TCP session of several messages.
 
 Every connection opened inside the block is closed when the block exits, regardless of whether the inner action completed normally or threw.
 
-The block runs in the current [session](/New_session_NEWSESSION_NESTEDSESSION/.md); nothing besides the external-connection reuse policy is changed.
+The block runs in the current [session](/New_session_NEWSESSION_NESTEDSESSION.md); nothing besides the external-connection reuse policy is changed.
 
 ### Language[​](#language "Direct link to Language")
 
-To create an external connection reused across several external-system calls, use the [`NEWCONNECTION` operator](/NEWCONNECTION_operator/.md).
+To create an external connection reused across several external-system calls, use the [`NEWCONNECTION` operator](/NEWCONNECTION_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

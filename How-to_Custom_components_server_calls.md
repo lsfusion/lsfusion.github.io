@@ -1,6 +1,6 @@
 # How-to: Custom Components (server calls)
 
-A custom view calls the server through the form controller's `exec` / `eval` / `evalAction` / `change` methods; the mechanics — the authorization gate, sessions, value conversion — are described in [Calling the server](/How-to_Custom_components_objects/.md#calling-the-server), and the method signatures in the [form controller API](/How-to_Custom_view_controller/.md#calling-the-server). This page is an end-to-end example: one CUSTOM component that calls actions and properties through the form's `CUSTOMS` clause with every major kind of parameter.
+A custom view calls the server through the form controller's `exec` / `eval` / `evalAction` / `change` methods; the mechanics — the authorization gate, sessions, value conversion — are described in [Calling the server](/How-to_Custom_components_objects.md#calling-the-server), and the method signatures in the [form controller API](/How-to_Custom_view_controller.md#calling-the-server). This page is an end-to-end example: one CUSTOM component that calls actions and properties through the form's `CUSTOMS` clause with every major kind of parameter.
 
 ### Task[​](#task "Direct link to Task")
 
@@ -96,7 +96,7 @@ The key points:
 
 ### The component[​](#the-component "Direct link to The component")
 
-The `shopboard.js` and `shopboard.css` files go into the *resources/web* folder (the no-build path — a plain `.js`, no bundling; see [How-to: Custom client JS modules](/How-to_Custom_client_JS_modules/.md)) and are registered in the `onWebClientInit[]` action:
+The `shopboard.js` and `shopboard.css` files go into the *resources/web* folder (the no-build path — a plain `.js`, no bundling; see [How-to: Custom client JS modules](/How-to_Custom_client_JS_modules.md)) and are registered in the `onWebClientInit[]` action:
 
 ```
 onWebClientInit() + {

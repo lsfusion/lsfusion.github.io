@@ -1,6 +1,6 @@
 # Show message (MESSAGE, ASK)
 
-The *show message* operators create [actions](/Actions/.md) that show a text message to the user. The message is defined as a [property](/Properties/.md) whose value will be used as the message content. This message can be displayed either using a dialog box or in the `System.log` system window. The dialog box also has a header that may be defined as a property.
+The *show message* operators create [actions](/Actions.md) that show a text message to the user. The message is defined as a [property](/Properties.md) whose value will be used as the message content. This message can be displayed either using a dialog box or in the `System.log` system window. The dialog box also has a header that may be defined as a property.
 
 ### Flow control[​](#flow-control "Direct link to Flow control")
 
@@ -12,21 +12,21 @@ Besides its text, a message can be of several *types*. They differ in how the me
 
 ### Dialog form[​](#dialog "Direct link to Dialog form")
 
-It is also often necessary not only to inform the user about something, but also, for example, to request confirmation to continue an action. For such cases, the operator allows, instead of simply displaying the message (with a single `OK` button), to ask a question with positive and negative answers and thereby implement [a value input](/Value_input/.md). In this case, a positive answer means that the input is completed successfully, and a negative answer is treated as [input cancellation](/Value_input/.md#result).
+It is also often necessary not only to inform the user about something, but also, for example, to request confirmation to continue an action. For such cases, the operator allows, instead of simply displaying the message (with a single `OK` button), to ask a question with positive and negative answers and thereby implement [a value input](/Value_input.md). In this case, a positive answer means that the input is completed successfully, and a negative answer is treated as [input cancellation](/Value_input.md#result).
 
-In addition, if `YESNO` is specified, the question has a separate `Cancel` button, while the positive and negative answers become successful input results. In this case, it is considered that [the input result](/Value_input/.md#result) will be a value of logical class (`Yes` - `TRUE`, `No` - `NULL`). As in the first case, the input is considered to be canceled if the `Cancel` button is selected.
+In addition, if `YESNO` is specified, the question has a separate `Cancel` button, while the positive and negative answers become successful input results. In this case, it is considered that [the input result](/Value_input.md#result) will be a value of logical class (`Yes` - `TRUE`, `No` - `NULL`). As in the first case, the input is considered to be canceled if the `Cancel` button is selected.
 
 If the message text is `NULL`, the dialog is not shown and the input is considered completed successfully. For the variant with a logical result, this is equivalent to a positive answer.
 
 The form of the operator in which the user is asked a question is called the *dialog* form.
 
-As with other value input operators, in the dialog form of this operator you can define [main and alternative](/Value_input/.md#result) actions. The first is called if the input was successfully completed, the second if not (i.e. if the input was canceled).
+As with other value input operators, in the dialog form of this operator you can define [main and alternative](/Value_input.md#result) actions. The first is called if the input was successfully completed, the second if not (i.e. if the input was canceled).
 
 The operator dialog form is available in synchronous mode only.
 
 ### Language[​](#language "Direct link to Language")
 
-To declare an action showing a message, use the [`MESSAGE` operator](/MESSAGE_operator/.md). To display the message in dialog form, use the [`ASK` operator](/ASK_operator/.md).
+To declare an action showing a message, use the [`MESSAGE` operator](/MESSAGE_operator.md). To display the message in dialog form, use the [`ASK` operator](/ASK_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

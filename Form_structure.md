@@ -1,10 +1,10 @@
 # Form structure
 
-The [form](/Forms/.md) structure is a complex of *objects*, [properties](/Properties/.md), [actions](/Actions/.md) and relations between them.
+The [form](/Forms.md) structure is a complex of *objects*, [properties](/Properties.md), [actions](/Actions.md) and relations between them.
 
 ### Objects[​](#objects "Direct link to Objects")
 
-When creating a form, first you must define which objects it will display. For each form object you need to specify its [class](/Classes/.md).
+When creating a form, first you must define which objects it will display. For each form object you need to specify its [class](/Classes.md).
 
 It is possible to combine objects into *object groups*. In this case, the table will show a "Cartesian product" of these objects (i.e., for two objects - all pairs, three objects - triples, etc.).
 
@@ -12,7 +12,7 @@ In accordance with the order of adding object groups to the form, an ordered *li
 
 #### Current object[​](#currentObject "Direct link to Current object")
 
-Each object on the form has a *current value* at any time. It changes either as a result of [corresponding user actions](/Interactive_view/.md#objects) in [interactive](/Interactive_view/.md) view or "virtually" while reading data in [static](/Static_view/.md) view.
+Each object on the form has a *current value* at any time. It changes either as a result of [corresponding user actions](/Interactive_view.md#objects) in [interactive](/Interactive_view.md) view or "virtually" while reading data in [static](/Static_view.md) view.
 
 ### Properties and actions[​](#properties "Direct link to Properties and actions")
 
@@ -20,7 +20,7 @@ After defining objects, you can add properties and actions to the form, passing 
 
 info
 
-Adding actions is relevant only for [interactive](/Interactive_view/.md) view. In [static](/Static_view/.md) view added actions are ignored.
+Adding actions is relevant only for [interactive](/Interactive_view.md) view. In [static](/Static_view.md) view added actions are ignored.
 
 info
 
@@ -28,7 +28,7 @@ The behavior of properties and actions in the context of their display on the fo
 
 #### Display group[​](#drawgroup "Direct link to Display group")
 
-Each property is displayed exactly in one of the object groups on the form (this group shall be called a *display group* of this property). By default, the display group is the last group for the set of objects which this property receives as an input. If necessary, the developer can specify the display group explicitly (with certain [constraints](/Structured_view/.md#drawgroup) when used in a structured view)
+Each property is displayed exactly in one of the object groups on the form (this group shall be called a *display group* of this property). By default, the display group is the last group for the set of objects which this property receives as an input. If necessary, the developer can specify the display group explicitly (with certain [constraints](/Structured_view.md#drawgroup) when used in a structured view)
 
 #### Groups-in-columns[​](#groupcolumns "Direct link to Groups-in-columns")
 
@@ -38,11 +38,11 @@ When determining the [display group](#drawgroup) of a property, its groups-in-co
 
 #### Property groups[​](#propertygroup "Direct link to Property groups")
 
-Properties on the form can be combined into [groups](/Groups_of_properties_and_actions/.md) which, in turn, are used in the interactive ([default design](/Form_design/.md#defaultDesign)) and [hierarchical](/Structured_view/.md#hierarchy) form views. By default, a property is included in a group globally (i.e., this inclusion is defined for a property for all forms at once), however, this inclusion can be redefined for particular forms.
+Properties on the form can be combined into [groups](/Groups_of_properties_and_actions.md) which, in turn, are used in the interactive ([default design](/Form_design.md#defaultDesign)) and [hierarchical](/Structured_view.md#hierarchy) form views. By default, a property is included in a group globally (i.e., this inclusion is defined for a property for all forms at once), however, this inclusion can be redefined for particular forms.
 
 #### Default settings[​](#default-settings "Direct link to Default settings")
 
-Properties on the form have a large number of display settings in various [views](/Form_views/.md), most of which can be set not only directly for the property on the form, but also for the property itself (when creating it). These settings will be the default settings, i.e., if the setting is not explicitly set for a specific property on the form, then the setting of the property itself is used. In addition, these default settings are "inherited" when using [composition](/Composition_JOIN/.md), [single-form selection](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md#single) without an alternative result, and [previous value](/Previous_value_PREV/.md) operators (i.e., if property `f(a)` has the default width of `10`, then the property `g(a) = f(a) IF h(a)` will also have a width of `10` by default).
+Properties on the form have a large number of display settings in various [views](/Form_views.md), most of which can be set not only directly for the property on the form, but also for the property itself (when creating it). These settings will be the default settings, i.e., if the setting is not explicitly set for a specific property on the form, then the setting of the property itself is used. In addition, these default settings are "inherited" when using [composition](/Composition_JOIN.md), [single-form selection](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md#single) without an alternative result, and [previous value](/Previous_value_PREV.md) operators (i.e., if property `f(a)` has the default width of `10`, then the property `g(a) = f(a) IF h(a)` will also have a width of `10` by default).
 
 ### Filters[​](#filters "Direct link to Filters")
 
@@ -58,7 +58,7 @@ By default, in all object group views, object collections are displayed in a cer
 
 ### Language[​](#language "Direct link to Language")
 
-To create a new form and define its structure, the [`FORM` statement](/FORM_statement/.md) is used.
+To create a new form and define its structure, the [`FORM` statement](/FORM_statement.md) is used.
 
 ### Examples[​](#examples "Direct link to Examples")
 

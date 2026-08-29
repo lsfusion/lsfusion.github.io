@@ -1,6 +1,6 @@
 # Change operators (SET, CHANGED, ...)
 
-*Change operators* determine whether some types of changes have occurred for a given property in the current session. Each of them creates a property of [class `BOOLEAN`](/Built-in_classes/.md) that returns `TRUE` when the corresponding change has occurred, and `NULL` otherwise. All these operators are derived from the [previous value operator (`PREV`)](/Previous_value_PREV/.md), however, it is recommended to use them to improve readability and performance.
+*Change operators* determine whether some types of changes have occurred for a given property in the current session. Each of them creates a property of [class `BOOLEAN`](/Built-in_classes.md) that returns `TRUE` when the corresponding change has occurred, and `NULL` otherwise. All these operators are derived from the [previous value operator (`PREV`)](/Previous_value_PREV.md), however, it is recommended to use them to improve readability and performance.
 
 In the table below, `f` stands for the property being checked (parameters omitted) and `PREV(f)` for its value at the start of the session.
 
@@ -17,11 +17,11 @@ The first three operators (`SET`, `DROPPED`, `CHANGED`) are the basic change pre
 
 warning
 
-In [event mode](/Events/.md#change), these operators return changes from the point of the previous occurrence of the event (or rather, from the point at which all its handlers were completed) instead of changes since the start of the session.
+In [event mode](/Events.md#change), these operators return changes from the point of the previous occurrence of the event (or rather, from the point at which all its handlers were completed) instead of changes since the start of the session.
 
 ### Language[​](#language "Direct link to Language")
 
-To declare a property using change operators, the following [syntax constructs](/Change_operators/.md) are used.
+To declare a property using change operators, the following [syntax constructs](/Change_operators.md) are used.
 
 ### Examples[​](#examples "Direct link to Examples")
 

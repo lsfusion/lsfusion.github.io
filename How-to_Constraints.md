@@ -28,7 +28,7 @@ CONSTRAINT SET(price(Book b) > 100)
 
 If a user tries to save a book costing over 100 on any form, the user will see a message with a corresponding text. This message will also contain all objects of the `Book` class for which the constraint is violated. Values of properties from the `id` group will be shown for each object.
 
-Both options are identical from the execution perspective. If the platform does not find any [change operator](/Change_operators_SET_CHANGED_etc/.md) in a constraint, the entire expression is automatically "wrapped" into a `SET` operator.
+Both options are identical from the execution perspective. If the platform does not find any [change operator](/Change_operators_SET_CHANGED_etc.md) in a constraint, the entire expression is automatically "wrapped" into a `SET` operator.
 
 ## Example 2[​](#example-2 "Direct link to Example 2")
 
@@ -170,4 +170,4 @@ CONSTRAINT CHANGED(date(Order o)) AND NOT editable(o) AND o IS Order
     MESSAGE 'It is forbidden to change the date of an order closed for editing';
 ```
 
-[The constraint condition is also checked on objects deleted in the session](/Constraints/.md): when an order is deleted, its data properties are reset to `NULL`, so `CHANGED(date(o))` is true, and `NOT editable(o)` is also true — a property of the deleted object returns `NULL`, and the negation of `NULL` is true. Without `o IS Order` such a constraint would unexpectedly block the deletion of any order with a date set. For the deleted order `o IS Order` returns `NULL`, and the constraint does not fire. In [**Example 2**](#example-2) no guard is needed: the `posted(o)` condition there is positive, and for a deleted order it returns `NULL` by itself. A deliberate deletion prohibition is instead built with `DROPPED`, as in [**Example 3**](#example-3).
+[The constraint condition is also checked on objects deleted in the session](/Constraints.md): when an order is deleted, its data properties are reset to `NULL`, so `CHANGED(date(o))` is true, and `NOT editable(o)` is also true — a property of the deleted object returns `NULL`, and the negation of `NULL` is true. Without `o IS Order` such a constraint would unexpectedly block the deletion of any order with a date set. For the deleted order `o IS Order` returns `NULL`, and the constraint does not fire. In [**Example 2**](#example-2) no guard is needed: the `posted(o)` condition there is positive, and for a deleted order it returns `NULL` by itself. A deliberate deletion prohibition is instead built with `DROPPED`, as in [**Example 3**](#example-3).

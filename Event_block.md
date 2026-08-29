@@ -1,6 +1,6 @@
 # Event block
 
-The event block of the [`FORM` statement](/FORM_statement/.md) - a set of constructions controlling [events](/Form_events/.md) in an interactive form view.
+The event block of the [`FORM` statement](/FORM_statement.md) - a set of constructions controlling [events](/Form_events.md) in an interactive form view.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -49,13 +49,13 @@ The event block allows to define handlers for form events that occur as the resu
 
 The `FILTERGROUPS` and `FILTERS PROPERTY` events occur during interactive filtering: `FILTERGROUPS` — when the user changes the active filter in the specified filter group; `FILTERS PROPERTY` — when the user sets or changes a user filter on the specified form property.
 
-The `SELECT PROPERTY` event occurs when the [selection](/Selection_SELECT/.md) of the columns of the specified form property changes - when the user selects a column or unselects it, including by moving the cursor into it or out of it. If the property is drawn by several columns, the event occurs when any of them changes. Each of the two selection events follows its own property: `SELECT` follows the row selection of an object group, `SELECT PROPERTY` follows the selection of the columns of a form property.
+The `SELECT PROPERTY` event occurs when the [selection](/Selection_SELECT.md) of the columns of the specified form property changes - when the user selects a column or unselects it, including by moving the cursor into it or out of it. If the property is drawn by several columns, the event occurs when any of them changes. Each of the two selection events follows its own property: `SELECT` follows the row selection of an object group, `SELECT PROPERTY` follows the selection of the columns of a form property.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `objName`
 
-  Name of an object on the form. [Simple ID](/IDs/.md#id).
+  Name of an object on the form. [Simple ID](/IDs.md#id).
 
 * `groupObjectName`
 
@@ -67,11 +67,11 @@ The `SELECT PROPERTY` event occurs when the [selection](/Selection_SELECT/.md) o
 
 * `formPropertyName`
 
-  [Name of the property on a form](/Properties_and_actions_block/.md#name).
+  [Name of the property on a form](/Properties_and_actions_block.md#name).
 
 * `componentSelector`
 
-  Design component [selector](/DESIGN_statement/.md#selector).
+  Design component [selector](/DESIGN_statement.md#selector).
 
 * `groupObjectEvent`
 
@@ -79,7 +79,7 @@ The `SELECT PROPERTY` event occurs when the [selection](/Selection_SELECT/.md) o
 
   * `FILTER` - occurs when the filter applied to the group object changes, for any reason (a change to data affecting the filter condition, a programmatic change, or a user action).
   * `ORDER` - occurs when the order applied to the group object changes, for any reason.
-  * `SELECT` - occurs when what the [selection](/Selection_SELECT/.md) property of the group object returns changes: the selected rows, and also the current row that it returns when there is no selection. The selected rows are kept as a range in the current order and are intersected with the form filters, so while a selection is active the event also occurs when the order or the filter changes. The column selection does not belong to this event - `SELECT PROPERTY` is the one for it.
+  * `SELECT` - occurs when what the [selection](/Selection_SELECT.md) property of the group object returns changes: the selected rows, and also the current row that it returns when there is no selection. The selected rows are kept as a range in the current order and are intersected with the form filters, so while a selection is active the event also occurs when the order or the filter changes. The column selection does not belong to this event - `SELECT PROPERTY` is the one for it.
   * `FILTERS` - occurs when the user interactively changes the group object's filters.
   * `ORDERS` - occurs when the user interactively changes the group object's orders.
 
@@ -109,7 +109,7 @@ The `SELECT PROPERTY` event occurs when the [selection](/Selection_SELECT/.md) o
 
 * `eventActionId`
 
-  The [ID of the action](/IDs/.md#propertyid), that will be the event handler.
+  The [ID of the action](/IDs.md#propertyid), that will be the event handler.
 
 * `param1, ..., paramK`
 
@@ -117,7 +117,7 @@ The `SELECT PROPERTY` event occurs when the [selection](/Selection_SELECT/.md) o
 
 * `eventActionOperator`
 
-  [Context-dependent action operator](/Action_operators/.md#contextdependent). You can use the names of already declared objects on the form as parameters.
+  [Context-dependent action operator](/Action_operators.md#contextdependent). You can use the names of already declared objects on the form as parameters.
 
 ### Examples[​](#examples "Direct link to Examples")
 

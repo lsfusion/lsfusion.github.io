@@ -45,4 +45,4 @@ REQUIRE Shape;
 overSquareCircle (circle) += radius(circle) * radius(circle) * 3.14159265359; 
 ```
 
-Следует отметить, что вместо [оператора `OVERRIDE`](/ru/OVERRIDE_operator/.md) можно использовать любые другие выражения. В частности, наиболее часто используемыми могут быть [операторы `(+)` и `(-)`](/ru/Arithmetic_operators_plus_minus_etc/.md).
+Следует отметить, что вместо [оператора `OVERRIDE`](/ru/OVERRIDE_operator.md) можно использовать любые другие выражения. В частности, наиболее часто используемыми могут быть [операторы `(+)` и `(-)`](/ru/Arithmetic_operators_plus_minus_etc.md).

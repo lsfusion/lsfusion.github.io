@@ -2,20 +2,20 @@
 
 ## Flat import[​](#flat-import "Direct link to Flat import")
 
-The [`IMPORT` operator](/IMPORT_operator/.md) creates an action that reads a file, splits it into columns (fields), and [writes](/Property_change_CHANGE/.md) each of them into its own property or parameter.
+The [`IMPORT` operator](/IMPORT_operator.md) creates an action that reads a file, splits it into columns (fields), and [writes](/Property_change_CHANGE.md) each of them into its own property or parameter.
 
 ```
 IMPORT [importFormat] FROM fileExpr importDestination
 ```
 
-The destination is specified in one of two ways ([`IMPORT` operator](/IMPORT_operator/.md)):
+The destination is specified in one of two ways ([`IMPORT` operator](/IMPORT_operator.md)):
 
 ```
 TO [(objClassId1, objClassId2, ..., objClassIdK)] propertyId1 [= columnId1], ..., propertyIdN [= columnIdN] [WHERE whereId]
 FIELDS [(objClassId1 objAlias1, objClassId2 objAlias2, ..., objClassIdK objAliasK)] propClassId1 [propAlias1 =] columnId1 [NULL], ..., propClassIdN [propAliasN =] columnIdN [NULL] [DO actionOperator [ELSE elseActionOperator]]
 ```
 
-Rows map onto imported objects: for a numeric class the object is the row number starting from 0, for a concrete [user class](/User_classes/.md) a new object is created per row. There is at most one such object, `INTEGER` named `row` by default. The mark of an imported row is written into the property from `WHERE whereId`, by default into `System.imported[INTEGER]` ([data import](/Data_import_IMPORT/.md)).
+Rows map onto imported objects: for a numeric class the object is the row number starting from 0, for a concrete [user class](/User_classes.md) a new object is created per row. There is at most one such object, `INTEGER` named `row` by default. The mark of an imported row is written into the property from `WHERE whereId`, by default into `System.imported[INTEGER]` ([data import](/Data_import_IMPORT.md)).
 
 ```
 importSkus (FILE f) {
@@ -25,7 +25,7 @@ importSkus (FILE f) {
 
 ## Structured import and forms[​](#structured-import-and-forms "Direct link to Structured import and forms")
 
-Form import is the operation opposite to opening the form in the [structured view](/Structured_view/.md): the file's values are written into the form's properties so that exporting the form back recreates the original file ([Brief: data export](/Brief_export/.md)).
+Form import is the operation opposite to opening the form in the [structured view](/Structured_view.md): the file's values are written into the form's properties so that exporting the form back recreates the original file ([Brief: data export](/Brief_export.md)).
 
 ```
 IMPORT formName [importFormat] [FROM (fileExpr | groupId1 = fileExpr1 [, ..., groupIdM = fileExprM])]
@@ -33,7 +33,7 @@ IMPORT formName [importFormat] [FROM (fileExpr | groupId1 = fileExpr1 [, ..., gr
 
 The hierarchical formats (**JSON**, **XML**) are read from one file, the flat ones (**CSV**, **XLS**, **DBF**, **TABLE**) from one file per object group; the empty group is named `root`. Without `FROM`, `System.importFile` is used.
 
-An imported form is restricted: objects of numeric or concrete user classes only, exactly one object per group, properties and filters changeable (as a rule, [data properties](/Brief_properties/.md)). Flat import is a special case of it, with the form built by the platform itself. The mechanism is [in a structured view](/In_a_structured_view_EXPORT_IMPORT/.md), and the form's views are in [Brief: forms](/Brief_forms/.md).
+An imported form is restricted: objects of numeric or concrete user classes only, exactly one object per group, properties and filters changeable (as a rule, [data properties](/Brief_properties.md)). Flat import is a special case of it, with the form built by the platform itself. The mechanism is [in a structured view](/In_a_structured_view_EXPORT_IMPORT.md), and the form's views are in [Brief: forms](/Brief_forms.md).
 
 ## Formats and field mapping[​](#formats-and-field-mapping "Direct link to Formats and field mapping")
 
@@ -67,6 +67,6 @@ importOrders (FILE t) {
 }
 ```
 
-Import writes values as an ordinary property change, so what is written lands in the current [change session](/Brief_sessions/.md) and is applied together with [events](/Brief_events/.md) and [constraints](/Brief_constraints/.md).
+Import writes values as an ordinary property change, so what is written lands in the current [change session](/Brief_sessions.md) and is applied together with [events](/Brief_events.md) and [constraints](/Brief_constraints.md).
 
-The file itself comes from a property value: the [`READ` operator](/READ_operator/.md) reads it by URL, an [external call](/Brief_integration/.md) returns it, or the user picks it. Recommendations for writing an import are in [Rules: data import](/Rules_import/.md).
+The file itself comes from a property value: the [`READ` operator](/READ_operator.md) reads it by URL, an [external call](/Brief_integration.md) returns it, or the user picks it. Recommendations for writing an import are in [Rules: data import](/Rules_import.md).

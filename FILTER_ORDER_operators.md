@@ -1,6 +1,6 @@
 # Form filter and order operators
 
-The `ORDER`, `FILTER`, `FILTERGROUP`, `FILTER PROPERTY` operators (and their variants `ORDERS`, `FILTERS`, `FILTERGROUPS`, `FILTERS PROPERTY`) create [actions](/Actions/.md) that apply or read the current user filters and orders of the elements of an open form.
+The `ORDER`, `FILTER`, `FILTERGROUP`, `FILTER PROPERTY` operators (and their variants `ORDERS`, `FILTERS`, `FILTERGROUPS`, `FILTERS PROPERTY`) create [actions](/Actions.md) that apply or read the current user filters and orders of the elements of an open form.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -18,7 +18,7 @@ FILTERS PROPERTY formPropertyId  [TO propId]
 
 ### Description[​](#description "Direct link to Description")
 
-The operators work with the [interactive view](/Interactive_view/.md) of an open form and fall into two groups:
+The operators work with the [interactive view](/Interactive_view.md) of an open form and fall into two groups:
 
 * the singular operators (`ORDER`, `FILTER`, `FILTERGROUP`, `FILTER PROPERTY`) **apply** the value from the `FROM` block to the form element — as if the user had set that order or filter themselves;
 * the plural operators (`ORDERS`, `FILTERS`, `FILTERGROUPS`, `FILTERS PROPERTY`) **read** the current value of the form element into the property from the `TO` block.
@@ -32,29 +32,29 @@ The value is in a serialized form that depends on the element:
 * for a filter group (`FILTERGROUP` / `FILTERGROUPS`) — `INTEGER`: the number of the active filter in the group;
 * for a property's filter (`FILTER PROPERTY` / `FILTERS PROPERTY`) — `STRING`: the property's filter value.
 
-If the `FROM` or `TO` block is omitted, the corresponding property of the [`UserEvents`](/System_UserEvents/.md) system module is used by default (`orders`, `filters`, `filterGroups`, `filtersProperty`), through which these operators are usually invoked.
+If the `FROM` or `TO` block is omitted, the corresponding property of the [`UserEvents`](/System_UserEvents.md) system module is used by default (`orders`, `filters`, `filterGroups`, `filtersProperty`), through which these operators are usually invoked.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `groupObjectId`
 
-  [Group object ID](/IDs/.md#groupobjectid) on the form.
+  [Group object ID](/IDs.md#groupobjectid) on the form.
 
 * `filterGroupId`
 
-  The name of a [filter group](/Interactive_view/.md#filtergroup) on the form, qualified by the form.
+  The name of a [filter group](/Interactive_view.md#filtergroup) on the form, qualified by the form.
 
 * `formPropertyId`
 
-  [ID of a property or action on a form](/IDs/.md#formpropertyid).
+  [ID of a property or action on a form](/IDs.md#formpropertyid).
 
 * `expr`
 
-  An [expression](/Expression/.md) whose value is applied to the form element. Its class determines the form of serialization.
+  An [expression](/Expression.md) whose value is applied to the form element. Its class determines the form of serialization.
 
 * `propId`
 
-  [ID of a property](/IDs/.md#propertyid) without parameters that the read value is written to.
+  [ID of a property](/IDs.md#propertyid) without parameters that the read value is written to.
 
 ### Examples[​](#examples "Direct link to Examples")
 

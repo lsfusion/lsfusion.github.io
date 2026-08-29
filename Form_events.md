@@ -10,18 +10,18 @@ While the application is running, there is a number of events for each form that
 
 #### For objects on the form[​](#for-objects-on-the-form "Direct link to For objects on the form")
 
-* `CHANGE` - user [changed](/Interactive_view/.md#objects) the [current value](/Form_structure/.md#currentObject) of an object.
+* `CHANGE` - user [changed](/Interactive_view.md#objects) the [current value](/Form_structure.md#currentObject) of an object.
 
 #### For object groups on the form[​](#for-object-groups-on-the-form "Direct link to For object groups on the form")
 
 * `FILTER` - the filter applied to the object group has changed.
 * `ORDER` - the order applied to the object group has changed.
-* `SELECT` - what the [selection](/Selection_SELECT/.md) property of the object group reports has changed - the selected rows, or the current row it returns when there is no selection.
+* `SELECT` - what the [selection](/Selection_SELECT.md) property of the object group reports has changed - the selected rows, or the current row it returns when there is no selection.
 * `FILTERS` - the user changed the custom filters of the object group.
 * `ORDERS` - the user changed the custom orders of the object group.
-* `FILTERGROUPS` - the user changed the filter selected in a [filter group](/Interactive_view/.md#filtergroup).
+* `FILTERGROUPS` - the user changed the filter selected in a [filter group](/Interactive_view.md#filtergroup).
 * `FILTERS PROPERTY` - the user changed the value of a property filter.
-* `SELECT PROPERTY` - the [selection](/Selection_SELECT/.md) of the property as a column has changed.
+* `SELECT PROPERTY` - the [selection](/Selection_SELECT.md) of the property as a column has changed.
 
 #### For properties or actions on the form[​](#property "Direct link to For properties or actions on the form")
 
@@ -30,7 +30,7 @@ While the application is running, there is a number of events for each form that
 * `CHANGEWYS` - the user initiated a WYSIWYG property change using the PASTE operation or a special input mechanism.
 * `GROUPCHANGE` - the user initiated a property change for all objects in the table.
 * `EDIT` - the user initiated editing of an object.
-* `CONTEXTMENU [caption]` - the user selected the specified item in the context menu of a property (action) on the form. If necessary, you can also define the caption of this menu item ([string literal](/Constant/.md)). If it is not specified, then, by default, it will be the same as the action caption.
+* `CONTEXTMENU [caption]` - the user selected the specified item in the context menu of a property (action) on the form. If necessary, you can also define the caption of this menu item ([string literal](/Constant.md)). If it is not specified, then, by default, it will be the same as the action caption.
 * `KEYPRESS key` - the user has pressed the specified `key` (string literal) on keyboard.
 
 #### For containers on the form[​](#for-containers-on-the-form "Direct link to For containers on the form")
@@ -51,7 +51,7 @@ There are also several so-called *derivative* events that are nothing more than 
 * `CLOSE` - occurs when the `System.formClose` action is executed.
 * `DROP` - occurs when the `System.formDrop` action is executed.
 
-If the form is [the session owner](/Interactive_view/.md#owner) (meaning that when the `System.formOk` action is executed the form session [is saved](/Apply_changes_APPLY/.md)):
+If the form is [the session owner](/Interactive_view.md#owner) (meaning that when the `System.formOk` action is executed the form session [is saved](/Apply_changes_APPLY.md)):
 
 * `OK`, `OK BEFORE`, `OK AFTER` - occurs when the `System.formOk` action is executed, at the moments similar to the corresponding moments for the `APPLY` event (i.e. inside, before and after the transaction). In this case, `OK` and `OK BEFORE` handlers are executed before executing `APPLY` and `APPLY BEFORE` handlers, and `OK AFTER` is executed after `APPLY AFTER`.
 
@@ -63,7 +63,7 @@ info
 
 If `OK BEFORE` and `OK AFTER` handlers are defined, but the form is not the session owner, these handlers are still executed, respectively before and after the `OK` event handler.
 
-If, after the execution of event handlers with the `BEFORE` postfix, the `System.beforeCanceled` property value equals `TRUE`, further execution of the action that led to the occurrence of this event is stopped (for example, with `APPLY BEFORE`, saving the session is interrupted as if one of the existing constraints had been [violated](/Constraints/.md)).
+If, after the execution of event handlers with the `BEFORE` postfix, the `System.beforeCanceled` property value equals `TRUE`, further execution of the action that led to the occurrence of this event is stopped (for example, with `APPLY BEFORE`, saving the session is interrupted as if one of the existing constraints had been [violated](/Constraints.md)).
 
 info
 
@@ -91,7 +91,7 @@ For some events, the platform automatically creates default handlers:
 
 * `CHANGE`
 
-  The user is requested for an object of the changed property value class, after which the received object is written to this property. If the property is not [mutable](/Property_change_CHANGE/.md#changeable), the [user filter](/Interactive_view/.md#userfilters) mechanism for this property (or for the property specified using the corresponding option) is automatically called.
+  The user is requested for an object of the changed property value class, after which the received object is written to this property. If the property is not [mutable](/Property_change_CHANGE.md#changeable), the [user filter](/Interactive_view.md#userfilters) mechanism for this property (or for the property specified using the corresponding option) is automatically called.
 
 * `GROUPCHANGE`
 
@@ -99,14 +99,14 @@ For some events, the platform automatically creates default handlers:
 
 info
 
-If property event handler uses (even [implicitly](/Value_request_REQUEST/.md#implicit)) the [value request](/Value_request_REQUEST/.md) operator, then default handler can be created [in a different way](/Value_request_REQUEST/.md#defaultChange).
+If property event handler uses (even [implicitly](/Value_request_REQUEST.md#implicit)) the [value request](/Value_request_REQUEST.md) operator, then default handler can be created [in a different way](/Value_request_REQUEST.md#defaultChange).
 
 []()
 
 For an *object request* from the user, depending on the type of class, the following operators are used:
 
-* [Builtin classes](/Built-in_classes/.md) - the [value input](/Primitive_input_INPUT/.md) operator.
-* [Custom classes](/User_classes/.md) - the [open form](/In_an_interactive_view_SHOW_DIALOG/.md) operator. The form is the [list](/Interactive_view/.md#edtClass) form for this class.
+* [Builtin classes](/Built-in_classes.md) - the [value input](/Primitive_input_INPUT.md) operator.
+* [Custom classes](/User_classes.md) - the [open form](/In_an_interactive_view_SHOW_DIALOG.md) operator. The form is the [list](/Interactive_view.md#edtClass) form for this class.
 
 ### Standard handlers[​](#predefined "Direct link to Standard handlers")
 
@@ -130,7 +130,7 @@ The `PASTE` and `CUSTOM` sources are *external changes*: the value did not come 
 
 ### Language[​](#language "Direct link to Language")
 
-To define the form event handlers, use the `ON` option in the `FORM` statement ([events](/Event_block/.md) block, [properties and actions](/Properties_and_actions_block/.md) block, [objects](/Object_blocks/.md#objects) block), as well as in [property options](/Property_options/.md).
+To define the form event handlers, use the `ON` option in the `FORM` statement ([events](/Event_block.md) block, [properties and actions](/Properties_and_actions_block.md) block, [objects](/Object_blocks.md#objects) block), as well as in [property options](/Property_options.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

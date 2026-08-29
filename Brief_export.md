@@ -2,7 +2,7 @@
 
 ## Exporting properties and forms[​](#exporting-properties-and-forms "Direct link to Exporting properties and forms")
 
-The [`EXPORT` operator](/EXPORT_operator/.md) creates an action that exports data to a file — either from a list of properties or from a form [opened in the structured view](/In_a_structured_view_EXPORT_IMPORT/.md):
+The [`EXPORT` operator](/EXPORT_operator.md) creates an action that exports data to a file — either from a list of properties or from a form [opened in the structured view](/In_a_structured_view_EXPORT_IMPORT.md):
 
 ```
 EXPORT [exportFormat] FROM [columnId1 =] propertyExpr1, ..., [columnIdN = ] propertyExprN
@@ -14,7 +14,7 @@ EXPORT formName [OBJECTS objName1 = expr1, ..., objNameK = exprK] [exportFormat]
   [TO exportTo]
 ```
 
-In the first form each listed expression becomes a column of the result, `WHERE` sets the rows, `ORDER` their order. In the second form the structure of the export is set by the form itself: its object groups, the properties shown for them, its filters; the objects fixed in the `OBJECTS` block act as additional filters. The mechanism is described in [data export](/Data_export_EXPORT/.md).
+In the first form each listed expression becomes a column of the result, `WHERE` sets the rows, `ORDER` their order. In the second form the structure of the export is set by the form itself: its object groups, the properties shown for them, its filters; the objects fixed in the `OBJECTS` block act as additional filters. The mechanism is described in [data export](/Data_export_EXPORT.md).
 
 ```
 exportSkus (Store store) {
@@ -28,11 +28,11 @@ Exporting a list of properties always gives a flat result — a single table of 
 
 Exporting a form carries the hierarchy of its object groups into the result, but only in the **JSON** and **XML** formats. In the flat formats (**CSV**, **XLS**, **XLSX**, **DBF**, **TABLE**) each object group is exported to a separate file, and exporting a form to a single file in a flat format is not supported. The objects fixed in the `OBJECTS` block do not participate in building the group hierarchy.
 
-How a form turns into a data structure is described in the [structured view](/Structured_view/.md).
+How a form turns into a data structure is described in the [structured view](/Structured_view.md).
 
 ## Formats and options[​](#formats-and-options "Direct link to Formats and options")
 
-The format is written before the list of exported data as one of the variants of the [`EXPORT` operator](/EXPORT_operator/.md):
+The format is written before the list of exported data as one of the variants of the [`EXPORT` operator](/EXPORT_operator.md):
 
 ```
 JSON [CHARSET charsetStr]
@@ -57,7 +57,7 @@ TABLE
 
 The `TO` block sets the property without parameters, of a file class (`FILE`, `RAWFILE`, `JSONFILE` and so on), that the result is written to. When a list of properties is exported, and when a form is exported to a hierarchical format (**JSON**, **XML**), a single file is produced, and without `TO` it goes into the `System.exportFile` property. When the value class of the destination is `FILE`, the file extension matches the name of the format in lower case (`json`, `xml`, `csv`, `xls`, `xlsx`, `dbf`, `table`).
 
-When a form is exported to a flat format, each object group produces its own file, so the destination is set separately for each group — `TO groupId1 = propertyId1, ...`. Groups not listed are not exported: there is no `System.exportFile` fallback here. The [empty object group](/Static_view/.md#empty) is named `root`.
+When a form is exported to a flat format, each object group produces its own file, so the destination is set separately for each group — `TO groupId1 = propertyId1, ...`. Groups not listed are not exported: there is no `System.exportFile` fallback here. The [empty object group](/Static_view.md#empty) is named `root`.
 
 ```
 exportSku (Store store) {

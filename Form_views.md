@@ -1,14 +1,14 @@
 # Form views
 
-A [form](/Forms/.md) view can be classified as follows:
+A [form](/Forms.md) view can be classified as follows:
 
-#### [Interactive](/Interactive_view/.md)[​](#interactive "Direct link to interactive")
+#### [Interactive](/Interactive_view.md)[​](#interactive "Direct link to interactive")
 
-A view in which the user can interact with an open form: select current objects, call [actions](/Actions/.md), change [data properties](/Data_properties_DATA/.md), and so on. Data is usually read as needed depending on user actions. It is this view (along with the [programming interface](/Integration/.md)) that is responsible for data input into the system.
+A view in which the user can interact with an open form: select current objects, call [actions](/Actions.md), change [data properties](/Data_properties_DATA.md), and so on. Data is usually read as needed depending on user actions. It is this view (along with the [programming interface](/Integration.md)) that is responsible for data input into the system.
 
-#### [Static](/Static_view/.md)[​](#static "Direct link to static")
+#### [Static](/Static_view.md)[​](#static "Direct link to static")
 
-In this view, when the [form opens](/Open_form/.md) all its data is read at once, after which this data is converted/sent to the client. This is a one-way view type.
+In this view, when the [form opens](/Open_form.md) all its data is read at once, after which this data is converted/sent to the client. This is a one-way view type.
 
 info
 
@@ -20,8 +20,8 @@ From a data flow standpoint, the interactive view is internal, meaning that the 
 
 Some views are *graphic*, meaning that to display them the data read must be placed in two-dimensional space: on paper or the screen of the device. Accordingly, for these views a design may/must be defined:
 
-* [Form design](/Form_design/.md) - for [interactive](/Interactive_view/.md) view.
-* [Report design](/Report_design/.md) - for [print](/Print_view/.md) view.
+* [Form design](/Form_design.md) - for [interactive](/Interactive_view.md) view.
+* [Report design](/Report_design.md) - for [print](/Print_view.md) view.
 
 ### Stack[​](#stack "Direct link to Stack")
 

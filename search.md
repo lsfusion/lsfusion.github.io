@@ -2,7 +2,7 @@
 
 [![Logo](/img/logo.png)![Logo](/img/logo.png)](/index.md)
 
-[****](/index.md)[Install](/Install/.md)[Learn](/index.md)
+[****](/index.md)[Install](/Install.md)[Learn](/index.md)
 
 [GitHub](https://github.com/lsfusion/platform)
 
@@ -15,7 +15,7 @@
 
 [English](#)
 
-* [English](/search/.md)
+* [English](/search.md)
 * [Русский](/ru/search/)
 
 Search

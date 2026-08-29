@@ -1,6 +1,6 @@
 # Инструкция WHEN
 
-Инструкция `WHEN` - добавление обработчика [простого события](/ru/Simple_event/.md).
+Инструкция `WHEN` - добавление обработчика [простого события](/ru/Simple_event.md).
 
 ### Синтаксис[​](#синтаксис "Прямая ссылка на этот заголовок")
 
@@ -22,21 +22,21 @@ WHEN eventClause eventExpr [ORDER [DESC] orderExpr1, ..., orderExprN] DO eventAc
 ON eventClause FOR eventExpr [ORDER [DESC] orderExpr1, ..., orderExprN] DO eventAction;
 ```
 
-но при этом имеет [ряд преимуществ](/ru/Simple_event/.md).
+но при этом имеет [ряд преимуществ](/ru/Simple_event.md).
 
 ### Параметры[​](#параметры "Прямая ссылка на этот заголовок")
 
 * `eventClause`
 
-  [Блок описания события](/ru/Event_description_block/.md). Описывает [базовое событие](/ru/Events/.md) для создаваемого обработчика.
+  [Блок описания события](/ru/Event_description_block.md). Описывает [базовое событие](/ru/Events.md) для создаваемого обработчика.
 
 * `eventExpr`
 
-  [Выражение](/ru/Expression/.md), значение которого используется в качестве условия создаваемого простого события. Если полученное свойство не содержит внутри [оператора `PREV`](/ru/Previous_value_PREV/.md), то платформа автоматически оборачивает его в [оператор `SET`](/ru/Change_operators_SET_CHANGED_etc/.md).
+  [Выражение](/ru/Expression.md), значение которого используется в качестве условия создаваемого простого события. Если полученное свойство не содержит внутри [оператора `PREV`](/ru/Previous_value_PREV.md), то платформа автоматически оборачивает его в [оператор `SET`](/ru/Change_operators_SET_CHANGED_etc.md).
 
 * `eventAction`
 
-  [Контекстно-зависимый оператор](/ru/Action_operators/.md#contextdependent), описывающий действие, которое будет добавлено в качестве обработчика события.
+  [Контекстно-зависимый оператор](/ru/Action_operators.md#contextdependent), описывающий действие, которое будет добавлено в качестве обработчика события.
 
 * `DESC`
 

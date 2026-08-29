@@ -1,6 +1,6 @@
 # Constant
 
-The *constant* operator is used to create properties without parameters which always return the same value. This value can be [static objects](/Static_objects/.md) of [custom](/User_classes/.md) and [built-in](/Built-in_classes/.md) classes as well as the special `NULL` value. The value class is fixed by the value itself:
+The *constant* operator is used to create properties without parameters which always return the same value. This value can be [static objects](/Static_objects.md) of [custom](/User_classes.md) and [built-in](/Built-in_classes.md) classes as well as the special `NULL` value. The value class is fixed by the value itself:
 
 | Constant value                  | Value class                                                           |
 | ------------------------------- | --------------------------------------------------------------------- |
@@ -12,7 +12,7 @@ There is no `FALSE` constant — the false value is represented by `NULL`.
 
 ### Language[​](#language "Direct link to Language")
 
-Constants are written as references to [static objects](/Static_objects/.md) for custom-class values, and as [literals](/Literals/.md) for built-in-class values and `NULL`.
+Constants are written as references to [static objects](/Static_objects.md) for custom-class values, and as [literals](/Literals.md) for built-in-class values and `NULL`.
 
 ### Examples[​](#examples "Direct link to Examples")
 

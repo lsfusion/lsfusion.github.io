@@ -39,9 +39,9 @@ EXTEND FORM orders
 ;
 ```
 
-To solve this task we use the [`FORMULA` operator](/FORMULA_operator/.md) to create a new property that takes a date and returns its value as a string in the `YYYY-MM-DD` format. The expression contains [`to_char`](https://www.postgresql.org/docs/11/functions-formatting.html) which is a standard PostgreSQL function.
+To solve this task we use the [`FORMULA` operator](/FORMULA_operator.md) to create a new property that takes a date and returns its value as a string in the `YYYY-MM-DD` format. The expression contains [`to_char`](https://www.postgresql.org/docs/11/functions-formatting.html) which is a standard PostgreSQL function.
 
-Note that for the ISO format specifically such a property is not necessary: by default, dates in the text formats of the [`EXPORT` operator](/EXPORT_operator/.md) are already written in ISO 8601 formats (the `useISOTimeFormatsInIntegration` [working parameter](/Working_parameters/.md)). The technique remains useful for any other date output format.
+Note that for the ISO format specifically such a property is not necessary: by default, dates in the text formats of the [`EXPORT` operator](/EXPORT_operator.md) are already written in ISO 8601 formats (the `useISOTimeFormatsInIntegration` [working parameter](/Working_parameters.md)). The technique remains useful for any other date output format.
 
 ## Example 2[​](#example-2 "Direct link to Example 2")
 

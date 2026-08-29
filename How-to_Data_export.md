@@ -97,7 +97,7 @@ EXTEND FORM orders
 ;
 ```
 
-To upload the data in the XML format, we need to create a form [with the corresponding structure](/Structured_view/.md) and then call the [`EXPORT` operator](/EXPORT_operator/.md). This operator will generate a file based on the form and then write the file to the `exportFile` property, which is then opened on the client side using the `open` action. The file will be opened in the software associated with its extension (i. e. ".xml").
+To upload the data in the XML format, we need to create a form [with the corresponding structure](/Structured_view.md) and then call the [`EXPORT` operator](/EXPORT_operator.md). This operator will generate a file based on the form and then write the file to the `exportFile` property, which is then opened on the client side using the `open` action. The file will be opened in the software associated with its extension (i. e. ".xml").
 
 The resulting XML will look like this:
 
@@ -254,6 +254,6 @@ number;customer;book;quantity;price
 12;Customer 2;Book 1;2;4.99
 ```
 
-The column name is overridden for the first three parameters, while the other two use the names of the corresponding properties. The result is first written to the local property `file`. Then the user is prompted to save the file from that property to his workstation. This is done using [`WRITE` operator](/WRITE_operator/.md).
+The column name is overridden for the first three parameters, while the other two use the names of the corresponding properties. The result is first written to the local property `file`. Then the user is prompted to save the file from that property to his workstation. This is done using [`WRITE` operator](/WRITE_operator.md).
 
 The second action opens the form, asks the user to enter a date and then calls the first data export action.

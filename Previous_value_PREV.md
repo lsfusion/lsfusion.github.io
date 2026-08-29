@@ -1,14 +1,14 @@
 # Previous value (PREV)
 
-The *previous value* operator creates a [property](/Properties/.md) that returns the value of the given property at the beginning of the [change session](/Change_sessions/.md) (that is, the current value in the database, ignoring any changes that have been made in the session). The resulting property has the same value class as the source property. Together with the [change operators](/Change_operators_SET_CHANGED_etc/.md) — which are derived from it — this operator is what makes session-local change tracking possible: it gives access to the "before" state that the current session is being compared against.
+The *previous value* operator creates a [property](/Properties.md) that returns the value of the given property at the beginning of the [change session](/Change_sessions.md) (that is, the current value in the database, ignoring any changes that have been made in the session). The resulting property has the same value class as the source property. Together with the [change operators](/Change_operators_SET_CHANGED_etc.md) — which are derived from it — this operator is what makes session-local change tracking possible: it gives access to the "before" state that the current session is being compared against.
 
 info
 
-This operator always uses the start-of-session scope. For how that interacts with [event handling](/Events/.md#change), see the canonical event-mode section.
+This operator always uses the start-of-session scope. For how that interacts with [event handling](/Events.md#change), see the canonical event-mode section.
 
 ### Language[​](#language "Direct link to Language")
 
-To declare a property that returns a previous value, use the [`PREV` operator](/PREV_operator/.md).
+To declare a property that returns a previous value, use the [`PREV` operator](/PREV_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

@@ -1,6 +1,6 @@
 # EMAIL operator
 
-The `EMAIL` operator creates an [action](/Actions/.md) that [sends email](/Send_mail_EMAIL/.md).
+The `EMAIL` operator creates an [action](/Actions.md) that [sends email](/Send_mail_EMAIL.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -31,13 +31,13 @@ The `FROM` option specifies the sender's email address. This address is used to 
 
 If the `SUBJECT` option is not specified, the subject value will be equal to `'{mail.nosubject}'`.
 
-In the `NAME` option within `attachDescription`, file names are specified without extensions (the dot `.` will be considered part of the file name). The extension will be automatically determined similar to the [`WRITE` operator](/WRITE_operator/.md). If the `NAME` option is not specified, the default attachment name will be `'attachmentK'`, where `K` is the index number of the attachment.
+In the `NAME` option within `attachDescription`, file names are specified without extensions (the dot `.` will be considered part of the file name). The extension will be automatically determined similar to the [`WRITE` operator](/WRITE_operator.md). If the `NAME` option is not specified, the default attachment name will be `'attachmentK'`, where `K` is the index number of the attachment.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `fromExpr`
 
-  An [expression](/Expression/.md) which value determines the sender's email address.
+  An [expression](/Expression.md) which value determines the sender's email address.
 
 * `subjExpr`
 
@@ -69,7 +69,7 @@ In the `NAME` option within `attachDescription`, file names are specified withou
 
 * `attachFilePropertyID`
 
-  [Property ID](/IDs/.md#propertyid) which determines a list of files to be attached to the message. The property must have exactly one parameter of the `INTEGER` class and return a value of a file class
+  [Property ID](/IDs.md#propertyid) which determines a list of files to be attached to the message. The property must have exactly one parameter of the `INTEGER` class and return a value of a file class
 
 * `attachNamePropertyID`
 

@@ -1,8 +1,8 @@
 # Icon
 
-`Icon` is a [system module](/System_modules/.md) that stores the catalogue of UI icons (Font Awesome and Bootstrap Icons) and finds the best icon for a text query through full-text search. It is pulled in via `REQUIRE Icon` (which in turn does `REQUIRE Utils, Reflection, SystemEvents`).
+`Icon` is a [system module](/System_modules.md) that stores the catalogue of UI icons (Font Awesome and Bootstrap Icons) and finds the best icon for a text query through full-text search. It is pulled in via `REQUIRE Icon` (which in turn does `REQUIRE Utils, Reflection, SystemEvents`).
 
-The full-text search and ranking properties build on the `toTsVector` / `toTsQuery` / `tsRank` primitives provided by [`Utils`](/System_Utils/.md) (see its "Full-text search" section).
+The full-text search and ranking properties build on the `toTsVector` / `toTsQuery` / `tsRank` primitives provided by [`Utils`](/System_Utils.md) (see its "Full-text search" section).
 
 ### Icon catalogue[​](#icon-catalogue "Direct link to Icon catalogue")
 
@@ -87,12 +87,12 @@ The `icons` form is the icon search and preview screen: it shows the search box,
 
 ### Language[​](#language "Direct link to Language")
 
-* [`MATCH` operator](/MATCH_operator/.md) — the full-text match used to select candidate icons against the query.
-* [`FORMULA` operator](/FORMULA_operator/.md) — the syntax behind the ranking and string-splitting properties.
+* [`MATCH` operator](/MATCH_operator.md) — the full-text match used to select candidate icons against the query.
+* [`FORMULA` operator](/FORMULA_operator.md) — the syntax behind the ranking and string-splitting properties.
 
 ### See also[​](#see-also "Direct link to See also")
 
-* [`System modules`](/System_modules/.md) — the general list of platform modules.
-* [`Utils`](/System_Utils/.md) — its "Full-text search" section documents the `toTsVector` / `toTsQuery` / `tsRank` primitives this module is built on.
-* [`Reflection`](/System_Reflection/.md) — the metadata module pulled in with `Icon`.
-* [`SystemEvents`](/System_SystemEvents/.md) — the server-lifecycle module pulled in with `Icon`.
+* [`System modules`](/System_modules.md) — the general list of platform modules.
+* [`Utils`](/System_Utils.md) — its "Full-text search" section documents the `toTsVector` / `toTsQuery` / `tsRank` primitives this module is built on.
+* [`Reflection`](/System_Reflection.md) — the metadata module pulled in with `Icon`.
+* [`SystemEvents`](/System_SystemEvents.md) — the server-lifecycle module pulled in with `Icon`.

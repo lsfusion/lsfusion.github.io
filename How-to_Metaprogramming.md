@@ -1,8 +1,8 @@
 # How-to: Metaprogramming
 
-You may often need to write "similar" code for certain cases. The [`META` statement](/META_statement/.md) exists for this purpose, and makes it possible to create a code template or *metacode*. It can contain parameters that will be replaced by certain values when this metacode is used. Such an approach is called [metaprogramming](/Metaprogramming/.md).
+You may often need to write "similar" code for certain cases. The [`META` statement](/META_statement.md) exists for this purpose, and makes it possible to create a code template or *metacode*. It can contain parameters that will be replaced by certain values when this metacode is used. Such an approach is called [metaprogramming](/Metaprogramming.md).
 
-Let's create a simple directory as described in the article. [How-to: CRUD](/How-to_CRUD/.md).
+Let's create a simple directory as described in the article. [How-to: CRUD](/How-to_CRUD.md).
 
 ```
 CLASS Book 'Book';
@@ -135,7 +135,7 @@ When the metacode support mode is enabled, the generated code will be automatica
 
 Any modifications of the code will be impossible, since they will be automatically overwritten by the IDE. However, it is recommended to disable this mode when committing code to your version control system to avoid creating redundant change history entries.
 
-Objects created using metacode can subsequently be extended using standard [mechanisms](/How-to_Extensions/.md).
+Objects created using metacode can subsequently be extended using standard [mechanisms](/How-to_Extensions.md).
 
 ```
 genre 'Genre' = DATA ISTRING[20] (Book);

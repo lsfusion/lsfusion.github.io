@@ -1,10 +1,10 @@
 # Order (ORDER)
 
-The *order* operator creates a [property](/Properties/.md), defined on the objects of an object group, that returns a value reflecting the relative order of their object collection within the group's current [order](/Form_structure/.md#sort). This value has no standalone meaning: only comparing it with the same property for the group's other object collections is meaningful, and that comparison reproduces the group's current order.
+The *order* operator creates a [property](/Properties.md), defined on the objects of an object group, that returns a value reflecting the relative order of their object collection within the group's current [order](/Form_structure.md#sort). This value has no standalone meaning: only comparing it with the same property for the group's other object collections is meaningful, and that comparison reproduces the group's current order.
 
 ### Language[​](#language "Direct link to Language")
 
-To declare a property that determines the order in a group of objects, use the [`ORDER` operator](/Object_group_operator/.md).
+To declare a property that determines the order in a group of objects, use the [`ORDER` operator](/Object_group_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

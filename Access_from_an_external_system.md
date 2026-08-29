@@ -2,7 +2,7 @@
 
 ## Action API[​](#action-api "Direct link to Action API")
 
-The platform allows external systems to access an lsFusion-based system using various network protocols. The interface of such interaction is a call for an action with specified parameters and, if necessary, the return of certain property values (without parameters) as *results*. It is assumed that all parameter and result objects are objects of [built-in classes](/Built-in_classes/.md).
+The platform allows external systems to access an lsFusion-based system using various network protocols. The interface of such interaction is a call for an action with specified parameters and, if necessary, the return of certain property values (without parameters) as *results*. It is assumed that all parameter and result objects are objects of [built-in classes](/Built-in_classes.md).
 
 ### Defining an action[​](#actiontype "Direct link to Defining an action")
 
@@ -40,7 +40,7 @@ The URL format, depending on the method of [action definition](#actiontype), loo
 
 For `EVAL` / `EVAL ACTION`, the code can thus be passed in the query string (`script=`), as the value of the `script` key of an `application/x-www-form-urlencoded` body, or as the entire request body with any other content type (for example, `text/plain; charset=UTF-8`). The raw code cannot be the whole body of an `application/x-www-form-urlencoded` request: such a body is parsed into named parameters, not treated as a single BODY parameter. Keep in mind that HTTP clients often use this content type by default (for example, `curl --data`), so an explicit `Content-Type` header is required when passing the code as the whole body.
 
-For `EXEC`, the action name can be either the action's [compound name](/Element_identification/.md) or its `EXTID` (the compound name is tried first). In the path form, the platform looks up the action greedily: it first tries the full path as an action name (with any `/` replaced by `_` for the compound name lookup), and if no such action exists, drops the last path segment and retries, until a match is found or `404` is returned. The part of the path left after the matched action name is passed to the `System.actionPathInfo[]` property. For example, for `/exec/df/fdf/dffd` the platform tries actions `df_fdf_dffd`, then `df_fdf`, then `df`; if only `df` matches, `fdf/dffd` is written to `System.actionPathInfo[]`.
+For `EXEC`, the action name can be either the action's [compound name](/Element_identification.md) or its `EXTID` (the compound name is tried first). In the path form, the platform looks up the action greedily: it first tries the full path as an action name (with any `/` replaced by `_` for the compound name lookup), and if no such action exists, drops the last path segment and retries, until a match is found or `404` is returned. The part of the path left after the matched action name is passed to the `System.actionPathInfo[]` property. For example, for `/exec/df/fdf/dffd` the platform tries actions `df_fdf_dffd`, then `df_fdf`, then `df`; if only `df` matches, `fdf/dffd` is written to `System.actionPathInfo[]`.
 
 ##### Servers[​](#servers "Direct link to Servers")
 
@@ -83,13 +83,13 @@ The platform also fills the following properties with information about the curr
 
 ##### Results[​](#httpresult "Direct link to Results")
 
-Properties whose values must be returned as the result are passed in the request string by adding strings like `&return=<property name>` to its end. It is assumed that the values of specified properties are returned in the order of their appearance in the request string. By default, if no result properties are specified, the resulting property is the first one with a non-`NULL` value from the following [list](/Built-in_classes/.md#export).
+Properties whose values must be returned as the result are passed in the request string by adding strings like `&return=<property name>` to its end. It is assumed that the values of specified properties are returned in the order of their appearance in the request string. By default, if no result properties are specified, the resulting property is the first one with a non-`NULL` value from the following [list](/Built-in_classes.md#export).
 
-The result properties from the default list above are [local](/Data_properties_DATA/.md#local) (`EXPORT` fills one of them), so they must be filled in the session in which the called action itself runs: for example, a value exported with [`EXPORT`](/Data_export_EXPORT/.md) inside a [new session](/New_session_NEWSESSION_NESTEDSESSION/.md) block stays in that session and does not reach the response, unless it is migrated back as a [nested](/Session_management/.md#nested) local property. Perform the export in the action's own session — the called action already runs in a separate session, so there is normally no need to open a new one. For the same reason a successful [apply](/Apply_changes_APPLY/.md) after the export empties the response: applying changes resets ordinary (non-nested) local properties, including the already filled result property. Perform the export after the apply, carrying any values it needs across the apply in nested local properties (see [below](#createdresult) for an example).
+The result properties from the default list above are [local](/Data_properties_DATA.md#local) (`EXPORT` fills one of them), so they must be filled in the session in which the called action itself runs: for example, a value exported with [`EXPORT`](/Data_export_EXPORT.md) inside a [new session](/New_session_NEWSESSION_NESTEDSESSION.md) block stays in that session and does not reach the response, unless it is migrated back as a [nested](/Session_management.md#nested) local property. Perform the export in the action's own session — the called action already runs in a separate session, so there is normally no need to open a new one. For the same reason a successful [apply](/Apply_changes_APPLY.md) after the export empties the response: applying changes resets ordinary (non-nested) local properties, including the already filled result property. Perform the export after the apply, carrying any values it needs across the apply in nested local properties (see [below](#createdresult) for an example).
 
-Note also that in such a call [local event](/Events/.md#local) handlers are not executed on a mere read of the changed properties: of their execution points, the only one that normally occurs here is applying changes (or an explicit call of `System.executeLocalEvents[]`). So a value that a local event handler is supposed to write must be read after applying changes, not right after changing the source data.
+Note also that in such a call [local event](/Events.md#local) handlers are not executed on a mere read of the changed properties: of their execution points, the only one that normally occurs here is applying changes (or an explicit call of `System.executeLocalEvents[]`). So a value that a local event handler is supposed to write must be read after applying changes, not right after changing the source data.
 
-Alternatively, an action that has a [result](/Actions/.md) returns it directly as the response body — the simplest way to get a single value back, and the usual form for [`EVAL` / `EVAL ACTION`](#actiontype):
+Alternatively, an action that has a [result](/Actions.md) returns it directly as the response body — the simplest way to get a single value back, and the usual form for [`EVAL` / `EVAL ACTION`](#actiontype):
 
 * `EVAL ACTION` — the supplied code is the action body; end it with `RETURN`:
 
@@ -103,15 +103,15 @@ Alternatively, an action that has a [result](/Actions/.md) returns it directly a
   run() { RETURN 2 * 21; }
   ```
 
-The value is serialized like any result (a scalar as text, `JSON` / `FILE` as its content). For tabular or multi-field output use [`EXPORT`](/Data_export_EXPORT/.md) rather than `RETURN`.
+The value is serialized like any result (a scalar as text, `JSON` / `FILE` as its content). For tabular or multi-field output use [`EXPORT`](/Data_export_EXPORT.md) rather than `RETURN`.
 
-The `MESSAGE` operator is not suitable for returning a value: showing a message is an [interactive](#interactive) operation, and its text never appears in the response body. Likewise, on a synchronous call a canceled [apply](/Apply_changes_APPLY/.md) (for example, on a [constraint](/Constraints/.md) violation) returns no error and shows no message automatically: the request completes as usual and the changes are not saved. To detect this, the action itself must check the `System.canceled[]` property and, if needed, return the error text from the `System.applyMessage[]` property.
+The `MESSAGE` operator is not suitable for returning a value: showing a message is an [interactive](#interactive) operation, and its text never appears in the response body. Likewise, on a synchronous call a canceled [apply](/Apply_changes_APPLY.md) (for example, on a [constraint](/Constraints.md) violation) returns no error and shows no message automatically: the request completes as usual and the changes are not saved. To detect this, the action itself must check the `System.canceled[]` property and, if needed, return the error text from the `System.applyMessage[]` property.
 
 If the result of a request is a file (`FILE`, `PDFFILE`, etc.), the response [content type](https://en.wikipedia.org/wiki/Media_type) , depending on the file extension, is determined in accordance with the following [table](https://github.com/lsfusion/platform/blob/master/api/src/main/resources/MIMETypes.properties). If the file extension is not found in this table, the content type is set to `application/<file extension>`.
 
-The file extension in this case is determined automatically, similarly to the [`WRITE` operator](/Write_file_WRITE/.md).
+The file extension in this case is determined automatically, similarly to the [`WRITE` operator](/Write_file_WRITE.md).
 
-In all of the three cases above, if the result value is `NULL`, a `null` string (for example, `application/null`) is substituted for the file extension in the content type, and an empty string is returned as the response itself. A frequent cause of an unexpectedly empty body (with both `RETURN` and `EXPORT FROM`) is `NULL` propagation — a single `NULL` operand makes the whole value `NULL` (for example, concatenating text with `STRING` of an empty `GROUP SUM` yields `NULL`); guard such an expression with [`OVERRIDE`](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md) to fall back to a default.
+In all of the three cases above, if the result value is `NULL`, a `null` string (for example, `application/null`) is substituted for the file extension in the content type, and an empty string is returned as the response itself. A frequent cause of an unexpectedly empty body (with both `RETURN` and `EXPORT FROM`) is `NULL` propagation — a single `NULL` operand makes the whole value `NULL` (for example, concatenating text with `STRING` of an empty `GROUP SUM` yields `NULL`); guard such an expression with [`OVERRIDE`](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md) to fall back to a default.
 
 Request results different from files are converted into strings and are passed as a `text/plain` content type. `NULL` values are returned as empty strings.
 
@@ -123,7 +123,7 @@ The HTTP [status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) 
 
 ##### Result computed for a created object[​](#createdresult "Direct link to Result computed for a created object")
 
-A common case is an action that both creates an object and must return, as the [result](#httpresult), a property computed for *that* object (a maintained total, a FIFO cost, and so on). The created object cannot be referenced directly after [`APPLY`](/Apply_changes_APPLY/.md):
+A common case is an action that both creates an object and must return, as the [result](#httpresult), a property computed for *that* object (a maintained total, a FIFO cost, and so on). The created object cannot be referenced directly after [`APPLY`](/Apply_changes_APPLY.md):
 
 * the parameter introduced by `NEW alias` is visible only inside its block, so the alias no longer exists where `APPLY` and the result are read;
 * a `LOCAL` property is reset by `APPLY`, so capturing the object in a plain `LOCAL` inside the block leaves it empty afterwards.
@@ -168,11 +168,11 @@ At the same time, if the number of results being returned is more than one, then
 
 info
 
-Note that the processing of parameters and request results is largely similar to their processing during [access to an external system](/Access_to_an_external_system_EXTERNAL/.md) over the HTTP protocol (in this case, parameters are processed as results and vice versa, results are processed as parameters).
+Note that the processing of parameters and request results is largely similar to their processing during [access to an external system](/Access_to_an_external_system_EXTERNAL.md) over the HTTP protocol (in this case, parameters are processed as results and vice versa, results are processed as parameters).
 
 ##### Stateful API[​](#stateful-api "Direct link to Stateful API")
 
-The API described above is a REST API. Accordingly, the [change session](/Change_sessions/.md) is created when a call is initiated, and closes immediately after the call ends. However, there are situations where such behavior is undesirable, and you need to accumulate changes for a certain period of time (for example, while the user is inputting data), which means that the session must be saved and handed over between sessions. In order to do this, you can add a string of the following format to the end of the query string: `&session=<session ID>`, where `<session ID>` is any non-empty string. In this case, the session will not be closed after the call, but will be associated with a previously passed ID, so that all subsequent calls with this ID will be executed in this session. In order to close a session (after the end of a call), you need to add the `_close` postfix (for example,`&session=0_close`) to its ID in the request string.
+The API described above is a REST API. Accordingly, the [change session](/Change_sessions.md) is created when a call is initiated, and closes immediately after the call ends. However, there are situations where such behavior is undesirable, and you need to accumulate changes for a certain period of time (for example, while the user is inputting data), which means that the session must be saved and handed over between sessions. In order to do this, you can add a string of the following format to the end of the query string: `&session=<session ID>`, where `<session ID>` is any non-empty string. In this case, the session will not be closed after the call, but will be associated with a previously passed ID, so that all subsequent calls with this ID will be executed in this session. In order to close a session (after the end of a call), you need to add the `_close` postfix (for example,`&session=0_close`) to its ID in the request string.
 
 info
 
@@ -192,18 +192,18 @@ When executing an http request, it is often necessary to identify the user on wh
 
   <!-- -->
 
-  * At the first stage, you need to execute the `Authentication.getAuthToken[]` action with basic authentication. The result of this action will be an authentication token with a fixed lifetime (one day [by default](/Working_parameters/.md#authTokenExpiration)). An example of a request: `http://localhost/exec?action=getAuthToken`.
+  * At the first stage, you need to execute the `Authentication.getAuthToken[]` action with basic authentication. The result of this action will be an authentication token with a fixed lifetime (one day [by default](/Working_parameters.md#authTokenExpiration)). An example of a request: `http://localhost/exec?action=getAuthToken`.
   * The token you receive can be used for authentication during its lifetime by passing it in the `Authorization: Bearer <token>` header (similarly to JWT which is used in the current implementation of the platform for generating authentication tokens).
 
-Whether a request is accepted also depends on the [`enableAPI`](/Working_parameters/.md) setting, which allows disabling the API by default, restricting it to authenticated requests, or additionally allowing anonymous requests. An individual action can be annotated with `@@noauth` to bypass both the authentication check and `enableAPI`, or with `@@api` to allow it at `enableAPI=0` (still requiring an authenticated user). At `enableAPI=0`, an authenticated user who has access to the `System.interpreter` navigator form is also allowed to use the external API, because that user can already execute arbitrary lsFusion code through the browser UI.
+Whether a request is accepted also depends on the [`enableAPI`](/Working_parameters.md) setting, which allows disabling the API by default, restricting it to authenticated requests, or additionally allowing anonymous requests. An individual action can be annotated with `@@noauth` to bypass both the authentication check and `enableAPI`, or with `@@api` to allow it at `enableAPI=0` (still requiring an authenticated user). At `enableAPI=0`, an authenticated user who has access to the `System.interpreter` navigator form is also allowed to use the external API, because that user can already execute arbitrary lsFusion code through the browser UI.
 
 warning
 
-The `/eval` and `/eval/action` endpoints execute arbitrary lsFusion code. The `@@api` annotation marks a specific named action and does not apply to these endpoints, so it never opens them. At `enableAPI=0` they remain available only to a caller with access to the `System.interpreter` navigator form — the same gate as running code in the browser UI. Setting `enableAPI=1` grants that same capability to every authenticated user over HTTP, bypassing the form-access gate. In production keep `enableAPI=0` (the default) and expose only specific `@@api`-annotated actions; raise it to `1` only for trusted roles through the per-role settings mechanism described in [Working parameters](/Working_parameters/.md), never globally. The `@@api` annotation allows the action for every authenticated user and does not restrict which one; to limit a particular `@@api` action to specific users or rights, check the logged-in user inside the action itself via `currentUser[]` (and, for example, its role through `currentUserMainRoleName[]`).
+The `/eval` and `/eval/action` endpoints execute arbitrary lsFusion code. The `@@api` annotation marks a specific named action and does not apply to these endpoints, so it never opens them. At `enableAPI=0` they remain available only to a caller with access to the `System.interpreter` navigator form — the same gate as running code in the browser UI. Setting `enableAPI=1` grants that same capability to every authenticated user over HTTP, bypassing the form-access gate. In production keep `enableAPI=0` (the default) and expose only specific `@@api`-annotated actions; raise it to `1` only for trusted roles through the per-role settings mechanism described in [Working parameters](/Working_parameters.md), never globally. The `@@api` annotation allows the action for every authenticated user and does not restrict which one; to limit a particular `@@api` action to specific users or rights, check the logged-in user inside the action itself via `currentUser[]` (and, for example, its role through `currentUserMainRoleName[]`).
 
 ##### Interactive actions[​](#interactive "Direct link to Interactive actions")
 
-An external call may need to trigger an action that interacts with the user - opening a [form](/Forms/.md), showing a message, asking for input, and so on. Since the HTTP response itself has no UI, the platform routes such an action to a running lsFusion client of the user: the server creates a *notification*, and the client picks it up and executes the action locally.
+An external call may need to trigger an action that interacts with the user - opening a [form](/Forms.md), showing a message, asking for input, and so on. Since the HTTP response itself has no UI, the platform routes such an action to a running lsFusion client of the user: the server creates a *notification*, and the client picks it up and executes the action locally.
 
 When an action is considered interactive:
 
@@ -216,9 +216,9 @@ How the caller obtains the notification:
 * **Browser redirect (default)** - HTTP `302` to `/push-notification?notification_id=<notification id>`. Following the redirect in a browser delivers the notification to the lsFusion tab already open there, through its service worker.
 * **Notification ID (when the request has the `Need-Notification-Id` header)** - HTTP `200` with the notification ID (as `INTEGER`) in the response body. Intended for non-browser callers that need to deliver the ID to a running lsFusion client through some other channel.
 
-Interactive actions additionally require the [`enableUI`](/Working_parameters/.md) setting to permit the call, on top of the regular [`enableAPI`](/Working_parameters/.md) check.
+Interactive actions additionally require the [`enableUI`](/Working_parameters.md) setting to permit the call, on top of the regular [`enableAPI`](/Working_parameters.md) check.
 
-Routing to a client is the only way an interactive action can open a form: the interactive operation runs on the client that hosts the form, and there is no server-side equivalent. If the action instead runs synchronously on the server — which is what happens for a headless caller when the action carries neither `@@ui` nor the `Need-Notification-Id` header and the request is not a browser navigation — then as soon as it reaches an operation that opens a form ([`SHOW` / `DIALOG`](/In_an_interactive_view_SHOW_DIALOG/.md), [value input](/Value_input/.md), a default edit or dialog form, and so on) the call fails with a `createFormInstance is not supported` error and the action does not complete. Such an action can therefore be triggered only from a running client (in practice, through the browser), not through a plain headless `/exec` / `/eval` / `/eval/action` request.
+Routing to a client is the only way an interactive action can open a form: the interactive operation runs on the client that hosts the form, and there is no server-side equivalent. If the action instead runs synchronously on the server — which is what happens for a headless caller when the action carries neither `@@ui` nor the `Need-Notification-Id` header and the request is not a browser navigation — then as soon as it reaches an operation that opens a form ([`SHOW` / `DIALOG`](/In_an_interactive_view_SHOW_DIALOG.md), [value input](/Value_input.md), a default edit or dialog form, and so on) the call fails with a `createFormInstance is not supported` error and the action does not complete. Such an action can therefore be triggered only from a running client (in practice, through the browser), not through a plain headless `/exec` / `/eval` / `/eval/action` request.
 
 ##### Errors[​](#errors "Direct link to Errors")
 
@@ -226,13 +226,13 @@ On failure, the response uses a specific HTTP status code:
 
 * `404` - the action specified via `?action=` or in the URL path was not found.
 * `401` - authentication is required or has failed. On the web server, an anonymous [interactive](#interactive) request is redirected to `/login` instead.
-* `500` - any other unhandled exception raised during request processing, including when the API is disabled by the [`enableAPI`](/Working_parameters/.md) setting.
+* `500` - any other unhandled exception raised during request processing, including when the API is disabled by the [`enableAPI`](/Working_parameters.md) setting.
 
 For `404`, `500`, and other server-side exception statuses, the response body is `text/html` with the error message; for most exceptions it also includes Java and lsFusion stack traces, except for a `RemoteMessageException` (a user-facing platform message) which returns only the message. A `401` body carries only the short error message. On the web server, the redirect to `/login` has no body - the exception is stored in the HTTP session and the original request is cached for retry after login.
 
 ## Form API[​](#form "Direct link to Form API")
 
-Apart from executing actions, the platform also supports an API (similar to JSON API) for working with [forms](/Forms/.md), or specifically, their [interactive views](/Interactive_view/.md). Since it's a stateful API designed for the asynchronous mode (which means that the HTTPS interface itself has a number of system parameters, such as a request index, index of the latest received response, etc.), it's easier to use this API with the help of special libraries for specific languages/platforms that you want to integrate with:
+Apart from executing actions, the platform also supports an API (similar to JSON API) for working with [forms](/Forms.md), or specifically, their [interactive views](/Interactive_view.md). Since it's a stateful API designed for the asynchronous mode (which means that the HTTPS interface itself has a number of system parameters, such as a request index, index of the latest received response, etc.), it's easier to use this API with the help of special libraries for specific languages/platforms that you want to integrate with:
 
 ### Protocols[​](#protocols-1 "Direct link to Protocols")
 
@@ -242,9 +242,9 @@ The JavaScript library is available in the central npm-repository under the name
 
 The key concept in this API is the concept of *state*. A state is a JS object with a structure corresponding to form elements in the following way:
 
-* [An object group](/Form_structure/.md#objects) corresponds to a JS object that is stored in the js field of the state object. The name of the field matches the name of the object group. Each JS object from the object group, in turn, stores an array of JS objects (with [filters](/Form_structure/.md#filters) and [orders](/Form_structure/.md#sort) taken into account) in the `list` field. The JS object of the object group corresponds to the [current](/Form_structure/.md#currentObject) object collection. Also, each JS object of an array (including the JS object of the object group) in the `value` field stores the value of objects – only values if there is just one object in the object group or, if there are multiple objects, a JS object with fields whose names are equal to object names and values are equal to object values.
+* [An object group](/Form_structure.md#objects) corresponds to a JS object that is stored in the js field of the state object. The name of the field matches the name of the object group. Each JS object from the object group, in turn, stores an array of JS objects (with [filters](/Form_structure.md#filters) and [orders](/Form_structure.md#sort) taken into account) in the `list` field. The JS object of the object group corresponds to the [current](/Form_structure.md#currentObject) object collection. Also, each JS object of an array (including the JS object of the object group) in the `value` field stores the value of objects – only values if there is just one object in the object group or, if there are multiple objects, a JS object with fields whose names are equal to object names and values are equal to object values.
 
-* [Properties](/Properties/.md) correspond to a value stored in a field (the name of the field is equal to the property name) of a JS object which is determined in the following way depending on the existence of parameters and [its view](/Interactive_view/.md#property):
+* [Properties](/Properties.md) correspond to a value stored in a field (the name of the field is equal to the property name) of a JS object which is determined in the following way depending on the existence of parameters and [its view](/Interactive_view.md#property):
 
   <!-- -->
 
@@ -252,7 +252,7 @@ The key concept in this API is the concept of *state*. A state is a JS object wi
 
     <!-- -->
 
-    * The property view is equal to `GRID` of each JS object in the `list` array of the JS object of this property's [display group](/Form_structure/.md#drawgroup).
+    * The property view is equal to `GRID` of each JS object in the `list` array of the JS object of this property's [display group](/Form_structure.md#drawgroup).
     * The property's view is equal to `PANEL`, `TOOLBAR` of the JS object of this property's display group
 
   * A property has no parameters - of a JS state object.
@@ -289,13 +289,13 @@ The library exports the following functions:
   <!-- -->
   * `state` - a JS state object
 
-As the names of object groups and properties, not names on the form are used, but [export/import](/Structured_view/.md#extid) names (which, however, match the names on forms if not explicitly defined). While working with a form via Form API, actions and properties created using operators for [object operations](/Interactive_view/.md#objectoperators) automatically get export/import names equal to the operator name with the object mapping removed: `NEW` and `DELETE` get `NEW` and `DELETE` (that is you can call `change(setState, {game : {NEW:true}})` for adding an object, for example), and `EDIT`, `NEWEDIT`, `VALUE`, and `INTERVAL` get `EDIT`, `NEWEDIT`, `VALUE`, and `INTERVAL` respectively; an operator with an explicitly specified class keeps the class, for example `NEW[Order]`. An export/import name set explicitly on the form is used instead. Also, when Form API is used, it automatically adds a property called `logMessage` to the form to which all dialog messages are written (including those generated when [constraints](/Constraints/.md) were violated).
+As the names of object groups and properties, not names on the form are used, but [export/import](/Structured_view.md#extid) names (which, however, match the names on forms if not explicitly defined). While working with a form via Form API, actions and properties created using operators for [object operations](/Interactive_view.md#objectoperators) automatically get export/import names equal to the operator name with the object mapping removed: `NEW` and `DELETE` get `NEW` and `DELETE` (that is you can call `change(setState, {game : {NEW:true}})` for adding an object, for example), and `EDIT`, `NEWEDIT`, `VALUE`, and `INTERVAL` get `EDIT`, `NEWEDIT`, `VALUE`, and `INTERVAL` respectively; an operator with an explicitly specified class keeps the class, for example `NEW[Order]`. An export/import name set explicitly on the form is used instead. Also, when Form API is used, it automatically adds a property called `logMessage` to the form to which all dialog messages are written (including those generated when [constraints](/Constraints.md) were violated).
 
 ## File API[​](#files "Direct link to File API")
 
 The platform also exposes a read-only **File API** for browsing the running application's classpath — its lsFusion source files and the resources packaged alongside them — over HTTP. It offers three operations: `list` (find files by name), `read` (fetch a file's contents), and `search` (find lines matching a regular expression). Like the [Form API](#form), it is served only by the web server, not by the application server's built-in HTTP server.
 
-A request is a `POST` to `/files/<operation>`, where `<operation>` is `list`, `read`, or `search`. The operation's arguments are passed as a JSON object in the request body; an empty body means no arguments, so each operation's defaults apply. The response body is the result as a JSON object (`application/json`), returned as-is with no wrapping envelope. [Authentication](#authentication) and the [`enableAPI`](/Working_parameters/.md) check work exactly as for the Action API, except that the per-action `@@noauth` / `@@api` annotations have no effect here, since no action is called.
+A request is a `POST` to `/files/<operation>`, where `<operation>` is `list`, `read`, or `search`. The operation's arguments are passed as a JSON object in the request body; an empty body means no arguments, so each operation's defaults apply. The response body is the result as a JSON object (`application/json`), returned as-is with no wrapping envelope. [Authentication](#authentication) and the [`enableAPI`](/Working_parameters.md) check work exactly as for the Action API, except that the per-action `@@noauth` / `@@api` annotations have no effect here, since no action is called.
 
 On failure the response carries an HTTP status and the error message, following the same scheme as the Action API: `401` when authentication is required or fails, `404` for an unknown operation, `405` for a non-`POST` method, `413` when the JSON argument body exceeds 256 KiB, and `500` for any other error — a missing or invalid `regex`, a `path` that does not resolve, or an unparseable glob.
 

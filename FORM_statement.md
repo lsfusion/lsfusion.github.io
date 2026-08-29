@@ -1,6 +1,6 @@
 # FORM statement
 
-The `FORM` statement creates a [form](/Forms/.md).
+The `FORM` statement creates a [form](/Forms.md).
 
 ## Syntax[​](#syntax "Direct link to Syntax")
 
@@ -71,17 +71,17 @@ Where each `apiItem` has the following syntax:
 
 ## Description[​](#description "Direct link to Description")
 
-The `FORM` statement declares a new form and adds it to the current [module](/Modules/.md). In addition, this statement is used to describe [the form structure](/Form_structure/.md), as well as its [static](/Static_view/.md) and partially [interactive](/Interactive_view/.md) (except [form design](/Form_design/.md)) views. At the beginning of the statement, name and captions are specified, followed by form options and the declaration containing an arbitrary number of blocks describing the structure of the form. They can be used in any order, provided that each block is declared after the blocks whose elements it uses. Each block can be used any number of times.
+The `FORM` statement declares a new form and adds it to the current [module](/Modules.md). In addition, this statement is used to describe [the form structure](/Form_structure.md), as well as its [static](/Static_view.md) and partially [interactive](/Interactive_view.md) (except [form design](/Form_design.md)) views. At the beginning of the statement, name and captions are specified, followed by form options and the declaration containing an arbitrary number of blocks describing the structure of the form. They can be used in any order, provided that each block is declared after the blocks whose elements it uses. Each block can be used any number of times.
 
 ## Parameters[​](#parameters "Direct link to Parameters")
 
 * `name`
 
-  Form name. [Simple ID](/IDs/.md#id). The name must be unique within the current [namespace](/Naming/.md#namespace).
+  Form name. [Simple ID](/IDs.md#id). The name must be unique within the current [namespace](/Naming.md#namespace).
 
 * `caption`
 
-  Form caption. [String literal](/Literals/.md#strliteral). If the caption is not defined, the form's name will be its caption.
+  Form caption. [String literal](/Literals.md#strliteral). If the caption is not defined, the form's name will be its caption.
 
 ### Form options (`formOptions`)[​](#form-options-formoptions "Direct link to form-options-formoptions")
 
@@ -91,7 +91,7 @@ The `FORM` statement declares a new form and adds it to the current [module](/Mo
 
   * `IMAGE [imageLiteral]`
 
-    [Manual icon specification](/Icons/.md#manual) for the form. If `imageLiteral` is not provided, the [automatic assignment](/Icons/.md#auto) mode is enabled.
+    [Manual icon specification](/Icons.md#manual) for the form. If `imageLiteral` is not provided, the [automatic assignment](/Icons.md#auto) mode is enabled.
 
     * `imageLiteral`
 
@@ -103,25 +103,25 @@ The `FORM` statement declares a new form and adds it to the current [module](/Mo
 
 * `LOCALASYNC`
 
-  Keyword indicating that [local events](/Events/.md#type) handling will be performed after changes are displayed on the form.
+  Keyword indicating that [local events](/Events.md#type) handling will be performed after changes are displayed on the form.
 
 ### Form blocks (`formBlock1 ... formBlockN`)[​](#blocks "Direct link to blocks")
 
 * `[EXTEND] FORMS formItem1, ..., formItemN`
 
-  Embeds into the form the contents of the listed previously declared forms: their objects, object groups and trees, properties and actions, filters and filter groups, orderings, events, hints (`HINTNOUPDATE`, `HINTTABLE`), and the design. The embedded elements keep their names and can be accessed in the subsequent blocks of this form, as well as in the [`EXTEND FORM`](/EXTEND_FORM_statement/.md) and [`DESIGN`](/DESIGN_statement/.md) statements, in the same way as the explicitly declared ones.
+  Embeds into the form the contents of the listed previously declared forms: their objects, object groups and trees, properties and actions, filters and filter groups, orderings, events, hints (`HINTNOUPDATE`, `HINTTABLE`), and the design. The embedded elements keep their names and can be accessed in the subsequent blocks of this form, as well as in the [`EXTEND FORM`](/EXTEND_FORM_statement.md) and [`DESIGN`](/DESIGN_statement.md) statements, in the same way as the explicitly declared ones.
 
-  Without the `EXTEND` keyword, all elements of the embedded form are added as new ones, and its design is added as a separate block to the `OBJECTS` container of the [default design](/Form_design/.md#defaultDesign) of the current form. The default design containers of the embedded form then get names with the `(FORM f)` suffix, where `f` is the `alias`, or, if it is not specified, the name of the embedded form; such containers can be accessed in the `DESIGN` statement (for example `BOX(FORM f)`).
+  Without the `EXTEND` keyword, all elements of the embedded form are added as new ones, and its design is added as a separate block to the `OBJECTS` container of the [default design](/Form_design.md#defaultDesign) of the current form. The default design containers of the embedded form then get names with the `(FORM f)` suffix, where `f` is the `alias`, or, if it is not specified, the name of the embedded form; such containers can be accessed in the `DESIGN` statement (for example `BOX(FORM f)`).
 
   With the `EXTEND` keyword, the elements of the embedded form for which the current form already has elements with the same names are not added as new ones but are identified with them: the contents and settings of the embedded form's element are transferred to the existing element, and the references to it from the other embedded elements are redirected. Name matching is performed for objects, properties and actions, filter groups, and design containers; automatically created elements (for example, the containers of an object group) follow the elements they belong to. The design is then merged with the design of the current form.
 
   * `alias`
 
-    The name used instead of the name of the embedded form in the suffix of its design container names (in particular, it allows distinguishing the containers when the same form is embedded several times). [Simple ID](/IDs/.md#id). Taken into account only without the `EXTEND` keyword.
+    The name used instead of the name of the embedded form in the suffix of its design container names (in particular, it allows distinguishing the containers when the same form is embedded several times). [Simple ID](/IDs.md#id). Taken into account only without the `EXTEND` keyword.
 
   * `formName`
 
-    Name of the embedded form. [Composite ID](/IDs/.md#cid).
+    Name of the embedded form. [Composite ID](/IDs.md#cid).
 
   * `mappingType`
 
@@ -136,51 +136,51 @@ The `FORM` statement declares a new form and adds it to the current [module](/Mo
 
   * `newName1 = oldName1, ..., newNameK = oldNameK`
 
-    List of mapping pairs; the names are specified with [simple IDs](/IDs/.md#id). `oldName` is the name of an element on the embedded form, `newName` is the name on the current form. If an element named `newName` already exists on the current form, the element of the embedded form is identified with it; otherwise it is embedded under the name `newName`.
+    List of mapping pairs; the names are specified with [simple IDs](/IDs.md#id). `oldName` is the name of an element on the embedded form, `newName` is the name on the current form. If an element named `newName` already exists on the current form, the element of the embedded form is identified with it; otherwise it is embedded under the name `newName`.
 
 * `OBJECTS ...`
 
-  Adds objects to the form. [Object block syntax](/Object_blocks/.md) .
+  Adds objects to the form. [Object block syntax](/Object_blocks.md) .
 
 * `EXTEND OBJECTS ...`
 
-  Modifies the object groups already added to the form (in particular, moves them in the list of object groups). [Syntax of the object extension block](/Object_blocks/.md#extendobjects).
+  Modifies the object groups already added to the form (in particular, moves them in the list of object groups). [Syntax of the object extension block](/Object_blocks.md#extendobjects).
 
 * `TREE ...`
 
-  Adds an object tree to the form. [Syntax of the object tree block](/Object_blocks/.md#tree).
+  Adds an object tree to the form. [Syntax of the object tree block](/Object_blocks.md#tree).
 
 * `EXTEND TREE ...`
 
-  Moves an object tree already added to the form in the list of object groups. [Syntax of the object tree extension block](/Object_blocks/.md#extendtree).
+  Moves an object tree already added to the form in the list of object groups. [Syntax of the object tree extension block](/Object_blocks.md#extendtree).
 
 * `PROPERTIES ...`
 
-  Adds [properties](/Properties/.md) and [actions](/Actions/.md) to the form. [Syntax of the property and action block](/Properties_and_actions_block/.md).
+  Adds [properties](/Properties.md) and [actions](/Actions.md) to the form. [Syntax of the property and action block](/Properties_and_actions_block.md).
 
 * `EXTEND PROPERTIES ...`
 
-  Modifies the properties and actions already added to the form. [Syntax of the property and action extension block](/Properties_and_actions_block/.md#extendproperties).
+  Modifies the properties and actions already added to the form. [Syntax of the property and action extension block](/Properties_and_actions_block.md#extendproperties).
 
 * `FILTERS ...`
 
-  Adds fixed filters to the form. [Syntax of the fixed filters block](/Filters_and_sortings_block/.md#fixedfilters).
+  Adds fixed filters to the form. [Syntax of the fixed filters block](/Filters_and_sortings_block.md#fixedfilters).
 
 * `[EXTEND] FILTERGROUP ...`
 
-  Adds a group of filters to the form or extends an existing one. [Syntax of a filter group block](/Filters_and_sortings_block/.md#filtergroup).
+  Adds a group of filters to the form or extends an existing one. [Syntax of a filter group block](/Filters_and_sortings_block.md#filtergroup).
 
 * `ORDERS ...`
 
-  Adds sorting options to the form. [Syntax of the order block](/Filters_and_sortings_block/.md#sort).
+  Adds sorting options to the form. [Syntax of the order block](/Filters_and_sortings_block.md#sort).
 
 * `PIVOT ...`
 
-  Defines the initial settings for the [pivot table view type](/Interactive_view/.md#property). [Syntax of the pivot block](/Pivot_block/.md).
+  Defines the initial settings for the [pivot table view type](/Interactive_view.md#property). [Syntax of the pivot block](/Pivot_block.md).
 
 * `[EVENTS] ...`
 
-  Defines actions that are executed on specific events. [Syntax of the event block](/Event_block/.md).
+  Defines actions that are executed on specific events. [Syntax of the event block](/Event_block.md).
 
 * `HINTNOUPDATE LIST propertyId1, ..., propertyIdN`
 
@@ -188,7 +188,7 @@ The `FORM` statement declares a new form and adds it to the current [module](/Mo
 
   * `propertyId1, ..., propertyIdN`
 
-    List of [property IDs](/IDs/.md#propertyid).
+    List of [property IDs](/IDs.md#propertyid).
 
 * `HINTTABLE LIST propertyId1, ..., propertyIdN`
 
@@ -196,7 +196,7 @@ The `FORM` statement declares a new form and adds it to the current [module](/Mo
 
 * `FORMEXTID extID`
 
-  Specifying the name to be used to [export/import](/Structured_view/.md#extid) this form. Used only in the [structured](/Structured_view/.md) view.
+  Specifying the name to be used to [export/import](/Structured_view.md#extid) this form. Used only in the [structured](/Structured_view.md) view.
 
   * `extId`
 
@@ -204,11 +204,11 @@ The `FORM` statement declares a new form and adds it to the current [module](/Mo
 
 * `REPORT propertyExpression`
 
-  Specifying the property whose value will be used as the name of the [report](/Print_view/.md) file for [an empty](/Static_view/.md#empty) group. You can use the names of already declared objects on the form as parameters. It is assumed that the values of these objects will be [passed](/Open_form/.md) when the form is opened [in the print view](/In_a_print_view_PRINT/.md) (if it doesn't happen, they will be considered equal to `NULL`).
+  Specifying the property whose value will be used as the name of the [report](/Print_view.md) file for [an empty](/Static_view.md#empty) group. You can use the names of already declared objects on the form as parameters. It is assumed that the values of these objects will be [passed](/Open_form.md) when the form is opened [in the print view](/In_a_print_view_PRINT.md) (if it doesn't happen, they will be considered equal to `NULL`).
 
   * `propertyExpression`
 
-    [Expression](/Expression/.md).
+    [Expression](/Expression.md).
 
 * `REPORTS reportPath1, ..., reportPathN`
 
@@ -220,31 +220,31 @@ The `FORM` statement declares a new form and adds it to the current [module](/Mo
 
   * `groupObjectName`
 
-    The name of the object group for which the property is set. Defined with a [simple ID](/IDs/.md#id). The object group is then marked as a separate report. Fully equivalent to the `SUBREPORT` option of the [object block](/Object_blocks/.md).
+    The name of the object group for which the property is set. Defined with a [simple ID](/IDs.md#id). The object group is then marked as a separate report. Fully equivalent to the `SUBREPORT` option of the [object block](/Object_blocks.md).
 
   * `propertyExpression`
 
-    [Expression](/Expression/.md).
+    [Expression](/Expression.md).
 
 * `EDIT className OBJECT objectName`
 
-  Sets the current form as the [edit](/Interactive_view/.md#edtClass) form for all objects of the specified class.
+  Sets the current form as the [edit](/Interactive_view.md#edtClass) form for all objects of the specified class.
 
   * `className`
 
-    The name of the [custom](/User_classes/.md) class. When editing objects of this class, the created form will be opened. Defined with a [composite ID](/IDs/.md#cid).
+    The name of the [custom](/User_classes.md) class. When editing objects of this class, the created form will be opened. Defined with a [composite ID](/IDs.md#cid).
 
   * `objectName`
 
-    The name of the form object that will be used for editing. Defined with a [simple ID](/IDs/.md#id).
+    The name of the form object that will be used for editing. Defined with a [simple ID](/IDs.md#id).
 
 * `LIST className OBJECT objectName`
 
-  Sets the current form as the [list form](/Interactive_view/.md#edtClass) for the object of the specified class.
+  Sets the current form as the [list form](/Interactive_view.md#edtClass) for the object of the specified class.
 
   * `className`
 
-    The name of the [custom](/User_classes/.md) class whose objects will be listed using the created form. Defined with a composite ID.
+    The name of the [custom](/User_classes.md) class whose objects will be listed using the created form. Defined with a composite ID.
 
   * `objectName`
 
@@ -252,11 +252,11 @@ The `FORM` statement declares a new form and adds it to the current [module](/Mo
 
 * `CUSTOMS apiItem1, ..., apiItemN`
 
-  Defines the list of properties and actions that are allowed to be called from the client JavaScript code of the form regardless of the general [API access](/Access_from_an_external_system/.md) settings (the `enableAPI` setting, the `@@api` annotation). Each element is available under the `apiName` name or, if it is not specified, under the property's (action's) own name without the namespace. The element names must be unique within the form.
+  Defines the list of properties and actions that are allowed to be called from the client JavaScript code of the form regardless of the general [API access](/Access_from_an_external_system.md) settings (the `enableAPI` setting, the `@@api` annotation). Each element is available under the `apiName` name or, if it is not specified, under the property's (action's) own name without the namespace. The element names must be unique within the form.
 
   * `apiName`
 
-    The name under which the property (action) will be available in the client code. [Simple ID](/IDs/.md#id).
+    The name under which the property (action) will be available in the client code. [Simple ID](/IDs.md#id).
 
   * `ACTION`
 
@@ -264,7 +264,7 @@ The `FORM` statement declares a new form and adds it to the current [module](/Mo
 
   * `propertyId`
 
-    [ID of the property or action](/IDs/.md#propertyid).
+    [ID of the property or action](/IDs.md#propertyid).
 
 ## Examples[​](#examples "Direct link to Examples")
 

@@ -1,6 +1,6 @@
 # Property options
 
-When a [property](/Properties/.md) is declared in the [`=` statement](/=_statement/.md) a set of *property options* can be specified at the end of the declaration
+When a [property](/Properties.md) is declared in the [`=` statement](/=_statement.md) a set of *property options* can be specified at the end of the declaration
 
 ## Syntax[​](#syntax "Direct link to Syntax")
 
@@ -46,25 +46,25 @@ annotationSetting
 
 * `IN groupName`
 
-  Specifying the [group of properties and actions](/Groups_of_properties_and_actions/.md) to which the property belongs. If the option is not specified, then the property will belong by default to the group `System.private`.
+  Specifying the [group of properties and actions](/Groups_of_properties_and_actions.md) to which the property belongs. If the option is not specified, then the property will belong by default to the group `System.private`.
 
   * `groupName`
 
-    Group name. [Compound ID](/IDs/.md#cid).
+    Group name. [Compound ID](/IDs.md#cid).
 
 []()
 
 * `MATERIALIZED [dbName]`
 
-  Keyword marking the property as [materialized](/Materializations/.md). These properties will be stored in the database's [table](/Tables/.md) fields.
+  Keyword marking the property as [materialized](/Materializations.md). These properties will be stored in the database's [table](/Tables.md) fields.
 
   * `dbName`
 
-    [String literal](/Literals/.md#strliteral) that specifies the physical field (column) name in the database. If omitted, the name is generated automatically.
+    [String literal](/Literals.md#strliteral) that specifies the physical field (column) name in the database. If omitted, the name is generated automatically.
 
 * `TABLE tableName`
 
-  Specifies the [table](/Tables/.md) where the property will be stored. The number of table keys must be equal to the number of property arguments, and the argument classes must match the table key classes. If no table is specified, the property will automatically be placed in the "nearest" existing table in the system.
+  Specifies the [table](/Tables.md) where the property will be stored. The number of table keys must be equal to the number of property arguments, and the argument classes must match the table key classes. If no table is specified, the property will automatically be placed in the "nearest" existing table in the system.
 
   * `tableName`
 
@@ -74,7 +74,7 @@ annotationSetting
 
 * `INDEXED`
 
-  Keyword. If specified, an [index](/Indexes/.md) by this property is created. It can be used only for a [materialized](/Materializations/.md) property. Similar to using the [`INDEX` statement](/INDEX_statement/.md).
+  Keyword. If specified, an [index](/Indexes.md) by this property is created. It can be used only for a [materialized](/Materializations.md) property. Similar to using the [`INDEX` statement](/INDEX_statement.md).
 
   * `dbName`
 
@@ -112,7 +112,7 @@ annotationSetting
 
 * `NONULL [DELETE] eventClause`
 
-  Adds a [definiteness](/Simple_constraints/.md) constraint. If this constraint is violated as a result of some changes for some objects, either the corresponding message will be displayed, or, if `DELETE` is specified, such objects will be deleted.
+  Adds a [definiteness](/Simple_constraints.md) constraint. If this constraint is violated as a result of some changes for some objects, either the corresponding message will be displayed, or, if `DELETE` is specified, such objects will be deleted.
 
   * `DELETE`
 
@@ -120,35 +120,35 @@ annotationSetting
 
   * `eventClause`
 
-    [Event type description block](/Event_description_block/.md). Describes the event by which the property will be checked for `NULL`.
+    [Event type description block](/Event_description_block.md). Describes the event by which the property will be checked for `NULL`.
 
 * `AGGR`
 
-  Keyword marking the property as an [aggregation](/Aggregations/.md) property. It is intended for a property that takes a single parameter of a [user-defined class](/Classes/.md) and returns the object into which that parameter is aggregated; only such a property is registered as an aggregation property of that class. The platform then treats it like the property that the [`AGGR` operator](/AGGR_operator/.md) creates automatically to look up the aggregated object from its parameters: for a given parameter object it finds the existing aggregated object, which lets the platform check the aggregation's consistency and reuse that object instead of creating a duplicate. This is a property option and must not be confused with the `AGGR` operator, which is a property definition.
+  Keyword marking the property as an [aggregation](/Aggregations.md) property. It is intended for a property that takes a single parameter of a [user-defined class](/Classes.md) and returns the object into which that parameter is aggregated; only such a property is registered as an aggregation property of that class. The platform then treats it like the property that the [`AGGR` operator](/AGGR_operator.md) creates automatically to look up the aggregated object from its parameters: for a given parameter object it finds the existing aggregated object, which lets the platform check the aggregation's consistency and reuse that object instead of creating a duplicate. This is a property option and must not be confused with the `AGGR` operator, which is a property definition.
 
 * `AUTOSET`
 
-  Keyword marking a [data property](/Data_properties_DATA/.md) with an object parameter and an object value for automatic setting on object creation. When an object is created with the `AUTOSET` option (for example, `NEW ... AUTOSET`) and its class matches the property's parameter class or a subclass, the platform sets this property for it to the current object of the value class, if one is available. The current object is looked up first on the form on which the object is created, and only then among the objects of that class the user worked with most recently.
+  Keyword marking a [data property](/Data_properties_DATA.md) with an object parameter and an object value for automatic setting on object creation. When an object is created with the `AUTOSET` option (for example, `NEW ... AUTOSET`) and its class matches the property's parameter class or a subclass, the platform sets this property for it to the current object of the value class, if one is available. The current object is looked up first on the form on which the object is created, and only then among the objects of that class the user worked with most recently.
 
 ### Interactive view block[​](#interactive-view-block "Direct link to Interactive view block")
 
 * `viewType`
 
-  Specifying the type of [property view](/Interactive_view/.md#property) when added to the form.
+  Specifying the type of [property view](/Interactive_view.md#property) when added to the form.
 
   * `GRID` - table column
   * `TOOLBAR` - toolbar
   * `PANEL` - panel
 
-  It is similar to specifying the `viewType` option in the [property block](/Properties_and_actions_block/.md) of the [`FORM` statement](/FORM_statement/.md). Thus, if this option is not specified either in the property options or in the property block directly on the form, the [default view](/Interactive_view/.md#property) of the property display group on the form is used.
+  It is similar to specifying the `viewType` option in the [property block](/Properties_and_actions_block.md) of the [`FORM` statement](/FORM_statement.md). Thus, if this option is not specified either in the property options or in the property block directly on the form, the [default view](/Interactive_view.md#property) of the property display group on the form is used.
 
 * `customView`
 
-  Specifying a custom view of the property value when the property is added to the form. It is similar to specifying the `customView` option in the [property block](/Properties_and_actions_block/.md) of the [`FORM` statement](/FORM_statement/.md), which can override it.
+  Specifying a custom view of the property value when the property is added to the form. It is similar to specifying the `customView` option in the [property block](/Properties_and_actions_block.md) of the [`FORM` statement](/FORM_statement.md), which can override it.
 
 * `ON eventType { actionOperator }`
 
-  Specifying an action that will be the default handler of a certain [form event](/Form_events/.md) for all the interactive views of this property. Can be overridden in the property block of the `FORM` statement.
+  Specifying an action that will be the default handler of a certain [form event](/Form_events.md) for all the interactive views of this property. Can be overridden in the property block of the `FORM` statement.
 
   * `eventType`
 
@@ -158,11 +158,11 @@ annotationSetting
     * `CHANGEWYS` - occurs when the user tries to change the value of the specified property using a special input mechanism.
     * `GROUPCHANGE` - occurs when the user tries to change the property value for all objects in the table (group editing).
     * `EDIT` - occurs when the user tries to edit the object that is the value of the specified property.
-    * `CONTEXTMENU [caption]` - the user has selected the specified item in the property context menu on the form. If necessary, you can also define the `caption` of this menu item ([string literal](/Literals/.md#strliteral)). If it is not specified, then, by default, it will be the same as the action caption.
+    * `CONTEXTMENU [caption]` - the user has selected the specified item in the property context menu on the form. If necessary, you can also define the `caption` of this menu item ([string literal](/Literals.md#strliteral)). If it is not specified, then, by default, it will be the same as the action caption.
 
   * `actionOperator`
 
-    [Context-dependent action operator](/Action_operators/.md#contextdependent). An operator that defines the action executed on an event. You can use the parameters of the property itself as operator parameters.
+    [Context-dependent action operator](/Action_operators.md#contextdependent). An operator that defines the action executed on an event. You can use the parameters of the property itself as operator parameters.
 
 * `imageSetting`
 
@@ -170,7 +170,7 @@ annotationSetting
 
   * `IMAGE [imageLiteral]`
 
-    [Manual icon specification](/Icons/.md#manual) for the property. If `imageLiteral` is not provided, the [automatic assignment](/Icons/.md#auto) mode is enabled.
+    [Manual icon specification](/Icons.md#manual) for the property. If `imageLiteral` is not provided, the [automatic assignment](/Icons.md#auto) mode is enabled.
 
     * `imageLiteral`
 
@@ -200,7 +200,7 @@ Property annotation. Begins with `@@`. The following annotations are supported:
 
 * `CHARWIDTH width [FLEX | NOFLEX]`
 
-  Specifying the [number of characters](/Form_design/.md#valueWidth) of the property value that should be visible to the user. Sets the value for the default design, can be overridden in a `DESIGN` statement.
+  Specifying the [number of characters](/Form_design.md#valueWidth) of the property value that should be visible to the user. Sets the value for the default design, can be overridden in a `DESIGN` statement.
 
   * `width`
 
@@ -220,7 +220,7 @@ Property annotation. Begins with `@@`. The following annotations are supported:
 
   * `patternStr`
 
-    String literal defining the formatting pattern. May be a [localizable](/Internationalization/.md) string.
+    String literal defining the formatting pattern. May be a [localizable](/Internationalization.md) string.
 
 * `REGEXP rexpr [message]`
 
@@ -240,11 +240,11 @@ Property annotation. Begins with `@@`. The following annotations are supported:
 
 * `CHANGEKEY key [SHOW | HIDE]`
 
-  Specifies a [key combination](/Form_events/.md#keyboard) which triggers editing of this property. Sets the value for the default design and can be overridden in the `DESIGN` statement.
+  Specifies a [key combination](/Form_events.md#keyboard) which triggers editing of this property. Sets the value for the default design and can be overridden in the `DESIGN` statement.
 
   * `key`
 
-    [String literal](/Literals/.md#strliteral) describing the key combination. Syntax:
+    [String literal](/Literals.md#strliteral) describing the key combination. Syntax:
 
     ```
     keyStroke [;(modeKey=modeValue;)*]
@@ -323,7 +323,7 @@ Property annotation. Begins with `@@`. The following annotations are supported:
 
   * `key`
 
-  [String literal](/Literals/.md#strliteral), describing a mouse key combination. Syntax:
+  [String literal](/Literals.md#strliteral), describing a mouse key combination. Syntax:
 
   ```
   keyStroke [;(modeKey=modeValue;)*]
@@ -356,11 +356,11 @@ Property annotation. Begins with `@@`. The following annotations are supported:
 
 * `DEFAULTCOMPARE compare`
 
-  Specifies a [default filter](/Interactive_view/.md#userfilters) type for the property.
+  Specifies a [default filter](/Interactive_view.md#userfilters) type for the property.
 
   * `compare`
 
-    Default filter type. [String literal](/Literals/.md#strliteral). Can be one the following values: `=`, `>`, `<`, `>=`, `<=`, `!=`, `=*`, `=@`. The default value is `=` for all data types except case-insensitive string types, for which the default value is `=@` or `=*` (if `System.defaultCompareForStringContains` is enabled, then except all string types regardless of case sensitivity). Default value `=@` or `=*` depends on `System.defaultCompareSearchInsteadOfContains` (true - `=@`, false - `=*`, true is by default). Can be overridden in the `DESIGN` statement.
+    Default filter type. [String literal](/Literals.md#strliteral). Can be one the following values: `=`, `>`, `<`, `>=`, `<=`, `!=`, `=*`, `=@`. The default value is `=` for all data types except case-insensitive string types, for which the default value is `=@` or `=*` (if `System.defaultCompareForStringContains` is enabled, then except all string types regardless of case sensitivity). Default value `=@` or `=*` depends on `System.defaultCompareSearchInsteadOfContains` (true - `=@`, false - `=*`, true is by default). Can be overridden in the `DESIGN` statement.
 
 * `EVENTID eventId`
 
@@ -376,7 +376,7 @@ Property annotation. Begins with `@@`. The following annotations are supported:
 
 * `EXTID extId`
 
-  Specifying the name to be used for [export/import](/Structured_view/.md#extid) of the property when it is added to the form. It is similar to specifying the `EXTID` option in the [property block](/Properties_and_actions_block/.md) of the [`FORM` statement](/FORM_statement/.md), which can override it.
+  Specifying the name to be used for [export/import](/Structured_view.md#extid) of the property when it is added to the form. It is similar to specifying the `EXTID` option in the [property block](/Properties_and_actions_block.md) of the [`FORM` statement](/FORM_statement.md), which can override it.
 
   * `extId`
 

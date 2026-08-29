@@ -1,12 +1,12 @@
 # Reflection
 
-`Reflection` is a [system module](/System_modules/.md) that exposes the application's own metadata — the navigator, forms, properties, actions, and physical-model tables — as classes, properties, and forms, so that the running logic can introspect its own structure. It is pulled in via `REQUIRE Reflection` (`System` and `Authentication` are pulled in automatically).
+`Reflection` is a [system module](/System_modules.md) that exposes the application's own metadata — the navigator, forms, properties, actions, and physical-model tables — as classes, properties, and forms, so that the running logic can introspect its own structure. It is pulled in via `REQUIRE Reflection` (`System` and `Authentication` are pulled in automatically).
 
 The module stores one object per metadata element (one `Property` per property, one `Form` per form, one `Table` per table, and so on), filled by the platform at startup. Lookup properties recover an object from its canonical name or SID; statistics, storage attributes, and user column preferences hang off these objects; and the forms at the end of the module display them under the `metadata` navigator folder.
 
 ### Property groups[​](#property-groups "Direct link to Property groups")
 
-[Properties and actions](/User_classes/.md) are organized into a tree of groups.
+[Properties and actions](/User_classes.md) are organized into a tree of groups.
 
 | Class / property                                                          | What it holds                                                                                  |
 | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
@@ -18,7 +18,7 @@ The module stores one object per metadata element (one `Property` per property, 
 
 ### Navigator metadata[​](#navigator-metadata "Direct link to Navigator metadata")
 
-The [navigator](/Navigator/.md) tree is represented by `NavigatorElement` and its two subclasses.
+The [navigator](/Navigator.md) tree is represented by `NavigatorElement` and its two subclasses.
 
 | Class / property                                                                             | What it holds                                                       |
 | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
@@ -37,7 +37,7 @@ The [navigator](/Navigator/.md) tree is represented by `NavigatorElement` and it
 
 | Class / property                        | What it holds                                                                  |
 | --------------------------------------- | ------------------------------------------------------------------------------ |
-| `Form`                                  | one object per [form](/Forms/.md)                                              |
+| `Form`                                  | one object per [form](/Forms.md)                                               |
 | `caption[Form]` / `canonicalName[Form]` | display caption and unique canonical name                                      |
 | `form[STRING]`                          | the form with the given canonical name                                         |
 | `currentForm[]` / `activeForm[]`        | native properties giving the canonical name of the current and the active form |
@@ -116,7 +116,7 @@ The display of a column can be tuned globally and overridden per user. Each pref
 
 ### Physical model[​](#physical-model "Direct link to Physical model")
 
-The physical-model classes mirror the database [tables](/Tables/.md), their keys, and their columns.
+The physical-model classes mirror the database [tables](/Tables.md), their keys, and their columns.
 
 | Class / property                                  | What it holds                                                                                         |
 | ------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
@@ -159,18 +159,18 @@ All five forms are placed in a `metadata` navigator folder under the system `Adm
 
 ### Language[​](#language "Direct link to Language")
 
-* [`RECURSION` operator](/RECURSION_operator/.md) — computes the `level` depth properties over the group and navigator trees.
-* [`INTERNAL` operator](/INTERNAL_operator/.md) — backs the physical-model service actions implemented in Java.
+* [`RECURSION` operator](/RECURSION_operator.md) — computes the `level` depth properties over the group and navigator trees.
+* [`INTERNAL` operator](/INTERNAL_operator.md) — backs the physical-model service actions implemented in Java.
 
 ### See also[​](#see-also "Direct link to See also")
 
-* [`System modules`](/System_modules/.md) — the general inventory of platform modules.
-* [`Navigator`](/Navigator/.md) — the navigator tree that `NavigatorElement` mirrors.
-* [`Forms`](/Forms/.md) — what a form is and how `Form` / `PropertyDraw` / `GroupObject` map to it.
-* [`Tables`](/Tables/.md) — the physical tables that `Table` / `TableKey` / `TableColumn` mirror.
-* [`Indexes`](/Indexes/.md) — table indexes.
-* [`Materializations`](/Materializations/.md) — materialized columns recalculated by the service actions.
-* [`System`](/System_System/.md) — the root module pulled in automatically.
-* [`Authentication`](/System_Authentication/.md) — users and contacts, pulled in via `REQUIRE`; per-user form preferences are keyed by `CustomUser`.
-* [`Security`](/System_Security/.md) — sets access permissions on the navigator elements, properties, and actions reflected here.
-* [`Service`](/System_Service/.md) — service actions over the tables and materialized columns reflected here.
+* [`System modules`](/System_modules.md) — the general inventory of platform modules.
+* [`Navigator`](/Navigator.md) — the navigator tree that `NavigatorElement` mirrors.
+* [`Forms`](/Forms.md) — what a form is and how `Form` / `PropertyDraw` / `GroupObject` map to it.
+* [`Tables`](/Tables.md) — the physical tables that `Table` / `TableKey` / `TableColumn` mirror.
+* [`Indexes`](/Indexes.md) — table indexes.
+* [`Materializations`](/Materializations.md) — materialized columns recalculated by the service actions.
+* [`System`](/System_System.md) — the root module pulled in automatically.
+* [`Authentication`](/System_Authentication.md) — users and contacts, pulled in via `REQUIRE`; per-user form preferences are keyed by `CustomUser`.
+* [`Security`](/System_Security.md) — sets access permissions on the navigator elements, properties, and actions reflected here.
+* [`Service`](/System_Service.md) — service actions over the tables and materialized columns reflected here.

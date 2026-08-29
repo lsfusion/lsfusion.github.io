@@ -1,6 +1,6 @@
 # IF ... THEN operator
 
-The `IF ... THEN` operator creates an [action](/Actions/.md) that implements [branching](/Branching_CASE_IF_MULTI/.md#single) with one condition (single form).
+The `IF ... THEN` operator creates an [action](/Actions.md) that implements [branching](/Branching_CASE_IF_MULTI.md#single) with one condition (single form).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -18,11 +18,11 @@ The `IF ... THEN` operator creates an action that implements branching with one 
 
 * `condition`
 
-  [Expression](/Expression/.md) defining a condition. If the value of the expression does not equal `NULL`, then the condition is met and the action specified after the keyword `THEN` is called.
+  [Expression](/Expression.md) defining a condition. If the value of the expression does not equal `NULL`, then the condition is met and the action specified after the keyword `THEN` is called.
 
 * `action`
 
-  [Context-dependent operator](/Action_operators/.md#contextdependent) that describes the action that will be executed when the corresponding condition is met.
+  [Context-dependent operator](/Action_operators.md#contextdependent) that describes the action that will be executed when the corresponding condition is met.
 
 * `alternativeAction`
 

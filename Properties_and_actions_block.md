@@ -1,6 +1,6 @@
 # Properties and actions block
 
-The property and action block of the [FORM statement](/FORM_statement/.md) adds [properties and actions](/Form_structure/.md#properties) to the [form structure](/Form_structure/.md).
+The property and action block of the [FORM statement](/FORM_statement.md) adds [properties and actions](/Form_structure.md#properties) to the [form structure](/Form_structure.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -78,7 +78,7 @@ HINTTABLE
 
 ### Description[​](#description "Direct link to Description")
 
-One `PROPERTIES` block adds properties and actions to the form structure. To add a property (action), specify its ID and the [form objects](/Form_structure/.md#objects) whose values will be passed to this property (action) as arguments. Sometimes it’s convenient to list these form objects for the entire `PROPERTIES` block. To do this, specify the block of *common parameters*. In this case, when adding a property (action), you only need to specify its ID, while the common parameters will be passed as arguments.
+One `PROPERTIES` block adds properties and actions to the form structure. To add a property (action), specify its ID and the [form objects](/Form_structure.md#objects) whose values will be passed to this property (action) as arguments. Sometimes it’s convenient to list these form objects for the entire `PROPERTIES` block. To do this, specify the block of *common parameters*. In this case, when adding a property (action), you only need to specify its ID, while the common parameters will be passed as arguments.
 
 []()
 
@@ -94,21 +94,21 @@ In the given example, the names of the added properties `date` and `Order.number
 
 When adding a property (action) to the form structure, you may specify a set of its options. You may also specify common options for the entire `PROPERTIES` block. If any of the options are specified for both the entire block and a specific declaration, the option value for the declaration will be used.
 
-In all [expressions](/Expression/.md) and [context-dependent action operators](/Action_operators/.md#contextdependent), you can use the names of the objects already declared on the form as parameters.
+In all [expressions](/Expression.md) and [context-dependent action operators](/Action_operators.md#contextdependent), you can use the names of the objects already declared on the form as parameters.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `cparam1, ..., cparamN`
 
-  List of common parameters of the block. Each parameter is specified with the name of the object on the form. If this list is defined, then adding a property (action) will require that you specify only its ID without parameters. The object name is specified with [simple ID](/IDs/.md#id).
+  List of common parameters of the block. Each parameter is specified with the name of the object on the form. If this list is defined, then adding a property (action) will require that you specify only its ID without parameters. The object name is specified with [simple ID](/IDs.md#id).
 
 * `alias`
 
-  The name of the property or action being added to the form. [Simple ID](/IDs/.md#id). If the name is not specified, then the name of the property (action) on the form will be the same as the property's name itself (but without the namespace and signature) with parameters, i.e. names of the objects separated by commas and enclosed in brackets.
+  The name of the property or action being added to the form. [Simple ID](/IDs.md#id). If the name is not specified, then the name of the property (action) on the form will be the same as the property's name itself (but without the namespace and signature) with parameters, i.e. names of the objects separated by commas and enclosed in brackets.
 
 * `caption`
 
-  The caption of the property or action being added to the form. [String literal](/Literals/.md#strliteral). If the caption is not specified, then the caption of the property (action) itself will be used on the form.
+  The caption of the property or action being added to the form. [String literal](/Literals.md#strliteral). If the caption is not specified, then the caption of the property (action) itself will be used on the form.
 
 info
 
@@ -116,9 +116,9 @@ In the current platform implementation, if the name and caption are not specifie
 
 * `formPropertyId`
 
-  [ID of the property or action](/IDs/.md#propertyid) being added to the form structure.
+  [ID of the property or action](/IDs.md#propertyid) being added to the form structure.
 
-  Alternatively, you may use [object operators](/Interactive_view/.md#objectoperators) instead of the property/action IDs:
+  Alternatively, you may use [object operators](/Interactive_view.md#objectoperators) instead of the property/action IDs:
 
   * `VALUE` displays the object value (or the object ID for custom classes).
   * `INTERVAL` displays the interval between the values of a pair of objects of the same date or time class.
@@ -137,21 +137,21 @@ In the current platform implementation, if the name and caption are not specifie
 
 * `param1, ..., paramNk`
 
-  List of parameters of the added properties or actions. Each parameter is specified with the name of the object on the form. The number of specified parameters must match the number of parameters for the property or action being added. Not specified if the common parameters block is specified. The object name, in turn, is specified with a [simple ID](/IDs/.md#id).
+  List of parameters of the added properties or actions. Each parameter is specified with the name of the object on the form. The number of specified parameters must match the number of parameters for the property or action being added. Not specified if the common parameters block is specified. The object name, in turn, is specified with a [simple ID](/IDs.md#id).
 
 * `formPropertyExpression`
 
-  [Expression](/Expression/.md) being added to the form structure.
+  [Expression](/Expression.md) being added to the form structure.
 
 * `formActionOperator`
 
-  [Context-dependent action operator](/Action_operators/.md#contextdependent) being added to the form structure.
+  [Context-dependent action operator](/Action_operators.md#contextdependent) being added to the form structure.
 
 #### Options for the property or action[​](#options-for-the-property-or-action "Direct link to Options for the property or action")
 
 * `changeType`
 
-  Specifying [standard handlers](/Form_events/.md#predefined) for property/action change events. It is specified by one of the keywords:
+  Specifying [standard handlers](/Form_events.md#predefined) for property/action change events. It is specified by one of the keywords:
 
   * `CHANGEABLE` calls the corresponding handler of the triggered event. Default value. It makes sense to use it explicitly only when another modifier is defined for the entire block but should not be applied to a specific property.
   * `READONLY` will either turn on the filtering mechanism or simply ignore the event when the user tries to change the property.
@@ -164,7 +164,7 @@ In the current platform implementation, if the name and caption are not specifie
 
   * `propertyExpression`
 
-    [Expression](/Expression/.md).
+    [Expression](/Expression.md).
 
 * `DISABLEIF propertyExpression`
 
@@ -172,7 +172,7 @@ In the current platform implementation, if the name and caption are not specifie
 
   * `propertyExpression`
 
-    [Expression](/Expression/.md).
+    [Expression](/Expression.md).
 
 * `READONLYIF propertyExpression`
 
@@ -180,15 +180,15 @@ In the current platform implementation, if the name and caption are not specifie
 
   * `propertyExpression`
 
-    [Expression](/Expression/.md).
+    [Expression](/Expression.md).
 
 * `CLASS propertyExpression`
 
-  Specifies a property whose value determines the CSS classes (separated by spaces) of the value element of the property being added. Similar to the `valueClass` property in the [`DESIGN` statement](/DESIGN_statement/.md): an explicit value fully replaces the default value classes, and in a table, for a typical text cell, the value element is the cell itself (`td`), so the classes end up on it (see the `valueClass` description for details).
+  Specifies a property whose value determines the CSS classes (separated by spaces) of the value element of the property being added. Similar to the `valueClass` property in the [`DESIGN` statement](/DESIGN_statement.md): an explicit value fully replaces the default value classes, and in a table, for a typical text cell, the value element is the cell itself (`td`), so the classes end up on it (see the `valueClass` description for details).
 
   * `propertyExpression`
 
-    [Expression](/Expression/.md).
+    [Expression](/Expression.md).
 
 * `BACKGROUND propertyExpression`
 
@@ -196,7 +196,7 @@ In the current platform implementation, if the name and caption are not specifie
 
   * `propertyExpression`
 
-    [Expression](/Expression/.md).
+    [Expression](/Expression.md).
 
 * `FOREGROUND propertyExpression`
 
@@ -204,7 +204,7 @@ In the current platform implementation, if the name and caption are not specifie
 
   * `propertyExpression`
 
-    [Expression](/Expression/.md).
+    [Expression](/Expression.md).
 
 * `HEADER propertyExpression`
 
@@ -212,27 +212,27 @@ In the current platform implementation, if the name and caption are not specifie
 
   * `propertyExpression`
 
-  [Expression](/Expression/.md).
+  [Expression](/Expression.md).
 
 * `FOOTER propertyExpression`
 
-  Specifying a property that determines the footer of the property (action) being added. Used only in the [print view](/Print_view/.md) of the form.
+  Specifying a property that determines the footer of the property (action) being added. Used only in the [print view](/Print_view.md) of the form.
 
   * `propertyExpression`
 
-    [Expression](/Expression/.md).
+    [Expression](/Expression.md).
 
 * `COLUMNS [groupid] (groupName1, ..., groupNameM)`
 
-  Specifies the upper [object groups](/Form_structure/.md#objects) whose values will define a set of [columns](/Form_structure/.md#groupcolumns) to display the added property (action). The `COLUMNS` option is often used with the `HEADER` option which defines headers for these columns.
+  Specifies the upper [object groups](/Form_structure.md#objects) whose values will define a set of [columns](/Form_structure.md#groupcolumns) to display the added property (action). The `COLUMNS` option is often used with the `HEADER` option which defines headers for these columns.
 
   * `groupid`
 
-    Column group ID. [String literal](/Literals/.md#strliteral). If the `COLUMNS` option is specified for several properties (actions) being added with the same set of object groups, then by default the columns of the first property (action) will be added, followed by the columns of the second property (action), and so on. To group columns of different properties (actions) by values of the upper objects, you can set for them the same string ID of the group of columns. In this case, the columns for different properties (actions) will alternate.
+    Column group ID. [String literal](/Literals.md#strliteral). If the `COLUMNS` option is specified for several properties (actions) being added with the same set of object groups, then by default the columns of the first property (action) will be added, followed by the columns of the second property (action), and so on. To group columns of different properties (actions) by values of the upper objects, you can set for them the same string ID of the group of columns. In this case, the columns for different properties (actions) will alternate.
 
   * `groupName1, ..., groupNameM`
 
-    List of the names of the upper object groups. Each name is defined [by a simple ID](/IDs/.md#id).
+    List of the names of the upper object groups. Each name is defined [by a simple ID](/IDs.md#id).
 
 * `DRAW groupObjectName`
 
@@ -240,18 +240,18 @@ In the current platform implementation, if the name and caption are not specifie
 
   * `groupObjectName`
 
-    Name of an object group. [Simple ID](/IDs/.md#id).
+    Name of an object group. [Simple ID](/IDs.md#id).
 
 * `viewType`
 
-  Specifying the [view type](/Interactive_view/.md#property) of the property or action being added. It is specified by one of the keywords:
+  Specifying the [view type](/Interactive_view.md#property) of the property or action being added. It is specified by one of the keywords:
 
   * `GRID` — table column
   * `TOOLBAR` — toolbar
   * `PANEL` — panel
   * `POPUP` — popup
 
-  If not specified, the corresponding option from the [property options](/Property_options/.md) is used. If it is also not specified, then the [default view type](/Interactive_view/.md#property) is used for the display group of this property or action.
+  If not specified, the corresponding option from the [property options](/Property_options.md) is used. If it is also not specified, then the [default view type](/Interactive_view.md#property) is used for the display group of this property or action.
 
 * `customView`
 
@@ -261,7 +261,7 @@ In the current platform implementation, if the name and caption are not specifie
 
   * `CUSTOM CHANGE [editFunction]`
 
-    Specifying the JavaScript functions responsible for displaying (`renderFunction`) and editing (`editFunction`) the property value. Each function is specified with a [string literal](/Literals/.md#strliteral) containing its name. If no function is specified after the `CHANGE` keyword, the default editing mechanism is used.
+    Specifying the JavaScript functions responsible for displaying (`renderFunction`) and editing (`editFunction`) the property value. Each function is specified with a [string literal](/Literals.md#strliteral) containing its name. If no function is specified after the `CHANGE` keyword, the default editing mechanism is used.
 
   * `SELECT selectType`
 
@@ -281,7 +281,7 @@ In the current platform implementation, if the name and caption are not specifie
 
   * `propertyExpression`
 
-    [Expression](/Expression/.md).
+    [Expression](/Expression.md).
 
 * `sessionScopeType`
 
@@ -297,11 +297,11 @@ In the current platform implementation, if the name and caption are not specifie
 
 * `OPTIMISTICASYNC`
 
-  Modifier for the action being added. Similar to the same option in the [`ACTION` statement](/ACTION_plus_statement/.md).
+  Modifier for the action being added. Similar to the same option in the [`ACTION` statement](/ACTION_plus_statement.md).
 
 * `insertPosition`
 
-  Specifying the insert position of the property (action) within the list of properties and actions on the form. Most often used together with the [form extension mechanism](/Form_extension/.md). It can be specified in one of the following ways:
+  Specifying the insert position of the property (action) within the list of properties and actions on the form. Most often used together with the [form extension mechanism](/Form_extension.md). It can be specified in one of the following ways:
 
   * `AFTER formPropertyName`
 
@@ -327,7 +327,7 @@ In the current platform implementation, if the name and caption are not specifie
 
 * `ORDER [USER | FIXED] [DESC]`
 
-  Specifies the ordering option for the added property. Similar to specifying the property in the [order block](/Filters_and_sortings_block/.md#sort).
+  Specifies the ordering option for the added property. Similar to specifying the property in the [order block](/Filters_and_sortings_block.md#sort).
 
   * `USER`
 
@@ -343,7 +343,7 @@ In the current platform implementation, if the name and caption are not specifie
 
 * `FILTER [USER | FIXED]`
 
-  Specifies the filtering option for the added property. Similar to specifying the property in the [fixed filters block](/Filters_and_sortings_block/.md#fixedfilters).
+  Specifies the filtering option for the added property. Similar to specifying the property in the [fixed filters block](/Filters_and_sortings_block.md#fixedfilters).
 
   * `USER`
 
@@ -355,7 +355,7 @@ In the current platform implementation, if the name and caption are not specifie
 
 * `QUICKFILTER formPropertyName`
 
-  Specifying the property to be used in [default handlers](/Form_events/.md#default) for quick filtering.
+  Specifying the property to be used in [default handlers](/Form_events.md#default) for quick filtering.
 
   * `formPropertyName`
 
@@ -363,7 +363,7 @@ In the current platform implementation, if the name and caption are not specifie
 
 * `PIVOT calcType`
 
-  Specifying the aggregation function for the values of the property being added when grouping rows (including the [*pivot table* view type](/Pivot_block/.md)).
+  Specifying the aggregation function for the values of the property being added when grouping rows (including the [*pivot table* view type](/Pivot_block.md)).
 
   * `calcType`
 
@@ -399,11 +399,11 @@ In the current platform implementation, if the name and caption are not specifie
 
 * `COLUMN`, `ROW`, `MEASURE`
 
-  Keywords specifying the initial placement of the property being added in the [*pivot table* view type](/Pivot_block/.md): in columns (`COLUMN`), rows (`ROW`), or measures (`MEASURE`). The per-element equivalent of the `COLUMNS`, `ROWS` and `MEASURES` lists of the pivot block.
+  Keywords specifying the initial placement of the property being added in the [*pivot table* view type](/Pivot_block.md): in columns (`COLUMN`), rows (`ROW`), or measures (`MEASURE`). The per-element equivalent of the `COLUMNS`, `ROWS` and `MEASURES` lists of the pivot block.
 
 * `ON eventType actionId(param1, ..., paramZ) | { actionOperator }`
 
-  Specifying the action that will be executed when the specified [form event](/Form_events/.md) occurs.
+  Specifying the action that will be executed when the specified [form event](/Form_events.md) occurs.
 
   * `eventType`
 
@@ -425,11 +425,11 @@ In the current platform implementation, if the name and caption are not specifie
 
       * `caption`
 
-        Caption of the item in the context menu. [String literal](/Literals/.md#strliteral). If the caption is not specified explicitly, then it will be the same as the caption of the action called upon the event.
+        Caption of the item in the context menu. [String literal](/Literals.md#strliteral). If the caption is not specified explicitly, then it will be the same as the caption of the action called upon the event.
 
   * `actionId`
 
-    [Action ID](/IDs/.md#propertyid).
+    [Action ID](/IDs.md#propertyid).
 
   * `param1, ..., paramZ`
 
@@ -437,26 +437,26 @@ In the current platform implementation, if the name and caption are not specifie
 
   * `actionOperator`
 
-    [Context-dependent action operator](/Action_operators/.md#contextdependent).
+    [Context-dependent action operator](/Action_operators.md#contextdependent).
 
 * `EVENTID eventId`
 
-  Specifying the event ID for the property (action) being added. Similar to the same option in the [property options](/Property_options/.md).
+  Specifying the event ID for the property (action) being added. Similar to the same option in the [property options](/Property_options.md).
 
   * `eventId`
 
-    [String literal](/Literals/.md#strliteral).
+    [String literal](/Literals.md#strliteral).
 
 * `ATTR`
 
-  Keyword. Used only in the [hierarchical](/Structured_view/.md#hierarchy) view. Indicates that:
+  Keyword. Used only in the [hierarchical](/Structured_view.md#hierarchy) view. Indicates that:
 
   * When importing from XML, the data is imported from the tag attributes instead of the child tag.
   * When exporting to XML, the data is exported to the tag attributes instead of the child tag.
 
 * `EXTID extID`
 
-  Specifying the name to be used for [export/import](/Structured_view/.md#extid) operations of this property. Used only in the [structured](/Structured_view/.md) view.
+  Specifying the name to be used for [export/import](/Structured_view.md#extid) operations of this property. Used only in the [structured](/Structured_view.md) view.
 
   * `extId`
 
@@ -468,18 +468,18 @@ In the current platform implementation, if the name and caption are not specifie
 
 * `EXTNULL`
 
-  Keyword. Used only in the [hierarchical](/Structured_view/.md#hierarchy) view. Indicates that when exporting to XML / JSON, NULL value will not be skipped, will be exported:
+  Keyword. Used only in the [hierarchical](/Structured_view.md#hierarchy) view. Indicates that when exporting to XML / JSON, NULL value will not be skipped, will be exported:
 
   * to JSON as 'null'.
   * to XML as empty value.
 
 * `IN propertyGroup`
 
-  Specifying a [property/action group](/Groups_of_properties_and_actions/.md) which the property (action) on the form belongs to. If this option is not specified, then the property group of the property itself will be used as the property (action) group on the form.
+  Specifying a [property/action group](/Groups_of_properties_and_actions.md) which the property (action) on the form belongs to. If this option is not specified, then the property group of the property itself will be used as the property (action) group on the form.
 
   * `propertyGroup`
 
-    The property group name. [Composite ID](/IDs/.md#cid).
+    The property group name. [Composite ID](/IDs.md#cid).
 
 * `imageSetting`
 
@@ -487,7 +487,7 @@ In the current platform implementation, if the name and caption are not specifie
 
   * `IMAGE imageLiteral`
 
-    [Manual icon specification](/Icons/.md#manual) for the property (action) on the form.
+    [Manual icon specification](/Icons.md#manual) for the property (action) on the form.
 
     * `imageLiteral`
 
@@ -495,7 +495,7 @@ In the current platform implementation, if the name and caption are not specifie
 
   * `IMAGE [AUTO]`
 
-    Indicates that the [automatic assignment](/Icons/.md#auto) mode will be used. The `AUTO` keyword is optional and can be used for disambiguation.
+    Indicates that the [automatic assignment](/Icons.md#auto) mode will be used. The `AUTO` keyword is optional and can be used for disambiguation.
 
   * `IMAGE propertyExpression`
 
@@ -507,19 +507,19 @@ In the current platform implementation, if the name and caption are not specifie
 
 * `STICKY` | `NOSTICKY`
 
-  Keywords controlling whether the property (action) is pinned in the table. Similar to the same option in the [property options](/Property_options/.md).
+  Keywords controlling whether the property (action) is pinned in the table. Similar to the same option in the [property options](/Property_options.md).
 
 * `syncType`
 
-  Defines whether the action is executed synchronously (`WAIT`) or asynchronously (`NOWAIT`). If not specified, the corresponding option from the [property options](/Property_options/.md) is used.
+  Defines whether the action is executed synchronously (`WAIT`) or asynchronously (`NOWAIT`). If not specified, the corresponding option from the [property options](/Property_options.md) is used.
 
 * `HINTNOUPDATE`
 
-  Keyword. Marks that the cached values of the property being added should not be updated on changes in the session of this form. Similar to the [`HINTNOUPDATE` block](/FORM_statement/.md#blocks) of the `FORM` statement.
+  Keyword. Marks that the cached values of the property being added should not be updated on changes in the session of this form. Similar to the [`HINTNOUPDATE` block](/FORM_statement.md#blocks) of the `FORM` statement.
 
 * `HINTTABLE`
 
-  Keyword. Marks that the changes of the property being added should be materialized into a temporary table when the form reads its data. Similar to the [`HINTTABLE` block](/FORM_statement/.md#blocks) of the `FORM` statement.
+  Keyword. Marks that the changes of the property being added should be materialized into a temporary table when the form reads its data. Similar to the [`HINTTABLE` block](/FORM_statement.md#blocks) of the `FORM` statement.
 
 ### Examples[​](#examples "Direct link to Examples")
 
@@ -716,15 +716,15 @@ The property and action extension block changes properties and actions already a
 
 * `caption`
 
-  The new caption of the property (action) on the form. [String literal](/Literals/.md#strliteral).
+  The new caption of the property (action) on the form. [String literal](/Literals.md#strliteral).
 
 * `alias`
 
-  The name of the property (action) on the form specified explicitly when it was added. [Simple ID](/IDs/.md#id).
+  The name of the property (action) on the form specified explicitly when it was added. [Simple ID](/IDs.md#id).
 
 * `propertyName(objectName1, ..., objectNameK)`
 
-  The name of the property (action) on the form formed from the property name and the names of the objects passed to it as parameters. An [object operator](/Interactive_view/.md#objectoperators) (`NEW`, `EDIT`, `DELETE` and others) can be used instead of the property name.
+  The name of the property (action) on the form formed from the property name and the names of the objects passed to it as parameters. An [object operator](/Interactive_view.md#objectoperators) (`NEW`, `EDIT`, `DELETE` and others) can be used instead of the property name.
 
 ### Examples[​](#examples-1 "Direct link to Examples")
 

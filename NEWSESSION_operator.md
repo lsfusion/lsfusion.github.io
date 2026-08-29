@@ -1,6 +1,6 @@
 # NEWSESSION operator
 
-The `NEWSESSION` operator creates an [action](/Actions/.md) that executes the other action in a [new session](/New_session_NEWSESSION_NESTEDSESSION/.md).
+The `NEWSESSION` operator creates an [action](/Actions.md) that executes the other action in a [new session](/New_session_NEWSESSION_NESTEDSESSION.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -17,21 +17,21 @@ LOCAL
 
 ### Description[​](#description "Direct link to Description")
 
-The `NEWSESSION` operator creates an action that executes the other action in a new session. `NEWSQL` and `NESTED` are mutually exclusive: when `NEWSQL` is given, the entire `NESTED ... [CLASSES]` clause is ignored and the new session inherits neither local-property values nor class changes from the current one. If the operator is executed during an [apply transaction](/Apply_changes_APPLY/.md) of the current session, [no new session is created](/New_session_NEWSESSION_NESTEDSESSION/.md) — the executed action is deferred and executed in the current session inside the same transaction.
+The `NEWSESSION` operator creates an action that executes the other action in a new session. `NEWSQL` and `NESTED` are mutually exclusive: when `NEWSQL` is given, the entire `NESTED ... [CLASSES]` clause is ignored and the new session inherits neither local-property values nor class changes from the current one. If the operator is executed during an [apply transaction](/Apply_changes_APPLY.md) of the current session, [no new session is created](/New_session_NEWSESSION_NESTEDSESSION.md) — the executed action is deferred and executed in the current session inside the same transaction.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `NEWSQL`
 
-  Optional keyword. Opens the new session on a [separate SQL connection](/New_session_NEWSESSION_NESTEDSESSION/.md#newsql), independent of the current session's connection.
+  Optional keyword. Opens the new session on a [separate SQL connection](/New_session_NEWSESSION_NESTEDSESSION.md#newsql), independent of the current session's connection.
 
 * `formId1, ..., formIdM`
 
-  List of [form IDs](/IDs/.md#cid), specified after `FORMS`, that the new session is fixed to. The session will appear as the change session of those forms; this is used when the action being executed needs to behave as if invoked from those forms.
+  List of [form IDs](/IDs.md#cid), specified after `FORMS`, that the new session is fixed to. The session will appear as the change session of those forms; this is used when the action being executed needs to behave as if invoked from those forms.
 
 * `NESTED`
 
-  Optional keyword after which you can specify which [local properties](/Data_properties_DATA/.md#local) of the current session are considered [nested](/Session_management/.md#nested) for this operator: when the new session is created, their current values are copied into it, and when the executed action finishes, their values from the new session are copied back into the current session. Of the covered properties, only those that the executed action uses or changes are migrated; if the action opens interactive forms, all the covered properties are. An [`APPLY`](/APPLY_operator/.md) inside the new session clears the changes of these properties just like those of all other local properties (it is the cleared values that will then be copied back) — to keep the values, mark the properties as nested in the `APPLY` operator as well, or declare them `NESTED` in the [`DATA` operator](/DATA_operator/.md), which covers both cases. Properties declared `NESTED` in the `DATA` operator are migrated even without being listed here. By itself, with neither `LOCAL` nor a property list, the keyword has no effect.
+  Optional keyword after which you can specify which [local properties](/Data_properties_DATA.md#local) of the current session are considered [nested](/Session_management.md#nested) for this operator: when the new session is created, their current values are copied into it, and when the executed action finishes, their values from the new session are copied back into the current session. Of the covered properties, only those that the executed action uses or changes are migrated; if the action opens interactive forms, all the covered properties are. An [`APPLY`](/APPLY_operator.md) inside the new session clears the changes of these properties just like those of all other local properties (it is the cleared values that will then be copied back) — to keep the values, mark the properties as nested in the `APPLY` operator as well, or declare them `NESTED` in the [`DATA` operator](/DATA_operator.md), which covers both cases. Properties declared `NESTED` in the `DATA` operator are migrated even without being listed here. By itself, with neither `LOCAL` nor a property list, the keyword has no effect.
 
 * `LOCAL`
 
@@ -39,19 +39,19 @@ The `NEWSESSION` operator creates an action that executes the other action in a 
 
 * `propertyId1, ..., propertyIdN`
 
-  Non-empty list of local properties, specified after `NESTED` in parentheses, that are migrated. Each list element must be a [property ID](/IDs/.md#propertyid).
+  Non-empty list of local properties, specified after `NESTED` in parentheses, that are migrated. Each list element must be a [property ID](/IDs.md#propertyid).
 
 * `CLASSES`
 
-  Optional keyword. If specified after `NESTED` and the optional nested-property selector, [class changes](/Class_change_CHANGECLASS_DELETE/.md) of existing objects (and the objects [created](/New_object_NEW/.md) in the current session) are also migrated into the new session, in addition to whatever local properties the selector covers.
+  Optional keyword. If specified after `NESTED` and the optional nested-property selector, [class changes](/Class_change_CHANGECLASS_DELETE.md) of existing objects (and the objects [created](/New_object_NEW.md) in the current session) are also migrated into the new session, in addition to whatever local properties the selector covers.
 
 * `SINGLE`
 
-  Optional keyword. If the `NEWSESSION` is itself called inside an [apply transaction](/Apply_changes_APPLY/.md), this flag is propagated to the inner action: changes to stored properties used by it are flushed incrementally during the transaction instead of being batched at the end of the apply.
+  Optional keyword. If the `NEWSESSION` is itself called inside an [apply transaction](/Apply_changes_APPLY.md), this flag is propagated to the inner action: changes to stored properties used by it are flushed incrementally during the transaction instead of being batched at the end of the apply.
 
 * `action`
 
-  A [context-dependent action operator](/Action_operators/.md#contextdependent) that defines an action to be executed in the new session.
+  A [context-dependent action operator](/Action_operators.md#contextdependent) that defines an action to be executed in the new session.
 
 ### Examples[​](#examples "Direct link to Examples")
 

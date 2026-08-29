@@ -31,11 +31,11 @@ NAVIGATOR {
 }
 ```
 
-We need to create a [print form](/Print_view/.md) to display all the books by category. We also need to export this form to the XLSX format.
+We need to create a [print form](/Print_view.md) to display all the books by category. We also need to export this form to the XLSX format.
 
 ### Solution[​](#solution "Direct link to Solution")
 
-First, we need to declare a [form](/Forms/.md) to define the print form structure.
+First, we need to declare a [form](/Forms.md) to define the print form structure.
 
 ```
 FORM booksByCategories 'Books by category'
@@ -48,7 +48,7 @@ FORM booksByCategories 'Books by category'
 ;
 ```
 
-Then, we add two actions that use the [`PRINT` operator](/PRINT_operator/.md) for creating a report and for previewing it and exporting to XLSX respectively.
+Then, we add two actions that use the [`PRINT` operator](/PRINT_operator.md) for creating a report and for previewing it and exporting to XLSX respectively.
 
 ```
 printBooksByCategories 'Books by category' ()  {
@@ -68,7 +68,7 @@ EXTEND FORM books
 ;
 ```
 
-Then, we start the server from the IDE, launch the desktop client, open the form with books and click the created "Print" button. The system will automatically create a print-ready form and open it in the [preview](/In_a_print_view_PRINT/.md#interactive) mode. Then, click the button below:
+Then, we start the server from the IDE, launch the desktop client, open the form with books and click the created "Print" button. The system will automatically create a print-ready form and open it in the [preview](/In_a_print_view_PRINT.md#interactive) mode. Then, click the button below:
 
 ![](/assets/images/How-to_Reports_ex1_Preview-ed1b04a703f6654a256a1130222582cc.png)
 
@@ -199,7 +199,7 @@ Let's move the invoice data from the group header (**Group Header**) to the invo
 
 ![](/assets/images/How-to_Reports_ex2_template_change-a50b92d9614f516cbfda93fb6cbcdea2.png)
 
-Since the `i` and `d` object groups depend on each other, a single flat report is generated, so there is only one template, named by the [form's canonical name](/Report_design/.md#template) without a postfix (as in [**Example 1**](#example-1)).
+Since the `i` and `d` object groups depend on each other, a single flat report is generated, so there is only one template, named by the [form's canonical name](/Report_design.md#template) without a postfix (as in [**Example 1**](#example-1)).
 
 **Template** `Sample_invoice.jrxml`:
 

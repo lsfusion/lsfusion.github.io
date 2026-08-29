@@ -1,6 +1,6 @@
 # JSON operator
 
-The `JSON` and `JSONTEXT` operators create a [property](/Properties/.md) that builds JSON from a list of [specified properties](/Data_export_EXPORT/.md) or, in the general case, from a [form](/In_a_structured_view_EXPORT_IMPORT/.md).
+The `JSON` and `JSONTEXT` operators create a [property](/Properties.md) that builds JSON from a list of [specified properties](/Data_export_EXPORT.md) or, in the general case, from a [form](/In_a_structured_view_EXPORT_IMPORT.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -42,15 +42,15 @@ offsetGroupId1 = offsetPropertyExpr1, ..., offsetGroupIdF = offsetPropertyExprF
 
 ### Description[​](#description "Direct link to Description")
 
-The `JSON` and `JSONTEXT` operators create a property that builds JSON either from a list of properties (the `FROM` form) or from a form. The result is produced [in a structured view](/In_a_structured_view_EXPORT_IMPORT/.md): building JSON from a list of properties is a special case of building JSON from a form, so the meaning of column names, the object group hierarchy, and the resulting structure follow the [form export](/Structured_view/.md) behavior. Unlike the [`EXPORT` operator](/EXPORT_operator/.md), which is an action that writes the result to a file, this operator is an expression: it returns the built JSON as the property value.
+The `JSON` and `JSONTEXT` operators create a property that builds JSON either from a list of properties (the `FROM` form) or from a form. The result is produced [in a structured view](/In_a_structured_view_EXPORT_IMPORT.md): building JSON from a list of properties is a special case of building JSON from a form, so the meaning of column names, the object group hierarchy, and the resulting structure follow the [form export](/Structured_view.md) behavior. Unlike the [`EXPORT` operator](/EXPORT_operator.md), which is an action that writes the result to a file, this operator is an expression: it returns the built JSON as the property value.
 
 The difference between the two keywords is the class of the returned value. `JSON` returns a value of the `JSON` class (a file holding the JSON document), while `JSONTEXT` returns a value of the `JSONTEXT` class (the JSON document as text).
 
 A property value of the `JSON` or `JSONTEXT` class (for example, one built by another property with this operator) is embedded into the resulting JSON as a nested object or array rather than as a string. This allows assembling a document with nested structures from separate JSON properties.
 
-Date and time class values are written to JSON as strings, by default in ISO 8601 formats (for example, `2026-08-17`, `2026-08-17T12:34:56`; `ZDATETIME` values — the instant in UTC with the `Z` suffix). This behavior is defined by the `useISOTimeFormatsInIntegration` [working parameter](/Working_parameters/.md): when it is off, the formats of the current locale are used.
+Date and time class values are written to JSON as strings, by default in ISO 8601 formats (for example, `2026-08-17`, `2026-08-17T12:34:56`; `ZDATETIME` values — the instant in UTC with the `Z` suffix). This behavior is defined by the `useISOTimeFormatsInIntegration` [working parameter](/Working_parameters.md): when it is off, the formats of the current locale are used.
 
-When building JSON from a form, the `OBJECTS` block fixes form objects to given values: each such object is constrained to equal [the value passed](/Open_form/.md#params) and [does not participate](/Structured_view/.md#objects) in building the object group hierarchy. The `FILTERS` block adds further filter conditions to the form before the build.
+When building JSON from a form, the `OBJECTS` block fixes form objects to given values: each such object is constrained to equal [the value passed](/Open_form.md#params) and [does not participate](/Structured_view.md#objects) in building the object group hierarchy. The `FILTERS` block adds further filter conditions to the form before the build.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
@@ -60,19 +60,19 @@ When building JSON from a form, the `OBJECTS` block fixes form objects to given 
 
 * `propertyExpr1, ..., propertyExprN`
 
-  A non-empty list of [expressions](/Expression/.md) from whose values the JSON is built. Each expression corresponds to a column of the result.
+  A non-empty list of [expressions](/Expression.md) from whose values the JSON is built. Each expression corresponds to a column of the result.
 
 * `columnId1, ..., columnIdN`
 
-  A list of column IDs in the resulting JSON into which data from the corresponding property will be written. Each list element is either [a simple ID](/IDs/.md#id) or a [string literal](/Literals/.md#strliteral). If no ID is specified, it is considered equal to `expr<column number>` by default.
+  A list of column IDs in the resulting JSON into which data from the corresponding property will be written. Each list element is either [a simple ID](/IDs.md#id) or a [string literal](/Literals.md#strliteral). If no ID is specified, it is considered equal to `expr<column number>` by default.
 
 * `whereExpr`
 
-  An [expression](/Expression/.md) whose value is the condition of the build. If not specified, it is considered equal to the [disjunction](/Logical_operators_AND_OR_NOT_XOR/.md) of all the listed properties (that is, at least one of the properties must be non-`NULL`).
+  An [expression](/Expression.md) whose value is the condition of the build. If not specified, it is considered equal to the [disjunction](/Logical_operators_AND_OR_NOT_XOR.md) of all the listed properties (that is, at least one of the properties must be non-`NULL`).
 
 * `orderExpr1, ..., orderExprL`
 
-  A list of [expressions](/Expression/.md) by which the built data is sorted. The expressions are arbitrary: they do not have to be present in the list `propertyExpr1, ..., propertyExprN`. A sort expression is added to the internal query as a hidden column and does not appear in the resulting JSON.
+  A list of [expressions](/Expression.md) by which the built data is sorted. The expressions are arbitrary: they do not have to be present in the list `propertyExpr1, ..., propertyExprN`. A sort expression is added to the internal query as a hidden column and does not appear in the resulting JSON.
 
 * `DESC`
 
@@ -80,27 +80,27 @@ When building JSON from a form, the `OBJECTS` block fixes form objects to given 
 
 * `formName`
 
-  The name of the form from which the JSON is built. [Composite ID](/IDs/.md#cid).
+  The name of the form from which the JSON is built. [Composite ID](/IDs.md#cid).
 
 * `objName1 ... objNameK`
 
-  Names of form objects for which fixed values are specified. [Simple IDs](/IDs/.md#id).
+  Names of form objects for which fixed values are specified. [Simple IDs](/IDs.md#id).
 
 * `expr1 ... exprK`
 
-  [Expressions](/Expression/.md) whose values determine the fixed values for the form objects.
+  [Expressions](/Expression.md) whose values determine the fixed values for the form objects.
 
 * `filterExpr1, ..., filterExprP`
 
-  A list of [expressions](/Expression/.md) used as extra filters added to the form before the build.
+  A list of [expressions](/Expression.md) used as extra filters added to the form before the build.
 
 * `topExpr`
 
-  [Expression](/Expression/.md) whose value limits the build to its first records.
+  [Expression](/Expression.md) whose value limits the build to its first records.
 
 * `topGroupId1 ... topGroupIdT`
 
-  Form object group [simple IDs](/IDs/.md#id) for which the limit is set per group object instead of for the whole build.
+  Form object group [simple IDs](/IDs.md#id) for which the limit is set per group object instead of for the whole build.
 
 * `topPropertyExpr1 ... topPropertyExprT`
 

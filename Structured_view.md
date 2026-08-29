@@ -2,7 +2,7 @@
 
 All structured views (*formats*) can be divided into two types:
 
-* *Hierarchical* (XML, JSON) - single text file; the information for [object groups](/Form_structure/.md#objects) is put as a list inside the information for [parent](/Static_view/.md#hierarchy) groups.
+* *Hierarchical* (XML, JSON) - single text file; the information for [object groups](/Form_structure.md#objects) is put as a list inside the information for [parent](/Static_view.md#hierarchy) groups.
 * *Flat* (DBF, CSV, XLS, XLSX, TABLE) - one table file for each object group, and each object group with more than one level of nesting should have a column in its table named `parent` which should contain the "upper" row number in the parent group table.
 
 info
@@ -12,25 +12,25 @@ Working with flat formats with a hierarchy depth greater than one is not very co
 Formats are also divided into:
 
 * human-readable (text) and binary. All hierarchical formats are human-readable, flat can be either binary (DBF, TABLE, XLS, XLSX), or human-readable (CSV). You can and should specify the encoding for human-readable formats (UTF-8 is used by default).
-* standardized and internal. At the moment, only one internal format is supported: TABLE (a table of values). All the other formats are standardized. Internal format files are processed in a special way in some [integration](/Integration/.md) operations (e.g., in [SQL calls](/Access_to_an_external_system_EXTERNAL/.md#table)). In addition, internal formats can be used to communicate lsFusion systems with each other.
+* standardized and internal. At the moment, only one internal format is supported: TABLE (a table of values). All the other formats are standardized. Internal format files are processed in a special way in some [integration](/Integration.md) operations (e.g., in [SQL calls](/Access_to_an_external_system_EXTERNAL.md#table)). In addition, internal formats can be used to communicate lsFusion systems with each other.
 
-In the current platform implementation, [group-in-columns](/Form_structure/.md#groupcolumns) are ignored in a structured view.
-
-[]()
-
-When building an object group hierarchy in a structured view, the object groups that have all their objects [passed](/Open_form/.md#params) on the form opening are ignored (as if these object groups did not exist).
+In the current platform implementation, [group-in-columns](/Form_structure.md#groupcolumns) are ignored in a structured view.
 
 []()
 
-If the property [display group](/Form_structure/.md#drawgroup) is specified explicitly in a structured view, then this group should not be earlier than the default one (if the specified group appears earlier, then the default display group will be used anyway).
+When building an object group hierarchy in a structured view, the object groups that have all their objects [passed](/Open_form.md#params) on the form opening are ignored (as if these object groups did not exist).
+
+[]()
+
+If the property [display group](/Form_structure.md#drawgroup) is specified explicitly in a structured view, then this group should not be earlier than the default one (if the specified group appears earlier, then the default display group will be used anyway).
 
 ### Export/import name[​](#extid "Direct link to Export/import name")
 
-The name of the property on the form that will be used during export/import can be specified explicitly using the corresponding option (`EXTID`). Unless this is done, the name of the property on the form will be used as the name of the export/import. If it is also not specified, then the name of the property itself will be the name of the export/import (without adding parameter objects to its end, as it is done in the other mechanisms - [reports](/Print_view/.md), customizing interactive view [design](/Form_design/.md), etc.). The export/import names of object groups and property groups are determined similarly.
+The name of the property on the form that will be used during export/import can be specified explicitly using the corresponding option (`EXTID`). Unless this is done, the name of the property on the form will be used as the name of the export/import. If it is also not specified, then the name of the property itself will be the name of the export/import (without adding parameter objects to its end, as it is done in the other mechanisms - [reports](/Print_view.md), customizing interactive view [design](/Form_design.md), etc.). The export/import names of object groups and property groups are determined similarly.
 
 info
 
-Because of the grammar nature, the option for specifying import/export name of the form (specifically, its [empty group](/Static_view/.md#empty) of objects) is called `FORMEXTID` (not `EXTID`).
+Because of the grammar nature, the option for specifying import/export name of the form (specifically, its [empty group](/Static_view.md#empty) of objects) is called `FORMEXTID` (not `EXTID`).
 
 info
 
@@ -64,13 +64,13 @@ Unlike property names on the form, property export/import names (`EXTID`) of dif
 
 Before directly proceeding with the form export/import, the platform builds a hierarchy of properties, groups of objects/properties as follows:
 
-* The hierarchy of objects/properties groups is built in accordance with the [hierarchy](/Static_view/.md) of object groups and property display groups: a property display group is considered the parent of this property, the hierarchy of object groups is preserved.
+* The hierarchy of objects/properties groups is built in accordance with the [hierarchy](/Static_view.md) of object groups and property display groups: a property display group is considered the parent of this property, the hierarchy of object groups is preserved.
 
 * Then for each `X` object group:
 
   <!-- -->
 
-  * [property groups](/Groups_of_properties_and_actions/.md) that all `X` descendants belong to are determined, then these property groups and their ancestors are automatically included in the hierarchy. Also:
+  * [property groups](/Groups_of_properties_and_actions.md) that all `X` descendants belong to are determined, then these property groups and their ancestors are automatically included in the hierarchy. Also:
 
     <!-- -->
 
@@ -84,7 +84,7 @@ In a hierarchical view, object groups, like properties, can be included in prope
 
 info
 
-The described algorithm is very similar to the algorithm for building property containers in the [default design](/Form_design/.md#defaultDesign) (with the only difference being that it does not use the hierarchy of object groups). As in the container building mechanism, the same property group can be included in the hierarchy several times for different groups of objects.
+The described algorithm is very similar to the algorithm for building property containers in the [default design](/Form_design.md#defaultDesign) (with the only difference being that it does not use the hierarchy of object groups). As in the container building mechanism, the same property group can be included in the hierarchy several times for different groups of objects.
 
 After the hierarchy is built, the form is exported/imported recursively according to the following rules:
 
@@ -160,7 +160,7 @@ Properties with `NULL` values, as well as property groups that do not have any t
 
 ### Object group key[​](#extkey "Direct link to Object group key")
 
-By default, the object collections of an object group are determined in the file by their position: in the hierarchical view, by the order of the records, in the [flat](#flat) one, by the order of the rows in the table. The values of the objects themselves are not written to the file, and on import the platform determines them itself: for an object of a [concrete custom class](/User_classes/.md), a new object is created, for an object of a numerical class, the sequence number of the object collection is used, starting from zero, and for a nested object group the numbering is continuous - it does not restart for each record of the parent group. Accordingly, an object group imported this way must consist of exactly one object of a concrete custom or numerical class.
+By default, the object collections of an object group are determined in the file by their position: in the hierarchical view, by the order of the records, in the [flat](#flat) one, by the order of the rows in the table. The values of the objects themselves are not written to the file, and on import the platform determines them itself: for an object of a [concrete custom class](/User_classes.md), a new object is created, for an object of a numerical class, the sequence number of the object collection is used, starting from zero, and for a nested object group the numbering is continuous - it does not restart for each record of the parent group. Accordingly, an object group imported this way must consist of exactly one object of a concrete custom or numerical class.
 
 If the corresponding option (`EXTKEY`) is specified for an object group, its object collections are determined in the file not by position, but by the values of their objects: on export these values are written to the file, on import they are read from it. In the hierarchical view, such an object group is represented not as a list, but as key-value pairs, where the key is the value of the object:
 
@@ -188,7 +188,7 @@ XML of the object group ::=
     </object group name>
 ```
 
-In the hierarchical view, an object group with a key must consist of exactly one object of a [built-in class](/Built-in_classes/.md), whose value is written as the key (in XML, as a tag name, so it must be a valid tag name). In the [flat view](#flat) there are no restrictions on the composition of the object group, and the values of the objects are written to separate columns of the table.
+In the hierarchical view, an object group with a key must consist of exactly one object of a [built-in class](/Built-in_classes.md), whose value is written as the key (in XML, as a tag name, so it must be a valid tag name). In the [flat view](#flat) there are no restrictions on the composition of the object group, and the values of the objects are written to separate columns of the table.
 
 On import, object collections with the same key are considered one object collection, and the property values for it are taken from the last such record in the file.
 
@@ -259,11 +259,11 @@ If a column with the form property name is not found when importing the form, th
 
 ### Language[​](#language "Direct link to Language")
 
-All of the above options, as well as defining the form structure, can be done using the [`FORM` statement](/FORM_statement/.md).
+All of the above options, as well as defining the form structure, can be done using the [`FORM` statement](/FORM_statement.md).
 
 ### Open form[​](#open-form "Direct link to Open form")
 
-To display the form in structured view, the corresponding [open form](/Open_form/.md) in a [structured view](/In_a_structured_view_EXPORT_IMPORT/.md) operator is used.
+To display the form in structured view, the corresponding [open form](/Open_form.md) in a [structured view](/In_a_structured_view_EXPORT_IMPORT.md) operator is used.
 
 ### Examples[​](#examples "Direct link to Examples")
 

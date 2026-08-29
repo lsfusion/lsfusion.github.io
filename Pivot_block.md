@@ -1,6 +1,6 @@
 # Pivot table settings block
 
-Pivot table settings block of the [`FORM` statement](/FORM_statement/.md) manages the initial settings of the [*pivot table* view type](/Interactive_view/.md#property) in the interactive view of the form.
+Pivot table settings block of the [`FORM` statement](/FORM_statement.md) manages the initial settings of the [*pivot table* view type](/Interactive_view.md#property) in the interactive view of the form.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -46,7 +46,7 @@ CONFIG configFunction
 
 Pivot table settings block allows you to set the initial settings for the form's pivot tables. It can be used to add properties on the form to the corresponding lists of columns (`COLUMNS` block), rows (`ROWS` block), and measures (`MEASURES` block) of the pivot table, as well as to specify initial values for some pivot table options.
 
-The block only sets these settings — it does not change the view type of the object group. For the group's properties to be displayed as a pivot table right away, the *pivot table* view type must be selected by the `PIVOT` [object group option](/Object_blocks/.md#objects). If this view type is not the initial one, the specified settings, except `settingsType`, take effect when the user first switches the group to it.
+The block only sets these settings — it does not change the view type of the object group. For the group's properties to be displayed as a pivot table right away, the *pivot table* view type must be selected by the `PIVOT` [object group option](/Object_blocks.md#objects). If this view type is not the initial one, the specified settings, except `settingsType`, take effect when the user first switches the group to it.
 
 An `objectGroupId pivotOptions` entry specifies only the options listed in it; the rest keep the values specified in the `PIVOT` object group option or in an earlier settings block. If the same option is specified several times, the last one declared takes effect.
 
@@ -54,7 +54,7 @@ An `objectGroupId pivotOptions` entry specifies only the options listed in it; t
 
 * `formPropertyName`
 
-  [Name of the property on a form](/Properties_and_actions_block/.md#name).
+  [Name of the property on a form](/Properties_and_actions_block.md#name).
 
 * `MEASURES(groupObject)`
 
@@ -66,11 +66,11 @@ An `objectGroupId pivotOptions` entry specifies only the options listed in it; t
 
 * `objectGroupId`
 
-  [Object group ID](/IDs/.md#groupobjectid), to which the options from the described settings block apply.
+  [Object group ID](/IDs.md#groupobjectid), to which the options from the described settings block apply.
 
 * `pivotType`
 
-  [String literal](/Literals/.md#strliteral) that defines the initial display mode of the pivot table. Can be equal to one of the following values:
+  [String literal](/Literals.md#strliteral) that defines the initial display mode of the pivot table. Can be equal to one of the following values:
 
   * `'Table'` (default value)
   * `'Table Bar Chart'`
@@ -103,7 +103,7 @@ An `objectGroupId pivotOptions` entry specifies only the options listed in it; t
 
 * `configFunction`
 
-  A [string literal](/Literals/.md#strliteral) with the name of a client-side JavaScript function that overrides the pivot table renderer options. By default, no function is applied.
+  A [string literal](/Literals.md#strliteral) with the name of a client-side JavaScript function that overrides the pivot table renderer options. By default, no function is applied.
 
 ### Example[​](#example "Direct link to Example")
 

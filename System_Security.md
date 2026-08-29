@@ -1,6 +1,6 @@
 # Security
 
-`Security` is a [system module](/System_modules/.md) that defines the access-control model: user roles, role assignment, the permission set on properties, actions, property groups, and navigator elements, the per-role form and client settings, client memory limits, and the navigator-search form. It backs the [`Security policy`](/Security_policy/.md) management-side article, whose roles-and-access user interface is built on the classes, properties, and forms declared here. It is pulled in via `REQUIRE Security` (`System`, `SystemEvents`, `Email`, and `Utils` are pulled in automatically as its requirements).
+`Security` is a [system module](/System_modules.md) that defines the access-control model: user roles, role assignment, the permission set on properties, actions, property groups, and navigator elements, the per-role form and client settings, client memory limits, and the navigator-search form. It backs the [`Security policy`](/Security_policy.md) management-side article, whose roles-and-access user interface is built on the classes, properties, and forms declared here. It is pulled in via `REQUIRE Security` (`System`, `SystemEvents`, `Email`, and `Utils` are pulled in automatically as its requirements).
 
 ### Roles[​](#roles "Direct link to Roles")
 
@@ -112,11 +112,11 @@ The module extends the `forms` reflection form with per-role figures: `countUser
 
 ### Language[​](#language "Direct link to Language")
 
-* [`META` statement](/META_statement/.md) — the metacode mechanism behind the generated property-permission families (`@initPropertyPermission`) and the per-role setting extension point (`@addRoleApplicationSetting`).
+* [`META` statement](/META_statement.md) — the metacode mechanism behind the generated property-permission families (`@initPropertyPermission`) and the per-role setting extension point (`@addRoleApplicationSetting`).
 
 ### See also[​](#see-also "Direct link to See also")
 
-* [`Security policy`](/Security_policy/.md) — the management-side article on configuring roles and access; this module is its standard-library backing.
-* [`System modules`](/System_modules/.md) — the general list of platform modules.
-* [`Authentication`](/System_Authentication/.md) — users, contacts, and sign-in, whose `User` / `CustomUser` classes roles are assigned to.
-* [`Reflection`](/System_Reflection/.md) — metadata about the navigator, forms, and properties that permissions are set on.
+* [`Security policy`](/Security_policy.md) — the management-side article on configuring roles and access; this module is its standard-library backing.
+* [`System modules`](/System_modules.md) — the general list of platform modules.
+* [`Authentication`](/System_Authentication.md) — users, contacts, and sign-in, whose `User` / `CustomUser` classes roles are assigned to.
+* [`Reflection`](/System_Reflection.md) — metadata about the navigator, forms, and properties that permissions are set on.

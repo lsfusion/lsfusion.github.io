@@ -1,6 +1,6 @@
 # INPUT operator
 
-The `INPUT` operator creates an [action](/Actions/.md) that [inputs a value](/Primitive_input_INPUT/.md) of a [built-in](/Built-in_classes/.md) or custom class.
+The `INPUT` operator creates an [action](/Actions.md) that [inputs a value](/Primitive_input_INPUT.md) of a [built-in](/Built-in_classes.md) or custom class.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -46,9 +46,9 @@ The `LIST` block limits the values offered for selection to a specific set. The 
 
 The `CUSTOM` block replaces the default input editor with a custom one rendered by a given client-side function. The `ACTIONS` block adds extra buttons next to the input control, each running its own action when pressed.
 
-The input result is written to the local parameter `alias` and made available in the `DO` block. It can additionally be written to a property. The `CHANGE` block writes the result to the changed property: by default the one specified as the initial input value (or the `changeExpr` property), and by default it limits the offered values to those whose assignment would not break any existing [constraint](/Constraints/.md). The `TO` block writes the result to the named property `propID`.
+The input result is written to the local parameter `alias` and made available in the `DO` block. It can additionally be written to a property. The `CHANGE` block writes the result to the changed property: by default the one specified as the initial input value (or the `changeExpr` property), and by default it limits the offered values to those whose assignment would not break any existing [constraint](/Constraints.md). The `TO` block writes the result to the named property `propID`.
 
-Interactive input of a built-in class value is performed in the editor of the form property cell whose change is being handled — so the action created by the operator must be called from a change handler of a form property (as in the example below). When the action is called outside such a handler — for example, as a button added to a form — input is possible only for classes whose values are input through a separate dialog: file classes and `COLOR`. Requesting other built-in classes there is not supported and causes a runtime error. To request a value of another built-in class outside a change handler, use the [`DIALOG` operator](/DIALOG_operator/.md): open a form whose object of that class is displayed in the panel, marking the object with `INPUT` — the value entered by the user is returned when the form closes.
+Interactive input of a built-in class value is performed in the editor of the form property cell whose change is being handled — so the action created by the operator must be called from a change handler of a form property (as in the example below). When the action is called outside such a handler — for example, as a button added to a form — input is possible only for classes whose values are input through a separate dialog: file classes and `COLOR`. Requesting other built-in classes there is not supported and causes a runtime error. To request a value of another built-in class outside a change handler, use the [`DIALOG` operator](/DIALOG_operator.md): open a form whose object of that class is displayed in the panel, marking the object with `INPUT` — the value entered by the user is returned when the form closes.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
@@ -62,11 +62,11 @@ Interactive input of a built-in class value is performed in the editor of the fo
 
 * `expr`
 
-  An [expression](/Expression/.md) whose value class determines the class of the requested value, and whose value is used as the [initial value](/Value_input/.md#initial) of the input.
+  An [expression](/Expression.md) whose value class determines the class of the requested value, and whose value is used as the [initial value](/Value_input.md#initial) of the input.
 
 * `alias`
 
-  The name of the local parameter to which the input result is written. [Simple ID](/IDs/.md#id).
+  The name of the local parameter to which the input result is written. [Simple ID](/IDs.md#id).
 
 * `changeExpr`
 
@@ -82,7 +82,7 @@ Interactive input of a built-in class value is performed in the editor of the fo
 
 * `editorFunction`
 
-  A [string literal](/Literals/.md#strliteral) with the name of a client-side function that renders a custom input editor instead of the default one.
+  A [string literal](/Literals.md#strliteral) with the name of a client-side function that renders a custom input editor instead of the default one.
 
 * `listExpr`
 
@@ -90,7 +90,7 @@ Interactive input of a built-in class value is performed in the editor of the fo
 
 * `listAction`
 
-  An [action](/Action_operators/.md) that returns the candidate values (executed with the value being entered), used instead of `listExpr`. Allowed only when inputting a value of a built-in class.
+  An [action](/Action_operators.md) that returns the candidate values (executed with the value being entered), used instead of `listExpr`. Allowed only when inputting a value of a built-in class.
 
 * `condition`
 
@@ -98,7 +98,7 @@ Interactive input of a built-in class value is performed in the editor of the fo
 
 * `image`
 
-  A string literal whose value determines the button's [icon](/Icons/.md#manual).
+  A string literal whose value determines the button's [icon](/Icons.md#manual).
 
 * `key`
 
@@ -123,16 +123,16 @@ Interactive input of a built-in class value is performed in the editor of the fo
   The session the input runs in. Specified by one of the keywords:
 
   * `NEWSESSION` - a new top-level session;
-  * `NESTEDSESSION` - a new [nested](/New_session_NEWSESSION_NESTEDSESSION/.md) session;
+  * `NESTEDSESSION` - a new [nested](/New_session_NEWSESSION_NESTEDSESSION.md) session;
   * `THISSESSION` - the current session. Used by default.
 
 * `propID`
 
-  [ID of a property](/IDs/.md#propertyid) without parameters that the input result is additionally written to.
+  [ID of a property](/IDs.md#propertyid) without parameters that the input result is additionally written to.
 
 * `actionOperator`
 
-  A [context-dependent action operator](/Action_operators/.md#contextdependent) that is executed if the input was completed successfully.
+  A [context-dependent action operator](/Action_operators.md#contextdependent) that is executed if the input was completed successfully.
 
 * `elseActionOperator`
 

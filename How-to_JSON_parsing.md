@@ -1,6 +1,6 @@
 # How-to: JSON parsing
 
-The examples below use the wrapper properties around PostgreSQL's `jsonb_*` functions shipped by the platform in the `Utils` module: `field`, `fieldText`, `array`, `arrayText`, `map`, `mapText`, `arrayElement`. Their signatures and description are collected in [`Utils` → `JSON access properties`](/System_Utils/.md#json-access); this how-to relies on them and does not restate their interface.
+The examples below use the wrapper properties around PostgreSQL's `jsonb_*` functions shipped by the platform in the `Utils` module: `field`, `fieldText`, `array`, `arrayText`, `map`, `mapText`, `arrayElement`. Their signatures and description are collected in [`Utils` → `JSON access properties`](/System_Utils.md#json-access); this how-to relies on them and does not restate their interface.
 
 ## Example 1[​](#example-1 "Direct link to Example 1")
 
@@ -158,7 +158,7 @@ importBooksFlat 'Import books' () {
 
 `IMPORT JSON FROM f FIELDS …` expects a flat JSON array of objects: the object keys match the field names in the list (`name`, `year`, `price`), and their values are cast to the declared types. The `DO` body runs for every row of the array in turn — inside it, `name`, `year`, `price` are available as plain parameters with the values of the current row.
 
-Unlike the form-based variant, staging properties are not needed here; the [`imported[INTEGER]`](/IMPORT_operator/.md) property is also absent, because there is no explicit iteration — the `DO` part plays that role.
+Unlike the form-based variant, staging properties are not needed here; the [`imported[INTEGER]`](/IMPORT_operator.md) property is also absent, because there is no explicit iteration — the `DO` part plays that role.
 
 `FIELDS … DO` is the right choice when the values are needed exactly once and validation does not require multiple passes. If a flow needs to validate references first, then create objects in bulk, and only then fill their properties — switch to the form-based variant or to intermediate `LOCAL` properties (see [Example 5](#example-5)).
 
@@ -272,11 +272,11 @@ EXTEND FORM books
 
 The `importBooks` form mirrors the JSON shape: for the `books` array there is an `OBJECTS books = INTEGER` group, and under it three properties whose names are mapped to JSON keys via `EXTID`. The `INTEGER` is a synthetic per-row key supplied by the platform.
 
-[`IMPORT … JSON FROM`](/IMPORT_operator/.md) reads the file and fills the local properties — `importBookName(i)`, `importBookYear(i)`, `importBookPrice(i)` — for every row `i`.
+[`IMPORT … JSON FROM`](/IMPORT_operator.md) reads the file and fills the local properties — `importBookName(i)`, `importBookYear(i)`, `importBookPrice(i)` — for every row `i`.
 
 `FOR importBookName(INTEGER i)` walks every row whose imported name is not `NULL` and creates a `Book` object for each. The system `imported[INTEGER]` property should not be used for iteration here — unlike with flat formats (`IMPORT XLS`, `IMPORT CSV`), it is not set under `IMPORT … JSON FROM`; the "this row came from the file" role is played by any non-empty staging property instead.
 
-Keep in mind that an empty string `""` in the JSON file is imported as an empty non-`NULL` string, not as `NULL` (see [Structured view](/Structured_view/.md)). Such a value satisfies non-`NULL` conditions — the `FOR` above, `IF`, aggregates like `GROUP LAST`. When empty strings should behave as missing values, normalize them right after the import:
+Keep in mind that an empty string `""` in the JSON file is imported as an empty non-`NULL` string, not as `NULL` (see [Structured view](/Structured_view.md)). Such a value satisfies non-`NULL` conditions — the `FOR` above, `IF`, aggregates like `GROUP LAST`. When empty strings should behave as missing values, normalize them right after the import:
 
 ```
 importBookName(INTEGER i) <- NULL WHERE importBookName(i) = '';
@@ -348,8 +348,8 @@ showDocflows (FILE f) {
 }
 ```
 
-Every nested array gets its own `OBJECTS` block over `INTEGER`, exactly like the single array in [example 5](#example-5). The link to the parent level is a `LOCAL` property from the child row to the parent row (`eventDocflow`, `participantEvent`) referenced in `FILTERS`: on import the platform fills it with the row of the enclosing array element. The same filter also makes the child group a child of the parent group when the [object group hierarchy](/Static_view/.md#hierarchy) is built — this is what directs the `events` array to be read from the key `events` inside each `docflows` element rather than from the form root.
+Every nested array gets its own `OBJECTS` block over `INTEGER`, exactly like the single array in [example 5](#example-5). The link to the parent level is a `LOCAL` property from the child row to the parent row (`eventDocflow`, `participantEvent`) referenced in `FILTERS`: on import the platform fills it with the row of the enclosing array element. The same filter also makes the child group a child of the parent group when the [object group hierarchy](/Static_view.md#hierarchy) is built — this is what directs the `events` array to be read from the key `events` inside each `docflows` element rather than from the form root.
 
-The innermost array holds strings, not objects; per the [predefined `value` conversion](/Structured_view/.md#value) each such element is read as an object `{ "value" : ... }`, so the staging property is mapped with `EXTID 'value'`.
+The innermost array holds strings, not objects; per the [predefined `value` conversion](/Structured_view.md#value) each such element is read as an object `{ "value" : ... }`, so the staging property is mapped with `EXTID 'value'`.
 
-When a nested array lies not directly in the element but under an intermediate object key (say, `"status": {"details": [...]}`), declare a [property group](/GROUP_statement/.md) with that export/import name and add the child `OBJECTS` block to it with `IN`. The group nests under the object group of the iterated element — per the same hierarchy building — not under the form root.
+When a nested array lies not directly in the element but under an intermediate object key (say, `"status": {"details": [...]}`), declare a [property group](/GROUP_statement.md) with that export/import name and add the child `OBJECTS` block to it with `IN`. The group nests under the object group of the iterated element — per the same hierarchy building — not under the form root.

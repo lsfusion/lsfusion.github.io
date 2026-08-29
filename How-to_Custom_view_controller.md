@@ -2,19 +2,19 @@
 
 A custom view written in JavaScript communicates with the form through a *controller* object — with it the view sets the current object of a group, changes property values, looks up suggestions, and calls actions or scripts on the server. There are three kinds of custom view; they obtain the controller differently, but all reach the same form-level controller, whose methods are documented on this page.
 
-Properties and actions are addressed by their integration name — the name on the form (or the alias / `NEW` / `DELETE` integration name of a button), the same name the [external JSON/REST API](/How-to_Integration/.md) uses.
+Properties and actions are addressed by their integration name — the name on the form (or the alias / `NEW` / `DELETE` integration name of a button), the same name the [external JSON/REST API](/How-to_Integration.md) uses.
 
 ### How a view gets its controller[​](#how-a-view-gets-its-controller "Direct link to How a view gets its controller")
 
-| view                                                             | declared                        | JavaScript entry point                            | the form controller is |
-| ---------------------------------------------------------------- | ------------------------------- | ------------------------------------------------- | ---------------------- |
-| [React view](/How-to_Custom_React_views/.md)                     | `DESIGN c { custom = 'Name'; }` | a component taking `props` (`data`, `controller`) | `props.controller`     |
-| [CUSTOM object group](/How-to_Custom_components_objects/.md)     | `OBJECTS g = Cls CUSTOM 'name'` | `render` / `update` callbacks                     | `controller.form`      |
-| [CUSTOM property cell](/How-to_Custom_components_properties/.md) | `PROPERTIES p CUSTOM 'name'`    | `render` / `update` callbacks                     | `controller.form`      |
+| view                                                            | declared                        | JavaScript entry point                            | the form controller is |
+| --------------------------------------------------------------- | ------------------------------- | ------------------------------------------------- | ---------------------- |
+| [React view](/How-to_Custom_React_views.md)                     | `DESIGN c { custom = 'Name'; }` | a component taking `props` (`data`, `controller`) | `props.controller`     |
+| [CUSTOM object group](/How-to_Custom_components_objects.md)     | `OBJECTS g = Cls CUSTOM 'name'` | `render` / `update` callbacks                     | `controller.form`      |
+| [CUSTOM property cell](/How-to_Custom_components_properties.md) | `PROPERTIES p CUSTOM 'name'`    | `render` / `update` callbacks                     | `controller.form`      |
 
 A **React view** renders an entire custom container, so the `controller` in its `props` *is* the form controller — the methods below are called on it directly.
 
-A **CUSTOM object group** and a **CUSTOM property cell** are rendered by classic `render(element, controller)` / `update(element, controller, ...)` callbacks — `update` also receives the group's `list` of rows, or the cell's `value`. The `controller` they receive is a *local* controller scoped to that one group or cell: it adds the helpers those views need — value, current-row and styling getters and `diff` / `clearDiff` for an object group, the `change` edit event for a property cell — documented in [Custom components (objects)](/How-to_Custom_components_objects/.md) and [Custom components (properties)](/How-to_Custom_components_properties/.md). The local controller exposes the form controller as `controller.form`, so the form-wide methods below are reached through it:
+A **CUSTOM object group** and a **CUSTOM property cell** are rendered by classic `render(element, controller)` / `update(element, controller, ...)` callbacks — `update` also receives the group's `list` of rows, or the cell's `value`. The `controller` they receive is a *local* controller scoped to that one group or cell: it adds the helpers those views need — value, current-row and styling getters and `diff` / `clearDiff` for an object group, the `change` edit event for a property cell — documented in [Custom components (objects)](/How-to_Custom_components_objects.md) and [Custom components (properties)](/How-to_Custom_components_properties.md). The local controller exposes the form controller as `controller.form`, so the form-wide methods below are reached through it:
 
 ```
 controller.form.changeObject('customer', row);
@@ -23,7 +23,7 @@ const total = await controller.form.exec('recalc', orderId);
 
 Rows a classic view receives carry the same `key` and `objects` as React rows (see [Row identity](#row-identity-contract)), so they are accepted by the form-controller methods unchanged. An object group's local `changeProperty` also *delegates*: for a property that is not one of its own columns it is passed to the form controller and resolved form-wide, so the view can change a property it does not display.
 
-An [`INTERNAL CLIENT`](/INTERNAL_operator/.md) action is a fourth entry point: its bound JavaScript function receives the form controller as the argument after the call parameters. The [custom value editor](/How-to_Custom_components_properties/.md#custom-editor)'s controller (`CHANGE`) also exposes the form controller as its `form` field.
+An [`INTERNAL CLIENT`](/INTERNAL_operator.md) action is a fourth entry point: its bound JavaScript function receives the form controller as the argument after the call parameters. The [custom value editor](/How-to_Custom_components_properties.md#custom-editor)'s controller (`CHANGE`) also exposes the form controller as its `form` field.
 
 ### The form controller[​](#the-form-controller "Direct link to The form controller")
 
@@ -51,7 +51,7 @@ The same two groups also differ along two more axes — whether they are gated, 
 
 A custom view normally reads state from `props.data` and changes it through the form-edit methods — including running an action drawn on the form with `changeProperty('action')`. The server-call methods (`exec` / `eval` / `evalAction` / `change`) are an escape hatch, used only for what the form does not express — ad-hoc server computation, a global write, or creating an object.
 
-Editing the form goes through the ordinary edit channel and is not gated; the server calls are (see [Calling the server](/How-to_Custom_components_objects/.md#calling-the-server)). The edited row is addressed by a handle; any other object — an FK value or an action parameter — is passed as its numeric id (an lsFusion object cannot be passed from JS).
+Editing the form goes through the ordinary edit channel and is not gated; the server calls are (see [Calling the server](/How-to_Custom_components_objects.md#calling-the-server)). The edited row is addressed by a handle; any other object — an FK value or an action parameter — is passed as its numeric id (an lsFusion object cannot be passed from JS).
 
 #### Using the structured shorthand[​](#structured-shorthand "Direct link to Using the structured shorthand")
 
@@ -170,7 +170,7 @@ controller.getPropertyValues('customer', text, 'objects', result => {
 
 #### Calling the server[​](#calling-the-server "Direct link to Calling the server")
 
-`exec`, `eval`, `evalAction` and `change` each run on the server and return a `Promise`. They are subject to the same authorization gate and convert the result to a JS value the same way as a classic view's server calls — see [Calling the server](/How-to_Custom_components_objects/.md#calling-the-server) for the gate, parameter binding, and the result-to-JS conversion table. An end-to-end example of these calls from a CUSTOM view is in [How-to: Custom Components (server calls)](/How-to_Custom_components_server_calls/.md).
+`exec`, `eval`, `evalAction` and `change` each run on the server and return a `Promise`. They are subject to the same authorization gate and convert the result to a JS value the same way as a classic view's server calls — see [Calling the server](/How-to_Custom_components_objects.md#calling-the-server) for the gate, parameter binding, and the result-to-JS conversion table. An end-to-end example of these calls from a CUSTOM view is in [How-to: Custom Components (server calls)](/How-to_Custom_components_server_calls.md).
 
 * `exec(action, ...params)` — runs a named action; resolves to its `RETURN` value.
 * `eval(script, ...params)` — runs an lsf script that defines its own `run` action (typed parameters).
@@ -191,9 +191,9 @@ A call made after the form has been closed *rejects* with a `Form is closed` err
 
 ### The navigator controller[​](#navigator-controller "Direct link to The navigator controller")
 
-An [`INTERNAL CLIENT`](/INTERNAL_operator/.md) action placed in [`NAVIGATOR`](/NAVIGATOR_statement/.md) receives a controller as well, but a navigator one: there is no form, so it has none of the form methods above. It has the four server calls — `exec`, `eval`, `evalAction`, `change` — which run in the navigator's own session, a new one per call that is never applied, so a `change` made here is not kept; and it has `activate`:
+An [`INTERNAL CLIENT`](/INTERNAL_operator.md) action placed in [`NAVIGATOR`](/NAVIGATOR_statement.md) receives a controller as well, but a navigator one: there is no form, so it has none of the form methods above. It has the four server calls — `exec`, `eval`, `evalAction`, `change` — which run in the navigator's own session, a new one per call that is never applied, so a `change` made here is not kept; and it has `activate`:
 
-* `activate(canonicalName[, event])` — does what clicking that navigator element does: selects the folder, or runs the action, opening its form the same optimistic way. `canonicalName` is the element's [canonical name](/IDs/.md); `event` is the event of the click, React's own or the browser's, and can be omitted when activating from code that has none.
+* `activate(canonicalName[, event])` — does what clicking that navigator element does: selects the folder, or runs the action, opening its form the same optimistic way. `canonicalName` is the element's [canonical name](/IDs.md); `event` is the event of the click, React's own or the browser's, and can be omitted when activating from code that has none.
 
 Activating an element that does not exist, or one hidden by `SHOWIF`, throws — activation by name reaches exactly what the navigator shows. Running an action reports no completion, just as a click does not.
 

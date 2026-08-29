@@ -1,6 +1,6 @@
 # NEWEXECUTOR operator
 
-The `NEWEXECUTOR` operator creates an [action](/Actions/.md) that runs other actions in a [new execution service](/New_threads_NEWTHREAD_NEWEXECUTOR/.md) — a server-side thread pool or a client-side dispatcher.
+The `NEWEXECUTOR` operator creates an [action](/Actions.md) that runs other actions in a [new execution service](/New_threads_NEWTHREAD_NEWEXECUTOR.md) — a server-side thread pool or a client-side dispatcher.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -24,30 +24,30 @@ NOWAIT
 
 ### Description[​](#description "Direct link to Description")
 
-The `NEWEXECUTOR` operator creates an action inside which every [`NEWTHREAD`](/NEWTHREAD_operator/.md) is dispatched by the execution service this operator establishes. In `THREADS` mode the service is a server-side thread pool of the given size: each nested thread's body shares the calling code's [change session](/Change_sessions/.md), and `NEWTHREAD ... SCHEDULE` uses the server-side scheduler. In `CLIENT` mode the service is a client-side dispatcher tied to the given connection: each nested thread's action is delivered to that connection and executed on the application server in its own fresh change session at the connection's navigator level, not bound to any opened form; interactive operators inside the thread target that connection's UI, and `NEWTHREAD ... SCHEDULE` uses the client-side timer.
+The `NEWEXECUTOR` operator creates an action inside which every [`NEWTHREAD`](/NEWTHREAD_operator.md) is dispatched by the execution service this operator establishes. In `THREADS` mode the service is a server-side thread pool of the given size: each nested thread's body shares the calling code's [change session](/Change_sessions.md), and `NEWTHREAD ... SCHEDULE` uses the server-side scheduler. In `CLIENT` mode the service is a client-side dispatcher tied to the given connection: each nested thread's action is delivered to that connection and executed on the application server in its own fresh change session at the connection's navigator level, not bound to any opened form; interactive operators inside the thread target that connection's UI, and `NEWTHREAD ... SCHEDULE` uses the client-side timer.
 
-`syncType` controls whether the operator waits for nested threads to complete. In `WAIT` mode the operator does not return until every nested `NEWTHREAD` has completed, after which the values written by [`NEWTHREAD ... TO p`](/NEWTHREAD_operator/.md) are applied to the current [session](/New_session_NEWSESSION_NESTEDSESSION/.md). A bare [`NEWTHREAD ... CLIENT p`](/NEWTHREAD_operator/.md) without `TO` is not awaited. If a wait timeout is given and some threads do not fit within it, the operator throws; values from threads that completed earlier are still applied and are visible in an enclosing [`TRY ... CATCH`](/TRY_operator/.md).
+`syncType` controls whether the operator waits for nested threads to complete. In `WAIT` mode the operator does not return until every nested `NEWTHREAD` has completed, after which the values written by [`NEWTHREAD ... TO p`](/NEWTHREAD_operator.md) are applied to the current [session](/New_session_NEWSESSION_NESTEDSESSION.md). A bare [`NEWTHREAD ... CLIENT p`](/NEWTHREAD_operator.md) without `TO` is not awaited. If a wait timeout is given and some threads do not fit within it, the operator throws; values from threads that completed earlier are still applied and are visible in an enclosing [`TRY ... CATCH`](/TRY_operator.md).
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `action`
 
-  A [context-dependent action operator](/Action_operators/.md#contextdependent) that defines the action to be executed.
+  A [context-dependent action operator](/Action_operators.md#contextdependent) that defines the action to be executed.
 
 * `threadExpr`
 
-  An [expression](/Expression/.md) whose value is the server-side pool size. The type is `INTEGER`. If the value is `NULL` or 0, the pool size defaults to the number of available server processors.
+  An [expression](/Expression.md) whose value is the server-side pool size. The type is `INTEGER`. If the value is `NULL` or 0, the pool size defaults to the number of available server processors.
 
 * `connectionExpr`
 
-  An expression whose value is the [connection](/User_IS_interaction/.md) whose interactive context is used to dispatch the nested `NEWTHREAD`s. The return class is `SystemEvents.Connection`. If the value is `NULL` (or does not resolve to a `SystemEvents.Connection` object), the operator exits without executing the inner action and without raising an error.
+  An expression whose value is the [connection](/User_IS_interaction.md) whose interactive context is used to dispatch the nested `NEWTHREAD`s. The return class is `SystemEvents.Connection`. If the value is `NULL` (or does not resolve to a `SystemEvents.Connection` object), the operator exits without executing the inner action and without raising an error.
 
 * `syncType`
 
   Synchronization type. One of the following keywords:
 
   * `WAIT` — synchronous execution: the operator waits for every nested `NEWTHREAD` to complete (except a bare `NEWTHREAD ... CLIENT p` without `TO`, which is not awaited) and applies their `TO` results. May be followed by a timeout expression (see `timeoutExpr`).
-  * `NOWAIT` — asynchronous execution: the operator returns as soon as all nested `NEWTHREAD`s are dispatched. Incompatible with [`NEWTHREAD ... TO`](/NEWTHREAD_operator/.md), which requires `WAIT`. `NEWTHREAD ... SCHEDULE PERIOD ...` requires this form because a periodic thread never completes.
+  * `NOWAIT` — asynchronous execution: the operator returns as soon as all nested `NEWTHREAD`s are dispatched. Incompatible with [`NEWTHREAD ... TO`](/NEWTHREAD_operator.md), which requires `WAIT`. `NEWTHREAD ... SCHEDULE PERIOD ...` requires this form because a periodic thread never completes.
 
   Without `syncType` the operator behaves as `WAIT` without a timeout.
 

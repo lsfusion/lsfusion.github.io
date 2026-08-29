@@ -103,7 +103,7 @@ Note that when set for a form or property, `Default` access applies permission o
 
 ### Creating users and roles in code[​](#creating-users-and-roles-in-code "Direct link to Creating users and roles in code")
 
-Users, roles, and role assignments are ordinary objects and properties of the system modules [`Authentication`](/System_Authentication/.md) and [`Security`](/System_Security/.md), so everything configured on the forms above can also be set up in application code — for example, when seeding initial or demo data. Such initialization is usually plugged into a [launch event](/Launch_events/.md) handler such as `onStarted[]`:
+Users, roles, and role assignments are ordinary objects and properties of the system modules [`Authentication`](/System_Authentication.md) and [`Security`](/System_Security.md), so everything configured on the forms above can also be set up in application code — for example, when seeding initial or demo data. Such initialization is usually plugged into a [launch event](/Launch_events.md) handler such as `onStarted[]`:
 
 ```
 IF NOT userRoleSID('manager') THEN

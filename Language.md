@@ -1,8 +1,8 @@
 # Language
 
-*lsFusion* is a programming language that describes lsFusion [modules](/Modules/.md).
+*lsFusion* is a programming language that describes lsFusion [modules](/Modules.md).
 
-Each module consists of a sequence of [statements](/Statements/.md) divided into module [*header*](/Module_header/.md) and *body*. The header may include four special statements: `MODULE`, `REQUIRE`, `PRIORITY` and `NAMESPACE`, which define module parameters. The header is followed by the module body which consists of the remaining statements and describes the logic of this module.
+Each module consists of a sequence of [statements](/Statements.md) divided into module [*header*](/Module_header.md) and *body*. The header may include four special statements: `MODULE`, `REQUIRE`, `PRIORITY` and `NAMESPACE`, which define module parameters. The header is followed by the module body which consists of the remaining statements and describes the logic of this module.
 
 ### Example[​](#example "Direct link to Example")
 

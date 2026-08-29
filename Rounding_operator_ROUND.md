@@ -1,6 +1,6 @@
 # Rounding operator (ROUND)
 
-The *rounding operator* creates a [property](/Properties/.md) whose value is the result of rounding a number to the specified number of digits. The arguments of this operator are properties that determine the number to be rounded and, optionally, the rounding precision. The number must belong to one of the numeric [built-in classes](/Built-in_classes/.md), and the precision must belong to the `INTEGER` class. When no precision is given, the number is rounded to the nearest integer. Negative precision values indicate the number of least significant digits to be rounded in the integer part of the number, allowing you to round the number to tens, hundreds, etc.
+The *rounding operator* creates a [property](/Properties.md) whose value is the result of rounding a number to the specified number of digits. The arguments of this operator are properties that determine the number to be rounded and, optionally, the rounding precision. The number must belong to one of the numeric [built-in classes](/Built-in_classes.md), and the precision must belong to the `INTEGER` class. When no precision is given, the number is rounded to the nearest integer. Negative precision values indicate the number of least significant digits to be rounded in the integer part of the number, allowing you to round the number to tens, hundreds, etc.
 
 The operator returns `NULL` if the number being rounded or the precision is `NULL`.
 
@@ -19,7 +19,7 @@ When the precision is a constant literal, the result is a `NUMERIC` whose scale 
 
 ### Language[​](#language "Direct link to Language")
 
-To create a property that rounds a number, the [`ROUND` operator](/ROUND_operator/.md) is used.
+To create a property that rounds a number, the [`ROUND` operator](/ROUND_operator.md) is used.
 
 ### Examples[​](#examples "Direct link to Examples")
 

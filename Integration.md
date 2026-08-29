@@ -14,10 +14,10 @@ Accordingly, we will call the first systems *internal*, and the second *external
 
 Thus, the platform has four different types of integration:
 
-* [Access from an external system](/Access_from_an_external_system/.md)
-* [Access from an internal system](/Access_from_an_internal_system/.md)
-* [Access to an external system (`EXTERNAL`)](/Access_to_an_external_system_EXTERNAL/.md)
-* [Access to an internal system (`INTERNAL`, `FORMULA`)](/Access_to_an_internal_system_INTERNAL_FORMULA/.md)
+* [Access from an external system](/Access_from_an_external_system.md)
+* [Access from an internal system](/Access_from_an_internal_system.md)
+* [Access to an external system (`EXTERNAL`)](/Access_to_an_external_system_EXTERNAL.md)
+* [Access to an internal system (`INTERNAL`, `FORMULA`)](/Access_to_an_internal_system_INTERNAL_FORMULA.md)
 
 info
 

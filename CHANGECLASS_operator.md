@@ -1,6 +1,6 @@
 # CHANGECLASS operator
 
-The `CHANGECLASS` operator creates an [action](/Actions/.md) that [changes objects classes](/Class_change_CHANGECLASS_DELETE/.md).
+The `CHANGECLASS` operator creates an [action](/Actions.md) that [changes objects classes](/Class_change_CHANGECLASS_DELETE.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -18,11 +18,11 @@ The operator may introduce a local parameter in `expr`; in that case the `WHERE`
 
 * `expr`
 
-  [Expression](/Expression/.md) or [typed parameter](/IDs/.md#paramid) for the object whose class is changed. As a typed parameter, you can both reference an already declared parameter and declare a new local parameter; as an expression, new local parameters cannot be added.
+  [Expression](/Expression.md) or [typed parameter](/IDs.md#paramid) for the object whose class is changed. As a typed parameter, you can both reference an already declared parameter and declare a new local parameter; as an expression, new local parameters cannot be added.
 
 * `className`
 
-  Name of the [custom class](/User_classes/.md) to which the object's class is changed. [Composite ID](/IDs/.md#cid). The class must be concrete.
+  Name of the [custom class](/User_classes.md) to which the object's class is changed. [Composite ID](/IDs.md#cid). The class must be concrete.
 
 * `whereExpr`
 

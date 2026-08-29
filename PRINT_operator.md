@@ -1,6 +1,6 @@
 # PRINT operator
 
-The `PRINT` operator creates an [action](/Actions/.md) that [opens a form](/In_a_print_view_PRINT/.md) in [print view](/Print_view/.md).
+The `PRINT` operator creates an [action](/Actions.md) that [opens a form](/In_a_print_view_PRINT.md) in [print view](/Print_view.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -55,7 +55,7 @@ groupName1 = limitExpr1, ..., groupNameK = limitExprK
 
 ### Description[​](#description "Direct link to Description")
 
-The `PRINT` operator creates an action that opens the specified form in print view. In the `OBJECTS` block, [equality filters](/Open_form/.md#params) on form objects are added; the `FILTERS` clause adds further filter expressions.
+The `PRINT` operator creates an action that opens the specified form in print view. In the `OBJECTS` block, [equality filters](/Open_form.md#params) on form objects are added; the `FILTERS` clause adds further filter expressions.
 
 The operator has two top-level modes — the *interactive mode* (a preview window, direct printing, or export to a file) and the *message mode* (a popup message).
 
@@ -63,7 +63,7 @@ The operator has two top-level modes — the *interactive mode* (a preview windo
 
 * `name`
 
-  Form name. [Composite ID](/IDs/.md#cid).
+  Form name. [Composite ID](/IDs.md#cid).
 
 * `classFormType`
 
@@ -85,11 +85,11 @@ The operator has two top-level modes — the *interactive mode* (a preview windo
 
 * `objName1, ..., objNameN`
 
-  Names of form objects for which equality filter values are specified. [Simple IDs](/IDs/.md#id).
+  Names of form objects for which equality filter values are specified. [Simple IDs](/IDs.md#id).
 
 * `expr, expr1, ..., exprN`
 
-  [Expressions](/Expression/.md) whose values determine the equality filter values for the corresponding form objects.
+  [Expressions](/Expression.md) whose values determine the equality filter values for the corresponding form objects.
 
 * `NULL`
 
@@ -132,7 +132,7 @@ The operator has two top-level modes — the *interactive mode* (a preview windo
 
 * `format`
 
-  Sets the [export format](/In_a_print_view_PRINT/.md#format) of the generated file:
+  Sets the [export format](/In_a_print_view_PRINT.md#format) of the generated file:
 
   * `PDF` — exported to a PDF file.
   * `XLS`, `XLSX` — exported to an Excel file.
@@ -152,7 +152,7 @@ The operator has two top-level modes — the *interactive mode* (a preview windo
 
 * `filePropertyId`
 
-  [Property ID](/IDs/.md#propertyid) to which the generated file is written. The property must have no parameters and its value must be of a file class. When given, the report is built on the server and the file is written to the property without any client interaction; otherwise the file is sent to the client and opened by the operating system. Has no effect with `SERVER` (the report is sent directly to a server-side printer instead). May appear only when `format` is specified.
+  [Property ID](/IDs.md#propertyid) to which the generated file is written. The property must have no parameters and its value must be of a file class. When given, the report is built on the server and the file is written to the property without any client interaction; otherwise the file is sent to the client and opened by the operating system. Has no effect with `SERVER` (the report is sent directly to a server-side printer instead). May appear only when `format` is specified.
 
 * `previewMode`
 

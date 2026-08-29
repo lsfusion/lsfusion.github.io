@@ -1,6 +1,6 @@
 # Оператор REQUEST
 
-Оператор `REQUEST` - создание [действия](/ru/Actions/.md), осуществляющего [запрос значения](/ru/Value_request_REQUEST/.md).
+Оператор `REQUEST` - создание [действия](/ru/Actions.md), осуществляющего [запрос значения](/ru/Value_request_REQUEST.md).
 
 ### Синтаксис[​](#синтаксис "Прямая ссылка на этот заголовок")
 
@@ -17,7 +17,7 @@ DO doAction [ELSE elseAction]
 
 * `requestAction`
 
-  [Контекстно-зависимый оператор-действие](/ru/Action_operators/.md#contextdependent), выполняет запрос значения.
+  [Контекстно-зависимый оператор-действие](/ru/Action_operators.md#contextdependent), выполняет запрос значения.
 
 * `doAction`
 
@@ -25,7 +25,7 @@ DO doAction [ELSE elseAction]
 
 * `elseAction`
 
-  Контекстно-зависимый оператор-действие, выполняется, если ввод был [отменен](/ru/Value_input/.md#result).
+  Контекстно-зависимый оператор-действие, выполняется, если ввод был [отменен](/ru/Value_input.md#result).
 
 ### Примеры[​](#примеры "Прямая ссылка на этот заголовок")
 

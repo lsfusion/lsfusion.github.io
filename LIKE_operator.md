@@ -1,6 +1,6 @@
 # LIKE operator
 
-The `LIKE` operator creates a [property](/Properties/.md) that implements [string comparison with a pattern](/Comparison_operators_=_etc/.md). For full-text search, use the separate [`MATCH` operator](/MATCH_operator/.md).
+The `LIKE` operator creates a [property](/Properties.md) that implements [string comparison with a pattern](/Comparison_operators_=_etc.md). For full-text search, use the separate [`MATCH` operator](/MATCH_operator.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -10,12 +10,12 @@ searchExpr LIKE compareExpr
 
 ### Description[​](#description "Direct link to Description")
 
-The `LIKE` operator creates a property that returns `TRUE` if the specified string matches the given pattern, following the [comparison-operator](/Comparison_operators_=_etc/.md) result rule (`TRUE` or `NULL`, never `FALSE`). The pattern can include the following wildcard characters:
+The `LIKE` operator creates a property that returns `TRUE` if the specified string matches the given pattern, following the [comparison-operator](/Comparison_operators_=_etc.md) result rule (`TRUE` or `NULL`, never `FALSE`). The pattern can include the following wildcard characters:
 
 * `%` (percent sign) - replaces any number of characters, including zero characters. This wildcard is used when the exact content or number of characters in a part of the string is unknown.
 * `_` (underscore) - replaces exactly one character. It is used when the exact location of a single character is required, but the character itself can be anything.
 
-To include the `%` or `_` characters in the pattern as regular characters, they must be escaped using the backslash `\` character. Remember, when specifying the pattern using a [string literal](/Literals/.md), to represent the backslash itself, it needs to be doubled: `\\`.
+To include the `%` or `_` characters in the pattern as regular characters, they must be escaped using the backslash `\` character. Remember, when specifying the pattern using a [string literal](/Literals.md), to represent the backslash itself, it needs to be doubled: `\\`.
 
 The case sensitivity of `LIKE` is determined by the class of `searchExpr`. For case-insensitive string classes (`ISTRING`, `BPISTRING`, `TEXT`, `RICHTEXT`, `HTMLTEXT`), the operator performs a case-insensitive comparison.
 
@@ -23,9 +23,9 @@ The case sensitivity of `LIKE` is determined by the class of `searchExpr`. For c
 
 * `searchExpr`
 
-  [Expression](/Expression/.md) whose value determines the string being compared.
+  [Expression](/Expression.md) whose value determines the string being compared.
 
-  The value of the expression must belong to one of the [string classes](/Built-in_classes/.md).
+  The value of the expression must belong to one of the [string classes](/Built-in_classes.md).
 
 * `compareExpr`
 

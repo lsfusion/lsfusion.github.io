@@ -1,6 +1,6 @@
 # ASYNCUPDATE operator
 
-The `ASYNCUPDATE` operator creates an [action](/Actions/.md) that implements [asynchronous update](/State_change/.md#asyncupdate).
+The `ASYNCUPDATE` operator creates an [action](/Actions.md) that implements [asynchronous update](/State_change.md#asyncupdate).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -16,7 +16,7 @@ The `ASYNCUPDATE` operator creates an action that evaluates `expr` and sends the
 
 * `expr`
 
-  [Expression](/Expression/.md) whose value is sent to the open editor.
+  [Expression](/Expression.md) whose value is sent to the open editor.
 
 ### Examples[​](#examples "Direct link to Examples")
 

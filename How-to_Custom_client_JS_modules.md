@@ -1,6 +1,6 @@
 # How-to: Custom client JS modules
 
-When an application needs its own browser JavaScript — a custom view for an object or property, a function bound by an [`INTERNAL CLIENT`](/INTERNAL_operator/.md) action, or any other client-side code — that code can be kept as ordinary source files in the project and compiled into the web client at build time. The platform bundles each entry file and registers what it exports, so the application does not write any explicit loading or wiring for it. This applies to the web client only.
+When an application needs its own browser JavaScript — a custom view for an object or property, a function bound by an [`INTERNAL CLIENT`](/INTERNAL_operator.md) action, or any other client-side code — that code can be kept as ordinary source files in the project and compiled into the web client at build time. The platform bundles each entry file and registers what it exports, so the application does not write any explicit loading or wiring for it. This applies to the web client only.
 
 ### Where the files go[​](#where-the-files-go "Direct link to Where the files go")
 
@@ -36,7 +36,7 @@ DESIGN orders {
 
 Files in *web/init* must be **load-order-independent**: the scan gives them all one load order, so each must register or define at load and use any other library lazily (at render or on an event), never reach into another script at load time.
 
-**Registered explicitly — list it in *onWebClientInit*.** Any file under *src/main/resources/web* outside *web/init* is loaded by naming it in the [`onWebClientInit`](/INTERNAL_operator/.md) action with an integer order. Use this when load order matters — a third-party library that must load before the component using it — or to load a file conditionally:
+**Registered explicitly — list it in *onWebClientInit*.** Any file under *src/main/resources/web* outside *web/init* is loaded by naming it in the [`onWebClientInit`](/INTERNAL_operator.md) action with an integer order. Use this when load order matters — a third-party library that must load before the component using it — or to load a file conditionally:
 
 ```
 onWebClientInit() + {
@@ -123,7 +123,7 @@ function ConfettiBoard(props) {                        // resources/web/init/con
 // resources/web/init/confetti.umd.js sets window.confetti — both files auto-load, no onWebClientInit
 ```
 
-From a URL, when the runtime is allowed to reach the internet. A URL is not a file to drop in *web/init*, so it is passed straight to `onWebClientInit`: a value that is not a local *web/* resource and is an absolute URL is loaded as a `<script src>` on the page (the resolution rule is described under [`INTERNAL`](/INTERNAL_operator/.md)), before the component that uses it:
+From a URL, when the runtime is allowed to reach the internet. A URL is not a file to drop in *web/init*, so it is passed straight to `onWebClientInit`: a value that is not a local *web/* resource and is an absolute URL is loaded as a `<script src>` on the page (the resolution rule is described under [`INTERNAL`](/INTERNAL_operator.md)), before the component that uses it:
 
 ```
 onWebClientInit() + {
@@ -138,7 +138,7 @@ A module's JSX (any *.jsx* or *.tsx* source) is run through the **React Compiler
 
 Like plain bundling, this pass needs no Node and no other external toolchain: the compiler (Babel with `babel-plugin-react-compiler`) is vendored with the build plugin and runs in-process on the JVM. It is a build-time step only — a runtime / deploy box is unaffected. The pass does require the build JVM to be Java 11 through 23 — the JS engine performing it does not support newer JVMs yet. Outside that range it is skipped with a build warning rather than failing the build: the bundles are still produced and complete, because esbuild performs the JSX transform itself, but components are not auto-memoized. A *.js*/*.ts*-only module never runs the pass at all, and `-Dlsfusion.web.skip=true` skips the web compile entirely. An offline build (`mvn -o`) works as usual.
 
-The pass is not a substitute for [`window.lsfusion.List`](/How-to_Custom_React_views/.md): the common large-grid performance case — re-rendering only the rows that actually changed — is handled by `List` independently.
+The pass is not a substitute for [`window.lsfusion.List`](/How-to_Custom_React_views.md): the common large-grid performance case — re-rendering only the rows that actually changed — is handled by `List` independently.
 
 ### Example[​](#example "Direct link to Example")
 
@@ -174,6 +174,6 @@ For a full styling system beyond static class names, a **runtime CSS-in-JS** lib
 
 CSS preprocessors (Sass/SCSS, Less, Stylus) and utility frameworks that generate CSS from a build step (Tailwind, UnoCSS) are **not** part of this build — plain bundling runs the esbuild binary only, with no Node or plugin phase. Native CSS (nesting, custom properties) and CSS modules cover most of what a preprocessor was used for; if you do need one of these tools, generate the CSS with a separate step and ship the result as a plain stylesheet through `onWebClientInit`.
 
-A standalone stylesheet that is not part of the build can still be shipped as a plain file and loaded through the [`onWebClientInit`](/INTERNAL_operator/.md) action, like the CSS of a classic custom component (see [How-to: Custom Components (objects)](/How-to_Custom_components_objects/.md)).
+A standalone stylesheet that is not part of the build can still be shipped as a plain file and loaded through the [`onWebClientInit`](/INTERNAL_operator.md) action, like the CSS of a classic custom component (see [How-to: Custom Components (objects)](/How-to_Custom_components_objects.md)).
 
-This page covers the generic packaging of any custom browser JavaScript. For the React-specific views and the controller calls a custom view makes back into the server, see [How-to: Custom React views](/How-to_Custom_React_views/.md) and [How-to: Custom view controller API](/How-to_Custom_view_controller/.md).
+This page covers the generic packaging of any custom browser JavaScript. For the React-specific views and the controller calls a custom view makes back into the server, see [How-to: Custom React views](/How-to_Custom_React_views.md) and [How-to: Custom view controller API](/How-to_Custom_view_controller.md).

@@ -1,6 +1,6 @@
 # Filter and sorting blocks
 
-The filter and order blocks of the [`FORM` statement](/FORM_statement/.md) – adding [filters](/Form_structure/.md#filters) and [orderings](/Form_structure/.md#sort) to the form structure, as well as [filter groups](/Interactive_view/.md#filtergroup) and [user filters](/Interactive_view/.md#userfilters) to the interactive form view.
+The filter and order blocks of the [`FORM` statement](/FORM_statement.md) – adding [filters](/Form_structure.md#filters) and [orderings](/Form_structure.md#sort) to the form structure, as well as [filter groups](/Interactive_view.md#filtergroup) and [user filters](/Interactive_view.md#userfilters) to the interactive form view.
 
 ## Fixed filters block[​](#fixedfilters "Direct link to Fixed filters block")
 
@@ -20,9 +20,9 @@ USER | FIXED
 
 The fixed filters block adds filters that will be automatically applied when any form data is read. One block can list an arbitrary number of filters separated by a comma.
 
-Each filter is defined with an [expression](/Expression/.md) that defines the filtering condition. In all expressions you can use the names of the objects already declared on the form as parameters.
+Each filter is defined with an [expression](/Expression.md) that defines the filtering condition. In all expressions you can use the names of the objects already declared on the form as parameters.
 
-A filter for a property being added to the form can also be defined with the `FILTER` option in the [property and action block](/Properties_and_actions_block/.md).
+A filter for a property being added to the form can also be defined with the `FILTER` option in the [property and action block](/Properties_and_actions_block.md).
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
@@ -94,7 +94,7 @@ Where each `binding` has the following syntax:
 
 The filter group block adds a set of filters to the form. A special UI component is then created for them, making it possible to apply one filter at a time. If the keyword `EXTEND` is specified, the component is not created, but used for extension. In one block, you can define a single group of filters consisting of an arbitrary number of filters that will be shown to the user in the order of listing.
 
-Each filter is defined with an [expression](/Expression/.md) that defines the filtering condition. In all expressions you can use the names of the objects already declared on the form as parameters.
+Each filter is defined with an [expression](/Expression.md) that defines the filtering condition. In all expressions you can use the names of the objects already declared on the form as parameters.
 
 ### Parameters[​](#parameters-1 "Direct link to Parameters")
 
@@ -102,7 +102,7 @@ Each filter is defined with an [expression](/Expression/.md) that defines the fi
 
 * `groupName`
 
-  Internal name of a filter group. [Simple ID](/IDs/.md#id). If the `EXTEND` keyword is specified, the platform will search the form for the created filter group with the specified name — otherwise a new filter group with the specified name will be created.
+  Internal name of a filter group. [Simple ID](/IDs.md#id). If the `EXTEND` keyword is specified, the platform will search the form for the created filter group with the specified name — otherwise a new filter group with the specified name will be created.
 
 * `nullType`
 
@@ -115,7 +115,7 @@ Each filter is defined with an [expression](/Expression/.md) that defines the fi
 
 * `caption1, ..., captionN`
 
-  Captions that will be shown in the user interface for the corresponding filter being added. Each caption is defined with a [string literal](/Literals/.md#strliteral).
+  Captions that will be shown in the user interface for the corresponding filter being added. Each caption is defined with a [string literal](/Literals.md#strliteral).
 
 * `expression1, ..., expressionN`
 
@@ -134,7 +134,7 @@ Each filter is defined with an [expression](/Expression/.md) that defines the fi
 
   * `bindingLiteral`
 
-    String literal defining the binding. For a keyboard shortcut the definition method is similar to that for a parameter in the Java class method [Keystroke.getKeystroke(String)](http://docs.oracle.com/javase/7/docs/api/javax/swing/KeyStroke.html#getKeyStroke\(java.lang.String\)). The string format and additional options are the same as for the `CHANGEKEY` and `CHANGEMOUSE` options in [action options](/Action_options/.md).
+    String literal defining the binding. For a keyboard shortcut the definition method is similar to that for a parameter in the Java class method [Keystroke.getKeystroke(String)](http://docs.oracle.com/javase/7/docs/api/javax/swing/KeyStroke.html#getKeyStroke\(java.lang.String\)). The string format and additional options are the same as for the `CHANGEKEY` and `CHANGEMOUSE` options in [action options](/Action_options.md).
 
   * `showType`
 
@@ -191,7 +191,7 @@ USER | FIXED
 
 An order block adds orderings to the form that will be automatically applied when any data are read on it. One block can list an arbitrary number of properties on the form separated by a comma in any sequence.
 
-An ordering for a property being added to the form can also be defined with the `ORDER` option in the [property and action block](/Properties_and_actions_block/.md).
+An ordering for a property being added to the form can also be defined with the `ORDER` option in the [property and action block](/Properties_and_actions_block.md).
 
 ### Parameters[​](#parameters-2 "Direct link to Parameters")
 
@@ -201,7 +201,7 @@ An ordering for a property being added to the form can also be defined with the 
 
 * `expression1, ..., expressionN`
 
-  List of order expressions. As a rule, the [name of a property or action on the form](/Properties_and_actions_block/.md#name) specifying the order is used as the expression. An arbitrary [expression](/Expression/.md) can only define a fixed order.
+  List of order expressions. As a rule, the [name of a property or action on the form](/Properties_and_actions_block.md#name) specifying the order is used as the expression. An arbitrary [expression](/Expression.md) can only define a fixed order.
 
 * `orderType1, ..., orderTypeN`
 

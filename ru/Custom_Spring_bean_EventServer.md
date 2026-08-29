@@ -2,7 +2,7 @@
 
 Когда из своего Java-кода нужно обращаться к lsFusion-системе — запустить фоновую задачу, поднять интеграционный сервер, обработать поток событий, выставить наружу RMI-сервис — это делается через Spring bean, наследующийся от иерархии `EventServer`.
 
-Это второй из двух способов [обращения из внутренней системы](/ru/Access_from_an_internal_system/.md), параллельный пути через [`InternalAction`](/ru/Internal_call_INTERNAL/.md#java).
+Это второй из двух способов [обращения из внутренней системы](/ru/Access_from_an_internal_system.md), параллельный пути через [`InternalAction`](/ru/Internal_call_INTERNAL.md#java).
 
 ### Базовый класс[​](#базовый-класс "Прямая ссылка на этот заголовок")
 
@@ -83,7 +83,7 @@ RMI-клиент находит сервис в registry по тому же `<ex
 Bean инжектируется через Spring (минимально достаточно `logicsInstance` (`LogicsInstance`); через него доступны `getBusinessLogics()`, `getDbManager()`, `getRmiManager()`). Стандартные хуки распределяются так:
 
 * `afterPropertiesSet()` (когда bean реализует `InitializingBean`) — сразу после Spring DI; здесь только `Assert.notNull(...)` для проверки инжекции. Runtime платформы ещё не готов, открывать сессии нельзя.
-* `onInit(LifecycleEvent)` — платформа начала инициализацию. Здесь резолвят [модуль](/ru/Modules/.md) (`getLogicsInstance().getBusinessLogics().getModule("MyModule")`) и сохраняют `LP` / `LA`-обёртки в полях через `LM.findProperty(...)` / `LM.findAction(...)`.
+* `onInit(LifecycleEvent)` — платформа начала инициализацию. Здесь резолвят [модуль](/ru/Modules.md) (`getLogicsInstance().getBusinessLogics().getModule("MyModule")`) и сохраняют `LP` / `LA`-обёртки в полях через `LM.findProperty(...)` / `LM.findAction(...)`.
 * `onStarted(LifecycleEvent)` — платформа полностью поднята. Здесь стартуют фоновые потоки и listener-ы; для `RmiServer`-bean-ов делают `bindAndExport`.
 * `onStopping(LifecycleEvent)` — корректно гасят свои потоки, для `RmiServer` делают `unbindAndUnexport`.
 
@@ -91,7 +91,7 @@ Bean инжектируется через Spring (минимально дост
 
 ### Чтение, запись и выполнение[​](#чтение-запись-и-выполнение "Прямая ссылка на этот заголовок")
 
-Внутри методов bean-а работа со свойствами и действиями идёт через `DataSession` и `ExecutionStack` (а не `ExecutionContext`, как у `InternalAction`). Аргументы-объекты передаются как `DataObject` (или более общий `ObjectValue` — `DataObject` или `NullValue`); записываемые значения свойств — обычные Java-значения встроенных классов (`String`, `Integer`, `LocalDateTime` и т.п.). Полный каталог классов и методов — в [Java API для интеграций](/ru/Java_integration_API/.md). `LP` / `LA`-обёртки обычно резолвят один раз в `onInit` и хранят в полях; здесь для краткости они получаются прямо в месте вызова:
+Внутри методов bean-а работа со свойствами и действиями идёт через `DataSession` и `ExecutionStack` (а не `ExecutionContext`, как у `InternalAction`). Аргументы-объекты передаются как `DataObject` (или более общий `ObjectValue` — `DataObject` или `NullValue`); записываемые значения свойств — обычные Java-значения встроенных классов (`String`, `Integer`, `LocalDateTime` и т.п.). Полный каталог классов и методов — в [Java API для интеграций](/ru/Java_integration_API.md). `LP` / `LA`-обёртки обычно резолвят один раз в `onInit` и хранят в полях; здесь для краткости они получаются прямо в месте вызова:
 
 ```
 BusinessLogics BL = getLogicsInstance().getBusinessLogics();

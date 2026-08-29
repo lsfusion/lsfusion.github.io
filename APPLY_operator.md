@@ -1,6 +1,6 @@
 # APPLY operator
 
-The `APPLY` operator creates an [action](/Actions/.md) that [applies changes](/Apply_changes_APPLY/.md) to the database.
+The `APPLY` operator creates an [action](/Actions.md) that [applies changes](/Apply_changes_APPLY.md) to the database.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -23,7 +23,7 @@ The `APPLY` operator creates an action that applies changes to the database. If 
 
 * `NESTED`
 
-  Optional keyword after which you can specify which [local properties](/Data_properties_DATA/.md#local) preserve their changes after the `APPLY` operator is executed. By itself, with neither `LOCAL` nor a property list, it has no effect on the operator.
+  Optional keyword after which you can specify which [local properties](/Data_properties_DATA.md#local) preserve their changes after the `APPLY` operator is executed. By itself, with neither `LOCAL` nor a property list, it has no effect on the operator.
 
 * `LOCAL`
 
@@ -31,7 +31,7 @@ The `APPLY` operator creates an action that applies changes to the database. If 
 
 * `propertyId1, ..., propertyIdN`
 
-  Non-empty list of local properties, specified after `NESTED` in parentheses. Each list element is a [property ID](/IDs/.md#propertyid). The local properties specified in the list will preserve their changes after the operator is executed.
+  Non-empty list of local properties, specified after `NESTED` in parentheses. Each list element is a [property ID](/IDs.md#propertyid). The local properties specified in the list will preserve their changes after the operator is executed.
 
 * `CLASSES`
 
@@ -47,7 +47,7 @@ The `APPLY` operator creates an action that applies changes to the database. If 
 
 * `action`
 
-  A [context-dependent operator](/Action_operators/.md#contextdependent) that describes an action to be executed before applying changes. It is executed in the same transaction as the application of changes, so the platform may run it more than once when retrying the transaction after an update conflict, deadlock, or timeout — see [`APPLY` paradigm](/Apply_changes_APPLY/.md) for the implications.
+  A [context-dependent operator](/Action_operators.md#contextdependent) that describes an action to be executed before applying changes. It is executed in the same transaction as the application of changes, so the platform may run it more than once when retrying the transaction after an update conflict, deadlock, or timeout — see [`APPLY` paradigm](/Apply_changes_APPLY.md) for the implications.
 
 ### Examples[​](#examples "Direct link to Examples")
 

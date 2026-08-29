@@ -1,6 +1,6 @@
 # NEWCONNECTION operator
 
-The `NEWCONNECTION` operator creates an [action](/Actions/.md) that executes another action while preserving [external connections](/New_connection_NEWCONNECTION/.md) (`SQL`, `TCP`, `DBF`) across [`EXTERNAL`](/EXTERNAL_operator/.md) calls.
+The `NEWCONNECTION` operator creates an [action](/Actions.md) that executes another action while preserving [external connections](/New_connection_NEWCONNECTION.md) (`SQL`, `TCP`, `DBF`) across [`EXTERNAL`](/EXTERNAL_operator.md) calls.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -16,7 +16,7 @@ The `NEWCONNECTION` operator creates an action inside which every `EXTERNAL SQL`
 
 * `action`
 
-  A [context-dependent action operator](/Action_operators/.md#contextdependent) that defines the action to be executed.
+  A [context-dependent action operator](/Action_operators.md#contextdependent) that defines the action to be executed.
 
 ### Examples[​](#examples "Direct link to Examples")
 

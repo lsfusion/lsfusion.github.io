@@ -1,8 +1,8 @@
 # Object tree visibility (EXPAND, COLLAPSE)
 
-[Object tree](/Interactive_view/.md#tree) *expansion* and *collapse* operators provide control over the visibility of elements within a tree displayed on a [form](/Forms/.md). As input to these operators, the [object group](/Form_structure/.md#objects) to which the operation is applied is passed. It is also specified over which tree elements (each corresponding to a specific object collection in the mentioned group) the operation needs to be performed:
+[Object tree](/Interactive_view.md#tree) *expansion* and *collapse* operators provide control over the visibility of elements within a tree displayed on a [form](/Forms.md). As input to these operators, the [object group](/Form_structure.md#objects) to which the operation is applied is passed. It is also specified over which tree elements (each corresponding to a specific object collection in the mentioned group) the operation needs to be performed:
 
-* [current](/Form_structure/.md#currentObject) element
+* [current](/Form_structure.md#currentObject) element
 * specified set of elements
 * all top-level elements of the specified object group
 
@@ -14,7 +14,7 @@ Possible operations include:
 
 ### Language[​](#language "Direct link to Language")
 
-To declare actions that implement the expansion and collapse operations of object tree elements, use the [`EXPAND`](/EXPAND_operator/.md) and [`COLLAPSE`](/COLLAPSE_operator/.md) operators.
+To declare actions that implement the expansion and collapse operations of object tree elements, use the [`EXPAND`](/EXPAND_operator.md) and [`COLLAPSE`](/COLLAPSE_operator.md) operators.
 
 ### Examples[​](#examples "Direct link to Examples")
 

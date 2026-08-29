@@ -1,6 +1,6 @@
 # DELETE operator
 
-The `DELETE` operator creates an [action](/Actions/.md) that [deletes objects](/Class_change_CHANGECLASS_DELETE/.md).
+The `DELETE` operator creates an [action](/Actions.md) that [deletes objects](/Class_change_CHANGECLASS_DELETE.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -18,7 +18,7 @@ The operator may introduce a local parameter in `expr`; in that case the `WHERE`
 
 * `expr`
 
-  [Expression](/Expression/.md) or [typed parameter](/IDs/.md#paramid) for the object to delete. As a typed parameter, you can both reference an already declared parameter and declare a new local parameter; as an expression, new local parameters cannot be added.
+  [Expression](/Expression.md) or [typed parameter](/IDs.md#paramid) for the object to delete. As a typed parameter, you can both reference an already declared parameter and declare a new local parameter; as an expression, new local parameters cannot be added.
 
 * `whereExpr`
 

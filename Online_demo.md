@@ -4,7 +4,7 @@ All demos support the following browsers: *Chrome* (recommended), *Safari*, *Fir
 
 ### Score table[​](#score-table "Direct link to Score table")
 
-Application from the [Score table](/Score_table/.md) example.
+Application from the [Score table](/Score_table.md) example.
 
 The demo is located at <https://demo.lsfusion.org/hockeystats>.
 
@@ -14,7 +14,7 @@ The GitHub source code is located [here](https://github.com/lsfusion/samples/tre
 
 ### Materials management (MM)[​](#mm "Direct link to Materials management (MM)")
 
-Application from the [Materials management](/Materials_management/.md) example.
+Application from the [Materials management](/Materials_management.md) example.
 
 The demo is located at <https://demo.lsfusion.org/mm>.
 

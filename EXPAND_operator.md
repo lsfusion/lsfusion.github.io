@@ -1,6 +1,6 @@
 # EXPAND operator
 
-The `EXPAND` operator creates an [action](/Actions/.md) that expands either [elements](/Object_tree_visibility_EXPAND_COLLAPSE/.md) of an [object tree](/Interactive_view/.md#tree) on a form, or a [collapsible container](/Container_visibility_EXPAND_COLLAPSE/.md) of a form.
+The `EXPAND` operator creates an [action](/Actions.md) that expands either [elements](/Object_tree_visibility_EXPAND_COLLAPSE.md) of an [object tree](/Interactive_view.md#tree) on a form, or a [collapsible container](/Container_visibility_EXPAND_COLLAPSE.md) of a form.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -16,7 +16,7 @@ EXPAND CONTAINER formName.componentSelector
 
 ### Description[​](#description "Direct link to Description")
 
-The first form creates an action that is used to expand specific elements of the object tree on a form. These elements can be determined using the `OBJECTS` block. If this block is not specified, the expansion operation will be applied either to the current element of the tree or to the top-level elements of the specified [object group](/Form_structure/.md#objects), depending on the type of operation.
+The first form creates an action that is used to expand specific elements of the object tree on a form. These elements can be determined using the `OBJECTS` block. If this block is not specified, the expansion operation will be applied either to the current element of the tree or to the top-level elements of the specified [object group](/Form_structure.md#objects), depending on the type of operation.
 
 The form with the `CONTAINER` keyword creates an action that expands a container of the form in whose context the action is executing, revealing its contents.
 
@@ -46,23 +46,23 @@ The form with the `CONTAINER` keyword creates an action that expands a container
 
 * `formObjectGroupId`
 
-  [Object group ID](/IDs/.md#groupobjectid) that specifies the object group to which the expansion operation is applied.
+  [Object group ID](/IDs.md#groupobjectid) that specifies the object group to which the expansion operation is applied.
 
 * `objName1 ... objNameN`
 
-  Names of objects on the form. The objects must belong to the specified object group. The object name is specified by a [simple ID](/IDs/.md#id).
+  Names of objects on the form. The objects must belong to the specified object group. The object name is specified by a [simple ID](/IDs.md#id).
 
 * `expr1 ... exprN`
 
-  [Expressions](/Expression/.md) whose values are the target values of the corresponding objects in the specified object group.
+  [Expressions](/Expression.md) whose values are the target values of the corresponding objects in the specified object group.
 
 * `formName`
 
-  Form name. [Composite ID](/IDs/.md#cid).
+  Form name. [Composite ID](/IDs.md#cid).
 
 * `componentSelector`
 
-  Design component [selector](/DESIGN_statement/.md#selector). The component must be a collapsible container.
+  Design component [selector](/DESIGN_statement.md#selector). The component must be a collapsible container.
 
 ### Examples[​](#examples "Direct link to Examples")
 

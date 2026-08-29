@@ -1,6 +1,6 @@
 # MESSAGE operator
 
-The `MESSAGE` operator creates an [action](/Actions/.md) that shows the user a [message](/Show_message_MESSAGE_ASK/.md).
+The `MESSAGE` operator creates an [action](/Actions.md) that shows the user a [message](/Show_message_MESSAGE_ASK.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -17,7 +17,7 @@ messageType
 
 ### Description[​](#description "Direct link to Description")
 
-The `MESSAGE` operator creates an action that shows a message to the user either as a dialogue box with a text message or in the [system window `System.log`](/Navigator_design/.md#systemwindows). The text message can be represented either by a string constant or by another more complex [expression](/Expression/.md) whose value is a string or a value that can be converted to a string.
+The `MESSAGE` operator creates an action that shows a message to the user either as a dialogue box with a text message or in the [system window `System.log`](/Navigator_design.md#systemwindows). The text message can be represented either by a string constant or by another more complex [expression](/Expression.md) whose value is a string or a value that can be converted to a string.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 

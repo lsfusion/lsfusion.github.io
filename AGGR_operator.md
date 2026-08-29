@@ -1,6 +1,6 @@
 # AGGR operator
 
-The `AGGR` operator creates an [aggregation](/Aggregations/.md).
+The `AGGR` operator creates an [aggregation](/Aggregations.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -10,21 +10,21 @@ AGGR [eventClause] aggrClass WHERE aggrExpr [NEW [newEventClause]] [DELETE [dele
 
 ### Description[​](#description "Direct link to Description")
 
-In addition to the property that is the result of this operator and contains the value of the aggregated object, for each parameter the `AGGR` operator also creates a [data property](/Data_properties_DATA/.md) with one parameter of type `aggrClass`. The value class and name of this property match the class and name of the corresponding parameter; when the aggregated object is created, the value of the parameter is automatically written to this property.
+In addition to the property that is the result of this operator and contains the value of the aggregated object, for each parameter the `AGGR` operator also creates a [data property](/Data_properties_DATA.md) with one parameter of type `aggrClass`. The value class and name of this property match the class and name of the corresponding parameter; when the aggregated object is created, the value of the parameter is automatically written to this property.
 
 `eventClause` specifies the base check event; `NEW` and `DELETE` specify resolution events for creating and deleting aggregated objects respectively.
 
-The `AGGR` operator may appear only as a top-level property definition in the [`=` statement](/=_statement/.md); it cannot be used inside an [expression](/Expression/.md), inside other operators, or inside the [`JOIN` operator](/JOIN_operator/.md)'s `[= ]` form.
+The `AGGR` operator may appear only as a top-level property definition in the [`=` statement](/=_statement.md); it cannot be used inside an [expression](/Expression.md), inside other operators, or inside the [`JOIN` operator](/JOIN_operator.md)'s `[= ]` form.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `eventClause`
 
-  [Event description block](/Event_description_block/.md). The base check event. Default — global `APPLY`.
+  [Event description block](/Event_description_block.md). The base check event. Default — global `APPLY`.
 
 * `aggrClass`
 
-  The value class of the aggregated object. Must be a user-defined [class](/Classes/.md); built-in classes are not allowed.
+  The value class of the aggregated object. Must be a user-defined [class](/Classes.md); built-in classes are not allowed.
 
 * `aggrExpr`
 

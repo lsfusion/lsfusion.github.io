@@ -6,7 +6,7 @@ Launch **IDEA** and select `Create New Project`, or when **IDEA** is already ope
 
 ![](/assets/images/IDE_welcome_screen-ff82581a9598bcaffd393dec5c788b8c.png)![](/assets/images/IDE_create_project-8640d4998e8033a35066de300b37fdb6.png)
 
-Select project type `lsFusion`. Make sure that the JDK is set and the link to the library with the `lsFusion` is selected (when [automatic installation](/Development_auto/.md) is used, this link is set automatically; otherwise, click `Download` or select the previously downloaded library `Create`) and then click `Next`.
+Select project type `lsFusion`. Make sure that the JDK is set and the link to the library with the `lsFusion` is selected (when [automatic installation](/Development_auto.md) is used, this link is set automatically; otherwise, click `Download` or select the previously downloaded library `Create`) and then click `Next`.
 
 ![](/assets/images/IDE_project_type-397757bad125a2cb7afa56c520966e89.png)
 
@@ -18,7 +18,7 @@ Fill in the name of the project and the directory where the source files will be
 
 All the source code written in **lsFusion** is stored by default in `src/main/lsfusion`.
 
-To add a new [module](/Modules/.md), right-click the corresponding folder and select `New > lsFusion Module` from the menu:
+To add a new [module](/Modules.md), right-click the corresponding folder and select `New > lsFusion Module` from the menu:
 
 ![](/assets/images/IDE_add_module-fa65855dcf14a8ad210a8e84f5708906.png)
 
@@ -36,7 +36,7 @@ After the server has been successfully started, you can connect to it over a web
 
 ### Creating a server startup configuration[​](#configuration "Direct link to Creating a server startup configuration")
 
-If the platform is embedded to an existing project (for example, [via Maven](/Development_manual/.md#maven) for a Maven project), you may need to manually create a server startup configuration for the applications. This is done as follows:
+If the platform is embedded to an existing project (for example, [via Maven](/Development_manual.md#maven) for a Maven project), you may need to manually create a server startup configuration for the applications. This is done as follows:
 
 In the menu, select `Edit configurations`:
 
@@ -52,7 +52,7 @@ Set the configuration name and the module (if there are several) for which you n
 
 ### Building an application (with embedded server)[​](#build "Direct link to Building an application (with embedded server)")
 
-To compile a single JAR file that contains both the developed code and the application server itself, you can use the following [guide](https://blog.jetbrains.com/idea/2010/08/quickly-create-jar-artifact/). The result JAR file (*artifact*) can be used to install applications on a production server as described in the section [installing an applications server as a service](/Execution_manual/.md#appservice). Note that since all modules and the server itself will be inside the same JAR file, the installation process is slightly different:
+To compile a single JAR file that contains both the developed code and the application server itself, you can use the following [guide](https://blog.jetbrains.com/idea/2010/08/quickly-create-jar-artifact/). The result JAR file (*artifact*) can be used to install applications on a production server as described in the section [installing an applications server as a service](/Execution_manual.md#appservice). Note that since all modules and the server itself will be inside the same JAR file, the installation process is slightly different:
 
 * in the first section instead of the server JAR file this file must be downloaded
 * the third section (copying application files to the server) can be skipped

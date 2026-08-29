@@ -1,6 +1,6 @@
 # WRITE operator
 
-The `WRITE` operator creates an [action](/Actions/.md) that [writes a file](/Write_file_WRITE/.md) from a property to an external resource.
+The `WRITE` operator creates an [action](/Actions.md) that [writes a file](/Write_file_WRITE.md) from a property to an external resource.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -54,11 +54,11 @@ The `Downloads` folder in the user folder is considered to be the current folder
 
 * `urlExpr`
 
-  An [expression](/Expression/.md) whose value equals to the URL.
+  An [expression](/Expression.md) whose value equals to the URL.
 
 * `fileExpr`
 
-  An [expression](/Expression/.md) whose value is the file that will be written to an external resource. JSON-typed values are also accepted: in this case the value is serialized to a `.json` file.
+  An [expression](/Expression.md) whose value is the file that will be written to an external resource. JSON-typed values are also accepted: in this case the value is serialized to a `.json` file.
 
 * `APPEND`
 

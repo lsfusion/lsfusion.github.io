@@ -1,6 +1,6 @@
 # Profiler
 
-The *profiler* is a built-in platform mechanism that collects execution statistics for properties and actions over a given time interval and presents them as a call graph with aggregated metrics. Unlike the [process monitor](/Process_monitor/.md), which shows the system state at the current moment, the profiler describes system behavior over a past interval.
+The *profiler* is a built-in platform mechanism that collects execution statistics for properties and actions over a given time interval and presents them as a call graph with aggregated metrics. Unlike the [process monitor](/Process_monitor.md), which shows the system state at the current moment, the profiler describes system behavior over a past interval.
 
 ### Start and stop[​](#start-and-stop "Direct link to Start and stop")
 
@@ -52,7 +52,7 @@ User and form filters narrow the selection to a specific context; metrics are re
 
 ### Query-plan analysis settings[​](#query-plan-analysis-settings "Direct link to Query-plan analysis settings")
 
-The same form has a separate `SQL` tab that configures parameters affecting how SQL query plans are written to the logs (see [Journals and logs](/Journals_and_logs/.md#logs)):
+The same form has a separate `SQL` tab that configures parameters affecting how SQL query plans are written to the logs (see [Journals and logs](/Journals_and_logs.md#logs)):
 
 | Parameter      | Meaning                                                                                                |
 | -------------- | ------------------------------------------------------------------------------------------------------ |

@@ -1,6 +1,6 @@
 # WHEN statement
 
-The `WHEN` statement adds a [simple event](/Simple_event/.md) handler.
+The `WHEN` statement adds a [simple event](/Simple_event.md) handler.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -22,21 +22,21 @@ Using the `WHEN` statement is much like the following statement:
 ON eventClause FOR eventExpr [ORDER [DESC] orderExpr1, ..., orderExprN] DO eventAction;
 ```
 
-but it also has [a number of advantages](/Simple_event/.md).
+but it also has [a number of advantages](/Simple_event.md).
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `eventClause`
 
-  [Event description block](/Event_description_block/.md). Describes the [base event](/Events/.md) for the created handler.
+  [Event description block](/Event_description_block.md). Describes the [base event](/Events.md) for the created handler.
 
 * `eventExpr`
 
-  An [expression](/Expression/.md) whose value is used as a condition for the created simple event. If the obtained property does not contain the [`PREV`](/Previous_value_PREV/.md) operator, the platform automatically wraps it into the [`SET`](/Change_operators_SET_CHANGED_etc/.md) operator.
+  An [expression](/Expression.md) whose value is used as a condition for the created simple event. If the obtained property does not contain the [`PREV`](/Previous_value_PREV.md) operator, the platform automatically wraps it into the [`SET`](/Change_operators_SET_CHANGED_etc.md) operator.
 
 * `eventAction`
 
-  A [context-dependent operator](/Action_operators/.md#contextdependent) that describes an action to be added as an event handler.
+  A [context-dependent operator](/Action_operators.md#contextdependent) that describes an action to be added as an event handler.
 
 * `DESC`
 

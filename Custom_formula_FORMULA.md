@@ -1,12 +1,12 @@
 # Custom formula (FORMULA)
 
-The *custom formula* operator allows you to create a [property](/Properties/.md) that calculates a defined formula in SQL. You can give a single implementation used for any SQL server, or different implementations for different SQL servers.
+The *custom formula* operator allows you to create a [property](/Properties.md) that calculates a defined formula in SQL. You can give a single implementation used for any SQL server, or different implementations for different SQL servers.
 
 Using this operator is recommended only if the task cannot be accomplished using other operators, and only if it is known for certain which specific SQL servers can be used, or if the syntax constructs used comply with one of the latest SQL standards.
 
 ### Result class[​](#result-class "Direct link to Result class")
 
-By default, the result class of the custom operator is a [common ancestor](/Built-in_classes/.md#commonparentclass) of all its operands. If necessary, the developer can specify this class explicitly.
+By default, the result class of the custom operator is a [common ancestor](/Built-in_classes.md#commonparentclass) of all its operands. If necessary, the developer can specify this class explicitly.
 
 ### Parameter references[​](#parameter-references "Direct link to Parameter references")
 
@@ -32,7 +32,7 @@ These options apply to scalar formulas only; for table-valued formulas the `NULL
 
 ### Language[​](#language "Direct link to Language")
 
-To declare a property using a custom formula, use the [`FORMULA` operator](/FORMULA_operator/.md).
+To declare a property using a custom formula, use the [`FORMULA` operator](/FORMULA_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

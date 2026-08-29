@@ -65,11 +65,11 @@ After the installation is completed, the following will by default be locally in
 
 In order to upload the developed logic to the installed application server (Server), you must:
 
-Place [modules](/Modules/.md) developed in the lsFusion language as files with an lsf extension in a folder located in the server's [classpath](/Launch_parameters/.md#appjava) (default value for automatic installation, see below). In addition, the rest of the resource files if any must also be placed there (e.g. report files, compiled Java files, images, etc.). These files may be placed in subfolders of the classpath, as well as inside jar files (zip archives with the jar extension). After all the files have been copied, you need to [restart](#restart) the server.
+Place [modules](/Modules.md) developed in the lsFusion language as files with an lsf extension in a folder located in the server's [classpath](/Launch_parameters.md#appjava) (default value for automatic installation, see below). In addition, the rest of the resource files if any must also be placed there (e.g. report files, compiled Java files, images, etc.). These files may be placed in subfolders of the classpath, as well as inside jar files (zip archives with the jar extension). After all the files have been copied, you need to [restart](#restart) the server.
 
 info
 
-It is often convenient to place all project files inside a single jar file. To generate such a file automatically, you can use [Maven](/Development_manual/.md#maven) (with assemble and noserver profiles) or the build tools built into the [IDE](/IDE/.md#build).
+It is often convenient to place all project files inside a single jar file. To generate such a file automatically, you can use [Maven](/Development_manual.md#maven) (with assemble and noserver profiles) or the build tools built into the [IDE](/IDE.md#build).
 
 By default, the server's classpath is equal to `$APP_DIR$;$APP_DIR$/*;server.jar`, i.e. the `$APP_DIR$` folder and all its subfolders, all jar files in the `$APP_DIR$` folder (but not its subfolders), and also the jar file of the application server itself.
 
@@ -170,10 +170,10 @@ Web server - lsFusion 6 Client (+ Tomcat 9.0.104):
 
 When installing platform components on different computers, it is also necessary to [configure the parameters](#settings) to connect them to each other
 
-| Components on different computers                   | Connection parameters                                                 | Configurable file                                                |
-| --------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| DB server and application server (Server)           | [Application server to DB server](/Launch_parameters/.md)             | [File](#settings) lsFusion application server startup parameters |
-| Application server (Server) and web server (Client) | [Web server to application server](/Launch_parameters/.md#connectapp) | [File](#settings) lsFusion web server startup parameters         |
+| Components on different computers                   | Connection parameters                                                | Configurable file                                                |
+| --------------------------------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| DB server and application server (Server)           | [Application server to DB server](/Launch_parameters.md)             | [File](#settings) lsFusion application server startup parameters |
+| Application server (Server) and web server (Client) | [Web server to application server](/Launch_parameters.md#connectapp) | [File](#settings) lsFusion web server startup parameters         |
 
 info
 
@@ -181,22 +181,22 @@ When installing under Windows, the above parameters are requested during the ins
 
 ## Manual setup (file paths, service names)[​](#manual-setup-file-paths-service-names "Direct link to Manual setup (file paths, service names)")
 
-### [Startup parameters](/Launch_parameters/.md)[​](#settings "Direct link to settings")
+### [Startup parameters](/Launch_parameters.md)[​](#settings "Direct link to settings")
 
 * Windows
 * Linux
 
-| Component                   | java                                                                                                                                                                             | lsfusion                                                    |
-| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| Application server (Server) | Java tab in the graphical interface `$INSTALL_DIR/Server/bin/lsfusion6_serverw.exe`<br />[`classpath`](/Launch_parameters/.md#appjava) - the Classpath parameter in the same tab | `$INSTALL_DIR/Server/conf/settings.properties` file         |
-| Web server (Client)         | Java tab in the graphical interface `$INSTALL_DIR/Client/bin/lsfusion6_serverw.exe`                                                                                              | `$INSTALL_DIR/Client/conf/catalina/localhost/ROOT.xml` file |
-| Desktop client              | Java parameters are set inside the `j2se` tag in the jnlp file.                                                                                                                  |                                                             |
+| Component                   | java                                                                                                                                                                            | lsfusion                                                    |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Application server (Server) | Java tab in the graphical interface `$INSTALL_DIR/Server/bin/lsfusion6_serverw.exe`<br />[`classpath`](/Launch_parameters.md#appjava) - the Classpath parameter in the same tab | `$INSTALL_DIR/Server/conf/settings.properties` file         |
+| Web server (Client)         | Java tab in the graphical interface `$INSTALL_DIR/Client/bin/lsfusion6_serverw.exe`                                                                                             | `$INSTALL_DIR/Client/conf/catalina/localhost/ROOT.xml` file |
+| Desktop client              | Java parameters are set inside the `j2se` tag in the jnlp file.                                                                                                                 |                                                             |
 
-| Component                   | java                                                                                                                                                                          | lsfusion                                                 |
-| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| Application server (Server) | The `FUSION_OPTS` parameter in the file `/etc/lsfusion6-server/lsfusion.conf`<br />[`classpath`](/Launch_parameters/.md#appjava) - the `CLASSPATH` parameter in the same file | `/etc/lsfusion6-server/settings.properties` file         |
-| Web server (Client)         | The `CATALINA_OPTS` parameter in the file `/etc/lsfusion6-client/lsfusion.conf`                                                                                               | `/etc/lsfusion6-client/catalina/localhost/ROOT.xml` file |
-| Desktop client              | Java parameters are set inside the `j2se` tag in the jnlp file.                                                                                                               |                                                          |
+| Component                   | java                                                                                                                                                                         | lsfusion                                                 |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| Application server (Server) | The `FUSION_OPTS` parameter in the file `/etc/lsfusion6-server/lsfusion.conf`<br />[`classpath`](/Launch_parameters.md#appjava) - the `CLASSPATH` parameter in the same file | `/etc/lsfusion6-server/settings.properties` file         |
+| Web server (Client)         | The `CATALINA_OPTS` parameter in the file `/etc/lsfusion6-client/lsfusion.conf`                                                                                              | `/etc/lsfusion6-client/catalina/localhost/ROOT.xml` file |
+| Desktop client              | Java parameters are set inside the `j2se` tag in the jnlp file.                                                                                                              |                                                          |
 
 ### Restart[​](#restart "Direct link to Restart")
 
@@ -265,7 +265,7 @@ systemctl stop lsfusion6-client
 systemctl start lsfusion6-client
 ```
 
-### [Logs](/Journals_and_logs/.md)[​](#logs "Direct link to logs")
+### [Logs](/Journals_and_logs.md)[​](#logs "Direct link to logs")
 
 Platform logs are written to the following folders:
 
@@ -333,7 +333,7 @@ To configure HTTPS using [Let's Encrypt](https://letsencrypt.org/):
    systemctl start lsfusion6-client
    ```
 
-### [Locale](/Internationalization/.md)[​](#locale "Direct link to locale")
+### [Locale](/Internationalization.md)[​](#locale "Direct link to locale")
 
 The locale used by the platform is determined based on the locale installed in the operating system. If necessary, it can be changed with:
 

@@ -1,6 +1,6 @@
 # <- WHEN statement
 
-The `<- WHEN` statement creates a [calculated event](/Calculated_events/.md).
+The `<- WHEN` statement creates a [calculated event](/Calculated_events.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -10,19 +10,19 @@ propertyId(param1, ..., paramN) <- valueExpr WHEN eventExpr;
 
 ### Description[​](#description "Direct link to Description")
 
-The `<- WHEN` statement creates a calculated event for the [property](/Data_properties_DATA/.md) specified on the left side of the statement. This operator can declare its own local parameters when specifying the property whose value will [change](/Property_change_CHANGE/.md). These parameters can then be used in expressions of the condition and value to which the property will change.
+The `<- WHEN` statement creates a calculated event for the [property](/Data_properties_DATA.md) specified on the left side of the statement. This operator can declare its own local parameters when specifying the property whose value will [change](/Property_change_CHANGE.md). These parameters can then be used in expressions of the condition and value to which the property will change.
 
-Only one calculated event can be defined for a property. The condition and the value cannot depend on the changed property: such a dependency forms a cycle that leads to the `Property ... is recursive` error at server startup (see [calculated events](/Calculated_events/.md)).
+Only one calculated event can be defined for a property. The condition and the value cannot depend on the changed property: such a dependency forms a cycle that leads to the `Property ... is recursive` error at server startup (see [calculated events](/Calculated_events.md)).
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `propertyId`
 
-  [ID of the property](/IDs/.md#propertyid) whose value will be changed when the event occurs.
+  [ID of the property](/IDs.md#propertyid) whose value will be changed when the event occurs.
 
 * `param1, ..., paramN`
 
-  [Typed parameters](/IDs/.md#paramid) properties whose value will be changed when the event occurs. The number of these parameters must be equal to the number of parameters of the property being changed.
+  [Typed parameters](/IDs.md#paramid) properties whose value will be changed when the event occurs. The number of these parameters must be equal to the number of parameters of the property being changed.
 
 * `valueExpr`
 
@@ -30,7 +30,7 @@ Only one calculated event can be defined for a property. The condition and the v
 
 * `eventExpr`
 
-  An expression whose value is a condition for the generated event. If the obtained property does not contain the [`PREV`](/Previous_value_PREV/.md) operator, the platform automatically wraps it into the [`SET`](/Change_operators_SET_CHANGED_etc/.md) operator.
+  An expression whose value is a condition for the generated event. If the obtained property does not contain the [`PREV`](/Previous_value_PREV.md) operator, the platform automatically wraps it into the [`SET`](/Change_operators_SET_CHANGED_etc.md) operator.
 
 ### Examples[​](#examples "Direct link to Examples")
 

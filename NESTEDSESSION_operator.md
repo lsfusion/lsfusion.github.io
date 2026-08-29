@@ -1,6 +1,6 @@
 # NESTEDSESSION operator
 
-The `NESTEDSESSION` operator creates an [action](/Actions/.md) that executes the other action in a [nested session](/New_session_NEWSESSION_NESTEDSESSION/.md#nested).
+The `NESTEDSESSION` operator creates an [action](/Actions.md) that executes the other action in a [nested session](/New_session_NEWSESSION_NESTEDSESSION.md#nested).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -10,17 +10,17 @@ NESTEDSESSION [SINGLE] action
 
 ### Description[​](#description "Direct link to Description")
 
-The `NESTEDSESSION` operator creates an action that executes the other action in a nested session. Applying changes inside the nested session copies them back into the surrounding session rather than committing to the database. If the operator is executed during an [apply transaction](/Apply_changes_APPLY/.md) of the current session, [no nested session is created](/New_session_NEWSESSION_NESTEDSESSION/.md) — the executed action is deferred and executed in the current session inside the same transaction.
+The `NESTEDSESSION` operator creates an action that executes the other action in a nested session. Applying changes inside the nested session copies them back into the surrounding session rather than committing to the database. If the operator is executed during an [apply transaction](/Apply_changes_APPLY.md) of the current session, [no nested session is created](/New_session_NEWSESSION_NESTEDSESSION.md) — the executed action is deferred and executed in the current session inside the same transaction.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `SINGLE`
 
-  Optional keyword. If the `NESTEDSESSION` is itself called inside an [apply transaction](/Apply_changes_APPLY/.md), this flag is propagated to the inner action: changes to stored properties used by it are flushed incrementally during the transaction instead of being batched at the end of the apply.
+  Optional keyword. If the `NESTEDSESSION` is itself called inside an [apply transaction](/Apply_changes_APPLY.md), this flag is propagated to the inner action: changes to stored properties used by it are flushed incrementally during the transaction instead of being batched at the end of the apply.
 
 * `action`
 
-  A [context-dependent action operator](/Action_operators/.md#contextdependent) that defines an action to be executed in the nested session.
+  A [context-dependent action operator](/Action_operators.md#contextdependent) that defines an action to be executed in the nested session.
 
 ### Examples[​](#examples "Direct link to Examples")
 

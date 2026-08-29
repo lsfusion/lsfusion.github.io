@@ -1,14 +1,14 @@
 [Перейти к основному содержимому](#__docusaurus_skipToContent_fallback)
 
-[![Logo](/ru/img/logo.png)![Logo](/ru/img/logo.png)](/ru/.md)
+[![Logo](/ru/img/logo.png)![Logo](/ru/img/logo.png)](/ru.md)
 
-[****](/ru/.md)[Установить](/ru/Install/.md)[Изучить](/ru/.md)
+[****](/ru.md)[Установить](/ru/Install.md)[Изучить](/ru.md)
 
 [GitHub](https://github.com/lsfusion/platform)
 
-[7.0](/ru/.md)
+[7.0](/ru.md)
 
-* [7.0](/ru/.md)
+* [7.0](/ru.md)
 * [6.x](/ru/v6/)
 * [5.x](/ru/v5/)
 * [4.x](/ru/v4/)
@@ -16,7 +16,7 @@
 [Русский](#)
 
 * [English](/search/)
-* [Русский](/ru/search/.md)
+* [Русский](/ru/search.md)
 
 Поиск
 
@@ -30,7 +30,7 @@
 
 Документация
 
-* [lsf документация](/ru/.md)
+* [lsf документация](/ru.md)
 * [Обучающие материалы](https://lsfusion.org/ru/ed_materials)
 
 Сообщество

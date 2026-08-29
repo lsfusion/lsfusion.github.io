@@ -1,6 +1,6 @@
 # Object blocks
 
-Object blocks of the [`FORM` statement](/FORM_statement/.md) - adding [object groups](/Form_structure/.md#objects) to the form structure, and [object trees](/Interactive_view/.md#tree) to the interactive form view.
+Object blocks of the [`FORM` statement](/FORM_statement.md) - adding [object groups](/Form_structure.md#objects) to the form structure, and [object trees](/Interactive_view.md#tree) to the interactive form view.
 
 ## Object block[​](#objects "Direct link to Object block")
 
@@ -53,7 +53,7 @@ FOREGROUND foregroundExpr
 
 ### Description[​](#description "Direct link to Description")
 
-A single `OBJECTS` block can contain several comma-delimited declarations of [object groups](/Interactive_view/.md#objects). An object group can contain just one object or several ones. In case of a single object, you can use simplified syntax without specifying the name of an object group and parentheses.
+A single `OBJECTS` block can contain several comma-delimited declarations of [object groups](/Interactive_view.md#objects). An object group can contain just one object or several ones. In case of a single object, you can use simplified syntax without specifying the name of an object group and parentheses.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
@@ -61,29 +61,29 @@ A single `OBJECTS` block can contain several comma-delimited declarations of [ob
 
 * `groupName`
 
-  Name of an object group. [Simple ID](/IDs/.md#id). Must be specified if you need to access an object group consisting of several objects. If an object group consists of a single object, the name of the object group will be equal to the name of the object and doesn't need to be specified.
+  Name of an object group. [Simple ID](/IDs.md#id). Must be specified if you need to access an object group consisting of several objects. If an object group consists of a single object, the name of the object group will be equal to the name of the object and doesn't need to be specified.
 
 * `name`
 
-  Object name. Simple ID. Must be specified if the object class is a [built-in class](/Built-in_classes/.md). If the object class is a [custom class](/User_classes/.md), the name doesn't need to be specified. In this case, it will be equal to the name of the class object.
+  Object name. Simple ID. Must be specified if the object class is a [built-in class](/Built-in_classes.md). If the object class is a [custom class](/User_classes.md), the name doesn't need to be specified. In this case, it will be equal to the name of the class object.
 
 * `classId`
 
-  [Object class ID](/IDs/.md#classid). An object of a [built-in class](/Built-in_classes/.md) can be shown in the interactive view only when the set of its values is bounded — for example, by form filters over properties whose values are filled in the session (as in staging forms for import) or over a property enumerating a finite range, or by displaying the object in the panel with its value entered by the user (as in the turnover form example below). Reading the table of a built-in class object group without such a bound causes a runtime error, since all values of a built-in class cannot be enumerated.
+  [Object class ID](/IDs.md#classid). An object of a [built-in class](/Built-in_classes.md) can be shown in the interactive view only when the set of its values is bounded — for example, by form filters over properties whose values are filled in the session (as in staging forms for import) or over a property enumerating a finite range, or by displaying the object in the panel with its value entered by the user (as in the turnover form example below). Reading the table of a built-in class object group without such a bound causes a runtime error, since all values of a built-in class cannot be enumerated.
 
 * `caption`
 
-  Caption of the object being added. [String literal](/Literals/.md#strliteral). If the caption is not specified, the class caption will become the object caption.
+  Caption of the object being added. [String literal](/Literals.md#strliteral). If the caption is not specified, the class caption will become the object caption.
 
 ### Object options[​](#object-options "Direct link to Object options")
 
 * `ON CHANGE actionId(param1, ..., paramM)`
 
-  Specifying an [action](/Actions/.md) that will be called when the current value of the object changes.
+  Specifying an [action](/Actions.md) that will be called when the current value of the object changes.
 
   * `actionId`
 
-    [Action ID](/IDs/.md#propertyid).
+    [Action ID](/IDs.md#propertyid).
 
   * `param1, ..., paramM`
 
@@ -91,15 +91,15 @@ A single `OBJECTS` block can contain several comma-delimited declarations of [ob
 
 * `ON CHANGE actionOperator`
 
-  Creating an [action](/Actions/.md) that will be called when the current value of the object changes.
+  Creating an [action](/Actions.md) that will be called when the current value of the object changes.
 
   * `actionOperator`
 
-    [Context-dependent action operator](/Action_operators/.md#contextdependent). You can use the names of already declared objects on the form as parameters.
+    [Context-dependent action operator](/Action_operators.md#contextdependent). You can use the names of already declared objects on the form as parameters.
 
 * `EXTID objectExtID`
 
-  Specifying the name that will be used for [export/import](/Structured_view/.md#extid) of this form object. Used only in the [structured](/Structured_view/.md) view.
+  Specifying the name that will be used for [export/import](/Structured_view.md#extid) of this form object. Used only in the [structured](/Structured_view.md) view.
 
   * `objectExtID`
 
@@ -109,7 +109,7 @@ A single `OBJECTS` block can contain several comma-delimited declarations of [ob
 
 * `viewType`
 
-  The [default view](/Interactive_view/.md#property) for properties of this object group. Specified by one of the following ways:
+  The [default view](/Interactive_view.md#property) for properties of this object group. Specified by one of the following ways:
 
   * `PANEL`
 
@@ -133,7 +133,7 @@ A single `OBJECTS` block can contain several comma-delimited declarations of [ob
 
     * `pivotType`
 
-      [String literal](/Literals/.md#strliteral) that defines the initial display mode of the pivot table. Can be equal to one of the following values:
+      [String literal](/Literals.md#strliteral) that defines the initial display mode of the pivot table. Can be equal to one of the following values:
 
       * `'Table'` (default value)
       * `'Table Bar Chart'`
@@ -166,9 +166,9 @@ A single `OBJECTS` block can contain several comma-delimited declarations of [ob
 
     * `CONFIG configFunction`
 
-      Specifying the name of a client JavaScript function that overrides the pivot table display options; `configFunction` is a [string literal](/Literals/.md#strliteral). Similar to the same option in the [pivot block](/Pivot_block/.md).
+      Specifying the name of a client JavaScript function that overrides the pivot table display options; `configFunction` is a [string literal](/Literals.md#strliteral). Similar to the same option in the [pivot block](/Pivot_block.md).
 
-    The same options can also be specified for the group in the [pivot table settings block](/Pivot_block/.md); the two specifications are combined option by option, and if the same option is specified in both, the later one takes effect.
+    The same options can also be specified for the group in the [pivot table settings block](/Pivot_block.md); the two specifications are combined option by option, and if the same option is specified in both, the later one takes effect.
 
   * `MAP [tileProvider]`
 
@@ -207,7 +207,7 @@ A single `OBJECTS` block can contain several comma-delimited declarations of [ob
       * `update(element, controller, list, options)`
       * `clear(element, controller)` (optional)
 
-      A more detailed description of the mechanism can be found in the article [How-to: Custom Components (Objects)](/How-to_Custom_components_objects/.md).
+      A more detailed description of the mechanism can be found in the article [How-to: Custom Components (Objects)](/How-to_Custom_components_objects.md).
 
 * `OPTIONS optionsExpr`
 
@@ -221,7 +221,7 @@ A single `OBJECTS` block can contain several comma-delimited declarations of [ob
 
 * `insertPosition`
 
-  Specifying the insertion position of the object group within the list of object groups. Most often used together with the [form extension mechanism](/Form_extension/.md). It can be specified in one of the following ways:
+  Specifying the insertion position of the object group within the list of object groups. Most often used together with the [form extension mechanism](/Form_extension.md). It can be specified in one of the following ways:
 
   * `AFTER groupName`
 
@@ -249,7 +249,7 @@ A single `OBJECTS` block can contain several comma-delimited declarations of [ob
 
   Specifying which object collection from the added object group will be current after the active filters are changed. Specified by one of the keywords:
 
-  * `FIRST`– specifies that the first object collection (according to the current order) will be the [default objects](/Interactive_view/.md#defaultobject)
+  * `FIRST`– specifies that the first object collection (according to the current order) will be the [default objects](/Interactive_view.md#defaultobject)
   * `LAST` - last object collection
   * `PREV` - the previous (or closest possible) object collection
   * `NULL` - none (reset)
@@ -262,19 +262,19 @@ A single `OBJECTS` block can contain several comma-delimited declarations of [ob
 
   * `pageSize`
 
-    Number of objects read. [Integer literal](/Literals/.md#intliteral).
+    Number of objects read. [Integer literal](/Literals.md#intliteral).
 
 * `IN propertyGroup`
 
-  Specifying the [property and action group](/Groups_of_properties_and_actions/.md) that the object group belongs to. Used only in the [hierarchical](/Structured_view/.md#hierarchy) view.
+  Specifying the [property and action group](/Groups_of_properties_and_actions.md) that the object group belongs to. Used only in the [hierarchical](/Structured_view.md#hierarchy) view.
 
   * `propertyGroup`
 
-    The property and action group name. [Composite ID](/IDs/.md#cid).
+    The property and action group name. [Composite ID](/IDs.md#cid).
 
 * `EXTID extID`
 
-  Specifying the name to be used for [export/import](/Structured_view/.md#extid) of this object group. Used only in the structured view.
+  Specifying the name to be used for [export/import](/Structured_view.md#extid) of this object group. Used only in the structured view.
 
   * `extId`
 
@@ -282,17 +282,17 @@ A single `OBJECTS` block can contain several comma-delimited declarations of [ob
 
 * `EXTKEY`
 
-  When this keyword is specified, the object collections of this object group are determined in the [structured view](/Structured_view/.md#extkey) by the values of their objects: on export these values are written to the file, on import they are read from it. In the hierarchical view, such an object group is represented as key-value pairs, where the key is the value of the object and the value is the property values. By default, object collections are determined by their position, and the values of the objects are not written to the file.
+  When this keyword is specified, the object collections of this object group are determined in the [structured view](/Structured_view.md#extkey) by the values of their objects: on export these values are written to the file, on import they are read from it. In the hierarchical view, such an object group is represented as key-value pairs, where the key is the value of the object and the value is the property values. By default, object collections are determined by their position, and the values of the objects are not written to the file.
 
-  In the hierarchical view, an object group with this option must consist of exactly one object of a [built-in class](/Built-in_classes/.md).
+  In the hierarchical view, an object group with this option must consist of exactly one object of a [built-in class](/Built-in_classes.md).
 
 * `SUBREPORT [subReportExpression]`
 
-  Specifies that you need to generate a separate [report](/Print_view/.md) file for this object group while [building the report hierarchy](/Print_view/.md#buildhierarchy).
+  Specifies that you need to generate a separate [report](/Print_view.md) file for this object group while [building the report hierarchy](/Print_view.md#buildhierarchy).
 
   * `subReportExpression`
 
-    The [expression](/Expression/.md) whose value will be used as the name of the [report](/Print_view/.md) file for the created object group. You can use the names of already declared objects on the form as parameters. It is assumed that the values of these objects will be [passed](/Open_form/.md#params) when the form is opened [in the print view](/In_a_print_view_PRINT/.md) (if it's not done, they will be considered equal `NULL`).
+    The [expression](/Expression.md) whose value will be used as the name of the [report](/Print_view.md) file for the created object group. You can use the names of already declared objects on the form as parameters. It is assumed that the values of these objects will be [passed](/Open_form.md#params) when the form is opened [in the print view](/In_a_print_view_PRINT.md) (if it's not done, they will be considered equal `NULL`).
 
 * `BACKGROUND backgroundExpr`
 
@@ -370,17 +370,17 @@ The object options `objectOptions` and the object group options `groupOptions` a
 
 ### Description[​](#description-1 "Direct link to Description")
 
-The object extension block changes [object groups](/Form_structure/.md#objects) already added to the form. The specified options are applied to the existing object group in the same way as if they were specified when it was added. In particular, the [`insertPosition`](#insertPosition) option can be used to move an object group within the list of object groups of the form.
+The object extension block changes [object groups](/Form_structure.md#objects) already added to the form. The specified options are applied to the existing object group in the same way as if they were specified when it was added. In particular, the [`insertPosition`](#insertPosition) option can be used to move an object group within the list of object groups of the form.
 
 ### Parameters[​](#parameters-1 "Direct link to Parameters")
 
 * `caption`
 
-  The new caption of the object. [String literal](/Literals/.md#strliteral). The caption and the object options `objectOptions` are applied only if the object group consists of a single object.
+  The new caption of the object. [String literal](/Literals.md#strliteral). The caption and the object options `objectOptions` are applied only if the object group consists of a single object.
 
 * `name`
 
-  The name of an object or the name of an object group already added to the form. [Simple ID](/IDs/.md#id).
+  The name of an object or the name of an object group already added to the form. [Simple ID](/IDs.md#id).
 
 ### Examples[​](#examples-1 "Direct link to Examples")
 
@@ -407,9 +407,9 @@ PARENT parentExpr
 
 ### Description[​](#description-2 "Direct link to Description")
 
-*Object tree block* lets you create an [object tree](/Interactive_view/.md#tree). The first specified object group will form a list of top-level objects, each of which will have a child list of objects of the second specified object group and so on.
+*Object tree block* lets you create an [object tree](/Interactive_view.md#tree). The first specified object group will form a list of top-level objects, each of which will have a child list of objects of the second specified object group and so on.
 
-Use the `PARENT` option to create [hierarchical object groups](/Interactive_view/.md#treegroup). To do that, specify a property that will define the parent element for an object (or several objects if an object group contains several ones). If an object group consists of several objects, the `PARENT` option is specified for each object inside the parentheses of the group declaration.
+Use the `PARENT` option to create [hierarchical object groups](/Interactive_view.md#treegroup). To do that, specify a property that will define the parent element for an object (or several objects if an object group contains several ones). If an object group consists of several objects, the `PARENT` option is specified for each object inside the parentheses of the group declaration.
 
 ### Parameters[​](#parameters-2 "Direct link to Parameters")
 
@@ -417,7 +417,7 @@ Use the `PARENT` option to create [hierarchical object groups](/Interactive_view
 
 * `name`
 
-  The name of the object tree being created. [Simple ID](/IDs/.md#id).
+  The name of the object tree being created. [Simple ID](/IDs.md#id).
 
 * `parentExpr`
 
@@ -479,13 +479,13 @@ EXTEND TREE name [insertPosition]
 
 ### Description[​](#description-3 "Direct link to Description")
 
-The object tree extension block moves an [object tree](/Interactive_view/.md#tree) already added to the form within the list of object groups of the form. New object groups cannot be added to an existing tree.
+The object tree extension block moves an [object tree](/Interactive_view.md#tree) already added to the form within the list of object groups of the form. New object groups cannot be added to an existing tree.
 
 ### Parameters[​](#parameters-3 "Direct link to Parameters")
 
 * `name`
 
-  The name of the object tree [specified at its declaration](#treeName). [Simple ID](/IDs/.md#id).
+  The name of the object tree [specified at its declaration](#treeName). [Simple ID](/IDs.md#id).
 
 * `insertPosition`
 

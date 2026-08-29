@@ -1,10 +1,10 @@
 # Set operations
 
-One of the key features of the platform is the ability to execute certain operations for all object collections for which the values of one or more [properties](/Properties/.md) are not `NULL`. In the property logic such an operation is the calculation of various *aggregate functions*.
+One of the key features of the platform is the ability to execute certain operations for all object collections for which the values of one or more [properties](/Properties.md) are not `NULL`. In the property logic such an operation is the calculation of various *aggregate functions*.
 
 ### Aggregate functions[​](#func "Direct link to Aggregate functions")
 
-An aggregate function calculates a certain *result* as a single object on a set of object collections. This function is defined by the *initial value* (typically `NULL`), [properties](/Properties/.md) that it uses (*operands*), *operation of addition* to the *intermediate result* of the current operand values, and *conversion function* of the intermediate result to the final (typically the intermediate result is the final result).
+An aggregate function calculates a certain *result* as a single object on a set of object collections. This function is defined by the *initial value* (typically `NULL`), [properties](/Properties.md) that it uses (*operands*), *operation of addition* to the *intermediate result* of the current operand values, and *conversion function* of the intermediate result to the final (typically the intermediate result is the final result).
 
 []()
 
@@ -22,10 +22,10 @@ The table below shows the currently supported types of aggregate functions:
 
 From the perspective of determining the set of object collections and the result display method, four main operators for working with sets can be distinguished:
 
-* [Group (`GROUP`)](/Grouping_GROUP/.md) — divides the object collections into groups and computes one result per group.
-* [Partition/order (`PARTITION ... ORDER`)](/Partitioning_sorting_PARTITION_..._ORDER/.md) — also groups the object collections, but computes a result for each object collection, over the part of its group up to its own position in the order.
-* [Recursion (`RECURSION`)](/Recursion_RECURSION/.md) — builds a set recursively from an initial value and a repeated step, then aggregates over the result.
-* [Distribution (`UNGROUP`)](/Distribution_UNGROUP/.md) — the inverse of grouping: spreads a value across the object collections of a group so that grouping the results by sum gives — or, in non-strict mode, approximates — that value.
+* [Group (`GROUP`)](/Grouping_GROUP.md) — divides the object collections into groups and computes one result per group.
+* [Partition/order (`PARTITION ... ORDER`)](/Partitioning_sorting_PARTITION_..._ORDER.md) — also groups the object collections, but computes a result for each object collection, over the part of its group up to its own position in the order.
+* [Recursion (`RECURSION`)](/Recursion_RECURSION.md) — builds a set recursively from an initial value and a repeated step, then aggregates over the result.
+* [Distribution (`UNGROUP`)](/Distribution_UNGROUP.md) — the inverse of grouping: spreads a value across the object collections of a group so that grouping the results by sum gives — or, in non-strict mode, approximates — that value.
 
 ### Operation correctness[​](#correct "Direct link to Operation correctness")
 

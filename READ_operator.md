@@ -1,6 +1,6 @@
 # READ operator
 
-The `READ` operator creates an [action](/Actions/.md) that [reads a file](/Read_file_READ/.md) to a [property](/Properties/.md) from an external resource.
+The `READ` operator creates an [action](/Actions.md) that [reads a file](/Read_file_READ.md) to a [property](/Properties.md) from an external resource.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -38,11 +38,11 @@ If the value of the property to which the file is written belongs to the `FILE` 
 
 * `urlExpr`
 
-  An [expression](/Expression/.md) whose value is the URL from which to read. The value of the expression must be a string type.
+  An [expression](/Expression.md) whose value is the URL from which to read. The value of the expression must be a string type.
 
 * `propertyId`
 
-  The [ID of the property](/IDs/.md#propertyid) to which read data should be written. This property must not have parameters and its value must be of a file class (`FILE`, `RAWFILE`, `JSONFILE`, etc.). If this property is not specified, the `System.readFile` property is used by default.
+  The [ID of the property](/IDs.md#propertyid) to which read data should be written. This property must not have parameters and its value must be of a file class (`FILE`, `RAWFILE`, `JSONFILE`, etc.). If this property is not specified, the `System.readFile` property is used by default.
 
 ### Examples[​](#examples "Direct link to Examples")
 

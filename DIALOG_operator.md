@@ -1,6 +1,6 @@
 # DIALOG operator
 
-The `DIALOG` operator creates an [action](/Actions/.md) that [opens a form](/Open_form/.md) in [interactive view](/In_an_interactive_view_SHOW_DIALOG/.md) as a [value-input dialog](/In_an_interactive_view_SHOW_DIALOG/.md#dialog).
+The `DIALOG` operator creates an [action](/Actions.md) that [opens a form](/Open_form.md) in [interactive view](/In_an_interactive_view_SHOW_DIALOG.md) as a [value-input dialog](/In_an_interactive_view_SHOW_DIALOG.md#dialog).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -17,7 +17,7 @@ Where `target` is one of two forms — the *named-form* opens a previously decla
 formName [OBJECTS objName1 objSpec1, ..., objNameN objSpecN]
 ```
 
-and the *class-form* opens the [list or edit form](/Interactive_view/.md#edtClass) of a class, with one implicit object whose `objSpec` is attached directly:
+and the *class-form* opens the [list or edit form](/Interactive_view.md#edtClass) of a class, with one implicit object whose `objSpec` is attached directly:
 
 ```
 classFormType className objSpec
@@ -65,17 +65,17 @@ IN containerName
 
 ### Description[​](#description "Direct link to Description")
 
-The `DIALOG` operator creates an action that opens the specified form for value input: every object marked with `INPUT` or `CHANGE` returns its last current value when the form closes. The `OBJECTS` block sets [initial values](/Open_form/.md#params) for the form's objects (in the class-form, the per-object spec attaches directly to the class and plays the same role for the form's only object, which is implicitly named `object` and serves as the default `alias` and as the parameter name inside `FILTERS` and `DO` expressions). Inside `formActionOptions`, the `FILTERS` clause attaches [additional filters](/Open_form/.md#contextFilters) computed from the calling context; the remaining options control the form-opening behavior — layout, session, system-action visibility, and other modifiers. The trailing block `{initActionOperator}` runs once when the form is opened.
+The `DIALOG` operator creates an action that opens the specified form for value input: every object marked with `INPUT` or `CHANGE` returns its last current value when the form closes. The `OBJECTS` block sets [initial values](/Open_form.md#params) for the form's objects (in the class-form, the per-object spec attaches directly to the class and plays the same role for the form's only object, which is implicitly named `object` and serves as the default `alias` and as the parameter name inside `FILTERS` and `DO` expressions). Inside `formActionOptions`, the `FILTERS` clause attaches [additional filters](/Open_form.md#contextFilters) computed from the calling context; the remaining options control the form-opening behavior — layout, session, system-action visibility, and other modifiers. The trailing block `{initActionOperator}` runs once when the form is opened.
 
-When the user closes the form via the *OK* action (`System.formOk[]`), the chosen object values are returned; via the *Drop* action (`System.formDrop[]`), `NULL` values are returned. In both cases the input is [completed successfully](/Value_input/.md#result), and `actionOperator` runs with the returned values bound to the corresponding `alias` parameters. When the user closes the form any other way (`System.formClose[]`), the input is canceled and `elseActionOperator` runs instead.
+When the user closes the form via the *OK* action (`System.formOk[]`), the chosen object values are returned; via the *Drop* action (`System.formDrop[]`), `NULL` values are returned. In both cases the input is [completed successfully](/Value_input.md#result), and `actionOperator` runs with the returned values bound to the corresponding `alias` parameters. When the user closes the form any other way (`System.formClose[]`), the input is canceled and `elseActionOperator` runs instead.
 
-The operator runs synchronously (waits for the form to close) whenever the input result is consumed downstream — when a `DO`/`ELSE` continuation is given, or when at least one object has `CHANGE` without `NOCHANGE` (the implicit write-back is in effect). Otherwise the synchronization mode is inferred from the calling context (the same heuristic as for the `WAIT`/`NOWAIT` option of [`SHOW`](/SHOW_operator/.md)) and may still come out synchronous, for example when the dialog is opened from an already-modal form.
+The operator runs synchronously (waits for the form to close) whenever the input result is consumed downstream — when a `DO`/`ELSE` continuation is given, or when at least one object has `CHANGE` without `NOCHANGE` (the implicit write-back is in effect). Otherwise the synchronization mode is inferred from the calling context (the same heuristic as for the `WAIT`/`NOWAIT` option of [`SHOW`](/SHOW_operator.md)) and may still come out synchronous, for example when the dialog is opened from an already-modal form.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `formName`
 
-  Form name. [Composite ID](/IDs/.md#cid).
+  Form name. [Composite ID](/IDs.md#cid).
 
 * `classFormType`
 
@@ -86,15 +86,15 @@ The operator runs synchronously (waits for the form to close) whenever the input
 
 * `className`
 
-  Name of the [custom class](/User_classes/.md) whose list or edit form is opened. Composite ID.
+  Name of the [custom class](/User_classes.md) whose list or edit form is opened. Composite ID.
 
 * `objName1, ..., objNameN`
 
-  Names of form objects. [Simple IDs](/IDs/.md#id).
+  Names of form objects. [Simple IDs](/IDs.md#id).
 
 * `expr`
 
-  [Expression](/Expression/.md) whose value is used as the initial value of the form object the enclosing `objSpec` is attached to.
+  [Expression](/Expression.md) whose value is used as the initial value of the form object the enclosing `objSpec` is attached to.
 
 * `NULL` after the initial value
 
@@ -102,7 +102,7 @@ The operator runs synchronously (waits for the form to close) whenever the input
 
 * `initActionOperator`
 
-  [Context-dependent action operator](/Action_operators/.md#contextdependent) that runs on form opening, after the form's [`EVENTS ON INIT`](/Event_block/.md) handlers.
+  [Context-dependent action operator](/Action_operators.md#contextdependent) that runs on form opening, after the form's [`EVENTS ON INIT`](/Event_block.md) handlers.
 
 * `actionOperator`
 
@@ -120,7 +120,7 @@ The operator runs synchronously (waits for the form to close) whenever the input
 
 * `CHANGE`
 
-  Keyword. Like `INPUT`, but additionally writes the returned value back to a property. By default the written-to property is the one supplied as the initial value (`expr`); to use a different one, give `changeExpr` after `CHANGE`. Also, by default `CHANGE` adds a filter to the form so that only those object values are selectable that would not break any existing [constraint](/Constraints/.md) when assigned.
+  Keyword. Like `INPUT`, but additionally writes the returned value back to a property. By default the written-to property is the one supplied as the initial value (`expr`); to use a different one, give `changeExpr` after `CHANGE`. Also, by default `CHANGE` adds a filter to the form so that only those object values are selectable that would not break any existing [constraint](/Constraints.md) when assigned.
 
 * `NOCONSTRAINTFILTER`
 
@@ -140,7 +140,7 @@ The operator runs synchronously (waits for the form to close) whenever the input
 
 * `propId`
 
-  [ID of the property](/IDs/.md#propertyid) that the returned value is written to (`INPUT` form), or that the value is also written to in addition to the `CHANGE` target. The property is invoked at no parameters.
+  [ID of the property](/IDs.md#propertyid) that the returned value is written to (`INPUT` form), or that the value is also written to in addition to the `CHANGE` target. The property is invoked at no parameters.
 
 * `CONSTRAINTFILTER`
 
@@ -158,11 +158,11 @@ The operator runs synchronously (waits for the form to close) whenever the input
 
 * `windowType`
 
-  The [form layout](/In_an_interactive_view_SHOW_DIALOG/.md#location): `FLOAT` shows the form as a floating window, `DOCKED` as a tab in the system forms window, `EMBEDDED` and `POPUP` as in-place editors, and `IN` places the form inside `containerName` — a form-qualified [design component](/DESIGN_statement/.md#selector) (the form's name followed by the component's path within that form's design) that must be a container. `FLOAT` is the default.
+  The [form layout](/In_an_interactive_view_SHOW_DIALOG.md#location): `FLOAT` shows the form as a floating window, `DOCKED` as a tab in the system forms window, `EMBEDDED` and `POPUP` as in-place editors, and `IN` places the form inside `containerName` — a form-qualified [design component](/DESIGN_statement.md#selector) (the form's name followed by the component's path within that form's design) that must be a container. `FLOAT` is the default.
 
 * `manageSessionType`
 
-  Overrides whether the opened form is the [session owner](/Interactive_view/.md#owner). One of:
+  Overrides whether the opened form is the [session owner](/Interactive_view.md#owner). One of:
 
   * `MANAGESESSION` — force ownership
   * `NOMANAGESESSION` — force non-ownership
@@ -174,7 +174,7 @@ The operator runs synchronously (waits for the form to close) whenever the input
   The session in which the form is opened. One of:
 
   * `NEWSESSION` — a new top-level session
-  * `NESTEDSESSION` — a new [nested](/New_session_NEWSESSION_NESTEDSESSION/.md) session
+  * `NESTEDSESSION` — a new [nested](/New_session_NEWSESSION_NESTEDSESSION.md) session
   * `THISSESSION` — the current session (default)
 
 * `cancelType`
@@ -188,7 +188,7 @@ The operator runs synchronously (waits for the form to close) whenever the input
 
 * `READONLY`
 
-  Keyword. If specified, the form is opened in [read-only](/In_an_interactive_view_SHOW_DIALOG/.md#extra) mode.
+  Keyword. If specified, the form is opened in [read-only](/In_an_interactive_view_SHOW_DIALOG.md#extra) mode.
 
 * `CHECK`
 

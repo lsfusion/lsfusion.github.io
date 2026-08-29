@@ -1,16 +1,16 @@
 # Extremum (MAX, MIN)
 
-The *extremum operator* creates a [property](/Properties/.md) which calculates the maximum or minimum among several specified properties. At least one property must be specified. If the value of any of these properties is `NULL`, this property is ignored. If the values of all properties are `NULL`, the result value is also `NULL`.
+The *extremum operator* creates a [property](/Properties.md) which calculates the maximum or minimum among several specified properties. At least one property must be specified. If the value of any of these properties is `NULL`, this property is ignored. If the values of all properties are `NULL`, the result value is also `NULL`.
 
 The operands must belong to compatible classes — built-in classes of the same family, or user classes related by inheritance.
 
 ### Determining the result class[​](#determining-the-result-class "Direct link to Determining the result class")
 
-The result class is the common ancestor — [built-in](/Built-in_classes/.md#commonparentclass) or [user-defined](/User_classes/.md#commonparentclass) — of the operand classes.
+The result class is the common ancestor — [built-in](/Built-in_classes.md#commonparentclass) or [user-defined](/User_classes.md#commonparentclass) — of the operand classes.
 
 ### Language[​](#language "Direct link to Language")
 
-The maximum property is created using the [`MAX` operator](/MAX_operator/.md), the minimum - using the [`MIN` operator](/MIN_operator/.md).
+The maximum property is created using the [`MAX` operator](/MAX_operator.md), the minimum - using the [`MIN` operator](/MIN_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

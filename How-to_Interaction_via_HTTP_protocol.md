@@ -53,13 +53,13 @@ EXTEND FORM cities
 ;
 ```
 
-The [`EXPORT` operator](/Data_export_EXPORT/.md) will create a JSON in the [`FILE`](/Built-in_classes/.md) format and then will write it to the `exportFile` property. Here is an example of the generated file:
+The [`EXPORT` operator](/Data_export_EXPORT.md) will create a JSON in the [`FILE`](/Built-in_classes.md) format and then will write it to the `exportFile` property. Here is an example of the generated file:
 
 ```
 {"countryId":"123","name":"San Francisco"}
 ```
 
-Then we call the [`EXTERNAL` operator](/Access_to_an_external_system_EXTERNAL/.md), which sends a request to the specified url passing there the contents of the generated file as Body. In this case, since the property in the `FROM` block has the type JSON, *application/json* will be used as the content type. `<namespace>.<property name>` is encoded in the url. In this case, the namespace of the action being called `createCity` is `Location`. All parameters are passed consequently with the ID `p`. The response from the server will be written to the `result` property. Suppose that the response is received in the JSON format and has one of the following types:
+Then we call the [`EXTERNAL` operator](/Access_to_an_external_system_EXTERNAL.md), which sends a request to the specified url passing there the contents of the generated file as Body. In this case, since the property in the `FROM` block has the type JSON, *application/json* will be used as the content type. `<namespace>.<property name>` is encoded in the url. In this case, the namespace of the action being called `createCity` is `Location`. All parameters are passed consequently with the ID `p`. The response from the server will be written to the `result` property. Suppose that the response is received in the JSON format and has one of the following types:
 
 ```
 {"code":"0","message":"OK"}
@@ -67,7 +67,7 @@ Then we call the [`EXTERNAL` operator](/Access_to_an_external_system_EXTERNAL/.m
 {"code":"1","message":"Invalid country code"}
 ```
 
-The response is handled by the [`IMPORT` operator](/Data_import_IMPORT/.md) which parses the corresponding parameters into the `code` and `message` properties respectively. If any error occurs, the user will see a corresponding error message.
+The response is handled by the [`IMPORT` operator](/Data_import_IMPORT.md) which parses the corresponding parameters into the `code` and `message` properties respectively. If any error occurs, the user will see a corresponding error message.
 
 ## Example 2[​](#example-2 "Direct link to Example 2")
 
@@ -103,7 +103,7 @@ createCity (FILE f)  {
 }
 ```
 
-Since the property is named `createCity` and located in the [module](/Modules/.md) with the namespace `Location`, the url on which the request will be handled looks like this:
+Since the property is named `createCity` and located in the [module](/Modules.md) with the namespace `Location`, the url on which the request will be handled looks like this:
 
 ```
 http://localhost:7651/exec?action=Location.createCity
@@ -111,7 +111,7 @@ http://localhost:7651/exec?action=Location.createCity
 
 Body of the HTTP request will be passed as a parameter of the type `FILE`. The values read from the `countryId` and `name` parameters are written to the local properties `cy` and `ne` respectively.
 
-If there is no country with the corresponding code, then a JSON file is generated similar to that described in the previous example, and the [`RETURN` operator](/Exit_RETURN/.md) is called to abort execution. By default, the response message value is also stored in the `exportFile` property.
+If there is no country with the corresponding code, then a JSON file is generated similar to that described in the previous example, and the [`RETURN` operator](/Exit_RETURN.md) is called to abort execution. By default, the response message value is also stored in the `exportFile` property.
 
 If all the actions are completed successfully, the corresponding "OK message" is generated in response.
 
@@ -289,7 +289,7 @@ EXTEND FORM orders
 ;
 ```
 
-Unlike the previous example, here we create a property [group](/Groups_of_properties_and_actions/.md) named `order` using the [`GROUP` operator](/GROUP_operator/.md). When declaring a form, we put all the properties of the purchase order as well as the `detail` object into this property group. The result JSON will look like this:
+Unlike the previous example, here we create a property [group](/Groups_of_properties_and_actions.md) named `order` using the [`GROUP` operator](/GROUP_operator.md). When declaring a form, we put all the properties of the purchase order as well as the `detail` object into this property group. The result JSON will look like this:
 
 ```
 {

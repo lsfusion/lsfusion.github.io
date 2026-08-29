@@ -1,6 +1,6 @@
 # Logical operators (AND, OR, NOT, XOR)
 
-*Logical operators* create [properties](/Properties/.md) that consider their operands as logical values of [class `BOOLEAN`](/Built-in_classes/.md) and whose return value is also a value of class `BOOLEAN`. If the value of an operand of a logical operator is not `NULL`, then the operand is treated as the value `TRUE` of class `BOOLEAN`, otherwise as `NULL`. The result is always either `TRUE` or `NULL`, never `FALSE`.
+*Logical operators* create [properties](/Properties.md) that consider their operands as logical values of [class `BOOLEAN`](/Built-in_classes.md) and whose return value is also a value of class `BOOLEAN`. If the value of an operand of a logical operator is not `NULL`, then the operand is treated as the value `TRUE` of class `BOOLEAN`, otherwise as `NULL`. The result is always either `TRUE` or `NULL`, never `FALSE`.
 
 The platform currently supports the following logical operators:
 
@@ -15,7 +15,7 @@ With more than two operands, `XOR` returns `TRUE` when an odd number of operands
 
 ### Language[​](#language "Direct link to Language")
 
-Description of [logical operator syntax](/AND_OR_NOT_XOR_operators/.md).
+Description of [logical operator syntax](/AND_OR_NOT_XOR_operators.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

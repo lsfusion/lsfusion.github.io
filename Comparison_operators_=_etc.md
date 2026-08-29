@@ -1,6 +1,6 @@
 # Comparison operators (=, >, <, ...)
 
-*Comparison operators* create [properties](/Properties/.md) which return the result of the comparison operation. The values of the created properties belong to the [built-in class](/Built-in_classes/.md) `BOOLEAN`.
+*Comparison operators* create [properties](/Properties.md) which return the result of the comparison operation. The values of the created properties belong to the [built-in class](/Built-in_classes.md) `BOOLEAN`.
 
 The platform currently supports the following comparison operators:
 
@@ -19,7 +19,7 @@ For equality and ordering comparisons, the two operands must belong to compatibl
 
 ### Language[​](#language "Direct link to Language")
 
-Description of common [comparison operators](/Comparison_operators/.md).<br /><!-- -->To create a property that compares a string with a pattern, use the [`LIKE` operator](/LIKE_operator/.md). For full-text search, use the [`MATCH` operator](/MATCH_operator/.md).
+Description of common [comparison operators](/Comparison_operators.md).<br /><!-- -->To create a property that compares a string with a pattern, use the [`LIKE` operator](/LIKE_operator.md). For full-text search, use the [`MATCH` operator](/MATCH_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

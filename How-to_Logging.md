@@ -1,6 +1,6 @@
 # How-to: Logging
 
-The platform uses the [log4j](https://logging.apache.org/log4j/1.x/) library for logging. All application server logs are written to the `logs` folder of its working directory. The full list of standard logs for each platform component (application server, web server, desktop client) is given in the [Journals and logs](/Journals_and_logs/.md#logs) article.
+The platform uses the [log4j](https://logging.apache.org/log4j/1.x/) library for logging. All application server logs are written to the `logs` folder of its working directory. The full list of standard logs for each platform component (application server, web server, desktop client) is given in the [Journals and logs](/Journals_and_logs.md#logs) article.
 
 You can write to the logs both from lsFusion code and from Java code.
 
@@ -29,7 +29,7 @@ exchange 'Exchange' () {
 }
 ```
 
-The `printToLog` action, declared in the [`Utils`](/System_Utils/.md) system module, is used for writing to the log. Its overloads:
+The `printToLog` action, declared in the [`Utils`](/System_Utils.md) system module, is used for writing to the log. Its overloads:
 
 * `printToLog[TEXT, STRING, STRING]` — parameters: the message text, the logger name, the level.
 * `printToLog[TEXT, STRING]` — the `'info'` level.
@@ -57,13 +57,13 @@ finishOrder (Order o) {
 }
 ```
 
-The [`MESSAGE` operator](/MESSAGE_operator/.md) with the `LOG` type shows the message in the `System.log` window of the client application. Unlike `printToLog`, such a message is shown to the user on the client and is not written to the server log files.
+The [`MESSAGE` operator](/MESSAGE_operator.md) with the `LOG` type shows the message in the `System.log` window of the client application. Unlike `printToLog`, such a message is shown to the user on the client and is not written to the server log files.
 
 ## Example 3[​](#example-3 "Direct link to Example 3")
 
 ### Task[​](#task-2 "Direct link to Task")
 
-In an action created with the [`INTERNAL` operator](/INTERNAL_operator/.md), we need to write messages to the standard server logs.
+In an action created with the [`INTERNAL` operator](/INTERNAL_operator.md), we need to write messages to the standard server logs.
 
 ### Solution[​](#solution-2 "Direct link to Solution")
 
@@ -149,5 +149,5 @@ Now calling `printToLog[TEXT, STRING]` with the `'exchange'` logger name writes 
 
 ## See also[​](#see-also "Direct link to See also")
 
-* The list of all standard logs and the folders they are written to — in the [Journals and logs](/Journals_and_logs/.md#logs) article.
-* Debug logging (server debug level, remote call logging, query plans, etc.) can be enabled for an individual user — the corresponding flags are described in the [Service](/System_Service/.md) article.
+* The list of all standard logs and the folders they are written to — in the [Journals and logs](/Journals_and_logs.md#logs) article.
+* Debug logging (server debug level, remote call logging, query plans, etc.) can be enabled for an individual user — the corresponding flags are described in the [Service](/System_Service.md) article.

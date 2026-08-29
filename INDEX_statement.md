@@ -1,6 +1,6 @@
 # INDEX statement
 
-The `INDEX` statement creates a new [index](/Indexes/.md).
+The `INDEX` statement creates a new [index](/Indexes.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -8,13 +8,13 @@ The `INDEX` statement creates a new [index](/Indexes/.md).
 INDEX [dbName] [indexType] field1, ..., fieldN;
 ```
 
-Here `field1, ..., fieldN` is a non-empty list of fields. Each element of this list can be written either as a [property](/Properties/.md) stored in this table:
+Here `field1, ..., fieldN` is a non-empty list of fields. Each element of this list can be written either as a [property](/Properties.md) stored in this table:
 
 ```
 propertyId(param1, ..., paramN)
 ```
 
-or as a [typed parameter](/IDs/.md#paramid) referring to the corresponding key field:
+or as a [typed parameter](/IDs.md#paramid) referring to the corresponding key field:
 
 ```
 param
@@ -22,13 +22,13 @@ param
 
 ### Description[​](#description "Direct link to Description")
 
-The `INDEX` statement adds a new index by an ordered non-empty list of fields of one table. The list must contain at least one [materialized](/Materializations/.md) property. The table that the index should be built for is determined by the first property in the list. All other properties in the list must be stored in the same table and use the same set of parameters. Typed parameters specified separately in the list correspond to the key fields of that table.
+The `INDEX` statement adds a new index by an ordered non-empty list of fields of one table. The list must contain at least one [materialized](/Materializations.md) property. The table that the index should be built for is determined by the first property in the list. All other properties in the list must be stored in the same table and use the same set of parameters. Typed parameters specified separately in the list correspond to the key fields of that table.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `dbName`
 
-  [String literal](/Literals/.md#strliteral) that specifies the physical index name in the database. If omitted, the name is generated automatically.
+  [String literal](/Literals.md#strliteral) that specifies the physical index name in the database. If omitted, the name is generated automatically.
 
 * `indexType`
 
@@ -48,17 +48,17 @@ The `INDEX` statement adds a new index by an ordered non-empty list of fields of
 
 * `propertyId`
 
-  The ID of the [property](/IDs/.md#propertyid) that should be stored in the table for which the index is being created.
+  The ID of the [property](/IDs.md#propertyid) that should be stored in the table for which the index is being created.
 
 * `param1, ..., paramN`
 
-  A list of property parameters. Each element of the list is a [typed parameter](/IDs/.md#paramid).
+  A list of property parameters. Each element of the list is a [typed parameter](/IDs.md#paramid).
 
   Parameter names in `param1, ..., paramN` must be distinct.
 
 * `param`
 
-  A [typed parameter](/IDs/.md#paramid) that determines the key field of the table.
+  A [typed parameter](/IDs.md#paramid) that determines the key field of the table.
 
 ### Examples[​](#examples "Direct link to Examples")
 

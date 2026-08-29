@@ -1,6 +1,6 @@
 # CONTINUE operator
 
-The `CONTINUE` operator creates an [action](/Actions/.md) that implements a move to the [next iteration of the loop](/Next_iteration_CONTINUE/.md).
+The `CONTINUE` operator creates an [action](/Actions.md) that implements a move to the [next iteration of the loop](/Next_iteration_CONTINUE.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 

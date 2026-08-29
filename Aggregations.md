@@ -4,7 +4,7 @@ Aggregation is the creation of a unique (*aggregate*) object for each distinct c
 
 For each distinct combination of parameter values at which the aggregated property is non-`NULL`, at most one aggregated object exists; this uniqueness is the key invariant that aggregation maintains.
 
-The aggregated object and each aggregated property parameter must belong to a specified [class](/Classes/.md).
+The aggregated object and each aggregated property parameter must belong to a specified [class](/Classes.md).
 
 The aggregation mechanism is driven by three events:
 
@@ -14,7 +14,7 @@ The aggregation mechanism is driven by three events:
 
 In a particular aggregation all three events may coincide, or the create and delete events may differ both from the base event and from each other.
 
-All three events react only to changes made in [change sessions](/Change_sessions/.md); the correspondence is not established retroactively. In particular, if an aggregation is added when data on which the aggregated property is non-`NULL` already exists in the database, aggregated objects for such existing parameter combinations are not created — neither at server start nor later, as long as the aggregated property merely stays non-`NULL` (the create event fires when the property *becomes* non-`NULL`, not on arbitrary changes of its value). Missing aggregated objects can be created manually by making exactly the changes the create event makes (see the expansion below): for every combination of parameter values on which the aggregated property is non-`NULL` and the property mapping the parameters to the object returns nothing yet, create a new aggregated object and write the parameter values into its properties. The properties mapping the object to the parameters are ordinary [data properties](/Data_properties_DATA/.md), and objects created this way are indistinguishable for the aggregation from objects created by its own events.
+All three events react only to changes made in [change sessions](/Change_sessions.md); the correspondence is not established retroactively. In particular, if an aggregation is added when data on which the aggregated property is non-`NULL` already exists in the database, aggregated objects for such existing parameter combinations are not created — neither at server start nor later, as long as the aggregated property merely stays non-`NULL` (the create event fires when the property *becomes* non-`NULL`, not on arbitrary changes of its value). Missing aggregated objects can be created manually by making exactly the changes the create event makes (see the expansion below): for every combination of parameter values on which the aggregated property is non-`NULL` and the property mapping the parameters to the object returns nothing yet, create a new aggregated object and write the parameter values into its properties. The properties mapping the object to the parameters are ordinary [data properties](/Data_properties_DATA.md), and objects created this way are indistinguishable for the aggregation from objects created by its own events.
 
 info
 
@@ -47,7 +47,7 @@ Aggregation expresses the same behavior in one declarative line instead of the w
 
 ### Language[​](#language "Direct link to Language")
 
-To create aggregations, use the [`AGGR` operator](/AGGR_operator/.md).
+To create aggregations, use the [`AGGR` operator](/AGGR_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

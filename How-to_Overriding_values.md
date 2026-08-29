@@ -4,7 +4,7 @@ Often there are tasks when it is necessary to give the user opportunity to enter
 
 Let's take a look when you need to define a trade mark-up for a book. At the same time, we have the logic of categories defined. These categories form a tree by specifying a parent for each category. The user should be able to set a mark-up for any product and category at any level.
 
-Let's define the logic of categories and the [data property](/Data_properties_DATA/.md) of this category's markup.
+Let's define the logic of categories and the [data property](/Data_properties_DATA.md) of this category's markup.
 
 ```
 CLASS Category 'Category';
@@ -16,7 +16,7 @@ nameParent 'Parent' (Category c) = name(parent(c)) IN id;
 markup 'Markup' = DATA NUMERIC[8,2] (Category);
 ```
 
-The [`RECURSION` operator](/RECURSION_operator/.md) is used to calculate the `level` property for given two categories. This property will be equal to two to the power of N, where N is the distance between these categories.
+The [`RECURSION` operator](/RECURSION_operator.md) is used to calculate the `level` property for given two categories. This property will be equal to two to the power of N, where N is the distance between these categories.
 
 ```
 level 'Level' (Category child, Category parent) = RECURSION 1l IF child IS Category AND parent == child

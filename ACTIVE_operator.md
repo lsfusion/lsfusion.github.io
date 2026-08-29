@@ -1,6 +1,6 @@
 # ACTIVE operator
 
-The `ACTIVE` operator creates a [property](/Properties/.md) or an [action](/Actions/.md) that returns information about an [active](/Activity_ACTIVE/.md) form element: a tab, a property (or action), a form, or the current object of an object group.
+The `ACTIVE` operator creates a [property](/Properties.md) or an [action](/Actions.md) that returns information about an [active](/Activity_ACTIVE.md) form element: a tab, a property (or action), a form, or the current object of an object group.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -23,11 +23,11 @@ The `ACTIVE TAB` and `ACTIVE PROPERTY` forms create a parameterless `BOOLEAN` pr
 * `TAB` — the value is recomputed whenever the active tab on the form changes. Typically used to gate other properties' computation (for example, in `SHOWIF`, export conditions, etc.) to avoid doing work for tabs that are not currently visible.
 * `PROPERTY` — the value is recomputed whenever the focus changes on the form and pushed to the client.
 
-To run an action at the moment a tab is switched to (as opposed to reading the current state), use the [`EVENTS ON TAB`](/Event_block/.md) handler.
+To run an action at the moment a tab is switched to (as opposed to reading the current state), use the [`EVENTS ON TAB`](/Event_block.md) handler.
 
 #### Form activity[​](#form-activity "Direct link to Form activity")
 
-The `ACTIVE FORM` form creates an action that performs the activity check for the specified form for the current user and writes the result (`TRUE` or `FALSE`) into the built-in [local](/Data_properties_DATA/.md#local) `System.isActiveForm[]` property. The result is then available for reading via `isActiveForm[]` within the same action block / session.
+The `ACTIVE FORM` form creates an action that performs the activity check for the specified form for the current user and writes the result (`TRUE` or `FALSE`) into the built-in [local](/Data_properties_DATA.md#local) `System.isActiveForm[]` property. The result is then available for reading via `isActiveForm[]` within the same action block / session.
 
 #### Current object value[​](#current-object-value "Direct link to Current object value")
 
@@ -37,19 +37,19 @@ The `ACTIVE formObjectId` form (without a `TAB`/`PROPERTY`/`FORM` qualifier) cre
 
 * `formName`
 
-  Form name. [Composite ID](/IDs/.md#cid).
+  Form name. [Composite ID](/IDs.md#cid).
 
 * `componentSelector`
 
-  Design component [selector](/DESIGN_statement/.md#selector). The component must be a tab in a tab panel (that is, placed inside a container with `tabbed = TRUE`).
+  Design component [selector](/DESIGN_statement.md#selector). The component must be a tab in a tab panel (that is, placed inside a container with `tabbed = TRUE`).
 
 * `formPropertyId`
 
-  The global [ID of a property or action on a form](/IDs/.md#formpropertyid) whose activeness is checked.
+  The global [ID of a property or action on a form](/IDs.md#formpropertyid) whose activeness is checked.
 
 * `formObjectId`
 
-  Global [form object ID](/IDs/.md#groupobjectid) whose value is returned.
+  Global [form object ID](/IDs.md#groupobjectid) whose value is returned.
 
 ### Examples[​](#examples "Direct link to Examples")
 

@@ -1,6 +1,6 @@
 # Object group operator
 
-[Object group](/Form_structure/.md) operators are used for creating [properties](/Properties/.md) working with the [current state](/Object_group_operators/.md) of the object group and its properties on the [form](/Forms/.md).
+[Object group](/Form_structure.md) operators are used for creating [properties](/Properties.md) working with the [current state](/Object_group_operators.md) of the object group and its properties on the [form](/Forms.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -16,13 +16,13 @@ SELECT PROPERTY formPropertyId
 
 ### Description[​](#description "Direct link to Description")
 
-The `FILTER`, `VIEW`, `ORDER`, and `SELECT` operators create properties that accept the same number of parameters as the number of objects in the object group. Object group operators cannot be used inside [expressions](/Expression/.md).
+The `FILTER`, `VIEW`, `ORDER`, and `SELECT` operators create properties that accept the same number of parameters as the number of objects in the object group. Object group operators cannot be used inside [expressions](/Expression.md).
 
-The `FILTER` operator creates a property which value is `TRUE` when the object collection passed as parameters meets all the [filtering](/Form_structure/.md#filters) conditions on the form, otherwise the property value will be `NULL`.
+The `FILTER` operator creates a property which value is `TRUE` when the object collection passed as parameters meets all the [filtering](/Form_structure.md#filters) conditions on the form, otherwise the property value will be `NULL`.
 
 The `VIEW` operator creates a property which value is `TRUE` if the object collection passed as parameters is currently displayed on the form, otherwise, the property value will be `NULL`.
 
-The `ORDER` operator creates a property which value determines the relative order of the object collection on the form passed as a parameter. The value of this property is usually used in `ORDER` blocks of the other properties, for example, [`PARTITION`](/PARTITION_operator/.md), [`FOR`](/FOR_operator/.md), etc.
+The `ORDER` operator creates a property which value determines the relative order of the object collection on the form passed as a parameter. The value of this property is usually used in `ORDER` blocks of the other properties, for example, [`PARTITION`](/PARTITION_operator.md), [`FOR`](/FOR_operator.md), etc.
 
 The `SELECT` operator creates a property which value is `TRUE` if the object collection passed as parameters is currently selected (checked) by the user in the object group, otherwise the property value will be `NULL`.
 
@@ -36,11 +36,11 @@ The `SELECT PROPERTY` operator creates a property whose value is `TRUE` if the s
 
 * `groupObjectId`
 
-  Global [object group ID](/IDs/.md#groupobjectid).
+  Global [object group ID](/IDs.md#groupobjectid).
 
 * `formPropertyId`
 
-  Global [ID of a property or action on a form](/IDs/.md#formpropertyid).
+  Global [ID of a property or action on a form](/IDs.md#formpropertyid).
 
 ### Examples[​](#examples "Direct link to Examples")
 

@@ -1,6 +1,6 @@
 # Arithmetic operators (+, -, \*, ...)
 
-*Arithmetic operators* create [properties](/Properties/.md) whose value is the result of an arithmetic operation. They primarily operate on values of [number classes](/Built-in_classes/.md). In addition, the sum and difference also operate on date/time values (described below), and the sum also concatenates strings (see [String operators](/String_operators_plus_CONCAT_SUBSTRING/.md)). The platform currently supports the following arithmetic operators:
+*Arithmetic operators* create [properties](/Properties.md) whose value is the result of an arithmetic operation. They primarily operate on values of [number classes](/Built-in_classes.md). In addition, the sum and difference also operate on date/time values (described below), and the sum also concatenates strings (see [String operators](/String_operators_plus_CONCAT_SUBSTRING.md)). The platform currently supports the following arithmetic operators:
 
 | Operator | Name           | Description                                                                                                                                                  | Example  | Result |
 | -------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ------ |
@@ -22,7 +22,7 @@ The result class is determined as:
 
 | Operator | Result                                                                                                |
 | -------- | ----------------------------------------------------------------------------------------------------- |
-| `+`, `-` | [Common ancestor](/Built-in_classes/.md#commonparentclass) ("Numbers" family)                         |
+| `+`, `-` | [Common ancestor](/Built-in_classes.md#commonparentclass) ("Numbers" family)                          |
 | `*`      | `NUMERIC[p1.IntegerPart + p1.Precision + p2.IntegerPart + p2.Precision, p1.Precision + p2.Precision]` |
 | `/`      | `NUMERIC[p1.IntegerPart + p2.Precision + s, s]`                                                       |
 
@@ -36,11 +36,11 @@ The sum and the difference also operate on date/time values, where a whole numbe
 | `DATE` `-` `DATE`                                               | `INTEGER` (number of days)    |
 | `DATETIME` / `ZDATETIME` / `TIME` `-` a value of the same class | `LONG` (number of base units) |
 
-If either operand of the `+` operator belongs to a string class, the result is a string class; its length, case-insensitivity, and other parameters follow the string-concatenation rules — see [string operators](/String_operators_plus_CONCAT_SUBSTRING/.md).
+If either operand of the `+` operator belongs to a string class, the result is a string class; its length, case-insensitivity, and other parameters follow the string-concatenation rules — see [string operators](/String_operators_plus_CONCAT_SUBSTRING.md).
 
 ### Language[​](#language "Direct link to Language")
 
-Description [of arithmetic operators](/Arithmetic_operators/.md).
+Description [of arithmetic operators](/Arithmetic_operators.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

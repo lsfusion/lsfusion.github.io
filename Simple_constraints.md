@@ -11,19 +11,19 @@ The platform currently supports four types of *simple constraints*: *consequence
 
 \* A change to `NULL`/non-`NULL` is the following:
 
-* For [data](/Data_properties_DATA/.md) properties - [input](/Property_change_CHANGE/.md) `NULL` or the [default value](/Built-in_classes/.md#defaultvalue) for this property value class.
-* For [membership](/Classification_IS_AS/.md) to a class - deleting an object / adding an object of a class for which belonging to the class is checked.
-* For an [aggregation](/Grouping_GROUP/.md) constraint - (only if changing to non-`NULL`) create an object of the base class (`System.Object`), change to non-`NULL` conditions of the aggregation constraint, write the values of the corresponding parameters to all grouping values.
+* For [data](/Data_properties_DATA.md) properties - [input](/Property_change_CHANGE.md) `NULL` or the [default value](/Built-in_classes.md#defaultvalue) for this property value class.
+* For [membership](/Classification_IS_AS.md) to a class - deleting an object / adding an object of a class for which belonging to the class is checked.
+* For an [aggregation](/Grouping_GROUP.md) constraint - (only if changing to non-`NULL`) create an object of the base class (`System.Object`), change to non-`NULL` conditions of the aggregation constraint, write the values of the corresponding parameters to all grouping values.
 
-Just as for a basic [constraint](/Constraints/.md), for each simple constraint, a base event must be defined, which determines when the specified constraint will be checked.
+Just as for a basic [constraint](/Constraints.md), for each simple constraint, a base event must be defined, which determines when the specified constraint will be checked.
 
 Note that the definiteness constraint is a special case of the consequence, in which the consequence is a property that must be defined, and the premise is its signature (a property obtained from it using the corresponding operator).
 
-There is also an implicit fifth kind of simple constraint, *uniqueness*, but it is combined with an aggregation operator (which returns this most unique value), and therefore it is not considered here. Together with consequences, this type of constraint allows to implement the [aggregation](/Aggregations/.md) mechanism.
+There is also an implicit fifth kind of simple constraint, *uniqueness*, but it is combined with an aggregation operator (which returns this most unique value), and therefore it is not considered here. Together with consequences, this type of constraint allows to implement the [aggregation](/Aggregations.md) mechanism.
 
 ### Language[​](#language "Direct link to Language")
 
-The consequence constraint is created using the [`=>` statement](/=gt_statement/.md). The definiteness constraint is set with the [`NONULL` option](/Property_options/.md) specified when a property is declared.
+The consequence constraint is created using the [`=>` statement](/=gt_statement.md). The definiteness constraint is set with the [`NONULL` option](/Property_options.md) specified when a property is declared.
 
 ### Examples[​](#examples "Direct link to Examples")
 

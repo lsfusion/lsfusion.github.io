@@ -1,6 +1,6 @@
 # Send mail (EMAIL)
 
-The *send mail* operator creates an [action](/Actions/.md) that sends an email message. The message has a sender address, a list of recipient addresses each with a visibility flag, a subject, a body, and a list of attachments; in addition, the action itself is configured with a completion mode — synchronous or asynchronous.
+The *send mail* operator creates an [action](/Actions.md) that sends an email message. The message has a sender address, a list of recipient addresses each with a visibility flag, a subject, a body, and a list of attachments; in addition, the action itself is configured with a completion mode — synchronous or asynchronous.
 
 ### Sender address[​](#sender-address "Direct link to Sender address")
 
@@ -31,7 +31,7 @@ Any number of attachments can be added to the message. An attachment is specifie
 * *single attachment* — a pair of a file value and an (optional) name;
 * *attachment list* — a pair of a property listing the files (the property is indexed by sequence number and returns a file) and an (optional) property providing names under the same index.
 
-In both forms the name is given without an extension: the extension is derived from the [file class](/Built-in_classes/.md), as for [writing a file](/Write_file_WRITE/.md). If no name is specified, the attachment is named `'attachmentK'`, where `K` is its sequence number.
+In both forms the name is given without an extension: the extension is derived from the [file class](/Built-in_classes.md), as for [writing a file](/Write_file_WRITE.md). If no name is specified, the attachment is named `'attachmentK'`, where `K` is its sequence number.
 
 ### Completion mode[​](#completion-mode "Direct link to Completion mode")
 
@@ -44,7 +44,7 @@ The mode determines when the action completes:
 
 ### Language[​](#language "Direct link to Language")
 
-To declare an action that sends mail, use the [`EMAIL` operator](/EMAIL_operator/.md).
+To declare an action that sends mail, use the [`EMAIL` operator](/EMAIL_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

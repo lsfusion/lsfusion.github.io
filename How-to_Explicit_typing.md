@@ -1,6 +1,6 @@
 # How-to: Explicit typing
 
-In certain situations, you may want to use the same [name](/Naming/.md) for different system properties or actions.
+In certain situations, you may want to use the same [name](/Naming.md) for different system properties or actions.
 
 For example, let's create two properties named `sum`: one of them will calculate the sum of the order line, and the second will calculate the sum of the entire order:
 
@@ -27,4 +27,4 @@ The class of a parameter introduced inside an expression is specified in the sam
 currency (STRING[10] name) = GROUP MAX Currency currency IF name(currency) = name;
 ```
 
-The class of a parameter cannot be specified with the [`AS` operator](/IS_AS_operators/.md): in `GROUP MAX currency AS Currency IF name(currency) = name` the `currency` parameter remains untyped — `AS` creates a property that returns the value only if it belongs to the class, but it does not change the class of the parameter itself, so the `name(currency)` reference produces the same error.
+The class of a parameter cannot be specified with the [`AS` operator](/IS_AS_operators.md): in `GROUP MAX currency AS Currency IF name(currency) = name` the `currency` parameter remains untyped — `AS` creates a property that returns the value only if it belongs to the class, but it does not change the class of the parameter itself, so the `name(currency)` reference produces the same error.

@@ -2,7 +2,7 @@
 
 A *property* is an element of the system that takes a set of objects (*parameters*) and returns exactly one object (the *return value*).
 
-The type and the specifics of how to calculate each property are determined by the [operator](/Property_operators_paradigm/.md) used to create the property.
+The type and the specifics of how to calculate each property are determined by the [operator](/Property_operators_paradigm.md) used to create the property.
 
 ### Type constraint[​](#type "Direct link to Type constraint")
 
@@ -12,7 +12,7 @@ The same constraint exists for each property parameter: a property cannot have a
 
 ### Language[​](#language "Direct link to Language")
 
-To create properties, use the [`=` statement](/=_statement/.md).
+To create properties, use the [`=` statement](/=_statement.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

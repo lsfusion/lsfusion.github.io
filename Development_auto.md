@@ -27,7 +27,7 @@ When using automatic installation, a shortcut is created that launches IDEA.
 
 ![](/assets/images/Development_auto_IDEA-28efba7b9c61ffdb89df81ee93f6a7fc.png)
 
-A description of working with IDE after it opens is located [here](/IDE/.md).
+A description of working with IDE after it opens is located [here](/IDE.md).
 
 ### Launching the client[​](#launching-the-client "Direct link to Launching the client")
 

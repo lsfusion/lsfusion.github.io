@@ -1,10 +1,10 @@
 # Interruption (BREAK)
 
-The *interrupt operator* creates an [action](/Actions/.md) that exits the innermost enclosing loop ([normal](/Loop_FOR/.md) or [recursive](/Recursive_loop_WHILE/.md)) within which this action is located. Control is transferred to the first action following the loop. If the created action is not inside a loop, it exits the innermost enclosing [action call](/Call_EXEC/.md), as the [exit operator](/Exit_RETURN/.md) does.
+The *interrupt operator* creates an [action](/Actions.md) that exits the innermost enclosing loop ([normal](/Loop_FOR.md) or [recursive](/Recursive_loop_WHILE.md)) within which this action is located. Control is transferred to the first action following the loop. If the created action is not inside a loop, it exits the innermost enclosing [action call](/Call_EXEC.md), as the [exit operator](/Exit_RETURN.md) does.
 
 ### Language[​](#language "Direct link to Language")
 
-The interrupt operator syntax is described by the [`BREAK` operator](/BREAK_operator/.md).
+The interrupt operator syntax is described by the [`BREAK` operator](/BREAK_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

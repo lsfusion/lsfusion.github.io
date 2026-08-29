@@ -1,6 +1,6 @@
 # Events
 
-*Events* are a mechanism that allows to execute certain [actions](/Actions/.md) at certain points in time (these actions shall be called event *handlers*).
+*Events* are a mechanism that allows to execute certain [actions](/Actions.md) at certain points in time (these actions shall be called event *handlers*).
 
 ### Event types[​](#type "Direct link to Event types")
 
@@ -34,27 +34,27 @@ Advantages of global events:
 
 * They provide better performance and integrity, due both to the fact that the handlers are run only after the changes are saved to the common database (that is, significantly less often), and to the use of the numerous DBMS capabilities for working with transactions.
 
-The platform also allows to additionally specify that the event will occur only if the change session belongs to one of the given forms. If this is not done, then it must be kept in mind that most of the described events occur very often, so their handlers should not have side effects (for example, showing messages) if there are no changes in the session. Ideally, events should be [simple](/Simple_event/.md) and should generally be used only to optimize the performance of really complex cases.
+The platform also allows to additionally specify that the event will occur only if the change session belongs to one of the given forms. If this is not done, then it must be kept in mind that most of the described events occur very often, so their handlers should not have side effects (for example, showing messages) if there are no changes in the session. Ideally, events should be [simple](/Simple_event.md) and should generally be used only to optimize the performance of really complex cases.
 
 When several handlers react to the same change, the order in which they are executed follows the data dependencies between them: a handler that uses data modified by another handler is executed after it. A handler can also be required explicitly to be executed after the specified properties and actions.
 
 ### Executing local events[​](#local "Direct link to Executing local events")
 
-Local event handlers are executed not at the very moment the data is changed, but at the following points of the [change session](/Change_sessions/.md)'s life:
+Local event handlers are executed not at the very moment the data is changed, but at the following points of the [change session](/Change_sessions.md)'s life:
 
-* when synchronizing changes with a form open in the [interactive view](/Interactive_view/.md) - after each data change on the form (if asynchronous local event handling is enabled for the form - after the changes are displayed on the form);
-* by default - when [opening a form](/In_an_interactive_view_SHOW_DIALOG/.md) in the interactive view;
-* at the beginning of [applying changes](/Apply_changes_APPLY/.md) - before global events are executed;
-* when creating a [nested session](/New_session_NEWSESSION_NESTEDSESSION/.md);
-* when the system action `System.executeLocalEvents[]` ([System module](/System_System/.md)) is called explicitly.
+* when synchronizing changes with a form open in the [interactive view](/Interactive_view.md) - after each data change on the form (if asynchronous local event handling is enabled for the form - after the changes are displayed on the form);
+* by default - when [opening a form](/In_an_interactive_view_SHOW_DIALOG.md) in the interactive view;
+* at the beginning of [applying changes](/Apply_changes_APPLY.md) - before global events are executed;
+* when creating a [nested session](/New_session_NEWSESSION_NESTEDSESSION.md);
+* when the system action `System.executeLocalEvents[]` ([System module](/System_System.md)) is called explicitly.
 
-If changes are made outside an interactive form - for example, in an action called [from an external system](/Access_from_an_external_system/.md) or in the [scheduler](/Scheduler/.md) - the only one of these points that normally occurs is applying changes. So reading a property right after changing data in the same action returns the value without the local event handlers applied - unlike [calculated events](/Calculated_events/.md), which are computed on every access to the property. For the handlers to run, the changes must be applied, or `System.executeLocalEvents[]` must be called explicitly.
+If changes are made outside an interactive form - for example, in an action called [from an external system](/Access_from_an_external_system.md) or in the [scheduler](/Scheduler.md) - the only one of these points that normally occurs is applying changes. So reading a property right after changing data in the same action returns the value without the local event handlers applied - unlike [calculated events](/Calculated_events.md), which are computed on every access to the property. For the handlers to run, the changes must be applied, or `System.executeLocalEvents[]` must be called explicitly.
 
 ### Change operators' event mode[​](#change "Direct link to Change operators' event mode")
 
-When handling events, [change operators](/Change_operators_SET_CHANGED_etc/.md) switch to a special mode (called *event* mode): they return changes accumulated since the previous occurrence of the event (or rather, since the end of its handling) instead of changes since the start of the session. The [previous value](/Previous_value_PREV/.md) operator does not switch modes — it always uses the session-start scope — but for a global synchronous event the apply runs in a fresh transaction, so "session start" inside the handler corresponds to the time when the previous occurrence of the event finished handling.
+When handling events, [change operators](/Change_operators_SET_CHANGED_etc.md) switch to a special mode (called *event* mode): they return changes accumulated since the previous occurrence of the event (or rather, since the end of its handling) instead of changes since the start of the session. The [previous value](/Previous_value_PREV.md) operator does not switch modes — it always uses the session-start scope — but for a global synchronous event the apply runs in a fresh transaction, so "session start" inside the handler corresponds to the time when the previous occurrence of the event finished handling.
 
-Event mode is also supported for the [cancel changes](/Cancel_changes_CANCEL/.md) operator. In this case, when changes are canceled inside the global event handler, the session is not cleared, but [applying changes](/Apply_changes_APPLY/.md) which led to the execution of this handler is canceled. The global event must be synchronous, otherwise the platform will throw an error.
+Event mode is also supported for the [cancel changes](/Cancel_changes_CANCEL.md) operator. In this case, when changes are canceled inside the global event handler, the session is not cleared, but [applying changes](/Apply_changes_APPLY.md) which led to the execution of this handler is canceled. The global event must be synchronous, otherwise the platform will throw an error.
 
 By default, the following modes are used in event handling:
 
@@ -68,7 +68,7 @@ For change operators and the previous value operator, when executing global sync
 
 ### Language[​](#language "Direct link to Language")
 
-To create actions that handle events, use the [`ON` statement](/ON_statement/.md).
+To create actions that handle events, use the [`ON` statement](/ON_statement.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

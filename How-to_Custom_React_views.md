@@ -1,6 +1,6 @@
 # How-to: Custom React form views
 
-A [`DESIGN`](/DESIGN_statement/.md) container can be rendered by a React component instead of the standard layout. The component receives a projection of the form state and draws the container's whole subtree itself.
+A [`DESIGN`](/DESIGN_statement.md) container can be rendered by a React component instead of the standard layout. The component receives a projection of the form state and draws the container's whole subtree itself.
 
 This is a web-client feature only. The desktop client deserializes the container and renders its regular (non-React) subtree, so the design stays usable in both clients.
 
@@ -21,11 +21,11 @@ DESIGN orders {
 }
 ```
 
-The value form selects the renderer: a string literal matching `[A-Z][A-Za-z0-9_$]*` names a React component, while an empty string `''`, an HTML template string, or a property gives the classic (non-React) custom container described in [How-to: Custom Components (objects)](/How-to_Custom_components_objects/.md). Here the object `o` is rendered by the `OrderBoard` React component instead of the standard table.
+The value form selects the renderer: a string literal matching `[A-Z][A-Za-z0-9_$]*` names a React component, while an empty string `''`, an HTML template string, or a property gives the classic (non-React) custom container described in [How-to: Custom Components (objects)](/How-to_Custom_components_objects.md). Here the object `o` is rendered by the `OrderBoard` React component instead of the standard table.
 
 ### The component[​](#the-component "Direct link to The component")
 
-`OrderBoard` is a named export from a `.jsx` module under `src/main/web`; how the module is compiled and registered is covered in [How-to: Custom client JS modules](/How-to_Custom_client_JS_modules/.md). The examples here use JSX. For a project [without the build](/How-to_Custom_client_JS_modules/.md#without-the-build), ship the same component as a `.jsx` file — it is transformed on the server when served; `import` is not available there, so the component works against the platform-provided `window.React` — or write it with `React.createElement` in a plain `.js`. Either file is placed under `src/main/resources/web/init` (auto-loaded) or under `src/main/resources/web` and registered with `onWebClientInit`.
+`OrderBoard` is a named export from a `.jsx` module under `src/main/web`; how the module is compiled and registered is covered in [How-to: Custom client JS modules](/How-to_Custom_client_JS_modules.md). The examples here use JSX. For a project [without the build](/How-to_Custom_client_JS_modules.md#without-the-build), ship the same component as a `.jsx` file — it is transformed on the server when served; `import` is not available there, so the component works against the platform-provided `window.React` — or write it with `React.createElement` in a plain `.js`. Either file is placed under `src/main/resources/web/init` (auto-loaded) or under `src/main/resources/web` and registered with `onWebClientInit`.
 
 The component is a plain function that receives `props.data` and `props.controller`:
 
@@ -66,9 +66,9 @@ A property's `value` is converted to a JS value depending on the property's clas
 
 Except for `BOOLEAN`, a `NULL` value is converted to `null`.
 
-`list` contains only the read page, not all rows of the group. The view type of a group rendered by a React container remains the table, and the group is read page by page, but since the table itself is not displayed, the page size is not adjusted to the visible rows — the server default page size (50 objects) applies. For a view that shows all rows of the group — a calendar, a board, a map — specify the `PAGESIZE 0` option (read all objects) or an explicit page size in the [`OBJECTS`](/Object_blocks/.md) block.
+`list` contains only the read page, not all rows of the group. The view type of a group rendered by a React container remains the table, and the group is read page by page, but since the table itself is not displayed, the page size is not adjusted to the visible rows — the server default page size (50 objects) applies. For a view that shows all rows of the group — a calendar, a board, a map — specify the `PAGESIZE 0` option (read all objects) or an explicit page size in the [`OBJECTS`](/Object_blocks.md) block.
 
-A view that lays rows out in their own order — a card flow, a feed — can instead keep the page and let it follow the scroll, the way the standard table does. `useSeekOnScroll(controller.<group>)` returns a function that marks each row's element; the hook watches which of them are on screen — wherever the scrolling happens, in the component's own box or a platform container above it — and follows the table's own rules: while the current record is on screen, scrolling changes nothing; when it leaves, it is reseated on the visible edge it left through, which is also what requests the next page; on a page change the reseated row keeps its on-screen position, so nothing jumps under the eye; a current record moved from outside — a click, a programmatic seek — is scrolled into view instead. The pact rests on the same contract the table itself lives by, and it is the developer's to keep: the page must hold more rows than the viewport can show — set `PAGESIZE` on the [`OBJECTS`](/Object_blocks/.md) block accordingly. The window then always extends a page beyond the current record, so it leaves the viewport — and reseats, pulling the next page — before the scroller runs out of room at a loaded edge:
+A view that lays rows out in their own order — a card flow, a feed — can instead keep the page and let it follow the scroll, the way the standard table does. `useSeekOnScroll(controller.<group>)` returns a function that marks each row's element; the hook watches which of them are on screen — wherever the scrolling happens, in the component's own box or a platform container above it — and follows the table's own rules: while the current record is on screen, scrolling changes nothing; when it leaves, it is reseated on the visible edge it left through, which is also what requests the next page; on a page change the reseated row keeps its on-screen position, so nothing jumps under the eye; a current record moved from outside — a click, a programmatic seek — is scrolled into view instead. The pact rests on the same contract the table itself lives by, and it is the developer's to keep: the page must hold more rows than the viewport can show — set `PAGESIZE` on the [`OBJECTS`](/Object_blocks.md) block accordingly. The window then always extends a page beyond the current record, so it leaves the viewport — and reseats, pulling the next page — before the scroller runs out of room at a loaded edge:
 
 ```
 const seekRef = useSeekOnScroll(controller.o, { enabled: follow });
@@ -108,7 +108,7 @@ The two compose into tiers, and each following one is only needed when the previ
 
 ### Display options[​](#display-options "Direct link to Display options")
 
-For every property drawn on a form the platform computes semantic options that determine how it is shown — its caption, image, background and text colors, whether it is read-only or disabled, its comment, the text shown in an empty cell, its tooltip. They come from the property's design and from the data-dependent options of the [properties and actions block](/Properties_and_actions_block/.md) (`HEADER`, `IMAGE`, `BACKGROUND`, `FOREGROUND`, `READONLYIF`, `OPTIONS` and the rest), so an option that depends on the data is recomputed per row. Native element classes and fonts are not projected: a React component owns its CSS. `background` and `foreground` are projected — they are `BACKGROUND` / `FOREGROUND` highlighting, a data-dependent business signal, not a theme the component's own CSS should own. For a property the React container draws itself, the semantic result is projected into `data` as sibling fields of the property's value, so the view does not have to recompute it.
+For every property drawn on a form the platform computes semantic options that determine how it is shown — its caption, image, background and text colors, whether it is read-only or disabled, its comment, the text shown in an empty cell, its tooltip. They come from the property's design and from the data-dependent options of the [properties and actions block](/Properties_and_actions_block.md) (`HEADER`, `IMAGE`, `BACKGROUND`, `FOREGROUND`, `READONLYIF`, `OPTIONS` and the rest), so an option that depends on the data is recomputed per row. Native element classes and fonts are not projected: a React component owns its CSS. `background` and `foreground` are projected — they are `BACKGROUND` / `FOREGROUND` highlighting, a data-dependent business signal, not a theme the component's own CSS should own. For a property the React container draws itself, the semantic result is projected into `data` as sibling fields of the property's value, so the view does not have to recompute it.
 
 The projection follows what an option describes — a whole column, one cell, or the row:
 
@@ -253,7 +253,7 @@ const Column = ({ cellKey, rowKeys }) => (
 <Buckets group="t" cells={STATUSES} bucketOf={t => t.status.value} component={Column} />
 ```
 
-Use bucketing for placing one group's rows into derived cells where only the membership matters — pivots, calendars, kanban boards, timetables, drag-and-drop grids. It does not compute per-cell aggregates: `useBucket` returns row keys, not sums or counts, and the cell component re-renders only when that cell's row-key array changes — live aggregates are what the [pivot table view type](/Interactive_view/.md#property) provides. For a plain one-to-one list of rows use `List`, and grouping only works over the group's own projected values.
+Use bucketing for placing one group's rows into derived cells where only the membership matters — pivots, calendars, kanban boards, timetables, drag-and-drop grids. It does not compute per-cell aggregates: `useBucket` returns row keys, not sums or counts, and the cell component re-renders only when that cell's row-key array changes — live aggregates are what the [pivot table view type](/Interactive_view.md#property) provides. For a plain one-to-one list of rows use `List`, and grouping only works over the group's own projected values.
 
 ### Crossing back to lsFusion[​](#crossing-back-to-lsfusion "Direct link to Crossing back to lsFusion")
 
@@ -417,11 +417,11 @@ Both name their children, so neither is extended from `DESIGN` alone: adding a c
 
 ### Interactivity[​](#interactivity "Direct link to Interactivity")
 
-To read and change form state from the component — selecting a row, changing a property, calling actions — use `props.controller`. Its methods are described in [How-to: Custom view controller](/How-to_Custom_view_controller/.md).
+To read and change form state from the component — selecting a row, changing a property, calling actions — use `props.controller`. Its methods are described in [How-to: Custom view controller](/How-to_Custom_view_controller.md).
 
 ### A navigator window[​](#navigator-window "Direct link to A navigator window")
 
-A React component can also draw a navigator window — the menu itself — instead of the standard toolbar. The [`WINDOW`](/WINDOW_statement/.md) is given the component name, and the elements placed in that window become its data:
+A React component can also draw a navigator window — the menu itself — instead of the standard toolbar. The [`WINDOW`](/WINDOW_statement.md) is given the component name, and the elements placed in that window become its data:
 
 ```
 WINDOW appMenu VERTICAL POSITION(0, 6, 20, 94) HIDETITLE CUSTOM 'AppMenu';
@@ -450,7 +450,7 @@ A component can also be given to a window that already exists, the standard tool
 EXTEND WINDOW System.toolbar CUSTOM 'AppMenu';
 ```
 
-`props.data` is the window's own elements, keyed by [canonical name](/Naming/.md#canonicalname) — canonical names contain dots, so they are map keys rather than fields:
+`props.data` is the window's own elements, keyed by [canonical name](/Naming.md#canonicalname) — canonical names contain dots, so they are map keys rather than fields:
 
 | Field    | Meaning                                                                      |
 | -------- | ---------------------------------------------------------------------------- |
@@ -469,9 +469,9 @@ and each element carries:
 | `selected`                | Whether it is the selected element **of this window**                                                                                                                   |
 | `children`                | The canonical names of its children that this window draws                                                                                                              |
 
-An element declared [`LSF`](/NAVIGATOR_statement/.md) is drawn by the platform, so what it draws is not projected: its entry carries `name`, `caption`, `image`, `children` and `lsf: true`, and none of the rest.
+An element declared [`LSF`](/NAVIGATOR_statement.md) is drawn by the platform, so what it draws is not projected: its entry carries `name`, `caption`, `image`, `children` and `lsf: true`, and none of the rest.
 
-The window is given the elements it is responsible for: an element that crossed into another window, and a subtree gated out because its parent is not selected, are absent — the same rule that decides what the standard toolbar draws. What that rule keeps, the projection keeps, hidden or not. `props.controller` is the navigator controller, whose [`activate`](/How-to_Custom_view_controller/.md#navigator-controller) does what clicking the element does: selects a folder, or runs an action.
+The window is given the elements it is responsible for: an element that crossed into another window, and a subtree gated out because its parent is not selected, are absent — the same rule that decides what the standard toolbar draws. What that rule keeps, the projection keeps, hidden or not. `props.controller` is the navigator controller, whose [`activate`](/How-to_Custom_view_controller.md#navigator-controller) does what clicking the element does: selects a folder, or runs an action.
 
 Only the desktop web client draws the component. The mobile web client and the desktop client render their standard menu for that window, so the navigator stays usable in all of them.
 
@@ -491,7 +491,7 @@ function AppMenu({ data, controller }) {
 }
 ```
 
-The element must be declared `LSF` in the [`NAVIGATOR`](/NAVIGATOR_statement/.md) — the crossing back is declared on the navigator side, the way `lsf = TRUE` declares it on a form:
+The element must be declared `LSF` in the [`NAVIGATOR`](/NAVIGATOR_statement.md) — the crossing back is declared on the navigator side, the way `lsf = TRUE` declares it on a form:
 
 ```
 NAVIGATOR {
@@ -505,7 +505,7 @@ A menu that is mostly standard is written this way as one `<Lsf>` for each eleme
 
 #### An HTML template instead of a component[​](#navigator-template "Direct link to An HTML template instead of a component")
 
-A window whose menu only needs its own markup is given an HTML template instead of a component name — the [same template](/WINDOW_statement/.md) a `custom` container takes, where an `<Lsf:name>` place takes the element's standard button. The name is resolved the way every other name in the module is, so nothing has to be spelled out in full, and the place is written open — closing it is an error:
+A window whose menu only needs its own markup is given an HTML template instead of a component name — the [same template](/WINDOW_statement.md) a `custom` container takes, where an `<Lsf:name>` place takes the element's standard button. The name is resolved the way every other name in the module is, so nothing has to be spelled out in full, and the place is written open — closing it is an error:
 
 ```
 EXTEND WINDOW System.toolbar CUSTOM
@@ -520,7 +520,7 @@ The template may also be computed: given a property instead of a literal, it is 
 
 ### The forms window[​](#forms-window "Direct link to The forms window")
 
-A React component can also draw the window the forms open in, instead of the standard tabs. The [`WINDOW`](/WINDOW_statement/.md) `System.forms` is given the component name, and the open forms become its data:
+A React component can also draw the window the forms open in, instead of the standard tabs. The [`WINDOW`](/WINDOW_statement.md) `System.forms` is given the component name, and the open forms become its data:
 
 ```
 EXTEND WINDOW System.forms CUSTOM 'FormsBoard';
@@ -561,7 +561,7 @@ and each form carries:
 | Field              | Meaning                                                                                                                                                                                     |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`             | Its own name, so a component that was handed the entry alone can still address the form                                                                                                     |
-| `canonicalName`    | The [canonical name](/Naming/.md#canonicalname) of the form, for a component that draws a particular form its own way                                                                       |
+| `canonicalName`    | The [canonical name](/Naming.md#canonicalname) of the form, for a component that draws a particular form its own way                                                                        |
 | `caption`, `image` | Its caption and icon, the current ones — the caption a tab shows. Drawn with [`<Caption value={e.caption}/>`](#caption) and [`<Image value={e.image}/>`](#image)                            |
 | `selected`         | Whether it is the current form — the one the keyboard works in                                                                                                                              |
 | `loading`          | Whether the form has not arrived from the server yet. Until it does, `caption` is the one the request that opened it carried and `image` is empty; the rest of the entry is there as always |
@@ -584,7 +584,7 @@ Only the desktop web client draws the component. The mobile web client and the d
 
 ### The log window[​](#log-window "Direct link to The log window")
 
-A React component can also draw the window the messages to the user appear in, instead of the standard panel. The [`WINDOW`](/WINDOW_statement/.md) `System.log` is given the component name, and the logged messages become its data:
+A React component can also draw the window the messages to the user appear in, instead of the standard panel. The [`WINDOW`](/WINDOW_statement.md) `System.log` is given the component name, and the logged messages become its data:
 
 ```
 EXTEND WINDOW System.log CUSTOM 'MessageLog';

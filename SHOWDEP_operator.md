@@ -1,6 +1,6 @@
 # SHOWDEP, SHOWREC operators
 
-The `SHOWDEP` and `SHOWREC` operators create diagnostic [actions](/Actions/.md) over a list of properties and actions: `SHOWDEP` outputs their static dependency graph, `SHOWREC` enables runtime tracking of recursive event firing.
+The `SHOWDEP` and `SHOWREC` operators create diagnostic [actions](/Actions.md) over a list of properties and actions: `SHOWDEP` outputs their static dependency graph, `SHOWREC` enables runtime tracking of recursive event firing.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -26,7 +26,7 @@ The `SHOWREC` operator creates an action that turns on runtime tracking for the 
 
 * `propertyId1, ..., propertyIdN`
 
-  A comma-separated list of [property or action IDs](/IDs/.md#propertyid). The list may be empty. For `SHOWDEP`, an empty list yields an empty dependency dump. For `SHOWREC`, only action IDs have any effect — property IDs in the list are ignored — and an empty list turns off all currently tracked actions.
+  A comma-separated list of [property or action IDs](/IDs.md#propertyid). The list may be empty. For `SHOWDEP`, an empty list yields an empty dependency dump. For `SHOWREC`, only action IDs have any effect — property IDs in the list are ignored — and an empty list turns off all currently tracked actions.
 
 ### Examples[​](#examples "Direct link to Examples")
 

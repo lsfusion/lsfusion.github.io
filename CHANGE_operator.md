@@ -1,6 +1,6 @@
 # CHANGE operator
 
-The `CHANGE` operator creates an [action](/Actions/.md) that [changes properties](/Property_change_CHANGE/.md).
+The `CHANGE` operator creates an [action](/Actions.md) that [changes properties](/Property_change_CHANGE.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -16,11 +16,11 @@ The `CHANGE` operator creates an action that writes the value of `valueExpr` int
 
 * `propertyId`
 
-  [ID](/IDs/.md#propertyid) of the property whose value is changed. The property must be [mutable](/Property_change_CHANGE/.md#changeable).
+  [ID](/IDs.md#propertyid) of the property whose value is changed. The property must be [mutable](/Property_change_CHANGE.md#changeable).
 
 * `expr1, ..., exprN`
 
-  A list of [expressions](/Expression/.md) or [typed parameters](/IDs/.md#paramid) defining arguments of the property being changed. When using typed parameters, you can both reference already declared parameters and declare new local parameters; when using expressions, new local parameters cannot be added. The number of items in this list must equal the number of parameters of the property being changed.
+  A list of [expressions](/Expression.md) or [typed parameters](/IDs.md#paramid) defining arguments of the property being changed. When using typed parameters, you can both reference already declared parameters and declare new local parameters; when using expressions, new local parameters cannot be added. The number of items in this list must equal the number of parameters of the property being changed.
 
 * `valueExpr`
 

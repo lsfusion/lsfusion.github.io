@@ -1,6 +1,6 @@
 # CONCAT operator
 
-The `CONCAT` operator creates a [property](/Properties/.md) that implements a string [concatenation](/String_operators_plus_CONCAT_SUBSTRING/.md).
+The `CONCAT` operator creates a [property](/Properties.md) that implements a string [concatenation](/String_operators_plus_CONCAT_SUBSTRING.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -10,13 +10,13 @@ CONCAT separatorExpr, concatExpr1, ..., concatExprN
 
 ### Description[​](#description "Direct link to Description")
 
-The `CONCAT` operator creates a property that concatenates the values of `concatExpr1, ..., concatExprN`, in the order written, placing the `separatorExpr` separator between them. The handling of the separator and of `NULL` operands follows the [`CONCAT` concatenation](/String_operators_plus_CONCAT_SUBSTRING/.md).
+The `CONCAT` operator creates a property that concatenates the values of `concatExpr1, ..., concatExprN`, in the order written, placing the `separatorExpr` separator between them. The handling of the separator and of `NULL` operands follows the [`CONCAT` concatenation](/String_operators_plus_CONCAT_SUBSTRING.md).
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `separatorExpr`
 
-  [Expression](/Expression/.md) whose value is used as the separator. It is most often a string literal but may be any string expression.
+  [Expression](/Expression.md) whose value is used as the separator. It is most often a string literal but may be any string expression.
 
 * `concatExpr1, ..., concatExprN`
 

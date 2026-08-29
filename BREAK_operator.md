@@ -1,6 +1,6 @@
 # BREAK operator
 
-The `BREAK` operator creates an [action](/Actions/.md) that implements a [loop interruption](/Interruption_BREAK/.md).
+The `BREAK` operator creates an [action](/Actions.md) that implements a [loop interruption](/Interruption_BREAK.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 

@@ -1,6 +1,6 @@
 # {...} operator
 
-The `{...}` operator creates an [action](/Actions/.md) that implements a [sequence of other actions](/Sequence/.md).
+The `{...}` operator creates an [action](/Actions.md) that implements a [sequence of other actions](/Sequence.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -21,32 +21,32 @@ LOCAL [NESTED [manageType]] name1, ..., nameN = returnClass (paramClass1, ..., p
 
 ### Description[​](#description "Direct link to Description")
 
-A sequence of [action operators](/Action_operators/.md) and `LOCAL` operators enclosed in braces creates a new action that sequentially executes specified actions and creates specified [local properties](/Data_properties_DATA/.md). The area of visibility of the local properties created inside the `{...}` operator ends at the end of this operator.
+A sequence of [action operators](/Action_operators.md) and `LOCAL` operators enclosed in braces creates a new action that sequentially executes specified actions and creates specified [local properties](/Data_properties_DATA.md). The area of visibility of the local properties created inside the `{...}` operator ends at the end of this operator.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
 * `actionOperator`
 
-  A [context-dependent action operator](/Action_operators/.md#contextdependent). Each operator is followed by a semicolon, except for operators ending in a closing brace. Extra semicolons are not an error.
+  A [context-dependent action operator](/Action_operators.md#contextdependent). Each operator is followed by a semicolon, except for operators ending in a closing brace. Extra semicolons are not an error.
 
 * `NESTED`
 
-  A keyword that marks the local property as [nested](/Session_management/.md#nested). Without additional modifiers, the property is treated as nested both when crossed by [`NEWSESSION`](/NEWSESSION_operator/.md) and during [`APPLY`](/APPLY_operator/.md) / [`CANCEL`](/CANCEL_operator/.md). Same semantics as in the [`DATA` operator](/DATA_operator/.md).
+  A keyword that marks the local property as [nested](/Session_management.md#nested). Without additional modifiers, the property is treated as nested both when crossed by [`NEWSESSION`](/NEWSESSION_operator.md) and during [`APPLY`](/APPLY_operator.md) / [`CANCEL`](/CANCEL_operator.md). Same semantics as in the [`DATA` operator](/DATA_operator.md).
 
 * `manageType`
 
   Determines when the nested property's values are preserved:
 
-  * `MANAGESESSION` - the property is treated as nested only for [`APPLY`](/APPLY_operator/.md) / [`CANCEL`](/CANCEL_operator/.md).
-  * `NOMANAGESESSION` - the property is treated as nested only when crossed by [`NEWSESSION`](/NEWSESSION_operator/.md).
+  * `MANAGESESSION` - the property is treated as nested only for [`APPLY`](/APPLY_operator.md) / [`CANCEL`](/CANCEL_operator.md).
+  * `NOMANAGESESSION` - the property is treated as nested only when crossed by [`NEWSESSION`](/NEWSESSION_operator.md).
 
 * `name1, ..., nameN`
 
-  A list of names of the local properties being created. The names are defined by [simple ID's](/IDs/.md#id).
+  A list of names of the local properties being created. The names are defined by [simple ID's](/IDs.md#id).
 
 * `returnClass`
 
-  The [class ID](/IDs/.md#classid) of the returned value of the local property.
+  The [class ID](/IDs.md#classid) of the returned value of the local property.
 
 * `paramClass1, ..., paramClassN`
 

@@ -1,6 +1,6 @@
 # Utils
 
-`Utils` is a [system module](/System_modules/.md) that collects frequently needed helper properties and actions: file-system access, data conversion and encoding, string operations, arithmetic, JSON access, full-text search, server diagnostics, and so on. It is pulled in via `REQUIRE Utils` (`System` and `Time` are pulled in automatically).
+`Utils` is a [system module](/System_modules.md) that collects frequently needed helper properties and actions: file-system access, data conversion and encoding, string operations, arithmetic, JSON access, full-text search, server diagnostics, and so on. It is pulled in via `REQUIRE Utils` (`System` and `Time` are pulled in automatically).
 
 ### File system[​](#file-system "Direct link to File system")
 
@@ -120,7 +120,7 @@ Some of these properties are wrappers around PostgreSQL numeric functions, other
 
 ### Iteration[​](#iteration "Direct link to Iteration")
 
-`iterate[INTEGER, INTEGER, INTEGER]` — recursive enumeration of an integer range from `from` to `to`. `count[INTEGER, INTEGER]` is a special case: `iterate(i, 1, count)`. See the analogous `iterate` for dates in [`Time`](/System_Time/.md).
+`iterate[INTEGER, INTEGER, INTEGER]` — recursive enumeration of an integer range from `from` to `to`. `count[INTEGER, INTEGER]` is a special case: `iterate(i, 1, count)`. See the analogous `iterate` for dates in [`Time`](/System_Time.md).
 
 ### Color[​](#color "Direct link to Color")
 
@@ -184,12 +184,12 @@ Empty `LOCAL` properties for every common file class: `file[]`, `wordFile[]`, `i
 
 ### Language[​](#language "Direct link to Language")
 
-* [`JSON` operator](/JSON_operator/.md) — building a JSON value from properties or from a form.
-* [`FORMULA` operator](/FORMULA_operator/.md) — the syntax behind most properties of the module.
-* [`IMPORT` operator](/IMPORT_operator/.md) — reading a JSON file into a form or through `FIELDS … DO`.
+* [`JSON` operator](/JSON_operator.md) — building a JSON value from properties or from a form.
+* [`FORMULA` operator](/FORMULA_operator.md) — the syntax behind most properties of the module.
+* [`IMPORT` operator](/IMPORT_operator.md) — reading a JSON file into a form or through `FIELDS … DO`.
 
 ### See also[​](#see-also "Direct link to See also")
 
-* [`System modules`](/System_modules/.md) — the general list of platform modules.
-* [`Custom formula (FORMULA)`](/Custom_formula_FORMULA/.md) — the mechanism behind most properties of the module.
-* [`Time`](/System_Time/.md) — the separate module for working with time.
+* [`System modules`](/System_modules.md) — the general list of platform modules.
+* [`Custom formula (FORMULA)`](/Custom_formula_FORMULA.md) — the mechanism behind most properties of the module.
+* [`Time`](/System_Time.md) — the separate module for working with time.

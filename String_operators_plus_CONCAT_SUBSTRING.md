@@ -1,6 +1,6 @@
 # String operators (+, CONCAT)
 
-String operators are operators which parameters and result are the properties which values are instances of the [string classes](/Built-in_classes/.md). The platform currently supports the following string operators:
+String operators are operators which parameters and result are the properties which values are instances of the [string classes](/Built-in_classes.md). The platform currently supports the following string operators:
 
 | Operator      | Name          | Description                                                    | Example     | Result |
 | ------------- | ------------- | -------------------------------------------------------------- | ----------- | ------ |
@@ -16,26 +16,26 @@ The result class is defined as:
 | ------------- | --------------------------------------------------------------------------------------------------------------------- |
 | `+`, `CONCAT` | `result = STRING[p1.blankPadded AND p2.blankPadded, p1.caseInsensitive OR p2.caseInsensitive, p1.length + p2.length]` |
 
-where `blankPadded`, `caseInsensitive` and `length` are determined similarly to the rules for construction of a [common ancestor](/Built-in_classes/.md#commonparentclass) for two built-in classes (Strings family). For `CONCAT`, the result length also includes the delimiter inserted between operands.
+where `blankPadded`, `caseInsensitive` and `length` are determined similarly to the rules for construction of a [common ancestor](/Built-in_classes.md#commonparentclass) for two built-in classes (Strings family). For `CONCAT`, the result length also includes the delimiter inserted between operands.
 
 In the `+` operator, operands which classes are other than string are cast to strings in accordance with the following table:
 
-| Class                       | Cast class         |
-| --------------------------- | ------------------ |
-| `DATE`, `DATETIME`, `TIME`  | `STRING[25]`       |
-| `NUMERIC`                   | `STRING[p.length]` |
-| `LOGICAL`                   | `STRING[1]`        |
-| `FILE`                      | `TEXT`             |
-| [Object](/User_classes/.md) | `STRING[10]`       |
-| Other                       | `STRING[8]`        |
+| Class                      | Cast class         |
+| -------------------------- | ------------------ |
+| `DATE`, `DATETIME`, `TIME` | `STRING[25]`       |
+| `NUMERIC`                  | `STRING[p.length]` |
+| `LOGICAL`                  | `STRING[1]`        |
+| `FILE`                     | `TEXT`             |
+| [Object](/User_classes.md) | `STRING[10]`       |
+| Other                      | `STRING[8]`        |
 
 If any operand belongs to the unlimited-length string class `TEXT` (or to one of its variants such as rich or HTML text), the result is that text class rather than a fixed-length string.
 
 ### Language[​](#language "Direct link to Language")
 
-The summation operator concatenates strings when at least one operand is a string — see the [arithmetic operators](/Arithmetic_operators/.md).
+The summation operator concatenates strings when at least one operand is a string — see the [arithmetic operators](/Arithmetic_operators.md).
 
-To concatenate several values with a delimiter inserted only between operands that are not `NULL`, use the [`CONCAT` operator](/CONCAT_operator/.md).
+To concatenate several values with a delimiter inserted only between operands that are not `NULL`, use the [`CONCAT` operator](/CONCAT_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

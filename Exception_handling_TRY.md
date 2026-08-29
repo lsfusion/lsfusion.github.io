@@ -1,6 +1,6 @@
 # Exception handling (TRY)
 
-The *exception handling* operator creates an [action](/Actions/.md) that runs another action with exception handling.
+The *exception handling* operator creates an [action](/Actions.md) that runs another action with exception handling.
 
 The operator has up to three parts:
 
@@ -14,7 +14,7 @@ Inside the recovery action, the error that triggered it is available through the
 
 ### Language[​](#language "Direct link to Language")
 
-To declare an exception handling action, use the [`TRY` operator](/TRY_operator/.md).
+To declare an exception handling action, use the [`TRY` operator](/TRY_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

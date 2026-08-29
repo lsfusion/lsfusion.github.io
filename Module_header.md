@@ -1,6 +1,6 @@
 # Module header
 
-Each [module](/Modules/.md) begins with a *header*.
+Each [module](/Modules.md) begins with a *header*.
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -15,11 +15,11 @@ MODULE name;
 
 The module header can consist of four special statements, in the following order:
 
-The `MODULE` statement defines the module name. It is required. Each module within one [project](/Projects/.md) must have a unique name.
+The `MODULE` statement defines the module name. It is required. Each module within one [project](/Projects.md) must have a unique name.
 
-The `REQUIRE` statement defines the list of modules on which the current module [depends](/Modules/.md#depends). If the `REQUIRE` statement is absent, that is equivalent to depending only on the `System` module.
+The `REQUIRE` statement defines the list of modules on which the current module [depends](/Modules.md#depends). If the `REQUIRE` statement is absent, that is equivalent to depending only on the `System` module.
 
-The `PRIORITY` statement defines the list of additional [namespaces](/Naming/.md#namespace) that will have priority in [finding](/Search_/.md) [system elements](/Element_identification/.md).
+The `PRIORITY` statement defines the list of additional [namespaces](/Naming.md#namespace) that will have priority in [finding](/Search_.md) [system elements](/Element_identification.md).
 
 The `NAMESPACE` statement defines the module's namespace.
 
@@ -27,7 +27,7 @@ The `NAMESPACE` statement defines the module's namespace.
 
 * `name`
 
-  The name of the module. [Simple ID](/IDs/.md#id). Module names cannot contain an underscore.
+  The name of the module. [Simple ID](/IDs.md#id). Module names cannot contain an underscore.
 
 * `moduleName1, ..., moduleNameN`
 

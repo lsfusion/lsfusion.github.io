@@ -1,6 +1,6 @@
 # Recursion (RECURSION)
 
-The *recursion* operator creates a [property](/Properties/.md) that sequentially performs two operations:
+The *recursion* operator creates a [property](/Properties.md) that sequentially performs two operations:
 
 1. Recursively builds an intermediate property (result) with an additional first parameter (operation number) as follows:
 
@@ -9,7 +9,7 @@ The *recursion* operator creates a [property](/Properties/.md) that sequentially
    1. `result(0, o1, o2, ..., oN) = initial(o1, ..., oN)`, where `initial` is an *initial* property.
    2. `result(i+1, o1, o2, ..., oN) = step(o1, ..., oN, $o1, $o2, ..., $oN) IF result(i, $o1, $o2, ..., $oN)`, where `step` is a *step* property and `$o1, ..., $oN` denote the parameter values at the previous iteration.
 
-2. For all values of the obtained property, it calculates the given [aggregate function](/Set_operations/.md#func) grouping by all its parameters except the operation number.
+2. For all values of the obtained property, it calculates the given [aggregate function](/Set_operations.md#func) grouping by all its parameters except the operation number.
 
 The aggregate function is selected automatically based on the value class of `initial`/`step`: if they are of a numeric class, `SUM` is used and the result class is the same numeric class; otherwise (typically when they are `BOOLEAN`), `OR` is used and the result class is the same non-numeric class.
 
@@ -23,7 +23,7 @@ When using the recursion operator, it is important to make sure that the recursi
 
 ### Language[​](#language "Direct link to Language")
 
-To declare a property that implements recursion, use the [`RECURSION` operator](/RECURSION_operator/.md).
+To declare a property that implements recursion, use the [`RECURSION` operator](/RECURSION_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

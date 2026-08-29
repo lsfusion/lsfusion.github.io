@@ -1,6 +1,6 @@
 # IF operator
 
-The `IF` operator - creating a [property](/Properties/.md) implementing [selection](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE/.md#single) of a value by condition (single form).
+The `IF` operator - creating a [property](/Properties.md) implementing [selection](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md#single) of a value by condition (single form).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -16,7 +16,7 @@ The `IF` operator creates a property that returns the given value when a certain
 
 * `result`
 
-  [Expression](/Expression/.md) whose value defines the result.
+  [Expression](/Expression.md) whose value defines the result.
 
 * `condition`
 

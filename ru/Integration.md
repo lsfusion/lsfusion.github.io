@@ -14,10 +14,10 @@
 
 Таким образом в платформе существует четыре различных вида интеграции:
 
-* [Обращение из внешней системы](/ru/Access_from_an_external_system/.md)
-* [Обращение из внутренней системы](/ru/Access_from_an_internal_system/.md)
-* [Обращение к внешней системе (`EXTERNAL`)](/ru/Access_to_an_external_system_EXTERNAL/.md)
-* [Обращение к внутренней системе (`INTERNAL`, `FORMULA`)](/ru/Access_to_an_internal_system_INTERNAL_FORMULA/.md)
+* [Обращение из внешней системы](/ru/Access_from_an_external_system.md)
+* [Обращение из внутренней системы](/ru/Access_from_an_internal_system.md)
+* [Обращение к внешней системе (`EXTERNAL`)](/ru/Access_to_an_external_system_EXTERNAL.md)
+* [Обращение к внутренней системе (`INTERNAL`, `FORMULA`)](/ru/Access_to_an_internal_system_INTERNAL_FORMULA.md)
 
 к сведению
 

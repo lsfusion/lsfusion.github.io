@@ -1,6 +1,6 @@
 # PARTITION operator
 
-The `PARTITION` operator creates a [property](/Properties/.md) that implements [partition/order](/Partitioning_sorting_PARTITION_..._ORDER/.md) or [simple distribution](/Distribution_UNGROUP/.md).
+The `PARTITION` operator creates a [property](/Properties.md) that implements [partition/order](/Partitioning_sorting_PARTITION_..._ORDER.md) or [simple distribution](/Distribution_UNGROUP.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -31,11 +31,11 @@ LIMIT [STRICT]
 
 ### Description[​](#description "Direct link to Description")
 
-The `PARTITION` operator creates a property that, for each object collection, either computes an [aggregate function](/Set_operations/.md#func) over the partition window (`SUM`, `PREV`, `LAST`, `CUSTOM`) or distributes a value among the object collections of the group (`UNGROUP`).
+The `PARTITION` operator creates a property that, for each object collection, either computes an [aggregate function](/Set_operations.md#func) over the partition window (`SUM`, `PREV`, `LAST`, `CUSTOM`) or distributes a value among the object collections of the group (`UNGROUP`).
 
 The `BY` block describes the groups into which object collections are split. If the `BY` block is not specified, all object collections are considered to belong to the same group.
 
-The `ORDER` block defines the order in which the aggregate function will be calculated or the distribution will take place. If this function is [non-commutative](/Set_operations/.md), the specified order must be uniquely determined. If a new parameter (not used earlier in the `PARTITION` and `BY` options and in the upper context) is declared in the expressions defining the order, the condition of non-`NULL`ness of all these expressions is automatically added when calculating the resulting value.
+The `ORDER` block defines the order in which the aggregate function will be calculated or the distribution will take place. If this function is [non-commutative](/Set_operations.md), the specified order must be uniquely determined. If a new parameter (not used earlier in the `PARTITION` and `BY` options and in the upper context) is declared in the expressions defining the order, the condition of non-`NULL`ness of all these expressions is automatically added when calculating the resulting value.
 
 The `TOP` and `OFFSET` blocks restrict the subset of records selected inside each partition: first `OFFSET` skips the leading records, then the next `TOP` records are taken in the specified order. Either block may be specified independently.
 
@@ -47,7 +47,7 @@ The `TOP` and `OFFSET` blocks restrict the subset of records selected inside eac
 
 * `propertyId`
 
-  [ID](/IDs/.md#propertyid) of the distributed property. The value of this property must be numeric, and the number of parameters must be equal to the number of groups in the `BY` block. Objects identifying a group are passed to this property as input.
+  [ID](/IDs.md#propertyid) of the distributed property. The value of this property must be numeric, and the number of parameters must be equal to the number of groups in the `BY` block. Objects identifying a group are passed to this property as input.
 
 * `distributionType`
 
@@ -62,7 +62,7 @@ The `TOP` and `OFFSET` blocks restrict the subset of records selected inside eac
 
 * `digits`
 
-  [Integer literal](/Literals/.md#intliteral) specifying the number of decimal places used by `PROPORTION` rounding.
+  [Integer literal](/Literals.md#intliteral) specifying the number of decimal places used by `PROPORTION` rounding.
 
 * `NULL`
 
@@ -70,15 +70,15 @@ The `TOP` and `OFFSET` blocks restrict the subset of records selected inside eac
 
 * `className`
 
-  Name of the [built-in class](/Built-in_classes/.md) of the value returned by `CUSTOM`. If omitted, the result class is inferred from the first main expression (or from the first `ORDER` expression when the main expression list is empty).
+  Name of the [built-in class](/Built-in_classes.md) of the value returned by `CUSTOM`. If omitted, the result class is inferred from the first main expression (or from the first `ORDER` expression when the main expression list is empty).
 
 * `aggrFunc`
 
-  [String literal](/IDs/.md#strliteral) containing the name of a user-defined or DBMS built-in aggregate function.
+  [String literal](/IDs.md#strliteral) containing the name of a user-defined or DBMS built-in aggregate function.
 
 * `expr1, ..., exprN`
 
-  Main expressions. For `SUM`, `PREV`, `LAST`, and `UNGROUP` the list contains exactly one expression: for `SUM` it is summed cumulatively over the partition window; for `PREV` and `LAST` it is taken from the previous-row and current-row respectively (`NULL` for the first row in the case of `PREV`); for `UNGROUP` it defines the proportion (with `PROPORTION`) or the limit (with `LIMIT`). With `UNGROUP`, an object collection whose value of this expression is `NULL` is excluded from the distribution — the created property returns `NULL` for it — unlike a collection with the value `0`, which participates in the distribution. The `STRICT` remainder is likewise assigned only among the participating collections. If every collection must participate, convert the possible `NULL` of this expression to `0` (for example, with the [`OVERRIDE` operator](/OVERRIDE_operator/.md)). For `CUSTOM`, the list contains the operands passed to `aggrFunc`; it may be empty, but then the `ORDER` block is mandatory.
+  Main expressions. For `SUM`, `PREV`, `LAST`, and `UNGROUP` the list contains exactly one expression: for `SUM` it is summed cumulatively over the partition window; for `PREV` and `LAST` it is taken from the previous-row and current-row respectively (`NULL` for the first row in the case of `PREV`); for `UNGROUP` it defines the proportion (with `PROPORTION`) or the limit (with `LIMIT`). With `UNGROUP`, an object collection whose value of this expression is `NULL` is excluded from the distribution — the created property returns `NULL` for it — unlike a collection with the value `0`, which participates in the distribution. The `STRICT` remainder is likewise assigned only among the participating collections. If every collection must participate, convert the possible `NULL` of this expression to `0` (for example, with the [`OVERRIDE` operator](/OVERRIDE_operator.md)). For `CUSTOM`, the list contains the operands passed to `aggrFunc`; it may be empty, but then the `ORDER` block is mandatory.
 
 * `groupExpr1, ..., groupExprM`
 

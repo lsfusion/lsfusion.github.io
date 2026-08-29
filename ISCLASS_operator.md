@@ -1,6 +1,6 @@
 # ISCLASS operator
 
-The `ISCLASS` operator creates a property that implements a [signature matching operator](/Property_signature_ISCLASS/.md).
+The `ISCLASS` operator creates a property that implements a [signature matching operator](/Property_signature_ISCLASS.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -16,7 +16,7 @@ The `ISCLASS` operator creates a property that determines, from a class perspect
 
 * `expr`
 
-  [Expression](/Expression/.md) that describes and creates a property, for which a set of parameter classes - a signature - is inferred. Matching this signature will be checked.
+  [Expression](/Expression.md) that describes and creates a property, for which a set of parameter classes - a signature - is inferred. Matching this signature will be checked.
 
 ### Example[​](#example "Direct link to Example")
 

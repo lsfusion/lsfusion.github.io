@@ -1,10 +1,10 @@
 # SystemEvents
 
-`SystemEvents` is a [system module](/System_modules/.md) that declares the platform's launch-event handlers, the platform-version properties, the per-environment appearance settings, and the system journals that record exceptions, server launches, client connections, change sessions, and computer pings. It also collects the push-notification and client-interaction actions and the navigator entries for the logo, the appearance dialog, and the log forms. It is pulled in via `REQUIRE SystemEvents` (`System`, `Reflection`, and `Time` are pulled in automatically).
+`SystemEvents` is a [system module](/System_modules.md) that declares the platform's launch-event handlers, the platform-version properties, the per-environment appearance settings, and the system journals that record exceptions, server launches, client connections, change sessions, and computer pings. It also collects the push-notification and client-interaction actions and the navigator entries for the logo, the appearance dialog, and the log forms. It is pulled in via `REQUIRE SystemEvents` (`System`, `Reflection`, and `Time` are pulled in automatically).
 
 ### Launch events[​](#launch-events "Direct link to Launch events")
 
-These abstract action lists are the [launch-event](/Launch_events/.md) handlers — a developer plugs initialization logic into them, and the platform runs the matching list at the corresponding moment of a server or client start. `onStarted[]` is the application-server start handler; the full set of handlers and the moments they fire are described in [`Launch events`](/Launch_events/.md).
+These abstract action lists are the [launch-event](/Launch_events.md) handlers — a developer plugs initialization logic into them, and the platform runs the matching list at the corresponding moment of a server or client start. `onStarted[]` is the application-server start handler; the full set of handlers and the moments they fire are described in [`Launch events`](/Launch_events.md).
 
 | Handler                    | When it runs                                                                             |
 | -------------------------- | ---------------------------------------------------------------------------------------- |
@@ -31,7 +31,7 @@ These abstract action lists are the [launch-event](/Launch_events/.md) handlers 
 
 ### Appearance[​](#appearance "Direct link to Appearance")
 
-Appearance settings are resolved per `DesignEnv` — a design-environment object representing one client's chosen look. Three enum [classes](/User_classes/.md) carry the choices:
+Appearance settings are resolved per `DesignEnv` — a design-environment object representing one client's chosen look. Three enum [classes](/User_classes.md) carry the choices:
 
 | Class    | Values                                                                        |
 | -------- | ----------------------------------------------------------------------------- |
@@ -192,17 +192,17 @@ Since `customizeForm` always edits the code of the current user, someone else's 
 
 ### Language[​](#language "Direct link to Language")
 
-* [Module header](/Module_header/.md) — the `MODULE` / `REQUIRE` syntax that pulls the module in.
-* [`ABSTRACT` operator](/ABSTRACT_action_operator/.md) — the abstract action lists the launch-event handlers are declared as.
-* [`WHEN` statement](/WHEN_statement/.md) — the event handlers that react to appearance changes and trigger a reload or a client resize.
+* [Module header](/Module_header.md) — the `MODULE` / `REQUIRE` syntax that pulls the module in.
+* [`ABSTRACT` operator](/ABSTRACT_action_operator.md) — the abstract action lists the launch-event handlers are declared as.
+* [`WHEN` statement](/WHEN_statement.md) — the event handlers that react to appearance changes and trigger a reload or a client resize.
 
 ### See also[​](#see-also "Direct link to See also")
 
-* [`System modules`](/System_modules/.md) — the general list of platform modules.
-* [`Launch events`](/Launch_events/.md) — the launch-event concept; the lifecycle handlers (`onStarted`, `onWebClientStarted`, …) declared by this module live there.
-* [`Journals and logs`](/Journals_and_logs/.md) — the system journals this module fills (exceptions, launches, connections, sessions, pings).
-* [`Process monitor`](/Process_monitor/.md) — monitoring running connections and server activity.
-* [`Navigator`](/Navigator/.md) — the navigator entries this module adds (logo, appearance, logs).
-* [`Service`](/System_Service/.md) — service actions and database monitoring.
-* [`Reflection`](/System_Reflection/.md) — metadata about the navigator, forms, and properties.
-* [`Authentication`](/System_Authentication/.md) — users, contacts, and sign-in.
+* [`System modules`](/System_modules.md) — the general list of platform modules.
+* [`Launch events`](/Launch_events.md) — the launch-event concept; the lifecycle handlers (`onStarted`, `onWebClientStarted`, …) declared by this module live there.
+* [`Journals and logs`](/Journals_and_logs.md) — the system journals this module fills (exceptions, launches, connections, sessions, pings).
+* [`Process monitor`](/Process_monitor.md) — monitoring running connections and server activity.
+* [`Navigator`](/Navigator.md) — the navigator entries this module adds (logo, appearance, logs).
+* [`Service`](/System_Service.md) — service actions and database monitoring.
+* [`Reflection`](/System_Reflection.md) — metadata about the navigator, forms, and properties.
+* [`Authentication`](/System_Authentication.md) — users, contacts, and sign-in.

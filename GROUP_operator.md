@@ -1,6 +1,6 @@
 # GROUP operator
 
-The `GROUP` operator creates a [property](/Properties/.md) implementing [grouping](/Grouping_GROUP/.md).
+The `GROUP` operator creates a [property](/Properties.md) implementing [grouping](/Grouping_GROUP.md).
 
 ### Syntax[​](#syntax "Direct link to Syntax")
 
@@ -35,15 +35,15 @@ And `orderClause` is defined as:
 
 ### Description[​](#description "Direct link to Description")
 
-The `GROUP` operator creates a property implementing grouping. The type of grouping is determined by the type of the [aggregate function](/Set_operations/.md). This operator differs from others in that it can implicitly declare its parameters in the expressions used (by analogy with the [`=` statement](/=_statement/.md) when the parameters are not defined explicitly). At the same time, it is important to understand that these "implicitly declared" parameters are not parameters of the created property (which are actually determined by the `BY` block and / or the upper parameters used)
+The `GROUP` operator creates a property implementing grouping. The type of grouping is determined by the type of the [aggregate function](/Set_operations.md). This operator differs from others in that it can implicitly declare its parameters in the expressions used (by analogy with the [`=` statement](/=_statement.md) when the parameters are not defined explicitly). At the same time, it is important to understand that these "implicitly declared" parameters are not parameters of the created property (which are actually determined by the `BY` block and / or the upper parameters used)
 
-The `BY` block describes group expressions. Each expression corresponds to a parameter of the property being created. As in other operators, upper parameters can be used in this operator, and the used parameters also implicitly become groups of the created property. Such a used upper parameter is not listed in the `BY` block: it is already a parameter of the created property and keeps its place in the signature. If the `BY` block is omitted and no upper parameters are used, all matching object collections form a single group and the created property has no parameters. Accordingly, when using the operator in the [`=` statement](/=_statement/.md) and explicitly defining the parameters on the left, the expressions from the `BY` block are mapped in order only to the unused parameters. Moreover, if the classes or the number of these parameters do not match the number / classes of `BY` expressions then the platform will throw an error.
+The `BY` block describes group expressions. Each expression corresponds to a parameter of the property being created. As in other operators, upper parameters can be used in this operator, and the used parameters also implicitly become groups of the created property. Such a used upper parameter is not listed in the `BY` block: it is already a parameter of the created property and keeps its place in the signature. If the `BY` block is omitted and no upper parameters are used, all matching object collections form a single group and the created property has no parameters. Accordingly, when using the operator in the [`=` statement](/=_statement.md) and explicitly defining the parameters on the left, the expressions from the `BY` block are mapped in order only to the unused parameters. Moreover, if the classes or the number of these parameters do not match the number / classes of `BY` expressions then the platform will throw an error.
 
 info
 
-If a `BY` block is defined, this operator cannot be used inside [expressions](/Expression/.md): it is only allowed as the entire definition of a property — the right side of the [`=` statement](/=_statement/.md) — or as an inline definition in the brackets of the [`JOIN` operator](/JOIN_operator/.md). In the latter case the applied form `[GROUP ... BY ...](...)` is an ordinary expression again. Another way to use such a value inside an expression is to first write it into a separate (for example, [local](/Data_properties_DATA/.md#local)) property and use that property instead.
+If a `BY` block is defined, this operator cannot be used inside [expressions](/Expression.md): it is only allowed as the entire definition of a property — the right side of the [`=` statement](/=_statement.md) — or as an inline definition in the brackets of the [`JOIN` operator](/JOIN_operator.md). In the latter case the applied form `[GROUP ... BY ...](...)` is an ordinary expression again. Another way to use such a value inside an expression is to first write it into a separate (for example, [local](/Data_properties_DATA.md#local)) property and use that property instead.
 
-The `ORDER` block defines the order in which the aggregate function will be calculated. It is mandatory for `CONCAT` and `LAST`. For [commutative](/Set_operations/.md#commutative) aggregators (`SUM`, `MAX`, `MIN`, `EQUAL`, `AGGR`, `NAGGR`) it may also be specified; in that case the order does not change the final aggregate value by itself, but it affects which records participate in aggregation when `TOP` / `OFFSET` are used. If the function is non-commutative, the order should be specified so that it is uniquely determined. If a new parameter is declared in the expressions specifying the order (i.e. parameter is not used in the remaining blocks or in the upper context), the condition of non-NULLness of all these expressions is automatically added.
+The `ORDER` block defines the order in which the aggregate function will be calculated. It is mandatory for `CONCAT` and `LAST`. For [commutative](/Set_operations.md#commutative) aggregators (`SUM`, `MAX`, `MIN`, `EQUAL`, `AGGR`, `NAGGR`) it may also be specified; in that case the order does not change the final aggregate value by itself, but it affects which records participate in aggregation when `TOP` / `OFFSET` are used. If the function is non-commutative, the order should be specified so that it is uniquely determined. If a new parameter is declared in the expressions specifying the order (i.e. parameter is not used in the remaining blocks or in the upper context), the condition of non-NULLness of all these expressions is automatically added.
 
 For `CUSTOM` aggregates, the `WITHIN` keyword does not introduce some separate "extra ordering"; instead, it selects the SQL call form of the user-defined or DBMS built-in aggregate function. Without `WITHIN`, the order is passed inside the aggregate call, so a construction like `GROUP CUSTOM ... 'aggrFunc' expr1, ..., exprN ORDER orderExpr1, ...` corresponds to `aggrFunc(expr1, ..., exprN ORDER BY orderExpr1, ...)`. With `WITHIN`, the ordered-set form is used instead, so `GROUP CUSTOM ... 'aggrFunc' expr1, ..., exprN WITHIN ORDER orderExpr1, ...` corresponds to `aggrFunc(expr1, ..., exprN) WITHIN GROUP (ORDER BY orderExpr1, ...)`. This matters for aggregates that are defined in the DBMS specifically via `WITHIN GROUP`, such as `percentile_cont`.
 
@@ -57,7 +57,7 @@ For `AGGR` and `NAGGR`, when more than one object collection falls into the same
 
 info
 
-For `AGGR` and `NAGGR` using this block explicitly (and not, say, an [`IF` operator](/IF_operator/.md) in `GROUP` and `BY` blocks) only makes sense from the perspective of being able to change the created property to non-`NULL` in some automatic mechanisms of the platform (for example, [automatic resolution](/Simple_constraints/.md) of simple constraints).
+For `AGGR` and `NAGGR` using this block explicitly (and not, say, an [`IF` operator](/IF_operator.md) in `GROUP` and `BY` blocks) only makes sense from the perspective of being able to change the created property to non-`NULL` in some automatic mechanisms of the platform (for example, [automatic resolution](/Simple_constraints.md) of simple constraints).
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
@@ -71,11 +71,11 @@ For `AGGR` and `NAGGR` using this block explicitly (and not, say, an [`IF` opera
 
 * `className`
 
-  Name of the [built-in class](/Built-in_classes/.md) of the returned value. Used only for `CUSTOM` aggregates and allows the result type to be set explicitly. If it is omitted, the result type is inferred from the main expression of the aggregate: usually from the first main operand, and for the `WITHIN` form or the form without main operands from the first `ORDER` expression.
+  Name of the [built-in class](/Built-in_classes.md) of the returned value. Used only for `CUSTOM` aggregates and allows the result type to be set explicitly. If it is omitted, the result type is inferred from the main expression of the aggregate: usually from the first main operand, and for the `WITHIN` form or the form without main operands from the first `ORDER` expression.
 
 * `aggrFunc`
 
-  [String literal](/IDs/.md#strliteral) containing the name of a user-defined or DBMS built-in aggregate function. Used only for `CUSTOM` aggregates.
+  [String literal](/IDs.md#strliteral) containing the name of a user-defined or DBMS built-in aggregate function. Used only for `CUSTOM` aggregates.
 
 * `expr1, ..., exprN`
 

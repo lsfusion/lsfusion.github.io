@@ -1,17 +1,17 @@
 # New object (NEW)
 
-The *new object* operator creates an [action](/Actions/.md) that creates objects of a specified [custom class](/User_classes/.md) and optionally writes each created object to a [data property](/Data_properties_DATA/.md). The target class must be a concrete custom class — an object cannot be added to the system without a known concrete class.
+The *new object* operator creates an [action](/Actions.md) that creates objects of a specified [custom class](/User_classes.md) and optionally writes each created object to a [data property](/Data_properties_DATA.md). The target class must be a concrete custom class — an object cannot be added to the system without a known concrete class.
 
 The operator has two forms.
 
 * In the *bulk* form, an object is created for every set of arguments where some expression (*condition*) is not `NULL`. The created object can be written to a specified target data property on each row; if no target is specified, the created object is not written anywhere.
 * In the *block* form, exactly one object is created and a body that follows the action has read access to the new object through a local name. This form is the natural way to create one object and initialize its properties in the same action.
 
-Objects can also be created inside the [loop](/Loop_FOR/.md) action, which creates one object per loop iteration and exposes it to the loop body — see the [loop](/Loop_FOR/.md#addobject) article for the corresponding option.
+Objects can also be created inside the [loop](/Loop_FOR.md) action, which creates one object per loop iteration and exposes it to the loop body — see the [loop](/Loop_FOR.md#addobject) article for the corresponding option.
 
 ### Language[​](#language "Direct link to Language")
 
-To declare an action that creates objects, use the [`NEW` operator](/NEW_operator/.md). For loop-driven creation, see the `NEW` option of the [`FOR` operator](/FOR_operator/.md).
+To declare an action that creates objects, use the [`NEW` operator](/NEW_operator.md). For loop-driven creation, see the `NEW` option of the [`FOR` operator](/FOR_operator.md).
 
 ### Examples[​](#examples "Direct link to Examples")
 

@@ -97,4 +97,4 @@
 
 к сведению
 
-При [автоматической установке](/ru/Execution_auto/.md) под Linux для этих папок (как и для файлов [lsFusion параметров запуска](/ru/Launch_parameters/.md#applsfusion)) автоматически создаются symlink'и на [другие папки](/ru/Execution_auto/.md#logs), расположение которых лучше соответствует идеологии Linux.
+При [автоматической установке](/ru/Execution_auto.md) под Linux для этих папок (как и для файлов [lsFusion параметров запуска](/ru/Launch_parameters.md#applsfusion)) автоматически создаются symlink'и на [другие папки](/ru/Execution_auto.md#logs), расположение которых лучше соответствует идеологии Linux.

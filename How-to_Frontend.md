@@ -1,6 +1,6 @@
 # How-to: Frontend
 
-The easiest way to organize the interaction of a React application with an application based on **lsFusion** is [communication via the HTTP protocol](/Access_from_an_external_system/.md) through the JSON API. To export a list of objects meeting a specified condition, it is most convenient to use the interface located at the eval/action Url. You can pass lsFusion program code to it in BODY, and it will then be executed. If you need to return data from your request, use the [`EXPORT` operator](/EXPORT_operator/.md). By default it returns data in JSON format, which is then easily processed using JavaScript.
+The easiest way to organize the interaction of a React application with an application based on **lsFusion** is [communication via the HTTP protocol](/Access_from_an_external_system.md) through the JSON API. To export a list of objects meeting a specified condition, it is most convenient to use the interface located at the eval/action Url. You can pass lsFusion program code to it in BODY, and it will then be executed. If you need to return data from your request, use the [`EXPORT` operator](/EXPORT_operator.md). By default it returns data in JSON format, which is then easily processed using JavaScript.
 
 info
 
@@ -10,7 +10,7 @@ A safer way would be to create a separate action for each request, with an @@api
 
 ### Example 1[​](#example-1 "Direct link to Example 1")
 
-For clarity, we implement the simple form from the [Score table](/Score_table/.md) example (in read-only mode).
+For clarity, we implement the simple form from the [Score table](/Score_table.md) example (in read-only mode).
 
 We will implement reading flat data set as a function with one parameter – the query text, – to which `EXPORT FROM` is added on the left:
 
@@ -74,7 +74,7 @@ It only remains to use this data as a state(s) for React component(s) (for examp
 
 ### Example 2[​](#example-2 "Direct link to Example 2")
 
-Let's consider a slightly more complicated case, when you need to make parameterized queries depending on data selected by the user. For backend logic we'll take the [Material Flow Management](/Materials_management/.md) example.
+Let's consider a slightly more complicated case, when you need to make parameterized queries depending on data selected by the user. For backend logic we'll take the [Material Flow Management](/Materials_management.md) example.
 
 Suppose we need to build a form in which we need to show shipments, with the ability to filter by date and warehouse. And when the user selects a specific document, its lines should be displayed.
 
@@ -178,7 +178,7 @@ For example, to create an item in the database you would need to execute the fol
 evaluate("NEW s = Item { name(s) <- $1; barcode(s) <- $2; salePrice(s) <- $3; APPLY; }", { name : "My item", barcode : "4341", salePrice : 2.34 } )
 ```
 
-As in the examples above, the names of the parameters are not important: their order is what matters. The [`APPLY` operator](/APPLY_operator/.md) saves changes to the database. Without it, the data will not be saved and will be discarded upon completion of the request.
+As in the examples above, the names of the parameters are not important: their order is what matters. The [`APPLY` operator](/APPLY_operator.md) saves changes to the database. Without it, the data will not be saved and will be discarded upon completion of the request.
 
 To change the attributes of the product, you can use the following code (where id is the product's internal ID):
 
@@ -244,9 +244,9 @@ IMPORT JSON FROM $5 AS FILE FIELDS LONG item, NUMERIC[16,3] quantity, NUMERIC[16
     }
 ```
 
-To parse the JSON we use the special [`IMPORT` operator](/IMPORT_operator/.md). It assumes that it will receive a flat JSON as an array of objects with numerical fields `item`, `quantity`, `price` and `sum`. A `ShipmentDetail` will be created for each object. It is then linked to the corresponding object `s` of class `Shipment`. After this the SKU with the internal code equals to the passed one is written, and then the other properties are written. Parsing of more complex JSON can be found in examples [How-to: Data import](/How-to_Data_import/.md) and [How-to: Interaction via HTTP protocol](/How-to_Interaction_via_HTTP_protocol/.md).
+To parse the JSON we use the special [`IMPORT` operator](/IMPORT_operator.md). It assumes that it will receive a flat JSON as an array of objects with numerical fields `item`, `quantity`, `price` and `sum`. A `ShipmentDetail` will be created for each object. It is then linked to the corresponding object `s` of class `Shipment`. After this the SKU with the internal code equals to the passed one is written, and then the other properties are written. Parsing of more complex JSON can be found in examples [How-to: Data import](/How-to_Data_import.md) and [How-to: Interaction via HTTP protocol](/How-to_Interaction_via_HTTP_protocol.md).
 
-Saving changes may violate a [constraint](/Constraints/.md). In this case, the changes will not be saved to the database (however, they will remain in the [change session](/Change_sessions/.md)). In this event the value `TRUE` will be written to the `canceled` property, and a constraint message will be written to the `applyMessage` property. In order to handle this situation, we will use the following code on the platform:
+Saving changes may violate a [constraint](/Constraints.md). In this case, the changes will not be saved to the database (however, they will remain in the [change session](/Change_sessions.md)). In this event the value `TRUE` will be written to the `canceled` property, and a constraint message will be written to the `applyMessage` property. In order to handle this situation, we will use the following code on the platform:
 
 ```
 APPLY; 
@@ -315,7 +315,7 @@ The implementation of the entire task may look as follows:
 
 ### Example 5[​](#example-5 "Direct link to Example 5")
 
-By analogy with [**Example 1**](#example-1), we implement the Score table form with editing ability using the [Form API](/Access_from_an_external_system/.md#form). To use it, you need to link the [@lsfusion/core](https://www.npmjs.com/package/@lsfusion/core) library.
+By analogy with [**Example 1**](#example-1), we implement the Score table form with editing ability using the [Form API](/Access_from_an_external_system.md#form). To use it, you need to link the [@lsfusion/core](https://www.npmjs.com/package/@lsfusion/core) library.
 
 First of all, you need to initialize the form using the `create` function after loading the main component:
 
@@ -485,7 +485,7 @@ change(updateState => this.setState(updateState), { game : { value : 6063, hostG
 
 This call changes the current object to the game with the ID 6063 and the value of the host team's goals to the passed value (3). If you do not pass the `value` tag, then the goal change will be made for the previously selected game.
 
-The same scheme is used to change properties that are not data, but are a simple [composition](/Composition_JOIN/.md) of object properties:
+The same scheme is used to change properties that are not data, but are a simple [composition](/Composition_JOIN.md) of object properties:
 
 ```
 change(updateState => this.setState(updateState), { game : { value : 6063, hostTeamName: "Montreal Canadiens" } });
