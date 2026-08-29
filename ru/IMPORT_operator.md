@@ -5,8 +5,8 @@
 ## Синтаксис[​](#синтаксис "Прямая ссылка на этот заголовок")
 
 ```
-IMPORT [importFormat] FROM fileExpr importDestination [DO actionOperator [ELSE elseActionOperator]]
-IMPORT formName [importFormat] [FROM (fileExpr | (groupId1 = fileExpr1 [, ..., groupIdM = fileExprM])]
+IMPORT [importFormat] FROM fileExpr importDestination
+IMPORT formName [importFormat] [FROM (fileExpr | groupId1 = fileExpr1 [, ..., groupIdM = fileExprM])]
 ```
 
 `importFormat` может задаваться одним из следующих вариантов:
@@ -24,12 +24,12 @@ TABLE [WHERE whereExpr]
 
 ```
 TO [(objClassId1, objClassId2, ..., objClassIdK)] propertyId1 [= columnId1], ..., propertyIdN [= columnIdN] [WHERE whereId]
-FIELDS [(objClassId1 objAlias1, objClassId2 objAlias1, ..., objClassIdK objAliasK)] propClassId1 [propAlias1 =] columnId1 [NULL], ..., propClassIdN [propAliasN =] columnIdN [NULL]
+FIELDS [(objClassId1 objAlias1, objClassId2 objAlias2, ..., objClassIdK objAliasK)] propClassId1 [propAlias1 =] columnId1 [NULL], ..., propClassIdN [propAliasN =] columnIdN [NULL] [DO actionOperator [ELSE elseActionOperator]]
 ```
 
 ## Описание[​](#описание "Прямая ссылка на этот заголовок")
 
-Оператор `IMPORT `создает действие, которое импортирует данные из файла в значения заданных свойств или в заданную форму.
+Оператор `IMPORT` создает действие, которое импортирует данные из файла в значения заданных свойств или в заданную форму.
 
 Если формат импортируемого файла не задан, то он автоматически определяется, в зависимости от класса импортируемого файла (или от расширения, если этот класс равен `FILE`), следующим образом:
 
@@ -151,7 +151,7 @@ FIELDS [(objClassId1 objAlias1, objClassId2 objAlias1, ..., objClassIdK objAlias
 
   Идентификатор свойства, в которое будет записано [значение по умолчанию](/ru/Built-in_classes/.md#defaultvalue) класса значения этого свойства для каждого импортируемого объекта. Параметры свойства и его классы должны соответствовать импортируемым объектам и их классам. Если это свойство не задано и количество импортируемых объектов больше нуля, по умолчанию осуществляется поиск свойства с именем `imported` и классами импортируемых объектов (например `System.imported[INTEGER]`).
 
-* `propClassId1, ..., *propClassId*N`
+* ``propClassId1`, ..., `propClassIdN``
 
   Список имен [встроенных классов](/ru/Built-in_classes/.md) импортируемых колонок.
 
@@ -183,7 +183,7 @@ import()  {
         IMPORT XLS SHEET ALL FROM f TO field1 = C, field2, field3 = F, field4 = A;
 
         // свойство imported - системное свойство, предназначенное для перебора данных
-        FOR imported(INTEGER i) DO { 
+        FOR imported(INTEGER i) DO {
             MESSAGE 'field1 value = ' + field1(i);
             MESSAGE 'field2 value = ' + field2(i);
             MESSAGE 'field3 value = ' + field3(i);
@@ -192,18 +192,18 @@ import()  {
     }
 
     LOCAL t = FILE ();
-    EXTERNAL SQL 'jdbc:postgresql://localhost/test?user=postgres&password=12345' 
-             EXEC 'SELECT x.a,x.b,x.c,x.d FROM orders x WHERE x.id = $1;' 
-             PARAMS '4553' 
+    EXTERNAL SQL 'jdbc:postgresql://localhost/test?user=postgres&password=12345'
+             EXEC 'SELECT x.a,x.b,x.c,x.d FROM orders x WHERE x.id = $1;'
+             PARAMS '4553'
              TO t;
     // импорт с опцией FIELDS
-    IMPORT FROM t() FIELDS INTEGER a, DATE b, BPSTRING[50] c, BPSTRING[50] d DO        
+    IMPORT FROM t() FIELDS INTEGER a, DATE b, BPSTRING[50] c, BPSTRING[50] d DO
         NEW o = Order {
             number(o) <- a;
             date(o) <- b;
             customer(o) <- c;
             // находим currency с данным именем
-            currency(o) <- GROUP MAX Currency currency IF name(currency) = d; 
+            currency(o) <- GROUP MAX Currency currency IF name(currency) = d;
         }
 
 
