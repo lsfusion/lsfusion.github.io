@@ -156,77 +156,21 @@
 
 - [BREAK operator](/BREAK_operator.md): The BREAK operator creates an action that implements a loop interruption.
 
-## Brief_actions
-
-- [Brief: actions](/Brief_actions.md): State changes (<-, NEW, DELETE)
-
-## Brief_constraints
-
-- [Brief: constraints](/Brief_constraints.md): Constraints (CONSTRAINT)
-
-## Brief_design
-
-- [Brief: form design](/Brief_design.md): Containers
-
-## Brief_events
-
-- [Brief: events](/Brief_events.md): Data events (WHEN)
-
-## Brief_execution
-
-- [Brief: execution](/Brief_execution.md): Stored data and materializations
-
-## Brief_export
-
-- [Brief: data export (EXPORT)](/Brief_export.md): Exporting properties and forms
-
-## Brief_extensions
-
-- [Brief: extensions](/Brief_extensions.md): Extending classes
-
-## Brief_forms
-
-- [Brief: forms](/Brief_forms.md): Form structure
-
-## Brief_i18n
-
-- [Brief: internationalization](/Brief_i18n.md): Localizing strings and captions
-
-## Brief_identification
-
-- [Brief: element identification](/Brief_identification.md): Identifiers and namespaces
-
-## Brief_import
-
-- [Brief: data import](/Brief_import.md): Flat import
-
 ## Brief_integration
 
-- [Brief: integration](/Brief_integration.md): Access from outside
+- [Brief: integration](/Brief_integration.md): - Data import
 
-## Brief_metaprogramming
+## Brief_logic
 
-- [Brief: metaprogramming](/Brief_metaprogramming.md): META and calling metacode (@)
+- [Brief: domain logic](/Brief_logic.md): - Classes
 
-## Brief_modularity
+## Brief_physical
 
-- [Brief: modules](/Brief_modularity.md): Modules and order
+- [Brief: physical model](/Brief_physical.md): - Execution
 
-## Brief_navigator
+## Brief_view
 
-- [Brief: navigator](/Brief_navigator.md): Navigator structure
-
-## Brief_properties
-
-- [Brief: properties](/Brief_properties.md): Expressions and composition
-
-## Brief_reports
-
-- [Brief: reports](/Brief_reports.md): The print view
-
-## Brief_sessions
-
-- [Brief: change sessions](/Brief_sessions.md): What a session is
+- [Brief: view logic](/Brief_view.md): - Forms
 
 ## Brief
 
@@ -1344,65 +1288,21 @@
 
 - [Rounding operator (ROUND)](/Rounding_operator_ROUND.md): The rounding operator creates a property whose value is the result of rounding a number to the specified number of digits. The arguments of this operator are properties that determine the number to be rounded and, optionally, the rounding precision. The number must belong to one of the numeric built-in classes, and the precision must belong to the INTEGER class. When no precision is given, the number is rounded to the nearest integer. Negative precision values indicate the number of least significant digits to be rounded in the integer part of the number, allowing you to round the number to tens, hundreds, etc.
 
-## Rules_actions
+## Rules_integration
 
-- [Rules: actions and assignment](/Rules_actions.md): Action rules
+- [Rules: integration](/Rules_integration.md): - Data import (IMPORT)
 
-## Rules_constraints
+## Rules_logic
 
-- [Rules: constraints](/Rules_constraints.md): Constraint rules
+- [Rules: domain logic](/Rules_logic.md): - Properties
 
-## Rules_design
+## Rules_physical
 
-- [Rules: form design](/Rules_design.md): Form design rules
+- [Rules: physical model](/Rules_physical.md): - Execution
 
-## Rules_events
+## Rules_view
 
-- [Rules: events (WHEN)](/Rules_events.md): Event rules (WHEN)
-
-## Rules_execution
-
-- [Rules: execution](/Rules_execution.md): Tables
-
-## Rules_export
-
-- [Rules: data export (EXPORT)](/Rules_export.md): Choosing the export source
-
-## Rules_forms
-
-- [Rules: forms](/Rules_forms.md): Form rules
-
-## Rules_i18n
-
-- [Rules: internationalization](/Rules_i18n.md): Internationalization and reverse translation rules
-
-## Rules_import
-
-- [Rules: data import (IMPORT)](/Rules_import.md): Import rules (IMPORT)
-
-## Rules_migration
-
-- [Rules: migration (migration.script)](/Rules_migration.md): Migration rules (migration.script)
-
-## Rules_modularity
-
-- [Rules: modules](/Rules_modularity.md): Module design rules
-
-## Rules_navigator
-
-- [Rules: navigator](/Rules_navigator.md): Navigator rules
-
-## Rules_properties
-
-- [Rules: properties](/Rules_properties.md): Property rules
-
-## Rules_reports
-
-- [Rules: reports](/Rules_reports.md): Report rules
-
-## Rules_sessions
-
-- [Rules: change sessions (NEWSESSION, APPLY)](/Rules_sessions.md): Change session rules (NEWSESSION, NESTEDSESSION, APPLY)
+- [Rules: view logic](/Rules_view.md): - Forms
 
 ## Rules
 

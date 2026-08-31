@@ -1,0 +1,797 @@
+<!doctype html><html lang=en dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-rules/Rules_logic" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.9.2"><title data-rh=true>Rules: domain logic | lsfusion documentation</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:url content=https://docs.lsfusion.org/Rules_logic/ /><meta data-rh=true property=og:locale content=en /><meta data-rh=true property=og:locale:alternate content=ru /><meta data-rh=true name=docusaurus_locale content=en /><meta data-rh=true name=docsearch:language content=en /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="Rules: domain logic | lsfusion documentation"/><meta data-rh=true name=description content="- Properties"/><meta data-rh=true property=og:description content="- Properties"/><link data-rh=true rel=icon href=/img/favicon.ico /><link data-rh=true rel=canonical href=https://docs.lsfusion.org/Rules_logic/ /><link data-rh=true rel=alternate href=https://docs.lsfusion.org/Rules_logic/ hreflang=en /><link data-rh=true rel=alternate href=https://docs.lsfusion.org/ru/Rules_logic/ hreflang=ru /><link data-rh=true rel=alternate href=https://docs.lsfusion.org/Rules_logic/ hreflang=x-default /><link data-rh=true rel=preconnect href=https://KNJZ5D60XY-dsn.algolia.net crossorigin=anonymous /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://docs.lsfusion.org/AI","name":"AI","position":1},{"@type":"ListItem","item":"https://docs.lsfusion.org/Rules","name":"Rules","position":2},{"@type":"ListItem","item":"https://docs.lsfusion.org/Rules_logic","name":"Rules: domain logic","position":3}]}</script><link rel=alternate type=application/rss+xml href=/blog/rss.xml title="lsfusion documentation RSS Feed"><link rel=alternate type=application/atom+xml href=/blog/atom.xml title="lsfusion documentation Atom Feed"><link rel=preconnect href=https://www.google-analytics.com><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-38678623-1","auto"),ga("send","pageview")</script><script async src=https://www.google-analytics.com/analytics.js></script><link rel=preconnect href=https://www.google-analytics.com><link rel=preconnect href=https://www.googletagmanager.com><script async src="https://www.googletagmanager.com/gtag/js?id=G-9PP67L9JM9"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-9PP67L9JM9",{})</script><link rel=search type=application/opensearchdescription+xml title="lsfusion documentation" href=/opensearch.xml><link rel=license href=https://creativecommons.org/licenses/by/4.0/><script type=application/ld+json>{"@context":"https://schema.org","@type":"WebSite","license":"https://creativecommons.org/licenses/by/4.0/","name":"lsFusion documentation","publisher":{"@type":"Organization","name":"lsFusion Foundation"},"url":"https://docs.lsfusion.org"}</script><link rel=stylesheet href=/assets/css/styles.b450ab8e.css /><script src=/assets/js/runtime~main.d0f21a14.js defer></script><script src=/assets/js/main.232dac8a.js defer></script></head><body class=navigation-with-keyboard><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/img/logo.png /><div role=region aria-label="Skip to main content"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/><div class=navbar__logo><img src=/img/logo.png alt=Logo class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/img/logo.png alt=Logo class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate"></b></a><a class="navbar__item navbar__link" href=/Install/>Install</a><a aria-current=page class="navbar__item navbar__link navbar__link--active" href=/>Learn</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href=https://github.com/lsfusion/platform target=_blank rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class=navbar__link aria-haspopup=true aria-expanded=false role=button href=/Rules_logic/>7.0</a><ul class=dropdown__menu><li><a aria-current=page class="dropdown__link dropdown__link--active" href=/Rules_logic/>7.0</a><li><a class=dropdown__link href=/v6/>6.x</a><li><a class=dropdown__link href=/v5/>5.x</a><li><a class=dropdown__link href=/v4/>4.x</a></ul></div><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href=# aria-haspopup=true aria-expanded=false role=button class=navbar__link><svg viewBox="0 0 24 24" width=20 height=20 aria-hidden=true class=iconLanguage_nlXk><path fill=currentColor d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>English</a><ul class=dropdown__menu><li><a href=/Rules_logic/ target=_self rel="noopener noreferrer" class="dropdown__link dropdown__link--active" lang=en>English</a><li><a href=/ru/Rules_logic/ target=_self rel="noopener noreferrer" class=dropdown__link lang=ru>Русский</a></ul></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div><div class=navbarSearchContainer_Bca1><button type=button class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts=Meta+k><span class=DocSearch-Button-Container><svg width=20 height=20 class=DocSearch-Search-Icon viewBox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=8 stroke=currentColor fill=none stroke-width=1.4 /><path d="m21 21-4.3-4.3" stroke=currentColor fill=none stroke-linecap=round stroke-linejoin=round /></svg><span class=DocSearch-Button-Placeholder>Search</span></span><span class=DocSearch-Button-Keys></span></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class=sidebarViewport_aRkj><div class=sidebar_njMd><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/><span title=Overview class=linkLabel_WmDU>Overview</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/Paradigm/><span title=Paradigm class=categoryLinkLabel_W154>Paradigm</span></a><button aria-label="Collapse sidebar category 'Paradigm'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex=0 href=/Logical_model/><span title="Logical model" class=categoryLinkLabel_W154>Logical model</span></a><button aria-label="Expand sidebar category 'Logical model'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex=0 href=/Physical_model/><span title="Physical model" class=categoryLinkLabel_W154>Physical model</span></a><button aria-label="Expand sidebar category 'Physical model'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div></ul><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/Language/><span title=Language class=categoryLinkLabel_W154>Language</span></a><button aria-label="Collapse sidebar category 'Language'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/Tokens/><span title=Tokens class=linkLabel_WmDU>Tokens</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/IDs/><span title=IDs class=linkLabel_WmDU>IDs</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex=0 href=/Literals/><span title=Literals class=categoryLinkLabel_W154>Literals</span></a><button aria-label="Expand sidebar category 'Literals'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex=0 href=/Statements/><span title=Statements class=categoryLinkLabel_W154>Statements</span></a><button aria-label="Expand sidebar category 'Statements'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/Comments/><span title=Comments class=linkLabel_WmDU>Comments</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/Coding_conventions/><span title="Coding conventions" class=linkLabel_WmDU>Coding conventions</span></a></ul><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href=/AI/><span title=AI class=categoryLinkLabel_W154>AI</span></a><button aria-label="Collapse sidebar category 'AI'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex=0 href=/Brief/><span title=Brief class=categoryLinkLabel_W154>Brief</span></a><button aria-label="Expand sidebar category 'Brief'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex=0 href=/Rules/><span title=Rules class=categoryLinkLabel_W154>Rules</span></a><button aria-label="Collapse sidebar category 'Rules'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current=page tabindex=0 href=/Rules_logic/><span title="Rules: domain logic" class=linkLabel_WmDU>Rules: domain logic</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class=menu__link tabindex=0 href=/Rules_view/><span title="Rules: view logic" class=linkLabel_WmDU>Rules: view logic</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class=menu__link tabindex=0 href=/Rules_physical/><span title="Rules: physical model" class=linkLabel_WmDU>Rules: physical model</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class=menu__link tabindex=0 href=/Rules_integration/><span title="Rules: integration" class=linkLabel_WmDU>Rules: integration</span></a></ul><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/MCP_server/><span title="MCP Server" class=linkLabel_WmDU>MCP Server</span></a></ul><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/IDE/><span title=IDE class=linkLabel_WmDU>IDE</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/Learning_materials/><span title="Learning materials" class=categoryLinkLabel_W154>Learning materials</span></a><button aria-label="Collapse sidebar category 'Learning materials'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex=0 href=/Examples/><span title=Examples class=categoryLinkLabel_W154>Examples</span></a><button aria-label="Expand sidebar category 'Examples'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex=0 href=/How-to/><span title=How-to class=categoryLinkLabel_W154>How-to</span></a><button aria-label="Expand sidebar category 'How-to'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div></ul><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/Online_demo/><span title="Online demo" class=linkLabel_WmDU>Online demo</span></a></ul></nav></div></div></aside><main class=docMainContainer_TBSr><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_VOVn"><div class=docItemContainer_Djhp><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label=Breadcrumbs><ul class=breadcrumbs><li class=breadcrumbs__item><a aria-label="Home page" class=breadcrumbs__link href=/><svg viewBox="0 0 24 24" class=breadcrumbHomeIcon_YNFT><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill=currentColor /></svg></a><li class=breadcrumbs__item><a class=breadcrumbs__link href=/AI/><span>AI</span></a><li class=breadcrumbs__item><a class=breadcrumbs__link href=/Rules/><span>Rules</span></a><li class="breadcrumbs__item breadcrumbs__item--active"><span class=breadcrumbs__link>Rules: domain logic</span></ul></nav><span class="theme-doc-version-badge badge badge--secondary">Version: 7.0</span><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Rules: domain logic</h1></header><ul>
+<li class=""><a href=#properties class="">Properties</a></li>
+<li class=""><a href=#actions-and-assignment class="">Actions and assignment</a></li>
+<li class=""><a href=#events-when class="">Events (WHEN)</a></li>
+<li class=""><a href=#constraints class="">Constraints</a></li>
+<li class=""><a href=#change-sessions-newsession-apply class="">Change sessions (NEWSESSION, APPLY)</a></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=properties>Properties<a href=#properties class=hash-link aria-label="Direct link to Properties" title="Direct link to Properties" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=property-rules>Property rules<a href=#property-rules class=hash-link aria-label="Direct link to Property rules" title="Direct link to Property rules" translate=no>​</a></h3>
+<ol>
+<li class="">
+<p>The assistant MUST NOT declare a property
+if it is used only once.</p>
+<p>Exception:
+a property may still be declared if it is added to a form.</p>
+</li>
+<li class="">
+<p>Every property parameter MUST be used in its expression.
+Unused parameters are forbidden.</p>
+</li>
+<li class="">
+<p>The assistant MUST assume standard <code>NULL</code> propagation
+for property expressions:
+if any parameter is <code>NULL</code>, the result is <code>NULL</code>.</p>
+<p>Exceptions that do NOT nullify on a single <code>NULL</code> operand:
+the selection operators — <code>OVERRIDE</code>, which returns the first
+non-<code>NULL</code> operand, and <code>IF ... THEN ... ELSE</code>, whose
+CONDITION is the <code>NULL</code>-tolerant part: a <code>NULL</code> condition
+takes the <code>ELSE</code> branch, while a non-<code>NULL</code> one returns the
+<code>THEN</code> value as it is, so <code>IF TRUE THEN NULL ELSE 1</code> is
+<code>NULL</code> —
+<code>MIN</code> / <code>MAX</code>, the <code>NULL</code>-tolerant arithmetic <code>(+)</code> / <code>(-)</code>,
+the <code>CONCAT</code> concatenation
+(a <code>NULL</code> operand is skipped together with its separator),
+and <code>GROUP</code> aggregates (<code>GROUP SUM</code>, <code>GROUP MAX</code>, etc.) —
+a <code>NULL</code> operand or value is skipped instead of propagating.
+<code>OR</code>, <code>NOT</code> and <code>XOR</code> do not propagate either: they read a
+non-<code>NULL</code> operand as <code>TRUE</code>, so <code>NULL OR TRUE</code> is <code>TRUE</code>
+and <code>NOT NULL</code> is <code>TRUE</code>. <code>AND</code> is the one that does —
+it returns <code>TRUE</code> only when both operands are non-<code>NULL</code>,
+so <code>TRUE AND NULL</code> is <code>NULL</code>.
+<code>GROUP LAST</code> skips a <code>NULL</code> only while it has no <code>WHERE</code>,
+where non-<code>NULL</code>ness of the aggregated expression is what
+serves as the condition; given an explicit <code>WHERE</code>, a row
+satisfying it contributes its value even when that value
+is <code>NULL</code>.</p>
+<p>These exceptions still yield <code>NULL</code> when:</p>
+<ul>
+<li class="">every operand or aggregated value is <code>NULL</code> — except
+<code>NOT</code>, whose whole point is to answer <code>TRUE</code> there;</li>
+<li class=""><code>(+)</code> / <code>(-)</code> or <code>GROUP SUM</code> produces <code>0</code>
+(a zero result is returned as <code>NULL</code>).</li>
+</ul>
+</li>
+<li class="">
+<p>The assistant MUST NOT use <code>GROUP</code> with a <code>BY</code> block
+(including <code>GROUP AGGR</code>) inside expressions:
+in a type cast, in arithmetic
+(including <code>(+)</code> / <code>(-)</code>), as an argument
+of another property, or as an implementation
+of an abstract property via <code>+=</code>.</p>
+<p>Such an operator defines the parameters
+of its result itself, so it is allowed only
+as an entire property definition:
+the right-hand side of a definition via <code>=</code>
+or an inline definition in square brackets;
+in any other position the platform raises
+the error <code>BY clause in GROUP operator cannot be used in expressions</code>.
+To use the result in an expression,
+the assistant SHOULD first rewrite the operator
+without <code>BY</code>, replacing each grouping
+with an equality condition on an outer parameter
+(<code>GROUP SUM f(x) IF g(x) = y</code>); otherwise,
+apply the inline form <code>[GROUP ... BY ...](...)</code>
+to arguments or declare a separate property
+and refer to it.</p>
+<p>The restriction is tied specifically
+to the <code>BY</code> block: <code>GROUP</code> without <code>BY</code>
+takes its parameters from the outer context
+and may be used inside expressions.</p>
+<p>When reasoning about <code>GROUP AGGR</code>, the assistant
+MUST treat it as <code>GROUP MAX</code>
+with an additional constraint.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD avoid unnecessary conditions
+when the language semantics already produce the required result.</p>
+</li>
+<li class="">
+<p>The assistant MUST NOT create a property whose expression
+is equal to one of its parameters.</p>
+</li>
+<li class="">
+<p>The assistant MUST NOT create multiple properties
+with identical expressions.</p>
+</li>
+<li class="">
+<p>If a property is calculated from another property
+but has different parameters, the assistant SHOULD try
+to keep the same property name.</p>
+</li>
+<li class="">
+<p>To check whether a property is <code>NULL</code>,
+the assistant SHOULD use <code>IF NOT property(...)</code>.</p>
+<p>To check that it is not <code>NULL</code>,
+the assistant SHOULD use <code>IF property(...)</code>.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD specify <code>CHARWIDTH</code>
+in the property definition rather than in form design.</p>
+</li>
+</ol>
+<p>For a simple property composition that only forwards
+another property, the assistant SHOULD NOT repeat
+<code>CHARWIDTH</code> on the derived property unless it must differ.</p>
+<ol start=11>
+<li class="">
+<p>For static objects, the assistant MUST NOT use
+<code>staticCaption</code> or <code>staticName</code> properties.</p>
+<p>The assistant MUST use <code>caption</code> and <code>name</code> instead.</p>
+<p>This applies to writing as well: <code>caption</code> and <code>name</code> are
+simple compositions over the stored caption and name, so an
+assignment to them passes into the stored property.
+A static object's caption is assigned through <code>caption</code>;
+the name must not be changed — changing <code>name</code> is
+forbidden by a system constraint.</p>
+<p><code>name</code> returns the static object's canonical name —
+<code>&lt;namespace>_&lt;Class>.&lt;object></code>, not the short identifier.
+When the part after the dot is needed, the assistant
+SHOULD use <code>basicName</code> from the <code>Utils</code> system module.</p>
+</li>
+<li class="">
+<p>Property names SHOULD be concise
+and avoid unnecessary words.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD NOT use words in a property name
+that duplicate parameter class names
+unless required for clarity.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD NOT specify an explicit namespace
+for a property unless necessary.</p>
+</li>
+<li class="">
+<p>When creating a DATA property — or a simple composition
+over a DATA property (for example, pulling the name of a
+related object) — for a single object's own attribute,
+the assistant MUST deliberately decide
+whether to place it in the system <code>id</code> or <code>base</code> group
+via <code>IN</code>.</p>
+<p>Attributes that form the object's business identity
+and appear in its representation SHOULD go in the <code>id</code>
+group; other primary attributes go in the <code>base</code> group
+(<code>id</code> is nested under <code>base</code>).</p>
+<p>A property SHOULD NOT be placed in <code>id</code> or <code>base</code>
+when it is not the object's own primary attribute.</p>
+</li>
+<li class="">
+<p>When dividing values of integer classes, the assistant MUST
+cast one of the operands to <code>NUMERIC</code>, not the result.</p>
+<p>The ratio of two integers is integer division,
+so an outer cast like <code>NUMERIC[16,4](a * b / c)</code>
+silently drops the fractional part;
+the correct form is <code>NUMERIC[16,4](a) * b / c</code>.</p>
+</li>
+<li class="">
+<p>A parameter's class annotation (<code>prop(SubClass x)</code>) is a
+signature, not a runtime filter: it resolves same-named
+properties and sets the signature, but the computed set is
+determined by the properties used in the expression.
+Reading a parent-class property with a subclass-annotated
+parameter still ranges over ALL objects of the parent class
+(e.g. in a <code>GROUP SUM</code> — silently wrong totals).</p>
+<p>To restrict the set to a class, the assistant MUST add
+an explicit <code>x IS SubClass</code> condition (or use a property
+declared on that subclass).</p>
+</li>
+<li class="">
+<p>In the <code>GROUP ... BY</code> operator the assistant MUST NOT
+list in the <code>BY</code> block the upper parameters used
+in the operator's expressions: each such parameter
+is already implicitly a group — a parameter of the
+created property — and keeps its place in the signature.</p>
+<p>With an explicit parameter list on the left,
+the <code>BY</code> expressions are mapped in order only
+to the parameters not used in the expressions;
+a mismatch in count or classes is an error.</p>
+</li>
+<li class="">
+<p><code>MAX</code> and <code>MIN</code> are prefix operators over a comma-separated
+operand list (<code>MAX a, b</code>), not infix ones: <code>a MAX b</code>
+does not parse — the platform reports
+<code>no viable alternative at input 'MAX'</code>.</p>
+<p>The operand list extends as far as the expression allows,
+so everything after the comma belongs to the operator:
+<code>MAX a, b * c</code> is <code>MAX(a, b * c)</code>, while <code>x * MAX a, b</code>
+is fine as it stands. Where a following operator must
+apply to the maximum itself, the operator MUST be
+parenthesized: <code>(MAX a, b) * c</code>.</p>
+<p>These operators compare the operands of a single row;
+a maximum across rows is <code>GROUP MAX</code>.</p>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=abstract-property-rules->Abstract property rules (<code>+=</code>)<a href=#abstract-property-rules- class=hash-link aria-label="Direct link to abstract-property-rules-" title="Direct link to abstract-property-rules-" translate=no>​</a></h3>
+<ol>
+<li class="">
+<p>The value class of a <code>+=</code> implementation MUST fit within
+the value class declared on the abstract property; there
+is no implicit cast — an implementation with a wider
+class is rejected at server startup with a
+"wrong value class of implementation" error, whose
+<code>specified</code> and <code>expected</code> lines name the implementation's
+class and the declared one.</p>
+<p>Arithmetic is what widens the class most often, and it
+widens further than it looks:</p>
+<ul>
+<li class=""><code>+</code> and <code>-</code> — like <code>MIN</code> / <code>MAX</code> and the selection
+operators — take the common ancestor, widening the whole
+part and the scale independently, so the result can be
+wider than either operand:
+<code>NUMERIC[16,2] + NUMERIC[10,4]</code> is <code>NUMERIC[18,4]</code>;</li>
+<li class=""><code>*</code> adds both the whole parts and the scales:
+<code>NUMERIC[16,2] * NUMERIC[10,4]</code> is <code>NUMERIC[26,6]</code>;</li>
+<li class=""><code>/</code> widens catastrophically: with the default settings
+its scale is always the maximum <code>NUMERIC</code> scale (<code>32</code>),
+so <code>NUMERIC[16,2] / NUMERIC[16,2]</code> is <code>NUMERIC[48,32]</code>.</li>
+</ul>
+<p>A <code>GROUP</code> aggregate mostly keeps the class of what it
+aggregates — a <code>GROUP SUM</code>, <code>GROUP MAX</code> or <code>GROUP LAST</code>
+over a <code>NUMERIC[16,2]</code> is <code>NUMERIC[16,2]</code> — but it carries
+outward whatever that expression already widened to.
+<code>GROUP CONCAT</code> is the aggregate that widens by itself: its
+result is a string of unlimited length (<code>ISTRING</code> against
+a declared <code>ISTRING[250]</code>). Plain string concatenation
+widens as well, summing the operands' lengths
+(<code>ISTRING[326]</code> against a declared <code>ISTRING[250]</code>).</p>
+<p>Any such expression the assistant MUST wrap in an explicit
+cast to the declared class:
+<code>f(X x) += NUMERIC[16,2](a(x) / b(x));</code>
+<code>f(X x) += ISTRING[250](a(x) + b(x));</code></p>
+<p>For operands of integer classes the cast MUST go on an
+operand first, so that the division is not integer
+division (see rule 16 of the property rules); the result
+still widens to scale <code>32</code> like any other division, so
+the outer cast is needed as well:
+<code>f(X x) += NUMERIC[16,2](NUMERIC[16,2](a(x)) / b(x));</code></p>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=ordering-rules-order>Ordering rules (<code>ORDER</code>)<a href=#ordering-rules-order class=hash-link aria-label="Direct link to ordering-rules-order" title="Direct link to ordering-rules-order" translate=no>​</a></h3>
+<ol>
+<li class="">
+<p>Where two rows can share an order key and the answer depends
+on which of them wins — which of two same-date rows is the
+<code>GROUP LAST</code>, which of two equal-priority rows a <code>TOP 1</code>
+takes, where a <code>PARTITION PREV</code> steps back to — the
+assistant MUST spell the tiebreak out, usually as the object
+itself: <code>ORDER date(d), d</code>.</p>
+<p>The platform does fill an incomplete order in on its own for
+several of these, so the symptom is not randomness between
+runs; it is that the row chosen is whichever one a service
+order over the interfaces selects, which is not what the
+domain asked for. Writing the tiebreak is how the choice
+becomes the intended one.</p>
+</li>
+<li class="">
+<p>A cumulative <code>PARTITION SUM ... ORDER</code> with no <code>TOP</code> or
+<code>OFFSET</code> is the case where a tiebreak MUST NOT be added by
+reflex. Its default frame gives every row sharing an order
+key the same cumulative value. Adding a tiebreak changes the
+result — from a total per group of equal keys to a total per
+row — which is a decision about the domain, not a safety
+measure. Under <code>TOP</code> or <code>OFFSET</code> rule 1 applies as usual:
+those pick rows, and which rows they pick is worth saying.</p>
+</li>
+<li class="">
+<p><code>PARTITION LAST</code> does not read the order to compute its
+value: it is the value of the current row. <code>GROUP LAST</code> is
+the one that picks by order.</p>
+</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=actions-and-assignment>Actions and assignment<a href=#actions-and-assignment class=hash-link aria-label="Direct link to Actions and assignment" title="Direct link to Actions and assignment" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=action-rules>Action rules<a href=#action-rules class=hash-link aria-label="Direct link to Action rules" title="Direct link to Action rules" translate=no>​</a></h3>
+<ol>
+<li class="">
+<p>The assistant MUST avoid <code>FOR</code> when the same result
+can be expressed with a set-based construct.</p>
+<p><code>FOR</code> iterates row by row and SHOULD be the last resort
+when no declarative alternative exists.
+The one measured exception runs the other way: when the
+assigned value is a <code>GROUP</code> aggregate whose bounds correlate
+with the row being updated, and both sets are large, the
+set-based form can compile to a query that materializes the
+whole correlation, and a row-by-row <code>FOR ... NOINLINE</code> can
+be the faster one — where an index on the aggregated class
+lets each row's aggregate be answered by an index lookup.</p>
+<p>Prefer set-based alternatives, for example:</p>
+<ul>
+<li class="">aggregation or set materialization
+-> <code>GROUP SUM</code>, <code>GROUP CONCAT</code>, <code>GROUP MAX</code>,
+<code>GROUP LAST</code>, <code>GROUP AGGR</code></li>
+<li class="">assigning a property over a set
+-> direct property assignment with parameters
+instead of a <code>FOR ... DO</code> loop</li>
+<li class="">exporting tabular or hierarchical data
+-> <code>EXPORT FROM</code>, <code>EXPORT JSON FROM</code>,
+<code>EXPORT XML FROM</code>, <code>EXPORT CSV FROM</code></li>
+<li class="">building structured payloads
+-> <code>JSON FROM</code>, <code>XML FROM</code></li>
+<li class="">bulk integration writes
+-> <code>NEW</code>, <code>DELETE</code>, or set-based property change
+instead of a per-row <code>FOR</code></li>
+</ul>
+<p><code>FOR</code> is acceptable when the body has genuine
+per-row control flow such as conditional <code>APPLY</code>,
+<code>MESSAGE</code>, <code>throwException</code>, or external calls
+that cannot be expressed as a set operation.</p>
+</li>
+<li class="">
+<p>Parameters introduced in <code>NEW alias = Class</code>
+and <code>FOR expr(p) [NEW alias = Class] DO { ... }</code>
+do NOT follow the usual lexical scoping rules
+of mainstream programming languages.</p>
+<p>Such parameters are visible ONLY inside the body
+of the <code>NEW</code> block or the <code>FOR</code> loop that introduces them.</p>
+<p>The assistant MUST NOT reference these parameters
+outside their introducing block.</p>
+<p>When dependent computation must reuse these parameters,
+the assistant SHOULD nest further <code>NEW</code> or <code>FOR</code> blocks
+inside the introducing block, where the parameters
+are still in scope, rather than lifting values out
+into auxiliary storage.</p>
+<p>Conversely, a parameter declared inside a <code>GROUP</code>
+aggregate belongs to that aggregate and is NOT visible
+outside of it; in particular it cannot serve as the loop
+variable of the enclosing <code>FOR</code>. Declare the variable as
+the <code>FOR</code>'s own parameter and use the aggregate only as
+a boolean condition over it.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD avoid introducing <code>LOCAL</code>
+properties without a concrete need.</p>
+<p>A <code>LOCAL</code> materializes a temporary table in PostgreSQL
+only once it holds more than one row, so the runtime
+cost well above a stack variable in a conventional
+language applies to <code>LOCAL</code>s with parameters (buffers
+keyed by row number, per-object values). A parameterless
+<code>LOCAL</code> holds at most one row and always stays in
+memory, so parameterless flags and single values are
+cheap; avoid them to keep the number of entities
+down, not because of cost.</p>
+</li>
+<li class="">
+<p>A <code>LOCAL</code> is normally justified when BOTH conditions hold:</p>
+<ul>
+<li class="">its value is non-trivial to compute
+(aggregation, joins, multi-step logic, external calls,
+or other work worth materializing), AND</li>
+<li class="">the same value is consumed more than once,
+so materializing it avoids recomputation.</li>
+</ul>
+</li>
+<li class="">
+<p>When possible, the assistant SHOULD prefer alternatives
+to a fresh <code>LOCAL</code>:</p>
+<ul>
+<li class="">inline the expression at each use site if it is cheap</li>
+<li class="">nest <code>NEW</code> / <code>FOR</code> blocks so intermediate values stay
+in parameter scope</li>
+<li class="">use a regular (non-<code>LOCAL</code>) calculated property
+when the value is reusable across actions</li>
+</ul>
+</li>
+<li class="">
+<p>These are recommendations, not hard prohibitions.
+If the assistant cannot find a working syntax for
+a <code>LOCAL</code>-free construction, or some other approach
+keeps failing and a clean action cannot be built,
+falling back to a <code>LOCAL</code> is acceptable as a last resort.</p>
+<p>Established <code>LOCAL</code> patterns mandated by other rules
+(e.g. import staging, nested-session carry-over)
+remain valid; the assistant SHOULD still keep such
+<code>LOCAL</code>s minimal in count and scope.</p>
+</li>
+<li class="">
+<p>The parameters of the top-level statements of an action
+body share one parameter context: identical names denote
+the same parameter, and a parameter's class is declared
+only at its first use.</p>
+<p>In generated scripts (<code>eval</code>, data seeding) the assistant
+SHOULD give the parameters of top-level statements unique
+names, so as not to depend on the statement order.</p>
+</li>
+<li class="">
+<p>Many system utility actions return their result through
+a same-named parameterless <code>LOCAL</code> property (for example,
+in <code>Utils</code>: the action <code>fileExists[ISTRING[500]]</code> writes
+into the property <code>fileExists[]</code>). Such an element is an ACTION,
+not a boolean property: the assistant MUST call the action
+first and then read the parameterless property
+(<code>fileExists(path); IF fileExists() THEN ...</code>), and MUST
+NOT use the parameterized form inside an expression
+(<code>IF fileExists(path)</code> is wrong).</p>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=assignment-rules-->Assignment rules (<code>&lt;-</code>)<a href=#assignment-rules-- class=hash-link aria-label="Direct link to assignment-rules--" title="Direct link to assignment-rules--" translate=no>​</a></h3>
+<ol>
+<li class="">
+<p>The arguments of the changed property on the left side
+of <code>&lt;-</code> may be expressions over the statement's
+parameters (<code>sentFolder(account(f)) &lt;- f</code>), but new
+local parameters can be introduced only as typed
+parameters, not inside expressions. Writing "into
+a computed key" by analogy with imperative
+<code>map[key] = value</code> easily breaks this.</p>
+<p>So when remapping self-referential links while
+deep-copying an object graph, the assistant SHOULD keep
+an inverse map and iterate with the TARGET object as the
+parameter —
+<code>link(Copy n) &lt;- newOf(link(srcOf(n))) WHERE spec(n);</code> —
+rather than write <code>link(newOf(x)) &lt;- newOf(link(x));</code></p>
+</li>
+<li class="">
+<p><code>&lt;- expr IF cond</code> assigns the whole expression to ALL
+objects: where <code>cond</code> fails, the property is overwritten
+with <code>NULL</code>. It is effectively reset-plus-set.</p>
+<p>When ADDING an assignment to a property already populated
+earlier in the same action, the assistant MUST use the
+<code>WHERE</code> form (<code>prop(x) &lt;- TRUE WHERE cond(x)</code>), which
+changes only the rows matching the condition. A second
+IF-form assignment to the same property MUST be treated
+as a review red flag.</p>
+</li>
+<li class="">
+<p>Inline in an action or event body, <code>PREV(&lt;expr>)</code> takes
+the WHOLE wrapped expression to the session-start state,
+including its argument sub-expressions: an argument
+computed in the current session (a <code>LOCAL</code>, a property
+of an object created in the session) reads as <code>NULL</code>
+inside <code>PREV</code>, silently nulling the result.</p>
+<p>To read previous data with current arguments, the
+assistant MUST wrap <code>PREV</code> in a separate property —
+<code>prevF(x) = PREV(f(x));</code> — and call it instead of
+writing <code>PREV(f(&lt;session-computed arg>))</code> inline.</p>
+</li>
+<li class="">
+<p>A parameter through which a property whose name is
+declared on several classes is read or changed MUST be
+annotated with its class at first use
+(<code>date(Interaction i) &lt;- ...</code>): an overloaded name is
+resolved by the parameter classes, and an untyped
+parameter yields an "ambiguous name" error. This
+especially concerns events: their statement is a separate
+parameter context in which the class is not inferred from
+anywhere else, and an <code>i IS Interaction</code> condition does
+not set the parameter's class.</p>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=loop-rules-for-while>Loop rules (<code>FOR</code>, <code>WHILE</code>)<a href=#loop-rules-for-while class=hash-link aria-label="Direct link to loop-rules-for-while" title="Direct link to loop-rules-for-while" translate=no>​</a></h3>
+<ol>
+<li class="">
+<p><code>FOR</code> fixes its set before the first iteration: the
+condition is evaluated once, the matching rows are read,
+and the body then runs once per row of that set. What the
+body changes — the data under the condition included —
+does not add or remove iterations.</p>
+<p><code>WHILE</code> is the operator that re-reads, but it does so per
+STEP, not per row: one step re-evaluates the condition,
+reads the whole matching set and runs the body for every
+row of it, and only then is the set read again; iteration
+stops when it comes back empty. So a row already in the
+current step still gets its turn even if an earlier row of
+that same step has made the condition false for it.</p>
+</li>
+<li class="">
+<p>Without <code>ORDER</code> a <code>FOR</code> walks its set in arbitrary order.
+The assistant MUST give an explicit <code>ORDER</code> whenever the
+result depends on the sequence — numbering, running totals,
+anything reading what an earlier iteration wrote — or
+whenever <code>TOP</code> limits how many rows are taken, and MUST
+end that <code>ORDER</code> with a key that separates any two rows.</p>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=thread-rules-newthread-newexecutor>Thread rules (<code>NEWTHREAD</code>, <code>NEWEXECUTOR</code>)<a href=#thread-rules-newthread-newexecutor class=hash-link aria-label="Direct link to thread-rules-newthread-newexecutor" title="Direct link to thread-rules-newthread-newexecutor" translate=no>​</a></h3>
+<ol>
+<li class="">
+<p>A server-side thread action shares the change session of
+the calling code, and change sessions are not thread-safe.</p>
+<p>The assistant SHOULD therefore wrap the body of a
+server-side <code>NEWTHREAD</code> in <code>NEWSESSION</code>, and in
+<code>NEWSESSION NEWSQL</code> when it needs a database transaction of
+its own. It is a trade: a plain <code>NEWSESSION</code> no longer sees
+the caller's unsaved changes, so the wrapping is left out
+only where sharing the session is deliberate AND the two
+are known not to run at the same time.</p>
+<p>What the wrapping buys inside an <code>APPLY</code> transaction
+depends on WHEN the body actually starts. <code>NEWSESSION</code>,
+<code>NEWSQL</code> included, creates no session while the transaction
+is still open — the action is deferred into the current one
+— and the check happens at the moment the body runs, not at
+the moment it is scheduled. A <code>SCHEDULE DELAY</code> is a number
+of milliseconds, not a barrier waiting for the apply, so it
+guarantees nothing either. The assistant MUST NOT count on
+a thread started from a global handler being isolated.</p>
+<p>A client executor is the opposite case: the action is
+delivered to the user's connection and runs there in its
+own fresh session, so wrapping it adds nothing.</p>
+</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=events-when>Events (WHEN)<a href=#events-when class=hash-link aria-label="Direct link to Events (WHEN)" title="Direct link to Events (WHEN)" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=event-rules-when>Event rules (<code>WHEN</code>)<a href=#event-rules-when class=hash-link aria-label="Direct link to event-rules-when" title="Direct link to event-rules-when" translate=no>​</a></h3>
+<ol>
+<li class="">
+<p>A <code>WHEN</code> event fires whenever its condition becomes true
+during a session and writes its target property
+unconditionally. If the same target property is also
+changed explicitly elsewhere in the session
+(user input, action assignment, import),
+the event overwrites that explicit change.</p>
+</li>
+<li class="">
+<p>When the event's purpose is only to derive or default
+a value from other inputs, the assistant SHOULD guard
+the condition with <code>AND NOT CHANGED(&lt;target>)</code>
+for each target property the event writes.</p>
+<p>This prevents the event from clobbering an explicit
+change to the target made elsewhere in the same session.</p>
+</li>
+<li class="">
+<p>The guard SHOULD be omitted only when the event must
+forcibly override any explicit change — for example,
+maintained totals, audit stamps, or invariants
+the user is not allowed to bypass.</p>
+</li>
+<li class="">
+<p>Rules 1-3 describe the event-action form
+<code>WHEN &lt;condition> DO &lt;target> &lt;- &lt;expr></code>. The calculated
+event form <code>&lt;target> &lt;- &lt;expr> WHEN &lt;condition></code> behaves
+differently: its change is calculated when the target
+property is accessed, and an explicit change of that
+property in the session takes priority over the event's
+change.</p>
+<p>So to default a value while yielding to an explicit
+change, the calculated event form alone is enough —
+no guard is needed. Testing <code>CHANGED(&lt;target>)</code> in its
+condition is not possible in any case: the target would
+then depend on its own change, forming a cycle
+<code>&lt;target></code> -> <code>CHANGED(&lt;target>)</code> -> <code>&lt;target></code>.</p>
+<p>In the absence of an explicit change the event writes
+the value of the expression even when it is <code>NULL</code>.</p>
+</li>
+<li class="">
+<p>A <code>WHEN</code> condition is checked on deleted objects too.
+Deleting an object resets its data properties to <code>NULL</code>,
+so a condition that reacts to a value becoming <code>NULL</code> is
+satisfied for every deleted object whose value had been
+non-<code>NULL</code>, and the handler runs on the object that is
+already gone.</p>
+<p>Which change operators those are is decided by the
+transition each of them covers: <code>DROPPED</code>, <code>CHANGED</code>,
+<code>DROPCHANGED</code> and <code>SETDROPPED</code> include non-<code>NULL</code> to
+<code>NULL</code> and therefore fire on deletion; <code>SET</code> and
+<code>SETCHANGED</code> require the new value to be non-<code>NULL</code> and
+do not.</p>
+<p>Where the condition can fire on the way to <code>NULL</code>, and the
+handler must not act on a deletion or on an object leaving
+the class, it MUST be narrowed with <code>&lt;object> IS &lt;Class></code>.</p>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=where-local-events-actually-run>Where local events actually run<a href=#where-local-events-actually-run class=hash-link aria-label="Direct link to Where local events actually run" title="Direct link to Where local events actually run" translate=no>​</a></h3>
+<ol>
+<li class="">
+<p>A local event handler does not run at the moment the data
+changes. It runs at a point in the session's life: a form
+synchronising, a form opening, an <code>APPLY</code> starting, a
+nested session being created, or an explicit
+<code>System.executeLocalEvents[]</code>.</p>
+<p>Outside an interactive form — an action called from an
+external system, a scheduler task — the only one of those
+that normally happens is the apply. So reading a property
+right after changing the data it depends on returns the
+value WITHOUT the local handlers applied, unlike a
+calculated property, which is always current.</p>
+<p>The assistant MUST NOT rely on a local handler having run
+in such a place: either let <code>APPLY</code> do it, or call
+<code>System.executeLocalEvents[]</code> before the read.</p>
+</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=constraints>Constraints<a href=#constraints class=hash-link aria-label="Direct link to Constraints" title="Direct link to Constraints" translate=no>​</a></h2>
+<ol>
+<li class="">
+<p>When a value choice in one property must be restricted
+based on values of other properties — sibling fields
+on the same form, current context, related objects —
+the assistant SHOULD first consider
+<code>CONSTRAINT ... CHECKED BY &lt;property></code>.</p>
+<p><code>CHECKED BY</code> makes the change dialog for the listed
+property automatically filter out values that would
+violate the constraint, so the restriction is enforced
+declaratively at the point of selection, not after
+the fact.</p>
+<p>The filter reaches those change dialogs only. An input
+mechanism that offers values in some other way does not
+use it, and there a violating value is rejected only when
+the constraint itself is checked.</p>
+</li>
+<li class="">
+<p>Manual form filters or hand-rolled validation actions
+SHOULD be the fallback when <code>CHECKED BY</code> cannot express
+the restriction (e.g. the filter depends on transient UI
+state not modeled as a property, or the rule is advisory
+rather than enforced) — and also when the restriction IS
+expressible that way but the value is picked through some
+other mechanism, which the <code>CHECKED BY</code> filter does not
+reach.</p>
+</li>
+<li class="">
+<p>The assistant SHOULD NOT put heavy aggregates over large
+tables (especially nested non-materialized ones) into a
+<code>CONSTRAINT</code> condition: the incremental check at apply
+can expand into an impractically large query, even with
+computation hints on the properties.</p>
+<p>For such expensive checks, use a <code>WHEN</code> event instead:
+a cheap change-detector condition, reads of the heavy
+values into <code>LOCAL</code>s in the handler, then <code>MESSAGE</code> +
+<code>CANCEL</code> on violation.</p>
+</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=change-sessions-newsession-apply>Change sessions (NEWSESSION, APPLY)<a href=#change-sessions-newsession-apply class=hash-link aria-label="Direct link to Change sessions (NEWSESSION, APPLY)" title="Direct link to Change sessions (NEWSESSION, APPLY)" translate=no>​</a></h2>
+<ol>
+<li class="">
+<p>Before introducing <code>NEWSESSION</code>, the assistant MUST decide
+which session behavior is required. None of the choices below
+applies during an <code>APPLY</code> transaction — inside a global event
+handler or an applied action — where no session is created at
+all: the inner action is deferred and runs in the current
+session, inside the same transaction. The assistant MUST NOT
+expect an independent commit there.</p>
+<ul>
+<li class="">isolated independent unit -> <code>NEWSESSION</code></li>
+<li class="">isolated unit that must also see selected local properties
+from the upper session -> <code>NEWSESSION NESTED (...)</code></li>
+<li class="">isolated unit that must see all local properties
+from the upper session -> <code>NEWSESSION NESTED LOCAL</code></li>
+<li class="">child dialog or editor that must work with unsaved upper-session
+objects and return its changes to that upper session
+-> <code>NESTEDSESSION</code></li>
+</ul>
+</li>
+<li class="">
+<p>For actions added to forms,
+there are two main patterns:</p>
+<ul>
+<li class="">readonly form pattern:
+the form is effectively browse-only, so actions added to it
+SHOULD run in a new session by default</li>
+<li class="">editable form pattern:
+the form has editable properties, so any action added to it
+that uses <code>NEWSESSION</code> MUST either:
+<code>APPLY;</code>
+<code>IF canceled() THEN RETURN;</code>
+before <code>NEWSESSION</code>, or be fully independent
+from unsaved changes in that form</li>
+</ul>
+</li>
+<li class="">
+<p>Plain <code>NEWSESSION</code> is the default
+for isolated work that must not accidentally apply
+the caller's pending form changes.</p>
+<p>Typical patterns in the source:</p>
+<ul>
+<li class="">readonly list forms with
+<code>PROPERTIES(...) NEWSESSION NEW, EDIT, DELETE</code></li>
+<li class="">status transitions or dependent document creation
+after a preceding <code>APPLY</code></li>
+<li class="">external or integration actions that isolate HTTP calls
+and persist their own results</li>
+<li class="">small immediate UI updates with
+<code>NEWSESSION { APPLY { ... } }</code></li>
+</ul>
+</li>
+<li class="">
+<p>If inner logic depends on upper-session local state
+such as selections, marks, or import buffers,
+the assistant MUST carry that state explicitly
+through <code>NESTED (...)</code> or <code>NESTED LOCAL</code>
+on the operator, or declare the property itself
+<code>DATA LOCAL NESTED</code>, which carries it over
+without being listed on the operator.
+Neither route works under <code>NEWSQL</code>: on a connection
+of its own it migrates nothing, so the assistant
+MUST NOT combine <code>NEWSQL</code> with a dependency on
+upper-session local state.</p>
+</li>
+<li class="">
+<p>A successful <code>APPLY</code> clears the session, and with it
+every <code>LOCAL</code> property in it by default: after such an
+<code>APPLY</code> returns, a plain <code>LOCAL</code> is empty again. An
+<code>APPLY</code> that fails or is cancelled leaves the session
+as it was, locals included — which is why the assistant
+MUST NOT read a <code>LOCAL</code> after <code>APPLY</code> to tell success
+from failure; <code>canceled()</code> is what tells them apart.
+Inside a nested session there is no clearing at all:
+the changes are copied to the parent session and the
+nested one is left standing, locals and all.</p>
+<p>Outside a nested session, a <code>LOCAL</code> value survives
+a SUCCESSFUL <code>APPLY</code> when EITHER:</p>
+<ul>
+<li class="">the <code>LOCAL</code> is declared as <code>NESTED</code> at declaration
+time (<code>LOCAL NESTED name = Type ();</code> or
+<code>name = DATA LOCAL NESTED Type (...);</code>), OR</li>
+<li class="">the <code>APPLY</code> explicitly preserves it via
+<code>APPLY NESTED (name1, ..., nameN)</code>
+or <code>APPLY NESTED LOCAL</code> for all locals.</li>
+</ul>
+<p>The assistant MUST NOT rely on a plain <code>LOCAL</code> value
+computed before a SUCCESSFUL <code>APPLY</code> to still be readable
+after it. Two cases keep it: a nested session, which clears
+nothing at all, and an apply that failed or was cancelled,
+which leaves the session as it was.
+If a staged value must outlive <code>APPLY</code> — for example,
+an import buffer read during post-apply follow-up —
+the assistant MUST either declare it with <code>NESTED</code>,
+or list it in <code>APPLY NESTED (...)</code> (or use
+<code>APPLY NESTED LOCAL</code>) at the call site.</p>
+</li>
+<li class="">
+<p>When using <code>NEWSESSION NESTED (...)</code> or
+<code>NEWSESSION NESTED LOCAL</code>, the assistant SHOULD preserve
+the same nested local properties on <code>APPLY</code>
+if the result must be copied back to the upper session,
+for example with <code>APPLY NESTED (...)</code>
+or <code>APPLY NESTED LOCAL</code>.</p>
+</li>
+<li class="">
+<p>The assistant MUST NOT replace <code>NESTEDSESSION</code>
+with plain <code>NEWSESSION</code> for child forms or dialogs
+attached to a parent object that may still be unsaved
+in the current form session.</p>
+</li>
+<li class="">
+<p>Before opening a fresh <code>NEWSESSION</code> from an action
+started on an edit form, the assistant SHOULD decide
+whether current form changes must be saved first.</p>
+<p>The common pattern is:
+<code>APPLY;</code>
+<code>IF canceled() THEN RETURN;</code>
+<code>NEWSESSION { ... }</code></p>
+<p>This pattern is used before status changes,
+document generation, and other isolated follow-up actions.</p>
+</li>
+<li class="">
+<p>After <code>APPLY</code>, the assistant MUST check <code>canceled()</code>
+only when later logic depends on whether the save
+succeeded — to early-return, skip a follow-up side
+effect, or roll back staged work.</p>
+<p><code>APPLY</code> in an interactive context shows the constraint
+message to the user on its own. The assistant MUST NOT
+add <code>IF canceled() THEN MESSAGE applyMessage()</code> after
+<code>APPLY</code> in interactive actions solely to report the
+failure — it duplicates the message the platform
+already shows. Explicit surfacing via <code>applyMessage()</code>
+or <code>throwException(applyMessage())</code> is required only
+for non-interactive callers (API endpoints, background
+integrations) where no dialog is shown.</p>
+<p>If <code>APPLY</code> fails because of a constraint, the changes
+remain unsaved in the current session, and any following
+<code>APPLY</code> in the same session will also fail until the
+offending data is fixed or the changes are discarded
+(for example with <code>CANCEL</code>).</p>
+</li>
+<li class="">
+<p>The assistant SHOULD keep <code>NEWSESSION</code> blocks small
+and purpose-specific: isolate one unit of work,
+apply it if needed, and exit.</p>
+<p>The assistant MUST NOT introduce <code>NEWSESSION</code>
+merely to hide session-visibility bugs.
+If upper-session changes must remain visible,
+nested session semantics are required.</p>
+</li>
+<li class="">
+<p>The body of <code>APPLY</code> may run more than once. The apply
+transaction MAY be retried automatically after an update
+conflict, a deadlock or a timeout — whether it is depends
+on the failure and on the attempt limit — and the applied
+action and the synchronous global handlers are inside what
+a retry repeats.</p>
+<p>So they MUST be safe to repeat. An irreversible external
+side effect — sending mail, calling an HTTP API, printing,
+writing a file — MUST NOT be done there: it belongs after
+the apply has succeeded, where <code>canceled()</code> says whether
+it did.</p>
+</li>
+</ol></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href=https://github.com/lsfusion/platform/edit/master/docs/rules/en/Rules_logic.md target=_blank rel="noopener noreferrer" class=theme-edit-this-page><svg fill=currentColor height=20 width=20 viewBox="0 0 40 40" class=iconEdit_Z9Sw aria-hidden=true><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"/></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"><span class=theme-last-updated>Last updated<!-- --> on <b><time datetime=2026-08-31T16:44:40.000Z itemprop=dateModified>Aug 31, 2026</time></b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href=/Rules/><div class=pagination-nav__sublabel>Previous</div><div class=pagination-nav__label>lsFusion Rules</div></a><a class="pagination-nav__link pagination-nav__link--next" href=/Rules_view/><div class=pagination-nav__sublabel>Next</div><div class=pagination-nav__label>Rules: view logic</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#properties class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href=#property-rules class="table-of-contents__link toc-highlight">Property rules</a><li><a href=#abstract-property-rules- class="table-of-contents__link toc-highlight">Abstract property rules (<code>+=</code>)</a><li><a href=#ordering-rules-order class="table-of-contents__link toc-highlight">Ordering rules (<code>ORDER</code>)</a></ul><li><a href=#actions-and-assignment class="table-of-contents__link toc-highlight">Actions and assignment</a><ul><li><a href=#action-rules class="table-of-contents__link toc-highlight">Action rules</a><li><a href=#assignment-rules-- class="table-of-contents__link toc-highlight">Assignment rules (<code>&lt;-</code>)</a><li><a href=#loop-rules-for-while class="table-of-contents__link toc-highlight">Loop rules (<code>FOR</code>, <code>WHILE</code>)</a><li><a href=#thread-rules-newthread-newexecutor class="table-of-contents__link toc-highlight">Thread rules (<code>NEWTHREAD</code>, <code>NEWEXECUTOR</code>)</a></ul><li><a href=#events-when class="table-of-contents__link toc-highlight">Events (WHEN)</a><ul><li><a href=#event-rules-when class="table-of-contents__link toc-highlight">Event rules (<code>WHEN</code>)</a><li><a href=#where-local-events-actually-run class="table-of-contents__link toc-highlight">Where local events actually run</a></ul><li><a href=#constraints class="table-of-contents__link toc-highlight">Constraints</a><li><a href=#change-sessions-newsession-apply class="table-of-contents__link toc-highlight">Change sessions (NEWSESSION, APPLY)</a></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Docs</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/>lsf docs</a><li class=footer__item><a href=https://lsfusion.org/ru/ed_materials target=_blank rel="noopener noreferrer" class=footer__link-item>Learning materials<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Community</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://t.me/lsfusion_official target=_blank rel="noopener noreferrer" class=footer__link-item>Telegram<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://join.slack.com/t/lsfusion/shared_invite/zt-1itj7vlmf-9aBIP__nj9iMJglDaecqXg target=_blank rel="noopener noreferrer" class=footer__link-item>Slack<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://ru.stackoverflow.com/questions/tagged/lsfusion target=_blank rel="noopener noreferrer" class=footer__link-item>Stack Overflow<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>More</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://habr.com/ru/company/lsfusion/blog/ target=_blank rel="noopener noreferrer" class=footer__link-item>Habr<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://github.com/lsfusion/platform target=_blank rel="noopener noreferrer" class=footer__link-item>GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a class=footer__link-item href=/license/>License</a></ul></div></div><div class="footer__bottom text--center"><div class=footer__copyright>Copyright © 2026 lsFusion Foundation. Content licensed under <a href=https://creativecommons.org/licenses/by/4.0/>CC BY 4.0</a>. Built with Docusaurus.</div></div></div></footer></div></body>

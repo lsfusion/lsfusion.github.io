@@ -1,0 +1,806 @@
+<!doctype html><html lang=ru dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-rules/Rules_logic" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.9.2"><title data-rh=true>Rules: domain logic | lsfusion documentation</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:url content=https://docs.lsfusion.org/ru/Rules_logic/ /><meta data-rh=true property=og:locale content=ru /><meta data-rh=true property=og:locale:alternate content=en /><meta data-rh=true name=docusaurus_locale content=ru /><meta data-rh=true name=docsearch:language content=ru /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="Rules: domain logic | lsfusion documentation"/><meta data-rh=true name=description content="- Правила: свойства"/><meta data-rh=true property=og:description content="- Правила: свойства"/><link data-rh=true rel=icon href=/ru/img/favicon.ico /><link data-rh=true rel=canonical href=https://docs.lsfusion.org/ru/Rules_logic/ /><link data-rh=true rel=alternate href=https://docs.lsfusion.org/Rules_logic/ hreflang=en /><link data-rh=true rel=alternate href=https://docs.lsfusion.org/ru/Rules_logic/ hreflang=ru /><link data-rh=true rel=alternate href=https://docs.lsfusion.org/Rules_logic/ hreflang=x-default /><link data-rh=true rel=preconnect href=https://KNJZ5D60XY-dsn.algolia.net crossorigin=anonymous /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://docs.lsfusion.org/ru/AI","name":"AI","position":1},{"@type":"ListItem","item":"https://docs.lsfusion.org/ru/Rules","name":"Rules","position":2},{"@type":"ListItem","item":"https://docs.lsfusion.org/ru/Rules_logic","name":"Rules: domain logic","position":3}]}</script><link rel=alternate type=application/rss+xml href=/ru/blog/rss.xml title="lsfusion documentation RSS Feed"><link rel=alternate type=application/atom+xml href=/ru/blog/atom.xml title="lsfusion documentation Atom Feed"><link rel=preconnect href=https://www.google-analytics.com><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-38678623-1","auto"),ga("send","pageview")</script><script async src=https://www.google-analytics.com/analytics.js></script><link rel=preconnect href=https://www.google-analytics.com><link rel=preconnect href=https://www.googletagmanager.com><script async src="https://www.googletagmanager.com/gtag/js?id=G-9PP67L9JM9"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-9PP67L9JM9",{})</script><link rel=search type=application/opensearchdescription+xml title="lsfusion documentation" href=/ru/opensearch.xml><link rel=license href=https://creativecommons.org/licenses/by/4.0/><script type=application/ld+json>{"@context":"https://schema.org","@type":"WebSite","license":"https://creativecommons.org/licenses/by/4.0/","name":"lsFusion documentation","publisher":{"@type":"Organization","name":"lsFusion Foundation"},"url":"https://docs.lsfusion.org"}</script><link rel=stylesheet href=/ru/assets/css/styles.b450ab8e.css /><script src=/ru/assets/js/runtime~main.fea54733.js defer></script><script src=/ru/assets/js/main.7063e7cf.js defer></script></head><body class=navigation-with-keyboard><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/ru/img/logo.png /><div role=region aria-label="Перейти к основному содержимому"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Перейти к основному содержимому</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Переключить навигационную панель" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/ru/><div class=navbar__logo><img src=/ru/img/logo.png alt=Logo class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/ru/img/logo.png alt=Logo class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate"></b></a><a class="navbar__item navbar__link" href=/ru/Install/>Установить</a><a aria-current=page class="navbar__item navbar__link navbar__link--active" href=/ru/>Изучить</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href=https://github.com/lsfusion/platform target=_blank rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class=navbar__link aria-haspopup=true aria-expanded=false role=button href=/ru/Rules_logic/>7.0</a><ul class=dropdown__menu><li><a aria-current=page class="dropdown__link dropdown__link--active" href=/ru/Rules_logic/>7.0</a><li><a class=dropdown__link href=/ru/v6/>6.x</a><li><a class=dropdown__link href=/ru/v5/>5.x</a><li><a class=dropdown__link href=/ru/v4/>4.x</a></ul></div><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href=# aria-haspopup=true aria-expanded=false role=button class=navbar__link><svg viewBox="0 0 24 24" width=20 height=20 aria-hidden=true class=iconLanguage_nlXk><path fill=currentColor d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>Русский</a><ul class=dropdown__menu><li><a href=/Rules_logic/ target=_self rel="noopener noreferrer" class=dropdown__link lang=en>English</a><li><a href=/ru/Rules_logic/ target=_self rel="noopener noreferrer" class="dropdown__link dropdown__link--active" lang=ru>Русский</a></ul></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="Переключение между темным и светлым режимом (сейчас используется system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div><div class=navbarSearchContainer_Bca1><button type=button class="DocSearch DocSearch-Button" aria-label="Поиск (Meta+k)" aria-keyshortcuts=Meta+k><span class=DocSearch-Button-Container><svg width=20 height=20 class=DocSearch-Search-Icon viewBox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=8 stroke=currentColor fill=none stroke-width=1.4 /><path d="m21 21-4.3-4.3" stroke=currentColor fill=none stroke-linecap=round stroke-linejoin=round /></svg><span class=DocSearch-Button-Placeholder>Поиск</span></span><span class=DocSearch-Button-Keys></span></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Прокрутка к началу" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class=sidebarViewport_aRkj><div class=sidebar_njMd><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/ru/><span title=Обзор class=linkLabel_WmDU>Обзор</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/ru/Paradigm/><span title=Парадигма class=categoryLinkLabel_W154>Парадигма</span></a><button aria-label="Collapse sidebar category 'Парадигма'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex=0 href=/ru/Logical_model/><span title="Логическая модель" class=categoryLinkLabel_W154>Логическая модель</span></a><button aria-label="Expand sidebar category 'Логическая модель'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex=0 href=/ru/Physical_model/><span title="Физическая модель" class=categoryLinkLabel_W154>Физическая модель</span></a><button aria-label="Expand sidebar category 'Физическая модель'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div></ul><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/ru/Language/><span title=Язык class=categoryLinkLabel_W154>Язык</span></a><button aria-label="Collapse sidebar category 'Язык'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/ru/Tokens/><span title=Лексемы class=linkLabel_WmDU>Лексемы</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/ru/IDs/><span title=Идентификаторы class=linkLabel_WmDU>Идентификаторы</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex=0 href=/ru/Literals/><span title=Литералы class=categoryLinkLabel_W154>Литералы</span></a><button aria-label="Expand sidebar category 'Литералы'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex=0 href=/ru/Statements/><span title=Инструкции class=categoryLinkLabel_W154>Инструкции</span></a><button aria-label="Expand sidebar category 'Инструкции'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/ru/Comments/><span title=Комментарии class=linkLabel_WmDU>Комментарии</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/ru/Coding_conventions/><span title="Политика оформления кода" class=linkLabel_WmDU>Политика оформления кода</span></a></ul><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href=/ru/AI/><span title=AI class=categoryLinkLabel_W154>AI</span></a><button aria-label="Collapse sidebar category 'AI'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex=0 href=/ru/Brief/><span title=Brief class=categoryLinkLabel_W154>Brief</span></a><button aria-label="Expand sidebar category 'Brief'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex=0 href=/ru/Rules/><span title=Rules class=categoryLinkLabel_W154>Rules</span></a><button aria-label="Collapse sidebar category 'Rules'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current=page tabindex=0 href=/ru/Rules_logic/><span title="Rules: domain logic" class=linkLabel_WmDU>Rules: domain logic</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class=menu__link tabindex=0 href=/ru/Rules_view/><span title="Rules: view logic" class=linkLabel_WmDU>Rules: view logic</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class=menu__link tabindex=0 href=/ru/Rules_physical/><span title="Rules: physical model" class=linkLabel_WmDU>Rules: physical model</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class=menu__link tabindex=0 href=/ru/Rules_integration/><span title="Rules: integration" class=linkLabel_WmDU>Rules: integration</span></a></ul><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/ru/MCP_server/><span title=MCP-сервер class=linkLabel_WmDU>MCP-сервер</span></a></ul><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/ru/IDE/><span title=IDE class=linkLabel_WmDU>IDE</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/ru/Learning_materials/><span title="Обучающие материалы" class=categoryLinkLabel_W154>Обучающие материалы</span></a><button aria-label="Collapse sidebar category 'Обучающие материалы'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex=0 href=/ru/Examples/><span title=Примеры class=categoryLinkLabel_W154>Примеры</span></a><button aria-label="Expand sidebar category 'Примеры'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex=0 href=/ru/How-to/><span title=How-to class=categoryLinkLabel_W154>How-to</span></a><button aria-label="Expand sidebar category 'How-to'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div></ul><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/ru/Online_demo/><span title="Онлайн демо" class=linkLabel_WmDU>Онлайн демо</span></a></ul></nav></div></div></aside><main class=docMainContainer_TBSr><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_VOVn"><div class=docItemContainer_Djhp><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Навигационная цепочка текущей страницы"><ul class=breadcrumbs><li class=breadcrumbs__item><a aria-label="Главная страница" class=breadcrumbs__link href=/ru/><svg viewBox="0 0 24 24" class=breadcrumbHomeIcon_YNFT><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill=currentColor /></svg></a><li class=breadcrumbs__item><a class=breadcrumbs__link href=/ru/AI/><span>AI</span></a><li class=breadcrumbs__item><a class=breadcrumbs__link href=/ru/Rules/><span>Rules</span></a><li class="breadcrumbs__item breadcrumbs__item--active"><span class=breadcrumbs__link>Rules: domain logic</span></ul></nav><span class="theme-doc-version-badge badge badge--secondary">Версия: 7.0</span><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">Содержание этой страницы</button></div><div class="theme-doc-markdown markdown"><header><h1>Rules: domain logic</h1></header><ul>
+<li class=""><a href=#%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0-%D1%81%D0%B2%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%B0 class="">Правила: свойства</a></li>
+<li class=""><a href=#%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%8F-%D0%B8-%D0%BF%D1%80%D0%B8%D1%81%D0%B2%D0%B0%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5 class="">Правила: действия и присваивание</a></li>
+<li class=""><a href=#%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0-%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D1%8F-when class="">Правила: события (WHEN)</a></li>
+<li class=""><a href=#%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0-%D0%BE%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%87%D0%B5%D0%BD%D0%B8%D1%8F class="">Правила: ограничения</a></li>
+<li class=""><a href=#%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0-%D1%81%D0%B5%D1%81%D1%81%D0%B8%D0%B8-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B9-newsession-apply class="">Правила: сессии изменений (NEWSESSION, APPLY)</a></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=правила-свойства>Правила: свойства<a href=#правила-свойства class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=правила-свойств>Правила свойств<a href=#правила-свойств class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ol>
+<li class="">
+<p>Ассистент НЕ ДОЛЖЕН объявлять свойство,
+если оно используется только один раз.</p>
+<p>Исключение:
+свойство всё же можно объявить, если оно добавляется на форму.</p>
+</li>
+<li class="">
+<p>Каждый параметр свойства ДОЛЖЕН использоваться в его выражении.
+Неиспользуемые параметры запрещены.</p>
+</li>
+<li class="">
+<p>Ассистент ОБЯЗАН предполагать стандартное распространение <code>NULL</code>
+для выражений свойств:
+если любой параметр равен <code>NULL</code>, результат равен <code>NULL</code>.</p>
+<p>Исключения, которые НЕ обнуляют результат при одном операнде <code>NULL</code>:
+операторы выбора — <code>OVERRIDE</code>, возвращающий первый не-<code>NULL</code>
+операнд, и <code>IF ... THEN ... ELSE</code>, у которого
+устойчиво к <code>NULL</code> именно УСЛОВИЕ: условие <code>NULL</code> уводит
+в ветку <code>ELSE</code>, а не-<code>NULL</code> возвращает значение <code>THEN</code>
+как есть, поэтому <code>IF TRUE THEN NULL ELSE 1</code> — это <code>NULL</code>, —
+<code>MIN</code> / <code>MAX</code>, устойчивая к <code>NULL</code> арифметика <code>(+)</code> / <code>(-)</code>,
+конкатенация <code>CONCAT</code>
+(операнд <code>NULL</code> пропускается вместе со своим разделителем)
+и агрегаты <code>GROUP</code> (<code>GROUP SUM</code>, <code>GROUP MAX</code> и т. д.) —
+операнд или значение <code>NULL</code> пропускается, а не распространяется.
+<code>OR</code>, <code>NOT</code> и <code>XOR</code> тоже не распространяют: не-<code>NULL</code> операнд
+читается как <code>TRUE</code>, поэтому <code>NULL OR TRUE</code> — это <code>TRUE</code>,
+а <code>NOT NULL</code> — тоже <code>TRUE</code>. Распространяет как раз <code>AND</code>:
+он возвращает <code>TRUE</code>, только когда оба операнда не <code>NULL</code>,
+поэтому <code>TRUE AND NULL</code> — это <code>NULL</code>.
+<code>GROUP LAST</code> пропускает <code>NULL</code>, только пока у него нет <code>WHERE</code>:
+условием служит как раз не-<code>NULL</code>-ность агрегируемого выражения.
+При явном <code>WHERE</code> строка, ему удовлетворяющая, отдает свое
+значение, даже если это значение <code>NULL</code>.</p>
+<p>Эти исключения всё же дают <code>NULL</code>, когда:</p>
+<ul>
+<li class="">все операнды или агрегируемые значения равны <code>NULL</code> —
+кроме <code>NOT</code>, весь смысл которого в том, чтобы ответить
+там <code>TRUE</code>;</li>
+<li class=""><code>(+)</code> / <code>(-)</code> или <code>GROUP SUM</code> даёт <code>0</code>
+(нулевой результат возвращается как <code>NULL</code>).</li>
+</ul>
+</li>
+<li class="">
+<p>Ассистент НЕ ДОЛЖЕН использовать <code>GROUP</code> с блоком <code>BY</code>
+(в том числе <code>GROUP AGGR</code>) внутри выражений:
+в приведении типа, в арифметике
+(включая <code>(+)</code> / <code>(-)</code>), как аргумент
+другого свойства или как реализацию
+абстрактного свойства через <code>+=</code>.</p>
+<p>Такой оператор сам задаёт параметры результата,
+поэтому допустим только как определение свойства
+целиком: правая часть определения через <code>=</code>
+либо встроенное определение в квадратных скобках;
+в любой другой позиции платформа даёт ошибку
+<code>BY clause in GROUP operator cannot be used in expressions</code>. Чтобы использовать результат
+в выражении, ассистенту СЛЕДУЕТ прежде всего
+переписать оператор без <code>BY</code>, заменив каждую
+группировку условием равенства с верхним
+параметром (<code>GROUP SUM f(x) IF g(x) = y</code>);
+иначе — применить встроенную форму
+<code>[GROUP ... BY ...](...)</code> к аргументам
+или объявить отдельное свойство
+и обращаться к нему.</p>
+<p>Ограничение связано именно с блоком <code>BY</code>:
+<code>GROUP</code> без <code>BY</code> берёт параметры из внешнего
+контекста и может использоваться внутри выражений.</p>
+<p>Рассуждая о <code>GROUP AGGR</code>, ассистент ОБЯЗАН
+трактовать его как <code>GROUP MAX</code>
+с дополнительным ограничением.</p>
+</li>
+<li class="">
+<p>Ассистенту СЛЕДУЕТ избегать лишних условий,
+когда семантика языка уже даёт требуемый результат.</p>
+</li>
+<li class="">
+<p>Ассистент НЕ ДОЛЖЕН создавать свойство, выражение которого
+равно одному из его параметров.</p>
+</li>
+<li class="">
+<p>Ассистент НЕ ДОЛЖЕН создавать несколько свойств
+с идентичными выражениями.</p>
+</li>
+<li class="">
+<p>Если свойство вычисляется из другого свойства,
+но имеет другие параметры, ассистенту СЛЕДУЕТ постараться
+сохранить то же имя свойства.</p>
+</li>
+<li class="">
+<p>Чтобы проверить, что свойство равно <code>NULL</code>,
+ассистенту СЛЕДУЕТ использовать <code>IF NOT property(...)</code>.</p>
+<p>Чтобы проверить, что оно не <code>NULL</code>,
+ассистенту СЛЕДУЕТ использовать <code>IF property(...)</code>.</p>
+</li>
+<li class="">
+<p>Ассистенту СЛЕДУЕТ указывать <code>CHARWIDTH</code>
+в определении свойства, а не в дизайне формы.</p>
+</li>
+</ol>
+<p>Для простой композиции свойства, которая лишь пробрасывает
+другое свойство, ассистенту НЕ СЛЕДУЕТ повторять
+<code>CHARWIDTH</code> на производном свойстве, если оно не должно отличаться.</p>
+<ol start=11>
+<li class="">
+<p>Для статических объектов ассистент НЕ ДОЛЖЕН использовать
+свойства <code>staticCaption</code> или <code>staticName</code>.</p>
+<p>Вместо них ассистент ОБЯЗАН использовать <code>caption</code> и <code>name</code>.</p>
+<p>Это касается и записи: <code>caption</code> и <code>name</code> — простые
+композиции над хранимыми заголовком и именем, поэтому
+присваивание в них проходит в хранимое свойство.
+Заголовок статического объекта присваивается через
+<code>caption</code>; имя менять нельзя — изменение <code>name</code>
+запрещено системным ограничением.</p>
+<p><code>name</code> возвращает каноническое имя статического объекта
+— <code>&lt;пространство_имён>_&lt;Класс>.&lt;объект></code>,
+а не короткий идентификатор. Если нужна часть после точки,
+ассистенту СЛЕДУЕТ использовать <code>basicName</code>
+из системного модуля <code>Utils</code>.</p>
+</li>
+<li class="">
+<p>Имена свойств СЛЕДУЕТ делать краткими
+и избегать лишних слов.</p>
+</li>
+<li class="">
+<p>Ассистенту НЕ СЛЕДУЕТ использовать в имени свойства слова,
+дублирующие имена классов параметров,
+кроме случаев, когда это нужно для ясности.</p>
+</li>
+<li class="">
+<p>Ассистенту НЕ СЛЕДУЕТ указывать явное пространство имён
+для свойства без необходимости.</p>
+</li>
+<li class="">
+<p>Создавая для собственного атрибута одного объекта
+DATA-свойство — или простую композицию от DATA-свойства
+(например, когда тянется имя связанного объекта), —
+ассистент ОБЯЗАН осознанно решить,
+относить ли его к системной группе <code>id</code> или <code>base</code>
+через <code>IN</code>.</p>
+<p>Атрибуты, образующие бизнес-идентификацию объекта
+и показываемые в его представлении, СЛЕДУЕТ относить
+к группе <code>id</code>; прочие основные атрибуты — к группе <code>base</code>
+(<code>id</code> вложена в <code>base</code>).</p>
+<p>Свойство НЕ СЛЕДУЕТ помещать в <code>id</code> или <code>base</code>,
+когда оно не является собственным основным атрибутом
+объекта.</p>
+</li>
+<li class="">
+<p>При делении значений целочисленных классов ассистент ОБЯЗАН
+приводить к <code>NUMERIC</code> один из операндов, а не результат.</p>
+<p>Отношение двух целых чисел — целочисленное деление,
+поэтому внешнее приведение вида <code>NUMERIC[16,4](a * b / c)</code>
+молча отбрасывает дробную часть;
+правильная форма — <code>NUMERIC[16,4](a) * b / c</code>.</p>
+</li>
+<li class="">
+<p>Класс в объявлении параметра (<code>prop(SubClass x)</code>) — это
+сигнатура, а не фильтр времени выполнения: он разрешает
+одноимённые свойства и задаёт сигнатуру, но вычисляемое
+множество определяется свойствами, использованными
+в выражении. Чтение свойства родительского класса
+с параметром, объявленным классом-потомком, всё равно
+идёт по ВСЕМ объектам родительского класса
+(например, в <code>GROUP SUM</code> — молча неверные итоги).</p>
+<p>Чтобы ограничить множество классом, ассистент ОБЯЗАН
+добавить явное условие <code>x IS SubClass</code> (или использовать
+свойство, объявленное на этом классе-потомке).</p>
+</li>
+<li class="">
+<p>В операторе <code>GROUP ... BY</code> ассистент НЕ ДОЛЖЕН
+перечислять в блоке <code>BY</code> верхние параметры,
+использованные в выражениях оператора: каждый такой
+параметр уже неявно является группировкой — параметром
+создаваемого свойства — и остаётся на своём месте
+в сигнатуре.</p>
+<p>При явном списке параметров слева <code>BY</code>-выражения
+отображаются по порядку только на параметры,
+не использованные в выражениях; несовпадение
+количества или классов даёт ошибку.</p>
+</li>
+<li class="">
+<p><code>MAX</code> и <code>MIN</code> — префиксные операторы над списком
+операндов через запятую (<code>MAX a, b</code>), а не инфиксные:
+<code>a MAX b</code> не разбирается — платформа выдаёт
+<code>no viable alternative at input 'MAX'</code>.</p>
+<p>Список операндов тянется настолько, насколько позволяет
+выражение, поэтому всё после запятой принадлежит
+оператору: <code>MAX a, b * c</code> — это <code>MAX(a, b * c)</code>,
+а <code>x * MAX a, b</code> корректно и без скобок. Там, где
+следующий оператор должен применяться к самому
+максимуму, оператор ОБЯЗАН быть взят в скобки:
+<code>(MAX a, b) * c</code>.</p>
+<p>Эти операторы сравнивают операнды одной строки;
+максимум по строкам — это <code>GROUP MAX</code>.</p>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=правила-абстрактных-свойств->Правила абстрактных свойств (<code>+=</code>)<a href=#правила-абстрактных-свойств- class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ol>
+<li class="">
+<p>Класс значения реализации <code>+=</code> ОБЯЗАН укладываться
+в класс значения, объявленный у абстрактного свойства;
+неявного приведения нет — реализация с более широким
+классом отвергается при старте сервера с ошибкой
+«wrong value class of implementation», в строках
+<code>specified</code> и <code>expected</code> которой указаны класс реализации
+и объявленный класс.</p>
+<p>Чаще всего класс расширяет арифметика, причём сильнее,
+чем кажется:</p>
+<ul>
+<li class=""><code>+</code> и <code>-</code> — как <code>MIN</code> / <code>MAX</code> и операторы выбора —
+дают общего предка, расширяя целую часть и шкалу
+независимо, поэтому результат может оказаться шире
+любого из операндов:
+<code>NUMERIC[16,2] + NUMERIC[10,4]</code> — это <code>NUMERIC[18,4]</code>;</li>
+<li class=""><code>*</code> складывает и целые части, и шкалы:
+<code>NUMERIC[16,2] * NUMERIC[10,4]</code> — это <code>NUMERIC[26,6]</code>;</li>
+<li class=""><code>/</code> расширяет катастрофически: при настройках
+по умолчанию его шкала всегда равна максимальной
+шкале <code>NUMERIC</code> (<code>32</code>), поэтому
+<code>NUMERIC[16,2] / NUMERIC[16,2]</code> — это <code>NUMERIC[48,32]</code>.</li>
+</ul>
+<p>Агрегат <code>GROUP</code> в основном сохраняет класс того, что
+агрегирует, — <code>GROUP SUM</code>, <code>GROUP MAX</code> или <code>GROUP LAST</code>
+по <code>NUMERIC[16,2]</code> дают <code>NUMERIC[16,2]</code>, — но выносит
+наружу то, до чего расширилось агрегируемое выражение.
+Сам по себе расширяет <code>GROUP CONCAT</code>: его результат —
+строка неограниченной длины (<code>ISTRING</code> при объявленном
+<code>ISTRING[250]</code>). Обычная конкатенация строк тоже
+расширяет, складывая длины операндов (<code>ISTRING[326]</code>
+при объявленном <code>ISTRING[250]</code>).</p>
+<p>Любое такое выражение ассистент ОБЯЗАН обернуть в явное
+приведение к объявленному классу:
+<code>f(X x) += NUMERIC[16,2](a(x) / b(x));</code>
+<code>f(X x) += ISTRING[250](a(x) + b(x));</code></p>
+<p>Для операндов целочисленных классов приведение ОБЯЗАНО
+сначала стоять на операнде, чтобы деление не оказалось
+целочисленным (см. правило 16 правил свойств); результат
+при этом всё равно расширяется до шкалы <code>32</code>, как любое
+деление, поэтому внешнее приведение тоже нужно:
+<code>f(X x) += NUMERIC[16,2](NUMERIC[16,2](a(x)) / b(x));</code></p>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=правила-упорядочивания-order>Правила упорядочивания (<code>ORDER</code>)<a href=#правила-упорядочивания-order class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ol>
+<li class="">
+<p>Там, где две строки могут разделить ключ порядка, а ответ
+зависит от того, какая из них победит, — какая из двух строк
+одной даты станет <code>GROUP LAST</code>, какую из двух строк равного
+приоритета возьмет <code>TOP 1</code>, на какую шагнет назад
+<code>PARTITION PREV</code>, — ассистент ОБЯЗАН выписать различитель
+явно, обычно сам объект: <code>ORDER date(d), d</code>.</p>
+<p>Для части таких случаев платформа дополняет неполный порядок
+сама, поэтому симптомом будет не разброс от запуска
+к запуску, а то, что выбрана та строка, которую отбирает
+служебный порядок по интерфейсам, — а его предметная область
+не просила. Выписанный различитель и делает выбор
+задуманным.</p>
+</li>
+<li class="">
+<p>Накопительный <code>PARTITION SUM ... ORDER</code> без <code>TOP</code>
+и <code>OFFSET</code> — тот случай, когда различитель добавлять
+по привычке НЕ ДОЛЖНО. Его рамка по умолчанию дает всем
+строкам с одинаковым ключом порядка одно и то же накопленное
+значение. Добавленный различитель меняет результат — с итога
+на группу равных ключей на итог на строку, — а это решение
+о предметной области, а не мера предосторожности.
+Под <code>TOP</code> или <code>OFFSET</code> действует обычное правило 1: они
+отбирают строки, и какие именно — стоит сказать.</p>
+</li>
+<li class="">
+<p><code>PARTITION LAST</code> не читает порядок, чтобы вычислить свое
+значение: это значение текущей строки. Отбирает по порядку
+<code>GROUP LAST</code>.</p>
+</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=правила-действия-и-присваивание>Правила: действия и присваивание<a href=#правила-действия-и-присваивание class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=правила-действий>Правила действий<a href=#правила-действий class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ol>
+<li class="">
+<p>Ассистент ОБЯЗАН избегать <code>FOR</code>, когда тот же результат
+можно выразить множественной (set-based) конструкцией.</p>
+<p><code>FOR</code> итерирует строку за строкой, и к нему СЛЕДУЕТ прибегать в последнюю очередь,
+когда нет декларативной альтернативы.
+Единственное измеренное исключение работает в обратную сторону:
+когда присваиваемое значение — агрегат <code>GROUP</code>, границы которого
+коррелируют с обновляемой строкой, и оба множества велики,
+множественный вариант может скомпилироваться в запрос,
+материализующий всю корреляцию, и построчный <code>FOR ... NOINLINE</code>
+может оказаться быстрее — там, где индекс по агрегируемому
+классу позволяет отвечать на агрегат каждой строки
+индексным обращением.</p>
+<p>Предпочитайте множественные альтернативы, например:</p>
+<ul>
+<li class="">агрегация или материализация множества
+-> <code>GROUP SUM</code>, <code>GROUP CONCAT</code>, <code>GROUP MAX</code>,
+<code>GROUP LAST</code>, <code>GROUP AGGR</code></li>
+<li class="">присваивание свойства по множеству
+-> прямое присваивание свойства с параметрами
+вместо цикла <code>FOR ... DO</code></li>
+<li class="">экспорт табличных или иерархических данных
+-> <code>EXPORT FROM</code>, <code>EXPORT JSON FROM</code>,
+<code>EXPORT XML FROM</code>, <code>EXPORT CSV FROM</code></li>
+<li class="">построение структурированных данных
+-> <code>JSON FROM</code>, <code>XML FROM</code></li>
+<li class="">массовые интеграционные записи
+-> <code>NEW</code>, <code>DELETE</code> или множественное изменение свойства
+вместо построчного <code>FOR</code></li>
+</ul>
+<p><code>FOR</code> приемлем, когда тело имеет настоящий
+построчный поток управления, такой как условный <code>APPLY</code>,
+<code>MESSAGE</code>, <code>throwException</code> или внешние вызовы,
+которые нельзя выразить как операцию над множеством.</p>
+</li>
+<li class="">
+<p>Параметры, вводимые в <code>NEW alias = Class</code>
+и <code>FOR expr(p) [NEW alias = Class] DO { ... }</code>,
+НЕ следуют обычным правилам лексической области видимости
+из мейнстримных языков программирования.</p>
+<p>Такие параметры видны ТОЛЬКО внутри тела
+блока <code>NEW</code> или цикла <code>FOR</code>, которые их вводят.</p>
+<p>Ассистент НЕ ДОЛЖЕН ссылаться на эти параметры
+вне вводящего их блока.</p>
+<p>Когда зависимое вычисление должно переиспользовать эти параметры,
+ассистенту СЛЕДУЕТ вкладывать дополнительные блоки <code>NEW</code> или <code>FOR</code>
+внутрь вводящего блока, где параметры ещё находятся
+в области видимости, вместо того чтобы выносить значения
+во вспомогательное хранилище.</p>
+<p>И наоборот, параметр, объявленный внутри агрегата <code>GROUP</code>,
+принадлежит этому агрегату и НЕ виден снаружи;
+в частности, он не может служить переменной цикла
+объемлющего <code>FOR</code>. Объявите переменную собственным
+параметром <code>FOR</code>, а агрегат используйте только
+как логическое условие по ней.</p>
+</li>
+<li class="">
+<p>Ассистенту СЛЕДУЕТ избегать введения свойств <code>LOCAL</code>
+без конкретной необходимости.</p>
+<p><code>LOCAL</code> материализует временную таблицу в PostgreSQL,
+только когда содержит больше одной строки, поэтому
+стоимость выполнения, заметно превышающая стоимость
+стековой переменной в обычном языке, относится
+к <code>LOCAL</code> с параметрами (буферы, ключуемые номером
+строки, значения по объектам). <code>LOCAL</code> без параметров
+содержит не больше одной строки и всегда хранится
+в памяти, поэтому флаги и одиночные значения
+без параметров дёшевы; избегать их стоит
+не из-за стоимости, а чтобы не плодить сущности.</p>
+</li>
+<li class="">
+<p><code>LOCAL</code> обычно оправдан, когда выполняются ОБА условия:</p>
+<ul>
+<li class="">его значение нетривиально вычислить
+(агрегация, join'ы, многошаговая логика, внешние вызовы
+или другая работа, которую стоит материализовать), И</li>
+<li class="">то же значение используется более одного раза,
+так что материализация позволяет избежать повторного вычисления.</li>
+</ul>
+</li>
+<li class="">
+<p>По возможности ассистенту СЛЕДУЕТ предпочитать альтернативы
+новому <code>LOCAL</code>:</p>
+<ul>
+<li class="">встраивать выражение в каждое место использования, если оно дешёвое</li>
+<li class="">вкладывать блоки <code>NEW</code> / <code>FOR</code>, чтобы промежуточные значения
+оставались в области видимости параметров</li>
+<li class="">использовать обычное (не <code>LOCAL</code>) вычисляемое свойство,
+когда значение переиспользуется в нескольких действиях</li>
+</ul>
+</li>
+<li class="">
+<p>Это рекомендации, а не жёсткие запреты.
+Если ассистент не может найти рабочий синтаксис
+для конструкции без <code>LOCAL</code> или другой подход
+постоянно не получается и не выходит построить чистое действие,
+откат к <code>LOCAL</code> приемлем как последнее средство.</p>
+<p>Устоявшиеся паттерны <code>LOCAL</code>, предписанные другими правилами
+(например, промежуточное хранение при импорте,
+перенос между вложенными сессиями),
+остаются допустимыми; ассистенту СЛЕДУЕТ держать такие
+<code>LOCAL</code> минимальными по количеству и области.</p>
+</li>
+<li class="">
+<p>Параметры верхнеуровневых операторов тела действия
+разделяют один контекст параметров: одинаковые имена
+обозначают один и тот же параметр, а класс параметра
+объявляется только при первом использовании.</p>
+<p>В генерируемых скриптах (<code>eval</code>, наполнение данных)
+ассистенту СЛЕДУЕТ давать параметрам верхнеуровневых
+операторов уникальные имена, чтобы не зависеть
+от порядка операторов.</p>
+</li>
+<li class="">
+<p>Многие системные служебные действия возвращают результат
+через одноимённое локальное свойство без параметров
+(например, в <code>Utils</code>: действие <code>fileExists[ISTRING[500]]</code>
+пишет в свойство <code>fileExists[]</code>). Такой элемент — ДЕЙСТВИЕ,
+а не логическое свойство: ассистент ОБЯЗАН сначала
+вызвать действие, а затем прочитать свойство без
+параметров (<code>fileExists(path); IF fileExists() THEN ...</code>),
+и НЕ ДОЛЖЕН использовать форму с параметрами внутри
+выражения (<code>IF fileExists(path)</code> — неверно).</p>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=правила-присваивания-->Правила присваивания (<code>&lt;-</code>)<a href=#правила-присваивания-- class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ol>
+<li class="">
+<p>Аргументы изменяемого свойства в левой части <code>&lt;-</code> могут
+быть выражениями от параметров оператора
+(<code>sentFolder(account(f)) &lt;- f</code>), но новые локальные
+параметры вводятся только как типизированные параметры,
+а не внутри выражений. Запись «по вычисляемому ключу»
+по аналогии с императивным <code>map[key] = value</code> легко
+нарушает это.</p>
+<p>Поэтому, перенаправляя ссылки-самоссылки при глубоком
+копировании графа объектов, ассистенту СЛЕДУЕТ держать
+обратное отображение и итерироваться с ЦЕЛЕВЫМ объектом
+в роли параметра —
+<code>link(Copy n) &lt;- newOf(link(srcOf(n))) WHERE spec(n);</code> —
+а не писать <code>link(newOf(x)) &lt;- newOf(link(x));</code></p>
+</li>
+<li class="">
+<p><code>&lt;- выражение IF условие</code> присваивает всё выражение
+ВСЕМ объектам: там, где условие не выполняется, свойство
+перезаписывается <code>NULL</code>. Фактически это сброс-плюс-запись.</p>
+<p>ДОБАВЛЯЯ присваивание к свойству, уже заполненному ранее
+в том же действии, ассистент ОБЯЗАН использовать форму
+<code>WHERE</code> (<code>prop(x) &lt;- TRUE WHERE cond(x)</code>), которая меняет
+только строки, подходящие под условие. Второе
+присваивание в форме IF тому же свойству ОБЯЗАНО
+рассматриваться как сигнал тревоги при ревью.</p>
+</li>
+<li class="">
+<p>Написанный прямо в теле действия или события
+<code>PREV(&lt;выражение>)</code> переносит в состояние начала сессии
+ВСЁ обёрнутое выражение, включая подвыражения-аргументы:
+аргумент, вычисленный в текущей сессии (<code>LOCAL</code>, свойство
+объекта, созданного в сессии), внутри <code>PREV</code> читается
+как <code>NULL</code>, молча обнуляя результат.</p>
+<p>Чтобы прочитать предыдущие данные при текущих аргументах,
+ассистент ОБЯЗАН обернуть <code>PREV</code> в отдельное свойство —
+<code>prevF(x) = PREV(f(x));</code> — и вызывать его, а не писать
+<code>PREV(f(&lt;вычисленный в сессии аргумент>))</code> в теле.</p>
+</li>
+<li class="">
+<p>Параметр, через который читается или изменяется свойство
+с именем, объявленным у нескольких классов, ОБЯЗАН быть
+аннотирован классом при первом использовании
+(<code>date(Interaction i) &lt;- ...</code>): перегруженное имя
+разрешается по классам параметров, и нетипизированный
+параметр даёт ошибку «ambiguous name». Особенно это
+касается событий: их оператор — отдельный контекст
+параметров, в котором класс больше ниоткуда не выводится,
+а условие <code>i IS Interaction</code> класс параметра не задаёт.</p>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=правила-циклов-for-while>Правила циклов (<code>FOR</code>, <code>WHILE</code>)<a href=#правила-циклов-for-while class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ol>
+<li class="">
+<p><code>FOR</code> фиксирует свой набор до первой итерации: условие
+вычисляется один раз, подходящие строки читаются, и тело
+выполняется по разу на строку этого набора. То, что меняет
+тело, — включая данные под условием — не добавляет
+и не убирает итераций.</p>
+<p>Перечитывает набор <code>WHILE</code>, но делает это по ШАГАМ, а не
+по строкам: один шаг заново вычисляет условие, читает весь
+подходящий набор и выполняет тело для каждой его строки,
+и только потом набор читается снова; итерации прекращаются,
+когда он возвращается пустым. Поэтому строка, уже попавшая
+в текущий шаг, свою очередь получит, даже если более ранняя
+строка того же шага сделала условие для нее ложным.</p>
+</li>
+<li class="">
+<p>Без <code>ORDER</code> <code>FOR</code> обходит свой набор в произвольном порядке.
+Ассистент ОБЯЗАН задавать явный <code>ORDER</code> всюду, где результат
+зависит от последовательности — нумерация, накопительные
+итоги, любое чтение записанного предыдущей итерацией, —
+и всюду, где <code>TOP</code> ограничивает число взятых строк, и ОБЯЗАН
+завершать этот <code>ORDER</code> ключом, различающим любые две строки.</p>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=правила-потоков-newthread-newexecutor>Правила потоков (<code>NEWTHREAD</code>, <code>NEWEXECUTOR</code>)<a href=#правила-потоков-newthread-newexecutor class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ol>
+<li class="">
+<p>Серверное поточное действие разделяет сессию изменений
+вызывающего кода, а сессии изменений не потокобезопасны.</p>
+<p>Поэтому ассистенту СЛЕДУЕТ оборачивать тело серверного
+<code>NEWTHREAD</code> в <code>NEWSESSION</code>, а когда ему нужна собственная
+транзакция базы — в <code>NEWSESSION NEWSQL</code>. Это размен:
+обычный <code>NEWSESSION</code> перестает видеть несохраненные
+изменения вызывающего, поэтому обертка опускается только
+там, где разделение сессии сделано намеренно И известно,
+что одновременно они не выполняются.</p>
+<p>Что дает обертка внутри транзакции <code>APPLY</code>, зависит от того,
+КОГДА тело стартует на самом деле. Пока транзакция открыта,
+<code>NEWSESSION</code>, включая <code>NEWSQL</code>, сессию не создает — действие
+откладывается в текущую, — а проверка происходит в момент
+выполнения тела, а не в момент его планирования.
+<code>SCHEDULE DELAY</code> — это число миллисекунд, а не барьер,
+ждущий применения, так что и он ничего не гарантирует.
+Ассистент НЕ ДОЛЖЕН рассчитывать, что поток, запущенный
+из глобального обработчика, окажется изолированным.</p>
+<p>Клиентский executor — обратный случай: действие доставляется
+в соединение пользователя и выполняется там в собственной
+свежей сессии, так что оборачивать его незачем.</p>
+</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=правила-события-when>Правила: события (WHEN)<a href=#правила-события-when class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=правила-событий-when>Правила событий (<code>WHEN</code>)<a href=#правила-событий-when class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ol>
+<li class="">
+<p>Событие <code>WHEN</code> срабатывает каждый раз, когда его условие
+становится истинным в текущей сессии, и записывает
+целевое свойство безусловно. Если то же целевое свойство
+также изменяется явно где-то ещё в сессии
+(ввод пользователя, присваивание в действии, импорт),
+событие перезаписывает это явное изменение.</p>
+</li>
+<li class="">
+<p>Когда задача события — лишь вывести или подставить значение
+по умолчанию из других входов, ассистенту СЛЕДУЕТ
+защищать условие через <code>AND NOT CHANGED(&lt;целевое>)</code>
+для каждого целевого свойства, в которое пишет событие.</p>
+<p>Это предотвращает затирание событием явного изменения
+целевого свойства, сделанного в той же сессии.</p>
+</li>
+<li class="">
+<p>Защиту СЛЕДУЕТ опускать только когда событие должно
+принудительно перебивать любое явное изменение —
+например, поддерживаемые итоги, аудит-метки или
+инварианты, обходить которые пользователю не позволено.</p>
+</li>
+<li class="">
+<p>Правила 1-3 описывают форму события-действия
+<code>WHEN &lt;условие> DO &lt;целевое> &lt;- &lt;выражение></code>. Форма
+вычисляемого события <code>&lt;целевое> &lt;- &lt;выражение> WHEN &lt;условие></code>
+ведет себя иначе: его изменение вычисляется при обращении
+к целевому свойству, и явное изменение этого свойства
+в сессии приоритетнее изменения события.</p>
+<p>Поэтому для подстановки значения по умолчанию,
+уступающей явному изменению, достаточно самой формы
+вычисляемого события — защита не нужна. Проверять
+<code>CHANGED(&lt;целевое>)</code> в его условии в любом случае нельзя:
+целевое свойство стало бы зависеть от собственного
+изменения, образуя цикл
+<code>&lt;целевое></code> -> <code>CHANGED(&lt;целевое>)</code> -> <code>&lt;целевое></code>.</p>
+<p>При отсутствии явного изменения событие записывает
+значение выражения и тогда, когда оно <code>NULL</code>.</p>
+</li>
+<li class="">
+<p>Условие <code>WHEN</code> проверяется и на удаленных объектах.
+Удаление объекта сбрасывает его первичные свойства
+в <code>NULL</code>, поэтому условие, реагирующее на превращение
+значения в <code>NULL</code>, выполняется для каждого удаленного
+объекта, у которого значение было не <code>NULL</code>, и обработчик
+отрабатывает на уже несуществующем объекте.</p>
+<p>Какие это операторы изменения, решает переход, который
+каждый из них покрывает: <code>DROPPED</code>, <code>CHANGED</code>,
+<code>DROPCHANGED</code> и <code>SETDROPPED</code> включают переход из не-<code>NULL</code>
+в <code>NULL</code> и потому срабатывают на удалении; <code>SET</code>
+и <code>SETCHANGED</code> требуют, чтобы новое значение было не <code>NULL</code>,
+и не срабатывают.</p>
+<p>Там, где условие может сработать на пути в <code>NULL</code>,
+а обработчик не должен действовать на удалении или уходе
+объекта из класса, оно ОБЯЗАНО быть сужено через
+<code>&lt;объект> IS &lt;Класс></code>.</p>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=когда-на-самом-деле-выполняются-локальные-события>Когда на самом деле выполняются локальные события<a href=#когда-на-самом-деле-выполняются-локальные-события class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h3>
+<ol>
+<li class="">
+<p>Локальный обработчик события выполняется не в момент
+изменения данных, а в одной из точек жизни сессии:
+синхронизация формы, открытие формы, начало <code>APPLY</code>,
+создание вложенной сессии либо явный вызов
+<code>System.executeLocalEvents[]</code>.</p>
+<p>Вне интерактивной формы — в действии, вызванном
+из внешней системы, в задании планировщика — из этих
+точек обычно случается только применение. Поэтому чтение
+свойства сразу после изменения данных, от которых оно
+зависит, вернет значение БЕЗ применения локальных
+обработчиков — в отличие от вычисляемого свойства,
+которое всегда актуально.</p>
+<p>Ассистент НЕ ДОЛЖЕН рассчитывать в таком месте на то,
+что локальный обработчик отработал: либо это делает
+<code>APPLY</code>, либо перед чтением вызывается
+<code>System.executeLocalEvents[]</code>.</p>
+</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=правила-ограничения>Правила: ограничения<a href=#правила-ограничения class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<ol>
+<li class="">
+<p>Когда выбор значения в одном свойстве должен быть
+ограничен значениями других свойств — соседние поля
+той же формы, текущий контекст, связанные объекты —
+ассистенту СЛЕДУЕТ в первую очередь рассматривать
+<code>CONSTRAINT ... CHECKED BY &lt;свойство></code>.</p>
+<p><code>CHECKED BY</code> заставляет диалог изменения для
+указанного свойства автоматически фильтровать варианты,
+нарушающие ограничение, так что запрет применяется
+декларативно в момент выбора, а не постфактум.</p>
+<p>Фильтр доходит только до этих диалогов изменения.
+Механизм ввода, предлагающий значения как-то иначе,
+его не использует, и там нарушающее значение отвергается
+только при проверке самого ограничения.</p>
+</li>
+<li class="">
+<p>Откатываться к ручным фильтрам на форме или
+валидирующим действиям СЛЕДУЕТ, когда <code>CHECKED BY</code>
+не способен выразить ограничение (например, фильтр
+зависит от состояния UI, не смоделированного
+как свойство, или правило носит рекомендательный,
+а не обязательный характер), — а также когда ограничение
+ВЫРАЗИМО так, но значение выбирается другим механизмом,
+до которого фильтр <code>CHECKED BY</code> не доходит.</p>
+</li>
+<li class="">
+<p>Ассистенту НЕ СЛЕДУЕТ помещать в условие <code>CONSTRAINT</code>
+тяжелые группировки по большим таблицам (особенно
+вложенные нематериализованные): инкрементальная проверка
+при применении может развернуться в непрактично большой
+запрос, даже при заданных для свойств хинтах вычисления.</p>
+<p>Для таких дорогих проверок используйте событие <code>WHEN</code>:
+дешевое условие-детектор изменений, чтение тяжелых
+значений в <code>LOCAL</code> в обработчике, затем <code>MESSAGE</code> +
+<code>CANCEL</code> при нарушении.</p>
+</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=правила-сессии-изменений-newsession-apply>Правила: сессии изменений (NEWSESSION, APPLY)<a href=#правила-сессии-изменений-newsession-apply class=hash-link aria-label="Прямая ссылка на этот заголовок" title="Прямая ссылка на этот заголовок" translate=no>​</a></h2>
+<ol>
+<li class="">
+<p>Прежде чем вводить <code>NEWSESSION</code>, ассистент ОБЯЗАН решить,
+какое поведение сессии требуется. Ни один из вариантов ниже
+не работает внутри транзакции <code>APPLY</code> — в обработчике
+глобального события или в применяемом действии, — где сессия
+не создается вовсе: внутреннее действие откладывается
+и выполняется в текущей сессии, в той же транзакции. Ассистент
+НЕ ДОЛЖЕН рассчитывать там на независимую фиксацию.</p>
+<ul>
+<li class="">изолированная независимая единица -> <code>NEWSESSION</code></li>
+<li class="">изолированная единица, которая также должна видеть отдельные локальные
+свойства верхней сессии -> <code>NEWSESSION NESTED (...)</code></li>
+<li class="">изолированная единица, которая должна видеть все локальные свойства
+верхней сессии -> <code>NEWSESSION NESTED LOCAL</code></li>
+<li class="">дочерний диалог или редактор, который должен работать с несохранёнными
+объектами верхней сессии и возвращать свои изменения в эту верхнюю сессию
+-> <code>NESTEDSESSION</code></li>
+</ul>
+</li>
+<li class="">
+<p>Для действий, добавленных на формы,
+есть два основных паттерна:</p>
+<ul>
+<li class="">паттерн readonly-формы:
+форма фактически только для просмотра, поэтому добавленные на неё действия
+СЛЕДУЕТ по умолчанию выполнять в новой сессии</li>
+<li class="">паттерн редактируемой формы:
+форма имеет редактируемые свойства, поэтому любое добавленное на неё действие,
+использующее <code>NEWSESSION</code>, ДОЛЖНО либо:
+<code>APPLY;</code>
+<code>IF canceled() THEN RETURN;</code>
+перед <code>NEWSESSION</code>, либо быть полностью независимым
+от несохранённых изменений в этой форме</li>
+</ul>
+</li>
+<li class="">
+<p>Простой <code>NEWSESSION</code> — вариант по умолчанию
+для изолированной работы, которая не должна случайно применить
+ожидающие изменения формы вызывающей стороны.</p>
+<p>Типичные паттерны в исходниках:</p>
+<ul>
+<li class="">readonly-списочные формы с
+<code>PROPERTIES(...) NEWSESSION NEW, EDIT, DELETE</code></li>
+<li class="">смена статусов или создание зависимых документов
+после предшествующего <code>APPLY</code></li>
+<li class="">внешние или интеграционные действия, изолирующие HTTP-вызовы
+и сохраняющие собственные результаты</li>
+<li class="">небольшие немедленные обновления UI с
+<code>NEWSESSION { APPLY { ... } }</code></li>
+</ul>
+</li>
+<li class="">
+<p>Если внутренняя логика зависит от локального состояния верхней сессии,
+такого как выделения, отметки или буферы импорта,
+ассистент ОБЯЗАН явно перенести это состояние
+через <code>NESTED (...)</code> или <code>NESTED LOCAL</code> в операторе
+либо объявить само свойство <code>DATA LOCAL NESTED</code> —
+такое переносится без перечисления в операторе.
+Под <code>NEWSQL</code> не работает ни то, ни другое: на собственном
+соединении не переносится ничего, поэтому ассистент
+НЕ ДОЛЖЕН сочетать <code>NEWSQL</code> с зависимостью
+от локального состояния верхней сессии.</p>
+</li>
+<li class="">
+<p>Успешный <code>APPLY</code> очищает сессию, а с ней по умолчанию
+и все <code>LOCAL</code>-свойства в ней: после возврата из такого
+<code>APPLY</code> обычный <code>LOCAL</code> снова пуст. <code>APPLY</code>, который
+не прошел или был отменен, оставляет сессию как была,
+вместе с локальными, — поэтому ассистент НЕ ДОЛЖЕН
+читать <code>LOCAL</code> после <code>APPLY</code>, чтобы отличить успех
+от неудачи; их различает <code>canceled()</code>.
+Внутри вложенной сессии очистки нет вовсе: изменения
+копируются в родительскую сессию, а вложенная остается
+стоять вместе со своими локальными.</p>
+<p>Вне вложенной сессии значение <code>LOCAL</code> переживает УСПЕШНЫЙ
+<code>APPLY</code>, когда выполнено ХОТЯ БЫ ОДНО из:</p>
+<ul>
+<li class=""><code>LOCAL</code> объявлен как <code>NESTED</code> в момент объявления
+(<code>LOCAL NESTED name = Type ();</code> или
+<code>name = DATA LOCAL NESTED Type (...);</code>), ИЛИ</li>
+<li class=""><code>APPLY</code> явно сохраняет его через
+<code>APPLY NESTED (name1, ..., nameN)</code>
+или <code>APPLY NESTED LOCAL</code> для всех локалов.</li>
+</ul>
+<p>Ассистент НЕ ДОЛЖЕН рассчитывать, что значение обычного
+<code>LOCAL</code>, вычисленное до УСПЕШНОГО <code>APPLY</code>, останется
+доступным после него. Сохраняют его два случая: вложенная
+сессия, где не очищается ничего, и применение, которое
+не прошло или было отменено, — оно оставляет сессию как была. Если накопленное значение
+должно жить дольше <code>APPLY</code> — например, буфер импорта,
+читаемый в пост-apply доработке — ассистент ОБЯЗАН
+либо объявить его с <code>NESTED</code>, либо перечислить его
+в <code>APPLY NESTED (...)</code> (или использовать
+<code>APPLY NESTED LOCAL</code>) в месте вызова.</p>
+</li>
+<li class="">
+<p>При использовании <code>NEWSESSION NESTED (...)</code> или
+<code>NEWSESSION NESTED LOCAL</code> ассистенту СЛЕДУЕТ сохранять
+те же вложенные локальные свойства на <code>APPLY</code>,
+если результат должен быть скопирован обратно в верхнюю сессию,
+например через <code>APPLY NESTED (...)</code>
+или <code>APPLY NESTED LOCAL</code>.</p>
+</li>
+<li class="">
+<p>Ассистент НЕ ДОЛЖЕН заменять <code>NESTEDSESSION</code>
+простым <code>NEWSESSION</code> для дочерних форм или диалогов,
+привязанных к родительскому объекту, который может быть ещё не сохранён
+в текущей сессии формы.</p>
+</li>
+<li class="">
+<p>Прежде чем открывать свежую <code>NEWSESSION</code> из действия,
+запущенного на форме редактирования, ассистенту СЛЕДУЕТ решить,
+нужно ли сначала сохранить текущие изменения формы.</p>
+<p>Распространённый паттерн:
+<code>APPLY;</code>
+<code>IF canceled() THEN RETURN;</code>
+<code>NEWSESSION { ... }</code></p>
+<p>Этот паттерн используется перед сменой статусов,
+генерацией документов и другими изолированными последующими действиями.</p>
+</li>
+<li class="">
+<p>После <code>APPLY</code> ассистент ОБЯЗАН проверять <code>canceled()</code>
+только тогда, когда последующая логика зависит от того,
+удалось ли сохранение — для раннего выхода, пропуска
+побочного эффекта или отката отложенной работы.</p>
+<p><code>APPLY</code> в интерактивном контексте сам показывает
+пользователю сообщение об ограничении. Ассистент НЕ ДОЛЖЕН
+добавлять <code>IF canceled() THEN MESSAGE applyMessage()</code>
+после <code>APPLY</code> в интерактивных действиях только для того,
+чтобы сообщить об ошибке — это дублирует сообщение,
+которое уже показала платформа. Явный вывод через
+<code>applyMessage()</code> или <code>throwException(applyMessage())</code>
+нужен только для не интерактивных вызывающих сторон
+(API-эндпоинты, фоновые интеграции), где никакой диалог
+не показывается.</p>
+<p>Если <code>APPLY</code> не проходит из-за ограничения, изменения
+остаются несохранёнными в текущей сессии, и любой последующий
+<code>APPLY</code> в той же сессии также не пройдёт, пока
+проблемные данные не исправлены или изменения не отменены
+(например, через <code>CANCEL</code>).</p>
+</li>
+<li class="">
+<p>Ассистенту СЛЕДУЕТ держать блоки <code>NEWSESSION</code> небольшими
+и целевыми: изолировать одну единицу работы,
+применить её при необходимости и выйти.</p>
+<p>Ассистент НЕ ДОЛЖЕН вводить <code>NEWSESSION</code>
+лишь для сокрытия багов видимости сессии.
+Если изменения верхней сессии должны оставаться видимыми,
+требуется семантика вложенной сессии.</p>
+</li>
+<li class="">
+<p>Тело <code>APPLY</code> может выполниться не один раз. Транзакция
+применения МОЖЕТ быть автоматически повторена после update
+conflict, deadlock или таймаута — будет ли, зависит от сбоя
+и от лимита попыток, — а применяемое действие и синхронные
+глобальные обработчики находятся внутри того, что повтор
+выполняет заново.</p>
+<p>Поэтому они ОБЯЗАНЫ выдерживать повтор. Необратимый внешний
+побочный эффект — отправка письма, вызов HTTP API, печать,
+запись файла — НЕ ДОЛЖЕН выполняться там: его место после
+успешного применения, где <code>canceled()</code> говорит, состоялось
+ли оно.</p>
+</li>
+</ol></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href=https://github.com/lsfusion/platform/edit/master/docs/rules/ru/Rules_logic.md target=_blank rel="noopener noreferrer" class=theme-edit-this-page><svg fill=currentColor height=20 width=20 viewBox="0 0 40 40" class=iconEdit_Z9Sw aria-hidden=true><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"/></g></svg>Отредактировать эту страницу</a></div><div class="col lastUpdated_JAkA"><span class=theme-last-updated>Последнее обновление<!-- --> <b><time datetime=2026-08-31T16:44:40.000Z itemprop=dateModified>31 авг. 2026 г.</time></b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Навигация по странице документации"><a class="pagination-nav__link pagination-nav__link--prev" href=/ru/Rules/><div class=pagination-nav__sublabel>Предыдущая страница</div><div class=pagination-nav__label>Правила lsFusion</div></a><a class="pagination-nav__link pagination-nav__link--next" href=/ru/Rules_view/><div class=pagination-nav__sublabel>Следующая страница</div><div class=pagination-nav__label>Rules: view logic</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#правила-свойства class="table-of-contents__link toc-highlight">Правила: свойства</a><ul><li><a href=#правила-свойств class="table-of-contents__link toc-highlight">Правила свойств</a><li><a href=#правила-абстрактных-свойств- class="table-of-contents__link toc-highlight">Правила абстрактных свойств (<code>+=</code>)</a><li><a href=#правила-упорядочивания-order class="table-of-contents__link toc-highlight">Правила упорядочивания (<code>ORDER</code>)</a></ul><li><a href=#правила-действия-и-присваивание class="table-of-contents__link toc-highlight">Правила: действия и присваивание</a><ul><li><a href=#правила-действий class="table-of-contents__link toc-highlight">Правила действий</a><li><a href=#правила-присваивания-- class="table-of-contents__link toc-highlight">Правила присваивания (<code>&lt;-</code>)</a><li><a href=#правила-циклов-for-while class="table-of-contents__link toc-highlight">Правила циклов (<code>FOR</code>, <code>WHILE</code>)</a><li><a href=#правила-потоков-newthread-newexecutor class="table-of-contents__link toc-highlight">Правила потоков (<code>NEWTHREAD</code>, <code>NEWEXECUTOR</code>)</a></ul><li><a href=#правила-события-when class="table-of-contents__link toc-highlight">Правила: события (WHEN)</a><ul><li><a href=#правила-событий-when class="table-of-contents__link toc-highlight">Правила событий (<code>WHEN</code>)</a><li><a href=#когда-на-самом-деле-выполняются-локальные-события class="table-of-contents__link toc-highlight">Когда на самом деле выполняются локальные события</a></ul><li><a href=#правила-ограничения class="table-of-contents__link toc-highlight">Правила: ограничения</a><li><a href=#правила-сессии-изменений-newsession-apply class="table-of-contents__link toc-highlight">Правила: сессии изменений (NEWSESSION, APPLY)</a></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Документация</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/ru/>lsf документация</a><li class=footer__item><a href=https://lsfusion.org/ru/ed_materials target=_blank rel="noopener noreferrer" class=footer__link-item>Обучающие материалы<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Сообщество</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://t.me/lsfusion_official target=_blank rel="noopener noreferrer" class=footer__link-item>Telegram<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://join.slack.com/t/lsfusion/shared_invite/zt-1itj7vlmf-9aBIP__nj9iMJglDaecqXg target=_blank rel="noopener noreferrer" class=footer__link-item>Slack<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://ru.stackoverflow.com/questions/tagged/lsfusion target=_blank rel="noopener noreferrer" class=footer__link-item>Stack Overflow<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Другое</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://habr.com/ru/company/lsfusion/blog/ target=_blank rel="noopener noreferrer" class=footer__link-item>Хабр<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://github.com/lsfusion/platform target=_blank rel="noopener noreferrer" class=footer__link-item>GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a class=footer__link-item href=/ru/license/>Лицензия</a></ul></div></div><div class="footer__bottom text--center"><div class=footer__copyright>Copyright © 2026 lsFusion Foundation. Содержимое доступно по лицензии <a href=https://creativecommons.org/licenses/by/4.0/deed.ru>CC BY 4.0</a>. Built with Docusaurus.</div></div></div></footer></div></body>
