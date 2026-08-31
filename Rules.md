@@ -33,9 +33,7 @@ This article does NOT contain the rules below. Each row is a separate article, r
 
 4. The assistant MUST NOT claim that no rule applies to an area whose article it has not read.
 
-5. The assistant MUST NOT report a documentation gap in an article it has not read.
-
-6. If a required rules article cannot be read, the assistant MUST tell the user which area went unread, and MUST NOT present the result as rule-checked.
+5. If a required rules article cannot be read, the assistant MUST tell the user which area went unread, and MUST NOT present the result as rule-checked.
 
 ## Reading an area's brief (RECOMMENDED)[​](#reading-an-areas-brief-recommended "Direct link to Reading an area's brief (RECOMMENDED)")
 
