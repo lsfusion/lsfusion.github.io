@@ -12,8 +12,6 @@ The `language`, `paradigm` and `how-to` branches provide reference material, sea
 
 The `rules` branch is different in two ways. It is not searched: an article is named and delivered whole, so no part of it can be withheld without the assistant being able to tell. And reading it is not optional: before working in a technical area, the assistant MUST read that area's rules article and apply each rule according to its stated strength (MUST / MUST NOT or SHOULD / SHOULD NOT).
 
-Prior exposure to lsFusion is useful for classifying a task and forming a query, but where that knowledge came from and how current it is are not available at inference time. Recognizing a construct is therefore not evidence that its behaviour has been checked, nor that no better platform construct exists.
-
 ## The rules articles — what to read and when[​](#the-rules-articles--what-to-read-and-when "Direct link to The rules articles — what to read and when")
 
 This article does NOT contain the rules below. Each row is a separate article, read whole with `lsfusion_get_guidance(rules='<name>')` using the name in the first column.
