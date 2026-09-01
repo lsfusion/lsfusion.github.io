@@ -138,7 +138,7 @@ D. FEEDBACK / REPORTING (`lsfusion_report_feedback`)
 
 3. String literals MUST use single quotes. Double quotes are NOT a valid string literal delimiter in lsFusion and MUST NOT be used.
 
-4. An expression whose comma is NOT enclosed in brackets of its own — `OVERRIDE a, b`, `CONCAT sep, a, b`, `GROUP CONCAT expr, sep` — MUST NOT go straight into a comma-separated list (`PROPERTIES`, `EXPORT FROM`, `JSON FROM`, `ORDER`, group-object and parameter lists): that comma reads as the list separator and the list silently reshapes. Group it, or name it as a property, in whichever form the enclosing block accepts. A comma inside an ordinary call's own parentheses is safe.
+4. An expression whose comma is NOT enclosed in brackets of its own — `OVERRIDE a, b`, `CONCAT sep, a, b`, `GROUP CONCAT expr, sep`, `MAX a, b` — MUST NOT go straight into a comma-separated list (`PROPERTIES`, `EXPORT FROM`, `JSON FROM`, `ORDER`, group-object and parameter lists): that comma reads as the list separator and the list silently reshapes. Group it, or name it as a property, in whichever form the enclosing block accepts. A call's own commas — `f(a, b)` — are safe in the enclosing list, but they do not fence off such an expression placed inside them: `f(MAX a, b)` passes one argument, not two.
 
 5. When introducing a new parameter, the assistant MUST declare its class explicitly at the first use (`prop(Class x)`, `GROUP MAX Class x IF ...`). `AS` does NOT declare the parameter's class: it is a cast — the parameter itself stays untyped at later occurrences.
 
