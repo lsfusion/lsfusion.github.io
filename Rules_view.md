@@ -41,6 +41,7 @@
 
    * With a common-parameter header `PROPERTIES(p1, ..., pN)`, each entry MUST be specified by its ID only — the common parameters are bound implicitly. Writing `propName(p1, ..., pN)` after the ID is a parse error.
    * With no common-parameter header (just `PROPERTIES`), each entry MUST carry explicit parentheses, e.g. `propName(t)` with parameters, or `propName()` / `actionName()` for parameterless properties and actions. Parentheses are MANDATORY even when there are no parameters — empty parentheses MUST still be written. Writing the bare name without parentheses is a parse error.
+   * Empty parentheses right after the keyword (`PROPERTIES()`) are a common-parameter header, not its absence: the entries of such a block are bare IDs (`PROPERTIES() total, newCustomer`), and only parameterless properties and actions can be added this way. An entry with parentheses in it is the same parse error as in any header block (`mismatched input '(' expecting ';'`), and the error does not point at the cause. The equivalent without a header is `PROPERTIES total(), newCustomer()`.
 
    The assistant MUST NOT mix the two styles in one block, and MUST NOT repeat the common parameters after the property name when a common-parameter header is in use.
 
@@ -66,6 +67,8 @@
 
    `DIALOG` has no such option: it is synchronous whenever its result is consumed, and left to the same heuristic otherwise. When a dialog must block, the assistant makes it block by using what it returns.
 
+2. In synchronous mode `DOCKED` is a tab that blocks the calling form, and from a form shown as a window such a tab is shown as a window. So `SHOW ... DOCKED` from a form shown as a window (`FLOAT`) without `NOWAIT` opens a window, not a tab: such a form is modal, so the default mode there is synchronous (rule 1). To open a tab from it, the assistant MUST specify `NOWAIT`.
+
 ## Form design[​](#form-design "Direct link to Form design")
 
 1. These design rules do NOT cover the `DESIGN` layout model — the default container tree, the flexbox `fill` / alignment model, or the container idioms. They give only placement meta-advice. Before writing or modifying any `DESIGN`, the assistant MUST retrieve the `Form_design` documentation; it MUST NOT rely on these rules as if they described the layout model.
@@ -87,6 +90,8 @@
 7. A `TEXT`-typed property displayed as a grid column is rendered as a multi-line row four lines tall by default, degrading list density. Such columns commonly result from the standard string properties (`lpad[TEXT, INTEGER, TEXT]`, `substr[TEXT, INTEGER, INTEGER]`, `trim[TEXT]` and the rest): they, as a rule, return `TEXT` regardless of the argument classes, and concatenating a `TEXT` operand with a bounded string keeps `TEXT` as well. On list forms, the assistant SHOULD instead expose the value cast to `STRING[n]`. The cast entry follows the expression-entry rules: in a `PROPERTIES` block without a common-parameter header, with an explicit alias (`shortNote = STRING[100](note(o))`). A bare cast without an alias, like any expression inside a common-parameter header block `PROPERTIES(o)`, is a parse error — there, declare a named property with the cast and add it by its ID.
 
 8. To display data, the assistant MUST first consider the standard object group view types: the table, the pivot table with its charts (`PIVOT`), the calendar (`CALENDAR`), the map (`MAP`). A custom view on a React component — a `DESIGN` container with the `custom` attribute; web client only, the desktop client renders the container's regular subtree — is used when something beyond a simple table, a simple calendar, a simple chart, or a pivot table is needed: a kanban board, a timetable, a card feed, a seating chart, drag-and-drop the standard views do not provide, a nonstandard layout or interactivity. Before creating such a view, the assistant MUST retrieve the `How-to_Custom_React_views` documentation.
+
+   For a form with such a container opened as a window (`FLOAT`; the default location for `DIALOG`), the assistant MUST give the container a base size — `size = (w, h)` or the separate `width` and `height` attributes: the window size is computed from the content at the moment of opening, when the component has not drawn anything yet, so without it a window with a single such container collapses to the caption and the system buttons, and the content drawn later pushes the OK / Close buttons past the window's edge.
 
 9. `FALSE` is valid in the logical attributes of a `DESIGN` block — `defaultComponent`, `activated` and the like — because their values are literals, not expressions. The core rule that bans `FALSE` covers expressions only, and MUST NOT be applied here by rewriting it as `NULL`.
 
