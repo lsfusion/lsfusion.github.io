@@ -97,6 +97,8 @@
 
    For a form with such a container opened as a window (`FLOAT`; the default location for `DIALOG`), the assistant MUST give the container a base size — `size = (w, h)` or the separate `width` and `height` attributes: the window size is computed from the content at the moment of opening, when the component has not drawn anything yet, so without it a window with a single such container collapses to the caption and the system buttons, and the content drawn later pushes the OK / Close buttons past the window's edge. For a form with no tables and content of moderate height, the assistant MAY instead leave the container without a base size and set `size = (-1, -1)` on the main container of the form itself: the window is then not fixed and follows the content (details in `Form_design`).
 
+   A tab (`DOCKED`) is sized by the forms window, but the base size bounds the height of the container itself there too: the assistant SHOULD give a base height (`height`) that fits on the form to a container whose component draws more than fits on the form — a card feed, a view with `useSeekOnScroll`: without it the container stretches the form, with it the container expands into the free space by its extension coefficient (`fill`) and scrolls its content inside.
+
 9. `FALSE` is valid in the logical attributes of a `DESIGN` block — `defaultComponent`, `activated` and the like — because their values are literals, not expressions. The core rule that bans `FALSE` covers expressions only, and MUST NOT be applied here by rewriting it as `NULL`.
 
 ## Navigator[​](#navigator "Direct link to Navigator")

@@ -8,30 +8,30 @@ The module stores one object per metadata element (one `Property` per property, 
 
 [Properties and actions](/User_classes.md) are organized into a tree of groups.
 
-| Class / property                                                          | What it holds                                                                                  |
-| ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `PropertyGroup`                                                           | one object per group of properties and actions                                                 |
-| `parent[PropertyGroup]`                                                   | the parent group in the tree                                                                   |
-| `level[PropertyGroup, PropertyGroup]`                                     | recursive depth: `1` for a group relative to itself, growing by `1` per step up to an ancestor |
-| `caption[PropertyGroup]` / `number[PropertyGroup]` / `SID[PropertyGroup]` | display caption, sort order, and string identifier                                             |
-| `propertyGroup[STRING]`                                                   | the group with the given `SID`                                                                 |
+| Class / property                                                          | What it holds                                                                                                                                                                                          |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `PropertyGroup`                                                           | one object per group of properties and actions                                                                                                                                                         |
+| `parent[PropertyGroup]`                                                   | the parent group in the tree                                                                                                                                                                           |
+| `level[PropertyGroup, PropertyGroup]`                                     | not `NULL` if the second group is an ancestor of the first or the group itself; the value is `2` to the power of the distance to the ancestor (`1` for a group relative to itself, `2` for the parent) |
+| `caption[PropertyGroup]` / `number[PropertyGroup]` / `SID[PropertyGroup]` | display caption, sort order, and string identifier                                                                                                                                                     |
+| `propertyGroup[STRING]`                                                   | the group with the given `SID`                                                                                                                                                                         |
 
 ### Navigator metadata[​](#navigator-metadata "Direct link to Navigator metadata")
 
 The [navigator](/Navigator.md) tree is represented by `NavigatorElement` and its two subclasses.
 
-| Class / property                                                                             | What it holds                                                       |
-| -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `NavigatorElement`                                                                           | one object per navigator element                                    |
-| `NavigatorFolder`                                                                            | a navigator element that groups other elements                      |
-| `NavigatorAction`                                                                            | a navigator element that opens a form or runs an action             |
-| `caption[NavigatorElement]` / `canonicalName[NavigatorElement]` / `number[NavigatorElement]` | display caption, unique canonical name, and sort order              |
-| `parent[NavigatorElement]`                                                                   | the parent element in the tree                                      |
-| `level[NavigatorElement, NavigatorElement]`                                                  | recursive depth, defined like `level[PropertyGroup, PropertyGroup]` |
-| `form[NavigatorElement]`                                                                     | the form a navigator element opens                                  |
-| `action[NavigatorAction]`                                                                    | the action a navigator action runs                                  |
-| `navigatorElementCanonicalName[STRING]`                                                      | the element with the given canonical name                           |
-| `isNavigatorFolder[NavigatorElement]` / `isNavigatorAction[NavigatorElement]`                | flags telling a folder from an action                               |
+| Class / property                                                                             | What it holds                                                                                                                                                                                                |
+| -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `NavigatorElement`                                                                           | one object per navigator element                                                                                                                                                                             |
+| `NavigatorFolder`                                                                            | a navigator element that groups other elements                                                                                                                                                               |
+| `NavigatorAction`                                                                            | a navigator element that opens a form or runs an action                                                                                                                                                      |
+| `caption[NavigatorElement]` / `canonicalName[NavigatorElement]` / `number[NavigatorElement]` | display caption, unique canonical name, and sort order                                                                                                                                                       |
+| `parent[NavigatorElement]`                                                                   | the parent element in the tree                                                                                                                                                                               |
+| `level[NavigatorElement, NavigatorElement]`                                                  | not `NULL` if the second element is an ancestor of the first or the element itself; the value is `2` to the power of the distance to the ancestor, by the same rule as `level[PropertyGroup, PropertyGroup]` |
+| `form[NavigatorElement]`                                                                     | the form a navigator element opens                                                                                                                                                                           |
+| `action[NavigatorAction]`                                                                    | the action a navigator action runs                                                                                                                                                                           |
+| `navigatorElementCanonicalName[STRING]`                                                      | the element with the given canonical name                                                                                                                                                                    |
+| `isNavigatorFolder[NavigatorElement]` / `isNavigatorAction[NavigatorElement]`                | flags telling a folder from an action                                                                                                                                                                        |
 
 ### Forms metadata[​](#forms-metadata "Direct link to Forms metadata")
 
@@ -159,7 +159,7 @@ All five forms are placed in a `metadata` navigator folder under the system `Adm
 
 ### Language[​](#language "Direct link to Language")
 
-* [`RECURSION` operator](/RECURSION_operator.md) — computes the `level` depth properties over the group and navigator trees.
+* [`RECURSION` operator](/RECURSION_operator.md) — computes `level[PropertyGroup, PropertyGroup]` and `level[NavigatorElement, NavigatorElement]`: not `NULL` for an ancestor and the object itself, the value is `2` to the power of the distance.
 * [`INTERNAL` operator](/INTERNAL_operator.md) — backs the physical-model service actions implemented in Java.
 
 ### See also[​](#see-also "Direct link to See also")

@@ -1500,6 +1500,10 @@
 
 - [User/IS interaction](/User_IS_interaction.md): This category includes operators for interacting with the user and with other information systems:
 
+## Utils_Hierarchy
+
+- [Hierarchy](/Utils_Hierarchy.md): The Hierarchy module gives a class a hierarchy by parent: an object refers by a parentclass] property to an object of the same class, and the module builds on that reference the ancestor flag, the level, the number of descendants, the leaf flag, and the full name from the root. The level[class, class] property is computed by [recursion; the remaining properties are derived from it or directly from parentclass], where needed by [grouping or partitioning; the materialized properties are marked in the table below. It is pulled in via REQUIRE Hierarchy.
+
 ## Utils_Numerator
 
 - [Numerator](/Utils_Numerator.md): The Numerator module generates sequential, human-readable numbers and codes for objects — order numbers, invoice numbers, partner codes, and similar. Each kind of object keeps its own counter, the generated value carries an optional series prefix and a fixed number of leading zeros, and the generation survives several users creating objects at the same time without producing duplicate or skipped numbers.

@@ -25,27 +25,27 @@ System modules live under `server/src/main/lsfusion/` in the platform repository
 
 #### Auxiliary (`utils/`)[​](#auxiliary-utils "Direct link to auxiliary-utils")
 
-| Module                                  | Purpose                                                                    |
-| --------------------------------------- | -------------------------------------------------------------------------- |
-| `Backup`                                | Database backup and restore (see [Backup and restore](/Backup_restore.md)) |
-| `Chat`                                  | In-application chat (see [Chat](/Chat.md))                                 |
-| `Eval`                                  | Runtime execution of lsFusion code (see [`EVAL`](/Eval_EVAL.md))           |
-| `Excel`                                 | XLS / XLSX file handling                                                   |
-| `Document` / `Word`                     | Printable documents and templates                                          |
-| `Image` / `OpenCV`                      | Image processing                                                           |
-| `I18n`                                  | Machine translation of strings                                             |
-| `Integration`                           | Generic integration actions                                                |
-| `MasterData`                            | Base templates for master-data classes                                     |
-| [`Numerator`](/Utils_Numerator.md)      | Generic number generators                                                  |
-| `Hierarchy`                             | Hierarchical properties                                                    |
-| `Historizable`                          | Change-history storage                                                     |
-| `Geo`                                   | Geographic data and operations                                             |
-| `Printer` / `QZTray` / `Sound` / `Com`  | Access to client-side hardware                                             |
-| `ProcessMonitor` / `Profiler`           | Server management and monitoring                                           |
-| `RabbitMQ` / `WebSocket` / `messengers` | External transports                                                        |
-| `SQLUtils`                              | Database service operations                                                |
-| `DefaultData`                           | Initial demo data                                                          |
-| `Schedule`                              | Calendars and working intervals                                            |
+| Module                                  | Purpose                                                                                   |
+| --------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `Backup`                                | Database backup and restore (see [Backup and restore](/Backup_restore.md))                |
+| `Chat`                                  | In-application chat (see [Chat](/Chat.md))                                                |
+| `Eval`                                  | Runtime execution of lsFusion code (see [`EVAL`](/Eval_EVAL.md))                          |
+| `Excel`                                 | XLS / XLSX file handling                                                                  |
+| `Document` / `Word`                     | Printable documents and templates                                                         |
+| `Image` / `OpenCV`                      | Image processing                                                                          |
+| `I18n`                                  | Machine translation of strings                                                            |
+| `Integration`                           | Generic integration actions                                                               |
+| `MasterData`                            | Base templates for master-data classes                                                    |
+| [`Numerator`](/Utils_Numerator.md)      | Generic number generators                                                                 |
+| [`Hierarchy`](/Utils_Hierarchy.md)      | Object hierarchy by a `parent[class]` property: ancestors, levels, descendants, full name |
+| `Historizable`                          | Change-history storage                                                                    |
+| `Geo`                                   | Geographic data and operations                                                            |
+| `Printer` / `QZTray` / `Sound` / `Com`  | Access to client-side hardware                                                            |
+| `ProcessMonitor` / `Profiler`           | Server management and monitoring                                                          |
+| `RabbitMQ` / `WebSocket` / `messengers` | External transports                                                                       |
+| `SQLUtils`                              | Database service operations                                                               |
+| `DefaultData`                           | Initial demo data                                                                         |
+| `Schedule`                              | Calendars and working intervals                                                           |
 
 The full list follows the contents of `server/src/main/lsfusion/{system,utils}/` in the platform repository. Modules with a dedicated article link there.
 
