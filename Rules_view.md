@@ -101,6 +101,8 @@
 
 9. `FALSE` is valid in the logical attributes of a `DESIGN` block — `defaultComponent`, `activated` and the like — because their values are literals, not expressions. The core rule that bans `FALSE` covers expressions only, and MUST NOT be applied here by rewriting it as `NULL`.
 
+10. In `DESIGN`, the assistant MUST use the property's name on the form in `PROPERTY(...)`, following form rule 2: `PROPERTY(number(o))` after `PROPERTIES(o) number`, `PROPERTY(total())` after `PROPERTIES() total`, and `PROPERTY(number)` only after the name was assigned explicitly, `PROPERTIES(o) number = number`. A bare name without such an assignment is reported as `property 'number' is not found` although the property is on the form.
+
 ## Navigator[​](#navigator "Direct link to Navigator")
 
 1. A folder whose children should appear only when the folder is selected MUST place those children in a different window than the folder itself (typically `WINDOW toolbar`). In a horizontal toolbar such as `System.root`, a folder that keeps its children in its own window cannot switch anything — they are shown flattened next to it and selecting the folder does nothing. A vertical toolbar instead renders same-window children as a nested group under the folder, so there the separate window is not required.
