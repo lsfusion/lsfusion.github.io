@@ -176,7 +176,7 @@ The automatic design is generated as follows:
 
       * `PANEL(<group of objects / tree>)`: contains the components of the properties displayed in the `PANEL` [view](/Interactive_view.md#property). Vertical container. Alignment: `STRETCH`. If several properties belong to [groups](/Groups_of_properties_and_actions.md) for which it is necessary to create separate containers, then a corresponding hierarchy of containers is created for them and the components of these properties are placed in it:
         <!-- -->
-        * `GROUP(<property group>, <group of objects / tree>)`: contains components of properties that belong to the specified object group and property group (or do not belong to any property group: in this case the property group is not specified, for example `GROUP(,a))`. Column container.
+        * `GROUP(<property group>, <group of objects / tree>)`: contains components of properties that belong to the specified object group and property group (or do not belong to any property group: in this case the property group is not specified, for example `GROUP(,a))`. Vertical container with three lines: the children are laid out in three columns, or, when there are no more than three of them, in a single horizontal line.
           <!-- -->
           * `PROPERTY(<property>)`: base component of the Property Panel.
 

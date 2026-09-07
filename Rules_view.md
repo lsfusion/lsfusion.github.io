@@ -137,4 +137,6 @@
 
 4. Reverse translation is turned on by the launch parameter that sets the language of lsf string literals (`logics.lsfStrLiteralsLanguage`). When it is active, ANY plain `'...'` literal in a localizable position — including a constant literal in any expression — that matches a ResourceBundle entry value is silently replaced at code parse time with its key `{id}` and is substituted in the current locale at runtime: `'position'` can become `'pozycja'`. Leading and trailing spaces take no part in the match and are kept around the substitution; a literal that is empty or made of spaces alone is never replaced.
 
+   The substitution also affects a literal a value is compared with in a condition or filter, including scripts run through `/eval` and `/exec`: the comparison is made against the substituted text and, with no error at all, can silently include unintended rows or drop expected ones. The assistant MUST write a comparison value as a raw literal `r'...'`.
+
    Therefore the assistant MUST write technical literals — JSON keys, URLs, formats, canonical names, external identifiers — as raw literals `r'...'`, which take part neither in localization nor in reverse translation. Plain `'...'` literals are meant for user-visible text.
