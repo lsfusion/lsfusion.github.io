@@ -36,6 +36,8 @@
 | `LINK`                                                                                                                                                    | Link to a file (URI)                                                                                             |                                           |
 | `RAWLINK`, `WORDLINK`, `IMAGELINK`, `PDFLINK`, `VIDEOLINK`, `DBFLINK`, `EXCELLINK`, `CSVLINK`, `TEXTLINK`, `HTMLLINK`, `JSONLINK`, `XMLLINK`, `TABLELINK` | Link to a file of a specific type (`RAWLINK`: link to a file with no extension or an unknown extension)          |                                           |
 
+The `YEAR` class differs from `INTEGER` in its default value (the current year) and in the interactive view, where its value is displayed without digit grouping (the `####` pattern) and, in the web client, entered with a year picker.
+
 ## Inheritance[​](#inheritance "Direct link to Inheritance")
 
 The built-in classes can be divided into seven class *families* (assuming that each of the remaining classes forms its own class family)
@@ -264,4 +266,4 @@ The platform declares one *result property* for each built-in class - a property
 
 ## Language[​](#language "Direct link to Language")
 
-A built-in class is written in code as a [class ID](/IDs.md#classid) - the keyword that names the class. Values of built-in classes are written as [literals](/Literals.md), each with its own form and constraints.
+A built-in class is written in code as a [class ID](/IDs.md#classid) - the keyword that names the class. Values of built-in classes are written as [literals](/Literals.md), each with its own form and constraints; a `YEAR` value, which has no literal, is written with the [type conversion operator](/Type_conversion_operator.md): `YEAR(2024)`.
