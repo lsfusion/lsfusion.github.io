@@ -133,7 +133,7 @@ DESIGN order {
 
 Форма будет выглядеть следующим образом :
 
-![](/ru/assets/images/How-to_Working_with_documents_line-6fa52edb76262e3073bb441f407952dd.png)![](/ru/assets/images/How-to_Working_with_documents_select-700a0f70aea96127095f971236f1e8c0.png)
+![](/ru/assets/images/How-to_Working_with_documents_line-005c4606ca40c0e78c860b000414a0aa.png)![](/ru/assets/images/How-to_Working_with_documents_select-8ef722ac785855a1994cc0e650fd1969.png)
 
 При изменении количества на вкладке `Подбор` система будет автоматически изменять строки заказов. При изменении строк заказов также будет меняться количество на вкладке `Подбор`.
 

@@ -67,16 +67,22 @@ markup 'Надбавка для товара' = DATA NUMERIC[8,2] (Book);
 overMarkup 'Надбавка перегруженная' (Book b) = OVERRIDE markup(b), overMarkup(category(b));
 ```
 
-Наконец нарисуем форму, в которой пользователь сможет вводить надбавку для категорий и товаров одновременно. И для категории, и для товара выведем как первичную надбавку, так и переопределенную. При этом изменения в переопределенных свойствах на форме будут отображаться сразу, но сохраняться только в момент нажатия соответствующей кнопки.
+Наконец нарисуем форму, в которой пользователь сможет вводить надбавку для категорий и товаров одновременно. И для категории, и для товара выведем как первичную надбавку, так и переопределенную. При этом изменения в переопределенных свойствах на форме будут отображаться сразу, но сохраняться только в момент нажатия соответствующей кнопки. Категории выведем деревом, а в дизайне поставим дерево категорий и таблицу книг рядом.
 
 ```
 FORM markups 'Надбавки'
-    OBJECTS c = Category
-    PROPERTIES(c) name, nameParent, markup, overMarkup
+    TREE categories c = Category PARENT parent(c)
+    PROPERTIES(c) name, markup, overMarkup
 
     OBJECTS b = Book
     PROPERTIES(b) name, nameCategory, markup, overMarkup
 ;
+
+DESIGN markups {
+    OBJECTS {
+        horizontal = TRUE;
+    }
+}
 
 NAVIGATOR {
     NEW markups;
@@ -85,4 +91,4 @@ NAVIGATOR {
 
 В итоге форма с заполненным данными будет выглядеть следующим образом:
 
-![](/ru/assets/images/How-to_Overriding_values-46992522ae9783dad1fc2e055f1ce3ea.png)
+![](/ru/assets/images/How-to_Overriding_values-ca047a45a995b978fe8fe2e982981314.png)

@@ -133,7 +133,7 @@ DESIGN order {
 
 The form will look like this:
 
-![](/assets/images/How-to_Working_with_documents_line-6fa52edb76262e3073bb441f407952dd.png)![](/assets/images/How-to_Working_with_documents_select-700a0f70aea96127095f971236f1e8c0.png)
+![](/assets/images/How-to_Working_with_documents_line-616fe2bc0266ba5fd33592e7469fef8a.png)![](/assets/images/How-to_Working_with_documents_select-43dfb820dead14694c490928d012cdc9.png)
 
 If the quantity changes on the `Selection` tab, the system will automatically change order lines. If the order lines are changed, the quantity on the `Selection` tab will change as well.
 

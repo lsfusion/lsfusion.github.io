@@ -67,16 +67,22 @@ markup 'Product markup' = DATA NUMERIC[8,2] (Book);
 overMarkup 'Overidden markup' (Book b) = OVERRIDE markup(b), overMarkup(category(b));
 ```
 
-Finally, let's design a form that will allow the user to enter the markup for categories and products at the same time. Let's output both the data and the overridden markup for the category and the product. Note that changes in overridden properties on the form will be displayed immediately, but saved only when the corresponding button is clicked.
+Finally, let's design a form that will allow the user to enter the markup for categories and products at the same time. Let's output both the data and the overridden markup for the category and the product. Note that changes in overridden properties on the form will be displayed immediately, but saved only when the corresponding button is clicked. Let's show the categories as a tree, and in the design place the category tree and the book table side by side.
 
 ```
 FORM markups 'Markups'
-    OBJECTS c = Category
-    PROPERTIES(c) name, nameParent, markup, overMarkup
+    TREE categories c = Category PARENT parent(c)
+    PROPERTIES(c) name, markup, overMarkup
 
     OBJECTS b = Book
     PROPERTIES(b) name, nameCategory, markup, overMarkup
 ;
+
+DESIGN markups {
+    OBJECTS {
+        horizontal = TRUE;
+    }
+}
 
 NAVIGATOR {
     NEW markups;
@@ -85,4 +91,4 @@ NAVIGATOR {
 
 As a result, the form with the filled data will look like this:
 
-![](/assets/images/How-to_Overriding_values-46992522ae9783dad1fc2e055f1ce3ea.png)
+![](/assets/images/How-to_Overriding_values-da9aa8a6a52fb6b6d1685bcc1f36b579.png)
