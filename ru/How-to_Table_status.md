@@ -61,4 +61,4 @@ EXTEND FORM books
 
 Полученная в обоих примерах форма с заданными пользователем отбором и сортировкой будет выглядеть следующим образом :
 
-![](/ru/assets/images/How-to_Table_status-20ca778d576353ee95d7171002b5fda7.png)
+![](/ru/assets/images/How-to_Table_status-70b833154ec9ec4145fd686b1d947132.png)
