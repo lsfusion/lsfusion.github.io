@@ -103,6 +103,8 @@ For a simple property composition that only forwards another property, the assis
 
     These operators compare the operands of a single row; a maximum across rows is `GROUP MAX`.
 
+21. `AND`, `OR`, `XOR` and `NOT` always yield `BOOLEAN` (`TRUE` or `NULL`), never the value of an operand: `name(o) AND active(o)` is `TRUE`, not the name, and `a OR b` is `TRUE`, not the first non-`NULL` value. The assistant MUST NOT use them to select or pass a value through; for that use `expr IF cond` and `OVERRIDE a, b`.
+
 ### Abstract property rules (`+=`)[​](#abstract-property-rules- "Direct link to abstract-property-rules-")
 
 1. The value class of a `+=` implementation MUST fit within the value class declared on the abstract property; there is no implicit cast — an implementation with a wider class is rejected at server startup with a "wrong value class of implementation" error, whose `specified` and `expected` lines name the implementation's class and the declared one.
