@@ -61,4 +61,4 @@ The property with the current order, defined using the [`ORDER` operator](/Order
 
 The form obtained in both examples, with user-defined filter and order, will look like this:
 
-![](/assets/images/How-to_Table_status-2961f4c629bc85fa16ce6b80e9501acd.png)
+![](/assets/images/How-to_Table_status-1d4c8b024c2bf5aa312c61de86d50361.png)

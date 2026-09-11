@@ -33,7 +33,7 @@ Object `c` will not be displayed on the form, since no properties have been adde
 
 The form will look like this:
 
-![](/assets/images/How-to_Matrix_ex1-20c502c1ad11f02d404b6f5b3e68ea18.png)
+![](/assets/images/How-to_Matrix_ex1-974a5d426befd0dcf807e357230e090c.png)
 
 ## Example 2[​](#example-2 "Direct link to Example 2")
 
@@ -84,7 +84,7 @@ All properties with the same ID after the word `COLUMNS` will go side by side fo
 
 The form will look like this:
 
-![](/assets/images/How-to_Matrix_ex2-9c8cdab1b451fede5fa58606076f3f52.png)
+![](/assets/images/How-to_Matrix_ex2-95e155d1d99810a6882673442292d308.png)
 
 ## Example 3[​](#example-3 "Direct link to Example 3")
 
@@ -123,4 +123,4 @@ In real projects, we recommend limiting the number of rows and columns during da
 
 Result:
 
-![](/assets/images/How-to_Matrix_ex3-4911fa19524c50949a0c169601f27c71.png)
+![](/assets/images/How-to_Matrix_ex3-ccce8b28e8bbfa91a9623d40c9ae7c4b.png)

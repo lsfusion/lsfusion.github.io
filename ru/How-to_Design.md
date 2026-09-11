@@ -75,7 +75,7 @@ DESIGN orders {
 
 Форма будет выглядеть следующим образом :
 
-![](/ru/assets/images/How-to_Design_ex1-e61d767b2d23f25ba4d185f7ff52153a.png)
+![](/ru/assets/images/How-to_Design_ex1-ab93d872ee50607cf7508c82b5c677dc.png)
 
 ## Пример 2[​](#пример-2 "Прямая ссылка на этот заголовок")
 
@@ -139,4 +139,4 @@ DESIGN orders {
 
 Результат:
 
-![](/ru/assets/images/How-to_Design_ex2-9917b884043cb4dbc2c0a5c491e51227.png)
+![](/ru/assets/images/How-to_Design_ex2-23bc3c56cecd07e96fb308d4bd832299.png)

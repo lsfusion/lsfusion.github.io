@@ -75,7 +75,7 @@ DESIGN orders {
 
 The form will look like this:
 
-![](/assets/images/How-to_Design_ex1-e61d767b2d23f25ba4d185f7ff52153a.png)
+![](/assets/images/How-to_Design_ex1-0381f3ba6113f1e0a8cc8a239209e339.png)
 
 ## Example 2[​](#example-2 "Direct link to Example 2")
 
@@ -141,4 +141,4 @@ DESIGN orders {
 
 Result:
 
-![](/assets/images/How-to_Design_ex2-9917b884043cb4dbc2c0a5c491e51227.png)
+![](/assets/images/How-to_Design_ex2-a4ef300a370d0c466c34999775442e6d.png)

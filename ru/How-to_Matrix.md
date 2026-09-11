@@ -33,7 +33,7 @@ FORM prices 'Цены'
 
 Форма будет выглядеть следующим образом :
 
-![](/ru/assets/images/How-to_Matrix_ex1-20c502c1ad11f02d404b6f5b3e68ea18.png)
+![](/ru/assets/images/How-to_Matrix_ex1-b07adfcf9b64148ba28cfc5ed1893564.png)
 
 ## Пример 2[​](#пример-2 "Прямая ссылка на этот заголовок")
 
@@ -84,7 +84,7 @@ DESIGN pricesAndGracePeriods {
 
 Форма будет выглядеть следующим образом :
 
-![](/ru/assets/images/How-to_Matrix_ex2-9c8cdab1b451fede5fa58606076f3f52.png)
+![](/ru/assets/images/How-to_Matrix_ex2-68e3e058f615b33257fe7d2d6e3de59d.png)
 
 ## Пример 3[​](#пример-3 "Прямая ссылка на этот заголовок")
 
@@ -123,4 +123,4 @@ DESIGN matrix {
 
 Результат :
 
-![](/ru/assets/images/How-to_Matrix_ex3-4911fa19524c50949a0c169601f27c71.png)
+![](/ru/assets/images/How-to_Matrix_ex3-34d8b77cda4209fe9b0bc4b18d18c515.png)
