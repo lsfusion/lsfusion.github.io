@@ -388,6 +388,8 @@ DESIGN order { // customizing the design of the form, starting with the default 
         NEW detailPane { 
             // marking that this container should be a tab panel, where its descendats are tabs
             tabbed = TRUE;
+            fill = 1; // giving the tab panel all the remaining height
+            alignment = STRETCH; // and stretching it to the full width of the container
             MOVE BOX(d) { // adding a container with order lines as one of the tabs in the top panel
                 caption = 'Lines'; // setting the caption of the tab panel
                 // making the row number column never have focus
@@ -413,4 +415,4 @@ DESIGN order {
 
 The output is the following form:
 
-![](/assets/images/DESIGN_instruction-7364b4b4c703078e55a694077d5ce2f7.png)
+![](/assets/images/DESIGN_instruction-b28be35f2e497e396c9e6daf2e92fe38.png)

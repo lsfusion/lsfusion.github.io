@@ -4,7 +4,7 @@
 
 #### Error log[​](#error-log "Direct link to Error log")
 
-![](/assets/images/Journals_and_logs_error_log-a78ad45f17ae5241063f3bed45a573fc.png)
+![](/assets/images/Journals_and_logs_error_log-3f510a85037ad96e57a68cab0196f84c.png)
 
 Contains all errors that occurred during the operation. Errors are divided into the following classes (the `Object class` column):
 
@@ -25,7 +25,7 @@ The `Exception trace` section displays the java stack for the error; the `Except
 
 #### Connection log[​](#connection-log "Direct link to Connection log")
 
-![](/assets/images/Journals_and_logs_connection_log-5696a142aee31ad27fa735a5fb071342.png)
+![](/assets/images/Journals_and_logs_connection_log-cd4019239d57e2835ab5c7018f4a2bc6.png)
 
 Stores information about users who connected to the system, from which computer, the characteristics of that computer, as well as information about the date and time of connection / disconnection. On the form, you can display the users currently working with the database — the `Active connections` checkbox.
 
@@ -33,11 +33,13 @@ The `Form` section shows which forms the user entered and how many times. The `S
 
 #### Startup log[​](#startup-log "Direct link to Startup log")
 
+![](/assets/images/Journals_and_logs_launch_log-251eba33f4e284eebd199ed4a30b7c96.png)
+
 Stores information about the dates and times when the application server was started (restarted). You can also see the name of the computer on which the server is installed and the version of the application (if filled in during the build).
 
 #### Change log[​](#change-log "Direct link to Change log")
 
-![](/assets/images/Journals_and_logs_change_log-77c906c0463d46fcfdeb0daa6c8f1b1d.png)
+![](/assets/images/Journals_and_logs_change_log-9b47e45f145c14b91f00b2aef8459b75.png)
 
 Contains more detailed information about the changes which were reflected in the `Session` section of the connection log. The `Change` column displays a list of Properties (columns) where the values changed, as well as the number of changes (rows). Only changes in the current form are logged: dependent Properties that change simultaneously on other tables do not feature on this list.
 
@@ -47,7 +49,7 @@ The form lets you filter the changes made by users (excluding system changes) by
 
 #### Client application log[​](#client-application-log "Direct link to Client application log")
 
-![](/assets/images/Journals_and_logs_client_app_log-746459cb2512064a6afcf809a358f92d.png)
+![](/assets/images/Journals_and_logs_client_app_log-e7a1f968af05763c8fffb1735fbb278b.png)
 
 Contains information about the quality of the connection while working with the application server for a given period of time.
 
@@ -57,7 +59,7 @@ The `Data` tab at the bottom provides a chronology of changes in response time a
 
 #### Log retention[​](#log-retention "Direct link to Log retention")
 
-![](/assets/images/Journals_and_logs_log_settings-82a4ded811cb69cd37024f69d542a851.png)
+![](/assets/images/Journals_and_logs_log_settings-f65af887fb40dd24edaf0fe501dc0336.png)
 
 How much information should be stored in these logs is indicated in the `Admin form > Settings > Logging tab`.
 
@@ -67,15 +69,15 @@ If you need to track changes to the individual values of any Properties (columns
 
 1. go to any entry in the `Surname` column and right-click to bring up the `Configure property policy` menu:
 
-   ![](/assets/images/Journals_and_logs_log_property_changes-4bbe3199b2d5daecd4f2f189ddac25b5.png)
+   ![](/assets/images/Journals_and_logs_log_property_changes-819effa45860be430d0e115890186984.png)
 
 2. in the `Security policy` form, check `Logged by user` and click `OK`:
 
-   ![](/assets/images/Journals_and_logs_user_logging-757d6d4e309da6be74572557eea3aa48.png)
+   ![](/assets/images/Journals_and_logs_user_logging-b8f0117ae595d29682a848721deb87a8.png)
 
 3. once you restart the application server, right-clicking on the `Surname` property will bring up an additional `Show Change History` menu item. If the surname for the current record has been changed by someone, this will be reflected in the property change history:
 
-   ![](/assets/images/Journals_and_logs_property_changes_history-befbd6aed40287bfe38660bddbaa7ba9.png)
+   ![](/assets/images/Journals_and_logs_property_changes_history-1eaaf7511b51cc53123431d19507f7eb.png)
 
 The retention time for these logs is set to the same retention time as for the Change log.
 
