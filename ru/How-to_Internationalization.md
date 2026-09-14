@@ -22,15 +22,15 @@ NAVIGATOR {
 
 Затем создаем новый Resource Bundle, куда пропишем значения идентификаторов на разных языках:
 
-![](/ru/assets/images/How-to_Internationalization_newRB-a53849e2f45ae9750383287406753c0a.png)
+![](/ru/assets/images/How-to_Internationalization_newRB-785e730014964dbc7f98a5066711fe25.png)
 
 Называем его, например, `I18nResourceBundle` (система будет считывать только файлы, которые заканчиваются на `'ResourceBundle'`) и выбираем языки, которые будут использоваться :
 
-![](/ru/assets/images/How-to_Internationalization_RBlang-d37ec718c26fd39a64d7ff6f9684fb3c.png)
+![](/ru/assets/images/How-to_Internationalization_RBlang-ff16eb663ed182ccb0d285ecd0eb7ede.png)
 
 Далее, для каждого идентификатора прописываем значения на каждом из выбранных языков:
 
-![](/ru/assets/images/How-to_Internationalization_RBprop-76b4f65caa8b86004af59da4d614a110.png)
+![](/ru/assets/images/How-to_Internationalization_RBprop-e8b9aee4cb6967cd29cb61774ca224d9.png)
 
 После запуска, по умолчанию, все названия будут показываться на языке сервера (который, в свою очередь, по умолчанию, определяется по языку операционной системы) :
 

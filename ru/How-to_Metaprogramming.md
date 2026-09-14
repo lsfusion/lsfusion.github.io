@@ -127,11 +127,11 @@ NAVIGATOR {
 
 Для того, чтобы IDE "видела" код сгенерированный метакодами, нужно включить соответствующий режим через пункт меню.
 
-![](/ru/assets/images/How-to_Metaprogramming_enable-b3aa414b76e300a02263fb015ce78aa0.png)
+![](/ru/assets/images/How-to_Metaprogramming_enable-c04ea44c5d2abee76ecbcf44a9caa2cb.png)
 
 При включенном режиме работы с метакодами сгенерированный код будет автоматом подставляться в исходниках при его использовании.
 
-![](/ru/assets/images/How-to_Metaprogramming_metaMode-e565f6f9b0256e990ac2c3d17aeafd17.png)
+![](/ru/assets/images/How-to_Metaprogramming_metaMode-9cb517e4e4b994f14130300b008e8a71.png)
 
 Любые изменения в нем невозможны, так как будут автоматически затираться IDE. Однако, при коммите изменений в программе в систему контроля версий рекомендуется выключать этот режим, чтобы избежать ненужной истории изменений.
 

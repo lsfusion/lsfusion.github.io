@@ -66,7 +66,7 @@ NAVIGATOR {
 
 If you try to refer to the `Order` class without explicitly specifying the namespace, you will see an error message:
 
-![](/assets/images/How-to_Namespaces-d3869b9262099eff7d50035cbade492e.png)
+![](/assets/images/How-to_Namespaces-543952359bcc671b68ed036790f8fde2.png)
 
 All such references require an explicit specification of the namespace.
 

@@ -22,15 +22,15 @@ NAVIGATOR {
 
 We will then create a new Resource Bundle and will save our Id values in different languages to it:
 
-![](/assets/images/How-to_Internationalization_newRB-a53849e2f45ae9750383287406753c0a.png)
+![](/assets/images/How-to_Internationalization_newRB-785e730014964dbc7f98a5066711fe25.png)
 
 Let's call it `I18nResourceBundle` (the system will only read files ending in `'ResourceBundle'`) and choose the languages to be used:
 
-![](/assets/images/How-to_Internationalization_RBlang-d37ec718c26fd39a64d7ff6f9684fb3c.png)
+![](/assets/images/How-to_Internationalization_RBlang-ff16eb663ed182ccb0d285ecd0eb7ede.png)
 
 After that, we define values for each Id in each of the selected languages:
 
-![](/assets/images/How-to_Internationalization_RBprop-76b4f65caa8b86004af59da4d614a110.png)
+![](/assets/images/How-to_Internationalization_RBprop-e8b9aee4cb6967cd29cb61774ca224d9.png)
 
 Upon execution, all values, by default, will be shown in the server language (which, in turn, is defined by the Os language by default):
 

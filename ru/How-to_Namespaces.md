@@ -66,7 +66,7 @@ NAVIGATOR {
 
 При попытке обратиться к классу `Order` без явного указания пространства имен будет выдана ошибка:
 
-![](/ru/assets/images/How-to_Namespaces-d3869b9262099eff7d50035cbade492e.png)
+![](/ru/assets/images/How-to_Namespaces-543952359bcc671b68ed036790f8fde2.png)
 
 Все такие обращения требуют явного указания пространства имен.
 
