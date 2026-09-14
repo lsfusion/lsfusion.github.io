@@ -70,7 +70,7 @@ EXTEND FORM books
 
 Then, we start the server from the IDE, launch the desktop client, open the form with books and click the created "Print" button. The system will automatically create a print-ready form and open it in the [preview](/In_a_print_view_PRINT.md#interactive) mode. Then, click the button below:
 
-![](/assets/images/How-to_Reports_ex1_Preview-ed1b04a703f6654a256a1130222582cc.png)
+![](/assets/images/How-to_Reports_ex1_Preview-8dafa6e62c0563467b280fa519ad79fc.png)
 
 The system will save automatic templates for [Jasper Reports](https://community.jaspersoft.com/project/jasperreports-library) to the source code folder (src/main/lsfusion).
 
@@ -126,7 +126,7 @@ Let's make a few changes in the automatic template and save it:
 
 Once done, if you re-run the report generation procedure, it will use modified templates and the result will look as follows:
 
-![](/assets/images/How-to_Reports_ex1_result-d9fbba45468ed0e1c70ae0ed3c4fbd98.png)
+![](/assets/images/How-to_Reports_ex1_result-3a567c8ede641b1b76e46875d5eb3bd7.png)
 
 info
 
@@ -249,7 +249,7 @@ Since the `i` and `d` object groups depend on each other, a single flat report i
 
 The resulting report will look like this:
 
-![](/assets/images/How-to_Reports_ex2_result-e5724099b7b12b36c21fdccb62742c35.png)
+![](/assets/images/How-to_Reports_ex2_result-7ffc4b5fdc0c0301f25963247cbee665.png)
 
 ## Example 3[​](#example-3 "Direct link to Example 3")
 
@@ -469,4 +469,4 @@ Since the dependency between objects forms a tree with two leaf nodes, a total o
 
 The result of this slightly modified report will look like this:
 
-![](/assets/images/How-to_Reports_ex3_result-d962d486ef473e7566b2570c78ce34d7.png)
+![](/assets/images/How-to_Reports_ex3_result-9f72fa3bd1e4c946b1b3aa69b3074925.png)

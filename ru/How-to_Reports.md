@@ -70,7 +70,7 @@ EXTEND FORM books
 
 Затем запускаем сервер из IDE, запускаем десктоп-клиент, открываем форму с книгами и жмем созданную кнопку печати. Система создаст автоматическую печатную форму и откроет ее в режиме [предпросмотра](/ru/In_a_print_view_PRINT.md#interactive). Далее нужно нажать указанную ниже кнопку :
 
-![](/ru/assets/images/How-to_Reports_ex1_Preview-ed1b04a703f6654a256a1130222582cc.png)
+![](/ru/assets/images/How-to_Reports_ex1_Preview-1f7e18f5754030380b2e4a5eb2937ae3.png)
 
 Система сохранит автоматические шаблоны для [Jasper Reports](https://community.jaspersoft.com/project/jasperreports-library) в папку исходников (src/main/lsfusion).
 
@@ -180,7 +180,7 @@ EXTEND FORM books
 
 После этого, если повторно запустить формирование отчета, то будут использованы уже измененные шаблоны и результат будет выглядеть следующим образом :
 
-![](/ru/assets/images/How-to_Reports_ex1_result-d9fbba45468ed0e1c70ae0ed3c4fbd98.png)
+![](/ru/assets/images/How-to_Reports_ex1_result-00fbc0e57d2d616e01191b47790d59b7.png)
 
 к сведению
 
@@ -345,7 +345,7 @@ EXTEND FORM invoices
 
 Результирующий отчет будет выглядеть следующим образом :
 
-![](/ru/assets/images/How-to_Reports_ex2_result-e5724099b7b12b36c21fdccb62742c35.png)
+![](/ru/assets/images/How-to_Reports_ex2_result-80d16449c09f46f60f65ee15c8e3d467.png)
 
 ## Пример 3[​](#пример-3 "Прямая ссылка на этот заголовок")
 
@@ -752,4 +752,4 @@ EXTEND FORM customers
 
 Результат такого, слегка подправленного, отчета будет выглядеть следующим образом :
 
-![](/ru/assets/images/How-to_Reports_ex3_result-d962d486ef473e7566b2570c78ce34d7.png)
+![](/ru/assets/images/How-to_Reports_ex3_result-12480db54b16f99bc783f01dd290d57c.png)
