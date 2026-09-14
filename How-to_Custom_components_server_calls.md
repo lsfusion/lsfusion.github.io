@@ -30,7 +30,7 @@ discount 'Discount, %' = DATA NUMERIC[5,2] ();
 item 'Item' = DATA Item (CartLine) NONULL DELETE;
 nameItem 'Item' (CartLine l) = name(item(l));
 quantity 'Quantity' = DATA INTEGER (CartLine);
-note 'Note' = DATA STRING[100] (CartLine);
+note 'Note' = DATA STRING[100] (CartLine) CHARWIDTH 20;
 needBy 'Need by' = DATA DATE (CartLine);
 
 // exec: an object (arrives as a numeric id) + INTEGER, STRING, DATE primitives
@@ -78,7 +78,7 @@ DESIGN shop {
     NEW pane FIRST {
         fill = 1;
         horizontal = TRUE;
-        MOVE BOX(i) { fill = 2; }
+        MOVE BOX(i) { fill = 1; }
         MOVE BOX(l) { fill = 1; }
     }
 }
@@ -202,11 +202,11 @@ function itemBoard() {
 
 The opened form:
 
-![](/assets/images/How-to_Custom_components_server_calls-bef554511602ecc167056a25fac6dc07.png)
+![](/assets/images/How-to_Custom_components_server_calls-85c56b9602c8a9df85bcdebdfd8def10.png)
 
 After "Discount 15%", "One of each", "Add to cart" on the coffee card, and "Hide" on the sugar card:
 
-![](/assets/images/How-to_Custom_components_server_calls_result-3d79a770427b8224f47f939eeadfc9e1.png)
+![](/assets/images/How-to_Custom_components_server_calls_result-a7766d92c5a0ecbd0fbe3f111ed5eb09.png)
 
 ### Parameters and the result[​](#parameters-and-the-result "Direct link to Parameters and the result")
 

@@ -13,18 +13,18 @@ CLASS Item 'Item';
 
 name 'Name' = DATA STRING (Item) NONULL;
 price 'Price' = DATA NUMERIC[12,2] (Item) NONULL;
-image '' = DATA IMAGEFILE (Item);
+picture '' = DATA IMAGEFILE (Item);
 
 FORM item 'Item'
     OBJECTS i = Item PANEL
-    PROPERTIES(i) name, price, image
+    PROPERTIES(i) name, price, picture
     
     EDIT Item OBJECT i
 ;
 
 DESIGN item {
     OBJECTS {
-        MOVE PROPERTY(image(i)) {
+        MOVE PROPERTY(picture(i)) {
             fill = 1;
         }
     }
@@ -40,7 +40,7 @@ DESIGN item {
 ```
 FORM items 'Items'
     OBJECTS i = Item CUSTOM 'itemCards'
-    PROPERTIES(i) READONLY image, price, name
+    PROPERTIES(i) READONLY picture, price, name
     PROPERTIES(i) NEWSESSION new = NEW, edit = EDIT GRID, DELETE GRID
 ;
 
@@ -82,7 +82,7 @@ update: (element, controller, list) => {
 
         let cardImage = document.createElement("img")
         cardImage.classList.add("item-card-image");
-        cardImage.src = item.image;
+        cardImage.src = item.picture;
         card.appendChild(cardImage);
 
         let cardPrice = document.createElement("div")
@@ -193,7 +193,7 @@ onWebClientInit() + {
 }
 ```
 
-В результате получившаяся форма будет выглядеть следующим образом: ![](/ru/assets/images/How-to_Custom_components_objects-bd4ea5401bf0f161e5521d35011f8e5d.png)
+В результате получившаяся форма будет выглядеть следующим образом: ![](/ru/assets/images/How-to_Custom_components_objects-40f00fd3289c104707cceb713773b38e.png)
 
 ### Методы контроллера[​](#controller-methods "Прямая ссылка на этот заголовок")
 

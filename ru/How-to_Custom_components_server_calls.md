@@ -30,7 +30,7 @@ discount 'Скидка, %' = DATA NUMERIC[5,2] ();
 item 'Товар' = DATA Item (CartLine) NONULL DELETE;
 nameItem 'Товар' (CartLine l) = name(item(l));
 quantity 'Кол-во' = DATA INTEGER (CartLine);
-note 'Комментарий' = DATA STRING[100] (CartLine);
+note 'Комментарий' = DATA STRING[100] (CartLine) CHARWIDTH 20;
 needBy 'Нужно к' = DATA DATE (CartLine);
 
 // exec: объект (приходит числовым id) + примитивы INTEGER, STRING, DATE
@@ -78,7 +78,7 @@ DESIGN shop {
     NEW pane FIRST {
         fill = 1;
         horizontal = TRUE;
-        MOVE BOX(i) { fill = 2; }
+        MOVE BOX(i) { fill = 1; }
         MOVE BOX(l) { fill = 1; }
     }
 }
@@ -202,11 +202,11 @@ function itemBoard() {
 
 Открытая форма:
 
-![](/ru/assets/images/How-to_Custom_components_server_calls-bef554511602ecc167056a25fac6dc07.png)
+![](/ru/assets/images/How-to_Custom_components_server_calls-8b22e25b94594202e4b6f04b97c26196.png)
 
 После «Скидка 15%», «По одному каждого», «В корзину» на карточке кофе и «Скрыть» на карточке сахара:
 
-![](/ru/assets/images/How-to_Custom_components_server_calls_result-3d79a770427b8224f47f939eeadfc9e1.png)
+![](/ru/assets/images/How-to_Custom_components_server_calls_result-b6a87fb9c6e414b3fa820009197a40bd.png)
 
 ### Параметры и результат[​](#параметры-и-результат "Прямая ссылка на этот заголовок")
 
