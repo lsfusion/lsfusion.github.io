@@ -6,21 +6,21 @@ The signatures below use the built-in time classes `DATE`, `TIME`, `DATETIME` (w
 
 ### Current value[​](#current-value "Direct link to Current value")
 
-| Property                                                   | What it returns                                                                                                                                               |
-| ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `currentDateTime[]`                                        | current `DATETIME` of the server clock (no time zone), truncated to whole seconds; PG `date_trunc('second', LOCALTIMESTAMP)`                                  |
-| `currentDateTime[INTEGER]`                                 | same, keeping the given number of fractional-second digits (the argument is that precision); PG `LOCALTIMESTAMP($1)`                                          |
-| `currentDateTimeMillis[]`                                  | current `DATETIME` truncated to milliseconds; PG `date_trunc('milliseconds', LOCALTIMESTAMP)`                                                                 |
-| `currentZDateTime[]`                                       | current `ZDATETIME` (with time zone), truncated to whole seconds; PG `date_trunc('second', CURRENT_TIMESTAMP)`                                                |
-| `currentZDateTime[INTEGER]`                                | same, keeping the given number of fractional-second digits; PG `CURRENT_TIMESTAMP($1)`                                                                        |
-| `currentDate[]`                                            | current `DATE`; a stored snapshot the platform refreshes no more than once a day, not a live clock read                                                       |
-| `currentTime[]`                                            | current `TIME` of the server clock — the time part of `currentDateTime[]`                                                                                     |
-| `currentTime[INTEGER]`                                     | current `TIME` keeping the given number of fractional-second digits; PG `LOCALTIME($1)`                                                                       |
-| `currentDay[]` / `currentMonth[]` / `currentYear[]`        | day of month / month number / year of `currentDate[]` as `INTEGER` (`extractDay[DATE]` / `extractMonthNumber[DATE]` / `extractYear[DATE]` of `currentDate[]`) |
-| `currentHour[]` / `currentMinute[]` / `currentSecond[]`    | hour / minute / second of `currentTime[]` as `INTEGER` (`extractHour[TIME]` / `extractMinute[TIME]` / `extractSecond[TIME]` of `currentTime[]`)               |
-| `currentDateTimeSnapshot[]` / `currentZDateTimeSnapshot[]` | stored `DATETIME` / `ZDATETIME` snapshot of the current moment, written by the platform and read like an ordinary stored value                                |
-| `currentTimeText[]`                                        | current date and time as `TEXT` in `YYYYMMDDHH24MISSMS` format; PG `to_char(now(), 'YYYYMMDDHH24MISSMS')`                                                     |
-| `dateDiffersCurrent[DATE]`                                 | takes a `DATE`; returns `TRUE` when it is a non-null date other than `currentDate[]`, otherwise `NULL`                                                        |
+| Property                                                   | What it returns                                                                                                                                                        |
+| ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `currentDateTime[]`                                        | current `DATETIME` of the server clock (no time zone), truncated to whole seconds; PG `date_trunc('second', LOCALTIMESTAMP)`                                           |
+| `currentDateTime[INTEGER]`                                 | same, keeping the given number of fractional-second digits (the argument is that precision); PG `LOCALTIMESTAMP($1)`                                                   |
+| `currentDateTimeMillis[]`                                  | current `DATETIME` truncated to milliseconds; PG `date_trunc('milliseconds', LOCALTIMESTAMP)`                                                                          |
+| `currentZDateTime[]`                                       | current `ZDATETIME` (with time zone), truncated to whole seconds; PG `date_trunc('second', CURRENT_TIMESTAMP)`                                                         |
+| `currentZDateTime[INTEGER]`                                | same, keeping the given number of fractional-second digits; PG `CURRENT_TIMESTAMP($1)`                                                                                 |
+| `currentDate[]`                                            | current `DATE`; a stored snapshot the platform refreshes no more than once a day, not a live clock read                                                                |
+| `currentTime[]`                                            | current `TIME` of the server clock — the time part of `currentDateTime[]`                                                                                              |
+| `currentTime[INTEGER]`                                     | current `TIME` keeping the given number of fractional-second digits; PG `LOCALTIME($1)`                                                                                |
+| `currentDay[]` / `currentMonth[]` / `currentYear[]`        | day of month / month number of `currentDate[]` as `INTEGER`, year as `YEAR` (`extractDay[DATE]` / `extractMonthNumber[DATE]` / `extractYear[DATE]` of `currentDate[]`) |
+| `currentHour[]` / `currentMinute[]` / `currentSecond[]`    | hour / minute / second of `currentTime[]` as `INTEGER` (`extractHour[TIME]` / `extractMinute[TIME]` / `extractSecond[TIME]` of `currentTime[]`)                        |
+| `currentDateTimeSnapshot[]` / `currentZDateTimeSnapshot[]` | stored `DATETIME` / `ZDATETIME` snapshot of the current moment, written by the platform and read like an ordinary stored value                                         |
+| `currentTimeText[]`                                        | current date and time as `TEXT` in `YYYYMMDDHH24MISSMS` format; PG `to_char(now(), 'YYYYMMDDHH24MISSMS')`                                                              |
+| `dateDiffersCurrent[DATE]`                                 | takes a `DATE`; returns `TRUE` when it is a non-null date other than `currentDate[]`, otherwise `NULL`                                                                 |
 
 ### Conversion[​](#conversion "Direct link to Conversion")
 

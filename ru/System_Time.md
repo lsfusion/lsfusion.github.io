@@ -6,21 +6,21 @@
 
 ### Текущее значение[​](#текущее-значение "Прямая ссылка на этот заголовок")
 
-| Свойство                                                   | Что возвращает                                                                                                                                               |
-| ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `currentDateTime[]`                                        | текущие `DATETIME` серверных часов (без часового пояса), округлённые до целых секунд; PG `date_trunc('second', LOCALTIMESTAMP)`                              |
-| `currentDateTime[INTEGER]`                                 | то же с сохранением указанного числа долей секунды (аргумент — эта точность); PG `LOCALTIMESTAMP($1)`                                                        |
-| `currentDateTimeMillis[]`                                  | текущие `DATETIME`, округлённые до миллисекунды; PG `date_trunc('milliseconds', LOCALTIMESTAMP)`                                                             |
-| `currentZDateTime[]`                                       | текущие `ZDATETIME` (с часовым поясом), округлённые до целых секунд; PG `date_trunc('second', CURRENT_TIMESTAMP)`                                            |
-| `currentZDateTime[INTEGER]`                                | то же с сохранением указанного числа долей секунды; PG `CURRENT_TIMESTAMP($1)`                                                                               |
-| `currentDate[]`                                            | текущая `DATE`; хранимый снимок, который платформа обновляет не чаще раза в сутки, а не прямое чтение часов                                                  |
-| `currentTime[]`                                            | текущее `TIME` серверных часов — временная часть `currentDateTime[]`                                                                                         |
-| `currentTime[INTEGER]`                                     | текущее `TIME` с сохранением указанного числа долей секунды; PG `LOCALTIME($1)`                                                                              |
-| `currentDay[]` / `currentMonth[]` / `currentYear[]`        | день месяца / номер месяца / год от `currentDate[]` как `INTEGER` (`extractDay[DATE]` / `extractMonthNumber[DATE]` / `extractYear[DATE]` от `currentDate[]`) |
-| `currentHour[]` / `currentMinute[]` / `currentSecond[]`    | час / минута / секунда от `currentTime[]` как `INTEGER` (`extractHour[TIME]` / `extractMinute[TIME]` / `extractSecond[TIME]` от `currentTime[]`)             |
-| `currentDateTimeSnapshot[]` / `currentZDateTimeSnapshot[]` | хранимый снимок текущего момента `DATETIME` / `ZDATETIME`, записываемый платформой и читаемый как обычное хранимое значение                                  |
-| `currentTimeText[]`                                        | текущая дата-время как `TEXT` в формате `YYYYMMDDHH24MISSMS`; PG `to_char(now(), 'YYYYMMDDHH24MISSMS')`                                                      |
-| `dateDiffersCurrent[DATE]`                                 | принимает `DATE`; возвращает `TRUE`, когда это непустая дата, отличная от `currentDate[]`, иначе `NULL`                                                      |
+| Свойство                                                   | Что возвращает                                                                                                                                                         |
+| ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `currentDateTime[]`                                        | текущие `DATETIME` серверных часов (без часового пояса), округлённые до целых секунд; PG `date_trunc('second', LOCALTIMESTAMP)`                                        |
+| `currentDateTime[INTEGER]`                                 | то же с сохранением указанного числа долей секунды (аргумент — эта точность); PG `LOCALTIMESTAMP($1)`                                                                  |
+| `currentDateTimeMillis[]`                                  | текущие `DATETIME`, округлённые до миллисекунды; PG `date_trunc('milliseconds', LOCALTIMESTAMP)`                                                                       |
+| `currentZDateTime[]`                                       | текущие `ZDATETIME` (с часовым поясом), округлённые до целых секунд; PG `date_trunc('second', CURRENT_TIMESTAMP)`                                                      |
+| `currentZDateTime[INTEGER]`                                | то же с сохранением указанного числа долей секунды; PG `CURRENT_TIMESTAMP($1)`                                                                                         |
+| `currentDate[]`                                            | текущая `DATE`; хранимый снимок, который платформа обновляет не чаще раза в сутки, а не прямое чтение часов                                                            |
+| `currentTime[]`                                            | текущее `TIME` серверных часов — временная часть `currentDateTime[]`                                                                                                   |
+| `currentTime[INTEGER]`                                     | текущее `TIME` с сохранением указанного числа долей секунды; PG `LOCALTIME($1)`                                                                                        |
+| `currentDay[]` / `currentMonth[]` / `currentYear[]`        | день месяца / номер месяца от `currentDate[]` как `INTEGER`, год как `YEAR` (`extractDay[DATE]` / `extractMonthNumber[DATE]` / `extractYear[DATE]` от `currentDate[]`) |
+| `currentHour[]` / `currentMinute[]` / `currentSecond[]`    | час / минута / секунда от `currentTime[]` как `INTEGER` (`extractHour[TIME]` / `extractMinute[TIME]` / `extractSecond[TIME]` от `currentTime[]`)                       |
+| `currentDateTimeSnapshot[]` / `currentZDateTimeSnapshot[]` | хранимый снимок текущего момента `DATETIME` / `ZDATETIME`, записываемый платформой и читаемый как обычное хранимое значение                                            |
+| `currentTimeText[]`                                        | текущая дата-время как `TEXT` в формате `YYYYMMDDHH24MISSMS`; PG `to_char(now(), 'YYYYMMDDHH24MISSMS')`                                                                |
+| `dateDiffersCurrent[DATE]`                                 | принимает `DATE`; возвращает `TRUE`, когда это непустая дата, отличная от `currentDate[]`, иначе `NULL`                                                                |
 
 ### Преобразование[​](#преобразование "Прямая ссылка на этот заголовок")
 
