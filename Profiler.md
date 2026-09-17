@@ -56,11 +56,12 @@ User and form filters narrow the selection to a specific context; metrics are re
 
 The same form has a separate `SQL` tab that configures parameters affecting how SQL query plans are written to the logs (see [Journals and logs](/Journals_and_logs.md#logs)):
 
-| Parameter      | Meaning                                                                                                |
-| -------------- | ------------------------------------------------------------------------------------------------------ |
-| No analyze     | Ask the database server for the query plan in a lightweight mode, without actually executing the query |
-| Java stack     | Include in the log the Java stack from which the query was issued                                      |
-| Compile plan   | Log the compile plan as well, not only the execution plan                                              |
-| Time threshold | Minimum query execution time starting from which a plan reaches the log                                |
+| Parameter      | Meaning                                                                 |
+| -------------- | ----------------------------------------------------------------------- |
+| Java stack     | Include in the log the Java stack from which the query was issued       |
+| Compile plan   | Log the compile plan as well, not only the execution plan               |
+| Time threshold | Minimum query execution time starting from which a plan reaches the log |
+
+The values on this tab are stored in the database as the [working parameters](/Working_parameters.md) of the same names (`explainJavaStack`, `explainCompile`, `explainThreshold`) and stay in effect after a restart until changed here or in the settings form; like any value from the database, they take priority over the values set in the settings files and startup parameters.
 
 These parameters are a separate mechanism, not included in the graph the profiler collects, but typically used alongside it for in-depth analysis of specific «hot spots».

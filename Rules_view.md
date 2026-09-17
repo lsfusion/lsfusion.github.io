@@ -41,6 +41,8 @@
 
    Without `SELECTOR`, the panel cell does not open a selection dialog and the object cannot be changed. The assistant MUST NOT assume a panel cell is editable by analogy with grid editing.
 
+   While a `PANEL` object of a user-defined class has no current value (the `NULL` default objects type or no matching object), the properties and actions that take this object are not shown on the form — except the `SELECTOR` property and properties with `SHOWIF`; properties and actions that do not take this object (for example, `NEW`) stay visible as usual. So a card whose fields must all be available at once MUST be opened for an already created object (explicitly: `NEW o = Book { SHOW book OBJECTS o = o; }`, or by the form operator `NEWEDIT` / `NEWSESSION NEW`, which creates the object and opens its edit form), and the assistant MUST NOT build it on an object without a value.
+
 6. In a form `PROPERTIES` block, the parameter style on the property or action being added to the form MUST match the block header:
 
    * With a common-parameter header `PROPERTIES(p1, ..., pN)`, each entry MUST be specified by its ID only — the common parameters are bound implicitly. Writing `propName(p1, ..., pN)` after the ID is a parse error.
