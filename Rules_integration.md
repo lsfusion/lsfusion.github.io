@@ -42,7 +42,11 @@
 
    An object group whose [export/import name](/Structured_view.md#extid) matches no key of the file imports zero records with no error or warning, so the assistant MUST check a new import form on a non-empty sample.
 
-8. The assistant MUST choose format options explicitly when the external contract depends on them:
+8. After a form import the assistant MUST NOT iterate by `imported[INTEGER]` unless the form has a filter with it (`FILTERS imported(receipts)`): form import writes only to the [properties and filters of the form](/In_a_structured_view_EXPORT_IMPORT.md#importForm). Without the filter, a staging property that is always filled plays that role.
+
+   The assistant MUST NOT use one mark property in the filters of several object groups: each group numbers its records from 0, so the marks get mixed. Every further group needs a `LOCAL` mark property of its own.
+
+9. The assistant MUST choose format options explicitly when the external contract depends on them:
 
    * `HEADER` / `NOHEADER`
    * `SHEET`
@@ -50,23 +54,23 @@
 
    The assistant SHOULD prefer `HEADER` for stable `CSV` / `XLS` templates, because `NOHEADER` can silently map missing or mistyped columns to `NULL`.
 
-9. The assistant MUST validate referenced business keys before creating or updating persistent objects.
+10. The assistant MUST validate referenced business keys before creating or updating persistent objects.
 
-   Typical keys in this project are `id`, `number`, partner or item codes, and external references.
+    Typical keys in this project are `id`, `number`, partner or item codes, and external references.
 
-   Each reference MUST be checked in a separate `FOR` using `GROUP SUM 1 BY` over the imported key values.
+    Each reference MUST be checked in a separate `FOR` using `GROUP SUM 1 BY` over the imported key values.
 
-   If possible, the assistant SHOULD NOT write resolved references to a separate `LOCAL` before the main import logic.
+    If possible, the assistant SHOULD NOT write resolved references to a separate `LOCAL` before the main import logic.
 
-   Missing master data or malformed payloads MUST stop the import or surface a clear error.
+    Missing master data or malformed payloads MUST stop the import or surface a clear error.
 
-10. The assistant SHOULD separate raw import from domain resolution:
+11. The assistant SHOULD separate raw import from domain resolution:
 
     * first parse the file or payload into locals or an import form
     * then check references such as item, partner, status, type, or other lookups
     * only then create or update domain objects
 
-11. For user-started batch imports and external integrations, the assistant SHOULD isolate persistence in `NEWSESSION`, and SHOULD `APPLY;` after the domain writes of one import.
+12. For user-started batch imports and external integrations, the assistant SHOULD isolate persistence in `NEWSESSION`, and SHOULD `APPLY;` after the domain writes of one import.
 
     Three of the change-session rules bite on every import, so they are stated here rather than left to a second lookup:
 
@@ -76,12 +80,12 @@
 
     The rest of them are in the domain-logic article: `lsfusion_get_guidance(rules='logic')`.
 
-12. The assistant MUST NOT partially persist a failed import silently. For failures the assistant detects on its own (missing references, malformed payload, pre-`APPLY` validation), it SHOULD use `MESSAGE`, `RETURN`, `throwException`, or an explicit failure flag, consistent with the caller:
+13. The assistant MUST NOT partially persist a failed import silently. For failures the assistant detects on its own (missing references, malformed payload, pre-`APPLY` validation), it SHOULD use `MESSAGE`, `RETURN`, `throwException`, or an explicit failure flag, consistent with the caller:
 
     * interactive import -> `MESSAGE`
     * API or background integration -> exception or explicit failure state
 
-13. For create-or-update synchronization imports, the assistant MUST separate object creation from property updates.
+14. For create-or-update synchronization imports, the assistant MUST separate object creation from property updates.
 
     The assistant MUST make one separate pass that only creates the missing objects. A `FOR` is one way to write it; the bulk `NEW ... WHERE ... TO` form creates an object per matching set in a single operation and is the better one wherever it fits.
 
@@ -93,7 +97,7 @@
 
     If full synchronization is required, the assistant SHOULD add an explicit delete step.
 
-14. If `LOCAL` staging properties are used only in one import action, the assistant MUST declare them inside that action.
+15. If `LOCAL` staging properties are used only in one import action, the assistant MUST declare them inside that action.
 
     The assistant SHOULD NOT lift such `LOCAL` properties to module scope without need.
 
