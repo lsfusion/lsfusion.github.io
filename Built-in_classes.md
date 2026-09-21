@@ -167,21 +167,21 @@ The default value is defined as follows:
 
 When files of a specific type (`JSONFILE`, `XMLFILE`, ...) are cast into a file of dynamic type (`FILE`, `NAMEDFILE`), whether explicitly or implicitly (e.g. with [data import](/Data_import_IMPORT.md) without specifying a format or when [working with external systems](/Access_to_an_external_system_EXTERNAL.md)), the extension of the result file is determined as follows:
 
-| Class name  | Extension        |
-| ----------- | ---------------- |
-| `RAWFILE`   | The empty string |
-| `JSONFILE`  | json             |
-| `XMLFILE`   | xml              |
-| `CSVFILE`   | csv              |
-| `TEXTFILE`  | txt              |
-| `WORDFILE`  | doc              |
-| `EXCELFILE` | xls              |
-| `HTMLFILE`  | html             |
-| `PDFFILE`   | pdf              |
-| `VIDEOFILE` | mp4              |
-| `DBFFILE`   | dbf              |
-| `IMAGEFILE` | jpg              |
-| `TABLEFILE` | table            |
+| Class name  | Extension                                           |
+| ----------- | --------------------------------------------------- |
+| `RAWFILE`   | The empty string (dat for explicit type conversion) |
+| `JSONFILE`  | json                                                |
+| `XMLFILE`   | xml                                                 |
+| `CSVFILE`   | csv                                                 |
+| `TEXTFILE`  | txt                                                 |
+| `WORDFILE`  | doc                                                 |
+| `EXCELFILE` | xls                                                 |
+| `HTMLFILE`  | html                                                |
+| `PDFFILE`   | pdf                                                 |
+| `VIDEOFILE` | mp4                                                 |
+| `DBFFILE`   | dbf                                                 |
+| `IMAGEFILE` | jpg                                                 |
+| `TABLEFILE` | table                                               |
 
 For `WORDFILE`, `EXCELFILE` and `IMAGEFILE`, the extension additionally depends on the content of the file:
 
@@ -195,12 +195,12 @@ The content is taken into account only when the file value itself is passed on -
 
 Values of classes other than files of a specific type can also be cast into a file of dynamic type; in this case the extension is determined as follows:
 
-| Class name                                         | Extension        |
-| -------------------------------------------------- | ---------------- |
-| `HTML`                                             | html             |
-| `XML`                                              | xml              |
-| `JSON`, `JSONTEXT`                                 | json             |
-| Strings, `LINK`, links to files of a specific type | The empty string |
+| Class name                                         | Extension |
+| -------------------------------------------------- | --------- |
+| `HTML`                                             | html      |
+| `XML`                                              | xml       |
+| `JSON`, `JSONTEXT`                                 | json      |
+| Strings, `LINK`, links to files of a specific type | dat       |
 
 ## Result properties[​](#export "Direct link to Result properties")
 
