@@ -41,7 +41,7 @@ The `BY` block describes group expressions. Each expression corresponds to a par
 
 info
 
-If a `BY` block is defined, this operator cannot be used inside [expressions](/Expression.md): it is only allowed as the entire definition of a property — the right side of the [`=` statement](/=_statement.md) — or as an inline definition in the brackets of the [`JOIN` operator](/JOIN_operator.md). In the latter case the applied form `[GROUP ... BY ...](...)` is an ordinary expression again. Another way to use such a value inside an expression is to first write it into a separate (for example, [local](/Data_properties_DATA.md#local)) property and use that property instead.
+If a `BY` block is defined, this operator cannot be used inside [expressions](/Expression.md): it is only allowed as the entire definition of a property — the right side of the [`=` statement](/=_statement.md) — or as an inline definition in the brackets of the [`JOIN` operator](/JOIN_operator.md). In the latter case the applied form `[GROUP ... BY ...](...)` is an ordinary expression again: its arguments correspond in order to the expressions of the `BY` block, while the used upper parameters are passed automatically and are not listed among the arguments. Another way to use such a value inside an expression is to first write it into a separate (for example, [local](/Data_properties_DATA.md#local)) property and use that property instead.
 
 The `ORDER` block defines the order in which the aggregate function will be calculated. It is mandatory for `CONCAT` and `LAST`. For [commutative](/Set_operations.md#commutative) aggregators (`SUM`, `MAX`, `MIN`, `EQUAL`, `AGGR`, `NAGGR`) it may also be specified; in that case the order does not change the final aggregate value by itself, but it affects which records participate in aggregation when `TOP` / `OFFSET` are used. If the function is non-commutative, the order should be specified so that it is uniquely determined. If a new parameter is declared in the expressions specifying the order (i.e. parameter is not used in the remaining blocks or in the upper context), the condition of non-NULLness of all these expressions is automatically added.
 
@@ -122,6 +122,9 @@ last3HostGoalsScored(team) = GROUP SUM hostGoals(Game game) ORDER DESC date(game
 // the date parameter is used in the expression, so it is itself a group of the created property and is not listed in BY;
 // the BY expression is mapped to the remaining parameter team
 hostGoalsScoredBefore(Team team, DATE date) = GROUP SUM hostGoals(Game game) IF date(game) < date BY hostTeam(game);
+// inline definition in brackets inside an expression: the argument corresponds to the BY expression,
+// the used upper parameter date is passed automatically and is not listed among the arguments
+hostGoalsScoredBeforeOrZero(Team team, DATE date) = OVERRIDE [GROUP SUM hostGoals(Game game) IF date(game) < date BY hostTeam(game)](team), 0;
 
 name = DATA STRING[100] (Country);
 // property (STRING[100]) -> Country is obtained

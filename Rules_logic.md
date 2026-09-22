@@ -97,6 +97,8 @@ For a simple property composition that only forwards another property, the assis
 
     With an explicit parameter list on the left, the `BY` expressions are mapped in order only to the parameters not used in the expressions; a mismatch in count or classes is an error.
 
+    In the inline form `[GROUP ... BY ...](...)` such parameters are passed automatically: the arguments correspond in order only to the `BY` expressions (`[GROUP SUM f(x) IF g(x) = s BY h(x)](y)`), and listing `s` among them is a parameter-count error. The assistant MUST make sure that a name used inside the brackets without a class is already declared outside, earlier in the text: otherwise it silently becomes a parameter of the `GROUP` itself, and the aggregate runs over all its values.
+
 20. `MAX` and `MIN` are prefix operators over a comma-separated operand list (`MAX a, b`), not infix ones: `a MAX b` does not parse — the platform reports `no viable alternative at input 'MAX'`.
 
     The operand list extends as far as the expression allows, so everything after the comma belongs to the operator: `MAX a, b * c` is `MAX(a, b * c)`, while `x * MAX a, b` is fine as it stands. Where a following operator must apply to the maximum itself, the operator MUST be parenthesized: `(MAX a, b) * c`.
@@ -147,7 +149,7 @@ For a simple property composition that only forwards another property, the assis
 
    When dependent computation must reuse these parameters, the assistant SHOULD nest further `NEW` or `FOR` blocks inside the introducing block, where the parameters are still in scope, rather than lifting values out into auxiliary storage.
 
-   Conversely, a parameter declared inside a `GROUP` aggregate belongs to that aggregate and is NOT visible outside of it; in particular it cannot serve as the loop variable of the enclosing `FOR`. Declare the variable as the `FOR`'s own parameter and use the aggregate only as a boolean condition over it.
+   Conversely, a parameter declared inside a `GROUP` aggregate belongs to that aggregate and is NOT visible outside of it; in particular it cannot serve as the loop variable of the enclosing `FOR`. Declare the variable as the `FOR`'s own parameter and use the aggregate only as a boolean condition over it. To iterate over the groups of an aggregate together with its value, apply the inline form to new typed parameters: `FOR NUMERIC[16,2] q = [GROUP SUM f(x) BY h(x)](Class y) DO ...`.
 
 3. The assistant SHOULD avoid introducing `LOCAL` properties without a concrete need.
 
