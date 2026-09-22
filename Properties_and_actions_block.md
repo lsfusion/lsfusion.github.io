@@ -154,7 +154,7 @@ In the current platform implementation, if the name and caption are not specifie
   Specifying [standard handlers](/Form_events.md#predefined) for property/action change events. It is specified by one of the keywords:
 
   * `CHANGEABLE` calls the corresponding handler of the triggered event. Default value. It makes sense to use it explicitly only when another modifier is defined for the entire block but should not be applied to a specific property.
-  * `READONLY` will either turn on the filtering mechanism or simply ignore the event when the user tries to change the property.
+  * `READONLY` will either turn on the filtering mechanism or simply ignore the event when the user tries to change the property. The `EDIT` event is not affected.
   * `DISABLE` The property is not available for changing.
   * `SELECTOR` shows a dialog for changing the current value of the object (not the property value) when the user tries to change the property. Applicable only for properties with one parameter.
 
@@ -425,7 +425,7 @@ In the current platform implementation, if the name and caption are not specifie
 
     * `GROUPCHANGE` — the user tries to change the property value for all objects in the table (group change).
 
-    * `EDIT` — editing of the object passed to the property as input.
+    * `EDIT` — editing of the object behind the property: its value or an object the property is computed for, as chosen by the [default handler](/Form_events.md#default) of this event. An empty handler (`ON EDIT { }`) keeps the `Follow the link` item in the context menu of the property but makes it do nothing.
 
     * `KEYPRESS key` — the user presses the `key` key, specified with a string literal.
 

@@ -998,7 +998,7 @@
 
 ## Materializations
 
-- [Materializations](/Materializations.md): Almost any aggregated property in the platform can be materialized. In this case, the property will be stored in the database permanently and automatically updated when the data on which this property depends is changed. At the same time, when reading the values of the materialized property, these values will be read directly from the database, as if the property was data (and not calculated every time). Accordingly, all data properties are materialized by definition.
+- [Materializations](/Materializations.md): Almost any aggregated property in the platform can be materialized. In this case, the property will be stored in the database permanently and automatically updated when the data on which this property depends is changed. At the same time, when reading the values of the materialized property in a change session that has not changed the data it depends on, these values will be read directly from the database, as if the property was data (and not calculated every time). Accordingly, all data properties are materialized by definition.
 
 ## Materials_management
 

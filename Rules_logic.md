@@ -123,6 +123,8 @@ For a simple property composition that only forwards another property, the assis
 
 3. `PARTITION LAST` does not read the order to compute its value: it is the value of the current row. `GROUP LAST` is the one that picks by order.
 
+4. A `PARTITION` does not split its window by the parameters of the property: to number rows separately for each `loc` in `idx(loc, x) <- PARTITION SUM 1 IF cond(loc, x) ORDER x`, the assistant MUST add `BY loc`; without it the numbering runs across all values of `loc`. Rows whose summed expression is `NULL` are not in the window, so `SUM 1 IF cond` by itself numbers, under a unique order, the rows where `cond` holds from 1.
+
 ## Actions and assignment[​](#actions-and-assignment "Direct link to Actions and assignment")
 
 ### Action rules[​](#action-rules "Direct link to Action rules")
@@ -170,9 +172,9 @@ For a simple property composition that only forwards another property, the assis
 
    Established `LOCAL` patterns mandated by other rules (e.g. import staging, nested-session carry-over) remain valid; the assistant SHOULD still keep such `LOCAL`s minimal in count and scope.
 
-7. The parameters of the top-level statements of an action body share one parameter context: identical names denote the same parameter, and a parameter's class is declared only at its first use.
+7. A parameter introduced locally by a top-level statement of an action body (the implicit loop of an assignment, `FOR`, `NEW`) is visible only inside that statement: the same name in the next statement is a new parameter with its own class.
 
-   In generated scripts (`eval`, data seeding) the assistant SHOULD give the parameters of top-level statements unique names, so as not to depend on the statement order.
+   In generated scripts (`eval`, data seeding) the assistant SHOULD still give such parameters unique names, so that the class of each one is evident at the place of use.
 
 8. Many system utility actions return their result through a same-named parameterless `LOCAL` property (for example, in `Utils`: the action `fileExists[ISTRING[500]]` writes into the property `fileExists[]`). Such an element is an ACTION, not a boolean property: the assistant MUST call the action first and then read the parameterless property (`fileExists(path); IF fileExists() THEN ...`), and MUST NOT use the parameterized form inside an expression (`IF fileExists(path)` is wrong).
 

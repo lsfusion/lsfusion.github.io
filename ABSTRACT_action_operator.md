@@ -22,7 +22,7 @@ The `ABSTRACT` operator is a [context-independent action operator](/Action_opera
 
   * `CASE` - the explicit conditional form of the abstract action. The selection condition of each implementation is defined in the corresponding [`ACTION+` statement](/ACTION_plus_statement.md) using the `WHEN` block.
   * `MULTI` - [a polymorphic form](/Branching_CASE_IF_MULTI.md#poly) of the abstract action. An implementation is selected when the current arguments are compatible with its [signature](/ISCLASS_operator.md).
-  * `LIST` - the sequential form of the abstract action. In this form all implementations are executed one after another.
+  * `LIST` - the sequential form of the abstract action. In this form all implementations are executed one after another, until one of them exits the action with the [`RETURN` operator](/RETURN_operator.md).
 
   If this option is omitted, `MULTI` is used by default.
 
