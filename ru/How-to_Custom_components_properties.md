@@ -16,6 +16,7 @@ text 'Text' = DATA TEXT (Message);
 
 author = DATA CustomUser (Message);
 nameAuthor 'Author' (Message m) = name(author(m));
+own (Message m) = author(m) = currentUser();
 
 replyTo = DATA Message (Message);
 nameAuthorReplyTo (Message m) = nameAuthor(replyTo(m));
@@ -24,101 +25,122 @@ textReplyTo (Message m) = text(replyTo(m));
 
 ### Отображение списка сообщений[​](#отображение-списка-сообщений "Прямая ссылка на этот заголовок")
 
-Список сообщений в чате на форме будем отображать как записи в таблице с одной колонкой. Для этой колонки будет изменен компонент отображения значения на тот, который будет написан на JavaScript. Проще всего значение представить в виде строки формата JSON, в которой будут храниться все параметры сообщения. Для формирования этой строки воспользуемся оператором JSON :
+Список сообщений в чате на форме будем отображать компонентом, написанным на JavaScript. Каждое сообщение показывает сразу несколько значений — автора, время, текст, цитируемое сообщение, — а компонент свойства получает только значение своего свойства. Поэтому список сообщений отображается [пользовательским компонентом группы объектов](/ru/How-to_Custom_components_objects.md): все нужные свойства добавляются на форму как обычно, и компонент получает их значения по именам свойств на форме. Компонент свойства понадобится ниже — для поля ввода нового сообщения.
+
+Создадим форму чата. При помощи ключевого слова **CUSTOM** указывается, что список сообщений должен отображаться при помощи функции *chatMessages*, которая будет написана на JavaScript:
 
 ```
-json (Message m) = 
-    JSON FROM
-         author = nameAuthor(m), 
-         time = dateTime(m), 
-         text = text(m), 
-         own = IF author(m) = currentUser() THEN 1 ELSE 0, 
-         replyAuthor = nameAuthorReplyTo(m), 
-         replyText = textReplyTo(m), 
-         replyMessage = replyTo(m);
+FORM chat 'Chat'
+    OBJECTS msg = Message CUSTOM 'chatMessages' LAST
+    PROPERTIES(msg) READONLY nameAuthor, dateTime, text, own, nameAuthorReplyTo, textReplyTo
+;
 ```
 
-Пример значения:
+Далее настраиваем дизайн формы, помещая список сообщений в новый контейнер с идентификатором *chat*, а также удаляем ненужные компоненты, созданные автоматически:
 
 ```
-{
-    "author":"John Doe",
-    "time":"2021-10-05T15:28:05",
-    "text":"Hello, Jack!",
-    "own":1,
-    "replyAuthor":"Jack Smith",
-    "replyText":"Hello, John",
-    "replyMessage":31302
+DESIGN chat {
+    OBJECTS {
+        NEW chat {
+            fill = 1; 
+            MOVE GRID(msg);
+            REMOVE BOX(msg);
+        }
+    }
+    REMOVE TOOLBARBOX;       
+}
+```
+
+Добавляем форму в навигатор:
+
+```
+NAVIGATOR {
+    NEW chat;
 }
 ```
 
 Далее создадим при помощи JavaScript и CSS компонент, который будет отображать сообщения в браузере. Компонент создадим в файле chat.js, который расположим в папке *resources/web*. Это путь без сборки — обычный файл `.js`, без JSX и упаковки; где размещается пользовательский JS и о варианте со сборкой см. [How-to: Пользовательские клиентские JS-модули](/ru/How-to_Custom_client_JS_modules.md). `controller`, который получают эти классические компоненты, описан в [How-to: API контроллера пользовательского представления](/ru/How-to_Custom_view_controller.md).
 
-Внутри файла chat.js создадим функцию *chatMessageRender*. Она будет возвращать объект, состоящий из двух функций: *render* и *update*.
+Внутри файла chat.js создадим функцию *chatMessages*. Она будет возвращать объект, состоящий из двух функций: *render* и *update*.
 
-Функция *render* принимает на вход элемент, внутри которого должны создаваться новые элементы, необходимые для отображения данных:
+Функция *render* принимает на вход элемент, внутри которого должны создаваться новые элементы, необходимые для отображения данных, а также контроллер. В ней создается и запоминается контейнер, в котором будут отображаться сообщения:
 
 ```
-render: function (element) { 
-    let message = document.createElement("div")
-    message.classList.add("chat-message");
+render: function (element, controller) { 
+    let messages = document.createElement("div");
+    messages.classList.add("chat-messages");
 
-    let header = document.createElement("div");
-    header.classList.add("chat-header");
-
-    let author = document.createElement("div");
-    author.classList.add("chat-author");
-
-    element.author = author;
-    header.appendChild(author);
-
-    let replyAction = document.createElement("a");
-    replyAction.classList.add("chat-reply-action");
-
-    let replyCaption = document.createTextNode("Reply");
-    replyAction.appendChild(replyCaption);
-
-    element.replyAction = replyAction;
-    header.appendChild(replyAction);
-
-    message.appendChild(header);
-
-    let replyContent = document.createElement("div");
-    replyContent.classList.add("chat-reply-content");
-
-    let replyAuthor = document.createElement("div");
-    replyAuthor.classList.add("chat-reply-author");
-
-    element.replyAuthor = replyAuthor;
-    replyContent.appendChild(replyAuthor);
-
-    let replyText = document.createElement("div");
-    replyText.classList.add("chat-reply-text");
-
-    element.replyText = replyText;
-    replyContent.appendChild(replyText);
-
-    element.replyContent = replyContent;
-    message.appendChild(replyContent);
-
-    let text = document.createElement("div");
-    text.classList.add("chat-text");
-
-    element.text = text;
-    message.appendChild(text);
-
-    let time = document.createElement("div");
-    time.classList.add("chat-time");
-
-    element.time = time;
-    message.appendChild(time);
-
-    element.message = message;
-    element.appendChild(message);
+    element.messages = messages;
+    element.appendChild(messages);
 }
 ```
 
-В этом коде внутри *element* создаются и сохраняются новые div для каждого сообщения, которые затем будут использованы для отрисовки частей сообщения. В результате будет создана следующая структура компонентов:
+Для обновления отображаемых значений платформа будет каждый раз вызывать функцию *update*, в которую будет передан тот же *element*, что и в функции *render*, контроллер, а также список сообщений *list*. Каждый элемент списка содержит значения свойств, добавленных на форму, в полях с именами этих свойств: *nameAuthor*, *dateTime*, *text* и так далее. Функция удаляет ранее созданные элементы и создает для каждого сообщения из списка свою структуру элементов:
+
+```
+update: function (element, controller, list) {
+    while (element.messages.lastElementChild) {
+        element.messages.removeChild(element.messages.lastElementChild);
+    }
+
+    for (let item of list) {
+        let message = document.createElement("div");
+        message.classList.add("chat-message");
+        if (item.own)
+            message.classList.add("chat-message-own");
+        if (controller.isCurrent(item))
+            message.classList.add("chat-message-current");
+
+        let header = document.createElement("div");
+        header.classList.add("chat-header");
+
+        let author = document.createElement("div");
+        author.classList.add("chat-author");
+        author.innerText = item.nameAuthor || '';
+        header.appendChild(author);
+
+        let replyAction = document.createElement("a");
+        replyAction.classList.add("chat-reply-action");
+        replyAction.appendChild(document.createTextNode("Reply"));
+        header.appendChild(replyAction);
+
+        message.appendChild(header);
+
+        let replyContent = document.createElement("div");
+        replyContent.classList.add("chat-reply-content");
+
+        let replyAuthor = document.createElement("div");
+        replyAuthor.classList.add("chat-reply-author");
+        replyAuthor.innerText = item.nameAuthorReplyTo || '';
+        replyContent.appendChild(replyAuthor);
+
+        let replyText = document.createElement("div");
+        replyText.classList.add("chat-reply-text");
+        replyText.innerText = item.textReplyTo || '';
+        replyContent.appendChild(replyText);
+
+        message.appendChild(replyContent);
+
+        let text = document.createElement("div");
+        text.classList.add("chat-text");
+        text.innerText = item.text || '';
+        message.appendChild(text);
+
+        let time = document.createElement("div");
+        time.classList.add("chat-time");
+        time.innerText = item.dateTime ? item.dateTime.toLocaleString() : '';
+        message.appendChild(time);
+
+        element.messages.appendChild(message);
+    }
+
+    let current = element.messages.querySelector(".chat-message-current");
+    if (current)
+        current.scrollIntoView({ block: "nearest" });
+}
+```
+
+Значения свойств приходят преобразованными в значения JS: текстовые — строками, *own* — логическим значением, *dateTime* — объектом `Date`, поэтому время форматируется средствами браузера. Текущее сообщение группы определяется методом *isCurrent* контроллера и выделяется классом *chat-message-current*; после обновления оно прокручивается в видимую область. В результате для каждого сообщения будет создана следующая структура элементов:
 
 ```
 <div class="chat-message chat-message-own">
@@ -131,13 +153,18 @@ render: function (element) {
       <div class="chat-reply-text"></div>
    </div>
    <div class="chat-text">Hello world !</div>
-   <div class="chat-time">2021-10-05T15:28:05</div>
+   <div class="chat-time">05.10.2021, 15:28:05</div>
 </div>
 ```
 
 Для каждого элемента задается свой класс, который используется для дизайна при помощи CSS :
 
 ```
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+}
+
 .chat-message {
     margin: 6px;
     border: 1px solid;
@@ -146,6 +173,10 @@ render: function (element) {
 
     display: flex;
     flex-direction: column;
+}
+
+.chat-message-current {
+    border-color: blue;
 }
 
 .chat-header {
@@ -161,10 +192,6 @@ render: function (element) {
 .chat-reply-action {
     cursor: pointer;
     margin-left: 4px;
-}
-
-.chat-reply {
-    display: flex;
 }
 
 .chat-reply-content {
@@ -200,36 +227,15 @@ render: function (element) {
 }
 ```
 
-Для обновления отображаемых значений платформа будет каждый раз вызывать функцию *update*, в которую будет передан тот же *element*, что и в функции *render*, а также само значение:
+Чтобы объединить эти две функции в одну, создается новая функция *chatMessages*, которая возвращает их внутри одного объекта:
 
 ```
-update: function (element, controller, value) {
-    element.author.innerHTML = value.author || '';
-
-    element.replyAuthor.innerHTML = value.replyAuthor || '';
-    element.replyText.innerHTML = value.replyText || '';
-
-    element.time.innerHTML = value.time;
-    element.text.innerHTML = value.text || '';
-
-    if (value.own)
-        element.message.classList.add('chat-message-own');
-    else
-        element.message.classList.remove('chat-message-own');
-}
-```
-
-В эту функцию параметром *value* передается JavaScript-объект, который рассчитан из ранее описанного свойства *json*. Значения всех полей записываются в элементы, которые были ранее построены в функции *render*.
-
-Чтобы объединить эти две функции в одну, создается новая функция *chatMessageRender*, которая возвращает их внутри одного объекта:
-
-```
-function chatMessageRender() {
+function chatMessages() {
     return {
-        render: function (element) {
+        render: function (element, controller) {
             ...
         },
-        update: function (element, controller, value) {
+        update: function (element, controller, list) {
             ...
         }
     }
@@ -247,88 +253,45 @@ onWebClientInit() + {
 
 Сообщение, отображаемое при помощи созданного компонента, будет выглядеть следующим образом:
 
-![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABuCAIAAABp+SwUAAAI+ElEQVR4Xu2cTWsUTRDHF+KnED17Eq8hd2HJQfQav4EBjadcg4cVNXtaIhLyclACcclJclBkySEEeU5REASPgl9jn+r36uqa2ZndmU2breaPTHqru2f+v+nqTcbpzlhKNqVDK6RcXREYGZVCGIeHhw8ePrp56/bS0lJHygwFDAQbwUywlLocFwYGtIHGK/e7z14P3n799vHnn5Nff0VTCwwEG8FMsBSMLUFCYTxZX79z996L9ydpp6LZBcaCvWAysd2UCAYEAT2ZCq0K7AWTWR4BBkwfgCYk5iAwGaxO81WAAelMstPcBFaD4QiEKhYGUIK5k7YRtScwnEwOCwO+eMFynzYQtScwHGxnYMCUga9faQNRewLDSaayMOAXE1m65ywwHGxnYMAvimm0qG2B7bPDuNzoQovNHq13OttZhs+ffqL15TKtQlndOEtiWtD+cHTj1Rerg+9pQImg7crwd1pfUdnDsK3MEJ214ySsaSFDfz8ffHn8mQaUaEFggD6twY/dnf00slFhQ+uaWzeeqHkY+/1VdQ/rsty/VAHG1u6qSzsm0rRaXda3fCe96ykMG2+SFTOKb0IqayqeGaPn30y9miUmd5m5osO+u8rzl7jt5/Mbg//cTfP98SvfyQR1GoZxvOmNMH6pYwtD39QhAJmLA7wojL+9py6+eBRTGSLpqU4WWjMwCX8M5irrdZitVMd6dXEgUTyAqbzwNAwjcsG7iW3VPupjPJ90CiKJjsKYMAqeK6bQqVZNfma8PPjipggAcEu6gxRnpEDIVOJOqq86nSZghGzO2tQMDDR72FEMjOkAYCGXrcXogA0LAVFblanMv3SIIjUBA+WHNIEodxqAES0Y/CimZ5frev0pl3rssss/asEgK7P6yBmdpClV+fJg9Hx4Xms9nw2Guf5gmRKztM4CI5ToU2YUfD6dZAWqrOSWN3kGZSrNQIUdnK+gGtoWVotkPpWrMxOMBVbMjFOdpdtIYEypSTBq/8J4IjCmVhkMlaDoGlNFAiMjCYyMJDAyksDISFPCgFagtF40iwRGRhIYGUlgZKSGYey929o+pZW8Loa9N8MPab3R6e6WLbt76aepoLc0snyI/JQlDOzsxXBQsUOrH4M3/cGFbVs4RJbKEgZMi3cjWllVAsPJw/hw1E/yDNhkq1SMd0rNg63e0Q/Uz2ib1qgOe0cj04P6yOUxy972FoZQOHXlnj0TRyhjtQXDS5uobIWPIn+tfeA7a5O11fem6ZpIhcpOHUDiidpJEM8MB1U1n362zUntwdCW+ZtU/RgvsMq+fo8n4aU68VPNseQSUREMn6b+hZTVOAx/8zpHzAKQeqFu237vDZ1JVG79EBiFKoDhbn9ltJ0HMFe0myrtFKSphMfpbpSdBEYaGjcjMGiKVwx02X7nvxqFxBUt4HgNiHtTxTlYGYb77kCm4yLBEDUggZGRBEZGEhgZSWBkJIGRkQRGRmoQxuVGN3olYr+/Wvh/ws92ls3/hfUH1VXepPxTXp/WSl67mqMExl+BITAYzQmGfr1FlfCSQALDx0z43/zY7vAOAHp3prvTsy8MlFYGXU8YzhlXDAxw2VFxwBIYioR7yUO9e4Fe+KDybRUJZyJUmmN1gN6jMf2wlUGXG09L8c9LzcJgZwaFZN9limBADL43S29V15akQYsczxs6SlwZtFgwksxAbaoJQ9/azcHIRXOAEaUgq8Sm6mkKPkXvD3JpKvWdrQwC9sntchWaB4w4U8WWBWtQjDfreDN6tz5+hdIM4dpEazX1na0MuoYwmtd+fzMHj+amnGGQheT6K2cYC6cpYYjakMDISAIjIwmMjCQwMpLAyEgCIyMJjIxUC0bJX58SsX8Xqqg6TdDDkkTHmyV/cMxQAiMjCYyM1BiMdp5ym+3yULe/0HNvHeNh6M7jPyxedxjOG1e8EejRRXNPuYPcs78z9xDJyQzNd3i2s4Yfh2SvujDYmUEhRY8/7UHNB6sOBnl8FB7zOQGM5S5HQvezmDCSJ2UzwnBPuZ3Ldoh0hbAw6Ez6J9UIjLaeciujw2asemj83FsrpKmUBwSnlRmrGRhtPeVWDEz85pobOiQux9icg66PJ+i1htG8Fu0pd7muFgZZSBZdVwtDFElgZCSBkZEERkYSGBmpHgxuSy+0TUi0NxQNw/sVFcnt+uJr/CYihTshJaOjfUd0JToZW/x+MslwoTey9ZiS3gbIn4aPtIXbzErFhA1LJl9LLRijbTck3uzGnkfYSacgbGt3cNQvhKGab20fDXvoqsJ+YX6Tr1jc6Gibl0jxhlfccCUbhBlbB3YDJ6p0yzMltXVM3+8eM/FaTmrCICMN9TZ00c1Czyney+ZDCQwfH+zA9rEWs6OzkaQ3p8LheLndtIjYhnAau3vh8idei9K0ME53NefoPNAuRCQsBNSAEYNkSPOjozQV3eacZXg4vcuYSz5hsyw8KA/DXyM6YXsyvmbytShNB8NfGGtHGhYC2JMIagCG/1RRQTX0ZJQIDLQFnwFZAQa3+RWMRRhMvhalKWCM0BaPJXbgsBAQTuJCZW18G9rKUhh+2aw4L9HkqACjPJiFEZ8kDWsZBrGYzdppmFW9mRE5wubZotGdJvpL2JcHczCYKwo3mS/Q1cRrUaoFg7E4+j4TFisa5oPpqRNFjih/wzeQaAEIHSaje6k0hYbj/I2GCx5VTlNxn+k5oJqJ13JSC4Y6RVxsj37BRFeShJFKBgm5oWznI7etYeKjFR0dNUk3Lo6Nc2GqeKLmR+SgOVWfHnVxYxFbS2FUuJYCGEtLSx9//kmjRe0JDAfbGRg3b91++/Vb2kDUnsBwsJ2B8eDho2evB2kDUXsCw8F2Bsbh4eHK/W7aQNSewHCwnYEx1pnqxfuTtI2oDYHVJEeNMQygdOfuPVnG5yAwGawm02KMYUB5sr4Oc0d4tCqwF0wGq7HzpkQwxpoHQJN81ZLAWLCXJTFOYYx1voJ0BvRguYevXzJRZhQYCDaCmWApGJtmJ18YGKZAG/jiBY3hF5OOlBkKGAg2gpklGEwphCFl/kVgZFQERkZFYGRUBEZG5X9yHBs7VCq0ywAAAABJRU5ErkJggg==)
+![](data:image/png;base64,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)
 
 ### Обработка действий пользователя[​](#handling-user-actions "Прямая ссылка на этот заголовок")
 
 В этом примере будем обрабатывать два действия пользователей для любого из сообщений: нажатие на цитируемое сообщение и нажатие на кнопку Reply. В первом случае будет осуществлен переход к исходному сообщению, а во втором - запоминание этого сообщения в [локальное свойство](/ru/Data_properties_DATA.md#---local) и установка фокуса в поле ввода нового сообщения.
 
-Для уведомления сервера о событии, сделанном пользователе, используется параметр *controller*, передаваемый в функцию *update*:
-
-```
-element.replyAction.onclick = function(event) {
-    controller.change({ action : 'reply' });
-    $(this).closest("div[lsfusion-container='chat']").find(".chat-message-input-area").focus();
-}
-
-element.replyContent.onmousedown = function(event) {
-    controller.change({ action : 'goToReply' });
-}
-```
-
-По нажатию на цитируемое сообщение также происходит поиск поля для ввода сообщения при помощи jQuery и установка в него текущего фокуса. Элемент DOM с классом chat-message-input-area будет создан позднее.
-
-В зависимости от сделанного пользователем действия у контроллера вызывается метод *change*, в который передается информация о событии в виде JSON-объекта. Платформа автоматически передаст значение в объявленное [действие](/ru/Actions.md) *changeMessage* :
+Объявим для них [действия](/ru/Actions.md) и добавим их на форму:
 
 ```
 replyTo = DATA LOCAL Message ();
 
-changeMessage (Message m) {
-    INPUT f = JSON DO
-        IMPORT JSON FROM f FIELDS() STRING action DO { // импортируем файл как json в локальные свойства
-            IF action = 'goToReply' THEN
-                seek(replyTo(m)); // переходим к цитируемому сообщению
-    
-            IF action = 'reply' THEN
-                replyTo() <- m; // запоминаем текущее сообщение в локальное свойство
-        }
-}
-```
+goToReply (Message m) { seek(replyTo(m)); } // переходим к цитируемому сообщению
+reply (Message m) { replyTo() <- m; } // запоминаем текущее сообщение в локальное свойство
 
-В этом действии происходит считывание объекта, передаваемого из JavaScript, разбор JSON, а затем выполнение соответствующих действий.
-
-Наконец создаем форму чата и добавляем туда таблицу со списком сообщений. В таблице будет ровно одна колонка, значением в которой будет построенный ранее JSON. При помощи ключевого слова **CUSTOM** указывается, что значение должно отображаться при помощи созданной ранее функции *chatMessageRender*. Действие, указанное после ключевого слова **ON CHANGE**, вызывается при выполнении метода *controller.change* для соответствующего сообщения.
-
-```
-FORM chat 'Chat'
-    OBJECTS msg = Message LAST
-    PROPERTIES(msg) json CUSTOM 'chatMessageRender' ON CHANGE changeMessage(msg)
+EXTEND FORM chat
+    PROPERTIES(msg) goToReply, reply
 ;
 ```
 
-Далее настраиваем дизайн формы, помещая таблицу со списком сообщений в новый контейнер с идентификатором *chat*, а также удаляем ненужные компоненты, созданные автоматически:
+Для выполнения этих действий используется параметр *controller*, передаваемый в функцию *update*: его метод *changeProperty* выполняет действие, добавленное на форму, для переданного сообщения. Обработчики добавляются в функции *update* при создании элементов сообщения:
 
 ```
-DESIGN chat {
-    OBJECTS {
-        NEW chat {
-            fill = 1; 
-            MOVE GRID(msg) {
-                captionHeight = 0;
-                PROPERTY(json(msg)) {
-                    autoSize = TRUE;
-                }
-            }
-            REMOVE BOX(msg);
-        }
-    }
-    REMOVE TOOLBARBOX;       
+replyAction.onclick = function(event) {
+    controller.changeProperty('reply', item);
+    $(this).closest("div[lsfusion-container='chat']").find(".chat-message-input-area").focus();
+}
+
+replyContent.onmousedown = function(event) {
+    controller.changeProperty('goToReply', item);
 }
 ```
 
-Добавляем форму в навигатор:
-
-```
-NAVIGATOR {
-    NEW chat;
-}
-```
+По нажатию на кнопку Reply также происходит поиск поля для ввода сообщения при помощи jQuery и установка в него текущего фокуса. Элемент DOM с классом chat-message-input-area будет создан позднее.
 
 ### Отправка нового сообщения[​](#отправка-нового-сообщения "Прямая ссылка на этот заголовок")
 
 Осталось добавить на форму возможность пользователю создавать новые сообщения.
 
-Для начала создадим действие *send*, которое будет создавать новое сообщение в отдельной [сессии](/ru/Change_sessions.md) на основе локального свойства *message* и определенного ранее свойства *replyTo*:
+Для начала создадим действие `send[]`, которое будет создавать новое сообщение в отдельной [сессии](/ru/Change_sessions.md) на основе локального свойства `message[]` и определенного ранее свойства `replyTo[]`, а затем очищать их:
 
 ```
 message = DATA LOCAL TEXT ();
@@ -344,167 +307,101 @@ send 'Send' () {
             APPLY;
         }
     }
+    message() <- NULL;
+    replyTo() <- NULL;
 } 
 ```
 
-По аналогии со свойством *json*, описанным ранее, создаем новое свойство *jsonInputMessage*, которое будет использоваться компонентом для ввода нового сообщения:
+Цитируемое сообщение покажем над полем ввода обычными свойствами формы, а для отмены цитирования объявим действие:
 
 ```
-jsonInputMessage () = JSON FROM
-            replyAuthor = nameAuthor(replyTo()),
-            replyText = text(replyTo()),
-            text = message();  
+replyAuthor 'Reply to' () = nameAuthor(replyTo());
+replyText '' () = STRING(text(replyTo()));
+
+removeReply 'Cancel reply' () { replyTo() <- NULL; }
 ```
 
-Далее создаем функцию, которая будет генерировать компонент, для отображения и ввода нового сообщения. Для этого будем использовать элемент *div* с атрибутом *contentEditable*:
+Поле ввода нового сообщения — это компонент свойства `message[]`: платформа передает в него текущее значение свойства, а введенный текст компонент возвращает через контроллер. Создадим функцию *chatMessageInput*, которая будет генерировать этот компонент. Для ввода будем использовать элемент *div* с атрибутом *contentEditable*:
 
 ```
-function chatMessageInputRender() {
+function chatMessageInput() {
     return {
-        render: function (element) {
-        let input = document.createElement("div");
-        input.classList.add("chat-message-input");
+        render: function (element, controller) {
+            let text = document.createElement("div");
+            text.classList.add("chat-message-input-area");
+            text.contentEditable = "true";
 
-        let reply = document.createElement("div");
-        reply.classList.add("chat-reply");
-
-        let replyContent = document.createElement("div");
-        replyContent.classList.add("chat-reply-content");
-
-        let replyAuthor = document.createElement("div");
-        replyAuthor.classList.add("chat-reply-author");
-
-        element.replyAuthor = replyAuthor;
-        replyContent.appendChild(replyAuthor);
-
-        let replyText = document.createElement("div");
-        replyText.classList.add("chat-reply-text");
-
-        element.replyText = replyText;
-        replyContent.appendChild(replyText);
-
-        element.replyContent = replyContent;
-        reply.appendChild(replyContent);
-
-        let replyRemove = document.createElement("div");
-        replyRemove.classList.add("chat-reply-remove");
-
-        element.replyRemove = replyRemove;
-        reply.appendChild(replyRemove);
-
-        input.appendChild(reply);
-
-        let text = document.createElement("div");
-        text.classList.add("chat-message-input-area");
-        text.contentEditable = "true";
-
-        element.text = text;
-        input.appendChild(text);
-
-        element.appendChild(input);
-    },
-    update: function (element, controller, value) {
-        if (value !== null) {
-            element.replyAuthor.innerHTML = value.replyAuthor || '';
-            element.replyText.innerHTML = value.replyText || '';
-
-            element.replyRemove.innerHTML = value.replyAuthor ? '❌' : '';
-
-            element.text.innerHTML = value.text || '';
+            element.text = text;
+            element.appendChild(text);
+        },
+        update: function (element, controller, value) {
+            element.text.innerText = value || '';
         }
     }
 }
 ```
 
-CSS для создаваемых элементов будет выглядеть следующим образом:
+В функцию *update* параметром *value* передается значение свойства `message[]` — строка либо `null`, если свойство пусто.
+
+CSS для создаваемого элемента будет выглядеть следующим образом:
 
 ```
-.chat-message-input {
-    display: flex;
-    flex-direction: column;
+.chat-message-input-area {
     flex: 1;
     align-self: stretch;
     max-height: 300px;
     min-height: 90px;
-}
-
-.chat-reply-remove {
-    justify-content: flex-end;
-    align-items: center;
-    display: flex;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-.chat-message-input-area {
     padding: 4px;
+    overflow: auto;
 }
 ```
 
 В результате компонент будет выглядеть следующим образом:
 
-![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAABgCAIAAAChTxjBAAAFFUlEQVR4Xu3cv24aSRzA8S2uT3Hvck/gzi7zDKlCaYnSLUJEaUhDcYXd2alAOukkZCvRdRQ2pE6Vk66+F7ib2Z0/OzPLsiyLw/74rj6FM8CCku8Mw53Z7F8ODtFHFg9wcMg6TOLvFi9vPix/Gf0J9JrKWMUcJ66G3n5effn+Y/P3P0CvqYxVzOXKdeIqfPqGGCpmlXSQuFre0/sB/aWSJnFItiPxLPtPSR8G9AWJQzgSh3AkDuFaJj6f3UyX8WC154fx5OFrOl5Yzm7MMZunt6bU2dJ71j8FzttPTbzc6/PDbcMTGt9uJ5PbZ/PYrU+Bs/dTE1dL+OwpHmyKxNHIoYl/vZ8kOw0VnxnS93H96TX7Znz/rXSep2k8ok84vn8qzqBvsjsZM6PM2fxT6EmSD87NK7HdA7lDE3fyNHWs6qagWhOlqrkyPhOrO1s+Z4p76glglnkVupsnZsEOV3E7VfTD278zQKDDE89DdAuq/mP4cVBHORlX9+3ok7i3BTtDqrYi2xJ3GxU2LQi1TtwttLazYmOdFqaX2Ml4Eq/6MbsvJ3F0q13idqnW+Zo1W63reaN647Flo5JUvpwF+xMSR7X1aLpIBpXFaLpOBmP7Jh5vnXXZ+TGduf884rcuwcfN8t46PJs+bJeNE7efdKO3DhKXZj26yvRxHVW+GOTDF7sq3zdx4NWtPl3kNZcqN30n3VcgcfRCuek9+t6QOPrDlr1P3xsSR6/st34XSBx9wSoOyWzfV58eKz591iFxnL5S39FIg8pbJL4eXV2OVn7kcXo5mMfnNdSEK16W+6G5+ofU31pN/b0M7+JBnLi073B8V+UkjtO3GFT/Wy8Gu/rekDjE6zjxu+vizcP+b9WqxN19kreeUDni+dA+xj51fuvd9HL3oEfi56hd4rY3exSJq3Zt63YaJInrvu2bi5obdRsp91jdt01TDRY/6x/MRPLnqRz01qPr2kkFidolXrmKx+nrwThxdZ/yOlq7rNrHRhshM5HKa3z8LOGgR+LnqNvEk71BHN+eiefLcHeJ4xx1mHiwCTGS+JpvVNStZkO/baOS1lw56KkZlUxCSNdl4uFeJQzRB1e6j0twPgx+67f4cFkKVE8GcwSfLOOaKwc9Ej9HLRLv3uN0SHk4klNIPNqgA106hcSBI9qRONB3JA7hSBzCkTiEI3EIR+IQjsQhHIlDOAmJZ1mWDgIFEodwJA7hSBzC7Uy85rfDE5W/t93QPg8pfUlUI3HUIHEIR+IQ7qDEj3PVFH8BUv9tN3cdlfw+LvH85Pqm+GyA1SRxW5w9XF6lr2x2d9UUz34/f2W/kmwVT+1OSOKo0STxylU8Tj+48IP5Yc9LStjEoy8j+6/iWyrxiys/YTISx3aHJJ58m/3AxO1VU2y75iminffGJW6nBImjRuvEj3XVFJ2v29kX14QoX0cl5zcq+bOQOGq0T/xYV03RZRf3Hw7sU/uti505xWvIx/VN4WsGvJ2Jd6/zq6aQOGq8fuLRBr0DJI4ar59490gcNSQkDtQgcQhH4hCOxCEciUM4EodwJA7hSBzCkTiEI3EIR+IQjsQhHIlDOBKHcCQO4UgcwpE4hCNxCEfiEI7EIRyJQzgSh3AkDuFIHMKROIQjcUj2/o8XEodYRd8kDplc33Hibz4sv3z/kT4A6BHX968flyrpIPF3i5e3n1dUjv4q9/3b73+ppIPEi8pV+G6RB3pKZVzu2yfOwSH1IHEO4cf/zVnoBzHCVgQAAAAASUVORK5CYII=)
+![](data:image/png;base64,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)
 
-Далее добавляем обработчики событий, которые будут удалять цитируемое сообщение, отсылать сообщение по нажатию CTRL+ENTER, а также записывать введенное сообщение в локальное свойство при потере компонентом фокуса.
-
-На стороне браузера будет следующий JavaScript код:
+Далее добавляем обработчики событий, которые будут отсылать сообщение по нажатию CTRL+ENTER, а также записывать введенное сообщение в свойство `message[]` при потере компонентом фокуса. Введенный текст передается методом *change* контроллера: он попадает в обработку изменения свойства `message[]` так же, как значение, введенное штатным редактором, — для первичного свойства это запись значения в него. Действие `send[]` выполняется методом *changeProperty* [контроллера формы](/ru/How-to_Custom_view_controller.md), доступного как `controller.form`; запросы выполняются на сервере в порядке вызова, поэтому к моменту выполнения `send[]` введенный текст уже записан в `message[]`. Обработчики добавляются в функции *update*:
 
 ```
-element.replyRemove.onclick = function(event) {
-    controller.change({ action : 'replyRemove' });
-}
-
 element.text.onkeydown = function(event) {
     if (event.keyCode == 10 || event.keyCode == 13)
-        if (event.ctrlKey)
-            controller.change({ action : 'send', value : element.text.innerHTML })
-        else
+        if (event.ctrlKey) {
+            controller.change(element.text.innerText);
+            controller.form.changeProperty('send');
+        } else
             event.stopPropagation(); // останавливаем дальнейшую обработку нажатия клавиши ENTER
 }
 
 element.text.onblur = function (event) {
-    controller.change({ action : 'change', value : element.text.innerHTML });
+    controller.change(element.text.innerText);
 }
 ```
 
-Принимать на сервере эти события будет действие *changeInputMessage*:
-
-```
-changeInputMessage () {
-    INPUT f = JSON DO
-        IMPORT JSON FROM f FIELDS() STRING action, TEXT value DO {
-            IF action = 'replyRemove' THEN
-                replyTo() <- NULL;
-    
-            IF action = 'send' THEN {
-                message() <- value;
-                send();
-            }
-            
-            IF action = 'change' THEN
-                message() <- value;
-        }
-}
-```
-
-Добавляем поле для ввода на форму на основе объявленных ранее функций и действий, а также кнопку *Send*:
+Добавляем поле для ввода и цитируемое сообщение на форму, а также кнопку *Send*. При помощи ключевого слова **CUSTOM** указывается, что значение свойства `message[]` должно отображаться при помощи созданной ранее функции *chatMessageInput*. Если после свойства указано действие с ключевым словом **ON CHANGE**, вместо стандартной обработки изменения выполняется оно, а значение, переданное методом *change*, подставляется вместо ввода пользователя в его [запрос значения](/ru/Value_request_REQUEST.md):
 
 ```
 EXTEND FORM chat
-    PROPERTIES jsonInputMessage() CUSTOM 'chatMessageInputRender' ON CHANGE changeInputMessage(), 
+    PROPERTIES replyAuthor() READONLY SHOWIF replyTo(), replyText() READONLY SHOWIF replyTo(), removeReply() SHOWIF replyTo(),
+               message() CUSTOM 'chatMessageInput', 
                send()
 ;
 ```
 
-Изменяем дизайн формы, чтобы поле для ввода сообщения и кнопка *Send* располагались под списком сообщений:
+Изменяем дизайн формы, чтобы цитируемое сообщение, поле для ввода сообщения и кнопка *Send* располагались под списком сообщений:
 
 ```
 DESIGN chat {
     chat {
+        NEW reply {
+            horizontal = TRUE;
+            MOVE PROPERTY(replyAuthor());
+            MOVE PROPERTY(replyText());
+            MOVE PROPERTY(removeReply());
+        }
         NEW chatMessage {
             horizontal = TRUE;
             alignment = STRETCH;
-            MOVE PROPERTY(jsonInputMessage()) {
+            MOVE PROPERTY(message()) {
                 fill = 1;
                 autoSize = TRUE;
                 width = 0;
@@ -520,7 +417,7 @@ DESIGN chat {
 
 Итоговая форма будет выглядеть следующим образом:
 
-![](data:image/png;base64,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)
+![](/ru/assets/images/How-to_Custom_components_form-5c7c961f05713a9ecacaed57c95ce75e.png)
 
 ### Методы контроллера[​](#controller-methods "Прямая ссылка на этот заголовок")
 
