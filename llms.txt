@@ -1010,7 +1010,7 @@
 
 ## MCP_server
 
-- [MCP server setup](/MCP_server.md): The lsFusion platform can act as an MCP server (Model Context Protocol) for external AI clients (for example, claude.ai). The MCP server runs on top of the standard HTTP API of the platform, so no separate service has to be deployed — it is enough to configure two parameters on the application server: enableAPI and HTTPS.
+- [MCP server setup](/MCP_server.md): The lsFusion platform can act as an MCP server (Model Context Protocol) for external AI clients (for example, claude.ai). The MCP server runs on top of the standard HTTP API of the platform, so no separate service has to be deployed — it is enough to configure two parameters on the application server: enableAPI and HTTPS. The /mcp endpoint itself is served by the web server (Client) of the application, not by the HTTP port of the application server — see URL example.
 
 ## MESSAGE_operator
 
@@ -1482,7 +1482,7 @@
 
 ## Type_conversion
 
-- [Type conversion](/Type_conversion.md): The type conversion operator creates a property that converts an object of one built-in class to an object of another built-in class. The result belongs to the target built-in class. If type conversion is not possible, the property value will be NULL. For user classes no conversion is defined; a value narrowed to a user class is given by classification.
+- [Type conversion](/Type_conversion.md): The type conversion operator creates a property that converts an object of one built-in class to an object of another built-in class. The result belongs to the target built-in class. If type conversion is not possible, the property value will be NULL. An object of a user class is converted to a numeric or string class — the result is its internal identifier, an integer or its text form — and to the logical class, giving TRUE. There is no conversion to a user class: an object is found by its identifier with a grouping (see operation correctness), and a value narrowed to a user class is given by classification.
 
 ## UNGROUP_operator
 

@@ -182,6 +182,8 @@ For a simple property composition that only forwards another property, the assis
 
 1. The arguments of the changed property on the left side of `<-` may be expressions over the statement's parameters (`sentFolder(account(f)) <- f`), but new local parameters can be introduced only as typed parameters, not inside expressions. Writing "into a computed key" by analogy with imperative `map[key] = value` easily breaks this.
 
+   A key that is an expression over a new parameter is written from the loop that introduces that parameter: `FOR cond(Cls x) DO out(rowNum(x)) <- value(x);` (`rowNum[Cls]` computed beforehand, e.g. by `PARTITION SUM 1`).
+
    So when remapping self-referential links while deep-copying an object graph, the assistant SHOULD keep an inverse map and iterate with the TARGET object as the parameter — `link(Copy n) <- newOf(link(srcOf(n))) WHERE spec(n);` — rather than write `link(newOf(x)) <- newOf(link(x));`
 
 2. `<- expr IF cond` assigns the whole expression to ALL objects: where `cond` fails, the property is overwritten with `NULL`. It is effectively reset-plus-set.
