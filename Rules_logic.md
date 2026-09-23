@@ -39,9 +39,7 @@
 
 7. The assistant MUST NOT create multiple properties with identical expressions.
 
-8. If a property is calculated from another property but has different parameters, the assistant SHOULD try to keep the same property name.
-
-9. To check whether a property is `NULL`, the assistant SHOULD use `IF NOT property(...)`.
+8. To check whether a property is `NULL`, the assistant SHOULD use `IF NOT property(...)`.
 
    To check that it is not `NULL`, the assistant SHOULD use `IF property(...)`.
 
@@ -49,11 +47,11 @@
 
    The assistant MUST NOT compare with the `NULL` literal: `expr = NULL`, `expr == NULL` and `expr != NULL` are ordinary comparisons, and by rule 3 the `NULL` operand makes the result `NULL` whatever `expr` holds — `scheduledAt(o) != NULL` is never `TRUE`, so a `FILTER` or `WHERE` on it selects nothing, a `SHOWIF` on it always hides, an `IF` on it always takes the `ELSE` branch — and the server only reports a warning when it loads the module, the code still compiles and starts.
 
-10. The assistant SHOULD specify `CHARWIDTH` in the property definition rather than in form design.
+9. The assistant SHOULD specify `CHARWIDTH` in the property definition rather than in form design.
 
-For a simple property composition that only forwards another property, the assistant SHOULD NOT repeat `CHARWIDTH` on the derived property unless it must differ.
+   For a simple property composition that only forwards another property, the assistant SHOULD NOT repeat `CHARWIDTH` on the derived property unless it must differ.
 
-11. For static objects, the assistant MUST NOT use `staticCaption` or `staticName` properties.
+10. For static objects, the assistant MUST NOT use `staticCaption` or `staticName` properties.
 
     The assistant MUST use `caption` and `name` instead.
 
@@ -61,23 +59,19 @@ For a simple property composition that only forwards another property, the assis
 
     `name` returns the static object's canonical name — `<namespace>_<Class>.<object>`, not the short identifier. When the part after the dot is needed, the assistant SHOULD use `basicName` from the `Utils` system module.
 
-12. Property names SHOULD be concise and avoid unnecessary words.
+11. The assistant SHOULD NOT specify an explicit namespace for a property unless necessary.
 
-13. The assistant SHOULD NOT use words in a property name that duplicate parameter class names unless required for clarity.
-
-14. The assistant SHOULD NOT specify an explicit namespace for a property unless necessary.
-
-15. When creating a DATA property — or a simple composition over a DATA property (for example, pulling the name of a related object) — for a single object's own attribute, the assistant MUST deliberately decide whether to place it in the system `id` or `base` group via `IN`.
+12. When creating a DATA property — or a simple composition over a DATA property (for example, pulling the name of a related object) — for a single object's own attribute, the assistant MUST deliberately decide whether to place it in the system `id` or `base` group via `IN`.
 
     Attributes that form the object's business identity and appear in its representation SHOULD go in the `id` group; other primary attributes go in the `base` group (`id` is nested under `base`).
 
     A property SHOULD NOT be placed in `id` or `base` when it is not the object's own primary attribute.
 
-16. When dividing values of integer classes, the assistant MUST cast one of the operands to `NUMERIC`, not the result.
+13. When dividing values of integer classes, the assistant MUST cast one of the operands to `NUMERIC`, not the result.
 
     The ratio of two integers is integer division, so an outer cast like `NUMERIC[16,4](a * b / c)` silently drops the fractional part; the correct form is `NUMERIC[16,4](a) * b / c`.
 
-17. The class of an expression's result can be wider than the classes it is built from, and the assistant MUST account for that wherever a narrower class is required — above all in a `+=` implementation, where it is a server startup error.
+14. The class of an expression's result can be wider than the classes it is built from, and the assistant MUST account for that wherever a narrower class is required (a `+=` implementation above all: the abstract property rules).
 
     Arithmetic widens further than it looks:
 
@@ -87,31 +81,31 @@ For a simple property composition that only forwards another property, the assis
 
     A `GROUP` aggregate mostly keeps the class of what it aggregates — a `GROUP SUM`, `GROUP MAX` or `GROUP LAST` over a `NUMERIC[16,2]` is `NUMERIC[16,2]` — but it carries outward whatever that expression already widened to. `GROUP CONCAT` is the aggregate that widens by itself: its result is a string of unlimited length. String concatenation widens as well, summing the operands' lengths: `ISTRING[200] + ISTRING[126]` is `ISTRING[326]`.
 
-    A narrower class is obtained only by an explicit cast of the whole expression. With operands of integer classes the operand cast of rule 16 does not bound the result — the division still widens to scale `32` — so both casts are needed: `NUMERIC[16,2](NUMERIC[16,2](a(x)) / b(x))`.
+    A narrower class is obtained only by an explicit cast of the whole expression. With operands of integer classes the operand cast of rule 13 does not bound the result — the division still widens to scale `32` — so both casts are needed: `NUMERIC[16,2](NUMERIC[16,2](a(x)) / b(x))`.
 
-18. A parameter's class annotation (`prop(SubClass x)`) is a signature, not a runtime filter: it resolves same-named properties and sets the signature, but the computed set is determined by the properties used in the expression. Reading a parent-class property with a subclass-annotated parameter still ranges over ALL objects of the parent class (e.g. in a `GROUP SUM` — silently wrong totals).
+15. A parameter's class annotation (`prop(SubClass x)`) is a signature, not a runtime filter: it resolves same-named properties and sets the signature, but the computed set is determined by the properties used in the expression. Reading a parent-class property with a subclass-annotated parameter still ranges over ALL objects of the parent class (e.g. in a `GROUP SUM` — silently wrong totals).
 
     To restrict the set to a class, the assistant MUST add an explicit `x IS SubClass` condition (or use a property declared on that subclass).
 
-19. In the `GROUP ... BY` operator the assistant MUST NOT list in the `BY` block the upper parameters used in the operator's expressions: each such parameter is already implicitly a group — a parameter of the created property — and keeps its place in the signature.
+16. In the `GROUP ... BY` operator the assistant MUST NOT list in the `BY` block the upper parameters used in the operator's expressions: each such parameter is already implicitly a group — a parameter of the created property — and keeps its place in the signature.
 
     With an explicit parameter list on the left, the `BY` expressions are mapped in order only to the parameters not used in the expressions; a mismatch in count or classes is an error.
 
     In the inline form `[GROUP ... BY ...](...)` such parameters are passed automatically: the arguments correspond in order only to the `BY` expressions (`[GROUP SUM f(x) IF g(x) = s BY h(x)](y)`), and listing `s` among them is a parameter-count error. The assistant MUST make sure that a name used inside the brackets without a class is already declared outside, earlier in the text: otherwise it silently becomes a parameter of the `GROUP` itself, and the aggregate runs over all its values.
 
-20. `MAX` and `MIN` are prefix operators over a comma-separated operand list (`MAX a, b`), not infix ones: `a MAX b` does not parse — the platform reports `no viable alternative at input 'MAX'`.
+17. `MAX` and `MIN` are prefix operators over a comma-separated operand list (`MAX a, b`), not infix ones: `a MAX b` does not parse — the platform reports `no viable alternative at input 'MAX'`.
 
     The operand list extends as far as the expression allows, so everything after the comma belongs to the operator: `MAX a, b * c` is `MAX(a, b * c)`, while `x * MAX a, b` is fine as it stands. Where a following operator must apply to the maximum itself, the operator MUST be parenthesized: `(MAX a, b) * c`.
 
     These operators compare the operands of a single row; a maximum across rows is `GROUP MAX`.
 
-21. `AND`, `OR`, `XOR` and `NOT` always yield `BOOLEAN` (`TRUE` or `NULL`), never the value of an operand: `name(o) AND active(o)` is `TRUE`, not the name, and `a OR b` is `TRUE`, not the first non-`NULL` value. The assistant MUST NOT use them to select or pass a value through; for that use `expr IF cond` and `OVERRIDE a, b`.
+18. `AND`, `OR`, `XOR` and `NOT` always yield `BOOLEAN` (`TRUE` or `NULL`), never the value of an operand: `name(o) AND active(o)` is `TRUE`, not the name, and `a OR b` is `TRUE`, not the first non-`NULL` value. The assistant MUST NOT use them to select or pass a value through; for that use `expr IF cond` and `OVERRIDE a, b`.
 
 ### Abstract property rules (`+=`)[​](#abstract-property-rules- "Direct link to abstract-property-rules-")
 
 1. The value class of a `+=` implementation MUST fit within the value class declared on the abstract property; there is no implicit cast — an implementation with a wider class is rejected at server startup with a "wrong value class of implementation" error, whose `specified` and `expected` lines name the implementation's class and the declared one.
 
-   An expression that widens the value class — arithmetic above all, and division most of all (rule 17 of the property rules) — the assistant MUST wrap in an explicit cast to the declared class: `f(X x) += NUMERIC[16,2](a(x) / b(x));` `f(X x) += ISTRING[250](a(x) + b(x));`
+   An expression that widens the value class — arithmetic above all, and division most of all (rule 14 of the property rules) — the assistant MUST wrap in an explicit cast to the declared class: `f(X x) += NUMERIC[16,2](a(x) / b(x));` `f(X x) += ISTRING[250](a(x) + b(x));`
 
 ### Ordering rules (`ORDER`)[​](#ordering-rules-order "Direct link to ordering-rules-order")
 
@@ -210,7 +204,7 @@ For a simple property composition that only forwards another property, the assis
 
    The assistant SHOULD therefore wrap the body of a server-side `NEWTHREAD` in `NEWSESSION`, and in `NEWSESSION NEWSQL` when it needs a database transaction of its own. It is a trade: a plain `NEWSESSION` no longer sees the caller's unsaved changes, so the wrapping is left out only where sharing the session is deliberate AND the two are known not to run at the same time.
 
-   What the wrapping buys inside an `APPLY` transaction depends on WHEN the body actually starts. `NEWSESSION`, `NEWSQL` included, creates no session while the transaction is still open — the action is deferred into the current one — and the check happens at the moment the body runs, not at the moment it is scheduled. A `SCHEDULE DELAY` is a number of milliseconds, not a barrier waiting for the apply, so it guarantees nothing either. The assistant MUST NOT count on a thread started from a global handler being isolated.
+   Inside an `APPLY` transaction the wrapping creates no session (change-session rule 1), and whether the body is inside that transaction is decided at the moment the body runs, not at the moment it is scheduled. A `SCHEDULE DELAY` is a number of milliseconds, not a barrier waiting for the apply, so it guarantees nothing either. The assistant MUST NOT count on a thread started from a global handler being isolated.
 
    A client executor is the opposite case: the action is delivered to the user's connection and runs there in its own fresh session, so wrapping it adds nothing.
 
@@ -262,58 +256,37 @@ For a simple property composition that only forwards another property, the assis
 
 ## Change sessions (NEWSESSION, APPLY)[​](#change-sessions-newsession-apply "Direct link to Change sessions (NEWSESSION, APPLY)")
 
-1. Before introducing `NEWSESSION`, the assistant MUST decide which session behavior is required. None of the choices below applies during an `APPLY` transaction — inside a global event handler or an applied action — where no session is created at all: the inner action is deferred and runs in the current session, inside the same transaction. The assistant MUST NOT expect an independent commit there.
+1. Before introducing `NEWSESSION`, the assistant MUST decide which session behavior is required. None of the choices below — `NEWSQL` included — applies during an `APPLY` transaction: inside a global event handler or an applied action no session is created at all, the inner action is deferred and runs in the current session, inside the same transaction. The assistant MUST NOT expect an independent commit there.
 
    * isolated independent unit -> `NEWSESSION`
    * isolated unit that must also see selected local properties from the upper session -> `NEWSESSION NESTED (...)`
    * isolated unit that must see all local properties from the upper session -> `NEWSESSION NESTED LOCAL`
-   * child dialog or editor that must work with unsaved upper-session objects and return its changes to that upper session -> `NESTEDSESSION`
+   * child dialog or editor that must work with unsaved upper-session objects and return its changes to that upper session -> `NESTEDSESSION`; the assistant MUST NOT replace it with plain `NEWSESSION` while the parent object may still be unsaved in the form session
 
-2. For actions added to forms, there are two main patterns:
-
-   * readonly form pattern: the form is effectively browse-only, so actions added to it SHOULD run in a new session by default
-   * editable form pattern: the form has editable properties, so any action added to it that uses `NEWSESSION` MUST either: `APPLY;` `IF canceled() THEN RETURN;` before `NEWSESSION`, or be fully independent from unsaved changes in that form
-
-3. Plain `NEWSESSION` is the default for isolated work that must not accidentally apply the caller's pending form changes.
-
-   Typical patterns in the source:
+2. Plain `NEWSESSION` is the default for isolated work that must not accidentally apply the caller's pending form changes:
 
    * readonly list forms with `PROPERTIES(...) NEWSESSION NEW, EDIT, DELETE`
-   * status transitions or dependent document creation after a preceding `APPLY`
    * external or integration actions that isolate HTTP calls and persist their own results
    * small immediate UI updates with `NEWSESSION { APPLY { ... } }`
 
-4. If inner logic depends on upper-session local state such as selections, marks, or import buffers, the assistant MUST carry that state explicitly through `NESTED (...)` or `NESTED LOCAL` on the operator, or declare the property itself `DATA LOCAL NESTED`, which carries it over without being listed on the operator. Neither route works under `NEWSQL`: on a connection of its own it migrates nothing, so the assistant MUST NOT combine `NEWSQL` with a dependency on upper-session local state.
+   An action started on a form with editable properties MUST either be fully independent of that form's unsaved changes or save them first: `APPLY;` `IF canceled() THEN RETURN;` `NEWSESSION { ... }` This is the pattern before status changes, dependent document creation and other isolated follow-up actions.
 
-5. A successful `APPLY` clears the session, and with it every `LOCAL` property in it by default: after such an `APPLY` returns, a plain `LOCAL` is empty again. An `APPLY` that fails or is cancelled leaves the session as it was, locals included — which is why the assistant MUST NOT read a `LOCAL` after `APPLY` to tell success from failure; `canceled()` is what tells them apart. Inside a nested session there is no clearing at all: the changes are copied to the parent session and the nested one is left standing, locals and all.
+3. If inner logic depends on upper-session local state such as selections, marks, or import buffers, the assistant MUST carry that state explicitly through `NESTED (...)` or `NESTED LOCAL` on the operator, or declare the property itself `DATA LOCAL NESTED`, which carries it over without being listed on the operator. Neither route works under `NEWSQL`: on a connection of its own it migrates nothing, so the assistant MUST NOT combine `NEWSQL` with a dependency on upper-session local state.
 
-   Outside a nested session, a `LOCAL` value survives a SUCCESSFUL `APPLY` when EITHER:
+4. A successful `APPLY` clears the session, and with it every plain `LOCAL` property in it: after such an `APPLY` returns, the `LOCAL` is empty again. A `LOCAL` survives a successful `APPLY` only when it is declared `NESTED` (`LOCAL NESTED name = Type ();` or `name = DATA LOCAL NESTED Type (...);`) or when the `APPLY` preserves it explicitly — `APPLY NESTED (name1, ..., nameN)` or `APPLY NESTED LOCAL` for all locals. A staged value that must outlive `APPLY` — for example, an import buffer read during post-apply follow-up — MUST take one of these routes; so must the locals carried in by `NEWSESSION NESTED (...)` or `NEWSESSION NESTED LOCAL` when their result is to be copied back to the upper session, since it is the cleared values that would be copied back.
 
-   * the `LOCAL` is declared as `NESTED` at declaration time (`LOCAL NESTED name = Type ();` or `name = DATA LOCAL NESTED Type (...);`), OR
-   * the `APPLY` explicitly preserves it via `APPLY NESTED (name1, ..., nameN)` or `APPLY NESTED LOCAL` for all locals.
+   An `APPLY` that fails or is cancelled leaves the session as it was, locals included — which is why the assistant MUST NOT read a `LOCAL` after `APPLY` to tell success from failure; `canceled()` is what tells them apart. Inside a nested session there is no clearing at all: the changes are copied to the parent session and the nested one is left standing, locals and all.
 
-   The assistant MUST NOT rely on a plain `LOCAL` value computed before a SUCCESSFUL `APPLY` to still be readable after it. Two cases keep it: a nested session, which clears nothing at all, and an apply that failed or was cancelled, which leaves the session as it was. If a staged value must outlive `APPLY` — for example, an import buffer read during post-apply follow-up — the assistant MUST either declare it with `NESTED`, or list it in `APPLY NESTED (...)` (or use `APPLY NESTED LOCAL`) at the call site.
-
-6. When using `NEWSESSION NESTED (...)` or `NEWSESSION NESTED LOCAL`, the assistant SHOULD preserve the same nested local properties on `APPLY` if the result must be copied back to the upper session, for example with `APPLY NESTED (...)` or `APPLY NESTED LOCAL`.
-
-7. The assistant MUST NOT replace `NESTEDSESSION` with plain `NEWSESSION` for child forms or dialogs attached to a parent object that may still be unsaved in the current form session.
-
-8. Before opening a fresh `NEWSESSION` from an action started on an edit form, the assistant SHOULD decide whether current form changes must be saved first.
-
-   The common pattern is: `APPLY;` `IF canceled() THEN RETURN;` `NEWSESSION { ... }`
-
-   This pattern is used before status changes, document generation, and other isolated follow-up actions.
-
-9. After `APPLY`, the assistant MUST check `canceled()` only when later logic depends on whether the save succeeded — to early-return, skip a follow-up side effect, or roll back staged work.
+5. After `APPLY`, the assistant MUST check `canceled()` only when later logic depends on whether the save succeeded — to early-return, skip a follow-up side effect, or roll back staged work.
 
    `APPLY` in an interactive context shows the constraint message to the user on its own. The assistant MUST NOT add `IF canceled() THEN MESSAGE applyMessage()` after `APPLY` in interactive actions solely to report the failure — it duplicates the message the platform already shows. Explicit surfacing via `applyMessage()` or `throwException(applyMessage())` is required only for non-interactive callers (API endpoints, background integrations) where no dialog is shown.
 
    If `APPLY` fails because of a constraint, the changes remain unsaved in the current session, and any following `APPLY` in the same session will also fail until the offending data is fixed or the changes are discarded (for example with `CANCEL`).
 
-10. The assistant SHOULD keep `NEWSESSION` blocks small and purpose-specific: isolate one unit of work, apply it if needed, and exit.
+6. The assistant SHOULD keep `NEWSESSION` blocks small and purpose-specific: isolate one unit of work, apply it if needed, and exit.
 
-    The assistant MUST NOT introduce `NEWSESSION` merely to hide session-visibility bugs. If upper-session changes must remain visible, nested session semantics are required.
+   The assistant MUST NOT introduce `NEWSESSION` merely to hide session-visibility bugs. If upper-session changes must remain visible, nested session semantics are required.
 
-11. The body of `APPLY` may run more than once. The apply transaction MAY be retried automatically after an update conflict, a deadlock or a timeout — whether it is depends on the failure and on the attempt limit — and the applied action and the synchronous global handlers are inside what a retry repeats.
+7. The body of `APPLY` may run more than once. The apply transaction MAY be retried automatically after an update conflict, a deadlock or a timeout — whether it is depends on the failure and on the attempt limit — and the applied action and the synchronous global handlers are inside what a retry repeats.
 
-    So they MUST be safe to repeat. An irreversible external side effect — sending mail, calling an HTTP API, printing, writing a file — MUST NOT be done there: it belongs after the apply has succeeded, where `canceled()` says whether it did.
+   So they MUST be safe to repeat. An irreversible external side effect — sending mail, calling an HTTP API, printing, writing a file — MUST NOT be done there: it belongs after the apply has succeeded, where `canceled()` says whether it did.
