@@ -45,7 +45,7 @@ testNewThread () {
     } THREADS 10 WAIT;
 
     // Show a message to every other connected user
-    FOR user(Connection conn) AND connectionStatus(conn) == ConnectionStatus.connectedConnection AND conn != currentConnection() DO {
+    FOR user(Connection conn) AND connectionStatus(conn) = ConnectionStatus.connectedConnection AND conn != currentConnection() DO {
         NEWEXECUTOR { NEWTHREAD MESSAGE 'Message'; } CLIENT conn NOWAIT;
     }
 

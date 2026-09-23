@@ -70,7 +70,7 @@ EXTEND FORM order
 
 ```
 fillPrice 'Установить текущие цены' (Order o)  {
-    price(OrderDetail d) <- price(book(d)) WHERE order(d) == o;
+    price(OrderDetail d) <- price(book(d)) WHERE order(d) = o;
 }
 
 EXTEND FORM order

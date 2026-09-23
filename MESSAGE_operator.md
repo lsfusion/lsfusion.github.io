@@ -75,7 +75,7 @@ testMessage() {
     WHILE i() < 5 DO {
         i() <- i() + 1;
         MESSAGE i();
-        IF i() == 3 THEN {
+        IF i() = 3 THEN {
             MESSAGE i() LOG;
         }
     }

@@ -74,7 +74,7 @@ FORM order 'Order'
 
     OBJECTS d = OrderDetail
     PROPERTIES(d) nameBook, quantity, price, NEW, DELETE
-    FILTERS order(d) == o
+    FILTERS order(d) = o
 
     EDIT Order OBJECT o
 ;
@@ -104,7 +104,7 @@ FORM invoice 'Invoice'
 
     OBJECTS d = InvoiceDetail
     PROPERTIES(d) nameBook, quantity, price, NEW, DELETE
-    FILTERS invoice(d) == i
+    FILTERS invoice(d) = i
 ;
 ```
 
@@ -119,7 +119,7 @@ createInvoice 'Create invoice' (Order o)  {
             date(i) <- date(o);
             number(i) <- number(o);
 
-            FOR order(OrderDetail od) == o NEW id = InvoiceDetail DO {
+            FOR order(OrderDetail od) = o NEW id = InvoiceDetail DO {
                 invoice(id) <- i;
 
                 book(id) <- book(od);
@@ -153,7 +153,7 @@ fillOrder 'Fill in by order' (Invoice i)  {
         date(i) <- date(o);
         number(i) <- number(o);
 
-        FOR order(OrderDetail od) == o NEW id = InvoiceDetail DO {
+        FOR order(OrderDetail od) = o NEW id = InvoiceDetail DO {
             invoice(id) <- i;
 
             book(id) <- book(od);

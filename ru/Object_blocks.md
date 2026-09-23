@@ -448,7 +448,7 @@ FORM skus 'Sku'
 
     OBJECTS s = Sku
     PROPERTIES(s) name
-    FILTERS skuGroup(s) == g
+    FILTERS skuGroup(s) = g
 ;
 
 CLASS Group1;

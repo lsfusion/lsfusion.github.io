@@ -18,7 +18,7 @@ CONTINUE
 testContinue ()  {
     FOR iterate(INTEGER i, 1, 5) DO {
         MESSAGE 'before';
-        IF i == 3 THEN CONTINUE; // нет сообщения 'after' при i == 3
+        IF i = 3 THEN CONTINUE; // нет сообщения 'after' при i = 3
         MESSAGE 'after';
     }
 }

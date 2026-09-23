@@ -136,7 +136,7 @@ FORM orderPayments 'Платежи по заказу'
 
     OBJECTS p = Payment
     PROPERTIES(p) date, sum, NEW, DELETE
-    FILTERS order(p) == o
+    FILTERS order(p) = o
 ;
 
 editPayments 'Редактировать платежи' (Order o)  {

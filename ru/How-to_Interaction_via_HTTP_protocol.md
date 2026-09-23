@@ -43,7 +43,7 @@ postCity 'Отправить' (City c)  {
     LOCAL code = STRING[10]();
     LOCAL message = STRING[100]();
     IMPORT JSON FROM result() TO() code, message;
-    IF NOT code() == '0' THEN {
+    IF NOT code() = '0' THEN {
         MESSAGE 'Ошибка: ' + message();
     }
 }
@@ -147,7 +147,7 @@ FORM order 'Заказ'
 
     OBJECTS d = OrderDetail
     PROPERTIES(d) nameBook, quantity, price, NEW, DELETE
-    FILTERS order(d) == o
+    FILTERS order(d) = o
 
     EDIT Order OBJECT o
 ;
@@ -174,7 +174,7 @@ FORM exportOrder
 
     OBJECTS detail = OrderDetail
     PROPERTIES id = id(book(detail)), qn = quantity(detail), pr = price(detail)
-    FILTERS order(detail) == order
+    FILTERS order(detail) = order
 ;
 
 exportOrder 'Отправить' (Order o)  {
@@ -274,7 +274,7 @@ FORM exportOrderNew
 
     OBJECTS detail = OrderDetail IN order
     PROPERTIES id = id(book(detail)), qn = quantity(detail), pr = price(detail)
-    FILTERS order(detail) == o
+    FILTERS order(detail) = o
 ;
 
 exportOrderNew 'Отправить (новый)' (Order o)  {
@@ -417,7 +417,7 @@ FORM orderAttachments
 
     OBJECTS attachments = Attachment
     PROPERTIES id = VALUE(attachments), name(attachments)
-    FILTERS order(attachments) == o
+    FILTERS order(attachments) = o
 ;
 
 getOrderAttachments (LONG orderId) {

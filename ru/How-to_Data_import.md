@@ -34,7 +34,7 @@ FORM order 'Заказ'
 
     OBJECTS d = OrderDetail
     PROPERTIES(d) nameBook, quantity, price, NEW, DELETE
-    FILTERS order(d) == o
+    FILTERS order(d) = o
 
     EDIT Order OBJECT o
 ;
@@ -178,7 +178,7 @@ importBooks 'Импортировать книги' ()  {
     }
 
     // меняем значения
-    FOR id(Book b) == id(INTEGER i) DO {
+    FOR id(Book b) = id(INTEGER i) DO {
         name(b) <- name(i);
     }
 

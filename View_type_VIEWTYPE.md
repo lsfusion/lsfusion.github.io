@@ -20,5 +20,5 @@ FORM stores
     OBJECTS s = Store
     PROPERTIES(s) name
 ;
-isPivot 'Stores shown as pivot' () = [ VIEWTYPE stores.s]() == ListViewType.pivot;
+isPivot 'Stores shown as pivot' () = [ VIEWTYPE stores.s]() = ListViewType.pivot;
 ```

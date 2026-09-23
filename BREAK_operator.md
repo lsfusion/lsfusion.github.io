@@ -17,7 +17,7 @@ The `BREAK` operator creates an action that exits the innermost enclosing loop.
 ```
 testBreak ()  {
     FOR iterate(INTEGER i, 1, 100) DO {
-        IF i == 50 THEN BREAK; // will only come up to 50
+        IF i = 50 THEN BREAK; // will only come up to 50
     }
 }
 ```

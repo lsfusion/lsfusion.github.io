@@ -4,14 +4,14 @@
 
 In the table below, `f` stands for the property being checked (parameters omitted) and `PREV(f)` for its value at the start of the session.
 
-| Operator      | Value                                                               | Description                                                                |
-| ------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `SET`         | `f AND NOT PREV(f)`                                                 | Value is set                                                               |
-| `DROPPED`     | `NOT f AND PREV(f)`                                                 | Value is reset                                                             |
-| `CHANGED`     | `(f OR PREV(f)) AND NOT f==PREV(f)`                                 | Value is changed                                                           |
-| `SETCHANGED`  | `f AND NOT f==PREV(f)`<br />or<br />`CHANGED(f) AND NOT DROPPED(f)` | Value is changed to non-`NULL`                                             |
-| `DROPCHANGED` | `CHANGED(f) AND NOT SET(f)`                                         | Value is either reset or changed from one non-`NULL` to another non-`NULL` |
-| `SETDROPPED`  | `SET(f) OR DROPPED(f)`                                              | Value is either reset or changed from `NULL` to non-`NULL`                 |
+| Operator      | Value                                                              | Description                                                                |
+| ------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| `SET`         | `f AND NOT PREV(f)`                                                | Value is set                                                               |
+| `DROPPED`     | `NOT f AND PREV(f)`                                                | Value is reset                                                             |
+| `CHANGED`     | `(f OR PREV(f)) AND NOT f=PREV(f)`                                 | Value is changed                                                           |
+| `SETCHANGED`  | `f AND NOT f=PREV(f)`<br />or<br />`CHANGED(f) AND NOT DROPPED(f)` | Value is changed to non-`NULL`                                             |
+| `DROPCHANGED` | `CHANGED(f) AND NOT SET(f)`                                        | Value is either reset or changed from one non-`NULL` to another non-`NULL` |
+| `SETDROPPED`  | `SET(f) OR DROPPED(f)`                                             | Value is either reset or changed from `NULL` to non-`NULL`                 |
 
 The first three operators (`SET`, `DROPPED`, `CHANGED`) are the basic change predicates; the remaining three are convenient combinations of those that cover cases cutting across the basic predicates.
 

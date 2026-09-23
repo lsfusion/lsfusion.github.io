@@ -11,7 +11,7 @@ The interrupt operator syntax is described by the [`BREAK` operator](/BREAK_oper
 ```
 testBreak ()  {
     FOR iterate(INTEGER i, 1, 100) DO {
-        IF i == 50 THEN BREAK; // will only come up to 50
+        IF i = 50 THEN BREAK; // will only come up to 50
     }
 }
 ```

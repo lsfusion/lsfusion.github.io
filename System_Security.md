@@ -22,17 +22,17 @@ A role cannot be deleted while it is still assigned to any user (`CONSTRAINT` on
 
 A user has one main role and any number of additional roles; the effective membership combines both.
 
-| Property                                         | What it returns                                                                                 |
-| ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| `mainRole[User]`                                 | the user's main role                                                                            |
-| `nameMainRole[User]` / `sidMainRole[CustomUser]` | name / code of the main role                                                                    |
-| `currentUserMainRoleName[]`                      | name of the current user's main role                                                            |
-| `overIn[User, UserRole]`                         | abstract membership flag; the base implementation adds the main role (`mainRole(user) == role`) |
-| `in[CustomUser, UserRole]`                       | explicit assignment of an additional role                                                       |
-| `has[User, UserRole]`                            | effective membership — `in[CustomUser, UserRole]` or `overIn[User, UserRole]` (materialized)    |
-| `userRoles[User]`                                | comma-separated names of all roles the user has, ordered by name                                |
-| `firstRole[User]`                                | the lowest-numbered role the user has other than `default`, falling back to the `default` role  |
-| `rolesCount[User]`                               | number of roles the user has                                                                    |
+| Property                                         | What it returns                                                                                |
+| ------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| `mainRole[User]`                                 | the user's main role                                                                           |
+| `nameMainRole[User]` / `sidMainRole[CustomUser]` | name / code of the main role                                                                   |
+| `currentUserMainRoleName[]`                      | name of the current user's main role                                                           |
+| `overIn[User, UserRole]`                         | abstract membership flag; the base implementation adds the main role (`mainRole(user) = role`) |
+| `in[CustomUser, UserRole]`                       | explicit assignment of an additional role                                                      |
+| `has[User, UserRole]`                            | effective membership — `in[CustomUser, UserRole]` or `overIn[User, UserRole]` (materialized)   |
+| `userRoles[User]`                                | comma-separated names of all roles the user has, ordered by name                               |
+| `firstRole[User]`                                | the lowest-numbered role the user has other than `default`, falling back to the `default` role |
+| `rolesCount[User]`                               | number of roles the user has                                                                   |
 
 ### System roles[​](#system-roles "Direct link to System roles")
 

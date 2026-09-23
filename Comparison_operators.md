@@ -27,7 +27,7 @@ The `=` and `==` forms are equivalent. Each operator takes two operands and cann
 ### Examples[​](#examples "Direct link to Examples")
 
 ```
-equalBarcodes = barcode(a) == barcode(b);
+equalBarcodes = barcode(a) = barcode(b);
 outOfIntervalValue1(value, left, right) = value < left OR value > right;
 outOfIntervalValue2(value, left, right) = NOT (value >= left AND value <= right);
 ```

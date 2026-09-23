@@ -32,7 +32,7 @@ FORM books 'Книги'
 
     OBJECTS b = Book
     PROPERTIES(b) READONLY name
-    FILTERS category(b) == c
+    FILTERS category(b) = c
 ;
 
 NAVIGATOR {

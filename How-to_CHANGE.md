@@ -70,7 +70,7 @@ We need to create an action to populate all the lines in the order with current 
 
 ```
 fillPrice 'Set current prices' (Order o)  {
-    price(OrderDetail d) <- price(book(d)) WHERE order(d) == o;
+    price(OrderDetail d) <- price(book(d)) WHERE order(d) = o;
 }
 
 EXTEND FORM order
