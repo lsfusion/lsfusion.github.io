@@ -106,7 +106,7 @@ addCategory 'Добавить подкатегорию' (Category parent) {
     NEWSESSION {
         NEW c = Category {
             parent(c) <- parent;
-            SHOW category OBJECTS c = c DOCKED;
+            SHOW category OBJECTS c = c WINDOW;
         }
     }
 } TOOLBAR;
@@ -114,7 +114,7 @@ addCategory 'Добавить подкатегорию' (Category parent) {
 addRootCategory 'Добавить категорию' () {
     NEWSESSION {
         NEW c = Category {
-            SHOW category OBJECTS c = c DOCKED;
+            SHOW category OBJECTS c = c WINDOW;
         }
     }
 } TOOLBAR;

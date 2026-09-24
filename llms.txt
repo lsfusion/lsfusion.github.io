@@ -258,7 +258,7 @@
 
 ## CLOSE_FORM_operator
 
-- [CLOSE FORM operator](/CLOSE_FORM_operator.md): The CLOSE FORM operator creates an action that closes an open form instance with the given identifier in the interactive view.
+- [CLOSE FORM operator](/CLOSE_FORM_operator.md): The CLOSE FORM operator creates an action that closes the open forms a given address names in the interactive view.
 
 ## Coding_conventions
 
@@ -1538,7 +1538,7 @@
 
 ## WINDOW_statement
 
-- [WINDOW statement](/WINDOW_statement.md): The WINDOW statement - creating a new window, the EXTEND WINDOW statement - changing the renderer of an existing window, the HIDE WINDOW statement - hiding an existing window.
+- [WINDOW statement](/WINDOW_statement.md): The WINDOW statement - creating a new window, the EXTEND WINDOW statement - changing the renderer of an existing window or how it draws the forms opened into it, the HIDE WINDOW statement - hiding an existing window.
 
 ## Working_parameters
 

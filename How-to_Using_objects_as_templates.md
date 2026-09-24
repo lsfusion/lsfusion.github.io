@@ -35,7 +35,7 @@ copy 'Copy' (Book book)  {
         NEW newBook = Book {
             name(newBook) <- name(book);
             price(newBook) <- price(book);
-            SHOW book OBJECTS b = newBook DOCKED;
+            SHOW book OBJECTS b = newBook WINDOW;
         }
     }
 }
@@ -127,7 +127,7 @@ createInvoice 'Create invoice' (Order o)  {
                 quantity(id) <- quantity(od);
                 price(id) <- price(od);
             }
-            SHOW invoice OBJECTS i = i DOCKED;
+            SHOW invoice OBJECTS i = i WINDOW;
         }
     }
 }
