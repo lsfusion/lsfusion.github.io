@@ -55,11 +55,12 @@
 
    An entry whose expression carries a comma not enclosed in brackets of its own needs a form this block accepts: with no common-parameter header, write it as `alias = (expr)`, since a bare `(expr)` is a parse error; with `PROPERTIES(o)`, an entry is a property usage even after `alias =`, so no expression is accepted at all and the only remedy is a named property added by its ID.
 
-7. The default `CHANGE` handling of a property shown on a form is derived not from what its expression looks like, but from the property's write path: changeable properties are data properties, the selection operator, and compositions of changeable properties — a write is passed through the composition into the underlying changeable property. The write path is not visible at the usage site, so the assistant MUST NOT assume that a computed-looking property is non-editable.
+7. The default `CHANGE` handling of a property shown on a form is derived not from what its expression looks like, but from the property's write path: changeable properties are data properties and the selection operator, and a composition through an object link is edited through that link. The write path is not visible at the usage site, so the assistant MUST NOT assume that a computed-looking property is non-editable.
 
    Outwardly similar entries are edited differently:
 
    * a composition through an object link (`name(customer(o))`) — the user is offered a choice of the linked object, and the link (`customer(o)`) is written; this is the usual way of entering data;
+   * a composition through several links (`name(agent(listing(i)))` on a form with the object `i`) — the user is offered a choice of the object of the first link (`Listing`, displayed by the rest of the chain), and `listing(i)` is written; the further links and their objects do not change. Such an entry re-points the row object's own link under a caption that names something else, so it MUST be marked `READONLY` unless re-pointing that link is what the entry is for; changing the object behind a further link (`agent(listing(i))`) has no default write path and needs its own action or the form of that object;
    * an attribute of the row object itself (`name(c)`) — the entered value is written in place, that is, the object is renamed;
    * a property of a static object (`caption(st)`) — the write goes into the stored caption of the static object and lasts until the next synchronization of the database with the code (normally at server startup), which restores the caption from the code.
 
