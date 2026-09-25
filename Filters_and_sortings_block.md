@@ -18,7 +18,7 @@ USER | FIXED
 
 ### Description[​](#description "Direct link to Description")
 
-The fixed filters block adds filters that will be automatically applied when any form data is read. One block can list an arbitrary number of filters separated by a comma.
+The fixed filters block adds filters that will be automatically applied when any form data is read (a filter of the `USER` type is instead shown to the user as a condition row and applied once its value is entered). One block can list an arbitrary number of filters separated by a comma.
 
 Each filter is defined with an [expression](/Expression.md) that defines the filtering condition. In all expressions you can use the names of the objects already declared on the form as parameters.
 
@@ -36,7 +36,7 @@ A filter for a property being added to the form can also be defined with the `FI
 
 * `USER | FIXED`
 
-  Keywords defining the filter type: `FIXED` is a fixed filter (default); `USER` is a user filter. Property must be added to the form in advance.
+  Keywords defining the filter type: `FIXED` is a fixed filter (default); `USER` is a [user filter](/Interactive_view.md#userfilters): the condition row of the property is shown as soon as the form opens. The expression must be the [name of a property on the form](/Properties_and_actions_block.md#name), so the property must be added to the form in advance.
 
 ### Examples[​](#examples "Direct link to Examples")
 
