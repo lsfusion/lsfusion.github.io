@@ -8,7 +8,7 @@ This rule set applies to ALL tasks related to lsFusion (including analysis, how-
 
 Apply each rule below at its stated strength.
 
-The `language`, `paradigm` and `how-to` branches are reference material, searched with `lsfusion_retrieve_docs`; they are not a mandatory reading list. The workflow below states when a lookup is required.
+The `language`, `paradigm` and `how-to` branches are reference material, searched with `lsfusion_retrieve_docs`. They are not a mandatory reading list. The workflow below states when a lookup is required.
 
 The `rules` branch is not searched: an article is named and delivered whole, so no part of it can be withheld without the assistant being able to tell. The next section states when reading one is mandatory.
 
@@ -40,7 +40,7 @@ This article does NOT contain the rules below. Each row is a separate article, r
 
 1. PLATFORM MECHANISMS FIRST. An application on lsFusion is written in `.lsf`. Wherever the platform provides a mechanism — the data model, computations, constraints, events, actions, session control, forms, access rights — the assistant MUST implement it with that mechanism: classes, properties, actions, `CONSTRAINT`, `WHEN`, `NEWSESSION` / `APPLY`, `FORM`, the security policy. The assistant MUST NOT use `.lsf` as a shell over its own implementation of these mechanisms in Java, JavaScript or another language: a separate server part, a separate interface with its own data operations, a computation or a check duplicated outside the platform.
 
-2. WHAT IS NOT APPLICATION CODE. The rule concerns the application's own code. It does not concern the platform's own Java implementation (the server and the clients), auxiliary development tooling (build, test and verification scripts), or the operators through which the platform itself admits code in another language, used for what they are for: `EXTERNAL` and `INTERNAL` for reaching a system outside the platform or a component of its own deployment, `FORMULA` for an SQL expression, `CUSTOM` and a custom view on a React component for rendering that the standard views do not provide. Java or JavaScript present in the project is not a violation in itself; business logic moved out of `.lsf` is.
+2. WHAT IS NOT APPLICATION CODE. The rule concerns the application's own code. It does not concern the platform's own Java implementation (the server and the clients), auxiliary development tooling (build, test and verification scripts), or the operators through which the platform itself admits code in another language, used for what they are for: `EXTERNAL` and `INTERNAL` for reaching a system outside the platform or a component of its own deployment, `FORMULA` for an SQL expression, `CUSTOM` and a custom view on a React component for rendering that the standard views do not provide. Java or JavaScript present in the project is not a violation in itself. Business logic moved out of `.lsf` is.
 
 3. WHEN CODE OUTSIDE `.lsf` IS ALLOWED. Only at an established limitation of the platform or an explicit requirement of the user, and only for the part that limitation or requirement covers. A documentation search with no suitable result does not establish a limitation: before deciding on such code the assistant MUST read the area's brief (`lsfusion_get_guidance(brief='<name>')`) and search `paradigm` and `how-to`.
 
@@ -129,9 +129,9 @@ D. FEEDBACK / REPORTING (`lsfusion_report_feedback`)
 
 3. The assistant MUST NOT report its own typos, mistakes fixed on the first try from a clear message, or cases where it simply failed to read available documentation. Otherwise doubt resolves in favor of reporting: it is not the assistant's call that a finding is too small to mention.
 
-4. The assistant MUST evaluate this at the end of the task (completion or abandonment); it MUST NOT interrupt work mid-task to report. Several findings in one task mean several calls, one per finding, not a choice of one.
+4. The assistant MUST evaluate this at the end of the task (completion or abandonment). It MUST NOT interrupt work mid-task to report. Several findings in one task mean several calls, one per finding, not a choice of one.
 
-5. CONSENT IS MANDATORY, AND SO IS OFFERING. On a trigger the assistant MUST offer the report in one line of its final answer and MUST call the tool ONLY after an explicit yes; it MUST NOT silently drop a trigger that fired. Consent may be given in advance, by the user or by the project's rules; then the assistant sends the report right away and mentions it in one line. If the user asks not to send a particular report, the assistant does not send it.
+5. CONSENT IS MANDATORY, AND SO IS OFFERING. On a trigger the assistant MUST offer the report in one line of its final answer and MUST call the tool ONLY after an explicit yes; it MUST NOT silently drop a trigger that fired. Consent may be given in advance, by the user or by the project's rules. Then the assistant sends the report right away and mentions it in one line. If the user asks not to send a particular report, the assistant does not send it.
 
 6. The report MUST be depersonalized: NO source code, file paths, schema / table / customer names, or secrets — only the abstracted journey (the errors, the queries tried, expected-vs-actual, how it was resolved) and a recommendation. Server-side redaction is only a backstop; depersonalizing here is the primary protection. The assistant MUST classify it with `signal_type`, one of: doc-gap, expectation-mismatch, unclear-error, missing-capability, rag-retrieval, other.
 
@@ -151,7 +151,7 @@ D. FEEDBACK / REPORTING (`lsfusion_report_feedback`)
 
 6. When introducing a new parameter, the assistant MUST declare its class explicitly at the first use (`prop(Class x)`, `GROUP MAX Class x IF ...`). `AS` does NOT declare the parameter's class: it is a cast — the parameter itself stays untyped at later occurrences.
 
-7. The body of a `META` statement consists of module-level statements; action operators (`NEW ...`, assignments) cannot appear there directly, and the `@` statement using a metacode is itself a module-level statement and cannot be used inside an action body. For parameterized object creation, declare an action with parameters and call it.
+7. The body of a `META` statement consists of module-level statements. Action operators (`NEW ...`, assignments) cannot appear there directly, and the `@` statement using a metacode is itself a module-level statement and cannot be used inside an action body. For parameterized object creation, declare an action with parameters and call it.
 
 8. The two declaration forms of a local property belong to different levels and MUST NOT be mixed up: the `LOCAL name = Class (...);` statement is valid only inside an action body `{ ... }`, while at module level a local property is declared as a property definition `name = DATA LOCAL Class (...);`. A module-level `LOCAL ...` line does not parse (`missing EOF at 'LOCAL'`).
 

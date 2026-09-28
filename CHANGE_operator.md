@@ -10,7 +10,7 @@ The `CHANGE` operator creates an [action](/Actions.md) that [changes properties]
 
 ### Description[​](#description "Direct link to Description")
 
-The `CHANGE` operator creates an action that writes the value of `valueExpr` into the property at the arguments `expr1, ..., exprN` for every set of arguments where `whereExpr` is not `NULL`. The argument list may introduce new local parameters; such parameters correspond to objects being iterated and are not parameters of the created action.
+The `CHANGE` operator creates an action that writes the value of `valueExpr` into the property at the arguments `expr1, ..., exprN` for every set of arguments where `whereExpr` is not `NULL`. The argument list may introduce new local parameters. Such parameters correspond to objects being iterated and are not parameters of the created action.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
@@ -20,7 +20,7 @@ The `CHANGE` operator creates an action that writes the value of `valueExpr` int
 
 * `expr1, ..., exprN`
 
-  A list of [expressions](/Expression.md) or [typed parameters](/IDs.md#paramid) defining arguments of the property being changed. When using typed parameters, you can both reference already declared parameters and declare new local parameters; when using expressions, new local parameters cannot be added. A new parameter is declared in this list as a separate argument (`discount(Customer c) <- 15`), while an argument expression can use only parameters declared already — parameters of the action or of an enclosing operator, or typed parameters declared to the left in the same list (`discount(customer(o)) <- 15`): writing into a computed key such as `byId(LONG(Item i)) <- ...` is rejected when the module is loaded, and such a parameter is introduced outside — for example, by the [`FOR` operator](/FOR_operator.md) (see the last example). The number of items in this list must equal the number of parameters of the property being changed.
+  A list of [expressions](/Expression.md) or [typed parameters](/IDs.md#paramid) defining arguments of the property being changed. When using typed parameters, you can both reference already declared parameters and declare new local parameters. When using expressions, new local parameters cannot be added. A new parameter is declared in this list as a separate argument (`discount(Customer c) <- 15`), while an argument expression can use only parameters declared already — parameters of the action or of an enclosing operator, or typed parameters declared to the left in the same list (`discount(customer(o)) <- 15`): writing into a computed key such as `byId(LONG(Item i)) <- ...` is rejected when the module is loaded, and such a parameter is introduced outside — for example, by the [`FOR` operator](/FOR_operator.md) (see the last example). The number of items in this list must equal the number of parameters of the property being changed.
 
 * `valueExpr`
 

@@ -31,7 +31,7 @@
 
    The most common case is a link to a static object of an enumeration class (`status = DATA Status (Project)`): the platform does NOT substitute the static object's caption by itself. The form exposes the caption composition — `captionStatus 'Status' = caption(status(p))`: a write through the composition goes into the link, not into the static object's caption (see rule 7), and with a small number of options, as enumerations have, the web client shows it as a selection element (button group / list / dropdown — by the number of options and the length of the captions).
 
-   A many-to-many link through a logical data property (`in = DATA BOOLEAN (Book, Tag)`) SHOULD be exposed on the form as a concatenation of the views under that condition — `tags 'Tags' (Book b) = GROUP CONCAT name(Tag t) IF in(b, t), ', ' ORDER name(t), t`: the web client shows such a property as an element of [selection of several values](/Interactive_view.md#multiselect) (separate buttons / a column of check boxes / a dropdown / a field with lookup by typed text — by the same length and option-count thresholds as above), and each toggle of an option writes `TRUE` / `NULL` into `in(b, t)`. The condition MUST be a single changeable logical property: a chain `name(t) IF active(t) IF in(b, t)`, a `TOP` limit or a condition without a write path leave an ordinary non-editable string. The options are all objects with a non-empty view; to offer not all objects of the class, the assistant SHOULD take the view under an additional condition in its own parentheses — `GROUP CONCAT (name(Tag t) IF active(t)) IF in(b, t), ', ' ORDER name(t), t` — and NOT replace the built-in editing with its own `ON CHANGE`, which disables the selection element.
+   A many-to-many link through a logical data property (`in = DATA BOOLEAN (Book, Tag)`) SHOULD be exposed on the form as a concatenation of the views under that condition — `tags 'Tags' (Book b) = GROUP CONCAT name(Tag t) IF in(b, t), ', ' ORDER name(t), t`: the web client shows such a property as an element of [selection of several values](/Interactive_view.md#multiselect) (separate buttons / a column of check boxes / a dropdown / a field with lookup by typed text — by the same length and option-count thresholds as above), and each toggle of an option writes `TRUE` / `NULL` into `in(b, t)`. The condition MUST be a single changeable logical property: a chain `name(t) IF active(t) IF in(b, t)`, a `TOP` limit or a condition without a write path leave an ordinary non-editable string. The options are all objects with a non-empty view. To offer not all objects of the class, the assistant SHOULD take the view under an additional condition in its own parentheses — `GROUP CONCAT (name(Tag t) IF active(t)) IF in(b, t), ', ' ORDER name(t), t` — and NOT replace the built-in editing with its own `ON CHANGE`, which disables the selection element.
 
    The rule concerns what the user sees. In a container with the `custom` attribute the platform does not show the values but hands them to the component, and an object link may be needed there as is — see the `custom` rules.
 
@@ -53,14 +53,14 @@
 
    This rule applies only to the entry being added to the form. Argument lists inside option clauses such as `ON CHANGE actionName(...)`, `READONLYIF expr`, `BACKGROUND expr`, etc. are regular action calls / expressions and ALWAYS use explicit parameters, regardless of the block header.
 
-   An entry whose expression carries a comma not enclosed in brackets of its own needs a form this block accepts: with no common-parameter header, write it as `alias = (expr)`, since a bare `(expr)` is a parse error; with `PROPERTIES(o)`, an entry is a property usage even after `alias =`, so no expression is accepted at all and the only remedy is a named property added by its ID.
+   An entry whose expression carries a comma not enclosed in brackets of its own needs a form this block accepts: with no common-parameter header, write it as `alias = (expr)`, since a bare `(expr)` is a parse error. With `PROPERTIES(o)`, an entry is a property usage even after `alias =`, so no expression is accepted at all and the only remedy is a named property added by its ID.
 
 7. The default `CHANGE` handling of a property shown on a form is derived not from what its expression looks like, but from the property's write path: changeable properties are data properties and the selection operator, and a composition through an object link is edited through that link. The write path is not visible at the usage site, so the assistant MUST NOT assume that a computed-looking property is non-editable.
 
    Outwardly similar entries are edited differently:
 
    * a composition through an object link (`name(customer(o))`) — the user is offered a choice of the linked object, and the link (`customer(o)`) is written; this is the usual way of entering data;
-   * a composition through several links (`name(agent(listing(i)))` on a form with the object `i`) — the user is offered a choice of the object of the first link (`Listing`, displayed by the rest of the chain), and `listing(i)` is written; the further links and their objects do not change. Such an entry re-points the row object's own link under a caption that names something else, so it MUST be marked `READONLY` unless re-pointing that link is what the entry is for; changing the object behind a further link (`agent(listing(i))`) has no default write path and needs its own action or the form of that object;
+   * a composition through several links (`name(agent(listing(i)))` on a form with the object `i`) — the user is offered a choice of the object of the first link (`Listing`, displayed by the rest of the chain), and `listing(i)` is written. The further links and their objects do not change. Such an entry re-points the row object's own link under a caption that names something else, so it MUST be marked `READONLY` unless re-pointing that link is what the entry is for. Changing the object behind a further link (`agent(listing(i))`) has no default write path and needs its own action or the form of that object;
    * an attribute of the row object itself (`name(c)`) — the entered value is written in place, that is, the object is renamed;
    * a property of a static object (`caption(st)`) — the write goes into the stored caption of the static object and lasts until the next synchronization of the database with the code (normally at server startup), which restores the caption from the code.
 
@@ -80,7 +80,7 @@
 
 ## Form design[​](#form-design "Direct link to Form design")
 
-1. These design rules do NOT cover the `DESIGN` layout model — the default container tree, the flexbox `fill` / alignment model, or the container idioms. They give only placement meta-advice. Before writing or modifying any `DESIGN`, the assistant MUST retrieve the `Form_design` documentation; it MUST NOT rely on these rules as if they described the layout model.
+1. These design rules do NOT cover the `DESIGN` layout model — the default container tree, the flexbox `fill` / alignment model, or the container idioms. They give only placement meta-advice. Before writing or modifying any `DESIGN`, the assistant MUST retrieve the `Form_design` documentation. It MUST NOT rely on these rules as if they described the layout model.
 
    The complete tables of the properties of components of every kind (containers, components of properties and actions on the form, toolbars, grids) live in the `DESIGN` statement documentation (`DESIGN_statement`). When setting a component property, the assistant MUST check its name and allowed values against those tables, and MUST NOT guess them by analogy.
 
@@ -114,7 +114,7 @@
 
 ## Reports[​](#reports "Direct link to Reports")
 
-1. Before designing or editing jrxml report templates, or reasoning about report structure or template naming, the assistant MUST retrieve the `Report_design` documentation; it MUST NOT rely on these rules as a template-format or layout reference.
+1. Before designing or editing jrxml report templates, or reasoning about report structure or template naming, the assistant MUST retrieve the `Report_design` documentation. It MUST NOT rely on these rules as a template-format or layout reference.
 
 2. When a form has no object groups independent of each other (all groups form a single dependency chain), only ONE jrxml template is created by default, named by the form's canonical name (namespace + form name, each `.` replaced by `_`) WITHOUT a postfix — a group's only child is merged into it.
 
@@ -140,7 +140,7 @@
 
    If ids are not specified explicitly in code, this canonical value is the source-language text itself. It is what the platform LOOKS UP, not what it stores as the key: the entry stays `id = source text`, and the dictionary built for the lookup is the reversed one, `value -> id`. An assistant writing the bundle the other way round produces entries reverse translation never matches.
 
-4. Reverse translation is turned on by the launch parameter that sets the language of lsf string literals (`logics.lsfStrLiteralsLanguage`). When it is active, ANY plain `'...'` literal in a localizable position — including a constant literal in any expression — that matches a ResourceBundle entry value is silently replaced at code parse time with its key `{id}` and is substituted in the current locale at runtime: `'position'` can become `'pozycja'`. Leading and trailing spaces take no part in the match and are kept around the substitution; a literal that is empty or made of spaces alone is never replaced.
+4. Reverse translation is turned on by the launch parameter that sets the language of lsf string literals (`logics.lsfStrLiteralsLanguage`). When it is active, ANY plain `'...'` literal in a localizable position — including a constant literal in any expression — that matches a ResourceBundle entry value is silently replaced at code parse time with its key `{id}` and is substituted in the current locale at runtime: `'position'` can become `'pozycja'`. Leading and trailing spaces take no part in the match and are kept around the substitution. A literal that is empty or made of spaces alone is never replaced.
 
    The substitution also affects a literal a value is compared with in a condition or filter, including scripts run through `/eval` and `/exec`: the comparison is made against the substituted text and, with no error at all, can silently include unintended rows or drop expected ones. The assistant MUST write a comparison value as a raw literal `r'...'`.
 

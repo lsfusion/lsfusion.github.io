@@ -4,7 +4,7 @@ This section contains the guidance that helps AI assistants — and the develope
 
 ### [Brief](/Brief.md)[​](#brief "Direct link to brief")
 
-A concise map of **lsFusion** elements — properties, actions, forms, and the core operators — written for quick understanding and code generation. It is deliberately compact; detailed syntax is looked up in the rest of the documentation as needed.
+A concise map of **lsFusion** elements — properties, actions, forms, and the core operators — written for quick understanding and code generation. It is deliberately compact, and detailed syntax is looked up in the rest of the documentation as needed.
 
 ### [Rules](/Rules.md)[​](#rules "Direct link to rules")
 

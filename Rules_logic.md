@@ -18,7 +18,7 @@
 
 3. The assistant MUST assume standard `NULL` propagation for property expressions: if any parameter is `NULL`, the result is `NULL`.
 
-   Exceptions that do NOT nullify on a single `NULL` operand: the selection operators — `OVERRIDE`, which returns the first non-`NULL` operand, and `IF ... THEN ... ELSE`, whose CONDITION is the `NULL`-tolerant part: a `NULL` condition takes the `ELSE` branch, while a non-`NULL` one returns the `THEN` value as it is, so `IF TRUE THEN NULL ELSE 1` is `NULL` — `MIN` / `MAX`, the `NULL`-tolerant arithmetic `(+)` / `(-)`, the `CONCAT` concatenation (a `NULL` operand is skipped together with its separator), and `GROUP` aggregates (`GROUP SUM`, `GROUP MAX`, etc.) — a `NULL` operand or value is skipped instead of propagating. `OR`, `NOT` and `XOR` do not propagate either: they read a non-`NULL` operand as `TRUE`, so `NULL OR TRUE` is `TRUE` and `NOT NULL` is `TRUE`. `AND` is the one that does — it returns `TRUE` only when both operands are non-`NULL`, so `TRUE AND NULL` is `NULL`. `GROUP LAST` skips a `NULL` only while it has no `WHERE`, where non-`NULL`ness of the aggregated expression is what serves as the condition; given an explicit `WHERE`, a row satisfying it contributes its value even when that value is `NULL`.
+   Exceptions that do NOT nullify on a single `NULL` operand: the selection operators — `OVERRIDE`, which returns the first non-`NULL` operand, and `IF ... THEN ... ELSE`, whose CONDITION is the `NULL`-tolerant part: a `NULL` condition takes the `ELSE` branch, while a non-`NULL` one returns the `THEN` value as it is, so `IF TRUE THEN NULL ELSE 1` is `NULL` — `MIN` / `MAX`, the `NULL`-tolerant arithmetic `(+)` / `(-)`, the `CONCAT` concatenation (a `NULL` operand is skipped together with its separator), and `GROUP` aggregates (`GROUP SUM`, `GROUP MAX`, etc.) — a `NULL` operand or value is skipped instead of propagating. `OR`, `NOT` and `XOR` do not propagate either: they read a non-`NULL` operand as `TRUE`, so `NULL OR TRUE` is `TRUE` and `NOT NULL` is `TRUE`. `AND` is the one that does — it returns `TRUE` only when both operands are non-`NULL`, so `TRUE AND NULL` is `NULL`. `GROUP LAST` skips a `NULL` only while it has no `WHERE`, where non-`NULL`ness of the aggregated expression is what serves as the condition. Given an explicit `WHERE`, a row satisfying it contributes its value even when that value is `NULL`.
 
    These exceptions still yield `NULL` when:
 
@@ -27,7 +27,7 @@
 
 4. The assistant MUST NOT use `GROUP` with a `BY` block (including `GROUP AGGR`) inside expressions: in a type cast, in arithmetic (including `(+)` / `(-)`), as an argument of another property, or as an implementation of an abstract property via `+=`.
 
-   Such an operator defines the parameters of its result itself, so it is allowed only as an entire property definition: the right-hand side of a definition via `=` or an inline definition in square brackets; in any other position the platform raises the error `BY clause in GROUP operator cannot be used in expressions`. To use the result in an expression, the assistant SHOULD first rewrite the operator without `BY`, replacing each grouping with an equality condition on an outer parameter (`GROUP SUM f(x) IF g(x) = y`); otherwise, apply the inline form `[GROUP ... BY ...](...)` to arguments or declare a separate property and refer to it.
+   Such an operator defines the parameters of its result itself, so it is allowed only as an entire property definition: the right-hand side of a definition via `=` or an inline definition in square brackets; in any other position the platform raises the error `BY clause in GROUP operator cannot be used in expressions`. To use the result in an expression, the assistant SHOULD first rewrite the operator without `BY`, replacing each grouping with an equality condition on an outer parameter (`GROUP SUM f(x) IF g(x) = y`). Otherwise, apply the inline form `[GROUP ... BY ...](...)` to arguments or declare a separate property and refer to it.
 
    The restriction is tied specifically to the `BY` block: `GROUP` without `BY` takes its parameters from the outer context and may be used inside expressions.
 
@@ -63,7 +63,7 @@
 
 12. When creating a DATA property — or a simple composition over a DATA property (for example, pulling the name of a related object) — for a single object's own attribute, the assistant MUST deliberately decide whether to place it in the system `id` or `base` group via `IN`.
 
-    Attributes that form the object's business identity and appear in its representation SHOULD go in the `id` group; other primary attributes go in the `base` group (`id` is nested under `base`).
+    Attributes that form the object's business identity and appear in its representation SHOULD go in the `id` group, and other primary attributes go in the `base` group (`id` is nested under `base`).
 
     A property SHOULD NOT be placed in `id` or `base` when it is not the object's own primary attribute.
 
@@ -99,11 +99,11 @@
 
     These operators compare the operands of a single row; a maximum across rows is `GROUP MAX`.
 
-18. `AND`, `OR`, `XOR` and `NOT` always yield `BOOLEAN` (`TRUE` or `NULL`), never the value of an operand: `name(o) AND active(o)` is `TRUE`, not the name, and `a OR b` is `TRUE`, not the first non-`NULL` value. The assistant MUST NOT use them to select or pass a value through; for that use `expr IF cond` and `OVERRIDE a, b`.
+18. `AND`, `OR`, `XOR` and `NOT` always yield `BOOLEAN` (`TRUE` or `NULL`), never the value of an operand: `name(o) AND active(o)` is `TRUE`, not the name, and `a OR b` is `TRUE`, not the first non-`NULL` value. The assistant MUST NOT use them to select or pass a value through. For that use `expr IF cond` and `OVERRIDE a, b`.
 
 ### Abstract property rules (`+=`)[​](#abstract-property-rules- "Direct link to abstract-property-rules-")
 
-1. The value class of a `+=` implementation MUST fit within the value class declared on the abstract property; there is no implicit cast — an implementation with a wider class is rejected at server startup with a "wrong value class of implementation" error, whose `specified` and `expected` lines name the implementation's class and the declared one.
+1. The value class of a `+=` implementation MUST fit within the value class declared on the abstract property. There is no implicit cast — an implementation with a wider class is rejected at server startup with a "wrong value class of implementation" error, whose `specified` and `expected` lines name the implementation's class and the declared one.
 
    An expression that widens the value class — arithmetic above all, and division most of all (rule 14 of the property rules) — the assistant MUST wrap in an explicit cast to the declared class: `f(X x) += NUMERIC[16,2](a(x) / b(x));` `f(X x) += ISTRING[250](a(x) + b(x));`
 
@@ -111,13 +111,13 @@
 
 1. Where two rows can share an order key and the answer depends on which of them wins — which of two same-date rows is the `GROUP LAST`, which of two equal-priority rows a `TOP 1` takes, where a `PARTITION PREV` steps back to — the assistant MUST spell the tiebreak out, usually as the object itself: `ORDER date(d), d`.
 
-   The platform does fill an incomplete order in on its own for several of these, so the symptom is not randomness between runs; it is that the row chosen is whichever one a service order over the interfaces selects, which is not what the domain asked for. Writing the tiebreak is how the choice becomes the intended one.
+   The platform does fill an incomplete order in on its own for several of these, so the symptom is not randomness between runs. It is that the row chosen is whichever one a service order over the interfaces selects, which is not what the domain asked for. Writing the tiebreak is how the choice becomes the intended one.
 
 2. A cumulative `PARTITION SUM ... ORDER` with no `TOP` or `OFFSET` is the case where a tiebreak MUST NOT be added by reflex. Its default frame gives every row sharing an order key the same cumulative value. Adding a tiebreak changes the result — from a total per group of equal keys to a total per row — which is a decision about the domain, not a safety measure. Under `TOP` or `OFFSET` rule 1 applies as usual: those pick rows, and which rows they pick is worth saying.
 
 3. `PARTITION LAST` does not read the order to compute its value: it is the value of the current row. `GROUP LAST` is the one that picks by order.
 
-4. A `PARTITION` does not split its window by the parameters of the property: to number rows separately for each `loc` in `idx(loc, x) <- PARTITION SUM 1 IF cond(loc, x) ORDER x`, the assistant MUST add `BY loc`; without it the numbering runs across all values of `loc`. Rows whose summed expression is `NULL` are not in the window, so `SUM 1 IF cond` by itself numbers, under a unique order, the rows where `cond` holds from 1.
+4. A `PARTITION` does not split its window by the parameters of the property: to number rows separately for each `loc` in `idx(loc, x) <- PARTITION SUM 1 IF cond(loc, x) ORDER x`, the assistant MUST add `BY loc`. Without it the numbering runs across all values of `loc`. Rows whose summed expression is `NULL` are not in the window, so `SUM 1 IF cond` by itself numbers, under a unique order, the rows where `cond` holds from 1.
 
 ## Actions and assignment[​](#actions-and-assignment "Direct link to Actions and assignment")
 
@@ -145,11 +145,11 @@
 
    When dependent computation must reuse these parameters, the assistant SHOULD nest further `NEW` or `FOR` blocks inside the introducing block, where the parameters are still in scope, rather than lifting values out into auxiliary storage.
 
-   Conversely, a parameter declared inside a `GROUP` aggregate belongs to that aggregate and is NOT visible outside of it; in particular it cannot serve as the loop variable of the enclosing `FOR`. Declare the variable as the `FOR`'s own parameter and use the aggregate only as a boolean condition over it. To iterate over the groups of an aggregate together with its value, apply the inline form to new typed parameters: `FOR NUMERIC[16,2] q = [GROUP SUM f(x) BY h(x)](Class y) DO ...`.
+   Conversely, a parameter declared inside a `GROUP` aggregate belongs to that aggregate and is NOT visible outside of it. In particular it cannot serve as the loop variable of the enclosing `FOR`. Declare the variable as the `FOR`'s own parameter and use the aggregate only as a boolean condition over it. To iterate over the groups of an aggregate together with its value, apply the inline form to new typed parameters: `FOR NUMERIC[16,2] q = [GROUP SUM f(x) BY h(x)](Class y) DO ...`.
 
 3. The assistant SHOULD avoid introducing `LOCAL` properties without a concrete need.
 
-   A `LOCAL` materializes a temporary table in PostgreSQL only once it holds more than one row, so the runtime cost well above a stack variable in a conventional language applies to `LOCAL`s with parameters (buffers keyed by row number, per-object values). A parameterless `LOCAL` holds at most one row and always stays in memory, so parameterless flags and single values are cheap; avoid them to keep the number of entities down, not because of cost.
+   A `LOCAL` materializes a temporary table in PostgreSQL only once it holds more than one row, so the runtime cost well above a stack variable in a conventional language applies to `LOCAL`s with parameters (buffers keyed by row number, per-object values). A parameterless `LOCAL` holds at most one row and always stays in memory, so parameterless flags and single values are cheap. Avoid them to keep the number of entities down, not because of cost.
 
 4. A `LOCAL` is normally justified when BOTH conditions hold:
 
@@ -164,7 +164,7 @@
 
 6. These are recommendations, not hard prohibitions. If the assistant cannot find a working syntax for a `LOCAL`-free construction, or some other approach keeps failing and a clean action cannot be built, falling back to a `LOCAL` is acceptable as a last resort.
 
-   Established `LOCAL` patterns mandated by other rules (e.g. import staging, nested-session carry-over) remain valid; the assistant SHOULD still keep such `LOCAL`s minimal in count and scope.
+   Established `LOCAL` patterns mandated by other rules (e.g. import staging, nested-session carry-over) remain valid. The assistant SHOULD still keep such `LOCAL`s minimal in count and scope.
 
 7. A parameter introduced locally by a top-level statement of an action body (the implicit loop of an assignment, `FOR`, `NEW`) is visible only inside that statement: the same name in the next statement is a new parameter with its own class.
 
@@ -194,7 +194,7 @@
 
 1. `FOR` fixes its set before the first iteration: the condition is evaluated once, the matching rows are read, and the body then runs once per row of that set. What the body changes — the data under the condition included — does not add or remove iterations.
 
-   `WHILE` is the operator that re-reads, but it does so per STEP, not per row: one step re-evaluates the condition, reads the whole matching set and runs the body for every row of it, and only then is the set read again; iteration stops when it comes back empty. So a row already in the current step still gets its turn even if an earlier row of that same step has made the condition false for it.
+   `WHILE` is the operator that re-reads, but it does so per STEP, not per row: one step re-evaluates the condition, reads the whole matching set and runs the body for every row of it, and only then is the set read again. Iteration stops when it comes back empty. So a row already in the current step still gets its turn even if an earlier row of that same step has made the condition false for it.
 
 2. Without `ORDER` a `FOR` walks its set in arbitrary order. The assistant MUST give an explicit `ORDER` whenever the result depends on the sequence — numbering, running totals, anything reading what an earlier iteration wrote — or whenever `TOP` limits how many rows are taken, and MUST end that `ORDER` with a key that separates any two rows.
 
@@ -228,7 +228,7 @@
 
 5. A `WHEN` condition is checked on deleted objects too. Deleting an object resets its data properties to `NULL`, so a condition that reacts to a value becoming `NULL` is satisfied for every deleted object whose value had been non-`NULL`, and the handler runs on the object that is already gone.
 
-   Which change operators those are is decided by the transition each of them covers: `DROPPED`, `CHANGED`, `DROPCHANGED` and `SETDROPPED` include non-`NULL` to `NULL` and therefore fire on deletion; `SET` and `SETCHANGED` require the new value to be non-`NULL` and do not.
+   Which change operators those are is decided by the transition each of them covers: `DROPPED`, `CHANGED`, `DROPCHANGED` and `SETDROPPED` include non-`NULL` to `NULL` and therefore fire on deletion. `SET` and `SETCHANGED` require the new value to be non-`NULL` and do not.
 
    Where the condition can fire on the way to `NULL`, and the handler must not act on a deletion or on an object leaving the class, it MUST be narrowed with `<object> IS <Class>`.
 
@@ -263,7 +263,7 @@
    * isolated independent unit -> `NEWSESSION`
    * isolated unit that must also see selected local properties from the upper session -> `NEWSESSION NESTED (...)`
    * isolated unit that must see all local properties from the upper session -> `NEWSESSION NESTED LOCAL`
-   * child dialog or editor that must work with unsaved upper-session objects and return its changes to that upper session -> `NESTEDSESSION`; the assistant MUST NOT replace it with plain `NEWSESSION` while the parent object may still be unsaved in the form session
+   * child dialog or editor that must work with unsaved upper-session objects and return its changes to that upper session -> `NESTEDSESSION`. The assistant MUST NOT replace it with plain `NEWSESSION` while the parent object may still be unsaved in the form session
 
 2. Plain `NEWSESSION` is the default for isolated work that must not accidentally apply the caller's pending form changes:
 
@@ -275,9 +275,9 @@
 
 3. If inner logic depends on upper-session local state such as selections, marks, or import buffers, the assistant MUST carry that state explicitly through `NESTED (...)` or `NESTED LOCAL` on the operator, or declare the property itself `DATA LOCAL NESTED`, which carries it over without being listed on the operator. Neither route works under `NEWSQL`: on a connection of its own it migrates nothing, so the assistant MUST NOT combine `NEWSQL` with a dependency on upper-session local state.
 
-4. A successful `APPLY` clears the session, and with it every plain `LOCAL` property in it: after such an `APPLY` returns, the `LOCAL` is empty again. A `LOCAL` survives a successful `APPLY` only when it is declared `NESTED` (`LOCAL NESTED name = Type ();` or `name = DATA LOCAL NESTED Type (...);`) or when the `APPLY` preserves it explicitly — `APPLY NESTED (name1, ..., nameN)` or `APPLY NESTED LOCAL` for all locals. A staged value that must outlive `APPLY` — for example, an import buffer read during post-apply follow-up — MUST take one of these routes; so must the locals carried in by `NEWSESSION NESTED (...)` or `NEWSESSION NESTED LOCAL` when their result is to be copied back to the upper session, since it is the cleared values that would be copied back.
+4. A successful `APPLY` clears the session, and with it every plain `LOCAL` property in it: after such an `APPLY` returns, the `LOCAL` is empty again. A `LOCAL` survives a successful `APPLY` only when it is declared `NESTED` (`LOCAL NESTED name = Type ();` or `name = DATA LOCAL NESTED Type (...);`) or when the `APPLY` preserves it explicitly — `APPLY NESTED (name1, ..., nameN)` or `APPLY NESTED LOCAL` for all locals. A staged value that must outlive `APPLY` — for example, an import buffer read during post-apply follow-up — MUST take one of these routes. So must the locals carried in by `NEWSESSION NESTED (...)` or `NEWSESSION NESTED LOCAL` when their result is to be copied back to the upper session, since it is the cleared values that would be copied back.
 
-   An `APPLY` that fails or is cancelled leaves the session as it was, locals included — which is why the assistant MUST NOT read a `LOCAL` after `APPLY` to tell success from failure; `canceled()` is what tells them apart. Inside a nested session there is no clearing at all: the changes are copied to the parent session and the nested one is left standing, locals and all.
+   An `APPLY` that fails or is cancelled leaves the session as it was, locals included — which is why the assistant MUST NOT read a `LOCAL` after `APPLY` to tell success from failure: `canceled()` is what tells them apart. Inside a nested session there is no clearing at all: the changes are copied to the parent session and the nested one is left standing, locals and all.
 
 5. After `APPLY`, the assistant MUST check `canceled()` only when later logic depends on whether the save succeeded — to early-return, skip a follow-up side effect, or roll back staged work.
 

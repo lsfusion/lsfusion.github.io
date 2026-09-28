@@ -234,7 +234,7 @@
 
 ## Class_change_CHANGECLASS_DELETE
 
-- [Class change (CHANGECLASS, DELETE)](/Class_change_CHANGECLASS_DELETE.md): The class change operator creates an action that assigns a target class to all objects matching a condition. The condition is an expression of the same arguments as the object expression; it may be omitted, in which case it is considered to always hold. The target class must be a concrete custom class.
+- [Class change (CHANGECLASS, DELETE)](/Class_change_CHANGECLASS_DELETE.md): The class change operator creates an action that assigns a target class to all objects matching a condition. The condition is an expression of the same arguments as the object expression. It may be omitted, in which case it is considered to always hold. The target class must be a concrete custom class.
 
 ## Class_extension
 
@@ -306,7 +306,7 @@
 
 ## Container_visibility_EXPAND_COLLAPSE
 
-- [Container visibility (EXPAND, COLLAPSE)](/Container_visibility_EXPAND_COLLAPSE.md): Container expansion and collapse operators control whether the contents of a collapsible container are shown on a form. A collapsible container can be collapsed to hide its contents, and expanded to show them again; this state is part of the user's interactive view of the form.
+- [Container visibility (EXPAND, COLLAPSE)](/Container_visibility_EXPAND_COLLAPSE.md): Container expansion and collapse operators control whether the contents of a collapsible container are shown on a form. A collapsible container can be collapsed to hide its contents, and expanded to show them again. This state is part of the user's interactive view of the form.
 
 ## CONTINUE_operator
 
@@ -610,7 +610,7 @@
 
 ## How-to_Custom_components_server_calls
 
-- [How-to: Custom Components (server calls)](/How-to_Custom_components_server_calls.md): A custom view calls the server through the form controller's exec / eval / evalAction / change methods; the mechanics — the authorization gate, sessions, value conversion — are described in Calling the server, and the method signatures in the form controller API. This page is an end-to-end example: one CUSTOM component that calls actions and properties through the form's CUSTOMS clause with every major kind of parameter.
+- [How-to: Custom Components (server calls)](/How-to_Custom_components_server_calls.md): A custom view calls the server through the form controller's exec / eval / evalAction / change methods. The mechanics — the authorization gate, sessions, value conversion — are described in Calling the server, and the method signatures in the form controller API. This page is an end-to-end example: one CUSTOM component that calls actions and properties through the form's CUSTOMS clause with every major kind of parameter.
 
 ## How-to_Custom_React_views
 
@@ -618,7 +618,7 @@
 
 ## How-to_Custom_view_controller
 
-- [How-to: Custom view controller API](/How-to_Custom_view_controller.md): A custom view written in JavaScript communicates with the form through a controller object — with it the view sets the current object of a group, changes property values, looks up suggestions, and calls actions or scripts on the server. There are three kinds of custom view; they obtain the controller differently, but all reach the same form-level controller, whose methods are documented on this page.
+- [How-to: Custom view controller API](/How-to_Custom_view_controller.md): A custom view written in JavaScript communicates with the form through a controller object — with it the view sets the current object of a group, changes property values, looks up suggestions, and calls actions or scripts on the server. There are three kinds of custom view. They obtain the controller differently, but all reach the same form-level controller, whose methods are documented on this page.
 
 ## How-to_Data_entry
 
@@ -742,7 +742,7 @@
 
 ## How-to_JSON_parsing
 
-- [How-to: JSON parsing](/How-to_JSON_parsing.md): The examples below use the wrapper properties around PostgreSQL's jsonb* functions shipped by the platform in the Utils module: field, fieldText, array, arrayText, map, mapText, arrayElement. Their signatures and description are collected in Utils → JSON access properties; this how-to relies on them and does not restate their interface.
+- [How-to: JSON parsing](/How-to_JSON_parsing.md): The examples below use the wrapper properties around PostgreSQL's jsonb* functions shipped by the platform in the Utils module: field, fieldText, array, arrayText, map, mapText, arrayElement. Their signatures and description are collected in Utils → JSON access properties. This how-to relies on them and does not restate their interface.
 
 ## How-to_Logging
 
@@ -902,7 +902,7 @@
 
 ## Internal_call_INTERNAL
 
-- [Internal call (INTERNAL)](/Internal_call_INTERNAL.md): The platform allows an lsFusion-based system to invoke code running inside its own deployment components — the application-server JVM, the user's web client, or the database the platform uses — using various types of internal calls, as the internal counterpart to access to an external system. The interface of such an access is the execution of code in the environment of the target component with specified parameters and, if necessary, the return of certain values as *results* written into the specified properties (without parameters). For call types where parameters and results cross a serialization boundary (CLIENT, DB), values must belong to built-in classes; the Java target runs on the same JVM as the platform, so inside executeInternal objects of user-defined classes are passed as DataObject / ObjectValue directly, without serialization.
+- [Internal call (INTERNAL)](/Internal_call_INTERNAL.md): The platform allows an lsFusion-based system to invoke code running inside its own deployment components — the application-server JVM, the user's web client, or the database the platform uses — using various types of internal calls, as the internal counterpart to access to an external system. The interface of such an access is the execution of code in the environment of the target component with specified parameters and, if necessary, the return of certain values as *results* written into the specified properties (without parameters). For call types where parameters and results cross a serialization boundary (CLIENT, DB), values must belong to built-in classes. The Java target runs on the same JVM as the platform, so inside executeInternal objects of user-defined classes are passed as DataObject / ObjectValue directly, without serialization.
 
 ## INTERNAL_operator
 
@@ -950,7 +950,7 @@
 
 ## Launch_events
 
-- [Launch events](/Launch_events.md): A launch event occurs when one of the platform's components starts. For each launch event the platform provides a predefined action that runs as the event's handler; a developer plugs initialization logic into this handler.
+- [Launch events](/Launch_events.md): A launch event occurs when one of the platform's components starts. For each launch event the platform provides a predefined action that runs as the event's handler. A developer plugs initialization logic into this handler.
 
 ## Launch_parameters
 
@@ -1222,7 +1222,7 @@
 
 ## Property_change_CHANGE
 
-- [Property change (CHANGE)](/Property_change_CHANGE.md): The property change operator creates an action that writes the value of an expression (source) into a property (destination) for every set of arguments where a third expression (condition) is not NULL. The condition may be omitted; in that case it is considered to always hold.
+- [Property change (CHANGE)](/Property_change_CHANGE.md): The property change operator creates an action that writes the value of an expression (source) into a property (destination) for every set of arguments where a third expression (condition) is not NULL. The condition may be omitted, in which case it is considered to always hold.
 
 ## Property_extension
 
@@ -1326,11 +1326,11 @@
 
 ## Search_
 
-- [Search](/Search_.md): Each element in the system contains certain information that allows it to be uniquely identified among other elements of the system. However, providing all the information about the element in each place it is used is rather cumbersome; so the platform has a special search algorithm, which allows you to find the desired element with only part of the information about it (for example, only a short name and the module which uses the item you are searching for).
+- [Search](/Search_.md): Each element in the system contains certain information that allows it to be uniquely identified among other elements of the system. However, providing all the information about the element in each place it is used is rather cumbersome, so the platform has a special search algorithm, which allows you to find the desired element with only part of the information about it (for example, only a short name and the module which uses the item you are searching for).
 
 ## Security_policy
 
-- [Security policy](/Security_policy.md): The security policy determines which system elements — forms in the navigator, form properties, and so on — each user has access to. Access is granted not to individual users but to roles; a user is assigned a primary role and, where needed, additional roles. The effective access is combined across all of the user's roles: access is granted if any role explicitly permits it (Permit); otherwise, granted unless some role explicitly forbids it (Forbid); in the remaining case (every role says Default) — granted. For each role, access to navigator forms (Permit / Forbid / Default) and access to form properties (View / Change / Follow / Group Change) are configured separately.
+- [Security policy](/Security_policy.md): The security policy determines which system elements — forms in the navigator, form properties, and so on — each user has access to. Access is granted not to individual users but to roles. A user is assigned a primary role and, where needed, additional roles. The effective access is combined across all of the user's roles: access is granted if any role explicitly permits it (Permit); otherwise, granted unless some role explicitly forbids it (Forbid); in the remaining case (every role says Default) — granted. For each role, access to navigator forms (Permit / Forbid / Default) and access to form properties (View / Change / Follow / Group Change) are configured separately.
 
 ## Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE
 
@@ -1342,7 +1342,7 @@
 
 ## Send_mail_EMAIL
 
-- [Send mail (EMAIL)](/Send_mail_EMAIL.md): The send mail operator creates an action that sends an email message. The message has a sender address, a list of recipient addresses each with a visibility flag, a subject, a body, and a list of attachments; in addition, the action itself is configured with a completion mode — synchronous or asynchronous.
+- [Send mail (EMAIL)](/Send_mail_EMAIL.md): The send mail operator creates an action that sends an email message. The message has a sender address, a list of recipient addresses each with a visibility flag, a subject, a body, and a list of attachments. In addition, the action itself is configured with a completion mode — synchronous or asynchronous.
 
 ## Sequence
 
@@ -1426,7 +1426,7 @@
 
 ## System_modules
 
-- [System modules](/System_modules.md): A system module is a module shipped with the platform. An application project pulls these modules in via REQUIRE and uses their declarations (classes, properties, actions, forms) as a ready-made standard library; the platform never expects them to be redefined.
+- [System modules](/System_modules.md): A system module is a module shipped with the platform. An application project pulls these modules in via REQUIRE and uses their declarations (classes, properties, actions, forms) as a ready-made standard library. The platform never expects them to be redefined.
 
 ## System_parameters
 
@@ -1442,7 +1442,7 @@
 
 ## System_Service
 
-- [Service](/System_Service.md): Service is a system module that gathers the server's administration surface: database service and recalculation actions, virtual-machine and memory control, scheduled server restart, application-wide settings, per-user diagnostics and logging flags, per-user client GUI preferences, database scaling, and the server-settings API exported to clients. It is pulled in via REQUIRE Service (it does REQUIRE System, Security, SystemEvents; its own declarations live in NAMESPACE Service).
+- [Service](/System_Service.md): Service is a system module that gathers the server's administration surface: database service and recalculation actions, virtual-machine and memory control, scheduled server restart, application-wide settings, per-user diagnostics and logging flags, per-user client GUI preferences, database scaling, and the server-settings API exported to clients. It is pulled in via REQUIRE Service (it does REQUIRE System, Security, SystemEvents, and its own declarations live in NAMESPACE Service).
 
 ## System_System
 
@@ -1546,7 +1546,7 @@
 
 ## Working_parameters
 
-- [Working parameters](/Working_parameters.md): Working parameters are the settings that tune the behavior of the application server mechanisms: connection pools, optimizer statistics, thresholds protecting against overly large or overly long queries, retry policy for conflicts and deadlocks, materialization of changes, memory-consumption measurements, form-element display, and so on. Unlike launch parameters, which are fixed for the server process, a working parameter is set through the layers listed below and can be overridden while the system is running, including for an individual user role. Most working parameters take effect as soon as the value changes; individual ones are read only while the system is starting, which is stated in the parameter's description.
+- [Working parameters](/Working_parameters.md): Working parameters are the settings that tune the behavior of the application server mechanisms: connection pools, optimizer statistics, thresholds protecting against overly large or overly long queries, retry policy for conflicts and deadlocks, materialization of changes, memory-consumption measurements, form-element display, and so on. Unlike launch parameters, which are fixed for the server process, a working parameter is set through the layers listed below and can be overridden while the system is running, including for an individual user role. Most working parameters take effect as soon as the value changes. Individual ones are read only while the system is starting, which is stated in the parameter's description.
 
 ## Write_file_WRITE
 

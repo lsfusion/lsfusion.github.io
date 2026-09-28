@@ -24,7 +24,7 @@ The second form declares a class with STATIC objects — a fixed, named set decl
 
 ### A class is not a table[​](#a-class-is-not-a-table "Direct link to A class is not a table")
 
-This is the single most expensive misreading of the model, so it is worth stating plainly. A table does not hold a class's objects; it holds the values of properties. Its key fields hold object ids, and the parameter classes of those properties are what the key fields are typed by. A property declared without an explicit `TABLE` goes to the table whose key classes fit it. Which means the mapping from classes to tables is a consequence of how properties are declared, not something the class declaration decides. See [Brief: physical model](/Brief_physical.md#execution).
+This is the single most expensive misreading of the model, so it is worth stating plainly. A table does not hold a class's objects. It holds the values of properties. Its key fields hold object ids, and the parameter classes of those properties are what the key fields are typed by. A property declared without an explicit `TABLE` goes to the table whose key classes fit it. Which means the mapping from classes to tables is a consequence of how properties are declared, not something the class declaration decides. See [Brief: physical model](/Brief_physical.md#execution).
 
 ### Polymorphism[​](#polymorphism "Direct link to Polymorphism")
 
@@ -36,7 +36,7 @@ Behaviour is specialized by class through `ABSTRACT` properties and actions with
 
 A [property](/Properties.md) takes a set of objects as parameters and returns exactly one value — like a pure function, but computed over the whole database at once, like a column of an SQL query. The value is either stored (a [data property](/Data_properties_DATA.md), the [`DATA` operator](/DATA_operator.md)) or computed by an expression: arithmetic, logic (`AND`, `OR`, `NOT`), comparisons, string operations, class tests and casts (`IS`, `AS`). String, number and date functions (`lpad`, `substr`, `mod`, `currentDate`) are not operators — they are properties of the `Utils` and `Time` modules.
 
-Substituting a property into another property's expression is [composition](/Composition_JOIN.md); the [`JOIN` operator](/JOIN_operator.md) writes it out explicitly. The operators that create properties are listed in [Operators](/Property_operators_paradigm.md).
+Substituting a property into another property's expression is [composition](/Composition_JOIN.md), and the [`JOIN` operator](/JOIN_operator.md) writes it out explicitly. The operators that create properties are listed in [Operators](/Property_operators_paradigm.md).
 
 ```
 price = DATA NUMERIC[14,2] (Item);
@@ -77,7 +77,7 @@ place (Team t) = PARTITION SUM 1 ORDER DESC points(t), t BY conference(t);
 
 These operators work with objects rather than with values.
 
-`GROUP AGGR` is the form of the [`GROUP` operator](/GROUP_operator.md) that returns the group's object itself. The result is the mapping inverse to the properties listed in `BY` — finding an object by its code, for example; the platform adds a constraint that a group has at most one such object.
+`GROUP AGGR` is the form of the [`GROUP` operator](/GROUP_operator.md) that returns the group's object itself. The result is the mapping inverse to the properties listed in `BY` — finding an object by its code, for example. The platform adds a constraint that a group has at most one such object.
 
 The [`AGGR` operator](/AGGR_operator.md) goes further: it creates the object itself when the aggregated expression becomes not `NULL`, and deletes it when the expression becomes `NULL` again, filling in the properties that map the object back to the parameters. The mechanism is described in [aggregations](/Aggregations.md).
 
@@ -88,11 +88,11 @@ shipment (Invoice i) = AGGR ShipmentInvoice WHERE createShipment(i);
 
 ### Selection and override (CASE, IF, OVERRIDE)[​](#selection-and-override-case-if-override "Direct link to Selection and override (CASE, IF, OVERRIDE)")
 
-The [selection operator](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md) checks conditions in order and returns the result of the first one that holds; a condition holds if its value is not `NULL`.
+The [selection operator](/Selection_CASE_IF_MULTI_OVERRIDE_EXCLUSIVE.md) checks conditions in order and returns the result of the first one that holds. A condition holds if its value is not `NULL`.
 
 * [`CASE`](/CASE_operator.md) — explicit `WHEN ... THEN ...` pairs and an optional `ELSE`.
-* [`IF`](/IF_operator.md) — the postfix single form `result IF condition`; [`IF ... THEN`](/IF_..._THEN_operator.md) adds an `ELSE` block.
-* [`OVERRIDE`](/OVERRIDE_operator.md) — the first operand that is not `NULL`; this is also how a default value is substituted for `NULL`.
+* [`IF`](/IF_operator.md) — the postfix single form `result IF condition`. [`IF ... THEN`](/IF_..._THEN_operator.md) adds an `ELSE` block.
+* [`OVERRIDE`](/OVERRIDE_operator.md) — the first operand that is not `NULL`. This is also how a default value is substituted for `NULL`.
 * [`EXCLUSIVE`](/EXCLUSIVE_operator.md) — the same, plus a declaration that at most one operand is not `NULL`.
 * [`MULTI`](/MULTI_operator.md) — the operand is chosen by the compatibility of the argument classes with its signature.
 
@@ -103,7 +103,7 @@ price (Item i) = OVERRIDE salePrice(i), basePrice(i), 0;
 
 ### Recursion (RECURSION)[​](#recursion-recursion "Direct link to Recursion (RECURSION)")
 
-The [`RECURSION` operator](/RECURSION_operator.md) creates a property computed by iteration; it is reached for on trees, graphs and transitive closures — all the ancestors of an object, reachability along a chain of references, and, by counting the ancestors, the level of a node. Its parts — `STEP`, the `$` prefix on a parameter and the `CYCLES` option — and the way the iterations are computed are described in [recursion](/Recursion_RECURSION.md). For a hierarchy by a `parent[class]` property the ready-made set of such properties is provided by the [`Hierarchy`](/Utils_Hierarchy.md) system module.
+The [`RECURSION` operator](/RECURSION_operator.md) creates a property computed by iteration. It is reached for on trees, graphs and transitive closures — all the ancestors of an object, reachability along a chain of references, and, by counting the ancestors, the level of a node. Its parts — `STEP`, the `$` prefix on a parameter and the `CYCLES` option — and the way the iterations are computed are described in [recursion](/Recursion_RECURSION.md). For a hierarchy by a `parent[class]` property the ready-made set of such properties is provided by the [`Hierarchy`](/Utils_Hierarchy.md) system module.
 
 ```
 isParent (Group child, Group parent) = RECURSION 1 IF child IS Group AND parent = child
@@ -153,11 +153,11 @@ An [action](/Actions.md) is dual to a property: a property says what the value i
 name [caption] [(param1, ..., paramN)] { actionBody } [options]
 ```
 
-The body in braces is a [sequence](/Sequence.md): nested actions run in the order written; inside the block `LOCAL` properties can be declared that live only while the block runs. An [action call](/Call_EXEC.md) is written as the name with arguments, `[EXEC] actionId(expression1, ..., expressionN) [TO toProperty]`, or substituted directly as a value. **Analogy**: a procedure call.
+The body in braces is a [sequence](/Sequence.md): nested actions run in the order written. Inside the block `LOCAL` properties can be declared that live only while the block runs. An [action call](/Call_EXEC.md) is written as the name with arguments, `[EXEC] actionId(expression1, ..., expressionN) [TO toProperty]`, or substituted directly as a value. **Analogy**: a procedure call.
 
 ### Loops (FOR, WHILE)[​](#loops-for-while "Direct link to Loops (FOR, WHILE)")
 
-The [`FOR` operator](/FOR_operator.md) runs its body once per object set for which the condition is not `NULL`; the [`WHILE` operator](/WHILE_operator.md) recomputes the condition at every step, so the changes made by the body are taken into account:
+The [`FOR` operator](/FOR_operator.md) runs its body once per object set for which the condition is not `NULL`, and the [`WHILE` operator](/WHILE_operator.md) recomputes the condition at every step, so the changes made by the body are taken into account:
 
 ```
 FOR expression [ORDER [DESC] orderExpr1, ..., orderExprN]
@@ -184,7 +184,7 @@ createDetails (Order o) {
 
 ### Branching (CASE, IF)[​](#branching-case-if "Direct link to Branching (CASE, IF)")
 
-[Branching](/Branching_CASE_IF_MULTI.md) runs the action matching the condition that holds; a condition holds if its value is not `NULL`. In the [`IF ... THEN`](/IF_..._THEN_action_operator.md) and [`CASE`](/CASE_action_operator.md) operators the condition is written out; in the [`MULTI` operator](/MULTI_action_operator.md) it is that the call arguments match an action's signature, that is, dispatch by the argument class:
+[Branching](/Branching_CASE_IF_MULTI.md) runs the action matching the condition that holds. A condition holds if its value is not `NULL`. In the [`IF ... THEN`](/IF_..._THEN_action_operator.md) and [`CASE`](/CASE_action_operator.md) operators the condition is written out; in the [`MULTI` operator](/MULTI_action_operator.md) it is that the call arguments match an action's signature, that is, dispatch by the argument class:
 
 ```
 IF condition
@@ -209,12 +209,12 @@ The deferred variant is an abstract action, [`ABSTRACT`](/ABSTRACT_action_operat
 ### Flow control[​](#flow-control "Direct link to Flow control")
 
 * [`BREAK`](/Interruption_BREAK.md) exits the innermost loop, [`CONTINUE`](/Next_iteration_CONTINUE.md) moves to its next iteration, [`RETURN [expression]`](/Exit_RETURN.md) exits the innermost action call with the given value as its result.
-* [`TRY action [CATCH catchAction] [FINALLY finallyAction]`](/TRY_operator.md) — `CATCH` swallows the [error](/Exception_handling_TRY.md), giving access to it through `messageCaughtException[]` and `lsfStackTraceCaughtException[]`; `FINALLY` runs in any case. **Analogy**: `try` / `catch` / `finally`.
+* [`TRY action [CATCH catchAction] [FINALLY finallyAction]`](/TRY_operator.md) — `CATCH` swallows the [error](/Exception_handling_TRY.md), giving access to it through `messageCaughtException[]` and `lsfStackTraceCaughtException[]`. `FINALLY` runs in any case. **Analogy**: `try` / `catch` / `finally`.
 * [`NEWTHREAD action [dispatchClause]`](/NEWTHREAD_operator.md) — execution in a [separate thread](/New_threads_NEWTHREAD_NEWEXECUTOR.md), at once or on a schedule (`SCHEDULE`: a delay and a period). [`NEWEXECUTOR`](/NEWEXECUTOR_operator.md) picks where the thread goes: a server pool, where the body runs in the caller's [change session](/Change_sessions.md), or the client connection (`CLIENT`), where it gets a new session of its own in that connection's navigator.
 
 ### Form actions[​](#form-actions "Direct link to Form actions")
 
-* [`SHOW`](/SHOW_operator.md) — [opening a form](/In_an_interactive_view_SHOW_DIALOG.md) in the interactive view; the passed objects become the current ones.
+* [`SHOW`](/SHOW_operator.md) — [opening a form](/In_an_interactive_view_SHOW_DIALOG.md) in the interactive view. The passed objects become the current ones.
 * [`DIALOG`](/DIALOG_operator.md) — the same opening as a value-input dialog: every object marked `INPUT` or `CHANGE` returns its last current value to the `DO` block.
 * [`ACTIVATE`](/ACTIVATE_operator.md) — [activation](/Activation_ACTIVATE.md) of a form, a tab, a property, or a set of objects in an object group.
 * [`EXPAND`](/EXPAND_operator.md) / `COLLAPSE` — expanding and collapsing a [form container](/Container_visibility_EXPAND_COLLAPSE.md) and the nodes of an [object tree](/Object_tree_visibility_EXPAND_COLLAPSE.md).
@@ -278,7 +278,7 @@ FORM sku 'Item'
 
 ### Periodic execution[​](#periodic-execution "Direct link to Periodic execution")
 
-Four mechanisms run an action on a timer; they differ in where the timer is, where the action runs, and what it is tied to:
+Four mechanisms run an action on a timer. They differ in where the timer is, where the action runs, and what it is tied to:
 
 | Mechanism                                                                          | Timer                                                        | The action runs                                                                                                                              | Tied to                                                                       |
 | ---------------------------------------------------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
@@ -293,13 +293,13 @@ Refreshing a form the user is looking at is the form's `SCHEDULE`, with `System.
 
 The handlers of local events run not at the moment the data changes but at certain moments in the life of the session — see [executing local events](/Events.md#local). The handlers of synchronous global events run inside the transaction of [applying changes](/Apply_changes_APPLY.md), together with the checks of [constraints](/Constraints.md).
 
-The order between the handlers reacting to the same change is determined by the data dependencies; it is set explicitly with the `AFTER` keyword (the synonym `GOAFTER`) in the [event description block](/Event_description_block.md).
+The order between the handlers reacting to the same change is determined by the data dependencies. It is set explicitly with the `AFTER` keyword (the synonym `GOAFTER`) in the [event description block](/Event_description_block.md).
 
 ## Constraints[​](#constraints "Direct link to Constraints")
 
 ### Constraints (CONSTRAINT)[​](#constraints-constraint "Direct link to Constraints (CONSTRAINT)")
 
-A [constraint](/Constraints.md) is a property whose value must always be `NULL`. It is checked on the event given by the [event description block](/Event_description_block.md) of the statement — by default, the global `APPLY` event; if by that moment it has become not `NULL` on at least one object set, the platform shows a message listing those sets and [cancels](/Cancel_changes_CANCEL.md) the changes. It is created by the [`CONSTRAINT` statement](/CONSTRAINT_statement.md):
+A [constraint](/Constraints.md) is a property whose value must always be `NULL`. It is checked on the event given by the [event description block](/Event_description_block.md) of the statement — by default, the global `APPLY` event. If by that moment it has become not `NULL` on at least one object set, the platform shows a message listing those sets and [cancels](/Cancel_changes_CANCEL.md) the changes. It is created by the [`CONSTRAINT` statement](/CONSTRAINT_statement.md):
 
 ```
 CONSTRAINT [eventClause] constraintExpr [CHECKED [BY propertyId1, ..., propertyIdN]] MESSAGE messageExpr
@@ -318,7 +318,7 @@ CONSTRAINT balance(Sku s, Stock st) < 0 MESSAGE 'Balance cannot be negative';
 
 ### Aggregated objects and constraints[​](#aggregated-objects-and-constraints "Direct link to Aggregated objects and constraints")
 
-An [aggregation](/Aggregations.md) creates an *aggregated* object when the aggregated property becomes not `NULL` on a combination of parameter values, and deletes that object once the property becomes `NULL` again. Only the [`AGGR` operator](/AGGR_operator.md) creates and deletes the object; [`GROUP AGGR`](/GROUP_operator.md) builds the reverse property — from the parameter values back to the object. Both are described in [Brief: properties](/Brief_logic.md#properties).
+An [aggregation](/Aggregations.md) creates an *aggregated* object when the aggregated property becomes not `NULL` on a combination of parameter values, and deletes that object once the property becomes `NULL` again. Only the [`AGGR` operator](/AGGR_operator.md) creates and deletes the object. [`GROUP AGGR`](/GROUP_operator.md) builds the reverse property — from the parameter values back to the object. Both are described in [Brief: properties](/Brief_logic.md#properties).
 
 For integrity this is one more invariant the platform maintains on its own: at most one aggregated object per combination of parameter values. `GROUP AGGR` adds it as a constraint over its group, and `AGGR` keeps the correspondence between the objects and the parameter values within it. How that constraint is maintained is described in [aggregations](/Aggregations.md) and [simple constraints](/Simple_constraints.md).
 
@@ -331,7 +331,7 @@ shipment (Invoice i) = AGGR ShipmentInvoice WHERE createShipment(i);
 
 ### What a session is[​](#what-a-session-is "Direct link to What a session is")
 
-A [change session](/Change_sessions.md) is where changes are accumulated locally instead of being written to the database right away. It holds changes of [data properties](/Data_properties_DATA.md), including local ones, and changes of object classes — created and deleted objects, `CHANGECLASS`. Until the changes are applied they stay in this session; which of them another session can see is decided by the operator that opens it — `NESTEDSESSION` shows all of the upper session's changes, `NEWSESSION` reads from the database, carrying over the local properties its `NESTED` names — a list in brackets, or all of them with `NESTED LOCAL` — the class changes if `CLASSES` is given, and, listed or not, anything declared `DATA LOCAL NESTED` — together with how the properties themselves are declared, since a `DATA LOCAL NESTED` one travels on its own; an action's current session comes from the execution context — the form's session, the calling action's session, or the session supplied by the platform.
+A [change session](/Change_sessions.md) is where changes are accumulated locally instead of being written to the database right away. It holds changes of [data properties](/Data_properties_DATA.md), including local ones, and changes of object classes — created and deleted objects, `CHANGECLASS`. Until the changes are applied they stay in this session. Which of them another session can see is decided by the operator that opens it — `NESTEDSESSION` shows all of the upper session's changes, `NEWSESSION` reads from the database, carrying over the local properties its `NESTED` names — a list in brackets, or all of them with `NESTED LOCAL` — the class changes if `CLASSES` is given, and, listed or not, anything declared `DATA LOCAL NESTED` — together with how the properties themselves are declared, since a `DATA LOCAL NESTED` one travels on its own. An action's current session comes from the execution context — the form's session, the calling action's session, or the session supplied by the platform.
 
 The value of a property at the start of the session is returned by the [`PREV` operator](/Previous_value_PREV.md), and the [change operators](/Change_operators_SET_CHANGED_etc.md) derived from it — `SET`, `DROPPED`, `CHANGED`, `SETCHANGED`, `DROPCHANGED`, `SETDROPPED` — answer what exactly changed in the session.
 
@@ -339,7 +339,7 @@ The value of a property at the start of the session is returned by the [`PREV` o
 
 ### NEWSESSION and NESTEDSESSION[​](#newsession-and-nestedsession "Direct link to NEWSESSION and NESTEDSESSION")
 
-The [`NEWSESSION` operator](/NEWSESSION_operator.md) runs the inner action in a separate [session](/New_session_NEWSESSION_NESTEDSESSION.md), isolated from the current one; the [`NESTEDSESSION` operator](/NESTEDSESSION_operator.md) runs it in a nested session, which copies the changes of the current session into itself and, on apply, copies them back. If either operator is executed during an [apply transaction](/Apply_changes_APPLY.md) of the current session, no session is created at that moment — the inner action is deferred and executed in the current session inside the same transaction.
+The [`NEWSESSION` operator](/NEWSESSION_operator.md) runs the inner action in a separate [session](/New_session_NEWSESSION_NESTEDSESSION.md), isolated from the current one, and the [`NESTEDSESSION` operator](/NESTEDSESSION_operator.md) runs it in a nested session, which copies the changes of the current session into itself and, on apply, copies them back. If either operator is executed during an [apply transaction](/Apply_changes_APPLY.md) of the current session, no session is created at that moment — the inner action is deferred and executed in the current session inside the same transaction.
 
 ```
 NEWSESSION [NEWSQL] [FORMS formId1, ..., formIdM] [NESTED [nestedPropertySelector] [CLASSES]] [SINGLE] action

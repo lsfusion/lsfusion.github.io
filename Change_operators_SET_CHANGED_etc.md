@@ -13,7 +13,7 @@ In the table below, `f` stands for the property being checked (parameters omitte
 | `DROPCHANGED` | `CHANGED(f) AND NOT SET(f)`                                        | Value is either reset or changed from one non-`NULL` to another non-`NULL` |
 | `SETDROPPED`  | `SET(f) OR DROPPED(f)`                                             | Value is either reset or changed from `NULL` to non-`NULL`                 |
 
-The first three operators (`SET`, `DROPPED`, `CHANGED`) are the basic change predicates; the remaining three are convenient combinations of those that cover cases cutting across the basic predicates.
+The first three operators (`SET`, `DROPPED`, `CHANGED`) are the basic change predicates, while the remaining three are convenient combinations of those that cover cases cutting across the basic predicates.
 
 warning
 

@@ -13,7 +13,7 @@ NOT expression1
 
 ### Description[​](#description "Direct link to Description")
 
-`AND`, `OR`, and `XOR` are infix operators taking two operands; `NOT` is a prefix operator taking a single operand. The evaluation order relative to other operators follows [operator priority](/Operator_priority.md).
+`AND`, `OR`, and `XOR` are infix operators taking two operands, while `NOT` is a prefix operator taking a single operand. The evaluation order relative to other operators follows [operator priority](/Operator_priority.md).
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 

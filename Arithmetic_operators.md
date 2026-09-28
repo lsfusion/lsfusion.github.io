@@ -16,7 +16,7 @@ expression1 (-) expression2
 
 ### Description[​](#description "Direct link to Description")
 
-The binary operators each take two operands and associate left to right; the unary minus takes a single operand. The evaluation order relative to other operators follows [operator priority](/Operator_priority.md).
+The binary operators each take two operands and associate left to right, while the unary minus takes a single operand. The evaluation order relative to other operators follows [operator priority](/Operator_priority.md).
 
 There are no dedicated operators for the remainder of division, integer division, or exponentiation — these operations are performed by the `mod[…, …]`, `divideInteger[…, …]`, and `power[…, …]` properties of the system module [`Utils`](/System_Utils.md).
 

@@ -291,7 +291,7 @@ public class ClientBeep implements ClientAction {
 
 к сведению
 
-Канонический паттерн долгоживущего серверного компонента — bean, регистрируемый в Spring и подключаемый к жизненному циклу платформы; см. [свой Spring bean (`EventServer`)](/ru/Custom_Spring_bean_EventServer.md). Решение ниже создаёт `MonitorServer` изнутри `InternalAction` без регистрации в Spring — рабочая, но менее каноническая альтернатива.
+Канонический паттерн долгоживущего серверного компонента — bean, регистрируемый в Spring и подключаемый к жизненному циклу платформы, см. [свой Spring bean (`EventServer`)](/ru/Custom_Spring_bean_EventServer.md). Решение ниже создаёт `MonitorServer` изнутри `InternalAction` без регистрации в Spring — рабочая, но менее каноническая альтернатива.
 
 ### Решение[​](#решение-4 "Прямая ссылка на этот заголовок")
 

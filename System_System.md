@@ -57,7 +57,7 @@ Inside a `CATCH` block, `messageCaughtException[]`, `javaStackTraceCaughtExcepti
 
 `open[STRING]` / `open[FILE]` / `open[NAMEDFILE]` / `open[RAWFILE]` / `open[LINK]` / `open[RAWLINK]` (with shorter overloads for the file name and the `noWait` flag) open the given value on the client in the associated application or browser.
 
-`htmlLinkInTab[HTMLLINK]` opens an HTML link in a separate tab; the `htmlLinkInTab` form hosts the HTML viewer itself.
+`htmlLinkInTab[HTMLLINK]` opens an HTML link in a separate tab. The `htmlLinkInTab` form hosts the HTML viewer itself.
 
 ### Form lifecycle[​](#form-lifecycle "Direct link to Form lifecycle")
 
@@ -84,7 +84,7 @@ Inside a `CATCH` block, `messageCaughtException[]`, `javaStackTraceCaughtExcepti
 
 ### Polymorphic edit and delete[​](#polymorphic-edit-and-delete "Direct link to Polymorphic edit and delete")
 
-`edit[Object]` and `delete[Object]` are declared as abstract actions with default implementations (`SHOW EDIT` and `DELETE`) and are available for extension by specific user classes. `formEdit[Object]` is a direct pass-through to `edit[Object]`. `formEditObject[Object]` wraps `formEdit[Object]` in `NEWSESSION` only when the object already exists in the database (`PREV(o IS Object)`), and calls `formEdit[Object]` directly otherwise. `formDelete[Object]` calls `delete[Object]` directly when `sessionOwners[]` is set; otherwise it shows a confirmation prompt and on confirmation runs `delete[Object]` followed by `APPLY`.
+`edit[Object]` and `delete[Object]` are declared as abstract actions with default implementations (`SHOW EDIT` and `DELETE`) and are available for extension by specific user classes. `formEdit[Object]` is a direct pass-through to `edit[Object]`. `formEditObject[Object]` wraps `formEdit[Object]` in `NEWSESSION` only when the object already exists in the database (`PREV(o IS Object)`), and calls `formEdit[Object]` directly otherwise. `formDelete[Object]` calls `delete[Object]` directly when `sessionOwners[]` is set. Otherwise it shows a confirmation prompt and on confirmation runs `delete[Object]` followed by `APPLY`.
 
 ### Local buffers[​](#local-buffers "Direct link to Local buffers")
 
@@ -127,13 +127,13 @@ Graphics: `logicsLogo[]` (logo image), `logicsIcon[]` (application icon), `PWAIc
 
 ### Windows and navigator[​](#windows-and-navigator "Direct link to Windows and navigator")
 
-The module fixes the main [windows](/Form_views.md): `logo`, `root`, `system` (the top horizontal bar), `toolbar` (the left vertical strip), `forms` (the central area), `log` (the right notification strip). The CSS classes of these windows are the abstract properties `logoWindowClass[]`, `rootWindowClass[]`, `systemWindowClass[]`, `formsWindowClass[]`, `toolbarWindowClass[]`, `logsWindowClass[]`, implemented by the [SystemEvents](/System_SystemEvents.md) module from the appearance settings (the theme background class such as `bg-dark-subtle` plus navbar helper classes). They are declared in the [value-based form](/Property_extension.md) that allows several implementations, so a project replaces a window's classes by adding an implementation of its own: the implementation of a module that requires `SystemEvents`, directly or through its required modules, is added later and is therefore checked first (without that requirement the order of the two modules is not guaranteed), and it applies whenever it returns a value, otherwise the module's classes remain. The two are not concatenated, so an implementation that keeps the theme classes repeats them. The look of the system windows is also customized through those settings and the project's stylesheet (registered through `onWebClientInit[STRING]`); a window with classes of its own is declared by the project, and navigator elements are placed into it.
+The module fixes the main [windows](/Form_views.md): `logo`, `root`, `system` (the top horizontal bar), `toolbar` (the left vertical strip), `forms` (the central area), `log` (the right notification strip). The CSS classes of these windows are the abstract properties `logoWindowClass[]`, `rootWindowClass[]`, `systemWindowClass[]`, `formsWindowClass[]`, `toolbarWindowClass[]`, `logsWindowClass[]`, implemented by the [SystemEvents](/System_SystemEvents.md) module from the appearance settings (the theme background class such as `bg-dark-subtle` plus navbar helper classes). They are declared in the [value-based form](/Property_extension.md) that allows several implementations, so a project replaces a window's classes by adding an implementation of its own: the implementation of a module that requires `SystemEvents`, directly or through its required modules, is added later and is therefore checked first (without that requirement the order of the two modules is not guaranteed), and it applies whenever it returns a value, otherwise the module's classes remain. The two are not concatenated, so an implementation that keeps the theme classes repeats them. The look of the system windows is also customized through those settings and the project's stylesheet (registered through `onWebClientInit[STRING]`). A window with classes of its own is declared by the project, and navigator elements are placed into it.
 
 The navigator gets a system folder `Administration` with subfolders `Application` (options / integration / migration) and `System` (performance, notifications, scheduler, logs).
 
 ### Language[​](#language "Direct link to Language")
 
-* [Module header](/Module_header.md) — the `MODULE` / `REQUIRE` syntax; the `System` module is pulled in automatically.
+* [Module header](/Module_header.md) — the `MODULE` / `REQUIRE` syntax. The `System` module is pulled in automatically.
 * [`APPLY` operator](/APPLY_operator.md) — underlies the session-control actions.
 * [`CANCEL` operator](/CANCEL_operator.md) — cancels session changes.
 * [`EXPORT` operator](/EXPORT_operator.md) — writes into the `export…` local buffers.

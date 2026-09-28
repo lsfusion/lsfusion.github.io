@@ -24,7 +24,7 @@
 
 * `GOAFTER` | `AFTER`
 
-  Synonymous keywords; either of them is followed by the list of properties or actions.
+  Synonymous keywords. Either of them is followed by the list of properties or actions.
 
 * `propertyId1, ..., propertyIdM`
 

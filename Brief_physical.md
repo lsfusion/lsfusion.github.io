@@ -28,7 +28,7 @@ A table is declared by the [`TABLE` statement](/TABLE_statement.md):
 TABLE name [dbName] (className1, ..., classNameN) [FULL | NODEFAULT];
 ```
 
-The classes set the key fields `key0`, ..., `key(N-1)` — one per class, numbered from zero — the remaining fields hold property values. A property's table is set by the `TABLE` option; without it the property goes into the table closest by key classes, `NODEFAULT` excludes a table from that choice, and with no suitable table an `_auto_...` table is created. `FULL` means the table contains all objects of its key classes, and affects only query execution. The mechanism is described in [tables](/Tables.md).
+The classes set the key fields `key0`, ..., `key(N-1)` — one per class, numbered from zero — the remaining fields hold property values. A property's table is set by the `TABLE` option. Without it the property goes into the table closest by key classes, `NODEFAULT` excludes a table from that choice, and with no suitable table an `_auto_...` table is created. `FULL` means the table contains all objects of its key classes, and affects only query execution. The mechanism is described in [tables](/Tables.md).
 
 Names depend on the [naming policy](/Launch_parameters.md#namingpolicy) (`db.namingPolicy`):
 
@@ -46,7 +46,7 @@ An index on one property is created by the [`INDEXED` option](/Property_options.
 INDEX [dbName] [indexType] field1, ..., fieldN;
 ```
 
-Only materialized properties can be indexed. A composite index takes both materialized properties and parameters referring to key fields; it must contain at least one materialized property, and all properties in it must be stored in one table and use the same set of parameters. The `LIKE` and `MATCH` types keep the usual index and try to add specialized ones — `LIKE` adds a `LIKE` index, `MATCH` on a string field adds both a `MATCH` and a `LIKE` one — which on string fields happens only when the current DB adapter has trigram / full-text support enabled, while on a single `TSVECTOR` field `MATCH` creates the specialized GIN index alone. A unique index on all keys of a table and indexes on the key suffixes `keyK`, ..., `keyN` are created automatically. The mechanism is described in [indexes](/Indexes.md).
+Only materialized properties can be indexed. A composite index takes both materialized properties and parameters referring to key fields. It must contain at least one materialized property, and all properties in it must be stored in one table and use the same set of parameters. The `LIKE` and `MATCH` types keep the usual index and try to add specialized ones — `LIKE` adds a `LIKE` index, `MATCH` on a string field adds both a `MATCH` and a `LIKE` one — which on string fields happens only when the current DB adapter has trigram / full-text support enabled, while on a single `TSVECTOR` field `MATCH` creates the specialized GIN index alone. A unique index on all keys of a table and indexes on the key suffixes `keyK`, ..., `keyN` are created automatically. The mechanism is described in [indexes](/Indexes.md).
 
 ```
 orderDate = DATA DATE (Order) INDEXED;
@@ -77,7 +77,7 @@ A *module* is a functionally complete part of a project: declarations of classes
 
 `REQUIRE` lists the modules the current one [depends](/Modules.md#depends) on. The dependency is transitive, cycles are not allowed, and the initialization order is built from it: a module is initialized after all of its dependencies. Every module depends on the `System` module. The dependency also governs visibility: an element can only be found by name in a module that depends on it, so extending someone else's functionality is what the [extension](/Extensions.md) technique is for, see [Brief: extensions](/Brief_physical.md#extensions).
 
-A [project](/Projects.md) is the set of modules and the accompanying files; by default every `.lsf` file on the application server's classpath is taken to be a module, and the `logics.includePaths`, `logics.topModule` and `logics.orderDependencies` launch parameters narrow that set and override the order.
+A [project](/Projects.md) is the set of modules and the accompanying files. By default every `.lsf` file on the application server's classpath is taken to be a module, and the `logics.includePaths`, `logics.topModule` and `logics.orderDependencies` launch parameters narrow that set and override the order.
 
 **Analogy**: a package or an assembly.
 
@@ -137,7 +137,7 @@ Hence the two typical uses: a family of same-shaped declarations for a class or 
 
 An argument of the call can be a composite ID, a class identifier, a literal, or an empty parameter — but not the value of a property: choosing behaviour by data is done not with a metacode but with abstract properties and actions.
 
-The IDE writes the produced code after the `@` call in braces so that navigation and analysis work on it; the platform ignores that block and generates the code anew, so it must not be edited by hand.
+The IDE writes the produced code after the `@` call in braces so that navigation and analysis work on it. The platform ignores that block and generates the code anew, so it must not be edited by hand.
 
 ## Extensions[​](#extensions "Direct link to Extensions")
 
@@ -167,9 +167,9 @@ Hence the main modularity technique: the base module declares the extension poin
 
 ### Extending forms[​](#extending-forms "Direct link to Extending forms")
 
-The [`EXTEND FORM` statement](/EXTEND_FORM_statement.md) extends a form declared in another module — with the same blocks as the [`FORM`](/FORM_statement.md) declaration (see [Brief: forms](/Brief_view.md#forms)): objects, the properties and actions shown for them, filters, orders. Separate extension blocks change the elements already on the form; the form's [design](/Form_design.md) is likewise set from outside.
+The [`EXTEND FORM` statement](/EXTEND_FORM_statement.md) extends a form declared in another module — with the same blocks as the [`FORM`](/FORM_statement.md) declaration (see [Brief: forms](/Brief_view.md#forms)): objects, the properties and actions shown for them, filters, orders. Separate extension blocks change the elements already on the form. The form's [design](/Form_design.md) is likewise set from outside.
 
-An added element can be placed before or after a specific element of the form, or at the start or at the end; for objects this position sets their place in the order of object groups, which a property's display group and the object group a filter applies to depend on. The mechanism is described in [form extension](/Form_extension.md).
+An added element can be placed before or after a specific element of the form, or at the start or at the end. For objects this position sets their place in the order of object groups, which a property's display group and the object group a filter applies to depend on. The mechanism is described in [form extension](/Form_extension.md).
 
 ```
 EXTEND FORM items
@@ -188,7 +188,7 @@ There is no separate extension logic for the navigator and the form design: thes
 
 The named system elements are properties, actions, user classes, forms, navigator elements, groups of properties and actions, windows, tables, metacodes: each of them is accessed by its name ([element identification](/Element_identification.md)).
 
-An element is created in a *namespace*, which the [module](/Modules.md) sets with the `NAMESPACE` statement (by default the module's name), while the `PRIORITY` statement lists additional namespaces that take precedence when elements are searched for; both belong to the [module header](/Module_header.md).
+An element is created in a *namespace*, which the [module](/Modules.md) sets with the `NAMESPACE` statement (by default the module's name), while the `PRIORITY` statement lists additional namespaces that take precedence when elements are searched for. Both belong to the [module header](/Module_header.md).
 
 An access is written as a [simple identifier](/IDs.md#id) — `name` — or as a compound one with an explicit namespace — `Sale.Document`. The string `<namespace>.<name>` is the element's *full name* ([naming](/Naming.md#namespace)).
 
@@ -204,9 +204,9 @@ CLASS Document 'Document';   // full name — Sale.Document
 
 ### Naming[​](#naming "Direct link to Naming")
 
-[Naming](/Naming.md) recommends starting the name of a system element with a lowercase letter, the name of a class with an uppercase one, and every next word in a name with an uppercase one: `myFirstName`, `MySuperClass`; the [identifier](/IDs.md#id) grammar itself does not restrict the case. Uniqueness is required among the elements of one type, not across the whole system: a class and a form may carry the same full name, and so may a property and an action. Within one type there are exceptions too — metacodes may share a full name when they take a different number of parameters, properties and actions when their signatures differ — so a property's full name is not unique on its own.
+[Naming](/Naming.md) recommends starting the name of a system element with a lowercase letter, the name of a class with an uppercase one, and every next word in a name with an uppercase one: `myFirstName`, `MySuperClass`. The [identifier](/IDs.md#id) grammar itself does not restrict the case. Uniqueness is required among the elements of one type, not across the whole system: a class and a form may carry the same full name, and so may a property and an action. Within one type there are exceptions too — metacodes may share a full name when they take a different number of parameters, properties and actions when their signatures differ — so a property's full name is not unique on its own.
 
-A *[canonical name](/Naming.md#canonicalname)* is the string that uniquely identifies an element among the elements of the same type. For classes, property groups, navigator elements, windows and tables it is the full name; for properties and actions the signature is appended to it — the canonical names of the parameter classes in square brackets.
+A *[canonical name](/Naming.md#canonicalname)* is the string that uniquely identifies an element among the elements of the same type. For classes, property groups, navigator elements, windows and tables it is the full name, and for properties and actions the signature is appended to it — the canonical names of the parameter classes in square brackets.
 
 ```
 Sale.Document                  // class

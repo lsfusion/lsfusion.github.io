@@ -4,7 +4,7 @@
 
 The information system being created using the **lsFusion** platform must support very basic supply chain execution capabilities.
 
-For simplicity, let's define one type of document in our system that increases the stock balance — a receipt from the supplier; and one type of document that does the opposite — a shipment for a wholesale to a customer.
+For simplicity, let's define one type of document in our system that increases the stock balance — a receipt from the supplier, and one type of document that does the opposite — a shipment for a wholesale to a customer.
 
 ## Defining domain logic[​](#defining-domain-logic "Direct link to Defining domain logic")
 

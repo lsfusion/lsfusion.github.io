@@ -10,7 +10,7 @@ By default, the result class of the custom operator is a [common ancestor](/Buil
 
 ### Parameter references[​](#parameter-references "Direct link to Parameter references")
 
-A custom formula contains references to its parameters within its SQL text; the property's arguments are substituted in place at the points the formula refers to them. Both positional and named references are available — the exact notation and the rules for the resulting property's arity belong to the `FORMULA` operator article.
+A custom formula contains references to its parameters within its SQL text. The property's arguments are substituted in place at the points the formula refers to them. Both positional and named references are available — the exact notation and the rules for the resulting property's arity belong to the `FORMULA` operator article.
 
 ### Table-valued formulas[​](#table-valued-formulas "Direct link to Table-valued formulas")
 
@@ -28,7 +28,7 @@ Custom formulas integrate with the platform's standard `NULL`-propagation behavi
 
 This default can be loosened in two nested ways. The smaller relaxation declares that the formula may return `NULL` even when all of its arguments are non-`NULL`. The larger relaxation goes further and lets the formula receive `NULL` arguments itself — useful for SQL functions like `COALESCE` whose whole point is to act on `NULL` — and once it does, the formula has full control over what to return for any input, so the smaller relaxation has no additional effect on top of it.
 
-These options apply to scalar formulas only; for table-valued formulas the `NULL` behaviour is determined entirely by the underlying SQL expression and by the table it materialises.
+These options apply to scalar formulas only. For table-valued formulas the `NULL` behaviour is determined entirely by the underlying SQL expression and by the table it materialises.
 
 ### Language[​](#language "Direct link to Language")
 

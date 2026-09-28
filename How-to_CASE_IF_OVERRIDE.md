@@ -141,7 +141,7 @@ We use the operator `(+)` instead of the regular operator `+`, because otherwise
 
 ### Task[​](#task-5 "Direct link to Task")
 
-Documents are assigned to a period of one of two granularities — a quarter or a month; exactly one of the two ordinals is set for each document.
+Documents are assigned to a period of one of two granularities — a quarter or a month. Exactly one of the two ordinals is set for each document.
 
 ```
 CLASS Doc 'Document';
@@ -162,4 +162,4 @@ lePeriod (Doc a, Doc b) = quarterOrd(a) <= quarterOrd(b) OR monthOrd(a) <= month
 notLaterCount 'Not later' (Doc d) = GROUP SUM 1 IF lePeriod(Doc dd, d);
 ```
 
-The straightforward condition `ord(dd) <= ord(d)` compares two multi-branch selections with each other: on compilation the product of their branches is expanded, so with more granularities and heavier branch properties the query text grows multiplicatively and can exceed the maximum query length. The branch-wise comparison compares each granularity only with itself: in a mixed pair one operand of each comparison is `NULL`, so the pair is not counted — here exactly the required semantics. Rewriting the comparison this way is possible only when values of different branches must not be compared with each other; otherwise, store the composed ordinal by marking the property [`MATERIALIZED`](/Materializations.md).
+The straightforward condition `ord(dd) <= ord(d)` compares two multi-branch selections with each other: on compilation the product of their branches is expanded, so with more granularities and heavier branch properties the query text grows multiplicatively and can exceed the maximum query length. The branch-wise comparison compares each granularity only with itself: in a mixed pair one operand of each comparison is `NULL`, so the pair is not counted — here exactly the required semantics. Rewriting the comparison this way is possible only when values of different branches must not be compared with each other. Otherwise, store the composed ordinal by marking the property [`MATERIALIZED`](/Materializations.md).
