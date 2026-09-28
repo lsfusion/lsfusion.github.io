@@ -254,6 +254,8 @@
 
    For such expensive checks, use a `WHEN` event instead: a cheap change-detector condition, reads of the heavy values into `LOCAL`s in the handler, then `MESSAGE` + `CANCEL` on violation.
 
+4. A `CONSTRAINT` MUST NOT validate the parameters an action reads from `LOCAL` properties — the settings of an integration library, for instance: with the default global event it is checked only when the session applies its changes to the database, after everything the action has done by then. Such parameters SHOULD be checked explicitly in the action before it acts (`IF NOT ok THEN { MESSAGE ...; RETURN; }`).
+
 ## Change sessions (NEWSESSION, APPLY)[​](#change-sessions-newsession-apply "Direct link to Change sessions (NEWSESSION, APPLY)")
 
 1. Before introducing `NEWSESSION`, the assistant MUST decide which session behavior is required. None of the choices below — `NEWSQL` included — applies during an `APPLY` transaction: inside a global event handler or an applied action no session is created at all, the inner action is deferred and runs in the current session, inside the same transaction. The assistant MUST NOT expect an independent commit there.
@@ -290,3 +292,5 @@
 7. The body of `APPLY` may run more than once. The apply transaction MAY be retried automatically after an update conflict, a deadlock or a timeout — whether it is depends on the failure and on the attempt limit — and the applied action and the synchronous global handlers are inside what a retry repeats.
 
    So they MUST be safe to repeat. An irreversible external side effect — sending mail, calling an HTTP API, printing, writing a file — MUST NOT be done there: it belongs after the apply has succeeded, where `canceled()` says whether it did.
+
+   A call made before the `APPLY` that saves its result is exposed the same way: a constraint fires at that apply, not earlier, and cancels the saved result after the call has been made. What the constraints will check SHOULD be checked before the call, and a cancelled `APPLY` MUST NOT be answered by simply repeating the action, which repeats the call.
