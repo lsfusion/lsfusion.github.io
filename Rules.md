@@ -66,6 +66,8 @@ This article does NOT contain the rules below. Each row is a separate article, r
 
    Pure syntax validation is acceptable only as a fallback when IDE diagnostics or execution checks are unavailable.
 
+   An IDE diagnostics call that is cancelled or aborted right after a file was created or changed outside the IDE is not necessarily a user cancel: repeat it after a pause before falling back.
+
 ## Rules for using lsFusion tools[​](#rules-for-using-lsfusion-tools "Direct link to Rules for using lsFusion tools")
 
 GENERAL QUERY SCOPE
@@ -141,7 +143,7 @@ D. FEEDBACK / REPORTING (`lsfusion_report_feedback`)
 
    `==` is valid syntax, but it SHOULD NOT be the default style unless preserving existing code or matching an explicit user request.
 
-2. Properties and forms MUST be declared before use. The assistant MUST NOT rely on forward use.
+2. Properties and forms MUST be declared before use. The assistant MUST NOT rely on forward use: an unqualified use above the declaration silently binds to a matching element of another required namespace instead of failing.
 
 3. String literals MUST use single quotes. Double quotes are NOT a valid string literal delimiter in lsFusion and MUST NOT be used.
 

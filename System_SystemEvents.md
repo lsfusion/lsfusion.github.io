@@ -6,17 +6,17 @@
 
 These abstract action lists are the [launch-event](/Launch_events.md) handlers — a developer plugs initialization logic into them, and the platform runs the matching list at the corresponding moment of a server or client start. `onStarted[]` is the application-server start handler. The full set of handlers and the moments they fire are described in [`Launch events`](/Launch_events.md).
 
-| Handler                    | When it runs                                                                             |
-| -------------------------- | ---------------------------------------------------------------------------------------- |
-| `onInit[]`                 | early server initialization, before the main start; runs version synchronization         |
-| `onStarted[]`              | application-server start, before the server accepts client connections                   |
-| `onFirstStarted[]`         | the very first application-server start only (when `firstStart[]` holds)                 |
-| `onFinallyStarted[]`       | after `onStarted[]`, at the end of the start sequence                                    |
-| `onClientStarted[]`        | a client connecting; dispatches to the desktop or web handler by client type             |
-| `onDesktopClientStarted[]` | a desktop client connecting                                                              |
-| `onWebClientStarted[]`     | a web client connecting                                                                  |
-| `onWebClientInit[STRING]`  | per-resource list keyed by a CSS / JS resource path, run when the web client initializes |
-| `onLoginInit[STRING]`      | per-resource list run on the login page                                                  |
+| Handler                    | When it runs                                                                                                                       |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `onInit[]`                 | early server initialization, before the main start; runs version synchronization                                                   |
+| `onStarted[]`              | application-server start, before the server accepts client connections                                                             |
+| `onFirstStarted[]`         | the very first application-server start only (when `firstStart[]` holds)                                                           |
+| `onFinallyStarted[]`       | after `onStarted[]` and the [`Reflection`](/System_Reflection.md) metadata synchronization stage, at the end of the start sequence |
+| `onClientStarted[]`        | a client connecting; dispatches to the desktop or web handler by client type                                                       |
+| `onDesktopClientStarted[]` | a desktop client connecting                                                                                                        |
+| `onWebClientStarted[]`     | a web client connecting                                                                                                            |
+| `onWebClientInit[STRING]`  | per-resource list keyed by a CSS / JS resource path, run when the web client initializes                                           |
+| `onLoginInit[STRING]`      | per-resource list run on the login page                                                                                            |
 
 `notFirstStart[]` is the stored flag that the server has started before, and `firstStart[]` is its negation and selects the first start. Each handler has an `…Apply` wrapper (`onInitApply[]`, `onStartedApply[]`, `onFinallyStartedApply[]`, `onClientStartedApply[]`) that runs the list and commits with `APPLY`. `onStartedApply[]` additionally runs `onFirstStarted[]` on the first start and sets `notFirstStart[]`.
 
