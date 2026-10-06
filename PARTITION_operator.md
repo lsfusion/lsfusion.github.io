@@ -76,7 +76,7 @@ The `TOP` and `OFFSET` blocks restrict the subset of records selected inside eac
 
 * `aggrFunc`
 
-  [String literal](/IDs.md#strliteral) containing the name of a user-defined or DBMS built-in aggregate function.
+  [String literal](/Literals.md#strliteral) containing the name of a user-defined or DBMS built-in aggregate function.
 
 * `expr1, ..., exprN`
 

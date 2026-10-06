@@ -1142,7 +1142,7 @@
 
 ## Operations_with_primitives
 
-- [Operations with primitives](/Operations_with_primitives.md): Оperations with primitives include operators for working with properties which values belong to the built-in classes. The platform supports the following operators:
+- [Operations with primitives](/Operations_with_primitives.md): Operations with primitives include operators for working with properties which values belong to the built-in classes. The platform supports the following operators:
 
 ## Operator_priority
 

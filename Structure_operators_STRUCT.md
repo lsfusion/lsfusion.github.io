@@ -11,7 +11,7 @@ Structures support comparison operations which are executed sequentially for eac
 
 A structure exists only when all of its objects exist: if any of them is `NULL`, the whole structure is `NULL`, and the access operator returns `NULL` for a `NULL` structure.
 
-### Determining the result class[​](#determining-the-result-class "Direct link to Determining the result class")
+### Result class[​](#result-class "Direct link to Result class")
 
 The result class is determined as:
 

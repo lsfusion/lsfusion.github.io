@@ -10,7 +10,7 @@
 | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | `DesignEnv`                      | абстрактный базовый класс сред оформления; от него наследуются `Computer` и `User`                                           |
 | `currentDesignEnv[]`             | текущая среда оформления: `currentComputer[]` при установленном `storeNavigatorSettingsForComputer[]`, иначе `currentUser[]` |
-| `ColorTheme`                     | статический класс с двумя объектами, `light` и `dark`                                                                        |
+| `ColorTheme`                     | класс с двумя [статическими объектами](/ru/Static_objects.md), `light` и `dark`                                              |
 | `designEnvColorTheme[DesignEnv]` | цветовая тема, выбранная для среды оформления                                                                                |
 | `colorTheme[DesignEnv]`          | итоговая тема: `designEnvColorTheme[DesignEnv]`, если задана, иначе `clientColorTheme[DesignEnv]`                            |
 | `isDarkTheme[]`                  | признак, что `colorTheme[DesignEnv]` текущей среды равна `ColorTheme.dark`                                                   |
@@ -198,7 +198,7 @@
 ### Связано[​](#связано "Прямая ссылка на этот заголовок")
 
 * [`System modules`](/ru/System_modules.md) — общий перечень модулей платформы.
-* [`Пользовательские классы`](/ru/User_classes.md) — что такое абстрактные и статические классы, как их используют `User`, `Contact` и `ColorTheme`.
+* [`Пользовательские классы`](/ru/User_classes.md) — что такое абстрактные классы и [статические объекты](/ru/Static_objects.md), как их используют `User`, `Contact` и `ColorTheme`.
 * [`Политика безопасности`](/ru/Security_policy.md) — как назначаются права доступа объявленным здесь пользователям.
 * [`Security`](/ru/System_Security.md) — отдельный модуль ролей и политик доступа.
 * [`Service`](/ru/System_Service.md) — административные и служебные действия.

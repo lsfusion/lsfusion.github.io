@@ -6,7 +6,7 @@ Together with the running actions, the sequence may also introduce *local* prope
 
 ### Language[​](#language "Direct link to Language")
 
-To declare an action that executes a sequence of other actions, use the [`{...}` operator](/Braces_operator.md) — a block enclosed in curly braces, containing a sequence of [action operators](/Action_operators_paradigm.md) and local property declarations.
+To declare an action that executes a sequence of other actions, use the [`{...}` operator](/Braces_operator.md) — a block enclosed in curly braces, containing a sequence of action operators and local property declarations.
 
 ### Examples[​](#examples "Direct link to Examples")
 

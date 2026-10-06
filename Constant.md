@@ -12,7 +12,7 @@ There is no `FALSE` constant — the false value is represented by `NULL`.
 
 ### Language[​](#language "Direct link to Language")
 
-Constants are written as references to [static objects](/Static_objects.md) for custom-class values, and as [literals](/Literals.md) for built-in-class values and `NULL`.
+Constants are written as [references to static objects](/IDs.md#staticobjectid) for custom-class values, and as [literals](/Literals.md) for built-in-class values and `NULL`.
 
 ### Examples[​](#examples "Direct link to Examples")
 
