@@ -334,7 +334,7 @@
 
 ## Data_properties_DATA
 
-- [Data properties (DATA)](/Data_properties_DATA.md): Data property is a property which value is stored in the database and may change through the execution of the corresponding action. Each parameter and the value of a data property must belong to a certain specified class. If a parameter does not belong to the specified class or is NULL, then the property value will return NULL.
+- [Data properties (DATA)](/Data_properties_DATA.md): Data property is a property which value is stored in the database and may change through the execution of the corresponding action. Each parameter and the value of a data property must belong to a certain specified class. If a parameter does not belong to the specified class or is NULL, then the property value will return NULL. When an object is deleted or changes its class, the value of a data property is reset to NULL if the object is an argument or the value of that property and no longer belongs to the corresponding declared class.
 
 ## DELETE_operator
 
@@ -1486,7 +1486,7 @@
 
 ## Type_conversion
 
-- [Type conversion](/Type_conversion.md): The type conversion operator creates a property that converts an object of one built-in class to an object of another built-in class. The result belongs to the target built-in class. If type conversion is not possible, the property value will be NULL. An object of a user class is converted to a numeric or string class — the result is its internal identifier, an integer or its text form — and to the logical class, giving TRUE. There is no conversion to a user class: an object is found by its identifier with a grouping (see operation correctness), and a value narrowed to a user class is given by classification.
+- [Type conversion](/Type_conversion.md): The type conversion operator creates a property that converts an object of one built-in class to an object of another built-in class. The result belongs to the target built-in class. An object of a user class is converted to a numeric or string class — the result is its internal identifier, an integer or its text form — and to the logical class, giving TRUE. There is no conversion to a user class: an object is found by its identifier with a grouping (see operation correctness), and a value narrowed to a user class is given by classification.
 
 ## UNGROUP_operator
 

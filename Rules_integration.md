@@ -85,6 +85,8 @@
 
 14. `LOCAL` staging properties used by a single import action MUST be declared inside that action. Module scope is for a `LOCAL` that an import form uses or several related actions share.
 
+15. An imported flag whose absence must be represented by `NULL` MUST be declared with `NULL` in `FIELDS`: otherwise a missing value is replaced with the [default value](/Built-in_classes.md#defaultvalue) of the class (`0` for a number).
+
 ## Data export (EXPORT)[​](#data-export-export "Direct link to Data export (EXPORT)")
 
 ### Choosing the export source[​](#choosing-the-export-source "Direct link to Choosing the export source")
