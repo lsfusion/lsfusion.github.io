@@ -5,7 +5,7 @@ The `WHEN` statement adds a [simple event](/Simple_event.md) handler.
 ### Syntax[​](#syntax "Direct link to Syntax")
 
 ```
-WHEN eventClause eventExpr [ORDER [DESC] orderExpr1, ..., orderExprN] DO eventAction;
+WHEN eventClause eventExpr [ORDER [DESC] orderExpr1, ..., orderExprN] [NOINLINE [(param1, ..., paramN)]] [INLINE] DO eventAction;
 ```
 
 ### Description[​](#description "Direct link to Description")
@@ -19,7 +19,7 @@ info
 Using the `WHEN` statement is much like the following statement:
 
 ```
-ON eventClause FOR eventExpr [ORDER [DESC] orderExpr1, ..., orderExprN] DO eventAction;
+ON eventClause FOR eventExpr [ORDER [DESC] orderExpr1, ..., orderExprN] [NOINLINE [(param1, ..., paramN)]] [INLINE] DO eventAction;
 ```
 
 but it also has [a number of advantages](/Simple_event.md).
@@ -45,6 +45,18 @@ but it also has [a number of advantages](/Simple_event.md).
 * `orderExpr1, ..., orderExprM`
 
   A list of expressions that defines the order in which handlers will be called for object collections for which an event condition has been met. To determine the order, first the value of the first expression is used; then, if equal, the value of the second is used, etc.
+
+* `NOINLINE`
+
+  Keyword. As in the [`FOR` operator](/FOR_operator.md): the handler is executed once per object collection instead of its assignments being executed for all object collections at once.
+
+* `param1, ..., paramN`
+
+  Parameters declared in the event condition to which `NOINLINE` applies, as in the `FOR` operator.
+
+* `INLINE`
+
+  Keyword. As in the `FOR` operator: the condition that the assignments of the handler do not depend on one another is not checked.
 
 ### Examples[​](#examples "Direct link to Examples")
 

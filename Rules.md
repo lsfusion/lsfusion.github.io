@@ -68,7 +68,7 @@ This article does NOT contain the rules below. Each row is a separate article, r
 
    An IDE diagnostics call that is cancelled or aborted right after a file was created or changed outside the IDE is not necessarily a user cancel: repeat it after a pause before falling back.
 
-   If the IDE cannot resolve an element declared by a metacode usage, expand that usage in its file (`lsfusion_set_meta_visibility`, `show`) and repeat the diagnostics: the IDE sees such declarations only in expanded code. A dry run or a server start checks them as well. Collapse the usage (`hide`) before committing.
+   If the IDE cannot resolve an element declared by a metacode usage, expand that usage in its file — the file where the metacode is applied, possibly in a required module — (`lsfusion_set_meta_visibility`, `show`) and repeat the diagnostics: the IDE sees such declarations only in expanded code. A dry run or a server start checks them as well. Collapse the usage (`hide`) before committing.
 
 ## Rules for using lsFusion tools[​](#rules-for-using-lsfusion-tools "Direct link to Rules for using lsFusion tools")
 

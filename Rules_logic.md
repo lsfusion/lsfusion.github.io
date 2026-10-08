@@ -25,6 +25,8 @@
    * every operand or aggregated value is `NULL` — except `NOT`, whose whole point is to answer `TRUE` there;
    * `(+)` / `(-)` or `GROUP SUM` produces `0` (a zero result is returned as `NULL`).
 
+   A custom formula (`FORMULA`) is executed as written, and the platform does not check that it follows the rules of its form. Without the trailing `NULL` the SQL text MUST return `NULL` when any argument is `NULL`: on an SQL function that returns a value for `NULL` input (`concat`, `COALESCE`, `string_to_array` with a `NULL` delimiter) an explicit check is needed (`CASE WHEN $2 IS NULL THEN NULL ELSE ... END`). With the trailing `NULL` it MUST return a non-`NULL` value when at least one argument is non-`NULL`, see [custom formula](/Custom_formula_FORMULA.md#null).
+
 4. The assistant MUST NOT use `GROUP` with a `BY` block (including `GROUP AGGR`) inside expressions: in a type cast, in arithmetic (including `(+)` / `(-)`), as an argument of another property, or as an implementation of an abstract property via `+=`.
 
    Such an operator defines the parameters of its result itself, so it is allowed only as an entire property definition: the right-hand side of a definition via `=` or an inline definition in square brackets; in any other position the platform raises the error `BY clause in GROUP operator cannot be used in expressions`. To use the result in an expression, the assistant SHOULD first rewrite the operator without `BY`, replacing each grouping with an equality condition on an outer parameter (`GROUP SUM f(x) IF g(x) = y`). Otherwise, apply the inline form `[GROUP ... BY ...](...)` to arguments or declare a separate property and refer to it.
