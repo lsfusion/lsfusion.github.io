@@ -260,7 +260,7 @@
 
 ## Change sessions (NEWSESSION, APPLY)[​](#change-sessions-newsession-apply "Direct link to Change sessions (NEWSESSION, APPLY)")
 
-1. Before introducing `NEWSESSION`, the assistant MUST decide which session behavior is required. None of the choices below — `NEWSQL` included — applies during an `APPLY` transaction: inside a global event handler or an applied action no session is created at all, the inner action is deferred and runs in the current session, inside the same transaction. The assistant MUST NOT expect an independent commit there.
+1. Before introducing `NEWSESSION`, the assistant MUST decide which session behavior is required. None of the choices below — `NEWSQL` included — applies during an `APPLY` transaction: inside a global event handler or an applied action no session is created at all, the inner action is deferred and runs in the current session, inside the same transaction. The assistant MUST NOT expect an independent commit there. The deferred action runs only after the constraint checks of that pass, so the changes needed to keep a constraint of the same apply from being violated MUST be made by the handler directly, without deferring them through `NEWSESSION`.
 
    * isolated independent unit -> `NEWSESSION`
    * isolated unit that must also see selected local properties from the upper session -> `NEWSESSION NESTED (...)`
