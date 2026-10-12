@@ -1508,6 +1508,10 @@
 
 - [Hierarchy](/Utils_Hierarchy.md): The Hierarchy module gives a class a hierarchy by parent: an object refers by a parentclass] property to an object of the same class, and the module builds on that reference the ancestor flag, the level, the number of descendants, the leaf flag, and the full name from the root. The level[class, class] property is computed by [recursion; the remaining properties are derived from it or directly from parentclass], where needed by [grouping or partitioning; the materialized properties are marked in the table below. It is pulled in via REQUIRE Hierarchy.
 
+## Utils_Messengers
+
+- [Messengers](/Utils_Messengers.md): Messenger is a system module that holds the classes, properties, actions and forms for exchanging messages with external messengers an application pulls in the ones it needs (REQUIRE Telegram), and Messenger comes along with each of them (Reflection and Utils are pulled in along with it). The Skype module in the same folder targets the Skype bot platform, which Microsoft retired in 2025, and is not covered here.
+
 ## Utils_Numerator
 
 - [Numerator](/Utils_Numerator.md): The Numerator module generates sequential, human-readable numbers and codes for objects — order numbers, invoice numbers, partner codes, and similar. Each kind of object keeps its own counter, the generated value carries an optional series prefix and a fixed number of leading zeros, and the generation survives several users creating objects at the same time without producing duplicate or skipped numbers.

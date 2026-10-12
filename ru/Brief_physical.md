@@ -106,7 +106,7 @@ NAMESPACE Sale;
 | [`Email`](/ru/System_Email.md)                   | отправка и приём почты                                |
 | [`Icon`](/ru/System_Icon.md)                     | каталог иконок интерфейса                             |
 
-Прикладные дополнения: `Backup`, `Chat`, [`Eval`](/ru/Eval_EVAL.md), `Excel`, `Document` / `Word`, `Image` / `OpenCV`, `I18n`, `Integration`, `MasterData`, [`Numerator`](/ru/Utils_Numerator.md), `Hierarchy`, `Historizable`, `Geo`, `Printer` / `QZTray` / `Sound` / `Com`, `ProcessMonitor` / `Profiler`, `RabbitMQ` / `WebSocket`, `Messenger` со своими `Telegram` / `Slack` / `Viber` / `Whatsapp` / `Skype`, `SQLUtils`, `DefaultData`, `Schedule`.
+Прикладные дополнения: `Backup`, `Chat`, [`Eval`](/ru/Eval_EVAL.md), `Excel`, `Document` / `Word`, `Image` / `OpenCV`, `I18n`, `Integration`, `MasterData`, [`Numerator`](/ru/Utils_Numerator.md), `Hierarchy`, `Historizable`, `Geo`, `Printer` / `QZTray` / `Sound` / `Com`, `ProcessMonitor` / `Profiler`, `RabbitMQ` / `WebSocket`, [`Messenger`](/ru/Utils_Messengers.md) со своими `Telegram` / `Slack` / `Viber` / `Whatsapp` / `Skype`, `SQLUtils`, `DefaultData`, `Schedule`.
 
 Всё это — обычные объявления в `.lsf`, а не примитивы языка: `lpad`, `currentDate`, `currentUser` — свойства, искать их следует в ветке `paradigm`.
 
