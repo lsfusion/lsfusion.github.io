@@ -1536,6 +1536,10 @@
 
 - [View (VIEW)](/View_VIEW.md): The view operator creates a property, defined on the objects of an object group, that returns TRUE when their object collection is included in the set of object collections currently displayed to the user in the group, and NULL otherwise.
 
+## Whats_new
+
+- [What's new in version 7.0](/Whats_new.md): This article describes how version 7.0 differs from versions 6.x the article describes the current state of the master branch and is extended along with it.
+
 ## WHEN_statement
 
 - [WHEN statement](/WHEN_statement.md): The WHEN statement adds a simple event handler.
