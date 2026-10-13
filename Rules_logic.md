@@ -222,7 +222,7 @@
 
 3. The guard SHOULD be omitted only when the event must forcibly override any explicit change — for example, maintained totals, audit stamps, or invariants the user is not allowed to bypass.
 
-4. Rules 1-3 describe the event-action form `WHEN <condition> DO <target> <- <expr>`. The calculated event form `<target> <- <expr> WHEN <condition>` behaves differently: its change is calculated when the target property is accessed, and an explicit change of that property in the session takes priority over the event's change.
+4. Rules 1-3 describe the event-action form `WHEN <condition> DO <target> <- <expr>`. The calculated event form `<target> <- <expr> WHEN <condition>` behaves differently: its change is calculated when the target property is accessed in a session that has changed a property its condition depends on (changes only to the event's value sources are insufficient to trigger recalculation), and an explicit change of that property in the session takes priority over the event's change.
 
    So to default a value while yielding to an explicit change, the calculated event form alone is enough — no guard is needed. Testing `CHANGED(<target>)` in its condition is not possible in any case: the target would then depend on its own change, forming a cycle `<target>` -> `CHANGED(<target>)` -> `<target>`.
 
@@ -233,6 +233,8 @@
    Which change operators those are is decided by the transition each of them covers: `DROPPED`, `CHANGED`, `DROPCHANGED` and `SETDROPPED` include non-`NULL` to `NULL` and therefore fire on deletion. `SET` and `SETCHANGED` require the new value to be non-`NULL` and do not.
 
    Where the condition can fire on the way to `NULL`, and the handler must not act on a deletion or on an object leaving the class, it MUST be narrowed with `<object> IS <Class>`.
+
+6. The platform does not wrap a condition containing `PREV` in `SET`: the event occurs only through the change operators used in it (in the condition or the handler, directly or through another property), and `PREV` itself does not trigger it. So if a `WHEN`, `WHEN LOCAL` or `CONSTRAINT` condition uses `PREV`, the assistant SHOULD include a change operator in the condition for the property whose changes should trigger it: `CONSTRAINT q(i) > PREV(m(i))` is never checked, while `CONSTRAINT CHANGED(q(i)) AND q(i) > PREV(m(i))` is checked when `q` changes.
 
 ### Where local events actually run[​](#where-local-events-actually-run "Direct link to Where local events actually run")
 
