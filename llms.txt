@@ -238,7 +238,7 @@
 
 ## Class_extension
 
-- [Class extension](/Class_extension.md): The class extension technique allows the developer to inherit one class from another after its creation. Also, using this mechanism you can add extra static objects to a class.
+- [Class extension](/Class_extension.md): The class extension technique allows the developer to inherit one class from another after its creation. Also, using this mechanism you can add extra static objects to a class. A class whose descent from System.StaticObject comes only from the static objects added this way has it only when the extending module is loaded: in a project that does not include that module the class has no static objects, is not a System.StaticObject, and the properties of static objects (caption[StaticObject] and the others) applied to its objects are not found. So a module that applies these properties to such a class depends on the module that adds the static objects, not only on the module that declares the class.
 
 ## Class_operators
 
