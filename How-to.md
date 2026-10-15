@@ -2,7 +2,7 @@
 
 ### How to read these sections[​](#how-to-read-these-sections "Direct link to How to read these sections")
 
-1. [Computations](/How-to_Computations.md): The mechanism for composing computable properties.
+1. [Computations](/How-to_Computations.md): The mechanism for composing calculated properties.
 2. [GUI](/How-to_GUI.md): Development of a graphical user interface.
 3. [Imperative logic](/How-to_Imperative_logic.md): Development of [actions](/Actions.md), [events](/Events.md), and [constraints](/Constraints.md).
 4. [Declarative logic](/How-to_Declarative_logic.md): Development of [constraints](/Constraints.md) and [aggregations](/Aggregations.md), and also [inheritance](/User_classes.md#inheritance) of custom classes.
