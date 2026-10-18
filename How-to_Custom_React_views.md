@@ -1,8 +1,8 @@
 # How-to: Custom React form views
 
-A [`DESIGN`](/DESIGN_statement.md) container can be rendered by a React component instead of the standard layout. The component receives a projection of the form state and draws the container's whole subtree itself.
+A [`DESIGN`](/DESIGN_statement.md) container can be rendered by a React component instead of the standard layout. The component receives a projection of the form state and draws the container's whole subtree itself. A table, a toolbar, filter controls and a filter group can be drawn by a React component of their own the same way, instead of the platform's view of them ([A component's own view](#component-views)).
 
-This is a web-client feature only. The desktop client deserializes the container and renders its regular (non-React) subtree, so the design stays usable in both clients.
+This is a web-client feature only. The desktop client deserializes the container and renders its regular (non-React) subtree, and draws a component with a React component of its own with the platform's view, so the design stays usable in both clients.
 
 ### Selecting the component[​](#selecting-the-component "Direct link to Selecting the component")
 
@@ -21,7 +21,7 @@ DESIGN orders {
 }
 ```
 
-The value form selects the renderer: a string literal matching `[A-Z][A-Za-z0-9_$]*` names a React component, while an empty string `''`, an HTML template string, or a property gives the classic (non-React) custom container described in [How-to: Custom Components (objects)](/How-to_Custom_components_objects.md). Here the object `o` is rendered by the `OrderBoard` React component instead of the standard table.
+The value form selects the renderer: a string literal matching `[A-Z][A-Za-z0-9_$]*` names a React component, while an empty string `''`, an HTML template string, or a property gives the classic (non-React) custom container described in [How-to: Custom Components (objects)](/How-to_Custom_components_objects.md). Here the object `o` is rendered by the `OrderBoard` React component instead of the standard table. A component that is not a container takes a React component name alone — see [A component's own view](#component-views).
 
 A form opened as a window (`SHOW ... FLOAT`; for `DIALOG` the window is the default location) gets its size from its content at the moment of opening and keeps it: the component's first drawing, of the form's first data, is measured, and what it draws later - more rows, data that arrives afterwards - is not. So a container whose content grows after the opening is given a base size: `size = (900, 600)` or the separate `width` and `height` attributes. Without it, the window keeps the size of the first drawing, and the content drawn later pushes the OK / Close buttons past the window's edge. A tab (`WINDOW`) is sized by the forms window, so no base size is needed there.
 
@@ -75,7 +75,7 @@ A component's place is found by walking up from its container: a `CUSTOM REACT` 
 
 So a `MOVE` of a panel property is what decides which engine draws it: inside a custom container React draws it from `data`, outside one the platform draws it where it now stands and it leaves `data`.
 
-A container with a `custom` of its own inside what a React component draws — another React component, an HTML template, `''` — is not drawn by that component: it is an island of its own, drawn by its own view, and the outer component places it like any other [child the platform draws](#placing).
+A container with a `custom` of its own inside what a React component draws — another React component, an HTML template, `''` — is not drawn by that component: it is drawn by its own view, and the outer component places it like any other [child the platform draws](#placing). So is a table, a toolbar, filter controls or a filter group with a [React component of its own](#component-views).
 
 A property grouped in columns (`COLUMNS`) cannot be projected: its values are addressed by a row-and-column key, and everything here — a row of `list`, an entry of `byKey`, a name on the controller — means one row. So a React container may not carry one — a column of the rows it draws, or a panel property or a property of the empty group standing in it: such a form is rejected when it is built, naming the property. Elsewhere on the form it stays as it is, and a React view simply has no name for it: the [controller](/How-to_Custom_view_controller.md) carries what the projection carries, so what is not projected has no member. The same holds whenever a name does not single out one property — two properties of a projected group may share an integration name only when their entries land in different containers, and each view then means the one its own node carries. Within one container they may not, because one entry and one member cannot stand for two properties; nor anywhere, one drawn by the platform included, when a view draws a part that names a property of the group ([Reserved names](#reserved-names)). Give one of them an explicit `EXTID`. Declare an ordinary property if the view has to read those values.
 
@@ -545,7 +545,7 @@ DESIGN orders {
 }
 ```
 
-`NOCUSTOM` says the platform draws the property, in its standard view: it is a component rather than a value. A `CUSTOM` render function says so too, the platform drawing the value by that function. Where it is placed is not said — and cannot be: a grid property has no place of its own in the design, and its renderers go into the rows, so the component drawing the rows is the one that places them. That is the component this `MOVE BOX(o)` gave the group to. A `MOVE` of a grid property is refused when the form is built, `NOCUSTOM` or not. The component names the property as its column entry is keyed, with its group, and gives the row:
+`NOCUSTOM` says the platform draws the property, in its standard view: it is a component rather than a value. A `CUSTOM` render function or a `SELECT` says so too, the platform drawing the value by that function or as a selection from a list. The design says the same with the property's `custom`, as with its `caption`: `custom = NULL` is `NOCUSTOM`, and `PROPERTY(quantity(o)) { custom = 'starRating'; }` is `PROPERTIES(o) quantity CUSTOM 'starRating'`. Where it is placed is not said — and cannot be: a grid property has no place of its own in the design, and its renderers go into the rows, so the component drawing the rows is the one that places them. That is the component this `MOVE BOX(o)` gave the group to. A `MOVE` of a grid property is refused when the form is built, `NOCUSTOM` or not. The component names the property as its column entry is keyed, with its group, and gives the row:
 
 ```
 {data.o.list.map(row => (
@@ -619,7 +619,58 @@ The scheduled run differs from a request the component would make itself. A time
 
 * **It does not block the user.** The web client sends it as an asynchronous request, without blocking input and without the [busy indicator](/Interactive_view.md#busy) a synchronous request gets, so the user keeps working while the form is re-read.
 * **It runs only while the form is on screen.** For a form in a background tab, a form the [forms window](#forms-window) component places nowhere, or a form under a modal dialog, the run is skipped. The timer keeps counting, and the next run comes once the form is shown again.
-* **A hidden form stays mounted.** A background tab and an unplaced form are hidden, not closed, so the component is still mounted and a `setInterval` of its own keeps firing — and keeps calling the server — while the form's schedule is paused. That is why the refresh belongs to the form, not to the component. A timer the component does need (an animation, a countdown) is cleared in the effect's cleanup as usual, but that cleanup runs when the form closes, not when it is hidden.
+* **A hidden form stays mounted.** A background tab and an unplaced form are hidden, not closed, so the component is still mounted and a `setInterval` of its own keeps firing — and keeps calling the server — while the form's schedule is paused. That is why the refresh belongs to the form, not to the component. A timer the component does need (an animation, a countdown) is cleared in the effect's cleanup as usual, but that cleanup runs when the form closes, not when it is hidden: what stops it while the view is hidden is [`useVisible()`](#hidden-view).
+
+### A hidden view[​](#hidden-view "Direct link to A hidden view")
+
+The platform hides a view without taking it down: in a tab of a `tabbed` container that is not selected, in a collapsed container, in a `popup` container that is not open, under a `SHOWIF` — of the view's container or of a container above it —, and in a form that is not on screen: in a background tab, or one the [forms window](#forms-window) component does not place. The component stays mounted and keeps its state, and what it draws is not seen.
+
+While the form hides the view's container, the server does not read what the view draws, as it does not read a hidden part of any form: the rows of a group stay as they were last sent, and a property whose value changes meanwhile reads as `null` — unless a part of the form that is shown reads the same. The first answer after the container is shown brings the current values. A form that is not on screen is read as usual.
+
+What the component does on its own goes on all the while: a timer, a request, an animation. `useVisible()` says whether the view is on screen now — whether the element its root is mounted in is displayed: in the page, with no element above it under `display: none`, which is how the platform hides one — and draws the component again when that changes, so work of the component's own is done while it is `true`:
+
+```
+const { useVisible } = window.lsfusion;
+
+export function Clock() {
+    const visible = useVisible();
+    const [now, setNow] = React.useState(() => new Date());
+    React.useEffect(() => {
+        if (!visible)
+            return undefined;
+        const timer = setInterval(() => setNow(new Date()), 1000);
+        return () => clearInterval(timer);
+    }, [visible]);
+    return <span>{now.toLocaleTimeString()}</span>;
+}
+```
+
+It does not say whether the view is scrolled into sight. What the component draws from its data needs no such check: a hidden view is drawn again with the current data once it is shown, as the platform's own views are. What it measures does: an element under a hidden container has no size, so a view that sizes what it draws by its own box — a chart, a map — measures it again once it is visible.
+
+The tabs and the collapsible containers around a view are a part of the form, and the view reads and changes them as it does the rest of the form — through the properties and actions the design gives it: [`ACTIVE TAB`](/ACTIVE_operator.md) says whether a tab is selected, [`ACTIVATE TAB`](/ACTIVATE_operator.md) selects it, [`COLLAPSE CONTAINER`](/COLLAPSE_operator.md) and [`EXPAND CONTAINER`](/EXPAND_operator.md) collapse and expand a container. Here `lines` is a page of a `tabbed` container of the form `order`, and `details` a collapsible container of the same form:
+
+```
+linesSelected = ACTIVE TAB order.lines;
+selectLines() { ACTIVATE TAB order.lines; }
+collapseDetails() { COLLAPSE CONTAINER order.details; }
+
+EXTEND FORM order PROPERTIES() linesSelected, selectLines, collapseDetails;
+
+DESIGN order {
+    NEW steps FIRST {
+        custom = 'Steps';
+        MOVE PROPERTY(linesSelected());
+        MOVE PROPERTY(selectLines());
+        MOVE PROPERTY(collapseDetails());
+    }
+}
+```
+
+```
+<button aria-pressed={data.linesSelected.value === true} onClick={() => controller.selectLines.exec()}>Lines</button>
+```
+
+The actions run on the server, so the tab is selected when the answer comes, not on the click. Whether a container is collapsed is no property: the form's [`ON COLLAPSE` and `ON EXPAND`](/Event_block.md) events run when the user collapses or expands it. A container the view draws itself has no tab and no collapse of the platform's — the view shows it or not —, so `ACTIVATE TAB`, `COLLAPSE CONTAINER` and `EXPAND CONTAINER` on it are an error ([above](#placing)).
 
 ### A navigator window[​](#navigator-window "Direct link to A navigator window")
 
@@ -1423,3 +1474,39 @@ They work over the view's rows as over the standard grid, with what those rows c
 A [tree](#trees) a view draws (`MOVE GRID(TREE t)`) is given the same, one for all its groups, as the platform's own tree has it — `TOOLBARSYSTEM(TREE t)`, and what `FILTERS(TREE t)` and `FILTERCONTROLS(TREE t)` hold. The toolbar has the tree's buttons: over the view's rows the one that expands the current object opens what the tree's [`expandCurrent()`](#trees) opens, the one that expands the tree opens, as over the platform's tree, every node of the current node's group under the nodes open above it and of the groups below — nothing before a node is current; all of the tree is the top group's `expandAll()` —, and the export exports the tree. The panel's conditions can be on the columns of all the tree's groups, each condition of its column's group, and a new one starts on [the cell a condition is added on](#filter-controls).
 
 What the view draws itself the platform does not build: a `custom` on `BOX(o)` draws the whole group.
+
+### A component's own view[​](#component-views "Direct link to A component's own view")
+
+A table, a toolbar, filter controls and a filter group — `GRID(o)`, a tree's `GRID(TREE t)`, `TOOLBARSYSTEM`, `FILTERCONTROLS` and `FILTERGROUP(fg)` — take a React component in `custom` as a container does, and the component then draws, in their place, what they show of their object group or tree: the rows, the toolbar's buttons, the filter controls, the filter selected in the filter group. The rest of the form stays as it is:
+
+```
+DESIGN items {
+    GRID(i) { custom = 'ItemCards'; } // the toolbar and the filters over the rows stay the platform's
+    TOOLBARSYSTEM(j) { custom = 'OrderToolbar'; } // over the platform's grid of j
+}
+```
+
+The component gets what a container holding that component alone would get — `NEW cards { custom = 'ItemCards'; MOVE GRID(i); }` —: the part of the group or of the tree on its node, under the same names ([the table at the top](#the-component)) — the rows and the sortings on `data.i` with `controller.i.change(row)`, the toolbar's state and members on `data.j` and `controller.j`, a tree's rows on its groups' nodes and its own on `data.<tree>`, a filter group on `data.<group>.<filterGroup>`. Nothing else is on the top level:
+
+```
+export function ItemCards({data, controller}) {
+    const items = data.i;
+    return <div className="cards">
+        {items.list.map(row =>
+            <div key={row.key} className={row.isCurrent ? 'current' : ''} onClick={() => controller.i.change(row)}>
+                {row.name.value}
+            </div>)}
+    </div>;
+}
+```
+
+The component's own design attributes are its view's, as they are of the platform's view of it: its size and its place in its container, its class, and its `SHOWIF`, which hides the view — so its data has no [entry](#display-options) of the component itself, which a container around it would have. Inside what a React container draws, the component has a view of its own, and the container places it with `<Platform name="GRID(i)"/>`, its entry in the container's data, and its parts in the data of its own view. A property the platform draws in the rows it draws is placed per row with [`<Platform name row/>`](#live-editor); it places nothing else.
+
+Some combinations are refused when the form is built:
+
+* a component that shows nothing there — the table, the toolbar or the filter controls of a group in `PANEL` view, which has no rows; a toolbar hidden with `visible = FALSE`; a filter group with no filters or of no object — would give its component nothing to draw;
+* a table of a group in another list view type than `GRID` — `PIVOT`, `MAP`, `CALENDAR`, `CUSTOM` —, as any view of its rows is ([Toolbar](#toolbar));
+* a table the design moves components into — `MOVE PROPERTY(note(i))` inside `GRID(i) { ... }`, the record a `CUSTOM`, `MAP` or `CALENDAR` view pops up for a row: its view places no view of the platform's, so a container around the table, `NEW cards { custom = 'ItemCards'; MOVE GRID(i); }`, draws or places what the record holds;
+* a value other than a component name: `''`, an HTML template and a property lay out the children of a container.
+
+The attributes of the platform's table — a table's `valueClass` given by a property, a tree's `hierarchicalCaption` — mean nothing to its own view, as to a table a React container draws: the projection carries neither.
