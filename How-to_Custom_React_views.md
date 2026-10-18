@@ -439,7 +439,7 @@ export function Board(props) {
 
 ### Placing a child the platform draws[​](#placing "Direct link to Placing a child the platform draws")
 
-A child the platform draws need not be a direct child of the container: it may sit inside the containers the view draws itself, however deep, and the `CUSTOM REACT` container above it places it by its name all the same — so a design groups such pieces the way the view draws them, a page or a section each. Inside a container the platform draws nothing is placed separately: the platform draws that container whole, with whatever is inside it — unless a `CUSTOM REACT` container inside it places a component, as it places its own.
+A child the platform draws need not be a direct child of the container: it may sit inside the containers the view draws itself, however deep — the [record](/Form_design.md#record) of a table the view draws, what a design puts into `GRID(<group>)`, included —, and the `CUSTOM REACT` container above it places it by its name all the same — so a design groups such pieces the way the view draws them, a page or a section each. Inside a container the platform draws nothing is placed separately: the platform draws that container whole, with whatever is inside it — unless a `CUSTOM REACT` container inside it places a component, as it places its own.
 
 Such a child's view is moved into a *host*: a DOM node React owns and never renders children into. React places the view relative to a node it owns, and it must keep owning it to go on rendering the surrounding tree. Which node that is, is the only difference between the two ways to place a child:
 
@@ -1506,7 +1506,7 @@ Some combinations are refused when the form is built:
 
 * a component that shows nothing there — the table, the toolbar or the filter controls of a group in `PANEL` view, which has no rows; a toolbar hidden with `visible = FALSE`; a filter group with no filters or of no object — would give its component nothing to draw;
 * a table of a group in another list view type than `GRID` — `PIVOT`, `MAP`, `CALENDAR`, `CUSTOM` —, as any view of its rows is ([Toolbar](#toolbar));
-* a table the design moves components into — `MOVE PROPERTY(note(i))` inside `GRID(i) { ... }`, the record a `CUSTOM`, `MAP` or `CALENDAR` view pops up for a row: its view places no view of the platform's, so a container around the table, `NEW cards { custom = 'ItemCards'; MOVE GRID(i); }`, draws or places what the record holds;
+* a table the design moves components into — `MOVE PROPERTY(note(i))` inside `GRID(i) { ... }`, the [record](/Form_design.md#record) a `CUSTOM`, `MAP` or `CALENDAR` view pops up for a row: its view places no view of the platform's, so a container around the table, `NEW cards { custom = 'ItemCards'; MOVE GRID(i); }`, draws or places what the record holds;
 * a value other than a component name: `''`, an HTML template and a property lay out the children of a container.
 
 The attributes of the platform's table — a table's `valueClass` given by a property, a tree's `hierarchicalCaption` — mean nothing to its own view, as to a table a React container draws: the projection carries neither.
