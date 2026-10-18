@@ -152,7 +152,7 @@ The automatic design is generated as follows:
 
     <!-- -->
 
-    * `BOX(<object group/tree>)`: contains all the components of this group of objects. Vertical container. Extension coefficient: `1`, alignment: `STRETCH`.
+    * `BOX(<object group/tree>)`: contains all the components of this group of objects. Vertical container. Extension coefficient: `1` (`0` for an object group in `PANEL`, `TOOLBAR` or `POPUP` view, which shows no table), alignment: `STRETCH`.
 
       <!-- -->
 
@@ -172,7 +172,7 @@ The automatic design is generated as follows:
           <!-- -->
 
           * `TOOLBARSYSTEM(<group of objects / tree>)`: the base component of the System toolbar. Alignment: `CENTER`.
-          * `POPUP(<group of objects / tree>)`: a collapsed popup container (shown as a "⋮" menu) that holds the components moved into it.
+          * `POPUP(<group of objects / tree>)`: a collapsed popup container (shown as a "⋮" menu) that contains the components of the properties displayed in the `POPUP` [view](/Interactive_view.md#property) and [display group](/Form_structure.md#drawgroup) equal to the specified one, and the components moved into it.
 
         * `TOOLBARRIGHT(<group of objects / tree>)`: the right side of a toolbar. Horizontal container. Extension coefficient: `1`, alignment: `CENTER`.
 
