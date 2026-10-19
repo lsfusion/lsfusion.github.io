@@ -69,7 +69,7 @@ Place [modules](/Modules.md) developed in the lsFusion language as files with an
 
 info
 
-It is often convenient to place all project files inside a single jar file. To generate such a file automatically, you can use [Maven](/Development_manual.md#maven) (with assemble and noserver profiles) or the build tools built into the [IDE](/IDE.md#build).
+It is often convenient to place all project files inside a single jar file. To generate such a file automatically, you can use [Maven](/Development_manual.md#maven) (with the `assemble` profile, without `embed-server`) or the build tools built into the [IDE](/IDE.md#build).
 
 By default, the server's classpath is equal to `$APP_DIR$;$APP_DIR$/*;server.jar`, i.e. the `$APP_DIR$` folder and all its subfolders, all jar files in the `$APP_DIR$` folder (but not its subfolders), and also the jar file of the application server itself.
 
