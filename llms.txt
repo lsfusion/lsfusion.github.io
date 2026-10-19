@@ -614,7 +614,7 @@
 
 ## How-to_Custom_React_views
 
-- [How-to: Custom React form views](/How-to_Custom_React_views.md): A DESIGN container can be rendered by a React component instead of the standard layout. The component receives a projection of the form state and draws the container's whole subtree itself. A table, a toolbar, filter controls and a filter group can be drawn by a React component of their own the same way, instead of the platform's view of them (A component's own view).
+- [How-to: Custom React form views](/How-to_Custom_React_views.md): A DESIGN container can be rendered by a React component instead of the standard layout. The component receives a projection of the form state and draws the container's whole subtree itself. A table, a toolbar, filter controls, a filter group and a property's filter can be drawn by a React component of their own the same way, instead of the platform's view of them (A component's own view).
 
 ## How-to_Custom_view_controller
 
