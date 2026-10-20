@@ -85,7 +85,7 @@
 
     A narrower class is obtained only by an explicit cast of the whole expression. With operands of integer classes the operand cast of rule 13 does not bound the result — the division still widens to scale `32` — so both casts are needed: `NUMERIC[16,2](NUMERIC[16,2](a(x)) / b(x))`.
 
-    For a `GROUP SUM` over `NUMERIC` whose total can exceed the class of its operand, the assistant MUST widen the operand inside the aggregate (`GROUP SUM NUMERIC[16,2](x)`), not cast the result: the precision of the class is enforced only where the sum is materialized into a column of that class, and the materialization of a subquery happens intermittently, so the overflow can escape a test on a warmed-up server.
+    For a `GROUP SUM` over `NUMERIC` whose total can exceed the class of its operand, the assistant MUST widen the operand inside the aggregate (`GROUP SUM NUMERIC[16,2](x)`), not cast the result: the precision of the class is enforced only where the sum is materialized into a column of that class, and the materialization of a subquery happens intermittently, so the overflow can escape a single run, even on a cold server.
 
 15. A parameter's class annotation (`prop(SubClass x)`) is a signature, not a runtime filter: it resolves same-named properties and sets the signature, but the computed set is determined by the properties used in the expression. Reading a parent-class property with a subclass-annotated parameter still ranges over ALL objects of the parent class (e.g. in a `GROUP SUM` — silently wrong totals).
 

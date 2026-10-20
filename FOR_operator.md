@@ -87,7 +87,7 @@ In the case when the operator contains a `NEW` block, and no condition is specif
 ```
 name = DATA STRING[100] (Store);
 
-testFor  {
+testFor()  {
     LOCAL sum = INTEGER ();
     FOR iterate(i, 1, 100) DO {
         sum() <- sum() (+) i;
