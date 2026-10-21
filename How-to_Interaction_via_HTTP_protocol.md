@@ -87,10 +87,8 @@ createCity (FILE f)  {
 
     IMPORT JSON FROM f AS FILE TO() cy = countryId, ne = name;
 
-    IF NOT country(cy()) THEN {
-        EXPORT JSON FROM code = '1', message = 'Invalid country code';
-        RETURN;
-    }
+    IF NOT country(cy()) THEN
+        RETURN JSON FROM code = '1', message = 'Invalid country code';
 
     NEW c = City {
         name(c) <- ne();
@@ -99,7 +97,7 @@ createCity (FILE f)  {
         APPLY;
     }
 
-    EXPORT JSON FROM code = '0', message = 'OK';
+    RETURN JSON FROM code = '0', message = 'OK';
 }
 ```
 
@@ -111,9 +109,9 @@ http://localhost:7651/exec?action=Location.createCity
 
 Body of the HTTP request will be passed as a parameter of the type `FILE`. The values read from the `countryId` and `name` parameters are written to the local properties `cy` and `ne` respectively.
 
-If there is no country with the corresponding code, then a JSON file is generated similar to that described in the previous example, and the [`RETURN` operator](/Exit_RETURN.md) is called to abort execution. By default, the response message value is also stored in the `exportFile` property.
+If there is no country with the corresponding code, then the [`RETURN` operator](/Exit_RETURN.md) aborts execution and returns a JSON similar to that described in the previous example. This JSON is built by the [`JSON` operator](/JSON_operator.md), and by default the value of `RETURN` is passed in the response (see [results](/Access_from_an_external_system.md#httpresult)).
 
-If all the actions are completed successfully, the corresponding "OK message" is generated in response.
+If all the actions are completed successfully, the corresponding "OK message" is returned in response.
 
 ## Example 3[​](#example-3 "Direct link to Example 3")
 
@@ -370,7 +368,7 @@ FORM exportOrders
 ;
 
 getOrdersByDate (DATE d) {
-    EXPORT exportOrders OBJECTS date = d JSON;
+    RETURN JSON(exportOrders OBJECTS date = d);
 }
 ```
 
@@ -390,6 +388,18 @@ The response JSON will look like this:
     ]
 }
 ```
+
+If there are no orders on that date, the [`JSON` operator](/JSON_operator.md) returns `NULL`, and the response comes back with an empty body. If the receiver needs a JSON with an empty list (`{"order":[]}`), the form is exported to a file with the [`EXPORT` operator](/EXPORT_operator.md), and that file is returned:
+
+```
+getOrdersByDateFile (DATE d) {
+    LOCAL f = JSONFILE ();
+    EXPORT exportOrders OBJECTS date = d JSON TO f;
+    RETURN f();
+}
+```
+
+A result in a format other than JSON is returned the same way: for example, `EXPORT CSV FROM ... TO f` followed by `RETURN f()`.
 
 ## Example 8[​](#example-8 "Direct link to Example 8")
 
@@ -421,9 +431,8 @@ FORM orderAttachments
 ;
 
 getOrderAttachments (LONG orderId) {
-    FOR LONG(Order o AS Order) = orderId DO {
-        EXPORT orderAttachments OBJECTS o = o JSON;
-    }
+    FOR LONG(Order o AS Order) = orderId DO
+        RETURN JSON(orderAttachments OBJECTS o = o);
 }
 ```
 
@@ -453,7 +462,7 @@ The *id* attributes will contain internal file identifiers. The contents of thes
 ```
 getOrderAttachment (LONG id) {
     FOR LONG(Attachment a AS Attachment) = id DO
-        exportFile() <- file(a); 
+        RETURN file(a);
 }
 ```
 
@@ -483,7 +492,7 @@ The server wraps the received text into a module of its own that depends on ever
   cityCount (Country c) = GROUP SUM 1 IF country(City ct) = c;
 
   run() {
-      EXPORT JSON FROM name = name(Country c), cities = cityCount(c);
+      RETURN JSON FROM name = name(Country c), cities = cityCount(c);
   }
   ```
 
@@ -495,20 +504,17 @@ The server wraps the received text into a module of its own that depends on ever
   RETURN count();
   ```
 
-By default the response carries the value of `RETURN` or, when the action has no `RETURN` with a value, the file written by `EXPORT` (see [results](/Access_from_an_external_system.md#httpresult)). `RETURN` delivers its value from any place in the action, a `NEWSESSION` block included. The result of `EXPORT` is the local property `exportFile[]` of the session the operator ran in, and each subsequent `EXPORT` writing to `exportFile[]` in the same session replaces the previous file (so of several such exports only the last one is returned): an `EXPORT` inside `NEWSESSION` stays in the new session, and the response comes back empty without an error. So the export is done in the action's own session — after the block, with the values it needs carried over in [nested local properties](/Session_management.md#nested) — or `exportFile[]` is listed as nested on the operator, which copies it back. An `APPLY` cancelled by a [constraint](/Constraints.md) does not fail the request either: the changes are not saved and the action goes on, so without the check below the example would export the count with the unsaved city. The action checks `canceled[]` right after `APPLY` and, if the apply was cancelled, exports `applyMessage[]` and ends with a `RETURN` without a value. A `RETURN` with a value is not used here, because by default an action that contains one returns only that value, even when the `RETURN` is not executed, and its `EXPORT` never reaches the response ([details](/Access_from_an_external_system.md#httpresult)):
+By default the response carries the value of `RETURN` (see [results](/Access_from_an_external_system.md#httpresult)). `RETURN` delivers its value from any place in the action, a `NEWSESSION` block and a point after `APPLY` included. An `APPLY` cancelled by a [constraint](/Constraints.md) does not fail the request: the changes are not saved and the action goes on, so without the check below the example would return the count with the unsaved city. The action checks `canceled[]` right after `APPLY` and, if the apply was cancelled, returns the text of `applyMessage[]`:
 
 ```
 run() {
-    NEWSESSION NESTED (exportFile) {
+    NEWSESSION {
         NEW ct = City {
             name(ct) <- 'Springfield';
         }
         APPLY;
-        IF canceled() THEN {
-            EXPORT JSON FROM message = applyMessage();
-            RETURN;
-        }
-        EXPORT JSON FROM cities = GROUP SUM 1 IF c IS City;
+        IF canceled() THEN RETURN applyMessage();
+        RETURN JSON FROM cities = GROUP SUM 1 IF c IS City;
     }
 }
 ```

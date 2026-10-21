@@ -682,7 +682,7 @@
 
 ## How-to_Frontend
 
-- [How-to: Frontend](/How-to_Frontend.md): The easiest way to organize the interaction of a React application with an application based on lsFusion is communication via the HTTP protocol through the JSON API. To export a list of objects meeting a specified condition, it is most convenient to use the interface located at the eval/action Url. You can pass lsFusion program code to it in BODY, and it will then be executed. If you need to return data from your request, use the EXPORT operator. By default it returns data in JSON format, which is then easily processed using JavaScript.
+- [How-to: Frontend](/How-to_Frontend.md): The easiest way to organize the interaction of a React application with an application based on lsFusion is communication via the HTTP protocol through the JSON API. To export a list of objects meeting a specified condition, it is most convenient to use the interface located at the eval/action Url. You can pass lsFusion program code to it in BODY, and it will then be executed. The data is returned in response to the request by the RETURN operator, and the JSON operator builds a JSON from it. Such a JSON is then easily processed using JavaScript.
 
 ## How-to_GROUP_CONCAT
 
