@@ -258,13 +258,11 @@
 
 ## Constraints[​](#constraints "Direct link to Constraints")
 
-1. When a value choice in one property must be restricted based on values of other properties — sibling fields on the same form, current context, related objects — the assistant SHOULD first consider `CONSTRAINT ... CHECKED BY <property>`.
+1. When a value choice in one property must be restricted by the values of other properties (sibling fields of the form, the context, related objects), the assistant SHOULD first consider `CONSTRAINT ... CHECKED BY <property>`.
 
-   `CHECKED BY` makes the change dialog for the listed property automatically filter out values that would violate the constraint, so the restriction is enforced declaratively at the point of selection, not after the fact.
+   `CHECKED BY` makes the change dialog for the listed property filter out the values that would violate the constraint, and refuses such a value passed by a custom component with `controller.change(value)`, so the restriction is enforced at selection. The filter is not applied to a value written in some other way: a violating one is rejected only when the constraint itself is checked.
 
-   The filter reaches those change dialogs only. An input mechanism that offers values in some other way does not use it, and there a violating value is rejected only when the constraint itself is checked.
-
-2. Manual form filters or hand-rolled validation actions SHOULD be the fallback when `CHECKED BY` cannot express the restriction (e.g. the filter depends on transient UI state not modeled as a property, or the rule is advisory rather than enforced) — and also when the restriction IS expressible that way but the value is picked through some other mechanism, which the `CHECKED BY` filter does not reach.
+2. Manual form filters or hand-rolled validation actions SHOULD be the fallback when `CHECKED BY` cannot express the restriction (e.g. the filter depends on UI state not modeled as a property, or the rule is advisory, not enforced) — and also when the value is written in a way the filter does not reach: by an assignment in an action, or by a change handler of the form that requests it with `INPUT` without the `CHANGE` block ([details](/CONSTRAINT_statement.md)).
 
 3. The assistant SHOULD NOT put heavy aggregates over large tables (especially nested non-materialized ones) into a `CONSTRAINT` condition: the incremental check at apply can expand into an impractically large query, even with computation hints on the properties.
 
