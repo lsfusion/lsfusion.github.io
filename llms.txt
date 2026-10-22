@@ -98,7 +98,7 @@
 
 ## AI
 
-- [AI](/AI.md): This section contains the guidance that helps AI assistants — and the developers prompting them — read and write lsFusion code correctly. The same materials are served to AI tools through the lsFusion MCP server and published here so they can also be read directly.
+- [AI](/AI.md): This section contains the guidance that helps AI assistants — and the developers prompting them — read and write lsFusion code correctly. The same materials are served to AI tools through the lsFusion MCP server and published here so they can also be read directly. The per-area articles of the Brief and the Rules are requested by name through the rules and brief parameters of the lsfusiongetguidance tool.
 
 ## AND_OR_NOT_XOR_operators
 
