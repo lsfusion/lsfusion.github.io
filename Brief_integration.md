@@ -237,3 +237,5 @@ jsonKeyword ( formName [OBJECTS objName1 = expr1, ..., objNameK = exprK]
 ```
 
 `jsonKeyword` is `JSON` or `JSONTEXT`.
+
+A value of the `JSON` or `JSONTEXT` class is embedded into the result as an object or array, while a string is written as a string even if its text is JSON. `EXPORT JSON`, by contrast, also [embeds](/Structured_view.md#innerjson) a string that starts and ends with a bracket, if it can be parsed as JSON.
