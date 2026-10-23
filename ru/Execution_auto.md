@@ -121,17 +121,17 @@ warning
 
 #### Сервер приложений (Server)[​](#сервер-приложений-server "Прямая ссылка на этот заголовок")
 
-| ОС                               | Команда                       |
-| -------------------------------- | ----------------------------- |
-| RHEL 8+ / CentOS 8+ / Fedora 35+ | `dnf update lsfusion6-server` |
-| Ubuntu 18+ / Debian 9+           | `apt update lsfusion6-server` |
+| ОС                               | Команда                                                     |
+| -------------------------------- | ----------------------------------------------------------- |
+| RHEL 8+ / CentOS 8+ / Fedora 35+ | `dnf update lsfusion6-server`                               |
+| Ubuntu 18+ / Debian 9+           | `apt update && apt install --only-upgrade lsfusion6-server` |
 
 #### Веб-сервер (Client)[​](#веб-сервер-client "Прямая ссылка на этот заголовок")
 
-| ОС                               | Команда                       |
-| -------------------------------- | ----------------------------- |
-| RHEL 8+ / CentOS 8+ / Fedora 35+ | `dnf update lsfusion6-client` |
-| Ubuntu 18+ / Debian 9+           | `apt update lsfusion6-client` |
+| ОС                               | Команда                                                     |
+| -------------------------------- | ----------------------------------------------------------- |
+| RHEL 8+ / CentOS 8+ / Fedora 35+ | `dnf update lsfusion6-client`                               |
+| Ubuntu 18+ / Debian 9+           | `apt update && apt install --only-upgrade lsfusion6-client` |
 
 #### Нестабильные версии[​](#нестабильные-версии "Прямая ссылка на этот заголовок")
 
