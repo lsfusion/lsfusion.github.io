@@ -78,6 +78,8 @@
 
 2. In synchronous mode `WINDOW` is a tab that blocks the calling form, and from a form shown as a window such a tab is shown as a window. So `SHOW ... WINDOW` from a form shown as a window (`FLOAT`) without `NOWAIT` opens a window, not a tab: such a form is modal, so the default mode there is synchronous (rule 1). To open a tab from it, the assistant MUST specify `NOWAIT`.
 
+3. The action of a navigator element and a client's launch event handler (`onDesktopClientStarted[]`, `onWebClientStarted[]`) run with the session taken to be used afterwards, so a `SHOW` there with neither option is synchronous (rule 1), and such a tab blocks the navigator until it is closed. To open a tab there, the assistant MUST specify `NOWAIT`.
+
 ## Form design[​](#form-design "Direct link to Form design")
 
 1. These design rules do NOT cover the `DESIGN` layout model — the default container tree, the flexbox `fill` / alignment model, or the container idioms. They give only placement meta-advice. Before writing or modifying any `DESIGN`, the assistant MUST retrieve the `Form_design` documentation. It MUST NOT rely on these rules as if they described the layout model.
