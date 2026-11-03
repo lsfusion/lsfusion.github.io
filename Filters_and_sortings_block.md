@@ -36,7 +36,7 @@ A filter for a property being added to the form can also be defined with the `FI
 
 * `USER | FIXED`
 
-  Keywords defining the filter type: `FIXED` is a fixed filter (default); `USER` is a [user filter](/Interactive_view.md#userfilters): the condition row of the property is shown as soon as the form opens. The expression must be the [name of a property on the form](/Properties_and_actions_block.md#name), so the property must be added to the form in advance.
+  Keywords defining the filter type: `FIXED` is a fixed filter (default); `USER` is a [user filter](/Interactive_view.md#userfilters): the condition row of the property is shown as soon as the form opens if its `FILTER` component and every container holding it remain in the form design. The expression must be the [name of a property on the form](/Properties_and_actions_block.md#name), so the property must be added to the form in advance.
 
 ### Examples[​](#examples "Direct link to Examples")
 
