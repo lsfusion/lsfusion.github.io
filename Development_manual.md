@@ -2,7 +2,7 @@
 
 info
 
-To install the application server, IDE, and client, Java version 8 or later must first be installed on the computer.
+To install the application server, IDE, and client, Java version 8u272 or later must first be installed on the computer.
 
 info
 
