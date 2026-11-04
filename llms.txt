@@ -838,7 +838,7 @@
 
 ## Icons
 
-- [Icon assignment mechanism](/Icons.md): In the lsFusion platform, developers can manually assign icons to UI elements corresponding to properties, actions, forms, containers, and navigator elements. You can specify either an image file path or icon font CSS classes.
+- [Icon assignment mechanism](/Icons.md): In the lsFusion platform, developers can manually assign icons to UI elements corresponding to properties, actions, forms, containers, and navigator elements. You can specify an image file path, icon font CSS classes, or an external HTTP(S) URL.
 
 ## IDE
 
