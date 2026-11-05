@@ -17,7 +17,7 @@ The first three operators (`SET`, `DROPPED`, `CHANGED`) are the basic change pre
 
 warning
 
-In [event mode](/Events.md#change), these operators return changes from the point of the previous occurrence of the event (or rather, from the point at which all its handlers were completed) instead of changes since the start of the session.
+In [event mode](/Events.md#change), these operators return changes from the point of the previous occurrence of the event (or rather, from the point at which all its handlers were completed) instead of changes since the start of the session. For a local event this is the end of the previous execution of local events in the session, whether or not this particular handler ran then.
 
 ### Language[​](#language "Direct link to Language")
 

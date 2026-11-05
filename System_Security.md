@@ -34,7 +34,7 @@ A user has one main role and any number of additional roles. The effective membe
 | `firstRole[User]`                                | the lowest-numbered role the user has other than `default`, falling back to the `default` role |
 | `rolesCount[User]`                               | number of roles the user has                                                                   |
 
-### System roles[​](#system-roles "Direct link to System roles")
+### System roles[​](#systemRoles "Direct link to System roles")
 
 `createSystemUserRoles[]` creates the four built-in roles if they are absent, identified by `sid`:
 
@@ -46,6 +46,8 @@ A user has one main role and any number of additional roles. The effective membe
 | `selfRegister` | New user      | forbids `System.root`, permits the `Authentication.account` folder                                                                                   |
 
 Assignment is wired to user events: when a user is created (`SETCHANGED` on `User`), the `default` role is assigned, and the `admin` role too when the login equals `admin`. On self-registration (`onUserRegister`) the `selfRegister` role is assigned.
+
+Self-registration is turned off by the `disableRole[UserRole]` flag of the `selfRegister` role (`disableRole(userRoleSID('selfRegister')) <- TRUE`): `getServerSettings[]` exports it as `disableRegistration`, the web client's login page then shows no sign-up link and does not serve the registration page, and signing in through an OAuth2 provider no longer creates a new user. The `registerUser[JSONFILE]` API action itself is not restricted by the flag.
 
 ### Permissions[​](#permissions "Direct link to Permissions")
 

@@ -230,7 +230,7 @@
 
 2. When the event's purpose is only to derive or default a value from other inputs, the assistant SHOULD guard the condition with `AND NOT CHANGED(<target>)` for each target property the event writes.
 
-   This prevents the event from clobbering an explicit change to the target made elsewhere in the same session.
+   This prevents the event from clobbering an explicit change to the target made in the same batch of changes. For a `LOCAL` event the protection is that narrow: change operators there count changes since the previous execution of local events (after every change on a form, when a form is opened, at the start of `APPLY`, when a nested session is created), and that reference point moves even when the handler did not fire. A target value set earlier — preset when the object was created before the form was opened, or entered in a previous form request — no longer counts as changed and is overwritten when the source changes. Only for a global `WHEN` is the reference point the database, so there the guard covers the whole session.
 
 3. The guard SHOULD be omitted only when the event must forcibly override any explicit change — for example, maintained totals, audit stamps, or invariants the user is not allowed to bypass.
 
