@@ -22,7 +22,7 @@ The first operand is always the separator, even when it is meant as a prefix: `C
 
 * `concatExpr1, ..., concatExprN`
 
-  Expressions whose values are concatenated. At least one operand must be specified.
+  Expressions of any class whose values are concatenated. At least one operand must be specified.
 
 ### Examples[​](#examples "Direct link to Examples")
 
