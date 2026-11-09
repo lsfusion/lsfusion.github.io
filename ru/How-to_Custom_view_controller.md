@@ -8,11 +8,17 @@
 
 ### Как представление получает контроллер[​](#как-представление-получает-контроллер "Прямая ссылка на этот заголовок")
 
-| представление                                                        | объявление                      | точка входа JavaScript                                | его контроллер — это |
-| -------------------------------------------------------------------- | ------------------------------- | ----------------------------------------------------- | -------------------- |
-| [React-представление](/ru/How-to_Custom_React_views.md)              | `DESIGN c { custom = 'Name'; }` | компонент, принимающий `props` (`data`, `controller`) | `props.controller`   |
-| [CUSTOM группа объектов](/ru/How-to_Custom_components_objects.md)    | `OBJECTS g = Cls CUSTOM 'name'` | колбэки `render` / `update`                           | `controller.form`    |
-| [CUSTOM ячейка свойства](/ru/How-to_Custom_components_properties.md) | `PROPERTIES p CUSTOM 'name'`    | колбэки `render` / `update`                           | `controller.form`    |
+| представление                                                        | объявление                                    | точка входа JavaScript                                | его контроллер — это                                                                                                                           |
+| -------------------------------------------------------------------- | --------------------------------------------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| [React-представление](/ru/How-to_Custom_React_views.md)              | `DESIGN c { custom = 'Name'; }`               | компонент, принимающий `props` (`data`, `controller`) | `props.controller`                                                                                                                             |
+| [Окно навигатора](/ru/How-to_Custom_React_views.md#navigator-window) | `EXTEND WINDOW System.toolbar CUSTOM 'Name';` | компонент, принимающий `props` (`data`, `controller`) | `props.controller` — [контроллер навигатора](#navigator-controller)                                                                            |
+| [Окно форм](/ru/How-to_Custom_React_views.md#forms-window)           | `EXTEND WINDOW System.forms CUSTOM 'Name';`   | компонент, принимающий `props` (`data`, `controller`) | `props.controller` — методы [контроллера навигатора](#navigator-controller) и `select`, `close`, `closeAll`, `setEditMode`, `toggleFullScreen` |
+| [Окно сообщений](/ru/How-to_Custom_React_views.md#log-window)        | `EXTEND WINDOW System.log CUSTOM 'Name';`     | компонент, принимающий `props` (`data`, `controller`) | `props.controller` — методы [контроллера навигатора](#navigator-controller) и `togglePin`                                                      |
+| [Расположение окон](/ru/How-to_Custom_React_views.md#window-layout)  | `NAVIGATOR CUSTOM 'Name';`                    | компонент, принимающий `props` (`data`, `controller`) | `props.controller` — [контроллер навигатора](#navigator-controller)                                                                            |
+| [CUSTOM группа объектов](/ru/How-to_Custom_components_objects.md)    | `OBJECTS g = Cls CUSTOM 'name'`               | колбэки `render` / `update`                           | `controller.form`                                                                                                                              |
+| [CUSTOM ячейка свойства](/ru/How-to_Custom_components_properties.md) | `PROPERTIES p CUSTOM 'name'`                  | колбэки `render` / `update`                           | `controller.form`                                                                                                                              |
+
+В React-представлении формы запросы через члены контроллера или `controller.form` возвращают `Promise`. Операции окон `select`, `close`, `closeAll`, `setEditMode`, `toggleFullScreen`, `togglePin` и `activate` ничего не возвращают.
 
 **React-представление** отрисовывает целый пользовательский контейнер, поэтому `controller` в его `props` — это собственный контроллер этого контейнера: его члены ниже вызываются прямо на нём, а контроллер формы — его `form`, `props.controller.form`.
 
@@ -314,11 +320,13 @@ function Note({ controller }) {
 
 ### Контроллер навигатора[​](#navigator-controller "Прямая ссылка на этот заголовок")
 
-Действие [`INTERNAL CLIENT`](/ru/INTERNAL_operator.md), помещённое в [`NAVIGATOR`](/ru/NAVIGATOR_statement.md), тоже получает контроллер, но навигаторный: формы здесь нет, поэтому нет и перечисленных выше методов формы. Есть четыре серверных вызова — `exec`, `eval`, `evalAction`, `change`, — которые выполняются в собственной сессии навигатора, новой на каждый вызов и никогда не применяемой, поэтому сделанное здесь `change` не сохраняется. И есть `activate`:
+Действие [`INTERNAL CLIENT`](/ru/INTERNAL_operator.md), помещённое в [`NAVIGATOR`](/ru/NAVIGATOR_statement.md), тоже получает контроллер, но навигаторный: формы здесь нет, поэтому нет и перечисленных выше методов формы. Есть четыре серверных вызова — `exec`, `eval`, `evalAction`, `change`, — которые выполняются в собственной сессии навигатора, новой на каждый вызов и никогда не применяемой, поэтому сделанное здесь `change` не сохраняется. Каждый из них возвращает `Promise`. И есть `activate`:
 
 * `activate(canonicalName[, event])` — делает то же, что нажатие на этот элемент навигатора: выбирает папку либо выполняет действие, открывая его форму так же оптимистично. `canonicalName` — [каноническое имя](/ru/IDs.md) элемента. `event` — событие нажатия, React-овское или браузерное, и при вызове из кода, у которого события нет, его можно не передавать.
 
-Активация несуществующего элемента или скрытого `SHOWIF` — собственным или папки над ним — бросает исключение. О завершении выполненного действия не сообщается, как не сообщает о нём и нажатие.
+Компоненты React [окна навигатора](/ru/How-to_Custom_React_views.md#navigator-window), [окна форм](/ru/How-to_Custom_React_views.md#forms-window), [окна сообщений](/ru/How-to_Custom_React_views.md#log-window) и [расположения окон](/ru/How-to_Custom_React_views.md#window-layout) получают все пять методов прямо в `props.controller`. Окно форм и окно сообщений также сохраняют собственные операции с окном.
+
+Активация несуществующего элемента или скрытого `SHOWIF` — собственным или папки над ним — бросает исключение. `activate` ничего не возвращает и не сообщает о завершении, как и нажатие.
 
 ```
 window.openMonthlyReport = function (controller) {
