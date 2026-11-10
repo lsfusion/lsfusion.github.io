@@ -182,6 +182,7 @@ function Row(props) {
 | Строка                                                                                                           | `key`, `current`, `objects`, `background`, `foreground`, `selected` — у строки [дерева](#trees) ещё и `parent`, `hasChildren`, `expanded`, `loading`                                                   |
 | Узел группы, где бы он ни был                                                                                    | `properties`, `change`                                                                                                                                                                                 |
 | Узел группы там, где рисуются её строки                                                                          | `list`, `byKey`, `keys`, `options`, а у группы вне дерева и `orders` — у группы дерева `expand`, `collapse`, `toggle`, `expandAll`, `collapseAll`                                                      |
+| Плоская группа LIST, строки которой рисует React                                                                 | `viewFilters`                                                                                                                                                                                          |
 | Узел группы в виде `LIST` там, где стоит `FILTERS(<group>)`                                                      | `filters`, `filterProperties`                                                                                                                                                                          |
 | Узел группы в виде `LIST` там, где стоит `FILTERCONTROLS(<group>)`                                               | Имена [управляющих элементов фильтров](#filter-controls): `addFilter`, `applyFilters`, `resetFilters`, `filtersPending`, `filtersManual`                                                               |
 | Узел группы в виде `LIST` там, где стоит `TOOLBARSYSTEM(<group>)`, если дизайн его не прячет (`visible = FALSE`) | Имена всех кнопок [тулбара](#toolbar), что бы ни говорили флаги дизайна `show…`: `manual`, `updatePending`, `update`, `filterControlsVisible`, `listView`, `listViews`, `getCount`, `getSum`, `export` |
@@ -471,6 +472,15 @@ export function Board(props) {
         <Platform name="comment"/>
     </div>;
 }
+```
+
+### Собственные фильтры представления[​](#view-filters "Прямая ссылка на этот заголовок")
+
+Для плоской группы LIST, строки которой рисует React, задавайте собственные условия представления через член группы или метод контроллера формы. Условия соединяются через AND с пользовательскими, регулярными и фиксированными фильтрами. `[]` очищает только собственный набор этой группы. См. [API контроллера](/ru/How-to_Custom_view_controller.md#view-filters).
+
+```
+await controller.i.viewFilters.change([{property: 'number', compare: '>=', value: 400}]);
+await controller.form.changeViewFilters('i', []);
 ```
 
 ### Размещение дочернего компонента, который рисует платформа[​](#placing "Прямая ссылка на этот заголовок")
