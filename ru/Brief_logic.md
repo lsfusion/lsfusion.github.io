@@ -257,14 +257,14 @@ sum(OrderDetail d) <- quantity(d) * price(d) WHEN CHANGED(quantity(d)) OR CHANGE
 
 [События формы](/ru/Form_events.md) возникают на открытой форме: в точке её жизни (`INIT`, `APPLY`, `CANCEL`, `CLOSE`, `DROP`), на действие пользователя либо по таймеру через `SCHEDULE`. Обработка подключается опцией `ON` — в блоках [событий](/ru/Event_block.md), [свойств и действий](/ru/Properties_and_actions_block.md) и [объектов](/ru/Object_blocks.md#objects) инструкции `FORM` либо в [опциях свойства](/ru/Property_options.md).
 
-| Что событие обслуживает | События                                                                                                        |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------- |
-| форму целиком           | `INIT`, `QUERYCLOSE`, `QUERYOK`, `OK`, `APPLY`, `CANCEL`, `CLOSE`, `DROP`, `SCHEDULE`                          |
-| объект формы            | `CHANGE`                                                                                                       |
-| группу объектов         | `FILTER`, `ORDER`, `SELECT`, `FILTERS`, `ORDERS`                                                               |
-| группу фильтров         | `FILTERGROUPS`                                                                                                 |
-| свойство или действие   | `CHANGE`, `CHANGEWYS`, `GROUPCHANGE`, `EDIT`, `CONTEXTMENU`, `KEYPRESS`, `FILTERS PROPERTY`, `SELECT PROPERTY` |
-| контейнер               | `EXPAND`, `COLLAPSE`, `TAB`                                                                                    |
+| Что событие обслуживает | События                                                                                           |
+| ----------------------- | ------------------------------------------------------------------------------------------------- |
+| форму целиком           | `INIT`, `QUERYCLOSE`, `QUERYOK`, `OK`, `APPLY`, `CANCEL`, `CLOSE`, `DROP`, `SCHEDULE`             |
+| объект формы            | `CHANGE`                                                                                          |
+| группу объектов         | `FILTER`, `ORDER`, `SELECT`, `FILTERS`, `ORDERS`                                                  |
+| группу фильтров         | `FILTERGROUPS`                                                                                    |
+| свойство или действие   | `CHANGE`, `GROUPCHANGE`, `EDIT`, `CONTEXTMENU`, `KEYPRESS`, `FILTERS PROPERTY`, `SELECT PROPERTY` |
+| контейнер               | `EXPAND`, `COLLAPSE`, `TAB`                                                                       |
 
 Постфиксы `BEFORE` и `AFTER` дают моменты до и после операции. Для событий изменения свойства есть стандартные обработки `READONLY`, `READONLYIF` и `SELECTOR`.
 

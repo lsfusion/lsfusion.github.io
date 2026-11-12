@@ -257,14 +257,14 @@ sum(OrderDetail d) <- quantity(d) * price(d) WHEN CHANGED(quantity(d)) OR CHANGE
 
 [Form events](/Form_events.md) occur on an open form: at a point in its life (`INIT`, `APPLY`, `CANCEL`, `CLOSE`, `DROP`), on what the user does, or on a timer with `SCHEDULE`. A handler is attached with the `ON` option — in the [event](/Event_block.md), [properties and actions](/Properties_and_actions_block.md) and [object](/Object_blocks.md#objects) blocks of the `FORM` statement, or in the [property options](/Property_options.md).
 
-| What the event serves   | Events                                                                                                         |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------- |
-| the form as a whole     | `INIT`, `QUERYCLOSE`, `QUERYOK`, `OK`, `APPLY`, `CANCEL`, `CLOSE`, `DROP`, `SCHEDULE`                          |
-| a form object           | `CHANGE`                                                                                                       |
-| an object group         | `FILTER`, `ORDER`, `SELECT`, `FILTERS`, `ORDERS`                                                               |
-| a filter group          | `FILTERGROUPS`                                                                                                 |
-| a property or an action | `CHANGE`, `CHANGEWYS`, `GROUPCHANGE`, `EDIT`, `CONTEXTMENU`, `KEYPRESS`, `FILTERS PROPERTY`, `SELECT PROPERTY` |
-| a container             | `EXPAND`, `COLLAPSE`, `TAB`                                                                                    |
+| What the event serves   | Events                                                                                            |
+| ----------------------- | ------------------------------------------------------------------------------------------------- |
+| the form as a whole     | `INIT`, `QUERYCLOSE`, `QUERYOK`, `OK`, `APPLY`, `CANCEL`, `CLOSE`, `DROP`, `SCHEDULE`             |
+| a form object           | `CHANGE`                                                                                          |
+| an object group         | `FILTER`, `ORDER`, `SELECT`, `FILTERS`, `ORDERS`                                                  |
+| a filter group          | `FILTERGROUPS`                                                                                    |
+| a property or an action | `CHANGE`, `GROUPCHANGE`, `EDIT`, `CONTEXTMENU`, `KEYPRESS`, `FILTERS PROPERTY`, `SELECT PROPERTY` |
+| a container             | `EXPAND`, `COLLAPSE`, `TAB`                                                                       |
 
 The `BEFORE` and `AFTER` postfixes give the moments before and after the operation. For the property change events there are the predefined handlers `READONLY`, `READONLYIF` and `SELECTOR`.
 
