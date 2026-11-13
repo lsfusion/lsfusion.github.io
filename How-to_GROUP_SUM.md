@@ -45,7 +45,7 @@ countBooks 'Number of books' (Tag t) = GROUP SUM 1 IF in(t, Book b);
 
 ### Task[​](#task-2 "Direct link to Task")
 
-We have the information about the movement of books: each record is linked to the book itself and the warehouse where the movement occured, and also contains quantity and types of operations (receipt/shipment).
+We have the information about the movement of books: each record is linked to the book itself and the warehouse where the movement occurred, and also contains quantity and types of operations (receipt/shipment).
 
 ```
 CLASS Stock 'Warehouse';
@@ -82,7 +82,7 @@ Similar to [**Example 3**](#example-3), except that each movement is associated 
 date 'Date' = DATA DATE (Ledger) INDEXED; // it is better to add an index to filter by date quickly
 ```
 
-We need to calculate the current balance for a given book at the warehouse for the specific date (as of the morning, without the movements occured on that day).
+We need to calculate the current balance for a given book at the warehouse for the specific date (as of the morning, without the movements occurred on that day).
 
 ### Solution[​](#solution-3 "Direct link to Solution")
 
