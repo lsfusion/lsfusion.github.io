@@ -181,19 +181,25 @@ annotationSetting
 
 * `annotationSetting`
 
-Property annotation. Begins with `@@`. The following annotations are supported:
+  Property annotation. Begins with `@@`. The following annotations are supported:
 
-* `@@deprecated`
+  * `@@inputlist`
 
-* `@@deprecated(since)`
+  * `@@noinputlist`
 
-* `@@deprecated(since, message)`
+    Turn the [value completion list](/Interactive_view.md#async) built from the values of the annotated property on (`@@inputlist`) or off (`@@noinputlist`): the list of its existing values that is read from the database as the user types, offered in the editor of the property itself when its value is of a string class and in the value field of a filter by this property. Without an annotation the list is offered when the estimated number of rows to read is below the working parameter `asyncValuesMaxReadDataCompletionCount`, except for properties of the text, JSON and XML classes, which get it only with `@@inputlist`. The annotations do not affect the choice of a linked object offered for a composition through a link (a composition of `name[Item]` with `item[Line]`): that list consists of the objects of the class, not of the values of the property.
 
-  Marks the property as deprecated and not recommended for use. The plugin displays such properties as strikethrough.
+  * `@@deprecated`
 
-  * `since` String literal indicating the platform version since which the property is considered deprecated.
+  * `@@deprecated(since)`
 
-  * `message` String literal providing an explanation of why the property is marked as deprecated.
+  * `@@deprecated(since, message)`
+
+    Marks the property as deprecated and not recommended for use. The plugin displays such properties as strikethrough.
+
+    * `since` String literal indicating the platform version since which the property is considered deprecated.
+
+    * `message` String literal providing an explanation of why the property is marked as deprecated.
 
 ### `DESIGN` statement default values block[​](#design-statement-default-values-block "Direct link to design-statement-default-values-block")
 
