@@ -10,7 +10,7 @@ MAX expr1, ..., exprN
 
 ### Description[​](#description "Direct link to Description")
 
-The `MAX` operator creates a property whose value is the maximum among the values of the specified operands. The skipping of `NULL` operands and the determination of the result class follow the [extremum](/Extremum_MAX_MIN.md).
+The `MAX` operator creates a property whose value is the maximum among the values of the specified operands. The skipping of `NULL` operands and the determination of the result class follow the [extremum](/Extremum_MAX_MIN.md). An operator written after the last operand belongs to that operand, not to the result: a comparison of the maximum is written `(MAX a, b) > c`.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 

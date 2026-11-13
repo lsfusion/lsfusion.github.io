@@ -10,7 +10,7 @@ MIN expr1, ..., exprN
 
 ### Description[​](#description "Direct link to Description")
 
-The `MIN` operator creates a property whose value is the minimum among the values of the specified operands. The skipping of `NULL` operands and the determination of the result class follow the [extremum](/Extremum_MAX_MIN.md).
+The `MIN` operator creates a property whose value is the minimum among the values of the specified operands. The skipping of `NULL` operands and the determination of the result class follow the [extremum](/Extremum_MAX_MIN.md). An operator written after the last operand belongs to that operand, not to the result: a comparison of the minimum is written `(MIN a, b) > c`.
 
 ### Parameters[​](#parameters "Direct link to Parameters")
 
