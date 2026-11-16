@@ -1,5 +1,7 @@
 # How-to: Custom components (properties)
 
+This article describes classic JavaScript views for existing code. For a new view, use a React component in a `custom` container or registered as `reactView` for `CUSTOM` ([How-to: Custom React views](/How-to_Custom_React_views.md)).
+
 For each [property](/Properties.md) type, by default, a predefined visual component is used to display and edit the data. However, it is possible to override components with your own, created with JavaScript. This functionality is only supported in the web client.
 
 Consider the task of creating a chat room for communication between users to demonstrate this capability.

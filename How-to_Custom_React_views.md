@@ -116,6 +116,8 @@ const seekRef = useSeekOnScroll(controller.o, { enabled: follow });
 
 Options: `enabled` (default `true`) suspends the tracking, `threshold` (`0.6`) is how much of an element must be visible to count as on screen, `settle` (`250` ms) is how long the rows on screen must stay the same before the view seeks — the wait starts over whenever a row comes on screen or leaves it, not on every scroll event —, and `onSeek(row)` is called for each issued seek. Use one `useSeekOnScroll` per scrolling element. The rows delivered for the new position replace `list`, and everything built from it — values and [placed lsFusion views](#placing) alike — follows.
 
+After a change of the filters or sortings, a feed that should start over moves to the first row ([filters](#filters)).
+
 The hook moves the scroll position of that box and switches off the browser's own scroll anchoring there, so it touches nothing outside the element the view is drawn in: everything there — a platform container, a box another view shares, the page, a portal's box — belongs to something else. Rows that scroll only in such an element leave the hook doing nothing at all — no seek, and no scroll into view of a current moved out of sight — and it says so once in the console. Give the rows a scrolling box of the view's own — a bounded height and `overflow: auto`.
 
 To move to the first or last row of the whole list under the group's current filters and sortings, including the user's, pass the group's `change` an edge of the list instead of a row — `{to: 'home'}` or `{to: 'end'}`, which the form's controller also has as `form.HOME` and `form.END`:
@@ -131,7 +133,7 @@ This is the move of the platform table's Ctrl+Home / Ctrl+End: the server finds 
 
 A group of an [object tree](#trees) takes no edge, and `ACTIVATE FIRST` and `ACTIVATE LAST` without seek objects keep its current objects: the tree is read whole under its open nodes, without pages. To move to the first or last node, call `controller.<group>.change(row)` through the member of that node's group, passing the row of the first or last node the view draws in its own order — parent then children — rather than the first or last element of one group's `list`.
 
-The number of rows read is `list.length`, not how many rows the group's filters admit, so under paged reading the projection alone cannot show "6 of 23". The total is a separate property that counts the rows under the form's current filter with the [`FILTER` operator](/Filter_FILTER.md), as in [How-to: Table status](/How-to_Table_status.md), placed inside the container so that it reaches `data`:
+The number of rows read is `list.length`, not how many rows the group's filters admit, so under paged reading the projection alone cannot show "6 of 23". A total kept current is a separate property that counts the rows under the form's current filter, including the applied user filters and view filters, with the [`FILTER` operator](/Filter_FILTER.md), as in [How-to: Table status](/How-to_Table_status.md), placed inside the container so that it reaches `data`:
 
 ```
 filteredCount 'Orders' = GROUP SUM 1 IF [ FILTER orders.o](Order o);
@@ -271,11 +273,16 @@ const List = window.lsfusion.List;
 React.createElement(window.lsfusion.List, { group: 'o', component: Row })
 ```
 
-`group` is the group object SID. `List` reads the group's rows out of the view's own projection by that name, the way [`BucketScope`](#bucketing) does, so it is given the name rather than the node. `keys` draws only some of the rows, in the order given — any array of the group's row keys, such as a filtered or re-sorted copy of `props.data.o.keys`:
+`group` is the group object SID. `List` reads the group's rows out of the view's own projection by that name, the way [`BucketScope`](#bucketing) does, so it is given the name rather than the node. `keys` places some of those rows in a visual block, in the order given. For example, inside a `BucketScope` for `o` whose `bucketOf` uses a server-computed row property, each cell draws its own rows:
 
 ```
-<List group="o" keys={props.data.o.keys.filter(k => props.data.o.byKey[k].sum.value > 0)} component={Row} />
+function OrderCell({cellKey}) {
+    const keys = window.lsfusion.useBucket(cellKey);
+    return <List group="o" keys={keys} component={Row} />;
+}
 ```
+
+Selecting or ordering rows is done on the server, through [filters](#filters) and [sortings](#orders), rather than by filtering or sorting the loaded page in JavaScript.
 
 A key the group does not hold draws nothing. A `List` given a group whose rows this view does not draw — one the view holds only a panel property of, or nothing of at all — throws: whether a view draws a group's rows is the form's design, not its data, so this is a mistake in the view, and the view shows the reason in its place and in the console. `List` draws the rows the projection holds, and a grid the form hides with `SHOWIF` keeps its rows, as the platform's own grid does: where the grid has a `SHOWIF`, render the `List` only while `props.data['GRID(o)'].hidden` is not set.
 
@@ -372,16 +379,15 @@ item = DATA Item (Detail);
 name = DATA ISTRING[100] (Detail);
 quantity = DATA INTEGER (Detail);
 
-showArchived = DATA LOCAL BOOLEAN ();
-
 FORM catalog 'Catalog'
     OBJECTS c = Category
     PROPERTIES(c) READONLY name
 
     OBJECTS i = Item
     PROPERTIES(i) READONLY name, archived, nameItem = name PANEL
-    PROPERTIES() showArchived
-    FILTERS category(i) = c, NOT archived(i) OR showArchived()
+    FILTERS category(i) = c
+    FILTERGROUP archive
+        FILTER 'Active' NOT archived(i) DEFAULT
     ORDERS name(i)
 
     OBJECTS d = Detail
@@ -393,15 +399,15 @@ DESIGN catalog {
     NEW page {
         horizontal = TRUE;
         NEW categories { fill = 1; custom = 'CategoryList'; MOVE BOX(c); }
-        NEW items { fill = 2; custom = 'ItemList'; MOVE BOX(i); MOVE PROPERTY(showArchived()); }
+        NEW items { fill = 2; custom = 'ItemList'; MOVE BOX(i); }
         NEW details { fill = 1; custom = 'DetailPanel'; MOVE PROPERTY(nameItem); MOVE BOX(d); }
     }
 }
 ```
 
-`CategoryList`, `ItemList` and `DetailPanel` are components like [`OrderBoard`](#the-component), and each container's `props.data` holds only the parts it draws: `CategoryList` sees `data.c`, `ItemList` sees `data.i` — its rows — and `data.showArchived`, `DetailPanel` sees `data.d` and, as `data.i`, only the panel property `nameItem` moved there. A part of a group is projected where its component stands — the rows where the group's grid is, a panel property where the property itself is — so the current item's name reaches the detail panel as a panel property of `i`, added under an alias and `MOVE`d into the container that draws it, without the group's rows. A click in a list sets the current object (`controller.c.change(row)`), and the filters of the groups below follow it — the platform's own dependency between groups, so the containers need no shared JavaScript state. A container that does not draw a group's rows chooses its current object through the form's controller — `controller.form.changeObject('c', row)`, with a row of its own data or a lookup's `objects` handle —, as it sorts the rows another container draws ([across containers](/How-to_Custom_view_controller.md#across-containers)). A form-level property two containers show is added twice, under two aliases, one in each container.
+`CategoryList`, `ItemList` and `DetailPanel` are components like [`OrderBoard`](#the-component), and each container's `props.data` holds only the parts it draws: `CategoryList` sees `data.c`, `ItemList` sees `data.i` with its rows and the `archive` filter group, `DetailPanel` sees `data.d` and, as `data.i`, only the panel property `nameItem` moved there. A part of a group is projected where its component stands — the rows where the group's grid is, a panel property where the property itself is — so the current item's name reaches the detail panel as a panel property of `i`, added under an alias and `MOVE`d into the container that draws it, without the group's rows. A click in a list sets the current object (`controller.c.change(row)`), and the filters of the groups below follow it — the platform's own dependency between groups, so the containers need no shared JavaScript state. A container that does not draw a group's rows chooses its current object through the form's controller — `controller.form.changeObject('c', row)`, with a row of its own data or a lookup's `objects` handle —, as it sorts the rows another container draws ([across containers](/How-to_Custom_view_controller.md#across-containers)). A form-level property two containers show is added twice, under two aliases, one in each container.
 
-The switch that decides which rows are shown is a form property, changed through the controller (`controller.showArchived.change(true)`) and applied by the form's filter — not a component state that filters `data.i.list`: the server then reads only the rows that pass the filter, and a count or a total the region shows over all the rows that pass it is a property over the same filter ([the count under the form's filter](#the-component)) — `list.length` is only the rows already read. The same holds for a search text or a chosen section. Only the state that does not decide what is read — an expanded card, an open sheet — stays in the component.
+The named selection is a `FILTERGROUP`: `data.i.archive.value` is `0` for active items and `null` for all items, including archived ones. To show archived items too, call `controller.i.archive.change(null)`; to hide them, call `controller.i.archive.change(0)` ([Filter groups](#filter-groups)). A chosen section similarly uses a filter group or the current object of a group. A search the user types uses a [property filter](#property-filters) by default, or the group's [user filters](#filters) when the view builds the conditions. The server selects the rows, and a count under the form's filter follows these filters too ([the count under the form's filter](#the-component)) — `list.length` is only the rows already read. A value stays a form property when other form logic reads it. Which region or tab is shown may stay in React state ([Placing platform components](#placing)), as may an expanded card or an open sheet.
 
 The regions are laid out by the standard containers: a horizontal parent, an extension coefficient (`fill`) on each column, and a base height on a column whose content scrolls inside it ([the base size](#selecting-the-component)).
 
@@ -1124,7 +1130,9 @@ Only the desktop web client draws the component. The mobile web client keeps its
 
 ### The application header[​](#application-header "Direct link to The application header")
 
-A header with a search field that finds records is a form: it wants a live projection, a session to hold the query, ordering and paging, and a way to open what it finds. So it is built as a form and opened into a window of its own, a [`WINDOW ... FORMS`](/WINDOW_statement.md) above the forms area, with [`SHOW ... WINDOW windowName`](/SHOW_operator.md):
+A header with a search field that finds records is a form: it wants a live projection, a session to hold the query, ordering and paging, and a way to open what it finds. So it is built as a form and opened into a window of its own, a [`WINDOW ... FORMS`](/WINDOW_statement.md) above the forms area, with [`SHOW ... WINDOW windowName`](/SHOW_operator.md).
+
+The query is a form property here because an empty query must find nothing. A search over a list the user browses uses a [property filter](#property-filters) by default.
 
 ```
 // the window the header lives in: one form, drawn alone above the forms area, no taller than that form
@@ -1352,6 +1360,8 @@ Where a view draws the tree's rows, the tree's node says which of them is curren
 
 ### Sortings[​](#orders "Direct link to Sortings")
 
+After a change of the filters or sortings, a feed that should start over moves to the first row ([filters](#filters)).
+
 A view that draws the rows of a group not in a tree carries `orders` — the group's sortings, in priority order — beside `list` and `keys`: a sorting is the order the rows are drawn in, so it is projected where they are, and a container holding only a panel property of the group has neither. Where it is there it is always there, and empty when the group is sorted by nothing. Each entry is an object:
 
 | Field      | Meaning                                                                                             |
@@ -1511,6 +1521,21 @@ The view takes the browser's `copy` and `paste` events itself and gives the text
 Another container copies and pastes through the form's controller, `controller.form.copy('<group>')` and `paste('<group>', text)`, which are refused where the selection's calls are.
 
 ### Filters[​](#filters "Direct link to Filters")
+
+Rows are selected and ordered on the server. Choose the mechanism by the situation:
+
+| Situation                                                                                                         | Mechanism                                                                                                                                                                           |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A record or category chosen from a list                                                                           | The group's current object, `controller.<g>.change(row)`                                                                                                                            |
+| A search the user types over one or several properties                                                            | A [property filter](#property-filters), `controller.<g>.filter.<p>.change(...)`; for several properties, a combined property or adjacent filters joined by `or` and stated together |
+| Conditions built by the view's filter editor                                                                      | The group's user filters, `controller.<g>.filters.change(...)`                                                                                                                      |
+| A sorting the user picks                                                                                          | The group's [sortings](#orders), `controller.<g>.orders.change(...)`                                                                                                                |
+| A fixed set of named selections                                                                                   | A [filter group](#filter-groups), `FILTERGROUP`                                                                                                                                     |
+| A condition imposed by the view that the user must not see or reset                                               | The group's [view filters](#view-filters), `controller.<g>.viewFilters.change(...)`                                                                                                 |
+| A value other form logic reads, an empty value that must select no rows, or a predicate user filters cannot state | A form property (normally `DATA LOCAL`) and `FILTERS` / `ORDERS` over it                                                                                                            |
+| Which region or tab is shown                                                                                      | React state (`useState`, [`<Platform>`](#placing), [`useShown`](#placing))                                                                                                          |
+
+After a change of the filters or sortings, the server reads rows around the current row, as in the platform's table. A feed that should start over calls `controller.<g>.change(controller.form.HOME)` after the change in the same synchronous [batch](/How-to_Custom_view_controller.md#batch). In the [manual filter apply mode](#filter-controls), move to the start after applying the filters, so the move uses the new conditions.
 
 `filters` is the group's list of user filter conditions, in the order they are applied: the ones the server filters the group by, with the changes that wait to be sent: in the [manual apply mode](#filter-controls), those that wait for the apply, and, in either mode, a value the platform's panel prepares — F3's — till its editor commits it. They are a part of the group of their own, like its rows and its panel properties, and they are on the group's node where their component is — where `FILTERS(<group>)` is: inside the group's box, which is where a `custom` on `BOX(<group>)` draws the rows too, or `FILTERS(<group>)` itself when it has a `custom` of its own. There `filters` is always present, and empty when the group is unfiltered; the group's node in any other container does not have it. A group in `PANEL` view has none anywhere: the platform shows it no user filters either. Each condition is an object:
 
@@ -1701,6 +1726,63 @@ export function ItemSearch({data, controller}) {
     </label>;
 }
 ```
+
+One input can search several properties without a `DATA LOCAL` search property. One option is a combined property, declared `FILTER` (here `name` and `description` are string properties of `Item`):
+
+```
+searchText 'Search' (Item i) = CONCAT ' ', name(i), description(i);
+
+FORM items
+    OBJECTS i = Item
+    PROPERTIES(i) searchText FILTER
+;
+
+DESIGN items {
+    NEW search FIRST {
+        custom = 'CombinedItemSearch';
+        MOVE FILTER(searchText(i));
+    }
+}
+```
+
+```
+export function CombinedItemSearch({data, controller}) {
+    const filter = data.i.filter.searchText;
+    return <input value={filter.value ?? ''}
+                  onChange={e => controller.i.filter.searchText.change(e.target.value)}/>;
+}
+```
+
+[`CONCAT`](/CONCAT_operator.md) skips `NULL` operands and places a space between the others. The search can match across the boundary between fields, so this differs from `name contains text OR description contains text`. The combined property must be in `PROPERTIES`, but need not be displayed: its `FILTER(searchText(i))` component must remain in the design.
+
+For a separate match in either property, declare their filters next to one another and state both in one synchronous `batch`:
+
+```
+FORM items
+    OBJECTS i = Item
+    PROPERTIES(i) name FILTER, description FILTER
+;
+
+DESIGN items {
+    NEW search FIRST {
+        custom = 'NameOrDescriptionSearch';
+        MOVE FILTER(name(i));
+        MOVE FILTER(description(i));
+    }
+}
+```
+
+```
+export function NameOrDescriptionSearch({data, controller}) {
+    const change = text => controller.batch(() => {
+        controller.i.filter.name.change(text, {compare: '_', negation: false, or: true});
+        controller.i.filter.description.change(text, {compare: '_', negation: false, or: false});
+    });
+    return <input value={data.i.filter.name.value ?? ''} onChange={e => change(e.target.value)}/>;
+}
+```
+
+At form opening, empty property filters occupy the start of the condition list in declaration order, so these two conditions are adjacent. Always change and clear both together: `or` joins a condition to the next **active** one, so clearing only the second can join the first to an unrelated condition. Replacing the whole list with `filters.change([...])` moves empty property-filter placeholders to its end, and does not guarantee that this pair stays adjacent. Use the paired variant only while the two conditions remain adjacent; otherwise use a combined property or explicitly state the entire condition list when the view owns it.
 
 A property filter does not depend on who draws the group's conditions: this view, which then gets `filters` too, or another view, or the platform's filter panel — its condition is one of the group's list either way, sent as any change is: at once, or, in the [manual apply mode](#filter-controls), on the apply, the filter showing the change meanwhile. Over the platform's panel the filter is the panel's own row of it, which the view draws: the panel shows no row of its own for it. It is a row of the panel as any other is: F3 on a column whose first row it is puts the cell's value into it, its comparison, negation and junction kept — React drawing the row, no editor opens —, and so, while it shows no condition, do Alt+F3 and the add of the filter controls on that column, typing there starting nothing; while it shows one, the add and typing start a new row of the panel's. A filter of a property of a [tree](#trees)'s group is on its group's node, as a filter group of a tree's group is. Its [entry](#display-options), `data['FILTER(name(i))']`, says whether the form shows the filter — its `SHOWIF`, or a container's above it.
 

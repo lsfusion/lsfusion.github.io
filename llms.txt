@@ -478,7 +478,7 @@
 
 ## Filter_FILTER
 
-- [Filter (FILTER)](/Filter_FILTER.md): The filter operator creates a property, defined on the objects of an object group, that returns TRUE when their object collection is included in the group's current filter, and NULL otherwise.
+- [Filter (FILTER)](/Filter_FILTER.md): The filter operator creates a property, defined on the objects of an object group, that returns TRUE when their object collection is included in the group's current filter, and NULL otherwise. It accounts for the form's filters and class restrictions, the filters selected in its filter groups, the user filters and the view filters. Only applied conditions are included: changes waiting for the manual filter apply are not.
 
 ## FILTER_ORDER_operators
 
@@ -602,15 +602,15 @@
 
 ## How-to_Custom_components_objects
 
-- [How-to: Custom Components (objects)](/How-to_Custom_components_objects.md): By default, each object on a form with GRID view is displayed on the form as a flat table with columns.
+- [How-to: Custom Components (objects)](/How-to_Custom_components_objects.md): This article describes classic JavaScript views for existing code. For a new view, use a React component in a custom container or registered as reactView for CUSTOM (How-to: Custom React views).
 
 ## How-to_Custom_components_properties
 
-- [How-to: Custom components (properties)](/How-to_Custom_components_properties.md): For each property type, by default, a predefined visual component is used to display and edit the data.
+- [How-to: Custom components (properties)](/How-to_Custom_components_properties.md): This article describes classic JavaScript views for existing code. For a new view, use a React component in a custom container or registered as reactView for CUSTOM (How-to: Custom React views).
 
 ## How-to_Custom_components_server_calls
 
-- [How-to: Custom Components (server calls)](/How-to_Custom_components_server_calls.md): A custom view calls the server through the form controller's exec / eval / evalAction / change methods. The mechanics — the authorization gate, sessions, value conversion — are described in Calling the server, and the method signatures in the form controller API. This page is an end-to-end example: one CUSTOM component that calls actions and properties through the form's CUSTOMS clause with every major kind of parameter.
+- [How-to: Custom Components (server calls)](/How-to_Custom_components_server_calls.md): This article describes classic JavaScript views for existing code. For a new view, use a React component in a custom container or registered as reactView for CUSTOM (How-to: Custom React views).
 
 ## How-to_Custom_React_views
 
