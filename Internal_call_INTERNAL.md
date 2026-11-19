@@ -34,6 +34,8 @@ For this type of interaction, an SQL command is specified as a property value ev
 
 To declare an action or write an action statement implemented via an internal call, use the [`INTERNAL` operator](/INTERNAL_operator.md).
 
+A JavaScript function called by `INTERNAL CLIENT` in the web client receives [the form or navigator controller](/Form_and_navigator_controllers.md): on a form it can change the form and call the server, and in the navigator it can call the server and activate navigator elements. [Client JavaScript modules](/Client_JavaScript_modules.md#named-exports-and-auto-registration) describe how such a function is exposed and found by name.
+
 ## Examples[​](#examples "Direct link to Examples")
 
 ```

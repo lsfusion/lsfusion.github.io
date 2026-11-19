@@ -23,6 +23,10 @@ Just as an [interactive](/Interactive_view.md) form view, the navigator is displ
 
 To manage the navigator use the [`NAVIGATOR` statement](/NAVIGATOR_statement.md).
 
+### React[​](#react "Direct link to React")
+
+A React component that draws a window selects navigator elements as the user does, through [the navigator controller](/Form_and_navigator_controllers.md#navigator-controller).
+
 ### Examples[​](#examples "Direct link to Examples")
 
 ```

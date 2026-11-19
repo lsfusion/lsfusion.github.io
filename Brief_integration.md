@@ -214,7 +214,7 @@ The Java target is a class extending `InternalAction`, given by its name or as a
 setNoCancelInTransaction() INTERNAL <{ context.getSession().setNoCancelInTransaction(true); }>;
 ```
 
-### Declarative integration (FORMULA, CUSTOM, JSON)[​](#declarative-integration-formula-custom-json "Direct link to Declarative integration (FORMULA, CUSTOM, JSON)")
+### Declarative integration (FORMULA, JSON)[​](#declarative-integration-formula-json "Direct link to Declarative integration (FORMULA, JSON)")
 
 The [`FORMULA` operator](/FORMULA_operator.md) creates a property computed by an SQL expression, possibly a different one per DBMS. The table-valued form maps the property onto a whole table ([custom formula](/Custom_formula_FORMULA.md)).
 
@@ -222,7 +222,7 @@ The [`FORMULA` operator](/FORMULA_operator.md) creates a property computed by an
 FORMULA [NULL] [className [valueId]] implList [( paramList )] [NULL]
 ```
 
-`CUSTOM` hands rendering in the client to a classic JavaScript function or a React component registered as `reactView` ([React in CUSTOM](/How-to_Custom_React_views.md#form-custom)): on an object group as `CUSTOM renderFunction [OPTIONS optionsExpr]` ([object blocks](/Object_blocks.md)), on a property as `CUSTOM renderFunction [CHANGE [editFunction]]` ([properties and actions block](/Properties_and_actions_block.md)). The function or component is given the view's own local controller, which reads and changes what this view shows. The form controller — and with it the server calls — is reached from it as `controller.form` ([How-to: Custom Components](/How-to_Custom_components_objects.md)).
+Client-side rendering through `CUSTOM` and calls through `controller.form` are covered in [Brief: custom views](/Brief_custom.md).
 
 The [`JSON` and `JSONTEXT` operators](/JSON_operator.md) create a property building JSON out of a list of properties or out of a form.
 

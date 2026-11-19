@@ -214,7 +214,7 @@ Java-цель — класс, наследующий `InternalAction`, зада�
 setNoCancelInTransaction() INTERNAL <{ context.getSession().setNoCancelInTransaction(true); }>;
 ```
 
-### Декларативная интеграция (FORMULA, CUSTOM, JSON)[​](#декларативная-интеграция-formula-custom-json "Прямая ссылка на этот заголовок")
+### Декларативная интеграция (FORMULA, JSON)[​](#декларативная-интеграция-formula-json "Прямая ссылка на этот заголовок")
 
 [Оператор `FORMULA`](/ru/FORMULA_operator.md) создает свойство, вычисляемое выражением на SQL, возможно разным для разных СУБД. Табличная форма отображает свойство на целую таблицу ([пользовательская формула](/ru/Custom_formula_FORMULA.md)).
 
@@ -222,7 +222,7 @@ setNoCancelInTransaction() INTERNAL <{ context.getSession().setNoCancelInTransac
 FORMULA [NULL] [className [valueId]] implList [( paramList )] [NULL]
 ```
 
-`CUSTOM` отдает отрисовку в клиенте классической JavaScript-функции или React-компоненту, зарегистрированному как `reactView` ([React в CUSTOM](/ru/How-to_Custom_React_views.md#form-custom)): у группы объектов — `CUSTOM renderFunction [OPTIONS optionsExpr]` ([блоки объектов](/ru/Object_blocks.md)), у свойства — `CUSTOM renderFunction [CHANGE [editFunction]]` ([блок свойств и действий](/ru/Properties_and_actions_block.md)). Функция или компонент получает собственный локальный контроллер представления, который читает и изменяет то, что это представление показывает. Контроллер формы, а с ним и вызовы сервера, достается из него как `controller.form` ([How-to: Пользовательские компоненты](/ru/How-to_Custom_components_objects.md)).
+Клиентская отрисовка через `CUSTOM` и вызовы через `controller.form` описаны в [Brief: пользовательские представления](/ru/Brief_custom.md).
 
 [Операторы `JSON` и `JSONTEXT`](/ru/JSON_operator.md) создают свойство, собирающее JSON из списка свойств или из формы.
 

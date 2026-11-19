@@ -85,7 +85,9 @@ The [form design](/Form_design.md) describes how a form looks in the [interactiv
 
 The hierarchy is changed by the [`DESIGN` statement](/DESIGN_statement.md): `NEW` creates a container, `MOVE` moves a component, `REMOVE` takes it out, a component name with a block edits it, and `propertyName = value` sets a property. A component is picked by its name or by `PROPERTY(...)`, `GRID(...)`, `BOX(...)`, `PANEL(...)`, `TOOLBARBOX`, `GROUP(...)`, `PARENT(...)`. The insertion position is `FIRST`, `LAST`, `BEFORE`, `AFTER`.
 
-The layout of the children is set by the container options `horizontal`, `tabbed`, `lines` (together with `grid`), and its look by `caption`, `image` ([icons](/Icons.md)), `border`, `collapsible` (from code such a container is collapsed by the [`EXPAND` and `COLLAPSE`](/Container_visibility_EXPAND_COLLAPSE.md) actions), `popup`, `showIf`, and `custom` — a React component or an HTML template, web client only. Data reaches a custom view through object groups — the group's rows in `props.data.<g>.list` for a React container, `props.data.list` for a `CUSTOM` React component registered as `reactView` ([React in CUSTOM](/How-to_Custom_React_views.md#form-custom)), the `update` list for a classic `CUSTOM` object-group view — with server-side paging and filters. A JSON property carries one object's value.
+The layout of the children is set by the container options `horizontal`, `tabbed`, `lines` (together with `grid`), and its look by `caption`, `image` ([icons](/Icons.md)), `border`, `collapsible` (from code such a container is collapsed by the [`EXPAND` and `COLLAPSE`](/Container_visibility_EXPAND_COLLAPSE.md) actions), `popup` and `showIf`.
+
+Client-code views of containers (`custom`), components and windows are covered in [Brief: custom views](/Brief_custom.md).
 
 ```
 DESIGN order {
@@ -117,6 +119,8 @@ Which container a property component lands in is determined by its view on the f
 
 The [navigator](/Navigator.md) is the tree the user starts working with the application from. Its elements come in three types: a *folder* groups other elements, a *form element* opens a [form](/Brief_view.md#forms) in the interactive view, and an *action element* runs an action that takes no arguments. The root is the `System.root` folder. **Analogy**: the application menu together with its routing.
 
+`NAVIGATOR` and `WINDOW` declarations belong to source modules and cannot appear in [eval code](/Eval_EVAL.md).
+
 The navigator is filled by the [`NAVIGATOR` statement](/NAVIGATOR_statement.md) as nested blocks: `NEW FOLDER`, `NEW FORM` and `NEW ACTION` create an element as a child of the current one, `MOVE` moves an existing one, and an element name with a block edits it. The position is `FIRST`, `LAST`, `BEFORE`, `AFTER`. The element options are: `WINDOW` — the [window](/Navigator_design.md) for its children (with `PARENT`, for the element itself as well), `HEADER` — a caption from a property, `SHOWIF` — visibility, `IMAGE` / `NOIMAGE` — the [icon](/Icons.md), `CHANGEKEY` and `CHANGEMOUSE` — a hot key and a mouse binding, `CLASS` — a CSS class. The `SCHEDULE PERIOD` statement creates a scheduler that runs an action with the given period in seconds — on the client, for the whole connection (see [periodic execution](/Brief_logic.md#periodic-execution)).
 
 ```
@@ -133,11 +137,11 @@ NAVIGATOR {
 
 ### Windows and placement[​](#windows-and-placement "Direct link to Windows and placement")
 
-The [navigator design](/Navigator_design.md) is a set of *windows*, areas of the screen each of which shows its own navigator elements. A window is declared by the [`WINDOW` statement](/WINDOW_statement.md): `VERTICAL` or `HORIZONTAL` sets the orientation of the toolbar, `POSITION(x, y, width, height)` sets the place on the `100` by `100` point desktop, and `LEFT`, `RIGHT`, `TOP` and `BOTTOM` pin the window to an edge. There are also `HIDETITLE`, `HIDESCROLLBARS`, the alignments `HALIGN`, `VALIGN`, `TEXTHALIGN`, `TEXTVALIGN`, `CLASS`, and `CUSTOM` — a custom view of the window, drawn by a React component or an HTML template. Only the desktop web client draws it: the mobile web client and the desktop client keep the standard menu.
+The [navigator design](/Navigator_design.md) is a set of *windows*, areas of the screen each of which shows its own navigator elements. A window is declared by the [`WINDOW` statement](/WINDOW_statement.md): `VERTICAL` or `HORIZONTAL` sets the orientation of the toolbar, `POSITION(x, y, width, height)` sets the place on the `100` by `100` point desktop, and `LEFT`, `RIGHT`, `TOP` and `BOTTOM` pin the window to an edge. There are also `HIDETITLE`, `HIDESCROLLBARS`, the alignments `HALIGN`, `VALIGN`, `TEXTHALIGN`, `TEXTVALIGN` and `CLASS`.
 
 Which window an element is drawn in is set by the `WINDOW` option of its parent folder. An element that ended up in a window other than the window of its folder is shown only when that folder is the one [selected](/Navigator_design.md#selectedfolder) by the user in its own window — this is how a folder switches the content of a neighbouring window.
 
-The [system windows](/Navigator_design.md#systemwindows) are created by the platform: `System.forms` — the window forms open in, `System.log` — messages to the user, `System.root` and `System.toolbar` — the horizontal and vertical navigator toolbars, `System.system` — the system buttons, `System.logo` — the logo. The `EXTEND WINDOW ... CUSTOM` statement changes the renderer of an already declared window, and `HIDE WINDOW` hides it. `System.log` among the `NATIVE` windows and the `FORMS` windows — `System.forms` and those an application declares — take a renderer, and only a React component — one that is handed what the window holds instead of navigator elements. The other `NATIVE` windows hold no navigator elements and take neither a component nor a template.
+The [system windows](/Navigator_design.md#systemwindows) are created by the platform: `System.forms` — the window forms open in, `System.log` — messages to the user, `System.root` and `System.toolbar` — the horizontal and vertical navigator toolbars, `System.system` — the system buttons, `System.logo` — the logo. `HIDE WINDOW` hides a window.
 
 ## Reports[​](#reports "Direct link to Reports")
 

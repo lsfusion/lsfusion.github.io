@@ -156,6 +156,10 @@
 
 - [BREAK operator](/BREAK_operator.md): The BREAK operator creates an action that implements a loop interruption.
 
+## Brief_custom
+
+- [Brief: custom views](/Brief_custom.md): Choosing a custom view
+
 ## Brief_integration
 
 - [Brief: integration](/Brief_integration.md): - Data import
@@ -164,9 +168,29 @@
 
 - [Brief: domain logic](/Brief_logic.md): - Classes
 
+## Brief_operation
+
+- [Brief: operation](/Brief_operation.md): System parameters
+
 ## Brief_physical
 
 - [Brief: physical model](/Brief_physical.md): - Execution
+
+## Brief_via_app
+
+- [Brief: running application](/Brief_via_app.md): Running application
+
+## Brief_via_dev
+
+- [Brief: development](/Brief_via_dev.md): Source development
+
+## Brief_via_idedev
+
+- [Brief: IntelliJ tools](/Brief_via_idedev.md): IntelliJ project tools
+
+## Brief_via_webapp
+
+- [Brief: browser WebMCP tools](/Brief_via_webapp.md): Tools in the user's client
 
 ## Brief_view
 
@@ -256,6 +280,10 @@
 
 - [Classification (IS/AS)](/Classification_IS_AS.md): Classification operators create properties that determine whether an object belongs to the class specified, which can be a user class or a built-in class. The value of the created property depends on whether the object belongs to that class:
 
+## Client_JavaScript_modules
+
+- [Client JavaScript modules](/Client_JavaScript_modules.md): A client JavaScript module is a file of a project that holds client code lsFusion code names each of them by a string, and the web client resolves all these names the same way (Named exports and auto-registration).
+
 ## CLOSE_FORM_operator
 
 - [CLOSE FORM operator](/CLOSE_FORM_operator.md): The CLOSE FORM operator creates an action that closes the open forms a given address names in the interactive view.
@@ -320,6 +348,10 @@
 
 - [Custom Spring bean (EventServer)](/Custom_Spring_bean_EventServer.md): When you need to reach the lsFusion system from your own Java code — to run a background job, host an integration server, process a stream of events, expose an RMI service — that is done with a Spring bean extending the EventServer hierarchy.
 
+## Custom_views
+
+- [Custom views](/Custom_views.md): A custom view is a part of a form's interactive view or of the navigator design drawn by client code instead of the platform: the application's own JavaScript code running in the web client. The desktop client uses the platform's standard view in its place.
+
 ## Data_export_EXPORT
 
 - [Data export (EXPORT)](/Data_export_EXPORT.md): The data export operator creates an action that reads values of the specified properties for all object collections where the value of the specified property (condition) is not NULL, and then saves these values to a file in a specified format.
@@ -371,6 +403,10 @@
 ## Domain_logic
 
 - [Domain logic](/Domain_logic.md): Properties are the basic concept for domain logic and are responsible for storing and calculating data.
+
+## Edit_functions
+
+- [Edit functions](/Edit_functions.md): An edit function is a JavaScript function responsible for editing a value in a custom view in the web client, as a render function is for displaying it. Its name is given in a property's CUSTOM option, after the CHANGE keyword, and in the CUSTOM block of the INPUT operator, for the value that operator requests from the user. In the desktop client the value is edited by the standard mechanism.
 
 ## Element_identification
 
@@ -496,6 +532,10 @@
 
 - [FOR operator](/FOR_operator.md): The FOR operator creates an action that implements loop.
 
+## Form_and_navigator_controllers
+
+- [Form and navigator controllers](/Form_and_navigator_controllers.md): The JavaScript code of a custom view, or other client JavaScript code, works with a form open in the interactive view through the form controller, and with the navigator through the navigator controller.
+
 ## Form_design
 
 - [Form design](/Form_design.md): The form design defines how a form is displayed in the interactive view.
@@ -598,27 +638,27 @@
 
 ## How-to_Custom_client_JS_modules
 
-- [How-to: Custom client JS modules](/How-to_Custom_client_JS_modules.md): When an application needs its own browser JavaScript — a custom view for an object or property, a function bound by an INTERNAL CLIENT action, or any other client-side code — that code can be kept as ordinary source files in the project and compiled into the web client at build time. The platform bundles each entry file and registers what it exports, so the application does not write any explicit loading or wiring for it. This applies to the web client only.
+- [How-to: Custom client JS modules](/How-to_Custom_client_JS_modules.md): This article collects typical tasks solved with client JavaScript modules, each with its solution. The modules are specified in Client JavaScript modules.
 
 ## How-to_Custom_components_objects
 
-- [How-to: Custom Components (objects)](/How-to_Custom_components_objects.md): This article describes classic JavaScript views for existing code. For a new view, use a React component in a custom container or registered as reactView for CUSTOM (How-to: Custom React views).
+- [How-to: Custom Components (objects)](/How-to_Custom_components_objects.md): This article describes classic JavaScript views for existing code. For a new view, use a React component in a custom container or registered as reactView for CUSTOM (React views).
 
 ## How-to_Custom_components_properties
 
-- [How-to: Custom components (properties)](/How-to_Custom_components_properties.md): This article describes classic JavaScript views for existing code. For a new view, use a React component in a custom container or registered as reactView for CUSTOM (How-to: Custom React views).
+- [How-to: Custom components (properties)](/How-to_Custom_components_properties.md): This article describes classic JavaScript views for existing code. For a new view, use a React component in a custom container or registered as reactView for CUSTOM (React views).
 
 ## How-to_Custom_components_server_calls
 
-- [How-to: Custom Components (server calls)](/How-to_Custom_components_server_calls.md): This article describes classic JavaScript views for existing code. For a new view, use a React component in a custom container or registered as reactView for CUSTOM (How-to: Custom React views).
+- [How-to: Custom Components (server calls)](/How-to_Custom_components_server_calls.md): This article describes classic JavaScript views for existing code. For a new view, use a React component in a custom container or registered as reactView for CUSTOM (React views).
 
 ## How-to_Custom_React_views
 
-- [How-to: Custom React views](/How-to_Custom_React_views.md): A DESIGN container can be rendered by a React component instead of the standard layout. The component receives a projection of the form state and draws the container's whole subtree itself. A table, a toolbar, filter controls, a filter group and a property's filter can be drawn by a React component of their own the same way, instead of the platform's view of them (A component's own view). Outside a form, a React component can draw a navigator window, the forms window, the log window and the window layout.
+- [How-to: Custom React views](/How-to_Custom_React_views.md): This article collects typical tasks solved with React views, each with its solution. The views are specified in the Language articles, starting with React views: the data a component receives is described in Form projection, and what it calls in React view controller.
 
 ## How-to_Custom_view_controller
 
-- [How-to: Custom view controller API](/How-to_Custom_view_controller.md): A custom view written in JavaScript communicates with the form through a controller object — with it the view sets the current object of a group, changes property values, looks up suggestions, and calls actions or scripts on the server. There are three kinds of custom view. A React view gets the controller of its own projection — the members below, beside the props.data they mirror — and the form's controller as its form; a classic view finds the form's controller as controller.form, and an INTERNAL CLIENT action is given it as an argument. The form's controller carries the server calls (exec / eval / evalAction / change), the methods that do what a view's members do to what another container or the platform draws (changeOrders('i', …), changeObject('i', row), …), the editing declaration (startEditing / stopEditing / isEditing) and the batch.
+- [How-to: Custom view controller API](/How-to_Custom_view_controller.md): This article collects typical tasks a custom view solves through its controller. The controller is specified in the Language articles: the members of a React view's controller in React view controller, and the form's controller, which a custom view of any kind gets, and the navigator's controller in Form and navigator controllers.
 
 ## How-to_Data_entry
 
@@ -1244,6 +1284,46 @@
 
 - [Signature matching (ISCLASS)](/Property_signature_ISCLASS.md): The signature matching operator creates a property that determines, from a class perspective, whether the property specified in the operator can have a non-NULL value for the given arguments. In fact, this operator infers the possible classes of a given property from its semantics, and then, using logical operators and the classification operator, creates the required property.
 
+## React_component_views
+
+- [Component views and CUSTOM](/React_component_views.md): Like a container (React views), a tree's table, a toolbar, filter controls, a filter group and a property's filter of the form design can be drawn by a React component of their own instead of the platform's view of them. A React component can also be the render function that the CUSTOM option gives a property or an object group: it draws one cell of the property, or the rows of the group as one of its view types.
+
+## React_filters_and_toolbar
+
+- [Filters and toolbar in React](/React_filters_and_toolbar.md): A React view can draw the user filters, the
+
+## React_form_behavior
+
+- [Form behavior in React](/React_form_behavior.md): A React view draws a part of a form in the interactive view, and the form's behavior covers that part as well: the focus, the indication that the form waits for the server, keys and mouse bindings, the form's SCHEDULE event and the hiding of a view with the containers around it.
+
+## React_platform_components
+
+- [Components the platform draws](/React_platform_components.md): Inside a React custom container, a component of the design given custom = NULL or a custom view of its own is drawn by the platform. The React view does not draw such a component but places it: with ` or usePlatform` it says where in its own markup the component's view goes. In the same way a view places, in every row it draws, the editor of a table property the platform draws, and a window drawn by React places the platform's views it shows.
+
+## React_projection
+
+- [Form projection](/React_projection.md): The form projection is the state of a form open in the interactive view, as a React view receives it: object groups, properties and design components, as JS objects.
+
+## React_rendering
+
+- [Rendering in React](/React_rendering.md): A React view can draw the rows of an object group, and the images and captions the platform projects, with components and hooks of the platform: they re-render only the rows that changed, lay the rows out in cells and let the page of rows follow the scroll.
+
+## React_trees_sortings_selection
+
+- [Trees, sortings and selection in React](/React_trees_sortings_selection.md): A React view that draws the rows of an object group gets in props.data the same state of those rows as the platform's table has, and changes it through props.controller: the hierarchy of an object tree and which of its nodes are open, the sortings, and the selected rows and columns. It also copies and pastes the selected cells as that table does.
+
+## React_view_controller
+
+- [React view controller](/React_view_controller.md): The component of a React view works with the form open in the interactive view through its controller, props.controller: it sets current objects and property values, runs actions, and changes sortings, filters and tree nodes.
+
+## React_views
+
+- [React views](/React_views.md): A React view is a custom view drawn by a React component in the web client instead of the platform, as part of a form's interactive view or of the navigator design. The articles of this section describe what such a component receives and what it calls.
+
+## React_windows
+
+- [Windows in React](/React_windows.md): Outside a form, a React component can draw a window instead of its standard drawing — a navigator window, the forms window, the log window — and can lay the windows out on the desktop instead of the standard layout. Like a React view of a form, such a component receives its data in props.data and a controller in props.controller, and places what the platform draws with ``.
+
 ## Read_file_READ
 
 - [Read file (READ)](/Read_file_READ.md): The read file operator creates an action that reads a file from a defined source and writes this file to the specified property without parameters.
@@ -1267,6 +1347,10 @@
 ## Recursive_loop_WHILE
 
 - [Recursive loop (WHILE)](/Recursive_loop_WHILE.md): The recursive loop operator is similar to a regular loop operator, with the only difference being that iteration is performed recursively until at a certain point the set of objects collections satisfying the condition becomes empty. This operator does not allow an alternative action.
+
+## Render_functions
+
+- [Render functions](/Render_functions.md): A render function is a JavaScript function drawing a custom view render, update and the optional clear. These places can also name a React component instead of such a function (A React component in CUSTOM). Only the web client calls render functions.
 
 ## Report_design
 
@@ -1303,6 +1387,22 @@
 ## Rules_physical
 
 - [Rules: physical model](/Rules_physical.md): - Execution
+
+## Rules_via_app
+
+- [Rules: running application](/Rules_via_app.md): Application context
+
+## Rules_via_dev
+
+- [Rules: development](/Rules_via_dev.md): Project context
+
+## Rules_via_idedev
+
+- [Rules: IntelliJ tools](/Rules_via_idedev.md): IDE diagnostics
+
+## Rules_via_webapp
+
+- [Rules: browser WebMCP tools](/Rules_via_webapp.md): Session context
 
 ## Rules_view
 

@@ -28,6 +28,8 @@ As with other value input operators, this operator allows to:
 
 The syntax of the value input operator is described by the [`INPUT` operator](/INPUT_operator.md).
 
+A JavaScript function named in `INPUT … CUSTOM` can [draw a custom value editor](/Edit_functions.md) for the input, extending the standard input, opening a separate window or replacing the cell content.
+
 ### Examples[​](#examples "Direct link to Examples")
 
 ```
