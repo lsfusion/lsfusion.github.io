@@ -12,7 +12,7 @@ A role groups a set of permissions and settings that are then applied to the use
 | `name[UserRole]`           | role name (`ISTRING[100]`)                                                                                                                                                                                  |
 | `sid[UserRole]`            | role code (`STRING[30]`), the stable identifier used to look a role up                                                                                                                                      |
 | `userRoleSID[STRING]`      | the role with the given `sid`                                                                                                                                                                               |
-| `disableRole[UserRole]`    | flag turning off the role's access rights without un-assigning it                                                                                                                                           |
+| `disableRole[UserRole]`    | flag turning off the role's access rights and working parameters without un-assigning it                                                                                                                    |
 | `copy[UserRole, UserRole]` | abstract action that copies one role's settings into another (extended by every settings block below); the base implementation sets the target's `name` and `sid` to the source value with a `_copy` suffix |
 | `copy[UserRole]`           | creates a new role, fills it through `copy[UserRole, UserRole]`, and activates it on the `securityPolicy` form                                                                                              |
 
@@ -22,17 +22,17 @@ A role cannot be deleted while it is still assigned to any user (`CONSTRAINT` on
 
 A user has one main role and any number of additional roles. The effective membership combines both.
 
-| Property                                         | What it returns                                                                                |
-| ------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
-| `mainRole[User]`                                 | the user's main role                                                                           |
-| `nameMainRole[User]` / `sidMainRole[CustomUser]` | name / code of the main role                                                                   |
-| `currentUserMainRoleName[]`                      | name of the current user's main role                                                           |
-| `overIn[User, UserRole]`                         | abstract membership flag; the base implementation adds the main role (`mainRole(user) = role`) |
-| `in[CustomUser, UserRole]`                       | explicit assignment of an additional role                                                      |
-| `has[User, UserRole]`                            | effective membership — `in[CustomUser, UserRole]` or `overIn[User, UserRole]` (materialized)   |
-| `userRoles[User]`                                | comma-separated names of all roles the user has, ordered by name                               |
-| `firstRole[User]`                                | the lowest-numbered role the user has other than `default`, falling back to the `default` role |
-| `rolesCount[User]`                               | number of roles the user has                                                                   |
+| Property                                         | What it returns                                                                                                                                                        |
+| ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mainRole[User]`                                 | the user's main role                                                                                                                                                   |
+| `nameMainRole[User]` / `sidMainRole[CustomUser]` | name / code of the main role                                                                                                                                           |
+| `currentUserMainRoleName[]`                      | name of the current user's main role                                                                                                                                   |
+| `overIn[User, UserRole]`                         | abstract membership flag; the base implementation adds the main role (`mainRole(user) = role`)                                                                         |
+| `in[CustomUser, UserRole]`                       | explicit assignment of an additional role                                                                                                                              |
+| `has[User, UserRole]`                            | effective membership — `in[CustomUser, UserRole]` or `overIn[User, UserRole]` (materialized)                                                                           |
+| `userRoles[User]`                                | comma-separated names of all roles the user has, ordered by name                                                                                                       |
+| `firstRole[User]`                                | the role whose working parameters apply to the user: the lowest-numbered role the user has other than `default`, falling back to `default`; a disabled role is skipped |
+| `rolesCount[User]`                               | number of roles the user has                                                                                                                                           |
 
 ### System roles[​](#systemRoles "Direct link to System roles")
 
