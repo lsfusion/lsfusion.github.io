@@ -190,7 +190,7 @@ A call that does not use `session` is stateless, but it still takes resources: i
 
 When executing an http request, it is often necessary to identify the user on whose behalf the specified action will be executed. At the moment, two types of authentication are supported by the platform:
 
-* [Basic identification](https://en.wikipedia.org/wiki/Basic_access_authentication) - the user name and password are passed in an encoded form in the `Authorization: Basic <credentials>` heading.
+* [Basic identification](https://en.wikipedia.org/wiki/Basic_access_authentication) - the user name and password are passed in an encoded form in the `Authorization: Basic <credentials>` heading. It is refused for a user with [two-factor authentication](/System_Authentication.md#twoFactor), who authenticates with a token.
 
 * Token-based authentication consists of two stages:
 
