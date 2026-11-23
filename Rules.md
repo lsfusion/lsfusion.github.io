@@ -131,7 +131,7 @@ C. FEEDBACK / REPORTING (`lsfusion_report_feedback`)
 
    Curly braces in a plain literal delimit a localization identifier: `'{"id":1}'` silently becomes `"id":1`, and `'{"id": 1}'` prevents the server from starting. A literal whose curly braces are part of the text (JSON, a regular expression, a template) SHOULD be written as raw: `r'{"id": 1}'` — the prefix is all it takes, and it takes part in neither localization nor reverse translation. Escaping (`'\{"id": 1\}'`) MAY be used when `${...}` interpolation is needed, which a raw literal does not support, or when single quotes inside make the delimiter form read worse. The assistant MUST NOT leave such braces unescaped in a plain literal.
 
-4. Date and time literals MUST use the underscore formats: `2001_01_31` (`DATE`), `2001_01_31_14:30[:00]` (`DATETIME`), `14:30[:00]` (`TIME`). An ISO-style `2001-01-31` is NOT a date literal.
+4. Date and time literals MUST use the underscore formats: `2001_01_31` (`DATE`), `2001_01_31_14:30[:00]` (`DATETIME`), `14:30[:00]` (`TIME`). An ISO-style `2001-01-31` or a slash-separated `31/01/2001` is NOT a date literal: both are integer arithmetic.
 
 5. An expression whose comma is NOT enclosed in brackets of its own — `OVERRIDE a, b`, `CONCAT sep, a, b`, `GROUP CONCAT expr, sep`, `MAX a, b` — MUST NOT go straight into a comma-separated list (`PROPERTIES`, `EXPORT FROM`, `JSON FROM`, `ORDER`, group-object and parameter lists): that comma reads as the list separator and the list silently reshapes. Group it, or name it as a property, in whichever form the enclosing block accepts. A call's own commas — `f(a, b)` — are safe in the enclosing list, but they do not fence off such an expression placed inside them: `f(MAX a, b)` passes one argument, not two.
 
