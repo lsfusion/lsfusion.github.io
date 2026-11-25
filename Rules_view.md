@@ -19,7 +19,7 @@
    * the form property name with its parameters, if no explicit alias was given
    * the explicit form property alias, if such an alias was specified
 
-   An expression MAY be placed into `ORDERS` as a fixed sorting the user neither sees nor changes.
+   An expression MAY be placed into `ORDERS` as a fixed sorting the user neither sees nor changes. [User sortings are applied before fixed ones](/Form_structure.md#sort), wherever they stand in the list. So to give such an expression priority over a sorting by a form property of the same object group in one `ORDERS` block, the assistant MUST write the expression before that sorting and mark the sorting `FIXED`.
 
 3. The assistant MUST NOT use `INPUT` inside actions added directly to a form through `PROPERTIES`, unless that action is used in an `ON CHANGE` handler: a built-in-class value is entered in the editor of the property whose change is being handled, so outside a change handler there is nowhere to render it. The exceptions are file and color values, which are entered through a separate dialog and MAY be requested from any form action.
 
