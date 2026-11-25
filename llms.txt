@@ -744,6 +744,10 @@
 
 - [How-to: GUI](/How-to_GUI.md): How to read these sections
 
+## How-to_Heavy_computations
+
+- [How-to: Heavy computations](/How-to_Heavy_computations.md): A calculated property created by a grouping is, unless it is materialized, computed inside every query that reads it, as a subquery. When an action needs such a property for a part of the objects only and the condition that selects these objects does not restrict the subquery, the grouping can be computed for all objects, with the selection applied to its result, so the time of the action can grow with the size of the tables rather than with the number of the objects it needs. Which conditions the platform moves inside a subquery is described in materializations. Whether a condition has been moved is seen in the text of the query in the explain log: what has been moved appears inside the subquery of the grouping as well, and a condition that has not been moved stands only outside it.
+
 ## How-to_IF_CASE
 
 - [How-to: IF/CASE](/How-to_IF_CASE.md): Example 1
