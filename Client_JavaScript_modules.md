@@ -1,8 +1,12 @@
 # Client JavaScript modules
 
-A *client JavaScript module* is a file of a project that holds client code: JavaScript that draws [custom views](/Custom_views.md) — parts of a form's [interactive view](/Interactive_view.md) or of the [navigator design](/Navigator_design.md) — in the web client, or that an action calls there. The components of [React views](/React_views.md), the [render functions](/Render_functions.md) and [edit functions](/Edit_functions.md) of the classic custom views, and the functions called by [`INTERNAL CLIENT`](/INTERNAL_operator.md) actions are all kept in such modules: lsFusion code names each of them by a string, and the web client resolves all these names the same way ([Named exports and auto-registration](#named-exports-and-auto-registration)).
+A *client JavaScript module* is a file of a project that holds client code: JavaScript that draws [custom views](/Custom_views.md) — parts of the [form design](/Form_design.md) or of the [navigator design](/Navigator_design.md) — in the web client, or that an action calls there.
 
-When an application needs its own browser JavaScript — a custom view for an object or property, a function bound by an [`INTERNAL CLIENT`](/INTERNAL_operator.md) action, or any other client-side code — that code can be kept as ordinary source files in the project and compiled into the web client at build time. The platform bundles each entry file and registers what it exports, so the application does not write any explicit loading or wiring for it. This applies to the web client only.
+The components of [React views](/React_views.md), the [render functions](/Render_functions.md) and [edit functions](/Edit_functions.md) of the classic custom views, and the functions called by [`INTERNAL CLIENT`](/INTERNAL_operator.md) actions are all kept in such modules: lsFusion code names each of them by a string, and the web client resolves all these names the same way ([Named exports and auto-registration](#named-exports-and-auto-registration)).
+
+Code in these modules works with a form and the navigator through the [form and navigator controllers](/Form_and_navigator_controllers.md).
+
+When an application needs its own browser JavaScript — a custom view for an object or property, a function bound by an [`INTERNAL CLIENT`](/INTERNAL_operator.md) action, or any other client-side code — that code can be kept as ordinary source files in the project and compiled into the web client at build time. The platform bundles each entry file and registers what it exports, so the application does not write any code to explicitly load it or register its exports. This applies to the web client only.
 
 ### File locations[​](#where-the-files-go "Direct link to File locations")
 
@@ -14,7 +18,9 @@ A *src/main/web/lib* subfolder is treated as shared helper code: its files are n
 
 ### Files without a build[​](#without-the-build "Direct link to Files without a build")
 
-A project with no build set up — no esbuild, no `org.mvnpm` dependencies — can still ship custom client JS as a plain file under *src/main/resources/web*, used as written: no bundling, no third-party-library resolution. (This is also the path `eval` uses.) A React view in a *.js* file is therefore written with `React.createElement` against the platform-provided `window.React` instead of JSX (a *.jsx* file keeps the JSX syntax — see the lightweight *.jsx* section below), and the component is exposed on the global `window` (the fallback described below) instead of as a named export. A `custom` name matching `[A-Z][A-Za-z0-9_$]*` is still inferred as React:
+A project with no build set up — no esbuild, no `org.mvnpm` dependencies — can still include custom client JS as a plain file under *src/main/resources/web*, used as written: no bundling, no third-party-library resolution. (This is also the path `eval` uses.)
+
+A React view in a *.js* file is therefore written with `React.createElement` against the platform-provided `window.React` instead of JSX (a *.jsx* file keeps the JSX syntax — see the section on *.jsx* files without a build below), and the component is exposed on the global `window` (the fallback described below) instead of as a named export. A `custom` name matching `[A-Z][A-Za-z0-9_$]*` is still inferred as React:
 
 ```
 function HelloBoard(props) {
@@ -38,7 +44,11 @@ DESIGN orders {
 
 Files in *web/init* must be **load-order-independent**: the scan gives them all one load order, so each must register or define at load and use any other library lazily (at render or on an event), never reach into another script at load time.
 
-The server reads these files — and the other files listed in `onWebClientInit[STRING]` — from its classpath (`target/classes`, `out/production/<module>`, another classes directory or a jar it was started with) each time a page is built, and keeps the bytes in memory until the file changes: every classpath directory is watched, and a created, changed or deleted file drops the cached copies of the files with its extension. In development mode the server additionally watches *src/main/resources* and copies a changed file into the build directory, but only for a classpath directory whose path contains `target/classes` or `out/production`, and only when *src/main/resources* exists next to it (a relative classpath entry is resolved against the server's working directory). So in development mode with a Maven or IntelliJ IDEA layout an edited resource is served on the next page load, without a restart, under a new `file/dev/...?version=<content hash>` URL. With any other layout the server keeps serving the copy staged into the classes directory: edit or replace that copy, and the change is picked up on the next page load as well.
+The server reads these files — and the other files listed in `onWebClientInit[STRING]` — from its classpath (`target/classes`, `out/production/<module>`, another classes directory or a jar it was started with) each time a page is built, and keeps the bytes in memory until the file changes: every classpath directory is watched, and a created, changed or deleted file invalidates the cached copies of the files with its extension.
+
+In development mode the server additionally watches *src/main/resources* and copies a changed file into the build directory, but only for a classpath directory whose path contains `target/classes` or `out/production`, and only when *src/main/resources* exists next to it (a relative classpath entry is resolved against the server's working directory).
+
+So in development mode with a Maven or IntelliJ IDEA layout an edited resource is served on the next page load, without a restart, under a new `file/dev/...?version=<content hash>` URL. With any other layout the server keeps serving the copy staged into the classes directory: edit or replace that copy, and the server serves the changed copy on the next page load as well.
 
 **Registered explicitly — list it in *onWebClientInit*.** Any file under *src/main/resources/web* outside *web/init* is loaded by naming it in the [`onWebClientInit`](/INTERNAL_operator.md) action with an integer order. The entry can also be set conditionally: the file is then loaded only if the condition holds.
 
@@ -58,11 +68,17 @@ The build and no-build paths compare as follows:
 | Load order            | one order (bundles are self-contained)  | one order (files must be order-independent) | explicit integer order                    |
 | Third-party libraries | bundled via `org.mvnpm`                 | loaded separately, used from `window`       | loaded separately, used from `window`     |
 
-### Lightweight .jsx (no build)[​](#lightweight-jsx "Direct link to Lightweight .jsx (no build)")
+### .jsx files without a build[​](#lightweight-jsx "Direct link to .jsx files without a build")
 
-A no-build file can also be written in JSX: a *.jsx* file under *src/main/resources/web* is transformed on the server when it is served, so the JSX syntax works with no `node`, no esbuild, and no build step, and the browser receives a plain script. Only the syntax changes — the file is still a no-build file: the JSX compiles to `React.createElement` calls against the platform-provided `window.React`, and the file runs as a classic top-level script, so a top-level `function` declaration is already a name on `window` — nothing else is needed. An `import` or `export` in a *.jsx* file is an error, reported in the browser console with the file skipped — importing modules is what the build (*src/main/web*) adds. Eligible components are also memoized automatically (React Compiler) during the same server-side transformation, so a no-build component re-renders only when its inputs change — no annotations, no build step. Because that transformation runs on the server, the web server must run on Java 11 through 23 — the JS engine performing it does not support newer JVMs yet. Outside that range a served *.jsx* reports the requirement to the browser console instead of rendering. A plain *.js* resource is unaffected, and so is the compiled *src/main/web* tier below, which places no requirement on the server JVM at all.
+A no-build file can also be written in JSX: a *.jsx* file under *src/main/resources/web* is transformed on the server when it is served, so the JSX syntax works with no `node`, no esbuild, and no build step, and the browser receives a plain script.
 
-A *.jsx* file is loaded the same two ways as a plain *.js*: dropped into *resources/web/init* it auto-loads with no wiring, and anywhere else under *resources/web* it is listed in `onWebClientInit`:
+Only the syntax changes — the file is still a no-build file: the JSX compiles to `React.createElement` calls against the platform-provided `window.React`, and the file runs as a classic top-level script, so a top-level `function` declaration is already a name on `window` — nothing else is needed. An `import` or `export` in a *.jsx* file is an error, reported in the browser console with the file skipped — importing modules is what the build (*src/main/web*) adds.
+
+Eligible components are also memoized automatically (React Compiler) during the same server-side transformation, so a no-build component re-renders only when its inputs change — no annotations, no build step.
+
+Because that transformation runs on the server, the web server must run on Java 11 through 23 — the JS engine performing it does not support newer JVMs yet. Outside that range a served *.jsx* reports the requirement to the browser console instead of rendering. A plain *.js* resource is unaffected, and so is the compilation of *src/main/web* described below, which places no requirement on the server JVM at all.
+
+A *.jsx* file is loaded the same two ways as a plain *.js*: placed in *resources/web/init*, it loads automatically without explicit registration, and anywhere else under *resources/web* it is listed in `onWebClientInit`:
 
 ```
 // resources/web/init/helloBoard.jsx — auto-loads, nothing else to wire
@@ -78,9 +94,11 @@ DESIGN orders {
 }
 ```
 
-Load order: a *.jsx* file loads and runs at its resource slot, exactly like a plain *.js* — the `onWebClientInit` order holds verbatim across *.js* and *.jsx* files in both directions, so at load time either kind may read a global defined by any earlier resource. The one reserved range is the platform's own — a *.jsx* registered at an order of -108 or below runs before the platform-provided memoization runtime and is out of contract.
+Load order: a *.jsx* file loads and runs at its position in the resource load order, exactly like a plain *.js* — the `onWebClientInit` order holds verbatim across *.js* and *.jsx* files in both directions, so at load time either kind may read a global defined by any earlier resource. The one reserved range is the platform's own — a *.jsx* registered at an order of -108 or below runs before the platform-provided memoization runtime and is unsupported.
 
-The transformation takes time that grows with the file: a small component takes a fraction of a second, a file of a few hundred kilobytes can take a minute or more. A file is transformed once for each version of its content: the result is kept in the temporary folder of the web server and survives its restart, so only the first page load after the file changes, or after the platform is updated, waits for it. A page waits for the transformations of its files for at most `jsxTransformTimeout` seconds in total (a [launch parameter](/Launch_parameters.md#jsxtransformtimeout) of the web server, 30 by default). A file not transformed by then is served as a script that only reports it to the browser console, so its component is not registered on that page, and the transformation goes on: a later load of the page gets the transformed file.
+The transformation takes time that grows with the file: a small component takes a fraction of a second, a file of a few hundred kilobytes can take a minute or more. A file is transformed once for each version of its content: the result is kept in the temporary folder of the web server and survives its restart, so only the first page load after the file changes, or after the platform is updated, waits for it.
+
+A page waits for the transformations of its files for at most `jsxTransformTimeout` seconds in total (a [launch parameter](/Launch_parameters.md#jsxtransformtimeout) of the web server, 30 by default). A file not transformed by then is served as a script that only reports it to the browser console, so its component is not registered on that page, and the transformation goes on: a later load of the page gets the transformed file.
 
 ### Named exports and auto-registration[​](#named-exports-and-auto-registration "Direct link to Named exports and auto-registration")
 
@@ -129,7 +147,7 @@ function ConfettiBoard(props) {                        // resources/web/init/con
 // resources/web/init/confetti.umd.js sets window.confetti — both files auto-load, no onWebClientInit
 ```
 
-From a URL, when the runtime is allowed to reach the internet. A URL is not a file to drop in *web/init*, so it is passed straight to `onWebClientInit`: a value that is not a local *web/* resource and is an absolute URL is loaded as a `<script src>` on the page (the resolution rule is described under [`INTERNAL`](/INTERNAL_operator.md)), before the component that uses it:
+From a URL, when the runtime is allowed to reach the internet. A URL is not a file to place in *web/init*, so it is passed straight to `onWebClientInit`: a value that is not a local *web/* resource and is an absolute URL is loaded as a `<script src>` on the page (the resolution rule is described under [`INTERNAL`](/INTERNAL_operator.md)), before the component that uses it:
 
 ```
 onWebClientInit() + {
@@ -140,9 +158,13 @@ onWebClientInit() + {
 
 ### React Compiler[​](#react-compiler "Direct link to React Compiler")
 
-A module's JSX (any *.jsx* or *.tsx* source) is run through the **React Compiler**, general automatic memoization of React components that stands in for hand-written `useMemo` / `useCallback` / `React.memo`. It runs whenever the module has JSX — the same as the no-build *.jsx* tier — and a component that violates the rules of React is left untouched, so it needs no configuration. A module with only plain *.js*/*.ts* sources is bundled without it.
+A module's JSX (any *.jsx* or *.tsx* source) is run through the **React Compiler**, general automatic memoization of React components that replaces hand-written `useMemo` / `useCallback` / `React.memo`. It runs whenever the module has JSX — the same as for *.jsx* files without a build — and a component that violates the rules of React is left untouched, so it needs no configuration. A module with only plain *.js*/*.ts* sources is bundled without it.
 
-Like plain bundling, this pass needs no Node and no other external toolchain: the compiler (Babel with `babel-plugin-react-compiler`) is vendored with the build plugin and runs in-process on the JVM. It is a build-time step only — a runtime / deploy box is unaffected. The pass does require the build JVM to be Java 11 through 23 — the JS engine performing it does not support newer JVMs yet. Outside that range it is skipped with a build warning rather than failing the build: the bundles are still produced and complete, because esbuild performs the JSX transform itself, but components are not auto-memoized. A *.js*/*.ts*-only module never runs the pass at all, and `-Dlsfusion.web.skip=true` skips the web compile entirely. An offline build (`mvn -o`) works as usual.
+Like plain bundling, this pass needs no Node and no other external toolchain: the compiler (Babel with `babel-plugin-react-compiler`) is vendored with the build plugin and runs in-process on the JVM. It is a build-time step only — the machine running the application is unaffected.
+
+The pass does require the build JVM to be Java 11 through 23 — the JS engine performing it does not support newer JVMs yet. Outside that range it is skipped with a build warning rather than failing the build: the bundles are still produced and complete, because esbuild performs the JSX transform itself, but components are not auto-memoized.
+
+A *.js*/*.ts*-only module never runs the pass at all, and `-Dlsfusion.web.skip=true` skips the web compile entirely. An offline build (`mvn -o`) works as usual.
 
 The pass is not a substitute for [`window.lsfusion.List`](/React_rendering.md#rendering-rows): the common large-grid performance case — re-rendering only the rows that actually changed — is handled by `List` independently.
 
@@ -156,6 +178,6 @@ For a full styling system beyond static class names, a **runtime CSS-in-JS** lib
 
 CSS preprocessors (Sass/SCSS, Less, Stylus) and utility frameworks that generate CSS from a build step (Tailwind, UnoCSS) are **not** part of this build — plain bundling runs the esbuild binary only, with no Node or plugin phase.
 
-A standalone stylesheet that is not part of the build can still be shipped as a plain file and loaded through the [`onWebClientInit`](/INTERNAL_operator.md) action, like the CSS of a classic custom component.
+A standalone stylesheet that is not part of the build can still be included as a plain file and loaded through the [`onWebClientInit`](/INTERNAL_operator.md) action, like the CSS of a classic custom component.
 
-While the dark [color theme](/User_interface.md#appearance) is on, the root element of the web client's page (`<html>`) carries the attribute `data-bs-theme` with the value `dark`, so a CSS rule can be addressed to that theme: `[data-bs-theme="dark"] .board { ... }`. With the light theme the attribute is absent or has the value `light`. The attribute changes as the theme is switched, without a reload of the page.
+While the dark [color theme](/User_interface.md#appearance) is on, the root element of the web client's page (`<html>`) has the attribute `data-bs-theme` with the value `dark`, so a CSS rule can be addressed to that theme: `[data-bs-theme="dark"] .board { ... }`. With the light theme the attribute is absent or has the value `light`. The attribute changes as the theme is switched, without a reload of the page.

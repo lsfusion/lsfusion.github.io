@@ -282,7 +282,7 @@
 
 ## Client_JavaScript_modules
 
-- [Client JavaScript modules](/Client_JavaScript_modules.md): A client JavaScript module is a file of a project that holds client code lsFusion code names each of them by a string, and the web client resolves all these names the same way (Named exports and auto-registration).
+- [Client JavaScript modules](/Client_JavaScript_modules.md): A client JavaScript module is a file of a project that holds client code: JavaScript that draws custom views — parts of the form design or of the navigator design — in the web client, or that an action calls there.
 
 ## CLOSE_FORM_operator
 
@@ -350,7 +350,7 @@
 
 ## Custom_views
 
-- [Custom views](/Custom_views.md): A custom view is a part of a form's interactive view or of the navigator design drawn by client code instead of the platform: the application's own JavaScript code running in the web client. The desktop client uses the platform's standard view in its place.
+- [Custom views](/Custom_views.md): A custom view is a part of the form design or of the navigator design drawn by client code instead of the platform: the application's own JavaScript code running in the web client. The desktop client uses the platform's standard view in its place.
 
 ## Data_export_EXPORT
 
@@ -538,7 +538,7 @@
 
 ## Form_design
 
-- [Form design](/Form_design.md): The form design defines how a form is displayed in the interactive view.
+- [Form design](/Form_design.md): The form design defines how a form is displayed in the interactive view. Parts of the form can also be drawn by the application's client code instead of the platform: these are custom views.
 
 ## Form_events
 
@@ -1322,7 +1322,7 @@
 
 ## React_views
 
-- [React views](/React_views.md): A React view is a custom view drawn by a React component in the web client instead of the platform, as part of a form's interactive view or of the navigator design. The articles of this section describe what such a component receives and what it calls.
+- [React views](/React_views.md): A React view is a custom view drawn by a React component in the web client instead of the platform, as part of the form design or of the navigator design. The articles of this section describe what such a component receives and what it calls.
 
 ## React_windows
 
@@ -1354,7 +1354,7 @@
 
 ## Render_functions
 
-- [Render functions](/Render_functions.md): A render function is a JavaScript function drawing a custom view render, update and the optional clear. These places can also name a React component instead of such a function (A React component in CUSTOM). Only the web client calls render functions.
+- [Render functions](/Render_functions.md): A render function is a JavaScript function drawing a custom view: instead of the platform, it draws the rows of an object group or the value of a property of a form in the interactive view.
 
 ## Report_design
 

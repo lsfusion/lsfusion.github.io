@@ -10,7 +10,7 @@ We need to choose where a file of client code goes — under *src/main/web* for 
 
 **Registered explicitly — list it in *onWebClientInit*.** Use this when load order matters — a third-party library that must load before the component using it — or to load a file conditionally.
 
-For a large *.jsx* file without the build, set `jsxTransformTimeout` above its transformation time, or move the component to the compiled *src/main/web* tier, which transforms it at build time ([Lightweight .jsx (no build)](/Client_JavaScript_modules.md#lightweight-jsx)).
+For a large *.jsx* file without the build, set `jsxTransformTimeout` above its transformation time, or move the component to the compiled *src/main/web* tier, which transforms it at build time ([.jsx files without a build](/Client_JavaScript_modules.md#lightweight-jsx)).
 
 ### A function for a client action[​](#example "Direct link to A function for a client action")
 
