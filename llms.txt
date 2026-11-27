@@ -1396,6 +1396,10 @@
 
 - [Rounding operator (ROUND)](/Rounding_operator_ROUND.md): The rounding operator creates a property whose value is the result of rounding a number to the specified number of digits. The arguments of this operator are properties that determine the number to be rounded and, optionally, the rounding precision. The number must belong to one of the numeric built-in classes, and the precision must belong to the INTEGER class. When no precision is given, the number is rounded to the nearest integer. Negative precision values indicate the number of least significant digits to be rounded in the integer part of the number, allowing you to round the number to tens, hundreds, etc.
 
+## Rules_changes
+
+- [Rules: actions and data changes](/Rules_changes.md): - Actions and assignment
+
 ## Rules_custom
 
 - [Rules: custom views](/Rules_custom.md): - Choosing a custom view
@@ -1404,13 +1408,13 @@
 
 - [Rules: integration](/Rules_integration.md): - Data import (IMPORT)
 
-## Rules_logic
-
-- [Rules: domain logic](/Rules_logic.md): - Properties
-
 ## Rules_physical
 
 - [Rules: physical model](/Rules_physical.md): - Execution
+
+## Rules_properties
+
+- [Rules: properties](/Rules_properties.md): - Properties
 
 ## Rules_via_app
 

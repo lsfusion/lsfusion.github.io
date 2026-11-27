@@ -64,7 +64,7 @@
 
 11. For user-started batch imports and external integrations, the assistant SHOULD isolate persistence in `NEWSESSION`, and SHOULD `APPLY;` after the domain writes of one import.
 
-    Which session the import runs in, how the upper-session buffer reaches it and what follows `APPLY;` are governed by the change-session rules of the domain-logic article (`lsfusion_get_guidance(rules='logic')`).
+    Which session the import runs in, how the upper-session buffer reaches it and what follows `APPLY;` are governed by the change-session rules of the article on actions and data changes (`lsfusion_get_guidance(rules='changes')`).
 
 12. The assistant MUST NOT partially persist a failed import silently. For failures the assistant detects on its own (missing references, malformed payload, pre-`APPLY` validation), it SHOULD use `MESSAGE`, `RETURN`, `throwException`, or an explicit failure flag, consistent with the caller:
 
