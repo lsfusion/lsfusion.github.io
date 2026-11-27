@@ -340,13 +340,17 @@
 
 - [CONTINUE operator](/CONTINUE_operator.md): The CONTINUE operator creates an action that implements a move to the next iteration of the loop.
 
+## CSS_view_styles
+
+- [Styles of platform views](/CSS_view_styles.md): An application's CSS styles the HTML elements that the web client draws for forms, navigator elements, and windows. Selectors can use classes supplied by the application or attributes set by the web client.
+
 ## Custom_formula_FORMULA
 
 - [Custom formula (FORMULA)](/Custom_formula_FORMULA.md): The custom formula operator allows you to create a property that calculates a defined formula in SQL. You can give a single implementation used for any SQL server, or different implementations for different SQL servers.
 
 ## Custom_Spring_bean_EventServer
 
-- [Custom Spring bean (EventServer)](/Custom_Spring_bean_EventServer.md): When you need to reach the lsFusion system from your own Java code — to run a background job, host an integration server, process a stream of events, expose an RMI service — that is done with a Spring bean extending the EventServer hierarchy.
+- [Custom Spring bean (EventServer)](/Custom_Spring_bean_EventServer.md): EventServer is the base class for Spring beans that access lsFusion from Java code in the application server. Such beans can run background jobs, host integration servers, process event streams or expose RMI services.
 
 ## Custom_views
 
@@ -880,6 +884,10 @@
 
 - [How-to](/How-to.md): How to read these sections
 
+## HTML_templates
+
+- [HTML templates](/HTML_templates.md): An HTML template is markup that lays out a form container's children in the web client or a navigator window's elements in the desktop web client. It is supplied through the custom design attribute for a container or the CUSTOM window option for a navigator window.
+
 ## Icons
 
 - [Icon assignment mechanism](/Icons.md): In the lsFusion platform, developers can manually assign icons to UI elements corresponding to properties, actions, forms, containers, and navigator elements. You can specify an image file path, icon font CSS classes, or an external HTTP(S) URL.
@@ -946,7 +954,11 @@
 
 ## Internal_call_INTERNAL
 
-- [Internal call (INTERNAL)](/Internal_call_INTERNAL.md): The platform allows an lsFusion-based system to invoke code running inside its own deployment components — the application-server JVM, the user's web client, or the database the platform uses — using various types of internal calls, as the internal counterpart to access to an external system. The interface of such an access is the execution of code in the environment of the target component with specified parameters and, if necessary, the return of certain values as *results* written into the specified properties (without parameters). For call types where parameters and results cross a serialization boundary (CLIENT, DB), values must belong to built-in classes. The Java target runs on the same JVM as the platform, so inside executeInternal objects of user-defined classes are passed as DataObject / ObjectValue directly, without serialization.
+- [Internal call (INTERNAL)](/Internal_call_INTERNAL.md): The platform allows an lsFusion-based system to invoke code running inside its own deployment components — the application-server JVM, the user's web client, or the database the platform uses — using various types of internal calls, as the internal counterpart to access to an external system. The interface of such an access is the execution of code in the environment of the target component with specified parameters and, if necessary, the return of certain values as *results* written into the specified properties (without parameters). For call types where parameters and results cross a serialization boundary (CLIENT, DB), values must belong to built-in classes. The Java target runs in the same JVM as the platform and receives objects of user-defined classes without serialization.
+
+## INTERNAL_CLIENT_functions
+
+- [INTERNAL CLIENT functions](/INTERNAL_CLIENT_functions.md): The web client runs a JavaScript function named in an INTERNAL CLIENT action or action statement. Client JavaScript modules describes how the function is exposed and found by name.
 
 ## INTERNAL_operator
 
@@ -974,7 +986,7 @@
 
 ## Java_integration_API
 
-- [Java API for integrations](/Java_integration_API.md): A catalog of Java classes and methods used to access the lsFusion system from Java code — both from inside an InternalAction subclass (see internal call (INTERNAL)) and from inside a Spring bean (see custom Spring bean (EventServer)).
+- [Java API for integrations](/Java_integration_API.md): The Java integration API provides classes and methods for accessing lsFusion from Java code in the application server. The API is available in InternalAction subclasses (see internal call (INTERNAL)) and in Spring beans based on EventServer.
 
 ## JOIN_operator
 
@@ -983,6 +995,10 @@
 ## Journals_and_logs
 
 - [Journals and logs](/Journals_and_logs.md): Journals
+
+## JRXML_report_templates
+
+- [JRXML report templates](/JRXML_report_templates.md): A JRXML report template is a JasperReports template that the platform fills with the data of a form's report.
 
 ## JSON_operator
 
@@ -1195,6 +1211,10 @@
 ## Order_ORDER
 
 - [Order (ORDER)](/Order_ORDER.md): The order operator creates a property, defined on the objects of an object group, that returns a value reflecting the relative order of their object collection within the group's current order. This value has no standalone meaning: only comparing it with the same property for the group's other object collections is meaningful, and that comparison reproduces the group's current order.
+
+## Other_languages
+
+- [Other languages](/Other_languages.md): This section describes the interfaces used by code, markup, and styles written in other languages, including JavaScript, HTML, and CSS in the client and Java and JRXML in the application server.
 
 ## OVERRIDE_operator
 

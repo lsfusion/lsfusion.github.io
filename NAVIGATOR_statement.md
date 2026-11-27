@@ -159,11 +159,11 @@ The `CUSTOM` option gives the [windows](/Navigator_design.md) a [React component
 
 * `CLASS cssClassExpr`
 
-  Specifying the name of the CSS class for the DOM element created for the navigator element component in HTML. This can be used to apply custom styles.
+  [CSS classes](/CSS_view_styles.md#classes) of the navigator element. By default the option supplies no classes.
 
   * `cssClassExpr`
 
-    Expression, whose value determines the class name.
+    [Expression](/Expression.md) with a string value.
 
 * `HEADER headerExpr`
 

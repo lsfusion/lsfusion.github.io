@@ -30,14 +30,18 @@ The executable code is meant to add new local elements and call existing ones. I
 * declaring a [group](/Groups_of_properties_and_actions.md) with a parent group from another module, or attaching a property or action to a group from another module
 * adding base events to existing actions
 * [abstract](/Property_extension.md) properties and actions: adding an implementation to one declared outside the code, as well as declaring one in the code and using it
-* the [navigator](/Navigator.md) and its [windows](/Navigator_design.md): the [`NAVIGATOR`](/NAVIGATOR_statement.md) statement, its `SCHEDULE` included, and the [`WINDOW`](/WINDOW_statement.md) and `HIDE WINDOW` statements
-* the `ASON` [option](/Action_options.md) of an action and the [`BEFORE`](/BEFORE_statement.md) and [`AFTER`](/AFTER_statement.md) statements, which attach an action to an existing property or action
+* configuring the [navigator](/Navigator.md), including scheduling its actions, or creating or hiding its [windows](/Navigator_design.md)
+* assigning a default [form event handler](/Form_events.md#property) to a property or action, or attaching an aspect to run before or after an existing action
 
 [Data properties](/Data_properties_DATA.md) declared inside eval code are forced to the session scope. Persistent data declarations are not allowed.
 
 ### Language[​](#language "Direct link to Language")
 
 To create the eval action, use the [`EVAL` operator](/EVAL_operator.md).
+
+The [`NAVIGATOR` statement](/NAVIGATOR_statement.md) configures the navigator and schedules periodic actions with `SCHEDULE`. The [`WINDOW` and `HIDE WINDOW` statements](/WINDOW_statement.md) create and hide windows, respectively.
+
+The [`ASON` action option](/Action_options.md) sets a default form event handler. The [`BEFORE`](/BEFORE_statement.md) and [`AFTER`](/AFTER_statement.md) statements attach actions to run before and after an existing action, respectively.
 
 ### Examples[​](#examples "Direct link to Examples")
 

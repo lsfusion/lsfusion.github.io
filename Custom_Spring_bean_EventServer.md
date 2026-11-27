@@ -1,6 +1,6 @@
 # Custom Spring bean (EventServer)
 
-When you need to reach the lsFusion system from your own Java code — to run a background job, host an integration server, process a stream of events, expose an RMI service — that is done with a Spring bean extending the `EventServer` hierarchy.
+`EventServer` is the base class for Spring beans that access lsFusion from Java code in the application server. Such beans can run background jobs, host integration servers, process event streams or expose RMI services.
 
 This is the second of the two ways of [accessing lsFusion from an internal system](/Access_from_an_internal_system.md), parallel to the [`InternalAction`](/Internal_call_INTERNAL.md#java) path.
 

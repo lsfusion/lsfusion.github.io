@@ -55,6 +55,8 @@
 
 [Функция JavaScript](/ru/Render_functions.md#render-function), указанная в `CUSTOM 'itemCards'`, рисует строки группы товаров.
 
+[HTML-шаблон](/ru/HTML_templates.md#form-container-places) задаёт места для дочерних компонентов контейнера формы.
+
 ### React[​](#react "Прямая ссылка на этот заголовок")
 
 * [Выбор компонента](/ru/React_views.md#selecting-the-component) объясняет, как задать в дизайне компонент React, который будет рисовать контейнер формы.

@@ -54,6 +54,8 @@ By default, the desktop has the following layout (the left coordinate, upper coo
 
 To manage windows, use the [`WINDOW` statement](/WINDOW_statement.md). A React component is given the layout of the windows with the `CUSTOM` option of the [`NAVIGATOR` statement](/NAVIGATOR_statement.md).
 
+An [HTML template](/HTML_templates.md#navigator-window-places) specifies where to place the buttons of a navigator window.
+
 ### React[​](#react "Direct link to React")
 
 * [Windows in React](/React_windows.md) describes how a React component draws a navigator window or the log window, or lays out the windows on the desktop in place of the standard layout.

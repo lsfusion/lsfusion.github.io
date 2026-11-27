@@ -55,6 +55,8 @@ Client code is kept as files in the project. They can be compiled during the pro
 
 The [JavaScript function](/Render_functions.md#render-function) named by `CUSTOM 'itemCards'` draws the rows of the item group.
 
+An [HTML template](/HTML_templates.md#form-container-places) specifies where to place a form container's child components.
+
 ### React[​](#react "Direct link to React")
 
 * [Component selection](/React_views.md#selecting-the-component) explains how the design assigns a React component to draw a form container.

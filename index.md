@@ -10,7 +10,7 @@ This section describes the general concepts and terms used in the platform.
 
 ### [Language](/Language.md)[​](#language "Direct link to language")
 
-This section describes the syntax of the **lsFusion** language used in the platform and based on the paradigm described above, and the interfaces that client code written in JavaScript receives and calls.
+This section describes the syntax of the **lsFusion** language used in the platform and based on the paradigm described above, and the interfaces for [code in other languages](/Other_languages.md), including JavaScript in the client and Java in the application server.
 
 ### [IDE](/IDE.md)[​](#ide "Direct link to ide")
 
